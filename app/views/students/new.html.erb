@@ -1,11 +1,16 @@
-<h1>New student</h1>
-
-<%= error_messages_for :student %>
-
-<% form_for(@student) do |f| %>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', students_path %>
+<div id="single_column">
+	<%= render :partial => "application/header" %>
+	<div id="about">
+		<h2>Summer 2008 Online Application</h2>
+		<%= error_messages_for :student %>
+		<% form_for(@student) do |f| %>
+			<h3>Personal Data</h3>
+			<fieldset>
+				<p><label>Firstname</label></p>
+			</fieldset>
+		  <p>
+		    <%= f.submit "Create" %>
+		  </p>
+		<% end %>
+	</div>
+</div>

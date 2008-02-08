@@ -3,13 +3,7 @@
 </div>
 
 <div id="content">
-	<div id="header">
-		<%= link_to image_tag("ucsd_logo.gif"), "http://ucsd.edu", :target => "_blank" %>
-		<h5>Research Experience for Undergraduates (REU) in Regenerative Medicine, Multi-Scale Bioengineering, &amp; Systems Biology</h5>
-		<%= link_to image_tag("nsf_logo.gif"), "http://nsf.gov", :target => "_blank" %>
-		<h6>University of California, San Diego</h6>
-		<h6>Department of Bioengineering</h6>
-	</div>
+	<%= render :partial => "application/header" %>
 	<div id="about">
 		<h2>Enter New User Information</h2>
 		<%= error_messages_for :user %>
