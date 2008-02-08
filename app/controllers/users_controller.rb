@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   
+  # render login.rhtml
+  def login
+  end
 
   # render new.rhtml
   def new
@@ -23,5 +26,6 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
   end
+  
 
 end
