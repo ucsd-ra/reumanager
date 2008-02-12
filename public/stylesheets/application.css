@@ -59,21 +59,21 @@ Layout
 	#sidebar ul h3 							{  margin-top:25px;font-size:1.6em;padding-bottom:5px;border-bottom:1px solid #ccc;  }
 	#sidebar li 							{  list-style-type:none; font-size:1.2em;  }
 	#sidebar ul.links li 					{  margin-bottom:5px;  }
-	#footer 								{  clear:both; margin:5px 0 50px 0;  }
+	#footer 								{  clear:both;margin:5px 0 50px 0;  }
 	#header									{  padding:10px 0 0 0;text-align:center;  }
 	#header h1, #header h2 					{  margin:0  }
 	#header h2 								{  color:#888;font-weight:normal;font-size:16px;  } 
 	#header h5								{  padding:0 10px 10px 10px;clear:none;display:inline;  }
-	#header h6								{  margin:10px 0;padding:6px;font-weight:bold;color:silver;background-color:#333;clear:both;  }
+	#header h6								{  margin:10px 0;padding:6px;font-weight:bold;color:#eee;background-color:#333;clear:both;  }
 	#header #ucsd							{  height:60px;width:79px;clear:none;float:left;  }
 	#header #nsf							{  height:60px;width:60px;clear:none;float:right;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Login
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
-	#login									{  width:360px;margin:20px 200px;padding:10px;border:1px dashed gray;  }
-	#login form								{  padding:0 50px;  }
-	#login p								{  width:260px;height:40px;padding:0;text-align:left;font-weight:bold;font-variant:small-caps;  }
-	#user_email, #user_password				{  width:250px;padding:4px;border:1px dotted silver;font-size:1.2em;  }
+	fieldset#login							{  width:360px;margin:20px 200px;padding:10px;border:1px dashed gray;  }
+	fieldset#login#login form				{  padding:0 50px;  }
+	fieldset#login#login p					{  width:260px;height:40px;padding:0;text-align:left;font-weight:bold;font-variant:small-caps;  }
+	input#login, input#password				{  width:250px;padding:4px;border:1px dotted silver;font-size:1.2em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Students
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	 

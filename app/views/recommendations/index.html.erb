@@ -1,18 +1,25 @@
-<h1>Listing recommendations</h1>
+<div id="sidebar">
+	<%= render :partial => "application/sidebar" %>
+</div>
 
-<table>
-  <tr>
-  </tr>
+<div id="content">
+	<%= render :partial => "application/header" %>
+	<div id="about">
+		<h1>Listing recommendations</h1>
 
-<% for recommendation in @recommendations %>
-  <tr>
-    <td><%= link_to 'Show', recommendation %></td>
-    <td><%= link_to 'Edit', edit_recommendation_path(recommendation) %></td>
-    <td><%= link_to 'Destroy', recommendation, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New recommendation', new_recommendation_path %>
+		<% unless @recommendations.empty? -%>
+			<table>
+			<% for recommendation in @recommendations -%>
+			  <tr>
+			    <td><%= link_to 'Show', recommendation %></td>
+			    <td><%= link_to 'Edit', edit_recommendation_path(recommendation) %></td>
+			    <td><%= link_to 'Destroy', recommendation, :confirm => 'Are you sure?', :method => :delete %></td>
+			  </tr>
+			<% end -%>
+			</table>
+		<% else -%>
+			<p>There are no recommendations yet. Sorry.</p>
+		<% end -%>
+		<br />
+	</div>
+</div>
