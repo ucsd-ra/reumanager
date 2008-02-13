@@ -1,16 +1,50 @@
 <div id="single_column">
 	<%= render :partial => "application/header" %>
+	<h2>Summer 2008 Online Application</h2>
 	<div id="about">
-		<h2>Summer 2008 Online Application</h2>
+		<h5>Submission Deadline:&nbsp;<span class="blood_red">Rolling Admissions</span></h5>
+		<h5>Eligibility:</h5>
+		<ul class="bold blood_red">
+			<li>You must be a current, full-time undergraduate student</li>
+			<li>You must not plan to graduate before fall</li>
+			<li>You must be a U.S. citizen or permanent resident</li>
+		</ul>	
+	</div>
+	<div id="application">
 		<%= error_messages_for :student %>
 		<% form_for(@student) do |f| %>
-			<h3>Personal Data</h3>
+			<h4>Personal Data</h4>
 			<fieldset>
-				<p><label>Firstname</label></p>
+				<p class="name">
+					<label>Firstname</label><br/>
+					<%= f.text_field 'firstname'  %>
+				</p>
+				<p class="name">
+					<label>Middlename</label><br/>
+					<%= f.text_field 'middlename'  %>
+				</p>
+				<p class="name">
+					<label>Lastname</label><br/>
+					<%= f.text_field 'lastname'  %>
+				</p>
+				<p>
+					<label>Street&nbsp;Address</label><br/>
+					<%= f.text_field 'street'  %>
+				</p>
+				<p class="name">
+					<label>City</label><br/>
+					<%= f.text_field 'city'  %>
+				</p>
+				<p class="name">
+					<label>State</label><br/>
+					<%= f.text_field 'state'  %>
+				</p>
+				<p class="name">
+					<label>Zip</label><br/>
+					<%= f.text_field 'zip'  %>
+				</p>
+				<%= f.submit "Create" %>
 			</fieldset>
-		  <p>
-		    <%= f.submit "Create" %>
-		  </p>
 		<% end %>
 	</div>
 </div>

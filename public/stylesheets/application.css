@@ -16,7 +16,7 @@ Colors:
  * Dark Green Hover:    1A210E
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 @media screen, projection {
-	body 									{  font-family:Tahoma,"Lucida Sans Unicode",Verdana,sans-serif; font-size:62.5%;text-align:center;background-color:#cdcdcd;color:#343434;text-shadow:#121212 0 0 0; }
+	body 									{  font-family:Tahoma,"Lucida Sans Unicode",Verdana,sans-serif; font-size:62.5%;text-align:center;background-color:#cdcdcd;color:#333;text-shadow:#121212 0 0 0; }
 	:link,:visited                          {  text-decoration:none;  }
 	ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,
 	body,html,p,blockquote,fieldset,input,
@@ -29,9 +29,9 @@ Colors:
 	a img, a:hover img						{  border:none;  }
 	h1,h2,h3,h4,h5,h6						{  font-variant:small-caps;  }
 	h1 a									{  color:#069}
-	h1 a:hover, h3 a:hover					{  color:#96BF55; border-bottom:1px dotted silver;  }
-	h1 										{  font-size:2.8em; color:#069; margin:0 0 10px 0;  }
-	h2										{  font-size:2.5em; padding:0 0 10px;  }
+	h1 a:hover, h3 a:hover					{  color:#96BF55;border-bottom:1px dotted silver;  }
+	h1 										{  font-size:2.8em;color:#333;  }
+	h2										{  font-size:2.5em;  }
 	h3										{  font-size:2.2em;  }
 	h4										{  font-size:1.9em;  }
 	h5                                      {  font-size:1.6em;  }
@@ -52,7 +52,7 @@ Colors:
 Layout
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 	#page 									{  background-color:#cdcdcd;width:800px;margin:0;margin-left:auto;margin-right:auto;  }
-	#single_column							{  background-color:white;border:1px solid #aaa;border-top:none;padding:10px 10px 25px 10px; width:780px;  }
+	#single_column							{  background-color:white;border:1px solid #aaa;border-top:none;margin:0;padding:0;width:800px;  }
 	#content								{  float:left;background-color:white;border:1px solid #aaa;border-top:none;padding:10px 10px 25px 10px; width:580px;  }
 	#sidebar 								{  float:right;width:190px;text-align:left;  }
 	#sidebar ul 							{  margin-left:0;padding-left:0;  }
@@ -60,24 +60,43 @@ Layout
 	#sidebar li 							{  list-style-type:none; font-size:1.2em;  }
 	#sidebar ul.links li 					{  margin-bottom:5px;  }
 	#footer 								{  clear:both;margin:5px 0 50px 0;  }
-	#header									{  padding:10px 0 0 0;text-align:center;  }
+	#header									{  padding:0;text-align:center;  }
 	#header h1, #header h2 					{  margin:0  }
 	#header h2 								{  color:#888;font-weight:normal;font-size:16px;  } 
 	#header h5								{  padding:0 10px 10px 10px;clear:none;display:inline;  }
-	#header h6								{  margin:10px 0;padding:6px;font-weight:bold;color:#eee;background-color:#333;clear:both;  }
+	#header h6								{  margin:10px 0 0 0;padding:6px;font-weight:bold;color:#eee;background-color:#333;clear:both;  }
 	#header #ucsd							{  height:60px;width:79px;clear:none;float:left;  }
 	#header #nsf							{  height:60px;width:60px;clear:none;float:right;  }
+	
+	.blood_red								{  color:#7e0815;  }
+	.bold									{  font-weight:bold;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Login
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
-	fieldset#login							{  width:360px;margin:20px 200px;padding:10px;border:1px dashed gray;  }
+	fieldset#login							{  width:360px;margin:20px 210px;padding:10px;border:1px dashed gray;  }
 	fieldset#login#login form				{  padding:0 50px;  }
 	fieldset#login#login p					{  width:260px;height:40px;padding:0;text-align:left;font-weight:bold;font-variant:small-caps;  }
 	input#login, input#password				{  width:250px;padding:4px;border:1px dotted silver;font-size:1.2em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Students
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	 
-
+	#about									{  margin:10px 220px 0;text-align:left;width:360px;  }
+	#about h5								{  margin:0;  }
+	#about ul								{  font-size:1.2em;  }
+	#application							{  text-align:left;  }
+	#application h4							{  margin:0 10px 10px;color:#07243c;font-weight:normal;font-variant:normal;border-bottom:2px dotted #666;  }
+	#application fieldset					{  margin:0 80px;overflow:hidden;  }
+	#application label						{  margin:0 10px 0 0;font-size:1.2em;font-weight:bold;  }
+	#application p input					{  border:1px solid #ccc;font-size:1.4em;padding:3px;  }
+	.name									{  float:left;margin:0 11px 0 1px;height:50px;width:200px; }
+	#student_firstname						{  width:180px;  }
+	#student_middlename						{  width:180px;  }
+	#student_lastname						{  width:180px;  }
+	#student_street							{  width:602px;  }
+	#student_city							{  width:180px;  }
+	#student_state							{  width:180px;  }
+	#student_zip							{  width:180px;  }
+	#student_submit							{  clear:both;font-size:1.4em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Recommendations
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -85,9 +104,7 @@ Recommendations
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Admin
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
-	#about									{  padding:10px;  }
-	#about h3 								{  margin:0;margin-bottom:10px;  }
-	#about-content 							{  background-color:#ffd;border:1px solid #fc0;margin-left:-11px;  }
+
 	#getting-started						{  padding:10px;  }
 	#getting-started 						{  border-top:1px solid #ccc;margin-top:25px;padding-top:15px;  }
 	#getting-started h1 					{  margin:0;font-size:20px;  }

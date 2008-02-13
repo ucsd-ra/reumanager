@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   include AuthenticatedSystem
   before_filter :login_from_cookie
   
+  def index 
+  end
+  
   # render new.rhtml
   def new
   end
