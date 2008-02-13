@@ -19,5 +19,5 @@ production:
   adapter: mysql
   database: nsfreu
   username: nsfreu
-  password: nsfrue
+  password: nsfreu
   host: localhost

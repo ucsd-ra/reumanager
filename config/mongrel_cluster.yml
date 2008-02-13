@@ -1,0 +1,10 @@
+--- 
+user: mongrel
+cwd: /var/www/rails/nsfreu/
+log_file: /var/log/mongrel/nsfreu.log
+port: "8010"
+environment: production
+group: mongrel
+address: 127.0.0.1
+pid_file: /var/run/mongrel_cluster/nsfreu.pid
+servers: 2
