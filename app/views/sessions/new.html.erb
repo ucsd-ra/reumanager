@@ -1,5 +1,6 @@
 <div id="single_column">
 	<%= render :partial => "application/header" %>
+	<h5><%= flash[:notice] %></h5>
 	<fieldset id="login">
 		<% if logged_in? %>
 			<p>Dude. You are already logged in. What's wrong with you?</p>
