@@ -1,49 +1,51 @@
-<h1>New recommendation</h1>
-
-<%= error_messages_for :recommendation %>
-
-<% form_for(@recommendation) do |f| %>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', recommendations_path %>
 <div id="single_column">
 	<%= render :partial => "application/header" %>
 	<h2>Summer 2008 Online Recommendation</h2>
 	<div id="about">
-		<h5>Submission Deadline:&nbsp;<span class="blood_red">March 15, 2008</span></h5>
+		<h5>Submission Deadline:&nbsp;<span class="blood_red">March 15th, 2008</span></h5>
 		<h5 id="eligibilty">Eligibility:</h5>
-		<ul class="bold blood_red">
-			<li>You must be a current, full-time undergraduate student</li>
-			<li>You must not plan to graduate before fall</li>
-			<li>You must be a U.S. citizen or permanent resident</li>
-		</ul>	
 	</div>
 	<div id="application">
-		<%= error_messages_for :student %>
-		<% form_for(@student) do |f| %>
-			<h4>Personal Data</h4>
-			<fieldset id="personal_data">
-				<%= render :partial => 'personal_data', :locals => { :f => f } %>
+		<p><span class="blood_red">Student Name</span> has applied to participate in a 10-week summer research program in teh Department of Bioengineering at the University of California, San Diego. Thank you for taking the time to complete this recommendation. We value your input and will consider it carefully.</p>	
+		<%= error_messages_for :recommendation %>
+		<% form_for(@recommendation) do |f| %>
+			<h4>Verify Personal Data</h4>
+			<fieldset>
+				<% fields_for @recommender do |f| -%>
+					<p><label>One letter of recommendation is required from a faculty member</label></p>
+					<p class="float">
+						<label>Name</label><br/>
+						<%= f.text_field 'name' %>
+					</p>
+					<p class="float">
+						<label>Title</label><br/>
+						<%= f.text_field 'title' %>
+					</p>
+					<p class="float">
+						<label>Department</label><br/>
+						<%= f.text_field 'department' %>
+					</p>
+					<p class="clear">
+						<label>College or University</label><br/>
+						<%= f.text_field 'college' %>
+					</p>
+					<p class="float">
+						<label>Phone</label><br/>
+						<%= f.text_field 'phone' %>
+					</p>
+					<p class="float">
+						<label>Email</label><br/>
+						<%= f.text_field 'email' %>
+					</p>
+				<% end -%>
 			</fieldset>
-			<p id="disclaimer"><em>* for statistical purposes only</em></p>
-			<h4>Academic Information</h4>
-			<fieldset id="academic_information">
-				<%= render :partial => 'academic_information', :locals => { :f => f } %>
-			</fieldset>
-			<h4>Faculty Recommendation</h4>
-			<fieldset id="faculty_recommendation">
-				<%= render :partial => 'faculty_recommendation' %>		
-			</fieldset>
+			<h4>Student Information</h4>
+			<p>
+				<label>How long have you known the applicant?</label>
+				<% f.select 'known_student', options_for_select(%w{1\ year 2\ years 3\ years}) %>
+			</p>
+			
 			<h4>&nbsp;</h4>
-			<fieldset id="essays">
-				<%= render :partial => 'essays', :locals => { :f => f } %>
-			</fieldset>
-			<div id="observers">
-				<%= render :partial => "observers" %>
-			</div>
 			<%= f.submit "Submit Application" %>		
 		<% end %>
 	</div>
