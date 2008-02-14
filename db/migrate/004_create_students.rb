@@ -21,15 +21,15 @@ class CreateStudents < ActiveRecord::Migration
       t.column :race,                 :string
       t.column :disability,           :string
       t.column :college,              :string
-      t.column :c_start,              :datetime
-      t.column :c_end,                :datetime
+      t.column :c_start,              :string
+      t.column :c_end,                :string
       t.column :clevel,               :string
       t.column :major,                :string
-      t.column :gpa,                  :decimal
-      t.column :gpa_total,            :decimal
+      t.column :gpa,                  :string
+      t.column :gpa_total,            :string
       t.column :p_college,            :string
-      t.column :pc_start,             :datetime
-      t.column :pc_end,               :datetime
+      t.column :pc_start,             :string
+      t.column :pc_end,               :string
       t.column :recommender_id,       :integer
       t.column :awards,               :text
       t.column :research_experience,  :text

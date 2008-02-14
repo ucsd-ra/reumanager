@@ -15,7 +15,7 @@ Colors:
  * Dark Green Links:    33421D 
  * Dark Green Hover:    1A210E
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
-@media screen, projection {
+@media screen, print, projection {
 	body 									{  font-family:Tahoma,"Lucida Sans Unicode",Verdana,sans-serif; font-size:62.5%;text-align:center;background-color:#cdcdcd;color:#333;text-shadow:#121212 0 0 0; }
 	:link,:visited                          {  text-decoration:none;  }
 	ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,
