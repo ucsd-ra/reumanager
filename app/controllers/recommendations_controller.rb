@@ -25,7 +25,7 @@ class RecommendationsController < ApplicationController
   # GET /recommendations/new.xml
   def new
     @recommendation = Recommendation.new
-
+    @recommender = Recommender.new
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @recommendation }
@@ -82,4 +82,10 @@ class RecommendationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
+  def showmetheform
+    render :nothing => true
+  end
+  
 end

@@ -7,46 +7,51 @@
 	</div>
 	<div id="application">
 		<p><span class="blood_red">Student Name</span> has applied to participate in a 10-week summer research program in teh Department of Bioengineering at the University of California, San Diego. Thank you for taking the time to complete this recommendation. We value your input and will consider it carefully.</p>	
+		<h4>Verify Personal Data</h4>
 		<%= error_messages_for :recommendation %>
-		<% form_for(@recommendation) do |f| %>
-			<h4>Verify Personal Data</h4>
-			<fieldset>
-				<% fields_for @recommender do |f| -%>
-					<p><label>One letter of recommendation is required from a faculty member</label></p>
-					<p class="float">
-						<label>Name</label><br/>
-						<%= f.text_field 'name' %>
-					</p>
-					<p class="float">
-						<label>Title</label><br/>
-						<%= f.text_field 'title' %>
-					</p>
-					<p class="float">
-						<label>Department</label><br/>
-						<%= f.text_field 'department' %>
-					</p>
-					<p class="clear">
-						<label>College or University</label><br/>
-						<%= f.text_field 'college' %>
-					</p>
-					<p class="float">
-						<label>Phone</label><br/>
-						<%= f.text_field 'phone' %>
-					</p>
-					<p class="float">
-						<label>Email</label><br/>
-						<%= f.text_field 'email' %>
-					</p>
-				<% end -%>
+		<% form_for @recommendation do |f| %>
+			<fieldset id="recommender">
+				<%= render :partial => "recommender" %>
 			</fieldset>
+
+	
 			<h4>Student Information</h4>
-			<p>
-				<label>How long have you known the applicant?</label>
-				<% f.select 'known_student', options_for_select(%w{1\ year 2\ years 3\ years}) %>
-			</p>
-			
+			<fieldset>
+				<p class="small">
+					<label>How long have you known the applicant?</label>
+					<%= f.select 'known_student', %w{ <1\ year 1-2\ years 2-3\ years 3-4\ years >4\ years } %>
+				</p>
+				<p class="small">
+					<label>In what capacity have you known the applicant?</label>
+					<%= f.select 'know_capacity', %w{ Undergrad\ in\ one\ course Undergrad\ in\ multiple\ courses Research\ Assistant Teaching\ Assistant Other} %>
+				</p>
+				<p class="small">
+					<label>Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers:</label><br/>
+					<span class="small"><%= f.radio_button 'rating', 'Top 1%' %><label>Top 1%</label>&nbsp;
+					<%= f.radio_button 'rating', 'Top 5%' %><label>Top 5%</label>&nbsp;
+					<%= f.radio_button 'rating', 'Top 10%' %><label>Top 10%</label>&nbsp;
+					<%= f.radio_button 'rating', 'Top 25%' %><label>Top 25%</label>&nbsp;
+					<%= f.radio_button 'rating', 'average' %><label>average</label>&nbsp;
+					<%= f.radio_button 'rating', 'below average' %><label>below average</label>&nbsp;</span>
+				</p>
+				<p class="small">
+					<label>What is the applicant's GPA:</label><%= f.text_field 'gpa' %> out of <%= f.text_field 'gpa_total' %>
+				</p>
+				<p class="small">
+					<label>Is your institution primarily an undergraduate institution?</label>&nbsp;<%= f.select 'undergrad_inst', %w{ No Yes } %>
+				</p>
+			</fieldset>
 			<h4>&nbsp;</h4>
-			<%= f.submit "Submit Application" %>		
+			<fieldset>
+				<p>
+					<label>Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance.</label>
+					<%= f.text_area 'faculty_comment' %>
+				</p>
+			</fieldset>
+			<%= f.submit "Submit Recommendation" %>		
 		<% end %>
+		<div id="observers">
+			<%= render :partial => 'observers' %>
+		</div>
 	</div>
 </div>

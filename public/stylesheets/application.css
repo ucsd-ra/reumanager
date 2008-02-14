@@ -118,16 +118,19 @@ Students
 	#student_pc_start, #student_pc_end		{  width:50px;  }
 	#academic_level							{  margin:15px 0;  }
 	#student_major							{  width:370px;  }
-	#student_gpa, #student_gpa_total		{  width:30px;  }
+	#student_gpa, #student_gpa_total		{  width:40px;  }
 	#student_awards							{  height:6.2em;  }
 	#student_research_experience			{  height:12.4em;  }
 	#student_comments						{  height:6.2em;  }
 	#stuent_personal_statement				{  height:18.6em;  }
-	#student_submit							{  margin:20px 0 10px 330px; clear:both;font-size:1.8em;  }
+	#student_submit							{  margin:20px 0 10px 315px; clear:both;font-size:1.8em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Recommendations
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
-
+	#recommendation_gpa, 
+	#recommendation_gpa_total				{  width:40px;  }
+	#recommendation_faculty_comment			{  height:12.4em;  }
+	#recommendation_submit					{  margin:20px 0 10px 315px;clear:both;font-size:1.8em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Admin
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
