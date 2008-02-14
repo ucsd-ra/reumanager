@@ -10,41 +10,152 @@
 			<li>You must be a U.S. citizen or permanent resident</li>
 		</ul>	
 	</div>
+	
 	<div id="application">
 		<%= error_messages_for :student %>
 		<% form_for(@student) do |f| %>
 			<h4>Personal Data</h4>
-			<fieldset>
-				<p class="name">
-					<label>Firstname</label><br/>
-					<%= f.text_field 'firstname'  %>
+			<fieldset id="personal_data">
+				<div id="residence">
+					<p class="float">
+						<label>Firstname</label><br/>
+						<%= f.text_field 'firstname' %>
+					</p>
+					<p class="float">
+						<label>Middlename</label><br/>
+						<%= f.text_field 'middlename' %>
+					</p>
+					<p class="float">
+						<label>Lastname</label><br/>
+						<%= f.text_field 'lastname' %>
+					</p>
+					<p class="clear">
+						<label>Street&nbsp;Address</label><br/>
+						<%= f.text_field 'street' %>
+					</p>
+					<p class="float">
+						<label>City</label><br/>
+						<%= f.text_field 'city' %>
+					</p>
+					<p class="float">
+						<label>State</label><br/>
+						<%= f.text_field 'state' %>
+					</p>
+					<p class="float">
+						<label>Zip</label><br/>
+						<%= f.text_field 'zip' %>
+					</p>
+					<p class="float">
+						<label>Phone</label><br/>
+						<%= f.text_field 'phone' %>
+					</p>
+					<p class="float">
+						<label>Email</label><br/>
+						<%= f.text_field 'email' %>
+					</p>
+				</div>
+				<p class="clear" id="perm_bool">
+					<label>Is the above address your permanent residence?</label>
+					&nbsp;
+					<label>Yes</label><%= radio_button_tag 'paddress', 'yes', true %>
+					&nbsp;&nbsp;
+					<label>No</label><%= radio_button_tag 'paddress', 'no', false %>
 				</p>
-				<p class="name">
-					<label>Middlename</label><br/>
-					<%= f.text_field 'middlename'  %>
+				<div id="presidence" style="display:none;">
+					<p class="clear">
+						<label>Please add your permanent residence:</label>
+					</p>
+					<p class="clear">
+						<label>Street&nbsp;Address</label><br/>
+						<%= f.text_field 'pstreet' %>
+					</p>
+					<p class="float">
+						<label>City</label><br/>
+						<%= f.text_field 'pcity' %>
+					</p>
+					<p class="float">
+						<label>State</label><br/>
+						<%= f.text_field 'pstate' %>
+					</p>
+					<p class="float">
+						<label>Zip</label><br/>
+						<%= f.text_field 'pzip' %>
+					</p>
+					<p class="float">
+						<label>Phone</label><br/>
+						<%= f.text_field 'pphone' %>
+					</p>
+				</div>
+				<p class="float">
+					<label>Citizenship:</label>
+					<%= f.select 'citizenship', %w{United\ States U.S.\ Permanent\ Resident} %>
+					<br/>
+					<span id="cor" style="display:none;">
+						<label>Country of Residence:</label>
+						<%= f.text_field 'cresidence' %>
+					</span>
 				</p>
-				<p class="name">
-					<label>Lastname</label><br/>
-					<%= f.text_field 'lastname'  %>
+				<p class="float">
+					<label>Gender*:</label>
+					<%= f.select 'gender', %w{Female Male} %>
 				</p>
-				<p>
-					<label>Street&nbsp;Address</label><br/>
-					<%= f.text_field 'street'  %>
+				<p class="float">
+					<label>Race*:</label>
+					<%= f.select 'race', %w{American\ Indian\ or\ Alaskan\ Native African\ American\ or\ Black Hispanic\ or\ Latino Asian\ or\ Pacific\ Islander} %>
 				</p>
-				<p class="name">
-					<label>City</label><br/>
-					<%= f.text_field 'city'  %>
+				<p class="float">
+					<label>Disability*:</label>
+					<%= f.select 'disability', %w{No Yes} %>
+					<span id="dis" style="display:none;">
+						<label>Specify:</label>
+						<%= f.text_field 'major' %>
+					</span>
 				</p>
-				<p class="name">
-					<label>State</label><br/>
-					<%= f.text_field 'state'  %>
-				</p>
-				<p class="name">
-					<label>Zip</label><br/>
-					<%= f.text_field 'zip'  %>
-				</p>
-				<%= f.submit "Create" %>
 			</fieldset>
-		<% end %>
+			<p id="disclaimer">* for statistical purposes only</p>
+	
+			<h4>Academic Information</h4>
+			<fieldset id="academic_information">
+				<p class="float">
+					<label>Current College or University</label><br/>
+					<%= f.text_field 'college' %>
+				</p>
+				<p class="float">
+					<label>Dates of Attendance (MM/YY)</label><br/>
+					<label>From:</label><%= f.text_field 'cstart' %>
+					<label>To:</label><%= f.text_field 'cend' %>
+				</p>
+				<p class="clear">
+					<label>Current Academic Level:</label>
+					<label>Freshman</label><%= f.radio_button 'clevel', 'freshman' %>
+					&nbsp;&nbsp;
+					<label>Sophomore</label><%= f.radio_button 'clevel', 'sophomore' %>
+					&nbsp;&nbsp;
+					<label>Junior</label><%= f.radio_button 'clevel', 'junior' %>
+					&nbsp;&nbsp;
+					<label>Senior</label><%= f.radio_button 'clevel', 'senior' %>
+				</p>
+				<p class="float">
+					<label>Major/Minor</label><br/>
+					<%= f.text_field 'major' %>
+				</p>
+				<p class="float">
+					<label>Overall GPA</label><br/><%= f.text_field 'gpa' %>
+				</p>
+				<p class="float">
+					<label>GPA Scale (e.g. 4.0)</label><br/><%= f.text_field 'gpa_total' %>
+				</p>
+				<p class="clear">
+					<label>Is the above address your permanent residence?</label>
+					<%= f.select 'prev_college', %w{No Yes} %>
+				</p>
+			</fieldset>
+			<h4>Faculty Recommendation</h4>
+			
+			<div id="observers">
+				<%= render :partial => "observers" %>
+			</div>
+			<%= f.submit "Create" %>		
+			<% end %>
 	</div>
 </div>

@@ -60,13 +60,13 @@ Layout
 	#sidebar li 							{  list-style-type:none; font-size:1.2em;  }
 	#sidebar ul.links li 					{  margin-bottom:5px;  }
 	#footer 								{  clear:both;margin:5px 0 50px 0;  }
-	#header									{  padding:0;text-align:center;  }
+	#header									{  width:800px;padding:0;text-align:center;  }
 	#header h1, #header h2 					{  margin:0  }
 	#header h2 								{  color:#888;font-weight:normal;font-size:16px;  } 
 	#header h5								{  padding:0 10px 10px 10px;clear:none;display:inline;  }
 	#header h6								{  margin:10px 0 0 0;padding:6px;font-weight:bold;color:#eee;background-color:#333;clear:both;  }
-	#header #ucsd							{  height:60px;width:79px;clear:none;float:left;  }
-	#header #nsf							{  height:60px;width:60px;clear:none;float:right;  }
+	#header #ucsd							{  height:60px;margin:0 0 0 15px;width:79px;clear:none;float:left;  }
+	#header #nsf							{  height:60px;margin:0 15px 0 0;width:60px;clear:none;float:right;  }
 	
 	.blood_red								{  color:#7e0815;  }
 	.bold									{  font-weight:bold;  }
@@ -86,17 +86,33 @@ Students
 	#application							{  text-align:left;  }
 	#application h4							{  margin:0 10px 10px;color:#07243c;font-weight:normal;font-variant:normal;border-bottom:2px dotted #666;  }
 	#application fieldset					{  margin:0 80px;overflow:hidden;  }
-	#application label						{  margin:0 10px 0 0;font-size:1.2em;font-weight:bold;  }
-	#application p input					{  border:1px solid #ccc;font-size:1.4em;padding:3px;  }
-	.name									{  float:left;margin:0 11px 0 1px;height:50px;width:200px; }
+	#application p							{   }
+	#application label						{  margin:0 3px 0 0;font-size:1.2em;font-weight:bold;  }
+	#application p input,
+	#application span input					{  border:1px solid #ccc;font-size:1.4em;padding:3px;clear:none;  }
+	.float									{  clear:none;float:left;margin:5px 11px 5px 1px; }
+	.clear 								    {  clear:left;  }
 	#student_firstname						{  width:180px;  }
 	#student_middlename						{  width:180px;  }
 	#student_lastname						{  width:180px;  }
-	#student_street							{  width:602px;  }
-	#student_city							{  width:180px;  }
-	#student_state							{  width:180px;  }
-	#student_zip							{  width:180px;  }
-	#student_submit							{  clear:both;font-size:1.4em;  }
+	#student_street, #student_pstreet		{  width:602px;  }
+	#student_city, #student_pcity			{  width:180px;  }
+	#student_state, #student_pstate			{  width:180px;  }
+	#student_zip, #student_pzip				{  width:180px;  }
+	#student_phone, #student_pphone			{  width:180px;  }
+	#student_email							{  width:370px;  }
+	#student_cresidence						{  width:185px;  }
+	#presidence								{  clear:right;height:190px;width:640px;  }
+	#student_disability						{  width:140px;  }
+	p input#paddress_yes,
+	p input#paddress_no						{  border:0;  }
+	#disclaimer								{  margin:10px 0;text-align:center;  }
+	#student_college						{  width:370px;  }
+	#student_cstart, #student_cend			{  width:50px;  }
+	#student_major							{  width:370px;  }
+	#student_gpa, #student_gpa_total		{  width:30px;  }
+
+	#student_submit							{  clear:both;font-size:1.8em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Recommendations
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/

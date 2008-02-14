@@ -82,4 +82,47 @@ class StudentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def observe_perm
+    @paddress = params[:paddress]
+    if @paddress == 'no'
+      render :update do |page|
+        page[:observers].replace_html :partial => "observers"
+        page[:presidence].show
+      end
+    else
+      render :update do |page|  
+        page[:observers].replace_html :partial => "observers"
+        page[:presidence].hide
+      end
+    end
+  end
+  
+  def observe_cit
+    if params[:student_citizenship] != "United States"
+      render :update do |page|
+        page[:observers].replace_html :partial => "observers"
+        page[:cor].show
+      end
+    else
+      render :update do |page|
+        page[:observers].replace_html :partial => "observers"
+        page[:cor].hide
+      end
+    end
+  end
+
+  def observe_dis
+    if params[:student_disability] == "Yes"
+      render :update do |page|
+        page[:observers].replace_html :partial => "observers"          
+        page[:dis].show
+      end
+    else
+      render :update do |page|
+        page[:observers].replace_html :partial => "observers"
+        page[:dis].hide
+      end
+    end
+  end
 end

@@ -15,7 +15,8 @@ class CreateStudents < ActiveRecord::Migration
       t.column :pzip,                 :integer, :limit => 9
       t.column :pphone,               :integer, :limit => 10
       t.column :email,                :string
-      t.column :citezenship,          :string
+      t.column :citizenship,          :string
+      t.column :cresidence,           :string
       t.column :gender,               :string
       t.column :race,                 :string
       t.column :disability,           :string

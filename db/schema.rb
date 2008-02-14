@@ -62,7 +62,8 @@ ActiveRecord::Schema.define(:version => 5) do
     t.integer  "pzip",                :limit => 9
     t.integer  "pphone",              :limit => 10
     t.string   "email"
-    t.string   "citezenship"
+    t.string   "citizenship"
+    t.string   "cresidence"
     t.string   "gender"
     t.string   "race"
     t.string   "disability"
