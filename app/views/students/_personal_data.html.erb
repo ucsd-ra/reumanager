@@ -70,7 +70,7 @@
 </div>
 <p class="float">
 	<label>Citizenship:</label>
-	<%= f.select 'citizenship', %w{United\ States U.S.\ Permanent\ Resident} %>
+	<%= f.select 'citizenship', %w{United\ States U.S.\ Permanent\ Resident Other} %>
 	<span class="hidden" id="cor" style="display:none;">
 		<label>Country of Residence:</label>
 		<%= f.text_field 'cresidence' %>
@@ -78,15 +78,15 @@
 </p>
 <p class="clear">
 	<label>Gender*:</label>
-	<%= f.select 'gender', %w{Female Male} %>
+	<%= f.select 'gender', %w{ Prefer\ not\ to\ respond Female Male} %>
 </p>
 <p class="clear">
 	<label>Race*:</label>
-	<%= f.select 'race', %w{American\ Indian\ or\ Alaskan\ Native African\ American\ or\ Black Hispanic\ or\ Latino Asian\ or\ Pacific\ Islander} %>
+	<%= f.select 'race', %w{ Prefer\ not\ to\ respond American\ Indian\ or\ Alaskan\ Native African\ American\ or\ Black Hispanic\ or\ Latino Asian\ or\ Pacific\ Islander White} %>
 </p>
 <p class="clear">
 	<label>Disability*:</label>
-	<%= select_tag 'disability', options_for_select(%w{No Yes}) %>
+	<%= select_tag 'disability', options_for_select(%w{ Prefer\ not\ to\ respond No Yes })  %>
 	<span class="hidden" id="dis" style="display:none;">
 		<label>Specify:</label>
 		<%= f.text_field 'disability' %>
