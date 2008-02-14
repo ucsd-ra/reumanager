@@ -25,12 +25,10 @@ ActiveRecord::Schema.define(:version => 5) do
   end
 
   create_table "recommenders", :force => true do |t|
-    t.string   "firstname"
-    t.string   "middlename"
-    t.string   "lastname"
+    t.string   "name"
     t.string   "title"
     t.string   "department"
-    t.string   "univeristy"
+    t.string   "college"
     t.integer  "phone",      :limit => 10
     t.string   "email"
     t.datetime "created_at"
@@ -68,20 +66,20 @@ ActiveRecord::Schema.define(:version => 5) do
     t.string   "race"
     t.string   "disability"
     t.string   "college"
-    t.datetime "cstart"
-    t.datetime "cend"
+    t.datetime "c_start"
+    t.datetime "c_end"
     t.string   "clevel"
     t.string   "major"
     t.integer  "gpa",                 :limit => 10, :precision => 10, :scale => 0
     t.integer  "gpa_total",           :limit => 10, :precision => 10, :scale => 0
-    t.string   "prev_college"
+    t.string   "p_college"
     t.datetime "pc_start"
     t.datetime "pc_end"
     t.integer  "recommender_id"
     t.text     "awards"
     t.text     "research_experience"
     t.text     "comments"
-    t.text     "learn"
+    t.string   "learn"
     t.text     "personal_statement"
     t.datetime "created_at"
     t.datetime "updated_at"

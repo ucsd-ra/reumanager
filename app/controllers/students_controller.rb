@@ -25,7 +25,8 @@ class StudentsController < ApplicationController
   # GET /students/new.xml
   def new
     @student = Student.new
-
+    @recommender = Recommender.new
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @student }
@@ -113,7 +114,7 @@ class StudentsController < ApplicationController
   end
 
   def observe_dis
-    if params[:student_disability] == "Yes"
+    if params[:disability] == "Yes"
       render :update do |page|
         page[:observers].replace_html :partial => "observers"          
         page[:dis].show
@@ -124,5 +125,23 @@ class StudentsController < ApplicationController
         page[:dis].hide
       end
     end
+  end
+  
+  def observe_pcollege
+    if params[:prev_college] == "Yes"
+      render :update do |page|
+        page[:observers].replace_html :partial => "observers"          
+        page[:pcollege].show
+      end
+    else
+      render :update do |page|
+        page[:observers].replace_html :partial => "observers"
+        page[:pcollege].hide
+      end
+    end
+  end
+  
+  def showmetheform
+    render :nothing => true
   end
 end

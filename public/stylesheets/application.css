@@ -60,7 +60,7 @@ Layout
 	#sidebar li 							{  list-style-type:none; font-size:1.2em;  }
 	#sidebar ul.links li 					{  margin-bottom:5px;  }
 	#footer 								{  clear:both;margin:5px 0 50px 0;  }
-	#header									{  width:800px;padding:0;text-align:center;  }
+	#header									{  width:800px;padding:17px 0 0 0;text-align:center;  }
 	#header h1, #header h2 					{  margin:0  }
 	#header h2 								{  color:#888;font-weight:normal;font-size:16px;  } 
 	#header h5								{  padding:0 10px 10px 10px;clear:none;display:inline;  }
@@ -84,14 +84,18 @@ Students
 	#about h5								{  margin:0;  }
 	#about ul								{  font-size:1.2em;  }
 	#application							{  text-align:left;  }
-	#application h4							{  margin:0 10px 10px;color:#07243c;font-weight:normal;font-variant:normal;border-bottom:2px dotted #666;  }
+	#application h4							{  margin:20px 10px 10px;color:#07243c;font-weight:normal;font-variant:normal;border-bottom:2px dotted #666;  }
 	#application fieldset					{  margin:0 80px;overflow:hidden;  }
 	#application p							{   }
-	#application label						{  margin:0 3px 0 0;font-size:1.2em;font-weight:bold;  }
+	#application label						{  margin:0 0 0 3px ;font-size:1.2em;font-weight:bold;  }
 	#application p input,
-	#application span input					{  border:1px solid #ccc;font-size:1.4em;padding:3px;clear:none;  }
-	.float									{  clear:none;float:left;margin:5px 11px 5px 1px; }
-	.clear 								    {  clear:left;  }
+	#application div input					{  border:1px solid #bbb;font-size:1.4em;padding:3px;clear:none;  }
+	#application textarea					{  border:1px solid #bbb;font-size:1.3em;padding:3px;clear:both;width:640px;  }
+	.float									{  clear:none;float:left;margin:10px 11px 5px 1px; }
+	.small									{  display:block;float:none;padding-top:10px;	 }
+	.tall									{  height:60px; 	}
+	.clear 								    {  clear:both;margin:5px 11px 5px 1px;  }
+	.hidden									{  clear:both;  }
 	#student_firstname						{  width:180px;  }
 	#student_middlename						{  width:180px;  }
 	#student_lastname						{  width:180px;  }
@@ -102,17 +106,24 @@ Students
 	#student_phone, #student_pphone			{  width:180px;  }
 	#student_email							{  width:370px;  }
 	#student_cresidence						{  width:185px;  }
-	#presidence								{  clear:right;height:190px;width:640px;  }
-	#student_disability						{  width:140px;  }
-	p input#paddress_yes,
-	p input#paddress_no						{  border:0;  }
+	#presidence								{  clear:right;height:200px;width:640px;  }
+	/* stupid IE needs special rules here, other wise you'll have a border around the radio buttons */
+	p input#paddress_yes, p input#paddress_no, p input#student_clevel_freshman, p input#student_clevel_sophomore, p input#student_clevel_junior,
+	p input#student_clevel_senior, p input#student_learn_nsf_reu_website, p input#student_learn_professor, p input#student_learn_poster, p input#student_learn_email,
+	p input#student_learn_other				{  border:0;  }
 	#disclaimer								{  margin:10px 0;text-align:center;  }
-	#student_college						{  width:370px;  }
-	#student_cstart, #student_cend			{  width:50px;  }
+	#student_college, 
+	input#student_prev_college  			{  width:370px;  }
+	#student_c_start, #student_c_end		{  width:50px;  }
+	#student_pc_start, #student_pc_end		{  width:50px;  }
+	#academic_level							{  margin:15px 0;  }
 	#student_major							{  width:370px;  }
 	#student_gpa, #student_gpa_total		{  width:30px;  }
-
-	#student_submit							{  clear:both;font-size:1.8em;  }
+	#student_awards							{  height:6.2em;  }
+	#student_research_experience			{  height:12.4em;  }
+	#student_comments						{  height:6.2em;  }
+	#stuent_personal_statement				{  height:18.6em;  }
+	#student_submit							{  margin:20px 0 10px 330px; clear:both;font-size:1.8em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Recommendations
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/

@@ -1,0 +1,47 @@
+<p class="float">
+	<label>Current College or University</label><br/>
+	<%= f.text_field 'college' %>
+</p>
+<p class="float">
+	<label>Dates of Attendance (MM/YY)</label><br/>
+	<label>From:</label><%= f.text_field 'c_start' %>
+	<label>To:</label><%= f.text_field 'c_end' %>
+</p>
+<p class="clear small" id="academic_level">
+	<label>Current Academic Level:</label>
+	<%= f.radio_button 'clevel', 'freshman' %><label>Freshman</label>
+	&nbsp;&nbsp;
+	<%= f.radio_button 'clevel', 'sophomore' %><label>Sophomore</label>
+	&nbsp;&nbsp;
+	<%= f.radio_button 'clevel', 'junior' %><label>Junior</label>
+	&nbsp;&nbsp;
+	<%= f.radio_button 'clevel', 'senior' %><label>Senior</label>
+</p>
+<p class="float">
+	<label>Major/Minor</label><br/>
+	<%= f.text_field 'major' %>
+</p>
+<p class="float">
+	<label>GPA</label><br/><%= f.text_field 'gpa' %>
+</p>
+<p class="float">
+	<label>GPA Scale (e.g. 4.0)</label><br/><%= f.text_field 'gpa_total' %>
+</p>
+<p class="clear small">
+	<label>Did you attend another college or university previously?</label>
+	<%= select_tag 'prev_college', options_for_select(%w{No Yes}) %>
+</p>
+<div id="pcollege" style="display:none;">
+	<p class="clear">
+		<label>Please enter information about the previous college or university</label>
+	</p>
+	<p class="float">
+		<label>Current College or University</label><br/>
+		<%= f.text_field 'p_college' %>
+	</p>
+	<p class="float">
+		<label>Dates of Attendance (MM/YY)</label><br/>
+		<label>From:</label><%= f.text_field 'pc_start' %>
+		<label>To:</label><%= f.text_field 'pc_end' %>
+	</p>
+</div>

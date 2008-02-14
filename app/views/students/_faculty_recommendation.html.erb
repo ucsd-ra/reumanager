@@ -1,0 +1,27 @@
+<% fields_for @recommender do |f| -%>
+	<p><label>One letter of recommendation is required from a faculty member</label></p>
+	<p class="float">
+		<label>Name</label><br/>
+		<%= f.text_field 'name' %>
+	</p>
+	<p class="float">
+		<label>Title</label><br/>
+		<%= f.text_field 'title' %>
+	</p>
+	<p class="float">
+		<label>Department</label><br/>
+		<%= f.text_field 'department' %>
+	</p>
+	<p class="clear">
+		<label>College or University</label><br/>
+		<%= f.text_field 'college' %>
+	</p>
+	<p class="float">
+		<label>Phone</label><br/>
+		<%= f.text_field 'phone' %>
+	</p>
+	<p class="float">
+		<label>Email</label><br/>
+		<%= f.text_field 'email' %>
+	</p>
+<% end -%>
