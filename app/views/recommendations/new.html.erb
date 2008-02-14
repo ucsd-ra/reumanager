@@ -3,19 +3,16 @@
 	<h2>Summer 2008 Online Recommendation</h2>
 	<div id="about">
 		<h5>Submission Deadline:&nbsp;<span class="blood_red">March 15th, 2008</span></h5>
-		<h5 id="eligibilty">Eligibility:</h5>
 	</div>
 	<div id="application">
-		<p><span class="blood_red">Student Name</span> has applied to participate in a 10-week summer research program in teh Department of Bioengineering at the University of California, San Diego. Thank you for taking the time to complete this recommendation. We value your input and will consider it carefully.</p>	
 		<h4>Verify Personal Data</h4>
 		<%= error_messages_for :recommendation %>
 		<% form_for @recommendation do |f| %>
 			<fieldset id="recommender">
 				<%= render :partial => "recommender" %>
 			</fieldset>
-
-	
 			<h4>Student Information</h4>
+			<p id="student_info"><span class="blood_red">Student Name</span> has applied to participate in a 10-week summer research program in the Department of Bioengineering at the University of California, San Diego. Thank you for taking the time to complete this recommendation. We value your input and will consider it carefully.</p>	
 			<fieldset>
 				<p class="small">
 					<label>How long have you known the applicant?</label>

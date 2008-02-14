@@ -94,17 +94,17 @@ Students
 	.float									{  clear:none;float:left;margin:10px 11px 5px 1px; }
 	.small									{  display:block;float:none;padding-top:10px;	 }
 	.tall									{  height:60px; 	}
-	.clear 								    {  clear:both;margin:5px 11px 5px 1px;  }
+	.clear 								    {  clear:both;margin:10px 11px 5px 1px;  }
 	.hidden									{  clear:both;  }
 	#student_firstname						{  width:180px;  }
 	#student_middlename						{  width:180px;  }
 	#student_lastname						{  width:180px;  }
-	#student_street, #student_pstreet		{  width:602px;  }
+	#student_street, #student_pstreet		{  width:580px;  }
 	#student_city, #student_pcity			{  width:180px;  }
 	#student_state, #student_pstate			{  width:180px;  }
 	#student_zip, #student_pzip				{  width:180px;  }
 	#student_phone, #student_pphone			{  width:180px;  }
-	#student_email							{  width:370px;  }
+	#student_email							{  width:380px;  }
 	#student_cresidence						{  width:185px;  }
 	#presidence								{  clear:right;height:200px;width:640px;  }
 	/* stupid IE needs special rules here, other wise you'll have a border around the radio buttons */
@@ -124,9 +124,15 @@ Students
 	#student_comments						{  height:6.2em;  }
 	#stuent_personal_statement				{  height:18.6em;  }
 	#student_submit							{  margin:20px 0 10px 315px; clear:both;font-size:1.8em;  }
+	#recommender_name, #recommender_title,
+	#recommender_department					{  width:180px;  }
+	#recommender_college					{  width:370px;  }
+	#recommender_phone						{  width:180px;  }
+	#recommender_email						{  width:380px;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Recommendations
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+	#student_info							{  margin:0 10px;  }
 	#recommendation_gpa, 
 	#recommendation_gpa_total				{  width:40px;  }
 	#recommendation_faculty_comment			{  height:12.4em;  }
