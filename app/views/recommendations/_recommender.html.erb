@@ -1,26 +1,26 @@
 <% fields_for @recommender do |r| -%>
-	<p class="float">
+	<div class="fieldbox float">
 		<label>Name</label><br/>
 		<%= r.text_field 'name' %>
-	</p>
-	<p class="float">
+	</div>
+	<div class="fieldbox float">
 		<label>Title</label><br/>
 		<%= r.text_field 'title' %>
-	</p>
-	<p class="float">
+	</div>
+	<div class="fieldbox float">
 		<label>Department</label><br/>
 		<%= r.text_field 'department' %>
-	</p>
-	<p class="clear">
+	</div>
+	<div class="fieldbox clear">
 		<label>College or University</label><br/>
 		<%= r.text_field 'college' %>
-	</p>
-	<p class="float">
+	</div>
+	<div class="fieldbox float">
 		<label>Phone</label><br/>
 		<%= r.text_field 'phone' %>
-	</p>
-	<p class="float">
+	</div>
+	<div class="fieldbox float">
 		<label>Email</label><br/>
 		<%= r.text_field 'email' %>
-	</p>
+	</div>
 <% end -%>

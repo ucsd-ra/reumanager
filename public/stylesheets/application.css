@@ -47,7 +47,7 @@ Colors:
 	blockquote								{  background:#171B20;padding:20px;margin:0 0 1.6em;font-style:italic;  }
     pre                              		{  font-size:0.9em; width:100%; overflow:auto;  }
     fieldset								{  border:none;  }
-	label									{  text-align:left;  }
+	label									{  text-align:left;text-indent:0;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Layout
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -85,6 +85,7 @@ Students
 	#about ul								{  font-size:1.2em;  }
 	#application							{  text-align:left;  }
 	#application h4							{  margin:20px 10px 10px;color:#07243c;font-weight:normal;font-variant:normal;border-bottom:2px dotted #666;clear:both;  }
+	#application h5							{  margin:20px 30px;text-align:center;  }
 	#application fieldset					{  margin:0 80px;  }
 	#application .fieldbox					{  float:left;margin:10px 11px 5px 1px;font-size:1.2em; }
 	#application label						{  margin:0 0 0 3px ;font-size:1.2em;font-weight:bold;  }
@@ -120,8 +121,8 @@ Students
 	#student_gpa, #student_gpa_range		{  width:40px;  }
 	#student_awards							{  height:6.2em;  }
 	#student_research_experience			{  height:12.4em;  }
-	#student_gpa_comments						{  height:6.2em;  }
-	#stuent_personal_statement				{  height:18.6em;  }
+	#student_gpa_comments					{  height:6.2em;  }
+	#student_personal_statement				{  height:18.6em;  }
 	#student_submit							{  margin:20px 0 10px 330px;clear:both;font-size:1.8em;  }
 	#recommender_name, #recommender_title,
 	#recommender_department					{  width:180px;  }
@@ -140,7 +141,6 @@ Recommendations
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Admin
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
-
 	#getting-started						{  padding:10px;  }
 	#getting-started 						{  border-top:1px solid #ccc;margin-top:25px;padding-top:15px;  }
 	#getting-started h1 					{  margin:0;font-size:20px;  }

@@ -1,17 +1,2 @@
-<p>firstname = <%= @firstname %></p>
-<p>middlename = <%= @middlename %><p/>
-<p>lastname = <%= @lastname %><p/>
-<p>phone = <%= @phone %><p/>
-<p>email = <%= @email %><p/>
-<p>citizenship = <%= @citizenship %><p/>
-<p>college = <%= @college %><p/>
-<p>college_start = <%= @college_start %><p/>
-<p>college_end = <%= @college_end %><p/>
-<p>college_level = <%= @college_level %><p/>
-<p>major = <%= @major %><p/>
-<p>gpa = <%= @gpa %><p/>
-<p>gpa_range = <%= @gpa_range %><p/>
-<p>awards = <%= @awards %><p/>
-<p>research_experience = <%= @research_experience %><p/>
-<p>gpa_comments = <%= @gpa_comments %><p/>
-<p>personal_statement = <%= @personal_statement %><p/>
+<p><%= @firstname + " " + @middlename + " " + @lastname + "( " + @email + " )" %> has requested a recommendation from you for the NSF Research Experience for Undergraduates.</p>
+<p>The student's application is attached to this email. Please review the application and submit your recommendation online at:<%= link_to "http://nsfreu.be-rails.ucsd.edu/recommend/#{@id}", "http://nsfreu.be-rails.ucsd.edu/recommend/#{@id}"%></p>
