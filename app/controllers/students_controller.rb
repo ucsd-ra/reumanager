@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  require 'pdf/writer'
   # GET /students
   # GET /students.xml
   def index
@@ -48,7 +49,8 @@ class StudentsController < ApplicationController
     
     respond_to do |format|
       if @recommender.save && @student.save
-        email = RecommendationMailer.create_rec_request(@student.firstname, @student.middlename, @student.lastname, @student.phone, @student.email, @student.citizenship, @student.college, @student.college_start, @student.college_end, @student.college_level, @student.major, @student.gpa, @student.gpa_range, @student.awards, @student.research_experience, @student.gpa_comments, @student.personal_statement)      
+        make_pdf(@student)
+        email = RecommendationMailer.create_rec_request(@student.firstname, @student.middlename, @student.lastname, @student.phone, @student.email, @student.citizenship, @student.college, @student.college_start, @student.college_end, @student.college_level, @student.major, @student.gpa, @student.gpa_range, @student.awards.gsub("\n", "<br/>").insert(0, "<br/>"), @student.research_experience.gsub("\n", "<br/>").insert(0, "<br/>"), @student.gpa_comments.gsub("\n", "<br/>").insert(0, "<br/>"), @student.personal_statement.gsub("\n", "<br/>").insert(0, "<br/>"))      
         email.set_content_type("text/html")
         RecommendationMailer.deliver(email)        
         flash[:notice] = 'Student was successfully created.'
@@ -153,5 +155,11 @@ class StudentsController < ApplicationController
   end
   
   def thanks
+  end
+  
+  def make_pdf(student_application)
+    pdf = PDF::Writer.new
+    pdf.text "#{student_application.firstname} #{student_application.lastname}\n\n", :font_size => 36, :justification => :center
+    pdf.save_as("#{RAILS_ROOT}/public/pdf/#{student_application.lastname}.pdf")
   end
 end

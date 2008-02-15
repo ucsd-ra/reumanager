@@ -84,11 +84,11 @@ Students
 	#about h5								{  margin:0;  }
 	#about ul								{  font-size:1.2em;  }
 	#application							{  text-align:left;  }
-	#application h4							{  margin:20px 10px 10px;color:#07243c;font-weight:normal;font-variant:normal;border-bottom:2px dotted #666;  }
+	#application h4							{  margin:20px 10px 10px;color:#07243c;font-weight:normal;font-variant:normal;border-bottom:2px dotted #666;clear:both;  }
 	#application fieldset					{  margin:0 80px;  }
 	#application .fieldbox					{  float:left;margin:10px 11px 5px 1px;font-size:1.2em; }
 	#application label						{  margin:0 0 0 3px ;font-size:1.2em;font-weight:bold;  }
-	#application p input,
+	#application div input,
 	#application .fieldbox input			{  border:1px solid #bbb;font-size:1.4em;padding:3px;clear:none;  }
 	#application textarea					{  border:1px solid #bbb;font-size:1.3em;padding:3px;clear:both;width:640px;  }
 	.float									{  clear:none;float:left;margin:10px 11px 5px 1px; }
@@ -108,9 +108,9 @@ Students
 	#student_cresidence						{  width:185px;  }
 	#presidence								{  clear:right;height:200px;width:640px;  }
 	/* stupid IE needs special rules here, other wise you'll have a border around the radio buttons */
-	p input#paddress_yes, p input#paddress_no, p input#student_college_level_freshman, p input#student_college_level_sophomore, p input#student_college_level_junior,
-	p input#student_college_level_senior, p input#student_learn_nsf_reu_website, p input#student_learn_professor, p input#student_learn_poster, p input#student_learn_email,
-	p input#student_learn_other				{  border:0;  }
+	div input#paddress_yes,div input#paddress_no, input#student_college_level_freshman, input#student_college_level_sophomore, input#student_college_level_junior, 
+	input#student_college_level_senior, input#student_learn_nsf_reu_website, input#student_learn_professor, input#student_learn_poster, input#student_learn_email,
+	input#student_learn_other				{  border:0;  }
 	#disclaimer								{  margin:10px 0;text-align:center;  }
 	#student_college, 
 	input#student_prev_college  			{  width:370px;  }
