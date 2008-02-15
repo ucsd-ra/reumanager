@@ -114,8 +114,7 @@ Students
 	#disclaimer								{  margin:10px 0;text-align:center;  }
 	#student_college, 
 	input#student_prev_college  			{  width:370px;  }
-	#student_c_start, #student_c_end		{  width:50px;  }
-	#student_pc_start, #student_pc_end		{  width:50px;  }
+	#student_college_start, #student_college_end, #student_pcollge_start, #student_pcollege_end		{  width:50px;  }
 	#academic_level							{  margin:15px 0;  }
 	#student_major							{  width:370px;  }
 	#student_gpa, #student_gpa_range		{  width:40px;  }
