@@ -11,6 +11,7 @@
 			</fieldset>
 			<h4>Student Information</h4>
 			<fieldset>
+				<input id="recommendation_student_id" name="recommendation[student_id]" size="30" type="hidden" value="<%= @student.id %>" />
 				<div class="fieldbox small">
 					<label>How long have you known the applicant?</label>
 					<%= f.select 'known_student', %w{ <1\ year 1-2\ years 2-3\ years 3-4\ years >4\ years } %>

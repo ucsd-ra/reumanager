@@ -50,7 +50,7 @@ class StudentsController < ApplicationController
     respond_to do |format|
       if @recommender.save && @student.save
         make_pdf(@student)
-        email = RecommendationMailer.create_rec_request(@student.id, @student.firstname, @student.middlename, @student.lastname, @student.phone, @student.email, @student.citizenship, @student.college, @student.college_start, @student.college_end, @student.college_level, @student.major, @student.gpa, @student.gpa_range, @student.awards.gsub("\n", "<br/>").insert(0, "<br/>"), @student.research_experience.gsub("\n", "<br/>").insert(0, "<br/>"), @student.gpa_comments.gsub("\n", "<br/>").insert(0, "<br/>"), @student.personal_statement.gsub("\n", "<br/>").insert(0, "<br/>"))      
+        email = RecommendationMailer.create_rec_request(@recommender.email, @student.id, @student.firstname, @student.middlename, @student.lastname, @student.phone, @student.email, @student.citizenship, @student.college, @student.college_start, @student.college_end, @student.college_level, @student.major, @student.gpa, @student.gpa_range, @student.awards.gsub("\n", "<br/>").insert(0, "<br/>"), @student.research_experience.gsub("\n", "<br/>").insert(0, "<br/>"), @student.gpa_comments.gsub("\n", "<br/>").insert(0, "<br/>"), @student.personal_statement.gsub("\n", "<br/>").insert(0, "<br/>"))      
         email.set_content_type('multipart', 'mixed')
         RecommendationMailer.deliver(email)        
         flash[:notice] = 'Student was successfully created.'

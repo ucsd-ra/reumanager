@@ -13,6 +13,7 @@ ActiveRecord::Schema.define(:version => 5) do
 
   create_table "recommendations", :force => true do |t|
     t.integer  "student_id"
+    t.integer  "recommender_id"
     t.string   "known_student"
     t.string   "know_capacity"
     t.string   "rating"

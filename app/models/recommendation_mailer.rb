@@ -1,8 +1,8 @@
 class RecommendationMailer < ActionMailer::Base
 
-  def rec_request(id, firstname, middlename, lastname, phone, email, citizenship, college, college_start, college_end, college_level, major, gpa, gpa_range, awards, research_experience, gpa_comments, personal_statement)
+  def rec_request(remail, id, firstname, middlename, lastname, phone, email, citizenship, college, college_start, college_end, college_level, major, gpa, gpa_range, awards, research_experience, gpa_comments, personal_statement)
     @subject    = 'NSF REU Request'
-    @recipients = 'jgrevich@gmail.com'
+    @recipients = remail
     @from       = 'jgrevich@ucsd.edu'
     @sent_on    = Time.now
     @headers    = {}
