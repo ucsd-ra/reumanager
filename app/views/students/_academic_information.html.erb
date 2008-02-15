@@ -4,18 +4,18 @@
 </p>
 <p class="float">
 	<label>Dates of Attendance (MM/YY)</label><br/>
-	<label>From:</label><%= f.text_field 'c_start' %>
-	<label>To:</label><%= f.text_field 'c_end' %>
+	<label>From:</label><%= f.text_field 'college_start' %>
+	<label>To:</label><%= f.text_field 'college_end' %>
 </p>
-<p class="clear small" id="academic_level">
+<p class="clear small" id="academicollege_level">
 	<label>Current Academic Level:</label>
-	<%= f.radio_button 'clevel', 'freshman' %><label>Freshman</label>
+	<%= f.radio_button 'college_level', 'freshman' %><label>Freshman</label>
 	&nbsp;&nbsp;
-	<%= f.radio_button 'clevel', 'sophomore' %><label>Sophomore</label>
+	<%= f.radio_button 'college_level', 'sophomore' %><label>Sophomore</label>
 	&nbsp;&nbsp;
-	<%= f.radio_button 'clevel', 'junior' %><label>Junior</label>
+	<%= f.radio_button 'college_level', 'junior' %><label>Junior</label>
 	&nbsp;&nbsp;
-	<%= f.radio_button 'clevel', 'senior' %><label>Senior</label>
+	<%= f.radio_button 'college_level', 'senior' %><label>Senior</label>
 </p>
 <p class="float">
 	<label>Major/Minor</label><br/>
@@ -25,7 +25,7 @@
 	<label>GPA</label><br/><%= f.text_field 'gpa' %>
 </p>
 <p class="float">
-	<label>GPA Scale (e.g. 4.0)</label><br/><%= f.text_field 'gpa_total' %>
+	<label>GPA Scale (e.g. 4.0)</label><br/><%= f.text_field 'gpa_range' %>
 </p>
 <p class="clear small">
 	<label>Did you attend another college or university previously?</label>
@@ -41,7 +41,7 @@
 	</p>
 	<p class="float">
 		<label>Dates of Attendance (MM/YY)</label><br/>
-		<label>From:</label><%= f.text_field 'pc_start' %>
-		<label>To:</label><%= f.text_field 'pc_end' %>
+		<label>From:</label><%= f.text_field 'pcollege_start' %>
+		<label>To:</label><%= f.text_field 'pcollege_end' %>
 	</p>
 </div>

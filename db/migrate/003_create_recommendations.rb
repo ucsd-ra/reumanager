@@ -6,7 +6,7 @@ class CreateRecommendations < ActiveRecord::Migration
       t.column :know_capacity,        :string
       t.column :rating,               :string
       t.column :gpa,                  :decimal
-      t.column :gpa_total,            :decimal
+      t.column :gpa_range,            :decimal
       t.column :undergrad_inst,       :boolean
       t.column :faculty_comment,      :text
       t.timestamps

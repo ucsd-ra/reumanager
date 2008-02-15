@@ -85,7 +85,7 @@ Students
 	#about ul								{  font-size:1.2em;  }
 	#application							{  text-align:left;  }
 	#application h4							{  margin:20px 10px 10px;color:#07243c;font-weight:normal;font-variant:normal;border-bottom:2px dotted #666;  }
-	#application fieldset					{  margin:0 80px;overflow:hidden;  }
+	#application fieldset					{  margin:0 80px;  }
 	#application p							{   }
 	#application label						{  margin:0 0 0 3px ;font-size:1.2em;font-weight:bold;  }
 	#application p input,
@@ -108,8 +108,8 @@ Students
 	#student_cresidence						{  width:185px;  }
 	#presidence								{  clear:right;height:200px;width:640px;  }
 	/* stupid IE needs special rules here, other wise you'll have a border around the radio buttons */
-	p input#paddress_yes, p input#paddress_no, p input#student_clevel_freshman, p input#student_clevel_sophomore, p input#student_clevel_junior,
-	p input#student_clevel_senior, p input#student_learn_nsf_reu_website, p input#student_learn_professor, p input#student_learn_poster, p input#student_learn_email,
+	p input#paddress_yes, p input#paddress_no, p input#student_college_level_freshman, p input#student_college_level_sophomore, p input#student_college_level_junior,
+	p input#student_college_level_senior, p input#student_learn_nsf_reu_website, p input#student_learn_professor, p input#student_learn_poster, p input#student_learn_email,
 	p input#student_learn_other				{  border:0;  }
 	#disclaimer								{  margin:10px 0;text-align:center;  }
 	#student_college, 
@@ -118,7 +118,7 @@ Students
 	#student_pc_start, #student_pc_end		{  width:50px;  }
 	#academic_level							{  margin:15px 0;  }
 	#student_major							{  width:370px;  }
-	#student_gpa, #student_gpa_total		{  width:40px;  }
+	#student_gpa, #student_gpa_range		{  width:40px;  }
 	#student_awards							{  height:6.2em;  }
 	#student_research_experience			{  height:12.4em;  }
 	#student_comments						{  height:6.2em;  }
@@ -134,7 +134,7 @@ Recommendations
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 	#student_info							{  margin:0 10px;  }
 	#recommendation_gpa, 
-	#recommendation_gpa_total				{  width:40px;  }
+	#recommendation_gpa_range				{  width:40px;  }
 	#recommendation_faculty_comment			{  height:12.4em;  }
 	#recommendation_submit					{  margin:20px 0 10px 315px;clear:both;font-size:1.8em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -152,8 +152,8 @@ Admin
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Errors
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
-	.fieldWithErrors 						{  padding:2px;background-color:red;display:table;text-align:left;  }
-	#errorExplanation 						{  width:500px;border:2px solid red;padding:7px;padding-bottom:12px;margin-bottom:20px;background-color:#f0f0f0;text-align:left;  }
+
+	#errorExplanation 						{  width:500px;border:2px solid red;padding:7px;padding-bottom:12px;margin:20px 0 0 140px;background-color:#f0f0f0;text-align:left;  }
 	#errorExplanation h2 					{  text-align:left;font-weight:bold;margin:-7px -7px 10px -7px;padding:5px 5px 5px 15px;font-size:1.8em;background-color:#c00;color:#fff;  }
 	#errorExplanation p 					{  color:#333;margin-bottom:0;padding:5px;  }
 	#errorExplanation ul li 				{  margin-left:20px;font-size:12px;list-style:square;  }

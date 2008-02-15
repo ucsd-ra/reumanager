@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 5) do
     t.string   "know_capacity"
     t.string   "rating"
     t.integer  "gpa",             :limit => 10, :precision => 10, :scale => 0
-    t.integer  "gpa_total",       :limit => 10, :precision => 10, :scale => 0
+    t.integer  "gpa_range",       :limit => 10, :precision => 10, :scale => 0
     t.boolean  "undergrad_inst"
     t.text     "faculty_comment"
     t.datetime "created_at"
@@ -66,15 +66,15 @@ ActiveRecord::Schema.define(:version => 5) do
     t.string   "race"
     t.string   "disability"
     t.string   "college"
-    t.string   "c_start"
-    t.string   "c_end"
-    t.string   "clevel"
+    t.datetime "college_start"
+    t.datetime "college_end"
+    t.string   "college_level"
     t.string   "major"
-    t.string   "gpa"
-    t.string   "gpa_total"
+    t.integer  "gpa",                 :limit => 10, :precision => 10, :scale => 0
+    t.integer  "gpa_range",           :limit => 10, :precision => 10, :scale => 0
     t.string   "p_college"
-    t.string   "pc_start"
-    t.string   "pc_end"
+    t.datetime "pcollege_start"
+    t.datetime "pcollege_end"
     t.integer  "recommender_id"
     t.text     "awards"
     t.text     "research_experience"
