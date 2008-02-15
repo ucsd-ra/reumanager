@@ -48,6 +48,9 @@ class StudentsController < ApplicationController
     
     respond_to do |format|
       if @recommender.save && @student.save
+        email = RecommendationMailer.create_rec_request(@student.firstname, @student.middlename, @student.lastname, @student.phone, @student.email, @student.citizenship, @student.college, @student.college_start, @student.college_end, @student.college_level, @student.major, @student.gpa, @student.gpa_range, @student.awards, @student.research_experience, @student.gpa_comments, @student.personal_statement)      
+        email.set_content_type("text/html")
+        RecommendationMailer.deliver(email)        
         flash[:notice] = 'Student was successfully created.'
         format.html { redirect_to "/thanks" }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
