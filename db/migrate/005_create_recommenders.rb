@@ -5,7 +5,7 @@ class CreateRecommenders < ActiveRecord::Migration
       t.column :title,                :string
       t.column :department,           :string
       t.column :college,              :string
-      t.column :phone,                :integer, :limit => 10
+      t.column :phone,                :string
       t.column :email,                :string
       t.timestamps
     end

@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(:version => 5) do
     t.string   "known_student"
     t.string   "know_capacity"
     t.string   "rating"
-    t.integer  "gpa",             :limit => 10, :precision => 10, :scale => 0
-    t.integer  "gpa_range",       :limit => 10, :precision => 10, :scale => 0
-    t.boolean  "undergrad_inst"
+    t.string   "gpa"
+    t.string   "gpa_range"
+    t.string   "undergrad_inst"
     t.text     "faculty_comment"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 5) do
     t.string   "title"
     t.string   "department"
     t.string   "college"
-    t.integer  "phone",      :limit => 10
+    t.string   "phone"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -52,13 +52,13 @@ ActiveRecord::Schema.define(:version => 5) do
     t.string   "street"
     t.string   "city"
     t.string   "state"
-    t.integer  "zip",                 :limit => 9
-    t.integer  "phone",               :limit => 10
+    t.string   "zip"
+    t.string   "phone"
     t.string   "pstreet"
     t.string   "pcity"
     t.string   "pstate"
-    t.integer  "pzip",                :limit => 9
-    t.integer  "pphone",              :limit => 10
+    t.string   "pzip"
+    t.string   "pphone"
     t.string   "email"
     t.string   "citizenship"
     t.string   "cresidence"

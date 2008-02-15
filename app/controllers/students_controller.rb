@@ -43,14 +43,16 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(params[:student])
     @recommender = Recommender.new(params[:recommender])
+    @recommender.save
+    @student.recommender_id = @recommender.id
     
     respond_to do |format|
-      if @student.save && @recommender.save
+      if @recommender.save && @student.save
         flash[:notice] = 'Student was successfully created.'
         format.html { redirect_to "/thanks" }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
-        format.html { render :controller => "students", :action => "new" }
+        format.html { render :action => "new" }
         format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
       end
     end

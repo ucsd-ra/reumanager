@@ -1,27 +1,27 @@
-<% fields_for @recommender do |f| -%>
+<% fields_for @recommender do |r| -%>
 	<div class="fieldbox"><label>Please supply the name and contact information of a faculty member who has agreed to write a letter of recommendation in support of your application. Instructions for submitting the letter will be sent directly to the faculty member</label></div>
 	<div class="fieldbox float">
 		<label>Name</label><br/>
-		<%= f.text_field 'name' %>
+		<%= r.text_field 'name' %>
 	</div>
 	<div class="fieldbox float">
 		<label>Title</label><br/>
-		<%= f.text_field 'title' %>
+		<%= r.text_field 'title' %>
 	</div>
 	<div class="fieldbox float">
 		<label>Department</label><br/>
-		<%= f.text_field 'department' %>
+		<%= r.text_field 'department' %>
 	</div>
-	<div class="fieldbox clear">
+	<div class="fieldbox">
 		<label>College or University</label><br/>
-		<%= f.text_field 'college' %>
+		<%= r.text_field 'college' %>
 	</div>
 	<div class="fieldbox float">
 		<label>Phone</label><br/>
-		<%= f.text_field 'phone' %>
+		<%= r.text_field 'phone' %>
 	</div>
 	<div class="fieldbox float">
 		<label>Email</label><br/>
-		<%= f.text_field 'email' %>
+		<%= r.text_field 'email' %>
 	</div>
 <% end -%>

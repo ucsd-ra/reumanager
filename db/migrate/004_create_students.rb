@@ -7,13 +7,13 @@ class CreateStudents < ActiveRecord::Migration
       t.column :street,               :string
       t.column :city,                 :string
       t.column :state,                :string
-      t.column :zip,                  :integer, :limit => 9
-      t.column :phone,                :integer, :limit => 10
+      t.column :zip,                  :string
+      t.column :phone,                :string
       t.column :pstreet,              :string
       t.column :pcity,                :string
       t.column :pstate,               :string
-      t.column :pzip,                 :integer, :limit => 9
-      t.column :pphone,               :integer, :limit => 10
+      t.column :pzip,                 :string
+      t.column :pphone,               :string
       t.column :email,                :string
       t.column :citizenship,          :string
       t.column :cresidence,           :string
