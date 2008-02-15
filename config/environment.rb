@@ -57,6 +57,6 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "be-mail.ucsd.edu", :port => 465, :domain => "bioengineering.ucsd.edu", :authentication => :login, :username => "jgrevich", :password => "5'utrBuddha" }
+  config.action_mailer.smtp_settings = { :address => "be-mail.ucsd.edu", :port => 465, :domain => "ucsd.edu", :authentication => :login, :user_name => "jgrevich", :password => "5'utrBuddha" }
   config.action_mailer.default_charset = "utf-8"
 end
