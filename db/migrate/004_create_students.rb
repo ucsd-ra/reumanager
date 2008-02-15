@@ -28,12 +28,12 @@ class CreateStudents < ActiveRecord::Migration
       t.column :gpa,                  :string
       t.column :gpa_range,            :string
       t.column :p_college,            :string
-      t.column :pcollege_start,             :string
-      t.column :pcollege_end,               :string
+      t.column :pcollege_start,         :string
+      t.column :pcollege_end,           :string
       t.column :recommender_id,       :integer
       t.column :awards,               :text
       t.column :research_experience,  :text
-      t.column :comments,             :text
+      t.column :gpa_comments,         :text
       t.column :learn,                :string
       t.column :personal_statement,   :text
       t.timestamps

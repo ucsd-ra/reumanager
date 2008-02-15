@@ -23,6 +23,7 @@
 				<%= render :partial => 'academic_information', :locals => { :f => f } %>
 			</fieldset>
 			<h4>Faculty Recommendation</h4>
+			<%= error_messages_for :recommender %>
 			<fieldset id="faculty_recommendation">
 				<%= render :partial => 'faculty_recommendation' %>		
 			</fieldset>

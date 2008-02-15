@@ -42,14 +42,15 @@ class StudentsController < ApplicationController
   # POST /students.xml
   def create
     @student = Student.new(params[:student])
-
+    @recommender = Recommender.new(params[:recommender])
+    
     respond_to do |format|
-      if @student.save
+      if @student.save && @recommender.save
         flash[:notice] = 'Student was successfully created.'
-        format.html { redirect_to(@student) }
+        format.html { redirect_to "/thanks" }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
-        format.html { render :action => "new" }
+        format.html { render :controller => "students", :action => "new" }
         format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
       end
     end
@@ -59,11 +60,12 @@ class StudentsController < ApplicationController
   # PUT /students/1.xml
   def update
     @student = Student.find(params[:id])
-
+    @recommender = Recommender.new(params[:recommender])
+    
     respond_to do |format|
-      if @student.update_attributes(params[:student])
+      if @recommender.update_attributes(params[:student]) && @recommender.update_attributes(params[:recommender])
         flash[:notice] = 'Student was successfully updated.'
-        format.html { redirect_to(@student) }
+        format.html { redirect_to "/thanks" }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -143,5 +145,8 @@ class StudentsController < ApplicationController
   
   def showmetheform
     render :nothing => true
+  end
+  
+  def thanks
   end
 end

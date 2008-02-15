@@ -37,7 +37,7 @@ Colors:
 	h5                                      {  font-size:1.6em;  }
 	h6										{  font-size:1.3em;  }
 	h6 a:hover								{  border-bottom:1px dotted #006500;  }
-	p										{  font-size:1.2em; margin:0 0 8px 0;	}
+	p										{  font-size:1.2em;margin:0 0 8px 0;text-indent:0;	}
 	ol										{  margin-left:35px;  }
 	ul										{  list-style-type:none;  }
 	ul li									{  margin:0 0 0 5px; padding:0 0 0 10px;  }
@@ -52,8 +52,8 @@ Colors:
 Layout
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 	#page 									{  background-color:#cdcdcd;width:800px;margin:0;margin-left:auto;margin-right:auto;  }
-	#single_column							{  background-color:white;border:1px solid #aaa;border-top:none;margin:0;padding:0;width:800px;  }
-	#content								{  float:left;background-color:white;border:1px solid #aaa;border-top:none;padding:10px 10px 25px 10px; width:580px;  }
+	#single_column							{  background-color:white;border:2px solid #aaa;border-top:none;margin:0;padding:0;width:800px;  }
+	#content								{  float:left;background-color:white;border:3px solid #aaa;border-top:none;padding:10px 10px 25px 10px; width:580px;  }
 	#sidebar 								{  float:right;width:190px;text-align:left;  }
 	#sidebar ul 							{  margin-left:0;padding-left:0;  }
 	#sidebar ul h3 							{  margin-top:25px;font-size:1.6em;padding-bottom:5px;border-bottom:1px solid #ccc;  }
@@ -86,25 +86,25 @@ Students
 	#application							{  text-align:left;  }
 	#application h4							{  margin:20px 10px 10px;color:#07243c;font-weight:normal;font-variant:normal;border-bottom:2px dotted #666;  }
 	#application fieldset					{  margin:0 80px;  }
-	#application p							{   }
+	#application .fieldbox					{  float:left;margin:10px 11px 5px 1px;font-size:1.2em; }
 	#application label						{  margin:0 0 0 3px ;font-size:1.2em;font-weight:bold;  }
 	#application p input,
-	#application div input					{  border:1px solid #bbb;font-size:1.4em;padding:3px;clear:none;  }
+	#application .fieldbox input			{  border:1px solid #bbb;font-size:1.4em;padding:3px;clear:none;  }
 	#application textarea					{  border:1px solid #bbb;font-size:1.3em;padding:3px;clear:both;width:640px;  }
 	.float									{  clear:none;float:left;margin:10px 11px 5px 1px; }
 	.small									{  display:block;float:none;padding-top:10px;	 }
 	.tall									{  height:60px; 	}
 	.clear 								    {  clear:both;margin:10px 11px 5px 1px;  }
 	.hidden									{  clear:both;  }
-	#student_firstname						{  width:180px;  }
-	#student_middlename						{  width:180px;  }
-	#student_lastname						{  width:180px;  }
-	#student_street, #student_pstreet		{  width:580px;  }
-	#student_city, #student_pcity			{  width:180px;  }
-	#student_state, #student_pstate			{  width:180px;  }
-	#student_zip, #student_pzip				{  width:180px;  }
-	#student_phone, #student_pphone			{  width:180px;  }
-	#student_email							{  width:380px;  }
+	#student_firstname						{  width:170px;  }
+	#student_middlename						{  width:170px;  }
+	#student_lastname						{  width:170px;  }
+	#student_street, #student_pstreet		{  width:560px;  }
+	#student_city, #student_pcity			{  width:170px;  }
+	#student_state, #student_pstate			{  width:170px;  }
+	#student_zip, #student_pzip				{  width:170px;  }
+	#student_phone, #student_pphone			{  width:170px;  }
+	#student_email							{  width:360px;  }
 	#student_cresidence						{  width:185px;  }
 	#presidence								{  clear:right;height:200px;width:640px;  }
 	/* stupid IE needs special rules here, other wise you'll have a border around the radio buttons */
@@ -114,13 +114,13 @@ Students
 	#disclaimer								{  margin:10px 0;text-align:center;  }
 	#student_college, 
 	input#student_prev_college  			{  width:370px;  }
-	#student_college_start, #student_college_end, #student_pcollge_start, #student_pcollege_end		{  width:50px;  }
+	#student_college_start, #student_college_end, #student_pcollege_start, #student_pcollege_end		{  width:50px;  }
 	#academic_level							{  margin:15px 0;  }
 	#student_major							{  width:370px;  }
 	#student_gpa, #student_gpa_range		{  width:40px;  }
 	#student_awards							{  height:6.2em;  }
 	#student_research_experience			{  height:12.4em;  }
-	#student_comments						{  height:6.2em;  }
+	#student_gpa_comments						{  height:6.2em;  }
 	#stuent_personal_statement				{  height:18.6em;  }
 	#student_submit							{  margin:20px 0 10px 330px;clear:both;font-size:1.8em;  }
 	#recommender_name, #recommender_title,
@@ -128,6 +128,7 @@ Students
 	#recommender_college					{  width:370px;  }
 	#recommender_phone						{  width:180px;  }
 	#recommender_email						{  width:380px;  }
+	.thanks									{  margin:20px 0 40px 0;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Recommendations
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -151,7 +152,7 @@ Admin
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Errors
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
-
+	div.fieldWithErrors						{  display:inline-block;background:red;border:1px solid red;clear:both;  }
 	#errorExplanation 						{  width:500px;border:2px solid red;padding:7px;padding-bottom:12px;margin:20px 0 0 140px;background-color:#f0f0f0;text-align:left;  }
 	#errorExplanation h2 					{  text-align:left;font-weight:bold;margin:-7px -7px 10px -7px;padding:5px 5px 5px 15px;font-size:1.8em;background-color:#c00;color:#fff;  }
 	#errorExplanation p 					{  color:#333;margin-bottom:0;padding:5px;  }
