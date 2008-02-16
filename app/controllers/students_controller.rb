@@ -161,8 +161,8 @@ class StudentsController < ApplicationController
     pdf = PDF::Writer.new
     pdf.text "Application for #{student_application.firstname} #{student_application.lastname}\n\n", :font_size => 22, :justification => :center
     pdf.move_pointer(24)
-    pdf.text "Student Awards\n#{student_application.awards}\n\nResearch Experience\n#{student_application.research_experience}\n\nGPA Comments\n#{student_application.gpa_comments}\n\nPersonal Statement\n#{student_application.personal_statement}", :font_size => 14, :justification => :left
-    pdf.save_as("#{RAILS_ROOT}/public/pdf/#{student_application.lastname}.pdf")
+    pdf.text "Student Awards\n#{student_application.awards}\n\nResearch Experience\n#{student_application.research_experience}\n\nGPA Comments\n#{student_application.gpa_comments}\n\nPersonal Statement\n#{student_application.personal_statement}", :font_size => 12, :justification => :left
+    pdf.save_as("#{RAILS_ROOT}/public/pdf/#{student_application.id}_#{student_application.lastname}.pdf")
   end
   
   def no_student
