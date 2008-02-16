@@ -1,5 +1,8 @@
 class StudentsController < ApplicationController
   require 'pdf/writer'
+  include AuthenticatedSystem
+  before_filter :login_from_cookie, :login_required, :except => [:new, :create, :welcome, :thanks]
+  
   # GET /students
   # GET /students.xml
   def index
@@ -63,6 +66,7 @@ class StudentsController < ApplicationController
     end
   end
 
+  
   # PUT /students/1
   # PUT /students/1.xml
   def update
@@ -162,7 +166,7 @@ class StudentsController < ApplicationController
     pdf.text "Application for #{student_application.firstname} #{student_application.lastname}\n\n", :font_size => 22, :justification => :center
     pdf.move_pointer(24)
     pdf.text "Student Awards\n#{student_application.awards}\n\nResearch Experience\n#{student_application.research_experience}\n\nGPA Comments\n#{student_application.gpa_comments}\n\nPersonal Statement\n#{student_application.personal_statement}", :font_size => 12, :justification => :left
-    pdf.save_as("#{RAILS_ROOT}/public/pdf/#{student_application.id}_#{student_application.lastname}.pdf")
+    pdf.save_as("#{RAILS_ROOT}/public/pdf/#{student_application.id.to_s}_#{student_application.lastname}.pdf")
   end
   
   def no_student
@@ -171,4 +175,6 @@ class StudentsController < ApplicationController
   def welcome
     render :aciton => "welcome", :layout => "proxy"
   end
+
+  
 end

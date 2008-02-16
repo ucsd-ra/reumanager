@@ -1,4 +1,7 @@
 class RecommendationsController < ApplicationController
+  include AuthenticatedSystem
+  before_filter :login_from_cookie, :login_required, :except => [:new, :create, :no_student]
+  
   # GET /recommendations
   # GET /recommendations.xml
   def index

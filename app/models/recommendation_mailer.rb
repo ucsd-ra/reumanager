@@ -29,6 +29,6 @@ class RecommendationMailer < ActionMailer::Base
                               :gpa_comments => gpa_comments,
                               :personal_statement =>personal_statement )
       )
-    attachment :content_type => "application/pdf", :filename => "#{lastname}.pdf", :body => File.read("#{RAILS_ROOT}/public/pdf/#{lastname}.pdf")
+    attachment :content_type => "application/pdf", :filename => "#{lastname}.pdf", :body => File.read("#{RAILS_ROOT}/public/pdf/#{id.to_s}_#{lastname}.pdf")
   end
 end
