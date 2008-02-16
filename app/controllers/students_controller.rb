@@ -154,10 +154,6 @@ class StudentsController < ApplicationController
     end
   end
   
-  def showmetheform
-    render :nothing => true
-  end
-  
   def thanks
   end
   

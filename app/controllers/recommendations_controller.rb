@@ -93,9 +93,4 @@ class RecommendationsController < ApplicationController
     end
   end
   
-  
-  def showmetheform
-    render :nothing => true
-  end
-  
 end
