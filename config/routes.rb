@@ -35,7 +35,7 @@ ActionController::Routing::Routes.draw do |map|
     map.login '/login', :controller => 'sessions', :action => 'new'
     map.logout '/logout', :controller => 'sessions', :action => 'destroy'
     map.thanks '/thanks', :controller => 'students', :action => 'thanks'
-    map.home '', :controller => 'students', :action => 'new'
+    map.home '', :controller => 'students', :action => 'welcome'
     map.resources :recommendations, :students, :users
     map.resource :session
     map.connect ':controller/:action/:id.:format'
