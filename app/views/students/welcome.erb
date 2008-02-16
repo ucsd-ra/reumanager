@@ -1,18 +1,35 @@
 <div id="single_column">
 	<%= render :partial => "application/header" %>
-	<h2>Summer 2008 Online Application</h2>
-	<div id="about">
-		<h5>Submission Deadline:&nbsp;<span class="blood_red">Rolling Admissions</span></h5>
-		<h5 id="eligibilty">Eligibility:</h5>
-		<ul class="bold blood_red">
-			<li>You must be a current, full-time undergraduate student</li>
-			<li>You must not plan to graduate before fall</li>
-			<li>You must be a U.S. citizen or permanent resident</li>
-		</ul>	
+	<div id="welcome">
+		<h2>June 19 - August 23, 2008</h2>
+		<p>The Department of Bioengineering at the University of California, San Diego is pleased to announce a National Science Foundation Research Experience for Undergraduates (<%= link_to "NSF-REU", "http://www.nsf.gov/crssprgm/reu/", :target => "_blank" %>) program in Regenerative Medicine, Multi-Scale Bioengineering, and Systems Biology.</p>
+		<p>This exciting summer program provides undergraduate students access to state-of-the-art facilities, the opportunity to work with accomplished and experienced faculty mentors, and to participate in highly collaborative, cutting-edge research projects. In addition to the training students receive in individual research laboratories, extensive professional development opportunities will be provided through weekly workshops, an undergraduate research conference, panel discussions, and GRE preparation courses.</p> 
+		<div class="lists">
+			<h4>Highlights</h4>
+			<ul>
+			 	<li>$4,000 stipend</li>
+			 	<li>free on-campus housing or housing allowance</li>
+			 	<li>free travel to and from San Diego</li>
+			 	<li>hands-on research experience</li>
+			 	<li>present at the UCSD Summer Research Conference</li>
+			 	<li>GRE preparation courses</li>
+			 	<li>professional workshops &amp; networking events</li>
+			</ul>
+		</div>
+		<div class="lists">
+			<h4>Eligibility Requirements</h4>
+			<ul>
+			 	<li>full-time undergraduate student</li>
+			 	<li>graduating fall 2008 or later</li>
+			 	<li>U.S. citizen or permanent resident</li>
+			</ul>
+		</div>
+		<p id="applyp"><%=link_to image_tag("apply.gif", :id => "apply"), "http://nsfreu.be-rails.ucsd.edu/apply", :id => "applylink" %></p>
+		<div id="images">
+			<img alt="Library" id="library" src="images/library.jpg" />
+			<img alt="Sun_god" id="sun_god" src="images/sun_god.jpg" />
+			<img alt="Shores" id="shores" src="images/shores.jpg" />
+		</div>
 	</div>
-	<div id="application">
-		<p>Welcome to the splash screen. More information and a link will go here.</p>
-		<p>You can apply online at <%=link_to "http://nsfreu.be-rails.ucsd.edu/apply", "http://nsfreu.be-rails.ucsd.edu/apply" %> </p>
-	
-	</div>
+
 </div>

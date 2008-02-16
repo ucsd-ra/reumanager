@@ -167,4 +167,8 @@ class StudentsController < ApplicationController
   
   def no_student
   end
+  
+  def welcome
+    render :aciton => "welcome", :layout => "proxy"
+  end
 end

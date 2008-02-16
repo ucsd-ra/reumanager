@@ -29,6 +29,7 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
   # Install the default routes as the lowest priority.
   
+    map.apply '/apply', :controller => 'students', :action => 'new'
     map.recommend '/recommend', :controller => 'recommendations', :action => 'no_student'
     map.recommend '/recommend/:id', :controller => 'recommendations', :action => 'new'
     map.signup '/signup', :controller => 'users', :action => 'new'
