@@ -99,7 +99,7 @@ Students
 	.float									{  clear:none;float:left;margin:10px 11px 5px 1px; }
 	.small									{  display:block;float:none;padding-top:10px;	 }
 	.tall									{  height:60px; 	}
-	.clear 								    {  clear:both;margin:10px 11px 5px 1px;  }
+	.clear 								    {  clear:both;margin:10px 11px 5px 1px;font-size:1.2em;  }
 	.hidden									{  clear:both;  }
 	#student_firstname						{  width:170px;  }
 	#student_middlename						{  width:170px;  }
@@ -111,7 +111,7 @@ Students
 	#student_phone, #student_pphone			{  width:170px;  }
 	#student_email							{  width:360px;  }
 	#student_cresidence						{  width:185px;  }
-	#presidence								{  clear:right;height:200px;width:640px;  }
+	#presidence								{  clear:both;height:200px;width:640px;  }
 	/* stupid IE needs special rules here, other wise you'll have a border around the radio buttons */
 	div input#paddress_yes,div input#paddress_no, input#student_college_level_freshman, input#student_college_level_sophomore, input#student_college_level_junior, 
 	input#student_college_level_senior, input#student_learn_nsf_reu_website, input#student_learn_professor, input#student_learn_poster, input#student_learn_email,

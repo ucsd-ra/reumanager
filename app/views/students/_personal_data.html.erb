@@ -11,7 +11,7 @@
 		<label>Lastname</label><br/>
 		<%= f.text_field 'lastname' %>
 	</div>
-	<div class="fieldbox clear">
+	<div class="clear">
 		<label>Street&nbsp;Address</label><br/>
 		<%= f.text_field 'street' %>
 	</div>
@@ -44,7 +44,7 @@
 	<%= radio_button_tag 'paddress', 'no', false %><label>No</label>
 </div>
 <div id="presidence" style="display:none;">
-	<div class="fieldbox clear">
+	<div class="clear">
 		<label>Please add your permanent residence:</label>
 	</div>
 	<div class="fieldbox clear">
@@ -68,7 +68,7 @@
 		<%= f.text_field 'pphone' %>
 	</div>
 </div>
-<div class="fieldbox float">
+<div class="fieldbox clear">
 	<label>Citizenship:</label>
 	<%= f.select 'citizenship', %w{United\ States U.S.\ Permanent\ Resident Other} %>
 	<span class="hidden" id="cor" style="display:none;">
