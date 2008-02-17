@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 5) do
     t.text     "gpa_comments"
     t.string   "learn"
     t.text     "personal_statement"
+    t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

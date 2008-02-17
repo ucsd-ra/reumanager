@@ -1,2 +1,2 @@
 <p><%= @firstname + " " + @middlename + " " + @lastname + "( " + @email + " )" %> has requested a recommendation from you for the NSF Research Experience for Undergraduates.</p>
-<p>The student's application is attached to this email. Please review the application and submit your recommendation online at: <%= link_to "http://nsfreu.be-rails.ucsd.edu/recommend/#{@id}", "http://nsfreu.be-rails.ucsd.edu/recommend/#{@id}"%></p>
+<p>The student's application is attached to this email. Please review the application and submit your recommendation online at: <%= link_to "http://nsfreu.be-rails.ucsd.edu/recommend/#{@token}", "http://nsfreu.be-rails.ucsd.edu/recommend/#{@token}"%></p>
