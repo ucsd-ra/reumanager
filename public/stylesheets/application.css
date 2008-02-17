@@ -101,6 +101,7 @@ Students
 	.tall									{  height:60px; 	}
 	.clear 								    {  clear:both;margin:10px 11px 5px 1px;font-size:1.2em;  }
 	.hidden									{  clear:both;  }
+	#flash									{  text-align:center;color:#7e0815;  }
 	#student_firstname						{  width:170px;  }
 	#student_middlename						{  width:170px;  }
 	#student_lastname						{  width:170px;  }

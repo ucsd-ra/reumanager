@@ -56,6 +56,7 @@ class StudentsController < ApplicationController
         format.html { redirect_to "/thanks" }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
+        flash.now[:notice] = 'There were errors'
         format.html { render :action => "new" }
         format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
       end
