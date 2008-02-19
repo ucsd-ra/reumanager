@@ -1,8 +1,8 @@
 class StudentsController < ApplicationController
   require 'pdf/writer'
   include AuthenticatedSystem
-  before_filter :login_from_cookie, :login_required, :except => [:new, :create, :welcome, :thanks]
-  
+  before_filter :login_from_cookie, :login_required, :except => [:new, :create, :welcome, :thanks, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege ]
+  ssl_allowed :new, :create, :update, :welcome, :thanks, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege
   # GET /students
   # GET /students.xml
   def index
