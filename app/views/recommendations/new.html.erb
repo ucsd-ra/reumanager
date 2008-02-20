@@ -2,7 +2,9 @@
 	<%= render :partial => "application/header" %>
 	<h2>Summer 2008 Online Recommendation</h2>
 	<div id="application">
-		<p id="student_info"><span class="blood_red"><%= @student.firstname + " " + @student.lastname %></span> has applied to participate in a 10-week summer research program in the Department of Bioengineering at the University of California, San Diego. Thank you for taking the time to complete this recommendation. We value your input and will consider it carefully.</p>	
+		<p id="student_info">
+			<span class="blood_red"><%= link_to @student.firstname + " " + @student.lastname, "/pdf/#{ @student.id.to_s + "_" + @student.lastname }.pdf", :target => "_blank" %></span> has applied to participate in a 10-week summer research program in the Department of Bioengineering at the University of California, San Diego. Thank you for taking the time to complete this recommendation. We value your input and will consider it carefully.
+		</p>	
 		<h4>Verify Personal Data</h4>
 		<%= error_messages_for :recommendation %>
 		<% form_for @recommendation do |f| %>
@@ -21,7 +23,7 @@
 					<%= f.select 'know_capacity', %w{ Undergrad\ in\ one\ course Undergrad\ in\ multiple\ courses Research\ Assistant Teaching\ Assistant Other} %>
 				</div>
 				<div class="fieldbox small">
-					<label>Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers:</label><br/>
+					<label>Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers:</label><br />
 					<span class="small"><%= f.radio_button 'rating', 'Top 1%' %><label>Top 1%</label>&nbsp;
 					<%= f.radio_button 'rating', 'Top 5%' %><label>Top 5%</label>&nbsp;
 					<%= f.radio_button 'rating', 'Top 10%' %><label>Top 10%</label>&nbsp;

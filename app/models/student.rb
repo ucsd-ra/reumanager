@@ -47,10 +47,10 @@ class Student < ActiveRecord::Base
       self.major, 
       self.gpa, 
       self.gpa_range, 
-      self.awards.gsub("\n", "<br/>").insert(0, "<br/>"), 
-      self.research_experience.gsub("\n", "<br/>").insert(0, "<br/>"), 
-      self.gpa_comments.gsub("\n", "<br/>").insert(0, "<br/>"), 
-      self.personal_statement.gsub("\n", "<br/>").insert(0, "<br/>"))      
+      self.awards.gsub("\n", "<br />").insert(0, "<br />"), 
+      self.research_experience.gsub("\n", "<br />").insert(0, "<br />"), 
+      self.gpa_comments.gsub("\n", "<br />").insert(0, "<br />"), 
+      self.personal_statement.gsub("\n", "<br />").insert(0, "<br />"))      
     email.set_content_type('multipart', 'mixed')
     RecommendationMailer.deliver(email)
   end
