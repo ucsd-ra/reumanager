@@ -9,7 +9,6 @@ RAILS_GEM_VERSION = '2.0.2' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
-require 'tlsmail'
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
@@ -57,6 +56,7 @@ Rails::Initializer.run do |config|
 
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
+  require 'tlsmail'
   config.action_mailer.delivery_method = :smtp
   Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
   config.action_mailer.smtp_settings = { :address => "smtp.gmail.com", :port => 587, :authentication => :plain, :domain => 'bioeng.ucsd.edu', :user_name => "nsfreu", :password => "4saihung" }
