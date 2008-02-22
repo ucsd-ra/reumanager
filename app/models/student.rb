@@ -1,4 +1,5 @@
 require 'digest/sha1'
+require 'pdf/writer'
 class Student < ActiveRecord::Base
   belongs_to                :recommender
   validates_presence_of     :firstname, :lastname, :street, :city, :state, :zip, :phone, :email, :citizenship, :college, :college_start, :college_end, :college_level, :major, :gpa, :gpa_range, :personal_statement
@@ -9,23 +10,32 @@ class Student < ActiveRecord::Base
   
   def make_pdf
     pdf = PDF::Writer.new
-    pdf.text "Application for #{self.firstname} #{self.lastname}\n\n", :font_size => 22, :justification => :center
-    y0 = pdf.y + 18
+    pdf.text "NSF REU Application for #{self.firstname} #{self.lastname}\n\n", :font_size => 22, :justification => :center
     pdf.move_pointer(24)
+
+    pdf.text "Personal Data\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+    pdf.text "#{self.street}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    pdf.text "#{self.city}, #{self.state} #{self.zip}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    if self.citizenship == "United States"
+      pdf.text "Citizenship: #{self.citizenship}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    else
+      pdf.text "Citizenship: #{self.citizenship}, Country of Residence: #{self.cresidence}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    end
+
+    pdf.text "Academic Info\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+    pdf.text "#{self.college_level.capitalize} majoring in #{self.major} at #{self.college}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    pdf.text "Attended from: #{self.college_start} to #{self.college_end}, GPA: #{self.gpa} out of #{self.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    if self.p_college != ""
+      pdf.text "Previous college: #{p_college}, Attended from: #{self.pcollege_start} to #{self.pcollege_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    else
+      pdf.text "\n"
+    end
+    
     @methods = %w{awards research_experience gpa_comments personal_statement}
     @methods.each do |m|  
-      pdf.text "#{m.gsub("_"," ").capitalize }\n", 
-        :font_size => 13, 
-        :justification => :left, 
-        :left => 50, 
-        :right => 50
-      pdf.text "#{send(m)}\n\n", 
-        :font_size => 11, 
-        :justification => :left, 
-        :left => 50, 
-        :right => 50
+      pdf.text "#{m.gsub("_"," ").capitalize }\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+      pdf.text "#{send(m)}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     end
-      pdf.rounded_rectangle(pdf.left_margin + 25, y0, pdf.margin_width - 50, y0 - pdf.y + 18, 10).stroke
       pdf.save_as("#{RAILS_ROOT}/public/pdf/#{self.id.to_s}_#{self.lastname}.pdf")
   end
   
