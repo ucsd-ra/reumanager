@@ -1,7 +1,7 @@
 class RecommendationMailer < ActionMailer::Base
 
   def rec_request(remail, id, token, firstname, middlename, lastname, phone, email, citizenship, college, college_start, college_end, college_level, major, gpa, gpa_range, awards, research_experience, gpa_comments, personal_statement)
-    @subject    = 'UCSD Bioengineering - NSF REU Request'
+    @subject    = 'UCSD Bioengineering - NSF REU Recommendation Request'
     @recipients = remail
     @bcc        = ['Melissa Kurtis Micou <mmicou@bioeng.ucsd.edu>', 'UCSD Bioengineering - NSF REU <nsfreu@bioeng.ucsd.edu>']
     @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
