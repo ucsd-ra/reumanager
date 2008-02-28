@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   include SslRequirement
-  
+  include SimpleCaptcha::ControllerHelpers
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery :secret => '25d978808669907c9d5aa5c38672540d'

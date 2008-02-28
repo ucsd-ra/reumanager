@@ -56,6 +56,7 @@ Rails::Initializer.run do |config|
 
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
+  require 'rubygems'
   require 'tlsmail'
   config.action_mailer.delivery_method = :smtp
   Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)

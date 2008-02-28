@@ -50,7 +50,7 @@ class StudentsController < ApplicationController
     @student.recommender_id = @recommender.id
 
     respond_to do |format|
-      if @recommender.save && @student.save
+      if @recommender.save && @student.save_with_captcha  
         flash[:notice] = 'Student was successfully created.'
         format.html { redirect_to "/thanks" }
         format.xml  { render :xml => @student, :status => :created, :location => @student }

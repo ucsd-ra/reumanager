@@ -35,6 +35,7 @@
 			<div id="observers">
 				<%= render :partial => "observers" %>
 			</div>
+			<%= show_simple_captcha(:image_style => "random", :object=>"student") %>  
 			<%= f.submit "Submit Application" %>		
 		<% end %>
 	</div>
