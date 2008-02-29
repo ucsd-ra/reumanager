@@ -1,9 +1,10 @@
 <div id="single_column">
 	<%= render :partial => "application/header" %>
-	<h5><%= flash[:notice] %></h5>
+	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
+	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
 	<fieldset id="login">
 		<% if logged_in? %>
-			<p>Dude. You are already logged in. What's wrong with you?</p>
+			<p>Umm... You are already logged in.</p>
 			<p>Perhaps it's time you <%= link_to "logout", :controller => "sessions", :action => "destroy" %>
 		<% else -%>
 			<%= error_messages_for :session %>
