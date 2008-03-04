@@ -10,6 +10,7 @@ RAILS_GEM_VERSION = '2.0.2' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -45,7 +46,7 @@ Rails::Initializer.run do |config|
   # which shouldn't be used to store highly confidential information
   # (create the session table with 'rake db:sessions:create')
   config.action_controller.session_store = :active_record_store
-
+  config.action_controller.abstract_request.relative_url_root = '/test'
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,
   # like if you have constraints or database-specific column types
@@ -63,6 +64,11 @@ Rails::Initializer.run do |config|
   config.action_mailer.smtp_settings = { :address => "smtp.gmail.com", :port => 587, :authentication => :plain, :domain => 'bioeng.ucsd.edu', :user_name => "nsfreu", :password => "4saihung" }
   config.action_mailer.default_charset = "utf-8"
   config.action_mailer.raise_delivery_errors = true
-  
 
 end
+# Add new mime types for use in respond_to blocks:
+# Mime::Type.register "text/richtext", :rtf
+# Mime::Type.register "application/x-mobile", :mobile
+
+# Include your application configuration below
+ActionController::AbstractRequest.relative_url_root = "/nsfreu"
