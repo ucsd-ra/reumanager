@@ -1,7 +1,7 @@
 <div id="single_column">
 	<div id="header">
-		<a href="http://ucsd.edu" target="_blank"><img alt='Ucsd_logo' id='ucsd' src='images/ucsd_logo.gif' /></a>
-		<a href="http://nsf.gov" target="_blank"><img alt='Ucsd_logo' id='nsf' src='images/nsf_logo.gif' /></a>
+		<%= link_to image_tag('ucsd_logo.gif', :id => "ucsd"), "http://ucsd.edu", :target => "_blank" %>
+		<%= link_to image_tag('nsf_logo.gif', :id => "nsf"), "http://nsf.gov", :target => "_blank" %>
 		<h5>Research Experience for Undergraduates (REU)<br /> in Regenerative Medicine, Multi-Scale Bioengineering,<br /> and Systems Biology</h5>
 		<h6>University of California, San Diego | Department of Bioengineering</h6>
 	</div>
@@ -29,11 +29,11 @@
 			 	<li>U.S. citizen or permanent resident</li>
 			</ul>
 		</div>
-		<p id="applyp"><%=link_to "<img alt='Apply Now' id='apply' src='images/apply.gif' />", "http://nsfreu.be-rails.ucsd.edu/apply", :id => "applylink" %></p>
+		<p id="applyp"><%=link_to image_tag('apply.gif'), { :controller => "students", :action => "new" }, :id => "applylink" %></p>
 		<div id="images">
-			<img alt="Library" id="library" src="images/library.jpg" />
-			<img alt="Sun_god" id="sun_god" src="images/sun_god.jpg" />
-			<img alt="Shores" id="shores" src="images/shores.jpg" />
+			<%= image_tag("library.jpg")%>
+			<%= image_tag("sun_god.jpg")%>
+			<%= image_tag("shores.jpg")%>
 		</div>
 	</div>
 </div>
