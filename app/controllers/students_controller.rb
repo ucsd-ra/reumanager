@@ -72,7 +72,7 @@ class StudentsController < ApplicationController
     respond_to do |format|
       if @recommender.update_attributes(params[:student]) && @recommender.update_attributes(params[:recommender])
         flash[:notice] = 'Student was successfully updated.'
-        format.html { redirect_to "/thanks" }
+        format.html { redirect_to "http://be-webapps.ucsd.edu/test/thanks" }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
