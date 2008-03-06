@@ -58,7 +58,7 @@ Rails::Initializer.run do |config|
   # config.active_record.default_timezone = :utc
   require 'rubygems'
   require 'tlsmail'
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :test
   Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
   config.action_mailer.smtp_settings = { :address => "smtp.gmail.com", :port => 587, :authentication => :plain, :domain => 'bioeng.ucsd.edu', :user_name => "nsfreu", :password => "4saihung" }
   config.action_mailer.default_charset = "utf-8"
@@ -70,4 +70,7 @@ end
 # Mime::Type.register "application/x-mobile", :mobile
 
 # Include your application configuration below
+<<<<<<< .mine
 ActionController::AbstractRequest.relative_url_root = "/test"
+=======
+ActionController::AbstractRequest.relative_url_root = "/test">>>>>>> .r69
