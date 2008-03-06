@@ -52,7 +52,7 @@ class StudentsController < ApplicationController
     respond_to do |format|
       if @recommender.save && @student.save_with_captcha  
         flash[:notice] = 'Student was successfully created.'
-        format.html { redirect_to "/thanks" }
+        format.html { redirect_to :controller => 'students', :action => 'thanks' }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
         flash.now[:notice] = 'There were errors'
