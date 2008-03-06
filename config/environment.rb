@@ -70,7 +70,4 @@ end
 # Mime::Type.register "application/x-mobile", :mobile
 
 # Include your application configuration below
-<<<<<<< .mine
 ActionController::AbstractRequest.relative_url_root = "/test"
-=======
-ActionController::AbstractRequest.relative_url_root = "/test">>>>>>> .r69
