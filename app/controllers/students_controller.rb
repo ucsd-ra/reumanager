@@ -52,7 +52,7 @@ class StudentsController < ApplicationController
     respond_to do |format|
       if @recommender.save && @student.save_with_captcha  
         flash[:notice] = 'Student was successfully created.'
-        format.html { redirect_to "http://be-webapps.ucsd.edu/test/thanks" }
+        format.html { redirect_to "http://be-webapps.ucsd.edu/nsfreu/thanks" }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
         flash.now[:notice] = 'There were errors'
@@ -72,7 +72,7 @@ class StudentsController < ApplicationController
     respond_to do |format|
       if @recommender.update_attributes(params[:student]) && @recommender.update_attributes(params[:recommender])
         flash[:notice] = 'Student was successfully updated.'
-        format.html { redirect_to "http://be-webapps.ucsd.edu/test/thanks" }
+        format.html { redirect_to "http://be-webapps.ucsd.edu/nsfreu/thanks" }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
