@@ -28,6 +28,6 @@ class SessionsController < ApplicationController
     cookies.delete :auth_token
     reset_session
     flash[:notice] = "You have been logged out"
-    redirect_to('http://be-webapps.ucsd.edu/nsfreu/admin')
+    redirect_to('http://be-webapps.ucsd.edu/nsfreu/')
   end
 end

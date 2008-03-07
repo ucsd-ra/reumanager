@@ -1,5 +1,7 @@
 <div id="single_column">
 	<%= render :partial => "application/header" %>
+	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
+	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
 	<div id="students">
 		<%= render :partial => "admin/admin_header" %>
 		<h1>Listing Students Applicants</h1>
