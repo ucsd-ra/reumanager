@@ -5,7 +5,7 @@
 	<fieldset id="login">
 		<% if logged_in? %>
 			<p>Umm... You are already logged in.</p>
-			<p>Perhaps it's time you <%= link_to "logout", :controller => "sessions", :action => "destroy" %>
+			<p>Perhaps it's time you <%= link_to "logout", :controller => "sessions", :action => "destroy" %></p>
 		<% else -%>
 			<%= error_messages_for :session %>
 			<h2>Enter Login Information</h2>
