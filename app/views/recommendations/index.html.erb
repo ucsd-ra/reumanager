@@ -1,25 +1,29 @@
-<div id="sidebar">
-	<%= render :partial => "application/sidebar" %>
-</div>
-
-<div id="content">
+<div id="single_column">
 	<%= render :partial => "application/header" %>
-	<div id="about">
-		<h1>Listing recommendations</h1>
-
+	<div id="students">
+		<%= render :partial => "admin/admin_header" %>
+		<h1>Listing students</h1>
 		<% unless @recommendations.empty? -%>
-			<table>
-			<% for recommendation in @recommendations -%>
-			  <tr>
-			    <td><%= link_to 'Show', recommendation %></td>
-			    <td><%= link_to 'Edit', edit_recommendation_path(recommendation) %></td>
-			    <td><%= link_to 'Destroy', recommendation, :confirm => 'Are you sure?', :method => :delete %></td>
-			  </tr>
-			<% end -%>
+			<table cellspacing=0>
+				<thead>
+					<th class="name">Recommender Name</th>
+					<th class="college">Title / Position</th>
+					<th class="major">College</th>
+					<th class="gpa">Department</th>
+					<th class="date">email</th>
+					<th class="admin">Student Requestor</th>
+				</thead>
+			  	<% for recommendation in @recommendations -%>
+			  		<tr style="background-color:#<%= cycle("ddd","bbb") %>;">
+						<td class="name"><%= link_to "#{student.firstname} #{student.lastname}", student %></td>
+						<td class="college"><%= link_to "#{student.college}", student %></td>
+						<td class="major"><%= link_to "#{student.major}", student %></td>
+			   			<td class="gpa"><%= link_to "#{student.gpa[0..2]} / #{student.gpa_range[0..2]}", student %></td>
+			   			<td class="date"><%= link_to "#{student.created_at.strftime("%b %d [%H:%M %Z]")}", student %></td>
+						<td class="admin"><%= link_to 'Show', student %><br /><%= link_to 'Destroy', student, :confirm => 'Are you sure? This information will be permanently removed from our database.', :method => :delete %></td>
+					</tr>
+				<% end -%>
 			</table>
-		<% else -%>
-			<p>There are no recommendations yet. Sorry.</p>
 		<% end -%>
-		<br />
-	</div>
+	</div> 
 </div>

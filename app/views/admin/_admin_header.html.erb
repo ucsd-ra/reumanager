@@ -1,0 +1,21 @@
+<div id="admin_header">
+	<h6>
+		<% if params[:controller] == "students" && params[:action] == "index" -%>
+			<%= link_to "Student Applications", { :controller => "students" }, :class => "active" %>
+		<% else -%>
+			<%= link_to "Student Applications", { :controller => "students" } %>
+		<% end -%>
+		 | 
+		<%= link_to "Create report of all applications and recommendations", "" %>
+		 | 
+		<%= link_to "Administer the Administrators", "" %>
+	</h6>
+	<h5>
+		<% if params[:controller] == "admin" -%>
+			<%= link_to "Admin Home", { :controller => "admin" }, :class => "active" %>	
+		<% else -%>
+			<%= link_to "Admin Home", :controller => "admin" %>	
+		<% end -%>
+	</h5>
+</div>
+<hr />

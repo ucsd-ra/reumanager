@@ -1,10 +1,5 @@
 <div id="single_column">
-	<div id="header">
-		<%= link_to image_tag('ucsd_logo.gif', :id => "ucsd"), "http://ucsd.edu", :target => "_blank" %>
-		<%= link_to image_tag('nsf_logo.gif', :id => "nsf"), "http://nsf.gov", :target => "_blank" %>
-		<h5>Research Experience for Undergraduates (REU)<br /> in Regenerative Medicine, Multi-Scale Bioengineering,<br /> and Systems Biology</h5>
-		<h6>University of California, San Diego | Department of Bioengineering</h6>
-	</div>
+	<%= render :partial => "application/header" %>
 	<div id="welcome">
 		<h2>June 19 - August 23, 2008</h2>
 		<p>The <%= link_to "Department of Bioengineering", "http://bioengineering.ucsd.edu/", :target => "_blank" %> at the <%= link_to "University of California, San Diego", "http://ucsd.edu", :target => "_blank" %> is pleased to announce a National Science Foundation Research Experience for Undergraduates (<%= link_to "NSF-REU", "http://www.nsf.gov/crssprgm/reu/", :target => "_blank" %>) program in Regenerative Medicine, Multi-Scale Bioengineering, and Systems Biology.</p>

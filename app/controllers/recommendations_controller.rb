@@ -36,10 +36,10 @@ class RecommendationsController < ApplicationController
         format.xml  { render :xml => @recommendation }
       end
     else
-      redirect_to("/recommend")
+      redirect_to("http://be-webapps.ucsd.edu/test/recommend")
     end
     rescue ActiveRecord::RecordNotFound
-      redirect_to("/recommend") 
+      redirect_to("http://be-webapps.ucsd.edu/test/recommend") 
   end
 
   # GET /recommendations/1/edit
@@ -58,7 +58,7 @@ class RecommendationsController < ApplicationController
     respond_to do |format|
       if @recommendation.save
         flash[:notice] = 'Recommendation was successfully created.'
-        format.html { redirect_to "/thanks" }
+        format.html { redirect_to "http://be-webapps.ucsd.edu/test/thanks" }
         format.xml  { render :xml => @recommendation, :status => :created, :location => @recommendation }
       else
         format.html { render :action => "new", :id => @student.id }

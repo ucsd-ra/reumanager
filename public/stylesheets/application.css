@@ -66,6 +66,7 @@ Layout
 	#header h2 								{  color:#888;font-weight:normal;font-size:16px;  } 
 	#header h5								{  padding:0 10px 10px 10px;clear:none;display:inline;  }
 	#header h6								{  margin:10px 0 0 0;padding:6px;font-weight:bold;color:#eee;background-color:#333;clear:both;  }
+	#header h6 a							{  color:#eee;  }
 	#header #ucsd							{  height:60px;margin:0 0 0 15px;width:79px;clear:none;float:left;  }
 	#header #nsf							{  height:60px;margin:0 15px 0 0;width:60px;clear:none;float:right;  }
 	#notice, #error							{  color:red;font-size:1.8em;  }
@@ -138,6 +139,20 @@ Students
 	#recommender_email						{  width:380px;  }
 	.thanks									{  margin:20px 0 40px 0;  }
 	#simple_captcha							{  margin:0 0 0 300px;width:200px;height:100px;}
+	
+	#students table							{  border:1px dashed silver;margin:30px 20px;  }
+	#students table th						{  font-size:1.3em;padding:3px 6px 1px 6px;text-align:left;  }
+	#students table td						{  padding:3px 6px;text-align:left;  }
+	#students table td.name					{  width:140px;  }
+	#students table td.college				{  width:150px;  }
+	#students table td.major				{  width:150px;  }
+	#students table td.gpa					{  width:50px;  }
+	#students table td.date					{  width:100px;  }
+	#students table td.admin				{  width:20px;  }	
+	#students h6							{  color:gray;  }
+	#student_application					{  padding:0 20px 40px;text-align:left;  }
+	#student_application h1					{  margin:10px 0 30px;text-align:center;  }
+	#student_application p					{  font-size:1.2em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Recommendations
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -146,6 +161,9 @@ Recommendations
 	#recommendation_gpa_range				{  width:40px;  }
 	#recommendation_faculty_comment			{  height:12.4em;  }
 	#recommendation_submit					{  margin:20px 0 10px 315px;clear:both;font-size:1.8em;  }
+	#recommendation							{  padding:0 20px 40px;text-align:left;  }
+	#recommendation h1						{  margin:10px 0 30px;text-align:center;  }
+	#recommendation p						{  font-size:1.2em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Login
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
@@ -158,14 +176,16 @@ Admin
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 	#admin									{  padding:20px;  }
 	#admin h1								{  margin:0 0 20px 0;  }
-	#getting-started						{  padding:10px;  }
-	#getting-started 						{  border-top:1px solid #ccc;margin-top:25px;padding-top:15px;  }
-	#getting-started h1 					{  margin:0;font-size:20px;  }
-	#getting-started h2 					{  margin:0;font-size:14px;font-weight:normal;color:#333;margin-bottom:25px;  }
-	#getting-started ol 					{  margin-left:10px;padding-left:0;  }
-	#getting-started li 					{  font-size:18px;color:#888;margin-bottom:25px;  }
-	#getting-started li h2 					{  margin:0;font-weight:normal;font-size:18px;color:#333;  }
-	#getting-started li p 					{  color:#555;font-size:13px;  }
+	#admin h5								{  margin:8px 0;  }
+	#admin a								{  padding:3px;  }
+	#admin a:hover							{  background:#ccc;color:#000;  }
+	#admin a.active							{  background:#96BF55;  }
+	#admin_header							{  margin:5px 0 10px 0;  }
+	#admin_header h5						{  margin:7px;  }
+	#admin_header a							{  padding:3px;  }
+	#admin_header a:hover					{  background:#ccc;color:#000;  }
+	#admin_header a.active					{  background:#96BF55;  }
+	
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Errors
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/

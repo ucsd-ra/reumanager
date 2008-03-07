@@ -1,28 +1,27 @@
 <div id="single_column">
-	<div id="header">
-		<a href="http://ucsd.edu" target="_blank"><img alt='Ucsd_logo' id='ucsd' src='images/ucsd_logo.gif' /></a>
-		<a href="http://nsf.gov" target="_blank"><img alt='Ucsd_logo' id='nsf' src='images/nsf_logo.gif' /></a>
-		<h5>Research Experience for Undergraduates (REU)<br /> in Regenerative Medicine, Multi-Scale Bioengineering,<br /> and Systems Biology</h5>
-		<h6>University of California, San Diego | Department of Bioengineering</h6>
-	</div>
-	<div id="admin">
-		<h1>Listing students</h1>
-
-		<table>
-		  <tr>
-		  </tr>
-
-		<% for student in @students %>
-		  <tr>
-		    <td><%= link_to 'Show', student %></td>
-		    <td><%= link_to 'Edit', edit_student_path(student) %></td>
-		    <td><%= link_to 'Destroy', student, :confirm => 'Are you sure?', :method => :delete %></td>
-		  </tr>
-		<% end %>
+	<%= render :partial => "application/header" %>
+	<div id="students">
+		<%= render :partial => "admin/admin_header" %>
+		<h1>Listing Students Applicants</h1>
+		<table cellspacing=0>
+			<thead>
+				<th class="name">Applicant Name</th>
+				<th class="college">College/University</th>
+				<th class="major">Major</th>
+				<th class="gpa">GPA</th>
+				<th class="date">Apply Date</th>
+				<th class="admin">Admin Functions</th>
+			</thead>
+		  	<% for student in @students %>
+		  		<tr style="background-color:#<%= cycle("ddd","bbb") %>;">
+					<td class="name"><%= link_to "#{student.firstname} #{student.lastname}", student %></td>
+					<td class="college"><%= link_to "#{student.college}", student %></td>
+					<td class="major"><%= link_to "#{student.major}", student %></td>
+		   			<td class="gpa"><%= link_to "#{student.gpa[0..2]} / #{student.gpa_range[0..2]}", student %></td>
+		   			<td class="date"><%= link_to "#{student.created_at.strftime("%b %d [%H:%M %Z]")}", student %></td>
+					<td class="admin"><%= link_to 'Show', student %><br /><%= link_to 'Destroy', student, :confirm => 'Are you sure? This information will be permanently removed from our database.', :method => :delete %></td>
+				</tr>
+			<% end %>
 		</table>
-
-		<br />
-
-		<%= link_to 'New student', new_student_path %>
 	</div> 
 </div>

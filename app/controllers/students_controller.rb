@@ -17,7 +17,7 @@ class StudentsController < ApplicationController
   # GET /students/1.xml
   def show
     @student = Student.find(params[:id])
-
+    @recommendation = Recommendation.find_by_student_id(@student.id)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @student }
@@ -157,7 +157,7 @@ class StudentsController < ApplicationController
   end
   
   def welcome
-    render :aciton => "welcome", :layout => "proxy"
+    render :aciton => "welcome"
   end
 
   
