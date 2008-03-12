@@ -180,7 +180,7 @@ Admin
 	#admin a								{  padding:3px;  }
 	#admin a:hover							{  background:#ccc;color:#000;  }
 	#admin a.active							{  background:#96BF55;  }
-	#admin_header							{  margin:5px 0 10px 0;  }
+	#admin_header							{  margin:3px 0 10px 0;  }
 	#admin_header h5						{  margin:7px;  }
 	#admin_header a							{  padding:3px;  }
 	#admin_header a:hover					{  background:#ccc;color:#000;  }
