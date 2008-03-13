@@ -59,8 +59,8 @@ Layout
 	#sidebar ul h3 							{  margin-top:25px;font-size:1.6em;padding-bottom:5px;border-bottom:1px solid #ccc;  }
 	#sidebar li 							{  list-style-type:none; font-size:1.2em;  }
 	#sidebar ul.links li 					{  margin-bottom:5px;  }
-	#footer 								{  clear:both;margin:5px 0 50px 0;  }
-	#footer p								{  font-size:1.2em;  }
+	#footer 								{  clear:both;margin:5px 0 50px 0;font-size:1.1em;  }
+	#footer p								{  font-size:1.1em;  }
 	#header									{  width:800px;padding:17px 0 0 0;text-align:center;  }
 	#header h1, #header h2 					{  margin:0  }
 	#header h2 								{  color:#888;font-weight:normal;font-size:16px;  } 
