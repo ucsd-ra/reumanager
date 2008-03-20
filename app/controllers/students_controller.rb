@@ -175,6 +175,7 @@ class StudentsController < ApplicationController
   def status
     @student = Student.find_by_email(params[:email])
     if @student
+      flash[:status] = nil
       render :action => "status"
     else
       flash[:status] = "No student found by that email. Please try again."
