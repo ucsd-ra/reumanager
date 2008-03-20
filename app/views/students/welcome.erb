@@ -32,7 +32,7 @@
 			<% form_tag({:action=> "status"}) do %>
 				<table>
 					<tr><td colspan=3><%= content_tag 'div', h(flash[:status]), :class => 'status_error', :id => 'status_error' if flash[:status] %></td></tr>
-					<tr><td colspan=3 class="status_header">Enter your email address to check the status of your application</td></tr>
+					<tr><td colspan=3 align="center" class="status_header">Enter your email address to check the status of your application</td></tr>
 					<tr>						
 		    			<td align="right"><label for="email">Email:</label></td>
 		    			<td class="input"><%= text_field_tag 'email', nil, :size => 33 %></td>

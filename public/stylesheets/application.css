@@ -90,7 +90,7 @@ Welcome
 	#status-form table td 					{  padding:3px;}
 	#status-form table td p					{  margin:0;padding:0;  }	
 	#status-form table td.input				{}
-	#status-form table td.status_header		{  width:37em;  }
+	#status-form table td.status_header		{  width:37em;padding:10px 0;  }
 	#status_error							{  color:red;font-size:1.4em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Students
