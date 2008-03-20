@@ -184,7 +184,7 @@ class StudentsController < ApplicationController
   end
    
   def resend_request
-    @student = Student.find_by_token(params[:token])
+    @student = Student.find_by_token(params[:id])
     @student.email_recommender
     @student.save
     flash[:status] = "You recommendation request has been resent as of #{ @student.updated_at.strftime("%B %d [%H:%M %Z]")}"
