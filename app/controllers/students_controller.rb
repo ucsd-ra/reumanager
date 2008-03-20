@@ -182,7 +182,8 @@ class StudentsController < ApplicationController
       render :action => "welcome"
     end
   end
-  
+
+ private  
   def resend_request
     @student = Student.find_by_id(params[:id])
     @student.email_recommender
