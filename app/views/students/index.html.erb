@@ -12,8 +12,7 @@
 				<th class="major"><%= link_to "Major", { :controller => "students", :sort => "major" } %></th>
 				<th class="gpa"><%= link_to "GPA", { :controller => "students", :sort => "gpa" } %></th>
 				<th class="date"><%= link_to "Apply Date", { :controller => "students", :sort => "date" } %></th>
-				<th class="rec">Has Rec?</th>
-				<th class="admin">Admin Functions</th>
+				<th class="rec">Received Recommendation</th>
 			</thead>
 			<% @n = 0 %>
 		  	<% for student in @students %>
@@ -31,7 +30,6 @@
 							<%= link_to "No", "" %>
 						<% end -%>
 					</td>
-					<td class="admin"><%= link_to 'Show', student %><br /><%= link_to 'Destroy', student, :confirm => 'Are you sure? This information will be permanently removed from our database.', :method => :delete %></td>
 				</tr>
 			<% end %>
 		</table>
