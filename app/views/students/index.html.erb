@@ -6,6 +6,7 @@
 		<h1>Listing Students Applicants</h1>
 		<table cellspacing=0>
 			<thead>
+				<th>#</th>
 				<th class="name"><%= link_to "Name", { :controller => "students", :sort => "name" } %></th>
 				<th class="college"><%= link_to "College / University", { :controller => "students", :sort => "college" } %></th>
 				<th class="major"><%= link_to "Major", { :controller => "students", :sort => "major" } %></th>
@@ -14,8 +15,10 @@
 				<th class="rec">Has Rec?</th>
 				<th class="admin">Admin Functions</th>
 			</thead>
+			<% @n = 0 %>
 		  	<% for student in @students %>
 		  		<tr style="background-color:#<%= cycle("ddd","bbb") %>;">
+					<td><% @n += 1 %><%= (@n).to_s %></td>
 					<td class="name"><%= link_to "#{student.firstname} #{student.lastname}", student %></td>
 					<td class="college"><%= link_to "#{student.college}", student %></td>
 					<td class="major"><%= link_to "#{student.major}", student %></td>
