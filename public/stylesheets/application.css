@@ -84,6 +84,13 @@ Welcome
 	#applyp									{  text-align:center;clear:both;  }
 	#applylink:hover						{  border:0;  }
 	#images									{  margin:0 52px 30px;  }
+	#status-form table 						{  font-size:1.4em;font-weight:bold;margin:2em 0;padding:1em;margin-left:auto;margin-right:auto;border:2px solid #FDBF3B;background-color:#FFEBC1; }
+	#status-form table tr					{  margin:0;padding:0;}
+	#status-form table td 					{  padding:3px;}
+	#status-form table td p					{  margin:0;padding:0;  }	
+	#status-form table td.input				{}
+	#status-form table td.status_header		{  width:37em;  }
+	#status_error							{  color:red;font-size:1.4em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Students
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	 
@@ -147,12 +154,14 @@ Students
 	#students table td.college				{  width:160px;  }
 	#students table td.major				{  width:150px;  }
 	#students table td.gpa					{  width:50px;  }
-	#students table td.date					{  width:100px;  }
+	#students table td.date					{  width:110px;  }
 	#students table td.admin				{  width:20px;  }	
 	#students h6							{  color:gray;  }
 	#student_application					{  padding:0 20px 40px;text-align:left;  }
 	#student_application h1					{  margin:10px 0 30px;text-align:center;  }
 	#student_application p					{  font-size:1.2em;  }
+	#status									{  padding:5em 2em;  }
+	#status h1								{  margin:0 0 10px 0;}
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Recommendations
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/

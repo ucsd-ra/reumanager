@@ -169,8 +169,25 @@ class StudentsController < ApplicationController
   end
   
   def welcome
-    render :aciton => "welcome"
+    render :action => "welcome"
   end
-
+  
+  def status
+    @student = Student.find_by_email(params[:email])
+    if @student
+      render :action => "status"
+    else
+      flash[:status] = "No student found by that email. Please try again."
+      render :action => "welcome"
+    end
+  end
+  
+  def resend_request
+    @student = Student.find_by_id(params[:id])
+    @student.email_recommender
+    @student.save
+    flash[:status] = "You recommendation request has been resent as of #{ @student.updated_at.strftime("%B %d [%H:%M %Z]")}"
+    render :action => "status"
+  end
   
 end
