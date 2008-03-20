@@ -48,6 +48,7 @@ Colors:
     pre                              		{  font-size:0.9em; width:100%; overflow:auto;  }
     fieldset								{  border:none;  }
 	label									{  text-align:left;text-indent:0;  }
+	hr										{  margin:2px;padding:0;}
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Layout
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -145,8 +146,7 @@ Students
 	#recommender_phone						{  width:180px;  }
 	#recommender_email						{  width:380px;  }
 	.thanks									{  margin:20px 0 40px 0;  }
-	#simple_captcha							{  margin:0 0 0 300px;width:200px;height:100px;}
-	
+	#simple_captcha							{  margin:0 0 0 300px;width:200px;height:100px;  }
 	#students table							{  border:1px dashed silver;margin:30px 20px;  }
 	#students table th						{  font-size:1.3em;padding:3px 6px 1px 6px;text-align:left;  }
 	#students table td						{  padding:3px 6px;text-align:left;  }
@@ -161,7 +161,11 @@ Students
 	#student_application h1					{  margin:10px 0 30px;text-align:center;  }
 	#student_application p					{  font-size:1.2em;  }
 	#status									{  padding:5em 2em;  }
-	#status h1								{  margin:0 0 10px 0;}
+	#status h1								{  margin:0 0 10px 0;  }
+	#admin_links							{  margin:0;padding:0;}
+	#admin_links a							{  padding:3px;  }
+	#admin_links a:hover					{  background:#ccc;color:#000;  }
+	#admin_links a.active					{  background:#96BF55;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Recommendations
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
@@ -189,7 +193,7 @@ Admin
 	#admin a								{  padding:3px;  }
 	#admin a:hover							{  background:#ccc;color:#000;  }
 	#admin a.active							{  background:#96BF55;  }
-	#admin_header							{  margin:3px 0 10px 0;  }
+	#admin_header							{  margin:3px 0 3px 0;  }
 	#admin_header h5						{  margin:7px;  }
 	#admin_header a							{  padding:3px;  }
 	#admin_header a:hover					{  background:#ccc;color:#000;  }

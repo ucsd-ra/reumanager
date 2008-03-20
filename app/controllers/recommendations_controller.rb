@@ -17,7 +17,7 @@ class RecommendationsController < ApplicationController
   # GET /recommendations/1.xml
   def show
     @recommendation = Recommendation.find(params[:id])
-
+    @student = Student.find_by_id(@recommendation.student_id)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @recommendation }

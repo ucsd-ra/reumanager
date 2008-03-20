@@ -2,7 +2,17 @@
 	<%= render :partial => "application/header" %>
 	<div id="recommendations">
 		<%= render :partial => "admin/admin_header" %>
-		<h5><%= link_to "View Student Application", @recommendation.student %></h5>
+		<h6 id="admin_links">
+			<%= link_to "Application", @student %>
+			&nbsp;|&nbsp;
+			<% if @recommendation -%>
+				<%= link_to "Recommendation", @recommendation, :class => "active" %>
+			<% else -%>
+				No recommendation has been received
+			<% end -%>
+			&nbsp;|&nbsp;
+			<%= link_to "Download PDF of Recommendation", "http://be-webapps.ucsd.edu/nsfreu/pdf/#{@student.id}_#{@student.lastname}_rec.pdf", :target => "_blank" %>
+		</h6>
 		
 		<div id="recommendation">
 			<h1>Recommendation for <%= @recommendation.student.firstname %> <%= @recommendation.student.lastname %></h1>
