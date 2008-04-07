@@ -29,7 +29,7 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
   # Install the default routes as the lowest priority.
     map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
-    map.connect '/test/simple_captcha/:action', :controller => 'simple_captcha'
+    map.connect '/nsfreu/simple_captcha/:action', :controller => 'simple_captcha'
     map.apply '/apply', :controller => 'students', :action => 'new'
     map.recommend '/recommend', :controller => 'recommendations', :action => 'no_student'
     map.recommend '/recommend/:id', :controller => 'recommendations', :action => 'new'
