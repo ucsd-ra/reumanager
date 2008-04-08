@@ -1,0 +1,68 @@
+FONT = "Helvetica"
+FONT_SIZE = 15
+
+pdf.select_font(FONT)
+pdf.margins_in(1,0.25,1,0.25)
+
+def add_student(recommendation,student,pdf)
+  pdf.text "NSF REU Application for #{student.firstname} #{student.lastname}\n\n", :font_size => 22, :justification => :center
+  pdf.move_pointer(24)
+
+  pdf.text "Personal Data\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+  pdf.text "#{student.street}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  pdf.text "#{student.city}, #{student.state} #{student.zip}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  if student.citizenship == "United States"
+    pdf.text "Citizenship: #{student.citizenship}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  else
+    pdf.text "Citizenship: #{student.citizenship}, Country of Residence: #{student.cresidence}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  end
+
+  pdf.text "Academic Info\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+  pdf.text "#{student.college_level.capitalize} majoring in #{student.major} at #{student.college}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  pdf.text "Attended from: #{student.college_start} to #{student.college_end}, GPA: #{student.gpa} out of #{student.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  if student.p_college != ""
+    pdf.text "Previous college: #{student.p_college}, Attended from: #{student.pcollege_start} to #{student.pcollege_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  else
+    pdf.text "\n"
+  end
+  
+  @methods = %w{awards research_experience gpa_comments personal_statement}
+  @methods.each do |m|  
+    pdf.text "#{m.gsub("_"," ").capitalize }\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+    pdf.text "#{student.send(m)}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  end
+  if recommendation == nil
+    pdf.text "This student does not have a recommendation", :font_size => 24, :justification => :center
+  end
+end
+
+def add_recommendation(recommendation,student,pdf)
+  @recommender = Recommender.find_by_id(student.recommender_id)
+  pdf.text "NSF REU Recommendation for #{student.firstname} #{student.lastname}\n\n", :font_size => 22, :justification => :center
+  pdf.move_pointer(24)
+
+  pdf.text "Recommender Personal Data\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+  pdf.text "#{@recommender.name}, #{@recommender.title}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  pdf.text "#{@recommender.college}, #{@recommender.department}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  pdf.text "#{@recommender.email}, #{@recommender.phone}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+
+  pdf.text "Student Information\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+  pdf.text "How long have you known the applicant: #{recommendation.known_student}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  pdf.text "In what capacity have you known the applicant: #{recommendation.know_capacity}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  pdf.text "Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers: #{recommendation.rating}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  pdf.text "What is the applicant's GPA: #{recommendation.gpa} out of #{recommendation.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+  pdf.text "Is your institution primarily an undergraduate institution: #{recommendation.undergrad_inst}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33 
+  
+  pdf.text "Faculty Recommendation\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+  pdf.text "#{recommendation.faculty_comment}", :font_size => 11, :justification => :left, :left => 33, :right => 33
+end
+
+@students.each do |student|
+  @recommendation = Recommendation.find_by_student_id(student.id)
+  add_student(@recommendation,student,pdf)
+  pdf.start_new_page
+  if @recommendation
+    add_recommendation(@recommendation,student,pdf)
+    pdf.start_new_page
+  end
+end

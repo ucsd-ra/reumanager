@@ -1,0 +1,14 @@
+<div id="single_column">
+	<%= render :partial => "application/header" %>
+
+	<div id="reports">
+		<%= render :partial => "admin/admin_header" %>
+		<h1>Application and Recommendation Report</h1>
+		<div id ="selector">
+			<h4>Select how you would like the report organized:</h4>
+			<h5><%= link_to "by Creation Date", { :action => "create_report", :order => "created_at" } %></h5>
+			<h5><%= link_to "by Last Name", { :action => "create_report", :order => "lastname" } %></h5>
+			<h5><%= link_to "by GPA", { :action => "create_report", :order => "gpa" } %></h5>
+		</div>
+	</div> 
+</div>
