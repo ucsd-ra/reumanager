@@ -3,8 +3,7 @@
 	<div id="admin">
 		<h1>Administration Menu</h1>
 		<h5><%= link_to "Student Applicants", :controller => "students" %></h5>
-		<h5><%= link_to "Create report of all applications and recommendations", "" %></h5>
-		<h5><%= link_to "Administer the Administrators", "" %></h5>
+		<h5><%= link_to "Create report of all applications and recommendations", { :controller => "admin", :action => "report" } %></h5>
 		<h5><%= link_to "Logout", :controller => "sessions", :action => "destroy" %></h5>
 	</div> 
 </div>
