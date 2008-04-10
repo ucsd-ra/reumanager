@@ -78,6 +78,7 @@ Welcome
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
 	#welcome								{  margin:10px 40px;text-align:left;  }
 	#welcome h2								{  margin:0 0 10px;text-align:center;  }
+	#welcome h4								{  text-align:center;  }
 	#welcome .lists							{  float:left;margin:10px 0 0 66px;width:260px; }
 	#welcome ul								{  font-size:1.4em;margin:0 0 20px 0;list-style-type:disc;list-style-position:inside;  }
 	#welcome p								{  margin:20px 0;  }

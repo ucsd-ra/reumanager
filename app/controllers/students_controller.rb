@@ -1,3 +1,4 @@
+require 'date'
 class StudentsController < ApplicationController
   include AuthenticatedSystem
   before_filter :login_from_cookie, :login_required, :except => [:new, :create, :welcome, :thanks, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :status, :resend_request ]

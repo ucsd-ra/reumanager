@@ -4,6 +4,7 @@
 	<%= render :partial => "application/header" %>
 	<div id="welcome">
 		<h2>June 19 - August 23, 2008</h2>
+		<h4><b>UPDATE:</b> applications will be accepted through the 18th of April</h4>
 		<p>The <%= link_to "Department of Bioengineering", "http://bioengineering.ucsd.edu/", :target => "_blank" %> at the <%= link_to "University of California, San Diego", "http://ucsd.edu", :target => "_blank" %> is pleased to announce a National Science Foundation Research Experience for Undergraduates (<%= link_to "NSF-REU", "http://www.nsf.gov/crssprgm/reu/", :target => "_blank" %>) program in Regenerative Medicine, Multi-Scale Bioengineering, and Systems Biology.</p>
 		<p>This exciting summer program provides undergraduate students access to state-of-the-art facilities, the opportunity to work with accomplished and experienced faculty mentors, and to participate in highly collaborative, cutting-edge research projects. In addition to the training students receive in individual research laboratories, extensive professional development opportunities will be provided through weekly workshops, an undergraduate research conference, panel discussions, and GRE preparation courses.</p> 
 		<div class="lists">
@@ -26,8 +27,11 @@
 			 	<li>U.S. citizen or permanent resident</li>
 			</ul>
 		</div>
-		<p id="applyp"><%=link_to image_tag('apply.gif'), { :controller => "students", :action => "new" }, :id => "applylink" %></p>
-
+		<% if Date.today > Date.parse("April 18 2008") -%>
+			<p id="applyp"><b>Please check back in January 2009 for registration info.</b></p>
+		<% else -%>
+			<p id="applyp"><%=link_to image_tag('apply.gif'), { :controller => "students", :action => "new" }, :id => "applylink" %></p>
+		<% end -%>
 		<div id="status-form">
 			<% form_tag({:action=> "status"}) do %>
 				<table>
