@@ -30,10 +30,9 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
     map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
     map.connect '/nsfreu/simple_captcha/:action', :controller => 'simple_captcha'
-    map.apply '/apply', :controller => 'students', :action => 'new'
+    map.apply '/apply', :controller => 'students', :action => 'welcome'
     map.recommend '/recommend', :controller => 'recommendations', :action => 'no_student'
     map.recommend '/recommend/:id', :controller => 'recommendations', :action => 'new'
-    map.signup '/signup', :controller => 'users', :action => 'new'
     map.login '/login', :controller => 'sessions', :action => 'new'
     map.logout '/logout', :controller => 'sessions', :action => 'destroy'
     map.thanks '/thanks', :controller => 'students', :action => 'thanks'
