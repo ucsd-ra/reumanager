@@ -36,7 +36,7 @@ class RecommendationsController < ApplicationController
         format.xml  { render :xml => @recommendation }
       end
     else
-      redirect_to("http://be-webapps.ucsd.edu/nsfreu/recommend")
+      redirect_to( :action => "recommend")
     end
     rescue ActiveRecord::RecordNotFound
       redirect_to("http://be-webapps.ucsd.edu/nsfreu/recommend") 

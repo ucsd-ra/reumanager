@@ -11,7 +11,7 @@
 				No recommendation has been received
 			<% end -%>
 			&nbsp;-&nbsp;
-			<%= link_to "Download PDF of Application", "http://be-webapps.ucsd.edu/nsfreu/pdf/#{@student.id}_#{@student.lastname}.pdf", :target => "_blank" %>
+			<%= link_to "Download PDF of Application", "http://nsfreu.be.ucsd.edu/pdf/#{@student.id}_#{@student.lastname}.pdf", :target => "_blank" %>
 		</h6>
 		<div id="student_application">
 			<h1>Application for <%= @student.firstname %> <%= @student.lastname %></h1>
@@ -41,8 +41,11 @@
 				<%= @student.awards.gsub("\r\n", "<br />") %>
 			</p>
 		
-			<h5>Research Experience</h5>
-			<p><%= @student.research_experience.gsub("\r\n", "<br />") %></p>
+			<h5>Lab Skills</h5>
+			<p><%= @student.lab_skills.gsub("\r\n", "<br />") %></p>
+
+			<h5>Computer Skills</h5>
+			<p><%= @student.comp_skills.gsub("\r\n", "<br />") %></p>
 		
 			<h5>GPA Comments</h5>
 			<p><%= @student.gpa_comments.gsub("\r\n", "<br />") %></p>
