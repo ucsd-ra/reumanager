@@ -34,7 +34,7 @@ class Student < ActiveRecord::Base
       pdf.text "\n"
     end
     
-    @methods = %w{awards research_experience gpa_comments personal_statement}
+    @methods = %w{awards lab_skills comp_skills gpa_comments personal_statement}
     @methods.each do |m|  
       pdf.text "#{m.gsub("_"," ").capitalize }\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
       pdf.text "#{send(m)}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
@@ -61,7 +61,8 @@ class Student < ActiveRecord::Base
       self.gpa, 
       self.gpa_range, 
       self.awards.gsub("\n", "<br />").insert(0, "<br />"), 
-      self.research_experience.gsub("\n", "<br />").insert(0, "<br />"), 
+      self.lab_skills.gsub("\n", "<br />").insert(0, "<br />"), 
+      self.comp_skills.gsub("\n", "<br />").insert(0, "<br />"), 
       self.gpa_comments.gsub("\n", "<br />").insert(0, "<br />"), 
       self.personal_statement.gsub("\n", "<br />").insert(0, "<br />"))      
     email.set_content_type('multipart', 'mixed')

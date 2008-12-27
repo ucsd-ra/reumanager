@@ -7,6 +7,16 @@
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.0.2' unless defined? RAILS_GEM_VERSION
 
+unless '1.9'.respond_to?(:force_encoding) 
+  String.class_eval do
+  begin
+    remove_method :chars
+  rescue NameError
+    # OK
+  end
+end
+end
+
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
@@ -70,4 +80,3 @@ end
 # Mime::Type.register "application/x-mobile", :mobile
 
 # Include your application configuration below
-ActionController::AbstractRequest.relative_url_root = "/nsfreu"

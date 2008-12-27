@@ -4,7 +4,7 @@
 	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
 	<h2>Summer 2008 Online Application</h2>
 	<div id="about">
-		<h5>Submission Deadline:&nbsp;<span class="blood_red">Rolling Admissions</span></h5>
+		<h5>Submission Deadline:&nbsp;<span class="blood_red">February 13, 2009</span></h5>
 		<h5 id="eligibilty">Eligibility:</h5>
 		<ul class="bold blood_red">
 			<li>You must be a current, full-time undergraduate student</li>
@@ -15,6 +15,7 @@
 	<div id="application">
 		<%= error_messages_for :student %>
 		<% form_for(@student) do |f| %>
+			
 			<h4>Personal Data</h4>
 			<h1 id="flash"><%= flash[:notice] %></h1>
 			<fieldset id="personal_data">
@@ -25,6 +26,7 @@
 			<fieldset id="academic_information">
 				<%= render :partial => 'academic_information', :locals => { :f => f } %>
 			</fieldset>
+			
 			<h4>Faculty Recommendation</h4>
 			<%= error_messages_for :recommender %>
 			<fieldset id="faculty_recommendation">
@@ -37,8 +39,10 @@
 			<div id="observers">
 				<%= render :partial => "observers" %>
 			</div>
+			
 			<%= show_simple_captcha(:image_style => "random", :object=>"student") %>  
-			<%= f.submit "Submit Application" %>		
+			<%= f.submit "Submit Application" %>
+					
 		<% end %>
 	</div>
 </div>

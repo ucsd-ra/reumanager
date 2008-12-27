@@ -3,6 +3,7 @@ class StudentsController < ApplicationController
   include AuthenticatedSystem
   before_filter :login_from_cookie, :login_required, :except => [:new, :create, :welcome, :thanks, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :status, :resend_request ]
   ssl_allowed :new, :create, :update, :welcome, :thanks, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege
+  
   # GET /students
   # GET /students.xml
   def index
@@ -110,13 +111,14 @@ class StudentsController < ApplicationController
     @paddress = params[:paddress]
     if @paddress == 'no'
       render :update do |page|
-        page[:observers].replace_html :partial => "observers"
         page[:presidence].show
+        page[:observers].replace_html :partial => "observers"
       end
     else
       render :update do |page|  
-        page[:observers].replace_html :partial => "observers"
+        
         page[:presidence].hide
+        page[:observers].replace_html :partial => "observers"
       end
     end
   end

@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      redirect_to( "http://be-webapps.ucsd.edu/nsfreu/students/" )
+      redirect_to( "http://nsfreu.be.ucsd.edu/students/" )
       flash[:notice] = "Logged in successfully"
     else
       flash.now[:notice] = "Please don't hack our server"

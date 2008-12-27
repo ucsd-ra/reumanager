@@ -12,6 +12,10 @@
 		<%= f.text_field 'lastname' %>
 	</div>
 	<div class="clear">
+		<label>Date of Birth</label><br />
+		<%= f.date_select "dob", :start_year => 1970, :end_year => 1994 %>
+	</div>
+	<div class="clear">
 		<label>Street&nbsp;Address</label><br />
 		<%= f.text_field 'street' %>
 	</div>
@@ -81,8 +85,12 @@
 	<%= f.select 'gender', %w{ Prefer\ not\ to\ respond Female Male} %>
 </div>
 <div class="fieldbox clear">
+	<label>Ethnicity*:</label>
+	<%= f.select 'ethnicity', %w{ Prefer\ not\ to\ respond Hispanic\ or\ Latino Not\ Hispanic\ or\ Latino} %>
+</div>
+<div class="fieldbox clear">
 	<label>Race*:</label>
-	<%= f.select 'race', %w{ Prefer\ not\ to\ respond American\ Indian\ or\ Alaskan\ Native African\ American\ or\ Black Asian\ or\ Pacific\ Islander Hispanic\ or\ Latino White} %>
+	<%= f.select 'race', %w{ Prefer\ not\ to\ respond American\ Indian\ or\ Alaskan\ Native Asian Black\ or\ African\ American Native\ Hawaiian\ or\ Pacific\ Islander White} %>
 </div>
 <div class="fieldbox clear">
 	<label>Disability*:</label>

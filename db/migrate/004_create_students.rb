@@ -4,6 +4,7 @@ class CreateStudents < ActiveRecord::Migration
       t.column :firstname,            :string
       t.column :middlename,           :string
       t.column :lastname,             :string
+      t.column :dob,                  :datetime
       t.column :street,               :string
       t.column :city,                 :string
       t.column :state,                :string
@@ -18,6 +19,7 @@ class CreateStudents < ActiveRecord::Migration
       t.column :citizenship,          :string
       t.column :cresidence,           :string
       t.column :gender,               :string
+      t.column :ethnicity,            :string
       t.column :race,                 :string
       t.column :disability,           :string
       t.column :college,              :string
@@ -33,6 +35,8 @@ class CreateStudents < ActiveRecord::Migration
       t.column :recommender_id,       :integer
       t.column :awards,               :text
       t.column :research_experience,  :text
+      t.column :lab_skills,           :text
+      t.column :comp_skills,          :text
       t.column :gpa_comments,         :text
       t.column :learn,                :string
       t.column :personal_statement,   :text

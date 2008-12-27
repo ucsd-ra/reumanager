@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 6) do
   end
 
   create_table "sessions", :force => true do |t|
-    t.string   "session_id", :default => "", :null => false
+    t.string   "session_id", :null => false
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 6) do
     t.string   "firstname"
     t.string   "middlename"
     t.string   "lastname"
+    t.datetime "dob"
     t.string   "street"
     t.string   "city"
     t.string   "state"
@@ -71,6 +72,7 @@ ActiveRecord::Schema.define(:version => 6) do
     t.string   "citizenship"
     t.string   "cresidence"
     t.string   "gender"
+    t.string   "ethnicity"
     t.string   "race"
     t.string   "disability"
     t.string   "college"
@@ -86,6 +88,8 @@ ActiveRecord::Schema.define(:version => 6) do
     t.integer  "recommender_id"
     t.text     "awards"
     t.text     "research_experience"
+    t.text     "lab_skills"
+    t.text     "comp_skills"
     t.text     "gpa_comments"
     t.string   "learn"
     t.text     "personal_statement"
