@@ -23,7 +23,7 @@ Colors:
 	select, textarea						{  margin:0; padding:0;  }
 	select, input, textarea 				{  font:99% arial,helvetica,clean,sans-serif;  }
 	table 									{  font-size:inherit;  }
-	a										{  color:#343434;border:none;font-weight:bold;  }
+	a										{  color:#343434;border:none;  }
 	a:visited								{  border:none;  }
 	a:hover 								{  color:#666; border-bottom:1px dotted #006500;  }
 	a img, a:hover img						{  border:none;  }
@@ -97,12 +97,14 @@ Welcome
 	#status_error							{  color:red; font-size:1.4em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Students
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+	#app_header h4							{  display:inline-block;  }
 	#about									{  margin:10px 220px 0;text-align:left;width:360px;  }
 	#about h5								{  margin:0;  }
 	#about ul								{  font-size:1.2em;  }
 	#application							{  text-align:left;  }
-	#application h4							{  margin:20px 10px 10px;color:#07243c;font-weight:normal;font-variant:normal;border-bottom:2px dotted #666;clear:both;  }
+	#application h1							{  text-align:right;  }
+	#application h4							{  margin:20px 10px 10px; color:#07243c; font-weight:normal; font-variant:normal; border-bottom:2px dotted #666; }
 	#application h5							{  margin:20px 30px;text-align:center;  }
 	#application fieldset					{  margin:0 80px;  }
 	#application .fieldbox					{  float:left;margin:10px 11px 5px 1px;font-size:1.2em; }
@@ -115,7 +117,7 @@ Students
 	.tall									{  height:60px; 	}
 	.clear 								    {  clear:both;margin:10px 11px 5px 1px;font-size:1.2em;  }
 	.hidden									{  clear:both;  }
-	#flash									{  text-align:center;color:#7e0815;  }
+	h1#flash									{  text-align:center;color:#7e0815;  }
 	#student_firstname						{  width:170px;  }
 	#student_middlename						{  width:170px;  }
 	#student_lastname						{  width:170px;  }
@@ -131,7 +133,7 @@ Students
 	div input#paddress_yes,div input#paddress_no, input#student_college_level_freshman, input#student_college_level_sophomore, input#student_college_level_junior, 
 	input#student_college_level_senior, input#student_learn_nsf_reu_website, input#student_learn_professor, input#student_learn_poster, input#student_learn_email,
 	input#student_learn_other				{  border:0;  }
-	#disclaimer								{  margin:10px 0;text-align:center;  }
+	#disclaimer								{  clear:both; margin:10px 0; text-align:center;  }
 	#student_college, 
 	input#student_prev_college  			{  width:370px;  }
 	#student_college_start, #student_college_end, #student_pcollege_start, #student_pcollege_end		{  width:50px;  }
@@ -211,7 +213,7 @@ Admin
 Errors
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 	.fieldWithErrors						{  font-size:1.4em; padding:3px; background-color:red; display:inline-block; }
-	#errorExplanation 						{  width:500px;border:2px solid red;padding:7px;padding-bottom:12px;margin:20px 0 0 140px;background-color:#f0f0f0;text-align:left;  }
+	#errorExplanation 						{  background-color:#f0f0f0; border:2px solid red; padding:7px 7px 12px 7px; margin:20px 0 0 140px; text-align:left; width:500px;  }
 	#errorExplanation h2 					{  text-align:left;font-weight:bold;margin:-7px -7px 10px -7px;padding:5px 5px 5px 15px;font-size:1.8em;background-color:#c00;color:#fff;  }
 	#errorExplanation p 					{  color:#333;margin-bottom:0;padding:5px;  }
 	#errorExplanation ul li 				{  margin-left:20px;font-size:12px;list-style:square;  }

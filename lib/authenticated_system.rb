@@ -64,7 +64,7 @@ module AuthenticatedSystem
       respond_to do |format|
         format.html do
           store_location
-          redirect_to "http://http://nsfreu.be.ucsd.edu/.ucsd.edu/nsfreu/login"
+          redirect_to :controller => "sessions", :action => "new"
         end
         format.any do
           request_http_basic_authentication 'Web Password'

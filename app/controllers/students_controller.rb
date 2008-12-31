@@ -1,7 +1,7 @@
 require 'date'
 class StudentsController < ApplicationController
   include AuthenticatedSystem
-  before_filter :login_from_cookie, :login_required, :except => [:new, :create, :welcome, :thanks, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :status, :resend_request ]
+  before_filter :login_from_cookie, :login_required, :except => [:new, :create, :welcome, :thanks, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :status, :resend_request, :personal_data ]
   ssl_allowed :new, :create, :update, :welcome, :thanks, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege
   
   # GET /students
@@ -42,8 +42,7 @@ class StudentsController < ApplicationController
   # GET /students/new.xml
   def new
     @student = Student.new
-    @recommender = Recommender.new
-    
+    params[:id] == "" || params[:id] == nil ? @recommender = Recommender.new : @recommender = Recommender.find(params[:id])
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @student }
@@ -59,16 +58,16 @@ class StudentsController < ApplicationController
   # POST /students.xml
   def create
     @student = Student.new(params[:student])
-    @recommender = Recommender.new(params[:recommender])
+    @recommender = Recommender.new(params[:recommender]) unless @recommender = Recommender.find_by_email(params[:recommender][:email])
     @recommender.save
     @student.recommender_id = @recommender.id
-
     respond_to do |format|
       if @recommender.save && @student.save_with_captcha  
         flash[:notice] = 'Student was successfully created.'
         format.html { redirect_to :action => "thanks" }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
+        params[:id] = @recommender.id
         flash.now[:notice] = 'There were errors'
         format.html { render :action => "new" }
         format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
@@ -191,6 +190,12 @@ class StudentsController < ApplicationController
     @student.save
     flash[:status] = "You recommendation request has been resent as of #{ @student.updated_at.strftime("%B %d [%H:%M %Z]")}"
     render :action => "status"
+  end
+  
+  def personal_data
+    render :update do |page|
+      page.alert "yo"
+    end
   end
   
 end

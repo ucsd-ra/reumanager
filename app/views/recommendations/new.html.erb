@@ -40,10 +40,8 @@
 			</fieldset>
 			<h4>&nbsp;</h4>
 			<fieldset>
-				<p>
-					<label>Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance.</label>
-					<%= f.text_area 'faculty_comment' %>
-				</p>
+				<label>Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance.</label>
+				<%= f.text_area 'faculty_comment' %>
 			</fieldset>
 			<%= f.submit "Submit Recommendation" %>		
 		<% end %>

@@ -9,7 +9,7 @@ class Student < ActiveRecord::Base
   apply_simple_captcha
   
   before_create :make_token
-  after_create :make_pdf, :email_recommender
+  after_create :make_pdf, :email_recommender, :send_confirmation
   
   def make_pdf
     pdf = PDF::Writer.new
@@ -65,6 +65,23 @@ class Student < ActiveRecord::Base
       self.comp_skills.gsub("\n", "<br />").insert(0, "<br />"), 
       self.gpa_comments.gsub("\n", "<br />").insert(0, "<br />"), 
       self.personal_statement.gsub("\n", "<br />").insert(0, "<br />"))      
+    email.set_content_type('multipart', 'mixed')
+    RecommendationMailer.deliver(email)
+  end
+  
+  def send_confirmation
+    email = RecommendationMailer.create_confirmation(
+      self.recommender.name,
+      self.recommender.title,
+      self.recommender.department,
+      self.recommender.college,
+      self.recommender.phone,
+      self.recommender.email,
+      self.id, 
+      self.token, 
+      self.firstname, 
+      self.lastname, 
+      self.email)      
     email.set_content_type('multipart', 'mixed')
     RecommendationMailer.deliver(email)
   end

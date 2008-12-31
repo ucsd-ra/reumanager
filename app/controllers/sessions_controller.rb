@@ -15,10 +15,10 @@ class SessionsController < ApplicationController
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      redirect_to( "http://nsfreu.be.ucsd.edu/students/" )
+      redirect_to(:controller => "students")
       flash[:notice] = "Logged in successfully"
     else
-      flash.now[:notice] = "Please don't hack our server"
+      flash.now[:notice] = "Incorrect username or password"
       render :action => 'new'
     end
   end
@@ -28,6 +28,6 @@ class SessionsController < ApplicationController
     cookies.delete :auth_token
     reset_session
     flash[:notice] = "You have been logged out"
-    redirect_to('http://be-webapps.ucsd.edu/nsfreu/')
+    redirect_to("")
   end
 end
