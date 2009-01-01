@@ -96,7 +96,7 @@ Welcome
 	#status-form table td.status_header		{  width:37em; padding:10px 0;  }
 	#status_error							{  color:red; font-size:1.4em;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Students
+Users
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 	#app_navbar								{  border-bottom:2px dotted #666; margin:2em 0 0; padding:1em 0 4px; text-align:center; }
 	#app_navbar li							{  display:inline-block; font-size:1.8em; margin:0 1px;  }

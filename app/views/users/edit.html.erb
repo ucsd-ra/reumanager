@@ -16,7 +16,7 @@
 		<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
 		<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
 		
-		<%= error_messages_for :student, :transcript %>
+		<%= error_messages_for :user %>
 		<% form_for(@user) do |f| %>
 			<fieldset id="personal_data">
 				<%= render :partial => 'personal_data', :locals => { :f => f } %>

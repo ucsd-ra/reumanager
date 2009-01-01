@@ -5,22 +5,12 @@ class RecommendationsController < ApplicationController
     current_user.recommender ? redirect_to(:action => "edit") : redirect_to(:action => "new") 
   end
 
-  # GET /recommendations/1
-  # GET /recommendations/1.xml
-  def show
-    @recommendation = Recommendation.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @recommendation }
-    end
-  end
-
   # GET /recommendations/new
   # GET /recommendations/new.xml
   def new
     @recommendation = Recommendation.new
-
+    @user = User.find_by_token(params[:id])
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @recommendation }

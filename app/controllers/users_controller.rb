@@ -28,11 +28,11 @@ class UsersController < ApplicationController
   end
   
   def edit
-    params[:id] == nil ? @user = current_user : @user = User.find(params[:id]) if current_user.id == 1
+    @user = User.find(current_user.id) 
   end
   
   def update
-    params[:id] == nil ? @user = current_user : @user = User.find(params[:id])  
+    @user = User.find(current_user.id)
     if @user.update_attributes(params[:user])
       flash[:notice] = 'Personal Data was successfully updated.'
       redirect_to :action => "edit"
@@ -86,5 +86,8 @@ class UsersController < ApplicationController
   
   def submit
     return unless request.post?
- end
+      current_user.send_app_confirmation
+      current_user.send_rec_request
+      redirect_to "/app_thanks"
+  end
 end

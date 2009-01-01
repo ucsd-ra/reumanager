@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(:version => 20090101195449) do
   create_table "extras", :force => true do |t|
     t.integer  "user_id"
     t.text     "awards"
-    t.text     "research_experience"
     t.text     "lab_skills"
     t.text     "comp_skills"
     t.text     "gpa_comments"
@@ -105,6 +104,8 @@ ActiveRecord::Schema.define(:version => 20090101195449) do
     t.string   "ethnicity"
     t.string   "race"
     t.string   "disability"
+    t.datetime "submit_date"
+    t.datetime "rec_request"
     t.string   "token"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"

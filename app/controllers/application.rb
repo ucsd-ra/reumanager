@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   #
   include AuthenticatedSystem
-  include SimpleCaptcha::ControllerHelpers
   
   ActionView::Base.field_error_proc = Proc.new do |html_tag,instance| 
     %(<span class="fieldWithErrors" style="color:red"></span>) + html_tag

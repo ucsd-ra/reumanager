@@ -18,7 +18,15 @@ class SessionsController < ApplicationController
         self.current_user = user
         new_cookie_flag = (params[:remember_me] == "1")
         handle_remember_cookie! new_cookie_flag
-        redirect_to( :controller => "users", :action => "edit" )
+        if user.id == 1
+          redirect_to( :controller => "admin" )
+        else
+          if user.submit_date
+            redirect_to( :controller => "users", :action => "status" )
+          else
+            redirect_to( :controller => "users", :action => "edit" )
+          end
+        end
         flash[:notice] = "Logged in successfully"
     else
       note_failed_signin

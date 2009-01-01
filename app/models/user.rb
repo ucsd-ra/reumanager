@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   # We really need a Dispatch Chain here or something.
   # This will also let us return a human error message.
   before_create :make_token
-  after_create  :send_confirmation
+  after_create  :send_reg_confirmation
   
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
@@ -66,10 +66,10 @@ class User < ActiveRecord::Base
      end
 
      pdf.text "Academic Info\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
-     pdf.text "#{self.college_level.capitalize} majoring in #{self.major} at #{self.college}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
-     pdf.text "Attended from: #{self.college_start} to #{self.college_end}, GPA: #{self.gpa} out of #{self.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
-     if self.p_college != ""
-       pdf.text "Previous college: #{p_college}, Attended from: #{self.pcollege_start} to #{self.pcollege_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+     pdf.text "#{self.academic_record.college_level.capitalize} majoring in #{self.academic_record.major} at #{self.academic_record.college}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+     pdf.text "Attended from: #{self.academic_record.college_start} to #{self.academic_record.college_end}, GPA: #{self.academic_record.gpa} out of #{self.academic_record.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+     if self.academic_record.p_college != ""
+       pdf.text "Previous college: #{self.academic_record.p_college}, Attended from: #{self.academic_record.pcollege_start} to #{self.academic_record.pcollege_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
      else
        pdf.text "\n"
      end
@@ -77,46 +77,44 @@ class User < ActiveRecord::Base
      @methods = %w{awards lab_skills comp_skills gpa_comments personal_statement}
      @methods.each do |m|  
        pdf.text "#{m.gsub("_"," ").capitalize }\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
-       pdf.text "#{send(m)}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+       pdf.text "#{self.extra.send(m)}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
      end
        pdf.save_as("#{RAILS_ROOT}/public/pdf/#{self.id.to_s}_#{self.lastname}.pdf")
    end
 
-   def email_recommender
-     email = UserMailer.create_rec_request(
-       self.recommender.email, 
-       self.id, 
-       self.token, 
-       self.firstname, 
-       self.middlename, 
-       self.lastname, 
-       self.phone, 
-       self.email, 
-       self.citizenship, 
-       self.college, 
-       self.college_start, 
-       self.college_end, 
-       self.college_level, 
-       self.major, 
-       self.gpa, 
-       self.gpa_range, 
-       self.awards.gsub("\n", "<br />").insert(0, "<br />"), 
-       self.lab_skills.gsub("\n", "<br />").insert(0, "<br />"), 
-       self.comp_skills.gsub("\n", "<br />").insert(0, "<br />"), 
-       self.gpa_comments.gsub("\n", "<br />").insert(0, "<br />"), 
-       self.personal_statement.gsub("\n", "<br />").insert(0, "<br />"))      
-     email.set_content_type('multipart', 'mixed')
-     UserMailer.deliver(email)
-   end
-
-   def send_confirmation
-     email = UserMailer.create_confirmation(
+   def send_reg_confirmation
+     email = UserMailer.create_reg_confirmation(
        self.id, 
        self.token, 
        self.firstname, 
        self.lastname, 
        self.email
      )      
+     email.set_content_type('multipart', 'mixed')
+     UserMailer.deliver(email)
+   end
+
+   def send_app_confirmation
+     email = UserMailer.create_app_confirmation(
+       self.id, 
+       self.token, 
+       self.firstname, 
+       self.lastname, 
+       self.email
+     )      
+     email.set_content_type('multipart', 'mixed')
+     UserMailer.deliver(email)
+   end
+
+   def send_rec_request
+     email = UserMailer.create_rec_request(
+      self.recommender.email, 
+      self.id, 
+      self.token, 
+      self.firstname, 
+      self.lastname, 
+      self.email
+      )
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end

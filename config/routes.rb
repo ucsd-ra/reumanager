@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.home '', :controller => 'users', :action => 'welcome'
   map.connect '/academic_records/sorry', :controller => 'academic_records', :action => "sorry"
   map.thanks '/thanks', :controller => 'users', :action => 'thanks'
+  map.app_thanks '/app_thanks', :controller => 'users', :action => 'app_thanks'
   map.submit '/submit', :controller => "users", :action => 'submit'
   map.status '/status', :controller => "users", :action => "status"
   map.login  '/login',  :controller => 'sessions', :action => 'new'
