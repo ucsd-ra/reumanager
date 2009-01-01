@@ -1,19 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
   map.home '', :controller => 'users', :action => 'welcome'
+  map.connect '/academic_records/sorry', :controller => 'academic_records', :action => "sorry"
+  map.thanks '/thanks', :controller => 'users', :action => 'thanks'
+  map.submit '/submit', :controller => "users", :action => 'submit'
+  map.status '/status', :controller => "users", :action => "status"
+  map.login  '/login',  :controller => 'sessions', :action => 'new'
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'  
+  map.signup  '/signup', :controller => 'users',   :action => 'new'
   map.connect '/users/edit', :controller => "users", :action => "edit"
   map.resources :users
   map.resource :session
   
-  map.login  '/login',  :controller => 'sessions', :action => 'new'
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  
-  map.connect '/academic_records/sorry', :controller => 'academic_records', :action => "sorry"
-  
-  map.thanks '/thanks', :controller => 'users', :action => 'thanks'
-  
-  map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
-
-  map.signup  '/signup', :controller => 'users',   :action => 'new'
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

@@ -1,0 +1,54 @@
+<div class="fieldbox float">
+	<label>Current College or University</label><br />
+	<%= h(f.college) %>
+</div>
+
+<br style="clear:both;" />
+<div class="fieldbox float">
+	<label>Dates of Attendance (MM/YY)</label>
+</div>
+<br style="clear:both;" />
+<div class="fieldbox float">
+	<label>From:</label><br /><%= h(f.college_start) %><br style="clear:both;" />
+</div>
+<div class="fieldbox float">
+	<label>To:</label><br /><%= h(f.college_end) %>
+</div>
+<br style="clear:both;" />
+<div class="fieldbox small" id="academicollege_level">
+	<label>Current Academic Level:</label>
+	<%= h(f.college_level) %>
+</div>
+<div class="fieldbox clear">
+	<label>Major/Minor</label><br />
+	<%= h(f.major) %>
+</div>
+<div class="fieldbox float">
+	<label>GPA / GPA Scale (e.g. 4.0)</label><br /><%= h(f.gpa) %> / <%= h(f.gpa_range) %>
+</div>
+
+<div class="fieldbox float">
+	<label>
+		We have received your transcript named "<%= h(current_user.transcript.filename) %>" on <%= h(current_user.transcript.created_at)%><br />
+	</label>
+</div>
+<div id="pcollege" style="display:none;">
+	<div class="fieldbox">
+		<label>Please enter information about the previous college or university</label>
+	</div>
+	<div class="fieldbox float">
+		<label>Previous College or University</label><br />
+		<%= h(f.p_college) %>
+	</div>
+	<br style="clear:both;" />
+	<div class="fieldbox float">
+		<label>Dates of Attendance (MM/YY)</label><br style="clear:both;" />
+	</div>
+	<br style="clear:both;" />
+	<div class="fieldbox float">
+		<label>From:</label><%= h(f.pcollege_start) %><br style="clear:both;" />
+	</div>
+	<div class="fieldbox float">
+		<label>To:</label><%= h(f.pcollege_end) %>
+	</div>
+</div>

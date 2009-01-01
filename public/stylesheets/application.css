@@ -53,7 +53,7 @@ Colors:
 Layout
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 	#page 									{  width:800px; margin:20px auto; }
-	#single_column							{  background-color:white; border:2px solid #777; margin:0; padding:0; width:800px;  }
+	#single_column							{  background-color:white; border:2px solid #777; margin:0; padding:0 0 20px 0; width:800px;  }
 	#content								{  float:left;background-color:white;border:3px solid #aaa;border-top:none;padding:10px 10px 25px 10px; width:580px;  }
 	#sidebar 								{  float:right;width:190px;text-align:left;  }
 	#sidebar ul 							{  margin-left:0;padding-left:0;  }
@@ -103,11 +103,12 @@ Students
 	#app_navbar li a						{  background-color:#dfdfdf; border-bottom:1px solid #dfdfdf;  padding:1px 4px; }
 	#app_navbar li a.active					{  background-color:#fff;  }
 	#app_navbar li a:hover 					{  color:#666; border-bottom:1px solid #aaa;  }
+	#application h1#app_submit				{  text-align:center; }
+	
 	#about									{  margin:10px 220px 0;text-align:left;width:360px;  }
 	#about h5								{  margin:0;  }
 	#about ul								{  font-size:1.2em;  }
 	#application							{  text-align:left;  }
-	#application h1							{  text-align:right;  }
 	#application h4							{  margin:20px 10px 10px; color:#07243c; font-weight:normal; font-variant:normal; border-bottom:2px dotted #666; }
 	#application h5							{  margin:20px 30px;text-align:center;  }
 	#application fieldset					{  margin:0 80px;  }

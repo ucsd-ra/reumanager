@@ -1,0 +1,36 @@
+<div id="single_column">
+	<%= render :partial => "layouts/header" %>
+	<h2>Summer 2008 Online Application</h2>
+	<div id="about">
+		<h5>Submission Deadline:&nbsp;<span class="blood_red">February 13, 2009</span></h5>
+		<h5 id="eligibilty">Eligibility:</h5>
+		<ul class="bold blood_red">
+			<li>You must be a current, full-time undergraduate student</li>
+			<li>You must not plan to graduate before fall</li>
+			<li>You must be a U.S. citizen or permanent resident</li>
+		</ul>	
+	</div>
+	<br />
+	<h1>Please double-check your application data</h1>
+	
+	<div id="application">	
+			<fieldset id="personal_data">
+				<h4><%= link_to_unless_current "Personal Data", { :controller => "users", :action => "edit" }%></h4>
+				<%= render :partial => 'show_personal_data', :locals => { :f => current_user } %>
+			</fieldset>
+			<fieldset id="academic_record">
+				<h4><%= link_to_unless_current "Academic Information", { :controller => "academic_records" } %></h4>
+				<%= render :partial => 'show_academic_record', :locals => { :f => current_user.academic_record } %>
+			</fieldset>
+			<fieldset id="recommender">
+				<h4><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders " } %></h4>
+				<%= render :partial => 'show_recommender', :locals => { :r => current_user.recommender } %>
+			</fieldset>
+			<fieldset id="extra">
+				<h4><%= link_to_unless_current "Additional Information", { :controller => "extras " } %></h4>
+				<%= render :partial => 'show_extra', :locals => { :e => current_user.extra } %>
+			</fieldset>		
+	</div>
+	<h1><%= link_to "Submit Application", { :action => "submit"}, :method => "post", :confirm => "You are about to submit your application, please allow up to 30 seconds to process", :id => "app_submit" %></h1>
+	
+</div>

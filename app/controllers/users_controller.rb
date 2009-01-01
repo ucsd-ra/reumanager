@@ -84,4 +84,7 @@ class UsersController < ApplicationController
     end
   end
   
+  def submit
+    return unless request.post?
+ end
 end

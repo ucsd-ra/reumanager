@@ -5,17 +5,6 @@ class RecommendersController < ApplicationController
     current_user.recommender ? redirect_to(:action => "edit") : redirect_to(:action => "new")
   end
 
-  # GET /recommenders/1
-  # GET /recommenders/1.xml
-  def show
-    @recommender = Recommender.find(current_user.recommender)
-    
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @recommender }
-    end
-  end
-
   # GET /recommenders/new
   # GET /recommenders/new.xml
   def new
@@ -52,12 +41,12 @@ class RecommendersController < ApplicationController
   # PUT /recommenders/1
   # PUT /recommenders/1.xml
   def update
-    @recommender = Recommender.find(params[:id])
+    @recommender = Recommender.find(current_user.recommender)
 
     respond_to do |format|
       if @recommender.update_attributes(params[:recommender])
         flash[:notice] = 'Recommender was successfully updated.'
-        format.html { redirect_to(@recommender) }
+        format.html { redirect_to( :action => "edit" ) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

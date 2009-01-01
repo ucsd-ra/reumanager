@@ -42,7 +42,7 @@ class ExtrasController < ApplicationController
   # PUT /extras/1
   # PUT /extras/1.xml
   def update
-    @extra = Extra.find(params[:id])
+    @extra = Extra.find_by_user_id(current_user.id)
 
     respond_to do |format|
       if @extra.update_attributes(params[:extra])

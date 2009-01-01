@@ -2,13 +2,12 @@
 	<%= render :partial => "layouts/header" %>
 	<div id="status">
 		<h1>Application Status</h1>
-		<p>Your application was successfully submitted on <%= @student.created_at.strftime("%B %d [%H:%M %Z]") %>.</p>
-		<% if @student.recommendation -%>
-			<p>Your recommendation was successfully submitted by <%= @student.recommender.name %> on <%= @student.recommendation.created_at.strftime("%B %d [%H:%M %Z]") %>.</p>
+		<p>Your application was successfully submitted on <%= current_user.submit_date("%B %d [%H:%M %Z]") %>.</p>
+		<% if current_user.recommendation -%>
+			<p>Your recommendation was successfully submitted by <%= current_user.recommender.name %> on <%= current_user.recommendation.created_at.strftime("%B %d [%H:%M %Z]") %>.</p>
 		<% else -%>
-				<p>We have not received a recommendation yet. This request was previously sent on <%= @student.updated_at.strftime("%B %d [%H:%M %Z]") %> to <%= @student.recommender.name %> at <%= @student.recommender.email %>.</p>
-				<p>Click <%= link_to "HERE", { :controller => "students", :action => "resend_request", :id => @student.token }, :confirm => "You are about to resend your recommendation request. This request was previously sent on #{ @student.updated_at.strftime("%B %d [%H:%M %Z]") }." %> to resend your request.</p>
-				<%= content_tag 'div', h(flash[:status]), :class => 'status_error', :id => 'status_error' if flash[:status] %>
+				<p>We have not received a recommendation yet. This request was previously sent on <%= current_user.rec_request.strftime("%B %d [%H:%M %Z]") %> to <%= current_user.recommender.name %> at <%= current_user.recommender.email %>.</p>
+				<p>Click <%= link_to "HERE", { :controller => "users", :action => "resend_request", :id => current_user.token }, :confirm => "You are about to resend your recommendation request. This request was previously sent on #{ current_user.rec_request.strftime("%B %d [%H:%M %Z]") }." %> to resend your request.</p>
 		<% end -%>
 	</div>
 </div>
