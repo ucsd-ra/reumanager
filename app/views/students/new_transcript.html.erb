@@ -1,0 +1,19 @@
+<div id="single_column">
+	<%= render :partial => "layouts/header" %>
+	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
+	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
+	<div id="application">
+		<%= error_messages_for :transcript %>
+		<% form_for(@transcript, :url => { :action => "create_transcript" }, :html => { :multipart => true }) do |f| %>
+			
+			
+			<div class="fieldbox">
+				<label>Please upload a PDF of your most recent transcript:</label>
+				<%= file_field_tag :transcript_file %>
+			</div>
+				<br style="clear:both;" />
+			<%= f.submit "Submit" %>	
+		<% end %>
+	</div>
+	<br style="clear:both;" />
+</div>

@@ -1,0 +1,31 @@
+<div id="single_column">
+	<%= render :partial => "layouts/header" %>
+	<h2>Summer 2008 Online Application</h2>
+	<div id="about">
+		<h5>Submission Deadline:&nbsp;<span class="blood_red">February 13, 2009</span></h5>
+		<h5 id="eligibilty">Eligibility:</h5>
+		<ul class="bold blood_red">
+			<li>You must be a current, full-time undergraduate student</li>
+			<li>You must not plan to graduate before fall</li>
+			<li>You must be a U.S. citizen or permanent resident</li>
+		</ul>	
+	</div>
+	
+	<div id="application">	
+		<%= render :partial => "layouts/app_navbar" %>
+		<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
+		<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
+		
+		<%= error_messages_for :student, :transcript %>
+		<% form_for(@user) do |f| %>
+			<fieldset id="personal_data">
+				<%= render :partial => 'personal_data', :locals => { :f => f } %>
+			</fieldset>
+	
+			<%= f.submit "Update", :id => "submit" %>	
+		<% end %>
+	</div>
+</div>
+<div id="observers">
+	<%= render :partial => "layouts/observers" %>
+</div>

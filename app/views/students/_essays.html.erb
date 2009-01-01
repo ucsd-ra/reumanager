@@ -1,0 +1,30 @@
+<div class="fieldbox">
+	<label>Please list up to five academic awards that you have received:</label><br />
+	<label>(e.g. Award - Date Received [mm/yy])</label><br />
+	<%= f.text_area 'awards' %>
+</div>
+<div class="fieldbox">
+	<label>Please list any laboratory skills:</label>
+	<%= f.text_area 'lab_skills'%>
+</div>
+<div class="fieldbox">
+	<label>Please list any computer skills:</label>
+	<%= f.text_area 'comp_skills'%>
+</div>
+<div class="fieldbox">
+	<label>Do you feel your GPA accurately reflects your academic abilities?</label><br />
+	<label>Please comment on why or why not in the space provided:</label>
+	<%= f.text_area 'gpa_comments' %>
+</div>
+<div class="fieldbox">
+	<label>How did you learn about Research Experience for Undergrads (REU)?</label><br />
+	<%= f.radio_button 'learn', 'NSF REU Website' %><label>NSF REU Website</label>&nbsp;&nbsp;&nbsp;
+	<%= f.radio_button 'learn', 'Professor' %><label>Professor</label>&nbsp;&nbsp;&nbsp;
+	<%= f.radio_button 'learn', 'Poster' %><label>Poster</label>&nbsp;&nbsp;&nbsp;
+	<%= f.radio_button 'learn', 'Email' %><label>Email</label>&nbsp;&nbsp;&nbsp;
+	<%= f.radio_button 'learn', 'Other' %><label>Other</label>&nbsp;&nbsp;&nbsp;
+</div>
+<div class="fieldbox">
+	<label>Please Complete a brief essay (up to 250 words) explaining why you are interested in our Research Experience for Undergragues program and how the experience may help you achieve your future goals:</label>
+	<%= f.text_area 'personal_statement'%>
+</div>

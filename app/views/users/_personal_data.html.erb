@@ -1,0 +1,112 @@
+<div id="residence">
+	<div class="fieldbox float">
+		<label>Firstname</label><br />
+		<%= f.text_field 'firstname' %>
+	</div>
+	<div class="fieldbox float">
+		<label>Middlename</label><br />
+		<%= f.text_field 'middlename' %>
+	</div>
+	<div class="fieldbox float">
+		<label>Lastname</label><br />
+		<%= f.text_field 'lastname' %>
+	</div>
+	<div class="clear">
+		<label>Date of Birth</label><br />
+		<%= f.date_select "dob", :start_year => 1970, :end_year => 1994 %>
+	</div>
+	<div class="clear">
+		<label>Street&nbsp;Address</label><br />
+		<%= f.text_field 'street' %>
+	</div>
+	<div class="fieldbox float">
+		<label>City</label><br />
+		<%= f.text_field 'city' %>
+	</div>
+	<div class="fieldbox float">
+		<label>State</label><br />
+		<%= f.text_field 'state' %>
+	</div>
+	<div class="fieldbox float">
+		<label>Zip</label><br />
+		<%= f.text_field 'zip' %>
+	</div>
+	<div class="fieldbox float">
+		<label>Phone</label><br />
+		<%= f.text_field 'phone' %>
+	</div>
+	<div class="fieldbox float">
+		<label>Email</label><br />
+		<%= f.text_field 'email' %>
+	</div>
+	<br style="clear:both;" />
+	<div class="fieldbox float">
+		<%= label_tag 'password' %><br/>
+		<%= f.password_field :password %>
+	</div>
+	
+	<div class="fieldbox float">
+		<%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
+		<%= f.password_field :password_confirmation %>
+	</div>
+</div>
+<div class="fieldbox clear small" id="perm_bool">
+	<label>Is the above address your permanent residence?</label>
+	&nbsp;
+	<%= radio_button_tag 'paddress', 'yes', true %><label>Yes</label>
+	&nbsp;&nbsp;
+	<%= radio_button_tag 'paddress', 'no', false %><label>No</label>
+</div>
+<div id="presidence" style="display:none;">
+	<div class="clear">
+		<label>Please add your permanent residence:</label>
+	</div>
+	<div class="fieldbox clear">
+		<label>Street&nbsp;Address</label><br />
+		<%= f.text_field 'pstreet' %>
+	</div>
+	<div class="fieldbox float">
+		<label>City</label><br />
+		<%= f.text_field 'pcity' %>
+	</div>
+	<div class="fieldbox float">
+		<label>State</label><br />
+		<%= f.text_field 'pstate' %>
+	</div>
+	<div class="fieldbox float">
+		<label>Zip</label><br />
+		<%= f.text_field 'pzip' %>
+	</div>
+	<div class="fieldbox float">
+		<label>Phone</label><br />
+		<%= f.text_field 'pphone' %>
+	</div>
+</div>
+<div class="fieldbox clear">
+	<label>Citizenship:</label>
+	<%= f.select 'citizenship', %w{United\ States U.S.\ Permanent\ Resident Other} %>
+	<span class="hidden" id="cor" style="display:none;">
+		<label>Country of Residence:</label>
+		<%= f.text_field 'cresidence' %>
+	</span>
+</div>
+<div class="fieldbox clear">
+	<label>Gender*:</label>
+	<%= f.select 'gender', %w{ Prefer\ not\ to\ respond Female Male} %>
+</div>
+<div class="fieldbox clear">
+	<label>Ethnicity*:</label>
+	<%= f.select 'ethnicity', %w{ Prefer\ not\ to\ respond Hispanic\ or\ Latino Not\ Hispanic\ or\ Latino} %>
+</div>
+<div class="fieldbox clear">
+	<label>Race*:</label>
+	<%= f.select 'race', %w{ Prefer\ not\ to\ respond American\ Indian\ or\ Alaskan\ Native Asian Black\ or\ African\ American Native\ Hawaiian\ or\ Pacific\ Islander White} %>
+</div>
+<div class="fieldbox clear">
+	<label>Disability*:</label>
+	<%= select_tag 'disability', options_for_select(%w{ Prefer\ not\ to\ respond No Yes })  %>
+	<span class="hidden" id="dis" style="display:none;">
+		<label>Specify:</label>
+		<%= f.text_field 'disability' %>
+	</span>
+</div>

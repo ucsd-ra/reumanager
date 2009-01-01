@@ -1,0 +1,12 @@
+<h1>Editing recommender</h1>
+
+<% form_for(@recommender) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @recommender %> |
+<%= link_to 'Back', recommenders_path %>
