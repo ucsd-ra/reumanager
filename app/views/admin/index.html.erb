@@ -1,9 +1,0 @@
-<div id="single_column">
-	<%= render :partial => "application/header" %>
-	<div id="admin">
-		<h1>Administration Menu</h1>
-		<h5><%= link_to "Student Applicants", :controller => "students" %></h5>
-		<h5><%= link_to "Create report of all applications and recommendations", { :controller => "admin", :action => "report" } %></h5>
-		<h5><%= link_to "Logout", :controller => "sessions", :action => "destroy" %></h5>
-	</div> 
-</div>
