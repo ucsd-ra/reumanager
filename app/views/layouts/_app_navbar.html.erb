@@ -11,12 +11,15 @@
 		<li><%= link_to_unless_current "Academic Information", { :controller => "academic_records" } %></li>
 	<% end -%>
 	
-	<% if params[:controller] == "recommendations" -%>
-		<li><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommendations" }, :class => "active"  %></li>
+	<% if params[:controller] == "recommenders" -%>
+		<li><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders" }, :class => "active"  %></li>
 	<% else -%>
-		<li><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommendations " } %></li>
+		<li><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders " } %></li>
 	<% end -%>
 	
-	
-	<li><%= link_to_unless_current "Additional Information", { :controller => "extras", :action => "edit" } %></li>
+	<% if params[:controller] == "extras" -%>
+		<li><%= link_to_unless_current "Additional Information", { :controller => "extras" }, :class => "active"  %></li>
+	<% else -%>
+		<li><%= link_to_unless_current "Additional Information", { :controller => "extras " } %></li>
+	<% end -%>
 </ul>

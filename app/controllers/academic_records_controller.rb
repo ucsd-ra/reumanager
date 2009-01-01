@@ -42,6 +42,12 @@ class AcademicRecordsController < ApplicationController
   def create
     @academic_record = AcademicRecord.new(params[:academic_record])
     @academic_record.user_id = current_user.id
+    if params[:transcript_file] != ""
+      current_user.transcript.destroy if current_user.transcript
+      @transcript = Transcript.new(:uploaded_data => params[:transcript_file])
+      @transcript.user_id = current_user.id
+      @transcript.save
+    end
     respond_to do |format|
       if @academic_record.save
         flash[:notice] = 'Academic Record was successfully created'
@@ -85,6 +91,20 @@ class AcademicRecordsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(academic_records_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def observe_pcollege
+    if params[:prev_college] == "Yes"
+      render :update do |page|
+        page[:observers].replace_html :partial => "layouts/observers"          
+        page[:pcollege].show
+      end
+    else
+      render :update do |page|
+        page[:observers].replace_html :partial => "layouts/observers"
+        page[:pcollege].hide
+      end
     end
   end
 end

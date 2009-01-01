@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090101074757) do
+ActiveRecord::Schema.define(:version => 20090101195449) do
 
   create_table "academic_records", :force => true do |t|
     t.integer  "user_id"
@@ -23,6 +23,19 @@ ActiveRecord::Schema.define(:version => 20090101074757) do
     t.string   "p_college"
     t.string   "pcollege_start"
     t.string   "pcollege_end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "extras", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "awards"
+    t.text     "research_experience"
+    t.text     "lab_skills"
+    t.text     "comp_skills"
+    t.text     "gpa_comments"
+    t.string   "learn"
+    t.text     "personal_statement"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,6 +55,13 @@ ActiveRecord::Schema.define(:version => 20090101074757) do
   end
 
   create_table "recommenders", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "title"
+    t.string   "department"
+    t.string   "college"
+    t.string   "phone"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

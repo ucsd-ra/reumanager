@@ -8,8 +8,8 @@ class RecommendersController < ApplicationController
   # GET /recommenders/1
   # GET /recommenders/1.xml
   def show
-    @recommender = Recommender.find(params[:id])
-
+    @recommender = Recommender.find(current_user.recommender)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @recommender }
@@ -20,7 +20,7 @@ class RecommendersController < ApplicationController
   # GET /recommenders/new.xml
   def new
     @recommender = Recommender.new
-
+    @recommender.user_id = current_user.id
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @recommender }
@@ -29,18 +29,18 @@ class RecommendersController < ApplicationController
 
   # GET /recommenders/1/edit
   def edit
-    @recommender = Recommender.find(params[:id])
+    @recommender = Recommender.find(current_user.recommender)
   end
 
   # POST /recommenders
   # POST /recommenders.xml
   def create
     @recommender = Recommender.new(params[:recommender])
-
+    @recommender.user_id = current_user.id
     respond_to do |format|
       if @recommender.save
         flash[:notice] = 'Recommender was successfully created.'
-        format.html { redirect_to(@recommender) }
+        format.html { redirect_to( :action => "edit" ) }
         format.xml  { render :xml => @recommender, :status => :created, :location => @recommender }
       else
         format.html { render :action => "new" }

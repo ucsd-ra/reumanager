@@ -36,7 +36,7 @@
 	<div class="fieldbox float">
 		<label>
 			We have received your transcript named "<%= h(current_user.transcript.filename) %>" on <%= h(current_user.transcript.created_at)%><br />
-			Click here to upload a new transcript.
+			Click below to upload a new transcript.
 		</label>
 		<%= file_field_tag :transcript_file %>
 	</div>
@@ -58,9 +58,15 @@
 		<label>Previous College or University</label><br />
 		<%= f.text_field 'p_college' %>
 	</div>
+	<br style="clear:both;" />
 	<div class="fieldbox float">
 		<label>Dates of Attendance (MM/YY)</label><br style="clear:both;" />
+	</div>
+	<br style="clear:both;" />
+	<div class="fieldbox float">
 		<label>From:</label><%= f.text_field 'pcollege_start' %><br style="clear:both;" />
+	</div>
+	<div class="fieldbox float">
 		<label>To:</label><%= f.text_field 'pcollege_end' %>
 	</div>
 	

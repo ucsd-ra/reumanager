@@ -144,12 +144,12 @@ Students
 	#academic_level							{  margin:15px 0;  }
 	#academic_record_major							{  width:370px;  }
 	#academic_record_gpa, #academic_record_gpa_range		{  width:40px;  }
-	#academic_record_awards							{  height:6.2em;  }
-	#academic_record_lab_skills						{  height:6.2em;  }
-	#academic_record_comp_skills					{  height:6.2em;  }
-	#academic_record_gpa_comments					{  height:6.2em;  }
-	#academic_record_personal_statement				{  height:18.6em;  }
-	#academic_record_submit							{  margin:20px 0 10px 330px;clear:both;font-size:1.8em;  }
+	#extra_awards							{  height:6.2em;  }
+	#extra_lab_skills						{  height:6.2em;  }
+	#extra_comp_skills					{  height:6.2em;  }
+	#extra_gpa_comments					{  height:6.2em;  }
+	#extra_personal_statement				{  height:18.6em;  }
+	#extra_submit							{  margin:20px 0 10px 330px;clear:both;font-size:1.8em;  }
 	#recommender_name, #recommender_title,
 	#recommender_department					{  width:180px;  }
 	#recommender_college					{  width:370px;  }

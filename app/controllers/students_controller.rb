@@ -84,21 +84,6 @@ class StudentsController < ApplicationController
     end
   end
   
-
-  
-  def observe_pcollege
-    if params[:prev_college] == "Yes"
-      render :update do |page|
-        page[:observers].replace_html :partial => "observers"          
-        page[:pcollege].show
-      end
-    else
-      render :update do |page|
-        page[:observers].replace_html :partial => "observers"
-        page[:pcollege].hide
-      end
-    end
-  end
   
   def thanks
   end

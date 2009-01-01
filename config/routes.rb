@@ -1,9 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :recommenders
-
-  map.resources :recommendations
-
-  
   map.home '', :controller => 'users', :action => 'welcome'
   map.connect '/users/edit', :controller => "users", :action => "edit"
   map.resources :users

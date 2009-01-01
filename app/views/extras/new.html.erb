@@ -7,11 +7,11 @@
 	<div id="application">
 		<%= render :partial => "layouts/app_navbar" %>
 		<h1 id="flash"><%= flash[:notice] %></h1>		
-		<%= error_messages_for :recommender %>
-		<% form_for(@recommender, :url => { :action => "create" }, :method => "post") do |r| %>
-			<fieldset id="recommender">
-				<%= render :partial => "recommender_information", :locals => { :r => r }%>
-			    <%= r.submit "Create", :id => "submit" %>
+		<%= error_messages_for :extra %>
+		<% form_for(@extra, :url => { :action => "create" }, :method => "post") do |e| %>
+			<fieldset id="extra">
+				<%= render :partial => "additional_information", :locals => { :e => e }%>
+			    <%= e.submit "Submit", :id => "submit" %>
 				<br style="clear:both;" />	
 			</fieldset>
 		<% end %>

@@ -1,12 +1,19 @@
-<h1>Editing recommender</h1>
+<div id="single_column">
+	<%= render :partial => "layouts/header" %>
+	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
+	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
+	<h2>Summer 2008 Online Application</h2>
 
-<% form_for(@recommender) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @recommender %> |
-<%= link_to 'Back', recommenders_path %>
+	<div id="application">
+		<%= render :partial => "layouts/app_navbar" %>
+		<h1 id="flash"><%= flash[:notice] %></h1>		
+		<%= error_messages_for :recommender %>
+		<% form_for(@recommender, :url => {:action => "update"}, :method => "put") do |r| %>
+			<fieldset id="recommender">
+				<%= render :partial => "recommender_information", :locals => { :r => r }%>
+			    <%= r.submit "Update", :id => "submit" %>
+				<br style="clear:both;" />	
+			</fieldset>
+		<% end %>
+	</div>
+</div>

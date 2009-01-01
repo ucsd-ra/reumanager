@@ -1,6 +1,7 @@
 class CreateRecommenders < ActiveRecord::Migration
   def self.up
     create_table :recommenders do |t|
+      t.column :user_id,              :integer
       t.column :name,                 :string
       t.column :title,                :string
       t.column :department,           :string
