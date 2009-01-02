@@ -1,11 +1,17 @@
-<h1>New recommendation</h1>
+<div id="single_column">
+	<%= render :partial => "layouts/header" %>
+	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
+	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
+	<h2>Summer 2009 Online Recommemdation</h2>
 
-<% form_for(@recommendation) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', recommendations_path %>
+	<div id="application">
+		<h1 id="flash"><%= flash[:notice] %></h1>		
+		
+		<%= error_messages_for :recommendation %>
+		<% form_for(@recommendation, :url => { :action => "create", :id => @user.token }, :method => "post") do |f| %>
+				<%= render :partial => "recommendation_information", :locals => { :f => f }%>
+			    <%= f.submit "Create", :id => "submit" %>
+				<br style="clear:both;" />	
+		<% end %>
+	</div>
+</div>

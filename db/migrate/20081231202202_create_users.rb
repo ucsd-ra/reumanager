@@ -24,8 +24,9 @@ class CreateUsers < ActiveRecord::Migration
       t.column :ethnicity,            :string
       t.column :race,                 :string
       t.column :disability,           :string
-      t.column :submit_date,          :datetime
+      t.column :submit_date,          :datetime      
       t.column :rec_request,          :datetime
+      t.column :completed,            :datetime
       t.column :token,                :string
       t.column :remember_token,            :string, :limit => 40
       t.column :remember_token_expires_at, :datetime

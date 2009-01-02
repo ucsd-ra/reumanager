@@ -5,13 +5,13 @@ class Recommendation < ActiveRecord::Base
   belongs_to                :recommender
   validates_presence_of     :known_student, :know_capacity, :rating, :gpa, :gpa_range, :undergrad_inst, :faculty_comment
   
-  after_create :make_pdf, :send_recommendation
+  after_create :make_pdf_and_send_app, :send_recommendation
   
-  def make_pdf
-    @student = Student.find_by_id(self.student_id)
+  def make_pdf_and_send_app
+    @user = User.find_by_id(self.user_id)
     @recommender = Recommender.find_by_id(self.recommender_id)
     pdf = PDF::Writer.new
-    pdf.text "NSF REU Recommendation for #{@student.firstname} #{@student.lastname}\n\n", :font_size => 22, :justification => :center
+    pdf.text "NSF REU Recommendation for #{@user.firstname} #{@user.lastname}\n\n", :font_size => 22, :justification => :center
     pdf.move_pointer(24)
 
     pdf.text "Recommender Personal Data\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
@@ -29,15 +29,34 @@ class Recommendation < ActiveRecord::Base
     pdf.text "Faculty Recommendation\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
     pdf.text "#{self.faculty_comment}", :font_size => 11, :justification => :left, :left => 33, :right => 33
     
-    pdf.save_as("#{RAILS_ROOT}/public/pdf/#{@student.id.to_s}_#{@student.lastname}_rec.pdf")
+    pdf.text "NSF REU Application for #{self.firstname} #{self.lastname}\n\n", :font_size => 22, :justification => :center
+    pdf.move_pointer(24)
+
+    pdf.text "Personal Data\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+    pdf.text "#{@user.street}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    pdf.text "#{@user.city}, #{@user.state} #{@user.zip}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    if @user.citizenship == "United States"
+      pdf.text "Citizenship: #{@user.citizenship}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    else
+      pdf.text "Citizenship: #{@user.citizenship}, Country of Residence: #{@user.cresidence}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    end
+
+    pdf.text "Academic Info\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+    pdf.text "#{@user.academic_record.college_level.capitalize} majoring in #{@user.academic_record.major} at #{@user.academic_record.college}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    pdf.text "Attended from: #{@user.academic_record.college_start} to #{@user.academic_record.college_end}, GPA: #{@user.academic_record.gpa} out of #{@user.academic_record.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    if @user.academic_record.p_college != ""
+      pdf.text "Previous college: #{@user.academic_record.p_college}, Attended from: #{@user.academic_record.pcollege_start} to #{@user.academic_record.pcollege_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    else
+      pdf.text "\n"
+    end
+
+    @extras = %w{awards lab_skills comp_skills gpa_comments personal_statement}
+    @extras.each do |e|  
+      pdf.text "#{m.gsub("_"," ").capitalize }\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+      pdf.text "#{@user.extra.send(m)}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    end    
+    pdf.save_as("#{RAILS_ROOT}/public/pdf/#{@user.id.to_s}_#{@user.lastname}_rec.pdf")
+    @user.send_complete_app
   end
   
-  def send_recommendation    
-    @user = User.find_by_id(self.student_id)
-    email = UserMailer.create_recommendation_email(@user.id, @user.firstname, @user.middlename, @user.lastname, @user.email)
-    email.set_content_type('multipart', 'mixed')
-    UserMailer.deliver(email)
-  end
-end
-
 end

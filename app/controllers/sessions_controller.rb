@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
         self.current_user = user
         new_cookie_flag = (params[:remember_me] == "1")
         handle_remember_cookie! new_cookie_flag
-        if user.id == 1
+        if user.id == 100
           redirect_to( :controller => "admin" )
         else
           if user.submit_date

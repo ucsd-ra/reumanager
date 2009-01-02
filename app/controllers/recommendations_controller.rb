@@ -8,12 +8,16 @@ class RecommendationsController < ApplicationController
   # GET /recommendations/new
   # GET /recommendations/new.xml
   def new
-    @recommendation = Recommendation.new
-    @user = User.find_by_token(params[:id])
+    if @user = User.find_by_token(params[:id])  
+      @recommendation = Recommendation.new
+      @recommender = @user.recommender
     
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @recommendation }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml  { render :xml => @recommendation }
+      end
+    else
+      redirect_to :action => "sorry"
     end
   end
 
@@ -26,7 +30,9 @@ class RecommendationsController < ApplicationController
   # POST /recommendations.xml
   def create
     @recommendation = Recommendation.new(params[:recommendation])
-
+    @user = User.find_by_token(params[:id])
+    @recommendation.user_id = @user.id
+    @recomendation.recommender_id = @user.recommender.id
     respond_to do |format|
       if @recommendation.save
         flash[:notice] = 'Recommendation was successfully created.'

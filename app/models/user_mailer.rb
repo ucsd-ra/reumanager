@@ -52,19 +52,18 @@ class UserMailer < ActionMailer::Base
       )
   end
     
-  def recommendation_email(id, firstname, middlename, lastname, email)
-      @subject    = 'UCSD Bioengineering - NSF REU Recommendation'
-      @recipients = ['UCSD Bioengineering - NSF REU <nsfreu@bioeng.ucsd.edu>']
+  def complete_app(id, firstname, lastname, email)
+      @subject    = "UCSD Bioengineering - NSF REU Complete Application for #{firstname} #{lastname}"
+      @recipients = ['UCSD Bioengineering - NSF REU <jgrevich@bioeng.ucsd.edu>']
       @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
       @sent_on    = Time.now
       @headers    = {}
 
       part(
         :content_type => "text/html", 
-        :body => render_message("recommendation_email",
+        :body => render_message("complete_app",
                                 :id => id,
-                                :firstname => firstname, 
-                                :middlename => middlename, 
+                                :firstname => firstname,
                                 :lastname => lastname, 
                                 :email => email)
         )

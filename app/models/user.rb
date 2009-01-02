@@ -95,6 +95,7 @@ class User < ActiveRecord::Base
    end
 
    def send_app_confirmation
+     self.update_attribute("submit_date", Time.now)     
      email = UserMailer.create_app_confirmation(
        self.id, 
        self.token, 
@@ -107,6 +108,7 @@ class User < ActiveRecord::Base
    end
 
    def send_rec_request
+     self.update_attribute("rec_request", Time.now)
      email = UserMailer.create_rec_request(
       self.recommender.email, 
       self.id, 
@@ -119,10 +121,21 @@ class User < ActiveRecord::Base
      UserMailer.deliver(email)
    end
 
+   def send_complete_app
+     self.update_attribute("completed", Time.now)     
+     email = UserMailer.create_complete_app(
+       self.id, 
+       self.token, 
+       self.firstname, 
+       self.lastname, 
+       self.email
+     )      
+     email.set_content_type('multipart', 'mixed')
+     UserMailer.deliver(email)
+   end
+   
   protected
     def make_token 
       self.token = Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by{rand}.join) 
     end
-
-
 end

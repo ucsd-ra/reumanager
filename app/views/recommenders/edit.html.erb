@@ -10,6 +10,7 @@
 		<%= error_messages_for :recommender %>
 		<% form_for(@recommender, :url => {:action => "update"}, :method => "put") do |r| %>
 			<fieldset id="recommender">
+				<div class="fieldbox"><label>Please supply the name and contact information of a faculty member who has agreed to write a letter of recommendation in support of your application. Instructions for submitting the letter will be sent directly to the faculty member</label></div>
 				<%= render :partial => "recommender_information", :locals => { :r => r }%>
 			    <%= r.submit "Update", :id => "submit" %>
 				<br style="clear:both;" />	

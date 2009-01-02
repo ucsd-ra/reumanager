@@ -31,6 +31,6 @@
 				<%= render :partial => 'show_extra', :locals => { :e => current_user.extra } %>
 			</fieldset>		
 	</div>
-	<h1><%= link_to "Submit Application", { :action => "submit"}, :method => "post", :confirm => "You are about to submit your application, please allow up to 30 seconds to process", :id => "app_submit" %></h1>
+	<h1><%= link_to "Submit Application", { :action => "submit"}, :method => "post", :confirm => "You are about to submit your application, please allow up to 30 seconds to process", :onclick => "$('app_submit').hide();", :id => "app_submit" %></h1>
 	
 </div>

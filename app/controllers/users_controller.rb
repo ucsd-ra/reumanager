@@ -90,4 +90,8 @@ class UsersController < ApplicationController
       current_user.send_rec_request
       redirect_to "/app_thanks"
   end
+  
+  def app_thanks
+     logout_killing_session!
+  end
 end

@@ -54,6 +54,7 @@ class AcademicRecordsController < ApplicationController
         format.html { redirect_to( :action => "edit" ) }
         format.xml  { render :xml => @academic_record, :status => :created, :location => @academic_record }
       else
+        @academic_record.errors.add "You must upload copy of your most recent transcript." unless current_user.transcript
         format.html { render :action => "new" }
         format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
       end
@@ -71,11 +72,12 @@ class AcademicRecordsController < ApplicationController
       @transcript.save
     end
     respond_to do |format|
-      if @academic_record.update_attributes(params[:academic_record])
+      if @academic_record.update_attributes(params[:academic_record]) && current_user.transcript
         flash[:notice] = 'Academic Record was successfully updated'
         format.html { redirect_to( :action => "edit" ) }
         format.xml  { head :ok }
       else
+        @academic_record.errors.add_to_base "You must upload copy of your most recent transcript." unless current_user.transcript
         format.html { render :action => "edit" }
         format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
       end
