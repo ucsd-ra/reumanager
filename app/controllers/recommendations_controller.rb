@@ -32,11 +32,11 @@ class RecommendationsController < ApplicationController
     @recommendation = Recommendation.new(params[:recommendation])
     @user = User.find_by_token(params[:id])
     @recommendation.user_id = @user.id
-    @recomendation.recommender_id = @user.recommender.id
+    @recommendation.recommender_id = @user.recommender.id
     respond_to do |format|
       if @recommendation.save
         flash[:notice] = 'Recommendation was successfully created.'
-        format.html { redirect_to(@recommendation) }
+        format.html { redirect_to( "/rec_thanks" ) }
         format.xml  { render :xml => @recommendation, :status => :created, :location => @recommendation }
       else
         format.html { render :action => "new" }

@@ -124,8 +124,7 @@ class User < ActiveRecord::Base
    def send_complete_app
      self.update_attribute("completed", Time.now)     
      email = UserMailer.create_complete_app(
-       self.id, 
-       self.token, 
+       self.id,  
        self.firstname, 
        self.lastname, 
        self.email

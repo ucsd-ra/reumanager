@@ -5,7 +5,7 @@ class Recommendation < ActiveRecord::Base
   belongs_to                :recommender
   validates_presence_of     :known_student, :know_capacity, :rating, :gpa, :gpa_range, :undergrad_inst, :faculty_comment
   
-  after_create :make_pdf_and_send_app, :send_recommendation
+  after_create :make_pdf_and_send_app
   
   def make_pdf_and_send_app
     @user = User.find_by_id(self.user_id)
@@ -29,7 +29,7 @@ class Recommendation < ActiveRecord::Base
     pdf.text "Faculty Recommendation\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
     pdf.text "#{self.faculty_comment}", :font_size => 11, :justification => :left, :left => 33, :right => 33
     
-    pdf.text "NSF REU Application for #{self.firstname} #{self.lastname}\n\n", :font_size => 22, :justification => :center
+    pdf.text "NSF REU Application for #{@user.firstname} #{@user.lastname}\n\n", :font_size => 22, :justification => :center
     pdf.move_pointer(24)
 
     pdf.text "Personal Data\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
@@ -52,10 +52,10 @@ class Recommendation < ActiveRecord::Base
 
     @extras = %w{awards lab_skills comp_skills gpa_comments personal_statement}
     @extras.each do |e|  
-      pdf.text "#{m.gsub("_"," ").capitalize }\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
-      pdf.text "#{@user.extra.send(m)}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+      pdf.text "#{e.gsub("_"," ").capitalize }\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+      pdf.text "#{@user.extra.send(e)}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     end    
-    pdf.save_as("#{RAILS_ROOT}/public/pdf/#{@user.id.to_s}_#{@user.lastname}_rec.pdf")
+    pdf.save_as("#{RAILS_ROOT}/public/pdf/#{@user.id.to_s}_#{@user.lastname}.pdf")
     @user.send_complete_app
   end
   
