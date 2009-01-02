@@ -57,6 +57,7 @@ class Recommendation < ActiveRecord::Base
     end    
     pdf.save_as("#{RAILS_ROOT}/public/pdf/#{@user.id.to_s}_#{@user.lastname}.pdf")
     @user.send_complete_app
+    @user.completed = Time.now
   end
   
 end

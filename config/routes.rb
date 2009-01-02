@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.thanks '/thanks', :controller => 'users', :action => 'thanks'
   map.rec_thanks '/rec_thanks', :controller => 'users', :action => 'rec_thanks'
   map.app_thanks '/app_thanks', :controller => 'users', :action => 'app_thanks'
+  map.resend_request '/resend_request', :controller => 'users', :action => 'resend_request'
   map.submit '/submit', :controller => "users", :action => 'submit'
   map.status '/status', :controller => "users", :action => "status"
   map.login  '/login',  :controller => 'sessions', :action => 'new'

@@ -1,0 +1,10 @@
+<div id="single_column">
+	<%= render :partial => "layouts/header" %>
+	
+	<div id="application">
+		<h4><%= link_to_unless_current "Application Status", "/status" %> | <%= link_to_unless_current "Resend Recommendation Request", "/resend_request" %></h4>
+	
+		<p class="thanks">Your recommendation request has been submitted.</p>
+	</div>
+	
+</div>

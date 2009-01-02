@@ -70,7 +70,7 @@ Layout
 	#header h6 a							{  color:#eee;  }
 	#header #ucsd							{  height:60px;margin:0 0 0 15px;width:79px;clear:none;float:left;  }
 	#header #nsf							{  height:60px;margin:0 15px 0 0;width:60px;clear:none;float:right;  }
-	#notice, #error							{  color:#7e0815; font-size:1.8em; margin:0 15px;  }
+	#notice, #error							{  color:#7e0815w; font-size:1.8em; margin:0 15px;  }
 	.blood_red								{  color:#7e0815;  }
 	.bold									{  font-weight:bold;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -110,7 +110,8 @@ Users
 	#about ul								{  font-size:1.2em;  }
 	#application							{  text-align:left;  }
 	#application h4							{  margin:20px 10px 10px; color:#07243c; font-weight:normal; font-variant:normal; border-bottom:2px dotted #666; }
-	#application h5							{  margin:20px 30px;text-align:center;  }
+	#application h5							{  margin:20px 30px; text-align:center;  }
+	#application p							{  margin:20px 30px; }
 	#application fieldset					{  margin:0 80px;  }
 	#application .fieldbox					{  float:left;margin:10px 11px 5px 1px;font-size:1.2em; }
 	#application label						{  margin:0 0 0 3px ;font-size:1.2em;font-weight:bold;  }

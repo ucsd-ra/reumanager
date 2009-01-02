@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :login_from_cookie, :login_required, :except => [ :new, :create, :welcome, :thanks, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks ]
+  before_filter :login_from_cookie, :login_required, :except => [ :new, :create, :welcome, :thanks, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :resend_request ]
   
   # Be sure to include AuthenticationSystem in Application Controller instead
   # render new.rhtml
@@ -94,4 +94,14 @@ class UsersController < ApplicationController
   def app_thanks
      logout_killing_session!
   end
+  
+  def resend_request
+    if current_user.send_rec_request
+      current_user.rec_request = Time.now
+    else
+      flash[:notice] = 'Personal Data was successfully updated.'
+      redirect_to "status"
+    end
+  end
+  
 end
