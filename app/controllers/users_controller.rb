@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :login_from_cookie, :login_required, :except => [ :new, :create, :welcome, :thanks, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege ]
+  before_filter :login_from_cookie, :login_required, :except => [ :new, :create, :welcome, :thanks, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks ]
   
   # Be sure to include AuthenticationSystem in Application Controller instead
   # render new.rhtml

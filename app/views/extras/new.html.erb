@@ -3,6 +3,9 @@
 	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
 	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
 	<h2>Summer 2008 Online Application</h2>
+	<div id="about">
+		<h5>Submission Deadline:&nbsp;<span class="blood_red">February 13, 2009</span></h5>
+	</div>
 
 	<div id="application">
 		<%= render :partial => "layouts/app_navbar" %>

@@ -99,8 +99,8 @@ Welcome
 Users
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 	#app_navbar								{  border-bottom:2px dotted #666; margin:2em 0 0; padding:1em 0 4px; text-align:center; }
-	#app_navbar li							{  display:inline-block; font-size:1.8em; margin:0 1px;  }
-	#app_navbar li a						{  background-color:#dfdfdf; border-bottom:1px solid #dfdfdf;  padding:1px 4px; }
+	#app_navbar li							{  display:inline-block; font-size:1.3em; margin:0 1px;  }
+	#app_navbar li a						{  background-color:#dfdfdf; border-bottom:1px solid #dfdfdf;  margin:0; padding:1px 2px; }
 	#app_navbar li a.active					{  background-color:#fff;  }
 	#app_navbar li a:hover 					{  color:#666; border-bottom:1px solid #aaa;  }
 	#application h1#app_submit				{  text-align:center; }

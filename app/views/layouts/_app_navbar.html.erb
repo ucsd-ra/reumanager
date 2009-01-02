@@ -1,29 +1,32 @@
-
-<% if current_user.academic_record && current_user.transcript && current_user.recommender && current_user.extra -%>
-	<h1 id="app_submit"><%= link_to_unless_current "Submit Application", "/submit" %></h1>
-<% end -%>
 <ul id="app_navbar">
 	<% if params[:controller] == "users" -%>
-		<li><%= link_to_unless_current "Personal Data", { :controller => "users", :action => "edit" }, :class => "active" %></li>
+		<li><%= link_to_unless_current "1. Personal Data", { :controller => "users", :action => "edit" }, :class => "active" %></li>
 	<% else -%>
-		<li><%= link_to_unless_current "Personal Data", { :controller => "users", :action => "edit" }%></li>
+		<li><%= link_to_unless_current "1. Personal Data", { :controller => "users", :action => "edit" }%></li>
 	<% end -%>
 
 	<% if params[:controller] == "academic_records" -%>
-		<li><%= link_to_unless_current "Academic Information", { :controller => "academic_records" }, :class => "active"  %></li>
+		<li><%= link_to_unless_current "2. Academic Information", { :controller => "academic_records" }, :class => "active"  %></li>
 	<% else -%>
-		<li><%= link_to_unless_current "Academic Information", { :controller => "academic_records" } %></li>
+		<li><%= link_to_unless_current "2. Academic Information", { :controller => "academic_records" } %></li>
 	<% end -%>
 	
 	<% if params[:controller] == "recommenders" -%>
-		<li><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders" }, :class => "active"  %></li>
+		<li><%= link_to_unless_current "3. Faculty Recommendation", { :controller => "recommenders" }, :class => "active"  %></li>
 	<% else -%>
-		<li><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders " } %></li>
+		<li><%= link_to_unless_current "3. Faculty Recommendation", { :controller => "recommenders " } %></li>
 	<% end -%>
 	
 	<% if params[:controller] == "extras" -%>
-		<li><%= link_to_unless_current "Additional Information", { :controller => "extras" }, :class => "active"  %></li>
+		<li><%= link_to_unless_current "4. Additional Information", { :controller => "extras" }, :class => "active"  %></li>
 	<% else -%>
-		<li><%= link_to_unless_current "Additional Information", { :controller => "extras " } %></li>
+		<li><%= link_to_unless_current "4. Additional Information", { :controller => "extras " } %></li>
 	<% end -%>
+	
+	<% if current_user.academic_record && current_user.transcript && current_user.recommender && current_user.extra -%>
+		<li><%= link_to_unless_current "5. Submit Application", "/submit" %></li>
+	<% else -%>
+		<li>5. Submit Application</li>
+	<% end -%>	
 </ul>
+
