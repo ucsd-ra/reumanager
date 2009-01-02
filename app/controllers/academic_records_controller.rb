@@ -44,17 +44,19 @@ class AcademicRecordsController < ApplicationController
     @academic_record.user_id = current_user.id
     if params[:transcript_file] != ""
       current_user.transcript.destroy if current_user.transcript
-      @transcript = Transcript.new(:uploaded_data => params[:transcript_file])
-      @transcript.user_id = current_user.id
-      @transcript.save
+      current_user.transcript = Transcript.new(:uploaded_data => params[:transcript_file])
+      current_user.transcript.save
     end
     respond_to do |format|
-      if @academic_record.save
-        flash[:notice] = 'Academic Record was successfully created'
+      if current_user.transcript && @academic_record.save
+        flash[:notice] = 'Academic information was successfully created'
         format.html { redirect_to( :action => "edit" ) }
         format.xml  { render :xml => @academic_record, :status => :created, :location => @academic_record }
       else
-        @academic_record.errors.add "You must upload copy of your most recent transcript." unless current_user.transcript
+        current_user.academic_record.destroy if current_user.academic_record
+        unless current_user.transcript
+          @academic_record.errors.add_to_base "You must upload copy of your most recent transcript."
+        end
         format.html { render :action => "new" }
         format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
       end
@@ -72,12 +74,14 @@ class AcademicRecordsController < ApplicationController
       @transcript.save
     end
     respond_to do |format|
-      if @academic_record.update_attributes(params[:academic_record]) && current_user.transcript
-        flash[:notice] = 'Academic Record was successfully updated'
+      if current_user.transcript && @academic_record.update_attributes(params[:academic_record]) 
+        flash[:notice] = 'Academic information was successfully updated'
         format.html { redirect_to( :action => "edit" ) }
         format.xml  { head :ok }
       else
-        @academic_record.errors.add_to_base "You must upload copy of your most recent transcript." unless current_user.transcript
+        unless current_user.transcript
+          @academic_record.errors.add_to_base "You must upload copy of your most recent transcript."
+        end
         format.html { render :action => "edit" }
         format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
       end

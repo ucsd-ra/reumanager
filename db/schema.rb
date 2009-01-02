@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(:version => 20090101195449) do
     t.string   "disability"
     t.datetime "submit_date"
     t.datetime "rec_request"
+    t.datetime "completed"
     t.string   "token"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"

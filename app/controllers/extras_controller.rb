@@ -29,7 +29,7 @@ class ExtrasController < ApplicationController
 
     respond_to do |format|
       if @extra.save
-        flash[:notice] = 'Extra was successfully created.'
+        flash[:notice] = 'Additional information was successfully created.'
         format.html { redirect_to( :action => "edit" ) }
         format.xml  { render :xml => @extra, :status => :created, :location => @extra }
       else
@@ -46,7 +46,7 @@ class ExtrasController < ApplicationController
 
     respond_to do |format|
       if @extra.update_attributes(params[:extra])
-        flash[:notice] = 'Extra was successfully updated.'
+        flash[:notice] = 'Additional information was successfully updated.'
         format.html { redirect_to( :action => "edit" ) }
         format.xml  { head :ok }
       else

@@ -36,7 +36,7 @@
 	<div class="fieldbox float">
 		<label>
 			We have received your transcript named "<%= h(current_user.transcript.filename) %>" on <%= h(current_user.transcript.created_at)%><br />
-			Click below to upload a new transcript.
+			Click below to upload a new transcript:
 		</label>
 		<%= file_field_tag :transcript_file %>
 	</div>
