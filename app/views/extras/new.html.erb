@@ -14,9 +14,8 @@
 		<% form_for(@extra, :url => { :action => "create" }, :method => "post") do |e| %>
 			<fieldset id="extra">
 				<%= render :partial => "additional_information", :locals => { :e => e }%>
-			    <%= e.submit "Submit", :id => "submit" %>
-				<br style="clear:both;" />	
 			</fieldset>
+		    <p id="submit"><%= e.submit "Add Additional Info" %></p>
 		<% end %>
 	</div>
 </div>

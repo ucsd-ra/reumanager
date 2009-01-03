@@ -5,7 +5,6 @@
 	<fieldset id="new_login">
 		<% if logged_in? %>
 			<h5>You are already logged in.</h5>
-			<h5>Perhaps you want to check your <%= link_to "application?", :controller => "users", :action => "edit" %></h5>
 		<% else -%>
 			<%= error_messages_for :session %>
 			<h2>Enter Login Information</h2>

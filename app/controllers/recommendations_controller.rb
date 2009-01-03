@@ -64,13 +64,13 @@ class RecommendationsController < ApplicationController
 
   # DELETE /recommendations/1
   # DELETE /recommendations/1.xml
-  def destroy
-    @recommendation = Recommendation.find(params[:id])
-    @recommendation.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(recommendations_url) }
-      format.xml  { head :ok }
-    end
-  end
+#  def destroy
+#    @recommendation = Recommendation.find(params[:id])
+#    @recommendation.destroy
+#
+#    respond_to do |format|
+#      format.html { redirect_to(recommendations_url) }
+#      format.xml  { head :ok }
+#    end
+#  end
 end

@@ -14,6 +14,7 @@
 <div class="fieldbox float">
 	<label>To:</label><br /><%= f.text_field 'college_end' %>
 </div>
+<br style="clear:both;" />
 <div class="fieldbox small" id="academicollege_level">
 	<label>Current Academic Level:</label>
 	<%= f.radio_button 'college_level', 'freshman' %><label>Freshman</label>
@@ -24,6 +25,7 @@
 	&nbsp;&nbsp;
 	<%= f.radio_button 'college_level', 'senior' %><label>Senior</label>
 </div>
+<br style="clear:both;" />
 <div class="fieldbox clear">
 	<label>Major/Minor</label><br />
 	<%= f.text_field 'major' %>
@@ -31,7 +33,6 @@
 <div class="fieldbox float">
 	<label>GPA / GPA Scale (e.g. 4.0)</label><br /><%= f.text_field 'gpa' %> / <%= f.text_field 'gpa_range' %>
 </div>
-
 <% if current_user.transcript -%>
 	<div class="fieldbox float">
 		<label>
@@ -46,6 +47,7 @@
 		<%= file_field_tag :transcript_file %>
 	</div>
 <% end -%>
+<br style="clear:both;" />
 <div class="fieldbox">
 	<label>Did you attend another college or university previously?</label>
 	<%= select_tag 'prev_college', options_for_select(%w{No Yes}) %>

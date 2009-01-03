@@ -1,7 +1,5 @@
 class Recommendation < ActiveRecord::Base
-  belongs_to :user
-  
-  
+  belongs_to                :user
   belongs_to                :recommender
   validates_presence_of     :known_student, :know_capacity, :rating, :gpa, :gpa_range, :undergrad_inst, :faculty_comment
   
@@ -11,7 +9,7 @@ class Recommendation < ActiveRecord::Base
     @user = User.find_by_id(self.user_id)
     @recommender = Recommender.find_by_id(self.recommender_id)
     pdf = PDF::Writer.new
-    pdf.text "NSF REU Recommendation for #{@user.firstname} #{@user.lastname}\n\n", :font_size => 22, :justification => :center
+    pdf.text "Recommendation for #{@user.firstname} #{@user.lastname}\n\n", :font_size => 20, :justification => :left
     pdf.move_pointer(24)
 
     pdf.text "Recommender Personal Data\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
@@ -28,8 +26,9 @@ class Recommendation < ActiveRecord::Base
     
     pdf.text "Faculty Recommendation\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
     pdf.text "#{self.faculty_comment}", :font_size => 11, :justification => :left, :left => 33, :right => 33
-    
-    pdf.text "NSF REU Application for #{@user.firstname} #{@user.lastname}\n\n", :font_size => 22, :justification => :center
+
+    pdf.move_pointer(24)    
+    pdf.text "Application for #{@user.firstname} #{@user.lastname}\n\n", :font_size => 20, :justification => :left
     pdf.move_pointer(24)
 
     pdf.text "Personal Data\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
@@ -57,6 +56,7 @@ class Recommendation < ActiveRecord::Base
     end    
     pdf.save_as("#{RAILS_ROOT}/public/pdf/#{@user.id.to_s}_#{@user.lastname}.pdf")
     @user.send_complete_app
+    @user.send_complete_app_student
     @user.completed = Time.now
   end
   

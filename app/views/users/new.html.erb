@@ -24,7 +24,7 @@
 				<%= render :partial => 'personal_data', :locals => { :f => f } %>		
 			</fieldset>
 			
-			<%= submit_tag 'Sign up', :onclick => "$('submit').hide();", :id => "submit" %>
+			<%= submit_tag 'Sign up', :onclick => "$('submit').hide();alert('Please wait up to 30 seconds for the server to process your request.');", :id => "submit" %>
 			
 			<% end -%>
 	</div>

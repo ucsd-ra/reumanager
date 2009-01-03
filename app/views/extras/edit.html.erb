@@ -14,9 +14,8 @@
 		<% form_for(@extra, :url => { :action => "update" }, :method => "put") do |e| %>
 			<fieldset id="recommender">
 				<%= render :partial => "additional_information", :locals => { :e => e } %>
-			    <%= e.submit "Update", :id => "submit" %>
-				<br style="clear:both;" />	
 			</fieldset>
+		    <p id="submit"><%= e.submit "Update Additional Info" %></p>
 		<% end %>
 	</div>
 </div>

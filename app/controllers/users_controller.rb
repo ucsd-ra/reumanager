@@ -4,7 +4,12 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   # render new.rhtml
   def new
-    @user = User.new
+    if current_user && current_user.submit_date      
+      flash[:notice] = 'You cannot submit your application twice.'
+      redirect_to "/status"
+    else
+      @user = User.new
+    end
   end
  
   def create
@@ -28,7 +33,12 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(current_user.id) 
+    if current_user && current_user.submit_date      
+      flash[:notice] = 'You cannot submit your application twice.'
+      redirect_to "/status"
+    else
+      @user = User.find(current_user.id)
+    end
   end
   
   def update
@@ -85,10 +95,15 @@ class UsersController < ApplicationController
   end
   
   def submit
-    return unless request.post?
+    if current_user.submit_date      
+      flash[:notice] = 'You cannot submit your application twice.'
+      redirect_to "/status"
+    else
+      return unless request.post?
       current_user.send_app_confirmation
       current_user.send_rec_request
       redirect_to "/app_thanks"
+    end
   end
   
   def app_thanks
@@ -96,11 +111,11 @@ class UsersController < ApplicationController
   end
   
   def resend_request
-    if current_user.send_rec_request
+    if current_user.completed == nil && current_user.send_rec_request
       current_user.rec_request = Time.now
     else
-      flash[:notice] = 'Personal Data was successfully updated.'
-      redirect_to "status"
+      flash[:notice] = 'Sorry, you can no longer resend your request, your application is complete.'
+      redirect_to "/status"
     end
   end
   

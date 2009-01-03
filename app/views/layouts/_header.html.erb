@@ -1,11 +1,14 @@
 <div id="header">
 	<%= link_to image_tag("ucsd_logo.gif", :id => "ucsd"), "http://ucsd.edu", :target => "_blank" %>
 	<%= link_to image_tag("nsf_logo.gif", :id => "nsf"), "http://nsf.gov", :target => "_blank" %>
+
 	<h5><%= link_to "Research Experience for Undergraduates (REU)<br /> in Regenerative Medicine, Multi-Scale Bioengineering, and Systems Biology", "/" %></h5>
+
 	<h6><%= link_to "University of California, San Diego", "http://ucsd.edu", :target => "_blank" %> | <%= link_to "Department of Bioengineering", "http://bioengineering.ucsd.edu", :target => "_blank" %></h6>
+
 	<% if logged_in? -%>
 		<h4 class="login_logout"><%= link_to "Logout", "/logout" %></h4>
 	<% else -%>
-		<% unless params[:controller] == "sessions" && params[:action] == "new" -%><h4 class="login_logout"><%= link_to "Login", "/login" %></h4><% end -%>
+		<% if params[:action] == "welcome" -%><h4 class="login_logout"><%= link_to "Login", "/login" %></h4><% end -%>
 	<% end -%>
 </div>

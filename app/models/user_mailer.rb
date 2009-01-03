@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 
-  def reg_confirmation( id, token, firstname, lastname, email)
+  def reg_confirmation( firstname, lastname, email)
     @subject    = "UCSD Bioengineering - NSF REU Registration Confirmation for #{firstname} #{lastname}"
     @recipients = email
     @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
@@ -12,8 +12,7 @@ class UserMailer < ActionMailer::Base
       :body => render_message("reg_confirmation",
                               :firstname => firstname,
                               :lastname => lastname,
-                              :email => email,
-                              :token => token)
+                              :email => email)
       )
   end
 
@@ -54,7 +53,7 @@ class UserMailer < ActionMailer::Base
     
   def complete_app(id, firstname, lastname, email)
       @subject    = "UCSD Bioengineering - NSF REU Complete Application for #{firstname} #{lastname}"
-      @recipients = ['UCSD Bioengineering - NSF REU <nsfreu@bioeng.ucsd.edu>']
+      @recipients = ['UCSD Bioengineering - NSF REU <jgrevich@bioeng.ucsd.edu>']
       @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
       @sent_on    = Time.now
       @headers    = {}
@@ -69,5 +68,22 @@ class UserMailer < ActionMailer::Base
         )
       attachment :content_type => "application/pdf", :filename => "#{id.to_s}_#{lastname}.pdf", :body => File.read("#{RAILS_ROOT}/public/pdf/#{id.to_s}_#{lastname}.pdf")
     end
+    
+    def complete_app_student(firstname, lastname, email)
+        @subject    = "UCSD Bioengineering - NSF REU Complete Application for #{firstname} #{lastname}"
+        @recipients = email
+        @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
+        @sent_on    = Time.now
+        @headers    = {}
+
+        part(
+          :content_type => "text/html", 
+          :body => render_message("complete_app_student",
+                                  :firstname => firstname,
+                                  :lastname => lastname, 
+                                  :email => email)
+          )
+      end
+    
 
 end

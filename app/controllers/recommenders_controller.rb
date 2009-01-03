@@ -1,4 +1,6 @@
 class RecommendersController < ApplicationController
+  before_filter :login_from_cookie, :login_required
+  
   # GET /recommenders
   # GET /recommenders.xml
   def index
@@ -57,13 +59,13 @@ class RecommendersController < ApplicationController
 
   # DELETE /recommenders/1
   # DELETE /recommenders/1.xml
-  def destroy
-    @recommender = Recommender.find(params[:id])
-    @recommender.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(recommenders_url) }
-      format.xml  { head :ok }
-    end
-  end
+#  def destroy
+#    @recommender = Recommender.find(params[:id])
+#    @recommender.destroy
+#
+#    respond_to do |format|
+#      format.html { redirect_to(recommenders_url) }
+#      format.xml  { head :ok }
+#    end
+#  end
 end

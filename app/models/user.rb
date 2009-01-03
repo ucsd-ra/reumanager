@@ -84,8 +84,6 @@ class User < ActiveRecord::Base
 
    def send_reg_confirmation
      email = UserMailer.create_reg_confirmation(
-       self.id, 
-       self.token, 
        self.firstname, 
        self.lastname, 
        self.email
@@ -124,7 +122,17 @@ class User < ActiveRecord::Base
    def send_complete_app
      self.update_attribute("completed", Time.now)     
      email = UserMailer.create_complete_app(
-       self.id,  
+       self.id,
+       self.firstname, 
+       self.lastname, 
+       self.email
+     )      
+     email.set_content_type('multipart', 'mixed')
+     UserMailer.deliver(email)
+   end
+   
+   def send_complete_app_student
+     email = UserMailer.create_complete_app_student(
        self.firstname, 
        self.lastname, 
        self.email

@@ -58,13 +58,13 @@ class ExtrasController < ApplicationController
 
   # DELETE /extras/1
   # DELETE /extras/1.xml
-  def destroy
-    @extra = Extra.find(params[:id])
-    @extra.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(extras_url) }
-      format.xml  { head :ok }
-    end
-  end
+#  def destroy
+#    @extra = Extra.find(params[:id])
+#    @extra.destroy
+#
+#   respond_to do |format|
+#      format.html { redirect_to(extras_url) }
+#      format.xml  { head :ok }
+#    end
+#  end
 end

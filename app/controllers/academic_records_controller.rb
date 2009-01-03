@@ -4,7 +4,12 @@ class AcademicRecordsController < ApplicationController
   # GET /academic_records
   # GET /academic_records.xml
   def index
-    current_user.academic_record ? redirect_to(:action => "edit") : redirect_to(:action => "new") 
+    if current_user && current_user.submit_date      
+      flash[:notice] = 'You can no longer edit your application.'
+      redirect_to "/status"
+    else
+      current_user.academic_record ? redirect_to(:action => "edit") : redirect_to(:action => "new") 
+    end
   end
 
   # GET /academic_records/1
@@ -90,15 +95,15 @@ class AcademicRecordsController < ApplicationController
 
   # DELETE /academic_records/1
   # DELETE /academic_records/1.xml
-  def destroy
-    @academic_record = AcademicRecord.find(params[:id])
-    @academic_record.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(academic_records_url) }
-      format.xml  { head :ok }
-    end
-  end
+#  def destroy
+#    @academic_record = AcademicRecord.find(params[:id])
+#    @academic_record.destroy
+#
+#    respond_to do |format|
+#      format.html { redirect_to(academic_records_url) }
+#      format.xml  { head :ok }
+#    end
+#  end
   
   def observe_pcollege
     if params[:prev_college] == "Yes"

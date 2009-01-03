@@ -15,7 +15,7 @@
 			<fieldset id="recommender">
 				<div class="fieldbox"><label>Please supply the name and contact information of a faculty member who has agreed to write a letter of recommendation in support of your application. Instructions for submitting the letter will be sent directly to the faculty member</label></div>
 				<%= render :partial => "recommender_information", :locals => { :r => r }%>
-			    <%= r.submit "Create", :id => "submit" %>
+			    <p id="submit"><%= r.submit "Add Faculty Recommendation", :id => "submit" %></p>
 				<br style="clear:both;" />	
 			</fieldset>
 		<% end %>
