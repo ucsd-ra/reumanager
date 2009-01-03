@@ -76,7 +76,7 @@ Layout
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Welcome
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
-	#welcome								{  margin:10px 40px; text-align:left;  }
+	#welcome								{  margin:10px 30px; text-align:left;  }
 	#welcome h2								{  margin:0 0 10px; text-align:center;  }
 	#welcome h4, #welcome h6				{  text-align:center;  }
 	#welcome ul								{  font-size:1.4em; margin:0 0 20px 0; list-style-type:disc;  }
@@ -113,12 +113,13 @@ Users
 	#application h4							{  margin:20px 10px 10px; color:#07243c; font-weight:normal; font-variant:normal; border-bottom:2px dotted #666; }
 	#application h5							{  margin:20px 30px; text-align:center;  }
 	#application p							{  margin:20px 30px; }
+	#application #fieldset					{  margin:0 80px; }
 	#application fieldset					{  margin:0 80px; }
 	#application .fieldbox					{  float:left;margin:10px 11px 5px 1px;font-size:1.2em; }
 	#application label						{  margin:0 0 0 3px ;font-size:1.2em;font-weight:bold;  }
 	#application div input,
 	#application .fieldbox input			{  border:1px solid #bbb; font-size:1.4em; padding:3px; clear:none;  }
-	#application textarea					{  border:1px solid #bbb; font-size:1.3em; padding:3px; clear:both; margin:0 80px; width:640px; }
+	#application textarea					{  border:1px solid #bbb; font-size:1.3em; padding:3px; clear:both; margin:0; width:640px; }
 	.float									{  clear:none; float:left; margin:10px 11px 5px 1px; }
 	.small									{  display:block; float:none; padding-top:10px;	 }
 	.tall									{  height:60px; 	}

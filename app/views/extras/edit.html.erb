@@ -12,9 +12,11 @@
 		<h1 id="flash"><%= flash[:notice] %></h1>		
 		<%= error_messages_for :extra %>
 		<% form_for(@extra, :url => { :action => "update" }, :method => "put") do |e| %>
-			<fieldset id="recommender">
+			<div id="fieldset">
 				<%= render :partial => "additional_information", :locals => { :e => e } %>
-			</fieldset>
+			</div>
+			
+			<br style="clear:both;" />
 		    <p id="submit"><%= e.submit "Update Additional Info" %></p>
 		<% end %>
 	</div>
