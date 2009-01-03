@@ -70,7 +70,7 @@ Layout
 	#header h6 a							{  color:#eee;  }
 	#header #ucsd							{  height:60px;margin:0 0 15px 15px;width:79px;clear:none;float:left;  }
 	#header #nsf							{  height:60px;margin:0 15px 15px 0;width:60px;clear:none;float:right;  }
-	#notice, #error							{  color:#7e0815; position:absolute; top:5px; font-size:1.8em; margin:0 15px;  }
+	#notice, #error							{  color:#7e0815; font-size:1.8em; margin:0 15px;  }
 	.blood_red								{  color:#7e0815;  }
 	.bold									{  font-weight:bold;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
