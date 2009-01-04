@@ -7,14 +7,13 @@
 		<% end -%>
 		 - 
 		<% if params[:controller] == "admin" && params[:action] == "report" -%>
-			<%= link_to "Create report of all applications", { :controller => "admin", :action => "report" } %>
+			<%= link_to "View all applications", { :controller => "admin", :action => "report" }, :class => "active" %>
+		<% else -%>
+			<%= link_to "View all applications", { :controller => "admin", :action => "report" } %>
 		<% end -%>
-		-
-		<% if @report -%>
-			<%= link_to "Download report", "/public/pdf/complete_report.pdf" %>
-		 	-		
-		<% end -%>
+		 - 
 		View student: <%= select_tag "student_select", options_for_student_select(@students, "id", "lastname", "firstname" ) %>
 	</h6>
 </div>
 <hr />
+

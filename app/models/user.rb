@@ -5,10 +5,10 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   
-  has_one                   :academic_record
-  has_one                   :recommendation
-  has_one                   :recommender
-  has_one                   :extra
+  has_one                   :academic_record, :dependent => :destroy
+  has_one                   :recommendation, :dependent => :destroy
+  has_one                   :recommender, :dependent => :destroy
+  has_one                   :extra, :dependent => :destroy
   has_one                   :transcript, :dependent => :destroy
 
 

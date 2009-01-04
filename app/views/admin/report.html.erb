@@ -1,0 +1,17 @@
+<div id="single_column">
+	<%= render :partial => "layouts/header" %>
+	
+	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
+	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
+	<div id="students">
+		<p><%= link_to "Click here to download a PDF of this report", @report %></p>
+
+		<%= render :partial => "admin/admin_header" %>
+		
+		<% @students.each do |s| %>
+			<%= render :partial => "student_application", :locals => { :user => s } %>
+			<hr />
+		<% end -%>
+	</div> 
+</div>
+<%= render :partial => "admin_observers" %>

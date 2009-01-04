@@ -47,8 +47,7 @@ before_filter :login_from_cookie, :login_required, :check_admin
     Recommendation.find(:all).each { |r| r.make_pdf }
     if pdf.save_as("#{RAILS_ROOT}/public/pdf/complete_report.pdf")
       flash[:notice] = "Report created."
-      @report = "/public/pdf/complete_report.pdf"
-      render :action => "index"
+      @report = "/pdf/complete_report.pdf"
     else
       flash[:notice] = "There were errors. Please try again or contact jgrevich@ucsd.edu"
       redirect_to :action => "index"
