@@ -77,14 +77,14 @@
 			<h5>Awards</h5>
 			<% if @user.extra -%>
 				<p>
-					<%= @user.extra.awards.gsub("\r\n", "<br /><br />") %>
+					<%= @user.extra.awards.gsub("\r\n", "<br />") %>
 				</p>
 		
 				<h5>Lab Skills</h5>
-				<p><%= @user.extra.lab_skills.gsub("\r\n", "<br /><br />") %></p>
+				<p><%= @user.extra.lab_skills.gsub("\r\n", "<br />") %></p>
 
 				<h5>Computer Skills</h5>
-				<p><%= @user.extra.comp_skills.gsub("\r\n", "<br /><br />") %></p>
+				<p><%= @user.extra.comp_skills.gsub("\r\n", "<br />") %></p>
 		
 				<h5>GPA Comments</h5>
 				<p><%= @user.extra.gpa_comments.gsub("\r\n", "<br /><br />") %></p>

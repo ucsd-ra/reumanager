@@ -79,10 +79,10 @@
 		<p><%= user.extra.comp_skills.gsub("\r\n", "<br />") %></p>
 
 		<h5>GPA Comments</h5>
-		<p><%= user.extra.gpa_comments.gsub("\r\n", "<br />") %></p>
+		<p><%= user.extra.gpa_comments.gsub("\r\n", "<br /><br />") %></p>
 
 		<h5>Personal Statement</h5>
-		<p><%= user.extra.personal_statement.gsub("\r\n", "<br />") %></p>
+		<p><%= user.extra.personal_statement.gsub("\r\n", "<br /><br />") %></p>
 	<% else -%>
 		<p>We have not received this student's additional information</p>
 	<% end -%>
