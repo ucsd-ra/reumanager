@@ -50,7 +50,7 @@
 						<% end -%>
 					</td>
 					<td class="del">
-						<%= link_to "Delete", { :action => "delete", :id => student }, :confirm => "You are about to delete this user and all associated records", :method => :delete %>
+						<%= link_to "Delete", { :action => "delete", :id => student }, :confirm => "You are about to delete all associated records for #{student.firstname} #{student.lastname}. Are you sure about this?", :method => :delete %>
 					</td>
 				</tr>
 			<% end %>
