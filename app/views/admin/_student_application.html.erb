@@ -1,4 +1,5 @@
 <div id="student_application">
+	<% if user.completed -%><%= image_tag "complete.gif", :id => "app_status" %><% else -%><%= image_tag "incomplete.gif", :id => "app_status" %><% end -%>
 	<h1><%= user.firstname %> <%= user.lastname %></h1>
 	<br />
 	<h3>Recommendation</h3>

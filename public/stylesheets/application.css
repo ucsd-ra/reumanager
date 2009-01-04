@@ -213,6 +213,8 @@ Admin
 	#admin_header a:hover					{  background:#ccc;color:#000;  }
 	#admin_header a.active					{  background:#96BF55;  }
 	#student_application					{  text-align:left;  padding:0 60px;  }
+	#app_status								{  float:right;  }
+	
 	#selector								{  border:2px solid #FDBF3B;  background-color:#FFEBC1;  margin:2em auto;  padding:1em;  width:48em;  }
 	#selector h4							{  margin:0 0 1em;  }
 	#selector h5							{  margin:0.2em;padding:0.3em;  }
