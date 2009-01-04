@@ -53,7 +53,7 @@ class UserMailer < ActionMailer::Base
     
   def complete_app(id, firstname, lastname, email)
       @subject    = "UCSD Bioengineering - NSF REU Complete Application for #{firstname} #{lastname}"
-      @recipients = ['UCSD Bioengineering - NSF REU <jgrevich@bioeng.ucsd.edu>']
+      @recipients = ['UCSD Bioengineering - NSF REU <nsfreu@bioeng.ucsd.edu>']
       @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
       @sent_on    = Time.now
       @headers    = {}

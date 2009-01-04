@@ -70,7 +70,7 @@ Layout
 	#header h6 a							{  color:#eee;  }
 	#header #ucsd							{  height:60px;margin:0 0 15px 15px;width:79px;clear:none;float:left;  }
 	#header #nsf							{  height:60px;margin:0 15px 15px 0;width:60px;clear:none;float:right;  }
-	#notice, #error							{  color:#7e0815; font-size:1.8em; margin:0 15px;  }
+	#notice, #error							{  color:#7e0815; font-size:1.8em; margin:0 80px;  }
 	.blood_red								{  color:#7e0815;  }
 	.bold									{  font-weight:bold;  }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -160,7 +160,7 @@ Users
 	#recommender_email						{  width:380px;  }
 	.thanks									{  margin:20px 0 40px 0;  }
 	#simple_captcha							{  margin:0 0 0 300px;width:200px;height:100px;  }
-	#students table							{  border:1px dashed silver;margin:30px 20px;  }
+	#students table							{  margin:30px 20px;  }
 	#students table th						{  font-size:1.3em;padding:3px 6px 1px 6px;text-align:left;  }
 	#students table td						{  padding:3px 6px;text-align:left;  }
 	#students table td.name					{  width:90px;  }
@@ -212,6 +212,7 @@ Admin
 	#admin_header a							{  padding:3px;  }
 	#admin_header a:hover					{  background:#ccc;color:#000;  }
 	#admin_header a.active					{  background:#96BF55;  }
+	#student_application					{  text-align:left;  padding:0 60px;  }
 	#selector								{  border:2px solid #FDBF3B;  background-color:#FFEBC1;  margin:2em auto;  padding:1em;  width:48em;  }
 	#selector h4							{  margin:0 0 1em;  }
 	#selector h5							{  margin:0.2em;padding:0.3em;  }
