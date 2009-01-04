@@ -15,6 +15,7 @@
 				<th class="gpa">GPA</th>
 				<th class="date"><%= link_to "Registered", { :controller => "admin", :sort => "date" } %></th>
 				<th class="rec">Complete</th>
+				<th class="del">Delete</th>
 			</tr>
 			<% @n = 0 %>
 		  	<% for student in @students %>
@@ -47,6 +48,9 @@
 						<% else -%>
 							<%= link_to "No", "" %>
 						<% end -%>
+					</td>
+					<td class="del">
+						<%= link_to "Delete", { :action => "delete", :id => student }, :confirm => "You are about to delete this user and all associated records", :method => :delete %>
 					</td>
 				</tr>
 			<% end %>
