@@ -53,11 +53,22 @@
 <div class="fieldbox clear small" id="perm_bool">
 	<label>Is the above address your permanent residence?</label>
 	&nbsp;
-	<%= radio_button_tag 'paddress', 'yes', true %><label>Yes</label>
-	&nbsp;&nbsp;
-	<%= radio_button_tag 'paddress', 'no', false %><label>No</label>
+	<% if current_user && current_user.pstreet != "" -%>
+		<%= radio_button_tag 'paddress', 'yes'%><label>Yes</label>
+		&nbsp;&nbsp;
+		<%= radio_button_tag 'paddress', 'no', true %><label>No</label>
+	<% else -%>
+		<%= radio_button_tag 'paddress', 'yes', true %><label>Yes</label>
+		&nbsp;&nbsp;
+		<%= radio_button_tag 'paddress', 'no', false %><label>No</label>	
+	<% end -%>
 </div>
-<div id="presidence" style="display:none;">
+
+<% if current_user && current_user.pstreet != "" -%>
+	<div id="presidence">
+<% else -%>
+	<div id="presidence" style="display:none;">
+<% end -%>
 	<div class="clear">
 		<label>Please add your permanent residence:</label>
 	</div>
