@@ -74,9 +74,8 @@ class AcademicRecordsController < ApplicationController
     @academic_record = AcademicRecord.find_by_user_id(current_user.id)
     if params[:transcript_file] != ""
       current_user.transcript.destroy if current_user.transcript
-      @transcript = Transcript.new(:uploaded_data => params[:transcript_file])
-      @transcript.user_id = current_user.id
-      @transcript.save
+      current_user.transcript = Transcript.new(:uploaded_data => params[:transcript_file])
+      current_user.transcript.save
     end
     respond_to do |format|
       if current_user.transcript && @academic_record.update_attributes(params[:academic_record]) 
