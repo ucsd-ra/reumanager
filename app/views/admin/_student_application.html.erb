@@ -57,7 +57,7 @@
 			GPA: <%= user.academic_record.gpa %> out of <%= user.academic_record.gpa_range %>
 			<br />
 			<% if user.transcript -%>
-				<%= link_to "Student Transcript", user.transcript.public_filename %>
+				<b><%= link_to "Student Transcript", user.transcript.public_filename %></b>
 			<% else -%>
 				We have not received this student's transcript.
 			<% end -%>
