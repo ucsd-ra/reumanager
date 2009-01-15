@@ -1,7 +1,7 @@
 class Recommendation < ActiveRecord::Base
   belongs_to                :user
   belongs_to                :recommender
-  validates_presence_of     :known_student, :know_capacity, :rating, :gpa, :gpa_range, :undergrad_inst, :faculty_comment
+  validates_presence_of     :known_student, :know_capacity, :rating, :undergrad_inst, :faculty_comment
   
   after_create :make_pdf_and_send_app
   
@@ -21,7 +21,6 @@ class Recommendation < ActiveRecord::Base
     pdf.text "How long have you known the applicant: #{self.known_student}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     pdf.text "In what capacity have you known the applicant: #{self.know_capacity}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     pdf.text "Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers: #{self.rating}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
-    pdf.text "What is the applicant's GPA: #{self.gpa} out of #{self.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     pdf.text "Is your institution primarily an undergraduate institution: #{self.undergrad_inst}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33 
     
     pdf.text "Faculty Recommendation\n", :font_size => 13, :justification => :left, :left => 33, :right => 33

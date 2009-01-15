@@ -5,28 +5,17 @@
 	<h3>Recommendation</h3>
 		<p>
 			<% if user.recommendation -%>
-				From: <%= user.recommendation.recommender.name %>
-				<br />
-				Title: <%= user.recommendation.recommender.title %>
-				<br />
-				Department: <%= user.recommendation.recommender.department %>
-				<br />
-				University: <%= user.recommendation.recommender.college %>
-				<br />
-				Phone: <%= user.recommendation.recommender.phone %> | Email: <%= user.recommendation.recommender.email %>
-				<br />
-				How long have you known the applicant? <%= user.recommendation.known_student %>
-				<br />
-				In what capacity have you known the applicant? <%= user.recommendation.know_capacity %>
-				<br />
-				Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers: <%= user.recommendation.rating %>
-				<br />
-				What is the applicant's GPA? <%= user.recommendation.gpa %> <%= user.recommendation.gpa_range %>
-				<br />
-				Is your institution primarily an undergraduate institution? <%= user.recommendation.undergrad_inst %>
-				<br />
-				Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance:
-				<br />
+				From: <%= user.recommendation.recommender.name %><br />
+				Title: <%= user.recommendation.recommender.title %><br />
+				Department: <%= user.recommendation.recommender.department %><br />
+				University: <%= user.recommendation.recommender.college %><br />
+				Phone: <%= user.recommendation.recommender.phone %> | Email: <%= user.recommendation.recommender.email %><br />
+				How long have you known the applicant? <%= user.recommendation.known_student %><br />
+				In what capacity have you known the applicant? <%= user.recommendation.know_capacity %><br />
+				Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers: <%= user.recommendation.rating %><br />
+				What is the applicant's GPA? <%= user.recommendation.gpa %> <%= user.recommendation.gpa_range %><br />
+				Is your institution primarily an undergraduate institution? <%= user.recommendation.undergrad_inst %><br />
+				Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance:<br />
 				<%= user.recommendation.faculty_comment.gsub("\r\n", "<br /><br />") %>
 			<% else -%>
 				We have not received a faculty recommendation for this student.
@@ -38,24 +27,23 @@
 
 	<h5>Personal Data</h5>
 	<p>
-		<%= user.firstname %> <%= user.lastname %>
-		<br />
-		<%= user.street %>
-		<br />
-		<%= user.city %>, <%= user.state %> <%= user.zip %>
-		<br />
-		<%= mail_to user.email, user.email  %> | <%= user.phone %>
+		<%= user.firstname %> <%= user.lastname %><br />
+		<%= user.street %><br />
+		<%= user.city %>, <%= user.state %> <%= user.zip %><br />
+		<%= mail_to user.email, user.email  %> | <%= user.phone %><br /><br />
+		Citizenship: <%= user.citizenship %><br />
+		Gender: <%= user.gender %><br />
+		Ethnicity: <%= user.ethnicity %><br />
+		Race: <%= user.race %><br />
+		Disability: <%= user.disability %>
 	</p>
 
 	<h5>Academic Info</h5>
 	<% if user.academic_record -%>
 		<p>
-			<%= user.academic_record.college_level.capitalize %> majoring in <%= user.academic_record.major %> 
-			<br />
-			Attended <%= user.academic_record.college %> from <%= user.academic_record.college_start %> to <%= user.academic_record.college_end %>
-			<br />
-			GPA: <%= user.academic_record.gpa %> out of <%= user.academic_record.gpa_range %>
-			<br />
+			<%= user.academic_record.college_level.capitalize %> majoring in <%= user.academic_record.major %><br />
+			Attended <%= user.academic_record.college %> from <%= user.academic_record.college_start %> to <%= user.academic_record.college_end %><br />
+			GPA: <%= user.academic_record.gpa %> out of <%= user.academic_record.gpa_range %><br />
 			<% if user.transcript -%>
 				<b><%= link_to "Student Transcript", user.transcript.public_filename %></b>
 			<% else -%>
