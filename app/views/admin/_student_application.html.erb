@@ -74,4 +74,6 @@
 	<% else -%>
 		<p>We have not received this student's additional information</p>
 	<% end -%>
+	
+	<h3 class="center"><%= link_to "Download PDF of Application", "/pdf/#{user.id.to_s}_#{user.lastname}.pdf" if user.completed %></h5>
 </div>

@@ -25,8 +25,9 @@ class Recommendation < ActiveRecord::Base
     
     pdf.text "Faculty Recommendation\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
     pdf.text "#{self.faculty_comment}", :font_size => 11, :justification => :left, :left => 33, :right => 33
-
-    pdf.move_pointer(24)    
+  
+    pdf.start_new_page
+  
     pdf.text "Application for #{@user.firstname} #{@user.lastname}\n\n", :font_size => 20, :justification => :left
     pdf.move_pointer(24)
 
@@ -38,6 +39,10 @@ class Recommendation < ActiveRecord::Base
     else
       pdf.text "Citizenship: #{@user.citizenship}, Country of Residence: #{@user.cresidence}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     end
+    pdf.text "Gender: #{@user.gender}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    pdf.text "Ethnicity: #{@user.ethnicity}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    pdf.text "Race: #{@user.race}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    pdf.text "Disability: #{@user.disability}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
 
     pdf.text "Academic Info\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
     pdf.text "#{@user.academic_record.college_level.capitalize} majoring in #{@user.academic_record.major} at #{@user.academic_record.college}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
@@ -59,7 +64,7 @@ class Recommendation < ActiveRecord::Base
     @user.completed = Time.now
   end
   
-  def make_pdf
+  def make_pdf(pdf)
     @user = User.find_by_id(self.user_id)
     @recommender = Recommender.find_by_id(self.recommender_id)
     pdf.text "Recommendation for #{@user.firstname} #{@user.lastname}\n\n", :font_size => 20, :justification => :left
@@ -80,7 +85,8 @@ class Recommendation < ActiveRecord::Base
     pdf.text "Faculty Recommendation\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
     pdf.text "#{self.faculty_comment}", :font_size => 11, :justification => :left, :left => 33, :right => 33
 
-    pdf.move_pointer(24)    
+    pdf.start_new_page
+
     pdf.text "Application for #{@user.firstname} #{@user.lastname}\n\n", :font_size => 20, :justification => :left
     pdf.move_pointer(24)
 
@@ -92,6 +98,10 @@ class Recommendation < ActiveRecord::Base
     else
       pdf.text "Citizenship: #{@user.citizenship}, Country of Residence: #{@user.cresidence}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     end
+    pdf.text "Gender: #{@user.gender}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    pdf.text "Ethnicity: #{@user.ethnicity}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    pdf.text "Race: #{@user.race}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+    pdf.text "Disability: #{@user.disability}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
 
     pdf.text "Academic Info\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
     pdf.text "#{@user.academic_record.college_level.capitalize} majoring in #{@user.academic_record.major} at #{@user.academic_record.college}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
@@ -106,8 +116,7 @@ class Recommendation < ActiveRecord::Base
     @extras.each do |e|  
       pdf.text "#{e.gsub("_"," ").capitalize }\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
       pdf.text "#{@user.extra.send(e)}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
-    end    
-    pdf.move_pointer(48)
+    end
   end
     
 end

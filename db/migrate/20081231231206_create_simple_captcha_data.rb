@@ -1,4 +1,4 @@
-# Copyright (c) 2008 [Sur http://expressica.com]
+# Copyright (c) 2009 [Sur http://expressica.com]
 
 class CreateSimpleCaptchaData < ActiveRecord::Migration
   def self.up

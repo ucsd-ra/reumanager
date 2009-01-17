@@ -43,15 +43,18 @@ before_filter :login_from_cookie, :login_required, :check_admin
   
   def report
     @students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ])
-#    pdf = PDF::Writer.new
-#    Recommendation.find(:all).each { |r| r.make_pdf }
-#    if pdf.save_as("#{RAILS_ROOT}/public/pdf/complete_report.pdf")
-#      flash[:notice] = "Report created."
-#      @report = "/pdf/complete_report.pdf"
-#    else
-#      flash[:notice] = "There were errors. Please try again or contact jgrevich@ucsd.edu"
-#      redirect_to :action => "index"
-#    end
+    pdf = PDF::Writer.new
+    Recommendation.find(:all).each do |r|
+      r.make_pdf(pdf)
+      pdf.start_new_page
+    end
+    if pdf.save_as("#{RAILS_ROOT}/public/pdf/complete_report.pdf")
+      flash[:notice] = "Report created."
+      @report = "/pdf/complete_report.pdf"
+    else
+      flash[:notice] = "There were errors. Please try again or contact jgrevich@ucsd.edu"
+      redirect_to :action => "index"
+    end
   end
   
   def delete
