@@ -47,19 +47,25 @@ before_filter :login_from_cookie, :login_required, :check_admin
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ]
     @user = @students.first
-    pdf = PDF::Writer.new
-    Recommendation.find(:all).each do |r|
-      r.make_pdf(pdf)
-      pdf.start_new_page
-    end
-    if pdf.save_as("#{RAILS_ROOT}/public/pdf/complete_report.pdf")
-      flash[:notice] = "Report created."
-      @report = "/pdf/complete_report.pdf"
-    else
-      flash[:notice] = "There were errors. Please try again or contact jgrevich@ucsd.edu"
-      redirect_to :action => "index"
-    end
   end
+  
+  def create_report
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ])
+     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ]
+     @user = @students.first
+     pdf = PDF::Writer.new
+     Recommendation.find(:all).each do |r|
+       r.make_pdf(pdf)
+       pdf.start_new_page
+     end
+     if pdf.save_as("#{RAILS_ROOT}/public/pdf/complete_report.pdf")
+       flash[:notice] = "Report created."
+       @report = "/pdf/complete_report.pdf"
+     else
+       flash[:notice] = "There were errors. Please try again or contact jgrevich@ucsd.edu"
+       redirect_to :action => "index"
+     end
+   end
   
   def delete
     if request.delete? and User.find(params[:id]).destroy
