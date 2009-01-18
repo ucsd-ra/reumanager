@@ -1,5 +1,4 @@
 require 'digest/sha1'
-require 'pdf/writer'
 class User < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword
@@ -34,6 +33,8 @@ class User < ActiveRecord::Base
   # uff.  this is really an authorization, not authentication routine.  
   # We really need a Dispatch Chain here or something.
   # This will also let us return a human error message.
+  
+  
   before_create :make_token
   after_create  :send_reg_confirmation
   

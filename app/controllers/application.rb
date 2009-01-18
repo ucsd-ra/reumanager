@@ -20,4 +20,7 @@ class ApplicationController < ActionController::Base
     %(<span class="fieldWithErrors" style="color:red"></span>) + html_tag
   end
   
+  
+  require 'pdf/writer'
+  
 end
