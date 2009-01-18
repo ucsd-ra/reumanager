@@ -220,6 +220,11 @@ Admin
 	#selector h5							{  margin:0.2em;padding:0.3em;  }
 	#selector h5 a							{  padding:0.3em;  }
 	#selector h5 a:hover					{  background:#96BF55;  border:2px solid #fff;  color:#111;  }
+	
+	
+	.pagination								{  font-size:1.4em; text-align:center;  }
+	.pagination	.current					{  border-bottom:1px solid #555;  }
+	
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Errors
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/

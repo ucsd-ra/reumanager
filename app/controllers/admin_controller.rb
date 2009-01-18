@@ -12,7 +12,7 @@ before_filter :login_from_cookie, :login_required, :check_admin
   def index
     case params[:sort]
     when "name"
-      @students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ])
+      @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ], :per_page => 15
 #    when "college"
 #      @students = User.find(:all, :order => 'college ASC')
 #    when "major"
@@ -20,10 +20,12 @@ before_filter :login_from_cookie, :login_required, :check_admin
 #    when "gpa"
 #      @students = User.find(:all, :order => "gpa DESC")
     when "date"
-      @students = User.find(:all, :order => "created_at ASC", :conditions => [ "id != ? and id != ?", 1, 6 ])
+      @students = User.paginate :page => params[:page], :order => "created_at ASC", :conditions => [ "id != ? and id != ?", 1, 6 ], :per_page => 15
     else
-      @students = User.find(:all, :conditions => [ "id != ? and id != ?", 1, 6 ])
+      @students = User.paginate :page => params[:page], :conditions => [ "id != ? and id != ?", 1, 6 ], :per_page => 15
     end
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ])
+    @user = @students.first
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @students }
@@ -31,7 +33,7 @@ before_filter :login_from_cookie, :login_required, :check_admin
   end
   
   def show
-    @students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ])
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ])
     @user = User.find(params[:id])
   end
   
@@ -42,7 +44,9 @@ before_filter :login_from_cookie, :login_required, :check_admin
   end
   
   def report
-    @students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ])
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ])
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ]
+    @user = @students.first
     pdf = PDF::Writer.new
     Recommendation.find(:all).each do |r|
       r.make_pdf(pdf)

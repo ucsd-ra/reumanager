@@ -5,11 +5,11 @@
 	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
 	<div id="students">
 		<%= render :partial => "admin/admin_header" %>
-		
 		<% @students.each do |s| %>
 			<%= render :partial => "student_application", :locals => { :user => s } %>
 			<hr />
 		<% end -%>
-	</div> 
+	</div>
+	<%= will_paginate @students %>
 </div>
 <%= render :partial => "admin_observers" %>

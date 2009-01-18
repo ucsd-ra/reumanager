@@ -12,7 +12,7 @@
 			<%= link_to "View all applications", { :controller => "admin", :action => "report" } %>
 		<% end -%>
 		 - 
-		View student: <%= select_tag "student_select", options_for_student_select(@students, "id", "lastname", "firstname" ) %>
+		View student: <%= select_tag "student_select", options_for_student_select(@all_students, "id", "lastname", "firstname", @user.id ) %>
 	</h6>
 </div>
 <hr />

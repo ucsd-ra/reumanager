@@ -17,7 +17,13 @@
 				<th class="rec">Complete</th>
 				<th class="del">Delete</th>
 			</tr>
-			<% @n = 0 %>
+			<% if params[:page] 
+				@n = @students.per_page * (params[:page].to_i - 1)
+			else
+				@n = 0 
+							
+			end	%>
+			
 		  	<% for student in @students %>
 		  		<tr style="background-color:#<%= cycle("ddd","bbb") %>;">
 					<td><% @n += 1 %><%= (@n).to_s %></td>
@@ -55,6 +61,7 @@
 				</tr>
 			<% end %>
 		</table>
+		<%= will_paginate @students %>
 	</div> 
 </div>
 <%= render :partial => "admin_observers" %>
