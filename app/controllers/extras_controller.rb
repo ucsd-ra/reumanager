@@ -1,4 +1,5 @@
 class ExtrasController < ApplicationController
+  before_filter :login_from_cookie, :login_required
   
   def index
     current_user.extra ? redirect_to(:action => "edit") : redirect_to(:action => "new")
