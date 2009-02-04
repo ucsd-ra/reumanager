@@ -24,11 +24,7 @@
 			<li><%= link_to_unless_current "4. Additional Information", { :controller => "extras " } %></li>
 		<% end -%>
 	
-		<% if current_user.academic_record && current_user.transcript && current_user.recommender && current_user.extra -%>
-			<li><%= link_to_unless_current "5. Submit Application", "/submit" %></li>
-		<% else -%>
-			<li>5. Submit Application</li>
-		<% end -%>
+		<li><%= link_to_unless_current "5. Submit Application", "/submit" %></li>
 	</ul>
 	<br style="clear:both;" />
 </div>

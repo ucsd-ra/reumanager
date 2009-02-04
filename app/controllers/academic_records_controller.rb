@@ -50,10 +50,10 @@ class AcademicRecordsController < ApplicationController
     if params[:transcript_file] != ""
       current_user.transcript.destroy if current_user.transcript
       current_user.transcript = Transcript.new(:uploaded_data => params[:transcript_file])
-      current_user.transcript.save
+      current_user.transcript.save!
     end
     respond_to do |format|
-      if current_user.transcript && @academic_record.save
+      if current_user.transcript && current_user.transcript.save! && @academic_record.save
         flash[:notice] = 'Academic information was successfully created'
         format.html { redirect_to( :action => "edit" ) }
         format.xml  { render :xml => @academic_record, :status => :created, :location => @academic_record }
@@ -78,7 +78,7 @@ class AcademicRecordsController < ApplicationController
       current_user.transcript.save
     end
     respond_to do |format|
-      if current_user.transcript && @academic_record.update_attributes(params[:academic_record]) 
+      if current_user.transcript && current_user.transcript.save! && @academic_record.update_attributes(params[:academic_record]) 
         flash[:notice] = 'Academic information was successfully updated'
         format.html { redirect_to( :action => "edit" ) }
         format.xml  { head :ok }
@@ -90,6 +90,9 @@ class AcademicRecordsController < ApplicationController
         format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
       end
     end
+  rescue ActiveRecord::RecordInvalid
+    flash[:notice] = 'Transcript must be in PDF format'
+    render :action => "edit"
   end
 
   # DELETE /academic_records/1
