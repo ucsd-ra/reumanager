@@ -6,15 +6,23 @@
 		<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
 		<h4>
 			<%= link_to_unless_current "Application Status", "/status" %>
-			<% unless current_user.completed -%>| <%= link_to_unless_current "Resend Recommendation Request", "/resend_request", :confirm => "You are about to resend your recommendation request. This request was previously sent on #{ current_user.rec_request.strftime("%B %d [%H:%M %Z]") }." %><% end -%>
+			<% unless current_user.completed != nil -%>
+				<% if current_user.rec_request -%>
+					| <%= link_to_unless_current "Resend Recommendation Request", "/resend_request", :confirm => "You are about to resend your recommendation request. This request was previously sent on #{ current_user.rec_request.strftime("%B %d [%H:%M %Z]") }." %>
+				<% else -%>
+					| <%= link_to_unless_current "Send Recommendation Request", "/resend_request" %>
+				<% end -%>
+			<% end -%>
 		</h4>
 		
-		<p>Your application was successfully submitted on <%= current_user.submit_date("%B %d [%H:%M %Z]") %>.</p>
+		<p>Your application was successfully submitted on <%= current_user.submit_date.strftime("%B %d [%H:%M %Z]") %>.</p>
 		
 		<% if current_user.recommendation -%>
 			<p>Your recommendation was successfully submitted by <%= current_user.recommender.name %> ( <%= mail_to current_user.recommender.email, current_user.recommender.email %> ) on <%= current_user.recommendation.created_at.strftime("%B %d [%H:%M %Z]") %>.</p>
 		<% else -%>
 			<p>We have not received a recommendation yet. This request was previously sent on <%= current_user.rec_request.strftime("%B %d [%H:%M %Z]") %> to <%= current_user.recommender.name %> at <%= current_user.recommender.email %>.</p>
 		<% end -%>
+		
+		<h5>Congratulations, your application is complete!</h5>
 	</div>
 </div>
