@@ -11,7 +11,8 @@
 	<% else -%>
 		<h1 class="blood_red">Your application is incomplete</h1>
 	<% end -%>
-	<div id="application">			
+	<div id="application">
+		<%= render :partial => "layouts/app_navbar" %>
 		<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
 		<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
 		<fieldset id="personal_data">
