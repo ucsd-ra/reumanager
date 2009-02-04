@@ -1,6 +1,6 @@
 <div id="app_navbar_wrapper">
 	<ul id="app_navbar">
-		<% if params[:controller] == "users" -%>
+		<% if params[:controller] == "users" && params[:action] == "edit" -%>
 			<li><%= link_to_unless_current "1. Personal Data", { :controller => "users", :action => "edit" }, :class => "active" %></li>
 		<% else -%>
 			<li><%= link_to_unless_current "1. Personal Data", { :controller => "users", :action => "edit" }%></li>
@@ -23,8 +23,11 @@
 		<% else -%>
 			<li><%= link_to_unless_current "4. Additional Information", { :controller => "extras " } %></li>
 		<% end -%>
-	
-		<li><%= link_to_unless_current "5. Submit Application", "/submit" %></li>
+		<% if params[:controller] == "users" && params[:action] == "submit" -%>
+			<li><%= link_to_unless_current "5. Submit Application", "/submit", :class => "active" %></li>
+		<% else -%>
+			<li><%= link_to_unless_current "5. Submit Application", "/submit" %></li>
+		<% end -%>
 	</ul>
 	<br style="clear:both;" />
 </div>
