@@ -50,7 +50,7 @@ class AcademicRecordsController < ApplicationController
     if params[:transcript_file] != ""
       current_user.transcript.destroy if current_user.transcript
       current_user.transcript = Transcript.new(:uploaded_data => params[:transcript_file])
-      current_user.transcript.save!
+      current_user.transcript.save
     end
     respond_to do |format|
       if current_user.transcript && current_user.transcript.save! && @academic_record.save
