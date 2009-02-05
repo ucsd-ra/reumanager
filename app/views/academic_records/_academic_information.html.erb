@@ -33,7 +33,7 @@
 <div class="fieldbox float">
 	<label>GPA / GPA Scale (e.g. 4.0)</label><br /><%= f.text_field 'gpa' %> / <%= f.text_field 'gpa_range' %>
 </div>
-<% if current_user.transcript && current_user.transcript.content_type == "application/pdf" || current_user.transcript.content_type == "application/octet-stream" -%>
+<% if current_user.transcript && current_user.transcript.content_type == "application/pdf" || current_user.transcript && current_user.transcript.content_type == "application/octet-stream" -%>
 	<div class="fieldbox float">
 		<label>
 			We have received your transcript named "<%= h(current_user.transcript.filename) %>" on <%= h(current_user.transcript.created_at)%><br />
