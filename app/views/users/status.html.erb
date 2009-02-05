@@ -23,6 +23,8 @@
 			<p>We have not received a recommendation yet. This request was previously sent on <%= current_user.rec_request.strftime("%B %d [%H:%M %Z]") %> to <%= current_user.recommender.name %> at <%= current_user.recommender.email %>.</p>
 		<% end -%>
 		
-		<h5>Congratulations, your application is complete!</h5>
+		<% unless current_user.completed == nil -%>
+			<h5>Congratulations, your application is complete!</h5>
+		<% end %>
 	</div>
 </div>
