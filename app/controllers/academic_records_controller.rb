@@ -66,6 +66,9 @@ class AcademicRecordsController < ApplicationController
         format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
       end
     end
+  rescue ActiveRecord::RecordInvalid
+    flash[:notice] = 'Transcript must be in PDF format'
+    render :action => "new"
   end
 
   # PUT /academic_records/1
