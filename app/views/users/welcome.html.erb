@@ -33,11 +33,7 @@
 			<% if Date.today > Date.parse("April 18 2009") -%>
 				<p id="applyp"><b>Please check back in January 2010 for registration info.</b></p>
 			<% else -%>
-				<% if logged_in? -%>
-					<p id="applyp"><%=link_to image_tag('apply.gif'), { :controller => "users", :action => "edit" }, :id => "applylink" %></p>
-				<% else -%>
-					<p id="applyp"><%=link_to image_tag('apply.gif'), signup_url, :id => "applylink" %></p>
-				<% end -%>
+				<p id="applyp"><b>Registration is now closed. Please <%= link_to "login", "/login" %> to check the status of your application.</b></p>
 			<% end -%>
 			
 		</div>
