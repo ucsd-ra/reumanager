@@ -26,7 +26,7 @@
 			
 		  	<% for student in @students %>
 		  		<tr style="background-color:#<%= cycle("ddd","bbb") %>;">
-					<td><% @n += 1 %><%= (@n).to_s %></td>
+					<td><%= student.id.to_s %></td>
 					<td class="name">
 						<% if student.firstname && student.lastname -%>
 							<%= link_to "#{student.firstname} #{student.lastname}", { :action => "show", :id => student } %>

@@ -6,13 +6,32 @@
 			<%= link_to "Student Applications", { :controller => "admin" } %>
 		<% end -%>
 		 - 
+		View student: <%= select_tag "student_select", options_for_student_select(@all_students, "id", "lastname", "firstname", @user.id ) %>
+		<br />
+		<br />
 		<% if params[:controller] == "admin" && params[:action] == "report" -%>
 			<%= link_to "View all applications", { :controller => "admin", :action => "report" }, :class => "active" %>
 		<% else -%>
 			<%= link_to "View all applications", { :controller => "admin", :action => "report" } %>
 		<% end -%>
 		 - 
-		View student: <%= select_tag "student_select", options_for_student_select(@all_students, "id", "lastname", "firstname", @user.id ) %>
+		<% if params[:controller] == "admin" && params[:action] == "incomplete_report" -%>
+			<%= link_to "View all incomplete applications", { :controller => "admin", :action => "incomplete_report" }, :class => "active" %>
+		<% else -%>
+			<%= link_to "View all incomplete applications", { :controller => "admin", :action => "incomplete_report" } %>
+		<% end -%>
+		 - 		
+		<% if params[:controller] == "admin" && params[:action] == "submitted_report" -%>
+			<%= link_to "View all submitted applications", { :controller => "admin", :action => "submitted_report" }, :class => "active" %>
+		<% else -%>
+			<%= link_to "View all submitted applications", { :controller => "admin", :action => "submitted_report" } %>
+		<% end -%>
+		 - 
+		<% if params[:controller] == "admin" && params[:action] == "complete_report" -%>
+			<%= link_to "View all complete applications", { :controller => "admin", :action => "complete_report" }, :class => "active" %>
+		<% else -%>
+			<%= link_to "View all complete applications", { :controller => "admin", :action => "complete_report" } %>
+		<% end -%>		
 	</h6>
 </div>
 <hr />

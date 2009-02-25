@@ -2,6 +2,7 @@
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
 development:
   adapter: mysql
+  encoding: utf8
   database: nsfreu
   username: nsfreu
   password: nsfreu
@@ -17,7 +18,8 @@ test:
 
 production:
   adapter: mysql
-  database: nsfreu
+  database: nsfreu  
+  encoding: utf8
   username: nsfreu
   password: nsfreu
   host: localhost
