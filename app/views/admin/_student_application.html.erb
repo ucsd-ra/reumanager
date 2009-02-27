@@ -3,25 +3,26 @@
 	<h1><%= "##{user.id} #{user.firstname} #{user.lastname}"%></h1>
 	<br />
 	<h3>Recommendation</h3>
-		<p>
-			<% if user.recommendation -%>
-				From: <%= user.recommendation.recommender.name %><br />
-				Title: <%= user.recommendation.recommender.title %><br />
-				Department: <%= user.recommendation.recommender.department %><br />
-				University: <%= user.recommendation.recommender.college %><br />
-				Phone: <%= user.recommendation.recommender.phone %> | Email: <%= user.recommendation.recommender.email %><br />
-				How long have you known the applicant? <%= user.recommendation.known_student %><br />
-				In what capacity have you known the applicant? <%= user.recommendation.know_capacity %><br />
-				Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers: <%= user.recommendation.rating %><br />
-				What is the applicant's GPA? <%= user.recommendation.gpa %> <%= user.recommendation.gpa_range %><br />
-				Is your institution primarily an undergraduate institution? <%= user.recommendation.undergrad_inst %><br />
-				Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance:<br />
-				<%= user.recommendation.faculty_comment.gsub("\r\n", "<br /><br />") %>
+	<% if user.recommendation -%>
+		<p><b>From:</b> <%= user.recommendation.recommender.name %></p>
+		<p><b>Title:</b> <%= user.recommendation.recommender.title %></p>
+		<p><b>Department:</b> <%= user.recommendation.recommender.department %></p>
+		<p><b>University:</b> <%= user.recommendation.recommender.college %></p>
+		<p><b>Phone:</b> <%= user.recommendation.recommender.phone %> | Email: <%= user.recommendation.recommender.email %></p>
+		<p><b>How long have you known the applicant?</b> <%= user.recommendation.known_student %></p>
+		<p><b>In what capacity have you known the applicant?</b> <%= user.recommendation.know_capacity %></p>
+		<p><b>Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers:</b> <%= user.recommendation.rating %></p>
+		<p><b>What is the applicant's GPA?</b> <%= user.recommendation.gpa %> <%= user.recommendation.gpa_range %></p>
+		<p><b>Is your institution primarily an undergraduate institution?</b> <%= user.recommendation.undergrad_inst %>
+		<p><b>Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance:</b></p>
+				<%= textilize user.recommendation.faculty_comment %>
 			<% else -%>
 				We have not received a faculty recommendation for this student.
 			<% end -%>
 		</p>
 	<% else -%>
+
+	<hr />
 
 	<h3>Application</h3>
 

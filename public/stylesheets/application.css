@@ -160,12 +160,12 @@ Users
 	#recommender_email						{  width:380px;  }
 	.thanks									{  margin:20px 0 40px 0;  }
 	#simple_captcha							{  margin:0 0 0 300px;width:200px;height:100px;  }
-	#students table							{  margin:30px 20px;  }
-	#students table th						{  font-size:1.4em;padding:3px 6px 1px 6px;text-align:left;  }
-	#students table td						{  padding:3px 6px;text-align:left;  }
-	#students table td.name					{  width:90px;  }
-	#students table td.college				{  width:160px;  }
-	#students table td.major				{  width:150px;  }
+	#students table							{  margin:10px 20px;  }
+	#students table th						{  font-size:14px; padding:3px 6px 1px 6px;text-align:left;  }
+	#students table td						{  border-top:1px solid #d3e7f4; font-weight:bold; height:26px; padding:3px 6px; text-align:left;  }
+	#students table td.name					{  width:120px;  }
+	#students table td.college				{  width:180px;  }
+	#students table td.major				{  width:200px;  }
 	#students table td.gpa					{  width:50px;  }
 	#students table td.date					{  width:110px;  }
 	#students table td.admin				{  width:20px;  }	

@@ -6,6 +6,8 @@
 	<div id="students">
 		<%= render :partial => "admin/admin_header" %>
 		<h1>Listing Students Applicants</h1>
+		<%= will_paginate @students %>
+		
 		<table cellspacing="0">
 			<tr>
 				<th>#</th>
@@ -14,19 +16,17 @@
 				<th class="college">College / University</th>
 				<th class="major">Major</th>
 				<th class="gpa">GPA</th>
-				<th class="date"><%= link_to "Registered", { :controller => "admin", :sort => "date" } %></th>
-				<th class="rec">Complete</th>
-				<th class="del">Delete</th>
+				<th class="date"><%= link_to "Reg.", { :controller => "admin", :sort => "date" } %></th>
+				<th class="del"></th>
 			</tr>
 			<% if params[:page] 
 				@n = @students.per_page * (params[:page].to_i - 1)
 			else
 				@n = 0 
 							
-			end	%>
-			
+			end	%>			
 		  	<% for student in @students %>
-		  		<tr style="background-color:#<%= cycle("ddd","bbb") %>;">
+		  		<tr style="background-color:#<%= cycle("edf5fa","fff") %>;">
 					<td><% @n += 1 %><%= (@n).to_s %></td>
 					<td><%= student.id.to_s %></td>
 					<td class="name">
@@ -49,14 +49,8 @@
 							<%= link_to "#{student.academic_record.gpa[0..2]} / #{student.academic_record.gpa_range[0..2]}", { :action => "show", :id => student } %>
 						<% end -%>
 					</td>
-		   			<td class="date"><%= link_to "#{student.created_at.strftime("%b %d [%H:%M %Z]")}", { :action => "show", :id => student } %></td>
-					<td class="rec">
-						<% if student.completed -%>
-							<%= link_to "Yes", "" %>
-						<% else -%>
-							<%= link_to "No", "" %>
-						<% end -%>
-					</td>
+		   			<td class="date"><%= link_to "#{student.created_at.strftime("%b %d<br />[%H:%M %Z]")}", { :action => "show", :id => student } %></td>
+
 					<td class="del">
 						<%= link_to "Delete", { :action => "delete", :id => student }, :confirm => "You are about to delete all associated records for #{student.firstname} #{student.lastname}. Are you sure about this?", :method => :delete %>
 					</td>
