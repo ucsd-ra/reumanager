@@ -166,9 +166,9 @@ Users
 	#students table td.name					{  width:120px;  }
 	#students table td.college				{  width:180px;  }
 	#students table td.major				{  width:200px;  }
-	#students table td.gpa					{  width:50px;  }
-	#students table td.date					{  width:110px;  }
-	#students table td.admin				{  width:20px;  }	
+	#students table td.gpa					{  width:40px;  }
+	#students table td.date					{  width:70px;  }
+	#students table td.admin				{  width:10px;  }	
 	#students h6							{  color:gray;  }
 	#user_application						{  padding:0 20px 40px;text-align:left;  }
 	#user_application h1					{  margin:10px 0 30px;text-align:center;  }
