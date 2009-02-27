@@ -111,7 +111,7 @@ class UsersController < ApplicationController
   end
   
   def resend_request
-    if current_user.completed == nil && current_user.send_rec_request
+    if current_user.completed && current_user.completed == nil && current_user.send_rec_request
       current_user.rec_request = Time.now
     else
       flash[:notice] = 'Sorry, you can no longer resend your request, your application is complete.'
