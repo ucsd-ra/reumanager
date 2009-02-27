@@ -2,7 +2,6 @@ class RecommendationsController < ApplicationController
   # GET /recommendations
   # GET /recommendations.xml
 
-  before_filter :login_from_cookie, :login_required
 
   def index
     current_user.recommender ? redirect_to(:action => "edit") : redirect_to(:action => "new") 
