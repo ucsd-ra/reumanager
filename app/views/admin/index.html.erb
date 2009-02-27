@@ -9,6 +9,7 @@
 		<table cellspacing="0">
 			<tr>
 				<th>#</th>
+				<th>new #</th>
 				<th class="name"><%= link_to "Name", { :controller => "admin", :sort => "name" } %></th>
 				<th class="college">College / University</th>
 				<th class="major">Major</th>
@@ -26,6 +27,7 @@
 			
 		  	<% for student in @students %>
 		  		<tr style="background-color:#<%= cycle("ddd","bbb") %>;">
+					<td><% @n += 1 %><%= (@n).to_s %></td>
 					<td><%= student.id.to_s %></td>
 					<td class="name">
 						<% if student.firstname && student.lastname -%>

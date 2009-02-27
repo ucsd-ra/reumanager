@@ -1,18 +1,12 @@
 <div id="admin_header">
 	<h6>
-		<% if params[:controller] == "admin" && params[:action] == "index" -%>
-			<%= link_to "Student Applications", { :controller => "admin" }, :class => "active" %>
-		<% else -%>
-			<%= link_to "Student Applications", { :controller => "admin" } %>
-		<% end -%>
-		 - 
 		View student: <%= select_tag "student_select", options_for_student_select(@all_students, "id", "lastname", "firstname", @user.id ) %>
 		<br />
 		<br />
-		<% if params[:controller] == "admin" && params[:action] == "report" -%>
-			<%= link_to "View all applications", { :controller => "admin", :action => "report" }, :class => "active" %>
+		<% if params[:controller] == "admin" && params[:action] == "index" -%>
+			<%= link_to "All Applications", { :controller => "admin" }, :class => "active" %>
 		<% else -%>
-			<%= link_to "View all applications", { :controller => "admin", :action => "report" } %>
+			<%= link_to "All Applications", { :controller => "admin" } %>
 		<% end -%>
 		 - 
 		<% if params[:controller] == "admin" && params[:action] == "incomplete_report" -%>
