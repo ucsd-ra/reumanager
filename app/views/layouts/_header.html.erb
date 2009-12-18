@@ -1,14 +1,18 @@
 <div id="header">
-	<%= link_to image_tag("ucsd_logo.gif", :id => "ucsd"), "http://ucsd.edu", :target => "_blank" %>
-	<%= link_to image_tag("nsf_logo.gif", :id => "nsf"), "http://nsf.gov", :target => "_blank" %>
-
-	<h5><%= link_to "Research Experience for Undergraduates (REU)<br /> in Regenerative Medicine, Multi-Scale Bioengineering, and Systems Biology", "/" %></h5>
-
-	<h6><%= link_to "University of California, San Diego", "http://ucsd.edu", :target => "_blank" %> | <%= link_to "Department of Bioengineering", "http://bioengineering.ucsd.edu", :target => "_blank" %></h6>
-
-	<% if logged_in? -%>
-		<h4 class="login_logout"><%= link_to "Logout", "/logout" %></h4>
-	<% else -%>
-		<% if params[:action] == "welcome" -%><h4 class="login_logout"><%= link_to "Login", "/login" %></h4><% end -%>
-	<% end -%>
+	<ul id="navbar">
+		<li><%= link_to "About Us", "http://be.ucsd.edu/about", :class => "first" %></li>
+		<li><%= link_to "Faculty &amp; Research", "http://be.ucsd.edu/faculty" %></li>
+		<li><%= link_to "Graduate", "http://be.ucsd.edu/graduate" %></li>
+		<li class="selected"><%= link_to "Undergraduate", "http://be.ucsd.edu/undergraduate" %></li>
+		<li><%= link_to "Industry Central", "http://be.ucsd.edu/industry" %></li>
+		<li><%= link_to "News", "http://be.ucsd.edu/news" %></li>
+		<li><%= link_to "Seminars", "http://be.ucsd.edu/seminars"%></li>
+		<li><%= link_to "Careers &amp; Internships", "http://be.ucsd.edu/positions" %></li>
+		<li class="last"><%= link_to "Giving", "http://giving.be.ucsd.edu", :class => "last" %></li>
+	</ul>
+	<h1>
+		<br />
+		<%= link_to "UC San Diego, Department of Bioengineering", "/" %>
+	</h1>
+	<%= render :partial => "layouts/buttons" %>
 </div>

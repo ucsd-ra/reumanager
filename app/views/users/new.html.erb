@@ -1,18 +1,8 @@
 <div id="single_column">
-	<%= render :partial => "layouts/header" %>
-	<h2>Summer 2009 Online Application</h2>
-	<div id="about">
-		<h5>Submission Deadline:&nbsp;<span class="blood_red">February 20, 2009</span></h5>
-		<h5 id="eligibilty">Eligibility:</h5>
-		<ul class="bold blood_red">
-			<li>You must be a current, full-time undergraduate student</li>
-			<li>You must not plan to graduate before fall</li>
-			<li>You must be a U.S. citizen or permanent resident</li>
-		</ul>	
-	</div>
+	
+	<h2 class="center">Summer 2009 Online Application</h2>
+		
 	<div id="application">
-			
-			<h4>Registration</h4>
 			<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
 			<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
 			<% @user.password = @user.password_confirmation = nil %>
@@ -20,12 +10,10 @@
 			<%= error_messages_for :user %>
 			<% form_for :user, :url => users_path do |f| -%>
 
-			<fieldset id="personal_data">
-				<%= render :partial => 'personal_data', :locals => { :f => f } %>		
-			</fieldset>
+			<%= render :partial => 'personal_data', :locals => { :f => f } %>		
 			
-			<p id="submit"><%= submit_tag 'Sign up', :onclick => "$('submit').hide();alert('Please wait up to 30 seconds for the server to process your request.');" %></p>
-			
+			<p class="right" id="submit"><%= submit_tag 'Sign up', :onclick => "$('submit').hide();alert('Please wait up to 30 seconds for the server to process your request.');" %></p>
+			<br class="clear" />
 			<% end -%>
 	</div>
 </div>

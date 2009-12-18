@@ -1,0 +1,28 @@
+<% unless params[:action] == "login" -%>
+	<ul id="buttons">
+		<% if logged_in? -%><li class="last"><%= link_to "Logout", { :controller => "sessions", :action => "destroy" } %></li><% end -%>
+
+		<% if current_user && current_user.id == 1 -%>		
+			<% if params[:controller] == "admin" -%>
+				<li class="selected"><%= link_to "Admin", { :controller => "admin" }%>
+			<% else -%>
+				<li><%= link_to "Admin", { :controller => "admin" }%>
+			<% end -%>
+		<% end -%>
+		
+
+		<% if params[:controller] == "users" -%>
+			<li class="selected"><%= link_to "Apply", { :controller => "users" } %></li>
+		<% else -%>
+			<li><%= link_to "Apply", { :controller => "users", :action => "new" } %></li>
+		<% end -%>
+
+
+		<% if params[:controller] == "welcome" && params[:action] == "index" -%>
+			<li class="selected"><%= link_to "Welcome", { :controller => "welcome" } %></li>
+		<% else -%>
+			<li><%= link_to "Welcome", { :controller => "welcome" } %></li>
+		<% end -%>
+		
+	</ul>
+<% end -%>

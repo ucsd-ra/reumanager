@@ -5,7 +5,7 @@ development:
   encoding: utf8
   database: nsfreu
   username: nsfreu
-  password: nsfreu
+  password: sqz_EI7=FpEojbeY4:MtmIMg
   host: localhost
 
 # Warning: The database defined as 'test' will be erased and
@@ -21,5 +21,5 @@ production:
   database: nsfreu  
   encoding: utf8
   username: nsfreu
-  password: nsfreu
+  password: sqz_EI7=FpEojbeY4:MtmIMg
   host: localhost
