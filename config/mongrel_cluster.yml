@@ -1,7 +1,7 @@
 --- 
 user: mongrel
 group: www-data
-cwd: /var/www/rails/nsfreu/
+cwd: /var/www/rails/nsfreu/current/
 log_file: /var/log/mongrel/nsfreu.log
 port: "8010"
 environment: production
