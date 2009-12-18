@@ -17,6 +17,12 @@
 			<li><%= link_to "Apply", { :controller => "users", :action => "new" } %></li>
 		<% end -%>
 
+		<% if params[:controller] == "projects" && params[:action] == "index" -%>
+			<li class="selected"><%= link_to "Projects", { :controller => "projects" } %></li>
+		<% else -%>
+			<li><%= link_to "Projects", { :controller => "projects" } %></li>
+		<% end -%>
+
 
 		<% if params[:controller] == "welcome" && params[:action] == "index" -%>
 			<li class="selected"><%= link_to "Welcome", { :controller => "welcome" } %></li>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  participant: MyString
+  participant_university: MyString
+  faculty_mentor: MyString
+
+two:
+  title: MyString
+  participant: MyString
+  participant_university: MyString
+  faculty_mentor: MyString

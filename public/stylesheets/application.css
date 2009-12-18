@@ -37,7 +37,7 @@ Layout
 	#header h4								{ color:#eee; font-style:italic; width:600px;  }
 	#notice, #error							{ font-size:1.8em;  }
 	#buttons								{ clear:both; margin:0;  }
-	#buttons li								{ background-color:#024; border:0; color:#fff; display:inline-block; float:right; margin:2px 4px 0 0; padding:0; -moz-border-radius: 13px 13px 0 0; -webkit-border-top-right-radius: 13px; -webkit-border-top-left-radius: 13px;  }
+	#buttons li								{ background-color:#024; border:0; color:#fff; display:inline-block; float:right; font-size:12px; margin:2px 4px 0 0; padding:0; -moz-border-radius: 13px 13px 0 0; -webkit-border-top-right-radius: 13px; -webkit-border-top-left-radius: 13px;  }
 	#buttons li.last						{ margin-right:0;  }
 	#buttons li.selected					{ background-color:#fff; color:#333;  }
 	#buttons li.selected a					{ color:#333; }
@@ -45,14 +45,14 @@ Layout
 	#buttons a								{ border:0; color:#dfdfdf; display:inline-block; padding:10px 8px 6px; -moz-border-radius: 13px 13px 0 0; -webkit-border-top-right-radius: 13px; -webkit-border-top-left-radius: 13px;  }
 	#buttons a:hover						{ background-color:#103050; border:0;  color:#fff;  }
 	#buttons a.active						{ background-color:#103050; color:#fff;  }
-	
+	#content								{ padding:20px 0; }
 	#footer 								{ background-color:#f6f6f2; border-top:3px solid #e6e6e2; border-bottom:1px solid #e6e6e2; clear:both; color:#666; height:183px; margin:0 auto; padding:20px; text-shadow:#fff 3 3 3;   }
 	#footer p								{ color:#666; font-size:11px; line-height:17px; margin:0.3em auto; width:984px; text-align:center;}
 
 	.left									{ float:left; }
 	.right									{ float:right; }
 	.center									{ text-align:center; }
-	.padded									{ padding:20px 0; }
+	.padded									{ padding:20px; }
 	.colored								{ background-color:#deebff; }
 	.rounded								{ -moz-border-radius:8px; -webkit-border-radius:8px; }
 	.bordered								{ border:1px solid #bdf; }
@@ -69,8 +69,7 @@ Layout
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Welcome
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
-	#welcome								{ padding:20px 0; }
-	#welcome #nsf							{ float:left; margin:0; padding:0 20px 0 0; position:absolute; }
+	#nsf									{ float:left; margin:0; padding:0 20px 0 0; position:absolute; }
 	#welcome p								{ font-size:1.2em; }
 	#images									{ margin:25px 0; }
 	#slideshow 								{ padding:0 0 10px; }
@@ -82,22 +81,14 @@ Welcome
 	.speaker h4 							{ margin:0; }
 	
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Program
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
-	#program table							{ border:0; border-spacing:0 5px; font-size:1.2em; }
-	#program .sized							{ margin:0 auto; width:706px; }
-	#program tr:hover						{ background-color:#e0f3ff; }
-	#program td								{ padding:7px; }
-	#program tr > td:first-child			{ border-left:1px solid #bdf; border-top:1px solid #bdf; border-bottom:1px solid #bdf; text-align:right; -moz-border-radius: 13px 0 0 13px; -webkit-border-top-left-radius: 13px; -webkit-border-bottom-left-radius: 13px; }
-	#program td + td						{ border-right:1px solid #bdf; border-top:1px solid #bdf; border-bottom:1px solid #bdf; -moz-border-radius: 0 13px 13px 0; -webkit-border-top-right-radius: 13px; -webkit-border-bottom-right-radius: 13px; }
-	#program .p_row							{ border:1px solid #bdf; font-size:1.2em; margin-bottom:3px; width:710px; padding:7px 0; -moz-border-radius:13px; -webkit-border-radius:13px; }
-	#program .p_row div:first-child			{ text-align:right; }
-	#program .p_row:hover					{ background-color:#e0f3ff;  }
-	#admin td.total							{ text-align:right; }
-	#welcome h2, #welcome h3				{ margin:0 0 3px; }
-	#welcome h3 a							{ color:#333; }
-	.welcome_funds h3, .welcome_funds h4	{ margin:0 2px 3px; }
-
+Projects
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+	#projects h2							{ margin:0; padding:0 20px; }
+	#projects h4							{ line-height:1.1; margin:0 0 8px; }
+	#projects p								{ line-height:1.25; }
+	#projects hr							{ margin:20px 0; }
+	.project								{ padding:0 20px; }
+	.projects_column						{ padding:20px 8px; }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 RSVP
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	

@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :projects
+
+  map.resources :projects
+
   map.connect '/academic_records/sorry', :controller => 'academic_records', :action => "sorry"
   map.thanks '/thanks', :controller => 'users', :action => 'thanks'
   map.rec_thanks '/rec_thanks', :controller => 'users', :action => 'rec_thanks'

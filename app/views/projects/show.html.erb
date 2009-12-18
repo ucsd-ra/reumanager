@@ -1,0 +1,23 @@
+<p>
+  <b>Title:</b>
+  <%=h @project.title %>
+</p>
+
+<p>
+  <b>Participant:</b>
+  <%=h @project.participant %>
+</p>
+
+<p>
+  <b>Participant university:</b>
+  <%=h @project.participant_university %>
+</p>
+
+<p>
+  <b>Faculty mentor:</b>
+  <%=h @project.faculty_mentor %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
