@@ -10,19 +10,19 @@
 			<% end -%>
 		<% end -%>
 		
-
-		<% if params[:controller] == "users" -%>
-			<li class="selected"><%= link_to "Apply", { :controller => "users" } %></li>
-		<% else -%>
-			<li><%= link_to "Apply", { :controller => "users", :action => "new" } %></li>
-		<% end -%>
-
+		<% unless Date.today < Date.parse("January 10 2010") -%>
+			<% if params[:controller] == "users" -%>
+				<li class="selected"><%= link_to "Apply", { :controller => "users" } %></li>
+			<% else -%>
+				<li><%= link_to "Apply", { :controller => "users", :action => "new" } %></li>
+			<% end -%>
+		<% end -%>	
+		
 		<% if params[:controller] == "projects" && params[:action] == "index" -%>
-			<li class="selected"><%= link_to "Projects", { :controller => "projects" } %></li>
+			<li class="selected"><%= link_to "Past Projects", { :controller => "projects" } %></li>
 		<% else -%>
-			<li><%= link_to "Projects", { :controller => "projects" } %></li>
+			<li><%= link_to "Past Projects", { :controller => "projects" } %></li>
 		<% end -%>
-
 
 		<% if params[:controller] == "welcome" && params[:action] == "index" -%>
 			<li class="selected"><%= link_to "Welcome", { :controller => "welcome" } %></li>
