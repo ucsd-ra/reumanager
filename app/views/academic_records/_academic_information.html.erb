@@ -1,21 +1,21 @@
-<div class="fieldbox float">
+<div>
 	<label>Current College or University</label><br />
 	<%= f.text_field 'college' %>
 </div>
 
 <br style="clear:both;" />
-<div class="fieldbox float">
+<div>
 	<label>Dates of Attendance (MM/YY)</label>
 </div>
 <br style="clear:both;" />
-<div class="fieldbox float">
+<div>
 	<label>From:</label><br /><%= f.text_field 'college_start' %><br style="clear:both;" />
 </div>
-<div class="fieldbox float">
+<div>
 	<label>To:</label><br /><%= f.text_field 'college_end' %>
 </div>
 <br style="clear:both;" />
-<div class="fieldbox small" id="academicollege_level">
+<div id="academicollege_level">
 	<label>Current Academic Level:</label>
 	<%= f.radio_button 'college_level', 'freshman' %><label>Freshman</label>
 	&nbsp;&nbsp;
@@ -26,15 +26,15 @@
 	<%= f.radio_button 'college_level', 'senior' %><label>Senior</label>
 </div>
 <br style="clear:both;" />
-<div class="fieldbox clear">
+<div>
 	<label>Major/Minor</label><br />
 	<%= f.text_field 'major' %>
 </div>
-<div class="fieldbox float">
+<div>
 	<label>GPA / GPA Scale (e.g. 4.0)</label><br /><%= f.text_field 'gpa' %> / <%= f.text_field 'gpa_range' %>
 </div>
 <% if current_user.transcript && current_user.transcript.content_type == "application/pdf" || current_user.transcript && current_user.transcript.content_type == "application/octet-stream" -%>
-	<div class="fieldbox float">
+	<div>
 		<label>
 			We have received your transcript named "<%= h(current_user.transcript.filename) %>" on <%= h(current_user.transcript.created_at)%><br />
 			Click below to upload a new transcript:
@@ -42,14 +42,14 @@
 		<%= file_field_tag :transcript_file %>
 	</div>
 <% else -%>
-	<div class="fieldbox float">
+	<div>
 		<label>Please upload a PDF of your most recent (unofficial is ok) transcript:</label>
 		<%= file_field_tag :transcript_file %>
 	</div>
 <% end -%>
 <br style="clear:both;" />
 
-<div class="fieldbox">
+<div>
 	<label>Did you attend another college or university previously?</label>
 	<% if current_user.academic_record && current_user.academic_record.p_college != "" %>
 		<%= select_tag 'prev_college', options_for_select(%w{No Yes}, "Yes") %>
@@ -63,22 +63,22 @@
 <% else -%>
 	<div id="pcollege" style="display:none;">
 <% end -%>
-	<div class="fieldbox">
+	<div>
 		<label>Please enter information about the previous college or university</label>
 	</div>
-	<div class="fieldbox float">
+	<div>
 		<label>Previous College or University</label><br />
 		<%= f.text_field 'p_college' %>
 	</div>
 	<br style="clear:both;" />
-	<div class="fieldbox float">
+	<div>
 		<label>Dates of Attendance (MM/YY)</label><br style="clear:both;" />
 	</div>
 	<br style="clear:both;" />
-	<div class="fieldbox float">
+	<div>
 		<label>From:</label><%= f.text_field 'pcollege_start' %><br style="clear:both;" />
 	</div>
-	<div class="fieldbox float">
+	<div>
 		<label>To:</label><%= f.text_field 'pcollege_end' %>
 	</div>	
 </div>

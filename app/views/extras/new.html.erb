@@ -1,23 +1,9 @@
-<div id="single_column">
+<%= render :partial => "layouts/header_text" %>
+<%= render :partial => "layouts/app_navbar" %>
 	
-	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
-	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
-	<h2>Summer 2009 Online Application</h2>
-	<div id="about">
-		<h5>Submission Deadline:&nbsp;<span class="blood_red">February 20, 2009</span></h5>
-	</div>
-
-	<div id="application">
-		<%= render :partial => "layouts/app_navbar" %>
-		<h1 id="flash"><%= flash[:notice] %></h1>		
-		<%= error_messages_for :extra %>
-		<% form_for(@extra, :url => { :action => "create" }, :method => "post") do |e| %>
-			<div id="fieldset">
-				<%= render :partial => "additional_information", :locals => { :e => e }%>
-			</div>
-			
-			<br style="clear:both;" />
-		    <p id="submit"><%= e.submit "Add Additional Info" %></p>
-		<% end %>
-	</div>
-</div>
+<%= error_messages_for :extra %>
+<% form_for(@extra, :url => { :action => "create" }, :method => "post") do |e| %>
+	<%= render :partial => "additional_information", :locals => { :e => e }%>
+	<br style="clear:both;" />
+    <p id="submit"><%= e.submit "Add Additional Info" %></p>
+<% end %>

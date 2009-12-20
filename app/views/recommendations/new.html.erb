@@ -1,20 +1,6 @@
-<div id="single_column">
-	
-	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
-	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
-	<h2>Summer 2009 Online Recommemdation</h2>
-	<div id="about">
-		<h5>Submission Deadline:&nbsp;<span class="blood_red">February 20, 2009</span></h5>
-	</div>
-
-	<div id="application">
-		<h1 id="flash"><%= flash[:notice] %></h1>		
-		
-		<%= error_messages_for :recommendation %>
-		<% form_for(@recommendation, :url => { :action => "create", :id => @user.token }, :method => "post") do |f| %>
-			<%= render :partial => "recommendation_information", :locals => { :f => f }%>
-			<br style="clear:both;" />
-		    <p id="submit"><%= f.submit "Create", :onclick => "$('submit').hide();alert('Please wait up to 30 seconds for the server to process your request.');" %></p>
-		<% end %>
-	</div>
-</div>
+<%= error_messages_for :recommendation %>
+<% form_for(@recommendation, :url => { :action => "create", :id => @user.token }, :method => "post") do |f| %>
+	<%= render :partial => "recommendation_information", :locals => { :f => f }%>
+	<br style="clear:both;" />
+    <p id="submit"><%= f.submit "Create", :onclick => "$('submit').hide();alert('Please wait up to 30 seconds for the server to process your request.');" %></p>
+<% end %>

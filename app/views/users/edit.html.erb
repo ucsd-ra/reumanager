@@ -1,25 +1,11 @@
-<div id="single_column">
-	
-	<h2>Summer 2009 Online Application</h2>
-	<div id="about">
-		<h5>Submission Deadline:&nbsp;<span class="blood_red">February 20, 2009</span></h5>
-	</div>
-	
-	<div id="application">	
-		<%= render :partial => "layouts/app_navbar" %>
-		<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
-		<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
-		
-		<%= error_messages_for :user %>
-		<% form_for(@user) do |f| %>
-			<fieldset id="personal_data">
-				<%= render :partial => 'personal_data', :locals => { :f => f } %>
-			</fieldset>
-	
-			<p id="submit"><%= f.submit "Update" %></p>	
-		<% end %>
-	</div>
-</div>
+<%= render :partial => "layouts/header_text" %>
+<%= render :partial => "layouts/app_navbar" %>
+
+<%= error_messages_for :user %>
+<% form_for(@user) do |f| %>
+	<%= render :partial => 'personal_data', :locals => { :f => f } %>
+	<p id="submit"><%= f.submit "Update" %></p>	
+<% end %>
 <div id="observers">
 	<%= render :partial => "layouts/observers" %>
 </div>

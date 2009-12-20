@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :login_from_cookie, :login_required, :except => [ :welcome, :thanks, :new, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :resend_request ]
+  before_filter :login_from_cookie, :login_required, :except => [ :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :resend_request ]
   
   # Be sure to include AuthenticationSystem in Application Controller instead
   # render new.rhtml
@@ -25,7 +25,6 @@ class UsersController < ApplicationController
       self.current_user = @user # !! now logged in
       logout_killing_session!
       redirect_back_or_default('/thanks')
-      flash[:notice] = "Thanks for signing up!"
     else
       flash[:error]  = "There were errors with your form, please try again or contact nsfreu@bioeng.ucsd.edu"
       render :action => 'new'

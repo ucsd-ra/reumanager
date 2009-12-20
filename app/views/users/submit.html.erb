@@ -1,18 +1,12 @@
-<div id="single_column">
-	
 
-	<h2>Summer 2009 Online Application</h2>
-	<div id="about">
-		<h5>Submission Deadline:&nbsp;<span class="blood_red">February 20, 2009</span></h5>
-	</div>
-	<br />
+<%= render :partial => "layouts/header_text" %>
+<%= render :partial => "layouts/app_navbar" %>
+
 	<% if current_user.academic_record && current_user.transcript && current_user.transcript.content_type == "application/pdf" && current_user.recommender && current_user.extra -%>
 		<h1>Please verify your application data</h1>
 	<% else -%>
 		<h1 class="blood_red">Your application is incomplete</h1>
 	<% end -%>
-	<div id="application">
-		<%= render :partial => "layouts/app_navbar" %>
 		<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
 		<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
 		<fieldset id="personal_data">

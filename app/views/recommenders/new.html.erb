@@ -1,23 +1,10 @@
-<div id="single_column">
-	
-	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
-	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
-	<h2>Summer 2009 Online Application</h2>
-	<div id="about">
-		<h5>Submission Deadline:&nbsp;<span class="blood_red">February 20, 2009</span></h5>
-	</div>
+<%= render :partial => "layouts/header_text" %>
+<%= render :partial => "layouts/app_navbar" %>
 
-	<div id="application">
-		<%= render :partial => "layouts/app_navbar" %>
-		<h1 id="flash"><%= flash[:notice] %></h1>		
-		<%= error_messages_for :recommender %>
-		<% form_for(@recommender, :url => { :action => "create" }, :method => "post") do |r| %>
-			<fieldset id="recommender">
-				<div class="fieldbox"><label>Please supply the name and contact information of a faculty member who has agreed to write a letter of recommendation in support of your application. Instructions for submitting the letter will be sent directly to the faculty member</label></div>
-				<%= render :partial => "recommender_information", :locals => { :r => r }%>
-				<br style="clear:both;" />
-			    <p id="submit"><%= r.submit "Add Faculty Recommendation", :id => "submit" %></p>
-			</fieldset>
-		<% end %>
-	</div>
-</div>
+<%= error_messages_for :recommender %>
+<% form_for(@recommender, :url => { :action => "create" }, :method => "post") do |r| %>
+	<div><label>Please supply the name and contact information of a faculty member who has agreed to write a letter of recommendation in support of your application. Instructions for submitting the letter will be sent directly to the faculty member</label></div>
+	<%= render :partial => "recommender_information", :locals => { :r => r }%>
+	<br style="clear:both;" />
+	<p id="submit"><%= r.submit "Add Faculty Recommendation", :id => "submit" %></p>
+<% end %>

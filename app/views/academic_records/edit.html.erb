@@ -1,28 +1,12 @@
-<div id="single_column">
-	
-	
-	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
-	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
-	<h2>Summer 2009 Online Application</h2>
-	<div id="about">
-		<h5>Submission Deadline:&nbsp;<span class="blood_red">February 20, 2009</span></h5>
-	</div>
+<%= render :partial => "layouts/header_text" %>
+<%= render :partial => "layouts/app_navbar" %>
 
-	<div id="application">
-			<%= render :partial => "layouts/app_navbar" %>
-			<h1 id="flash"><%= flash[:notice] %></h1>
-			
-			<%= error_messages_for :academic_record %>
-			<%= error_messages_for :transcript %>
-			<% form_for(@academic_record, :url => {:action => "update"}, :method => "put", :html => { :multipart => true }) do |f| %>
-			<fieldset id="personal_data">
-				<%= render :partial => 'academic_information', :locals => { :f => f } %>
-			</fieldset>
-			<p id="submit"><%= f.submit "Update Academic Information" %></p>
-
-		<% end %>
-	</div>
-</div>
+<%= error_messages_for :academic_record %>
+<%= error_messages_for :transcript %>
+<% form_for(@academic_record, :url => {:action => "update"}, :method => "put", :html => { :multipart => true }) do |f| %>
+	<%= render :partial => 'academic_information', :locals => { :f => f } %>
+	<p id="submit"><%= f.submit "Update Academic Information" %></p>
+<% end %>
 
 <div id="observers">
 	<%= render :partial => "layouts/observers" %>
