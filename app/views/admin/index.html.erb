@@ -1,63 +1,56 @@
-<div id="single_column">
-	
-	
-	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
-	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
-	<div id="students">
-		<%= render :partial => "admin/admin_header" %>
-		<h1>Listing Students Applicants</h1>
-		<%= will_paginate @students %>
-		
-		<table cellspacing="0">
-			<tr>
-				<th>#</th>
-				<th>id</th>
-				<th class="name"><%= link_to "Name", { :controller => "admin", :sort => "name" } %></th>
-				<th class="college">College / University</th>
-				<th class="major">Major</th>
-				<th class="gpa">GPA</th>
-				<th class="date"><%= link_to "Reg.", { :controller => "admin", :sort => "date" } %></th>
-				<th class="del"></th>
-			</tr>
-			<% if params[:page] 
-				@n = @students.per_page * (params[:page].to_i - 1)
-			else
-				@n = 0 
-							
-			end	%>			
-		  	<% for student in @students %>
-		  		<tr style="background-color:#<%= cycle("edf5fa","fff") %>;">
-					<td><% @n += 1 %><%= (@n).to_s %></td>
-					<td><%= student.id.to_s %></td>
-					<td class="name">
-						<% if student.firstname && student.lastname -%>
-							<%= link_to "#{student.firstname} #{student.lastname}", { :action => "show", :id => student } %>
-						<% end -%>
-					</td>
-					<td class="college">
-						<% if student.academic_record -%>
-							<%= link_to "#{student.academic_record.college}", { :action => "show", :id => student } %>
-						<% end -%>
-					</td>
-					<td class="major">
-						<% if student.academic_record -%>
-							<%= link_to "#{student.academic_record.major}", { :action => "show", :id => student } %>
-						<% end -%>
-					</td>
-		   			<td class="gpa">
-						<% if student.academic_record -%>
-							<%= link_to "#{student.academic_record.gpa[0..2]}/#{student.academic_record.gpa_range[0..2]}", { :action => "show", :id => student } %>
-						<% end -%>
-					</td>
-		   			<td class="date"><%= link_to "#{student.created_at.strftime("%b %d<br />[%H:%M %Z]")}", { :action => "show", :id => student } %></td>
+<%= render :partial => "admin/admin_header" %>
+<h1>Listing Students Applicants</h1>
+<%= will_paginate @students %>
 
-					<td class="del">
-						<%= link_to "Delete", { :action => "delete", :id => student }, :confirm => "You are about to delete all associated records for #{student.firstname} #{student.lastname}. Are you sure about this?", :method => :delete %>
-					</td>
-				</tr>
-			<% end %>
-		</table>
-		<%= will_paginate @students %>
-	</div> 
-</div>
+<table cellspacing="0">
+	<tr>
+		<th>#</th>
+		<th>id</th>
+		<th class="name"><%= link_to "Name", { :controller => "admin", :sort => "name" } %></th>
+		<th class="college">College / University</th>
+		<th class="major">Major</th>
+		<th class="gpa">GPA</th>
+		<th class="date"><%= link_to "Reg.", { :controller => "admin", :sort => "date" } %></th>
+		<th class="del"></th>
+	</tr>
+	<% if params[:page] 
+		@n = @students.per_page * (params[:page].to_i - 1)
+	else
+		@n = 0 
+					
+	end	%>			
+  	<% for student in @students %>
+  		<tr style="background-color:#<%= cycle("edf5fa","fff") %>;">
+			<td><% @n += 1 %><%= (@n).to_s %></td>
+			<td><%= student.id.to_s %></td>
+			<td class="name">
+				<% if student.firstname && student.lastname -%>
+					<%= link_to "#{student.firstname} #{student.lastname}", { :action => "show", :id => student } %>
+				<% end -%>
+			</td>
+			<td class="college">
+				<% if student.academic_record -%>
+					<%= link_to "#{student.academic_record.college}", { :action => "show", :id => student } %>
+				<% end -%>
+			</td>
+			<td class="major">
+				<% if student.academic_record -%>
+					<%= link_to "#{student.academic_record.major}", { :action => "show", :id => student } %>
+				<% end -%>
+			</td>
+   			<td class="gpa">
+				<% if student.academic_record -%>
+					<%= link_to "#{student.academic_record.gpa[0..2]}/#{student.academic_record.gpa_range[0..2]}", { :action => "show", :id => student } %>
+				<% end -%>
+			</td>
+   			<td class="date"><%= link_to "#{student.created_at.strftime("%b %d<br />[%H:%M %Z]")}", { :action => "show", :id => student } %></td>
+
+			<td class="del">
+				<%= link_to "Delete", { :action => "delete", :id => student }, :confirm => "You are about to delete all associated records for #{student.firstname} #{student.lastname}. Are you sure about this?", :method => :delete %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+<%= will_paginate @students %>
+
 <%= render :partial => "admin_observers" %>

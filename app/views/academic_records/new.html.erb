@@ -4,7 +4,8 @@
 <%= error_messages_for :academic_record %>
 <%= error_messages_for :transcript %>
 
-<% form_for(@academic_record, :url => { :action => "create" }, :method => "post", :html => { :multipart => true }) do |f| %>
+
+<% form_for( @academic_record, :url => { :action => "create" }, :method => "post", :html => { :multipart => true } ) do |f| %>
 	<%= render :partial => 'academic_information', :locals => { :f => f } %>
 	<p id="submit"><%= f.submit "Add Academic Information" %></p>
 <% end %>

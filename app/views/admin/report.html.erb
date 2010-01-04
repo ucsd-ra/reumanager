@@ -1,15 +1,7 @@
-<div id="single_column">
-	
-	
-	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
-	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
-	<div id="students">
-		<%= render :partial => "admin/admin_header" %>
-		<% @students.each do |s| %>
-			<%= render :partial => "student_application", :locals => { :user => s } %>
-			<hr />
-		<% end -%>
-	</div>
-	<%= will_paginate @students %>
-</div>
+<%= render :partial => "admin/admin_header" %>
+<% @students.each do |s| %>
+	<%= render :partial => "student_application", :locals => { :user => s } %>
+	<hr />
+<% end -%>
+<%= will_paginate @students %>
 <%= render :partial => "admin_observers" %>

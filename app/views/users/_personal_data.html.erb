@@ -17,6 +17,14 @@
 
 <hr />
 
+<div class="span-6">
+	<label>Phone</label><br />
+	<%= f.text_field 'phone', :size => 16 %>
+</div>
+<div class="span-6">
+	<label>Email</label><br />
+	<%= f.text_field 'email', :size => 19 %>
+</div>
 <div class="clear">
 	<label>Street&nbsp;Address</label><br />
 	<%= f.text_field 'street', :size => 40 %>
@@ -34,7 +42,10 @@
 	<%= f.text_field 'zip', :size => 5 %>
 </div>
 
-<div class="fieldbox clear small" id="perm_bool">
+
+<hr />
+
+<div  id="perm_bool">
 	<p><label>Is the above address your permanent residence?</label>
 	&nbsp;
 	<% if current_user && current_user.pstreet != "" -%>
@@ -54,48 +65,25 @@
 <% else -%>
 	<div id="presidence" style="display:none;">
 <% end -%>
-	<div class="clear">
+	<div>
 		<label>Please add your permanent residence:</label>
 	</div>
-	<div class="fieldbox clear">
+	<div class="clear">
 		<label>Street&nbsp;Address</label><br />
-		<%= f.text_field 'pstreet' %>
+		<%= f.text_field 'pstreet', :size => 40 %>
 	</div>
-	<div>
+	<div class="span-5">
 		<label>City</label><br />
-		<%= f.text_field 'pcity' %>
+		<%= f.text_field 'pcity', :size => 14 %>
 	</div>
-	<div>
+	<div class="span-4">
 		<label>State</label><br />
-		<%= f.text_field 'pstate' %>
+		<%= f.state_select 'pstate', :selected => "California" %>
 	</div>
-	<div>
+	<div class="span-3">
 		<label>Zip</label><br />
-		<%= f.text_field 'pzip' %>
+		<%= f.text_field 'pzip', :size => 5 %>
 	</div>
-</div>
-
-<hr />
-
-<div>
-	<label>Phone</label><br />
-	<%= f.text_field 'phone' %>
-</div>
-<div>
-	<label>Email</label><br />
-	<%= f.text_field 'email' %>
-</div>
-
-<hr />
-
-<div>
-	<%= label_tag 'password' %><br/>
-	<%= f.password_field :password %>
-</div>
-
-<div>
-	<%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
-	<%= f.password_field :password_confirmation %>
 </div>
 
 <hr />

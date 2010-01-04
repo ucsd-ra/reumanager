@@ -16,6 +16,7 @@ Layout
 	form									{ background-color:#deebff; border:1px solid #bdf; clear:both; margin:20px auto; padding:20px; width:480px; -moz-border-radius:8px; -webkit-border-radius:8px; }
 	form div								{ margin:10px 0; }
 	input, textarea							{ font-size:1.5em; padding:5px; }
+	select									{ font-size:14px; margin:1em 0; }
 	textarea								{ width:460px; }
 	ul,ol,p									{ font-size:1.2em; }
 	ol,ul									{ padding-left:0.5em; }
@@ -69,7 +70,7 @@ Layout
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Welcome
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
-	#nsf									{ float:left; margin:5px 0 0; position:absolute; }
+	#nsf									{ float:left; margin:5px 0 0 0; padding:0 0 0 42px; position:absolute; }
 	#welcome p								{ font-size:1.2em; }
 	#images									{ margin:25px 0; }
 	#slideshow 								{ padding:0 0 10px; }
@@ -93,7 +94,12 @@ Projects
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Users
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
-	#app_navbar li							{ float:left; font-size:16px; list-style-type:none; margin:0 5px; }
+	#app_navbar li							{ float:left; font-size:14px; list-style-type:none; margin:0 5px; padding:13px 5px; }
+	#app_navbar li:hover					{ background-color:#effcff; }
+	#app_navbar li a						{ padding:20px 0; }
+	#app_navbar li a:hover					{ background-color:inherit; }
+	#app_navbar li a.active					{ color:black; font-weight:bold; }
+	#submit > div							{ margin:20px 0; }
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Admin
@@ -103,6 +109,7 @@ Admin
 	#admin table .title						{ width:200px; }
 	#admin table .tag_list					{ width:240px; }
 	#admin table .admin						{ width:72px; }	
+
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Pagination
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/

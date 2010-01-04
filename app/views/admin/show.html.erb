@@ -1,11 +1,3 @@
-<div id="single_column">
-	
-	
-	<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
-	<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
-	<div id="students">
-		<%= render :partial => "admin_header" %>
-		<%= render :partial => "student_application", :locals => { :user => @user} %>
-	</div> 
-</div>
+<%= render :partial => "admin_header" %>
+<%= render :partial => "student_application", :locals => { :user => @user} %>
 <%= render :partial => "admin_observers" %>

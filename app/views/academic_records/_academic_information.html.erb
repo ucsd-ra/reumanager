@@ -3,20 +3,22 @@
 	<%= f.text_field 'college' %>
 </div>
 
-<br style="clear:both;" />
+<hr />
+
 <div>
-	<label>Dates of Attendance (MM/YY)</label>
+	<label>Dates of Attendance:</label>
 </div>
-<br style="clear:both;" />
-<div>
-	<label>From:</label><br /><%= f.text_field 'college_start' %><br style="clear:both;" />
+<div class="span-6">
+	<label>From:&nbsp;&nbsp;</label><%= f.date_select 'college_start', :discard_day => true %><br style="clear:both;" />
 </div>
-<div>
-	<label>To:</label><br /><%= f.text_field 'college_end' %>
+<div class="span-6 last">
+	<label>To:&nbsp;&nbsp;</label><%= f.date_select 'college_end', :discard_day => true %>
 </div>
-<br style="clear:both;" />
+
+<hr />
+
 <div id="academicollege_level">
-	<label>Current Academic Level:</label>
+	<label>Current Academic Level:</label><br />
 	<%= f.radio_button 'college_level', 'freshman' %><label>Freshman</label>
 	&nbsp;&nbsp;
 	<%= f.radio_button 'college_level', 'sophomore' %><label>Sophomore</label>
@@ -25,14 +27,20 @@
 	&nbsp;&nbsp;
 	<%= f.radio_button 'college_level', 'senior' %><label>Senior</label>
 </div>
-<br style="clear:both;" />
-<div>
+
+<hr />
+
+<div class="span-6">
 	<label>Major/Minor</label><br />
-	<%= f.text_field 'major' %>
+	<%= f.text_field 'major', :size => 18 %>
 </div>
-<div>
-	<label>GPA / GPA Scale (e.g. 4.0)</label><br /><%= f.text_field 'gpa' %> / <%= f.text_field 'gpa_range' %>
+
+<div class="span-4">
+	<label>GPA / GPA Scale (e.g. 4.0)</label><br /><%= f.select "gpa", gpa_range %> / <%= f.select "gpa_range", [4.0, 5.0, 10.0] %>
 </div>
+
+<hr />
+
 <% if current_user.transcript && current_user.transcript.content_type == "application/pdf" || current_user.transcript && current_user.transcript.content_type == "application/octet-stream" -%>
 	<div>
 		<label>
@@ -47,7 +55,8 @@
 		<%= file_field_tag :transcript_file %>
 	</div>
 <% end -%>
-<br style="clear:both;" />
+
+<hr />
 
 <div>
 	<label>Did you attend another college or university previously?</label>
