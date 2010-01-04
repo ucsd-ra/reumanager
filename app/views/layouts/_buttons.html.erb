@@ -1,6 +1,15 @@
 <% unless params[:action] == "login" -%>
 	<ul id="buttons">
-		<% if logged_in? -%><li class="last"><%= link_to "Logout", { :controller => "sessions", :action => "destroy" } %></li><% end -%>
+		<% if logged_in? -%>
+			<li class="last"><%= link_to "Logout", { :controller => "sessions", :action => "destroy" } %></li>
+			<% if params[:controller] == "users" || params[:controller] == "academic_records" || params[:controller] == "recommenders" || params[:controller] == "extras" -%>
+				<li class="selected"><%= link_to "Application", { :controller => "admin" }%>
+			<% else -%>
+				<li><%= link_to "Application", { :controller => "admin" }%>
+			<% end -%>
+		<% else -%>
+			<li class="last"><%= link_to "Login/Apply", { :controller => "sessions", :action => "new" } %></li>
+		<% end -%>
 
 		<% if current_user && current_user.id == 1 -%>		
 			<% if params[:controller] == "admin" -%>

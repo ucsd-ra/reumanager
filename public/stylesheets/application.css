@@ -101,9 +101,9 @@ Users
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
 	#app_navbar li							{ float:left; font-size:14px; list-style-type:none; margin:0 5px; padding:13px 5px; }
 	#app_navbar li:hover					{ background-color:#effcff; }
-	#app_navbar li a						{ padding:13px 0; }
+	#app_navbar li a						{ padding:12px 0; }
 	#app_navbar li a:hover					{ background-color:inherit; }
-	#app_navbar li a.active					{ color:black; font-weight:bold; }
+	#app_navbar li a.active					{ color:black; text-decoration:underline; }
 	#submit > div							{ margin:20px 0; }
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

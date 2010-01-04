@@ -3,15 +3,18 @@
 <% else -%>
 	<%= error_messages_for :session %>
 	<% form_tag session_path do -%>
-	<p><label for="login">Email</label><br />
-	<%= text_field_tag 'login' %></p>
+		<p><label for="login">Email</label><br />
+		<%= text_field_tag 'login' %></p>
 
-	<p><label for="password">Password</label><br />
-	<%= password_field_tag 'password' %></p>
+		<p><label for="password">Password</label><br />
+		<%= password_field_tag 'password' %></p>
 
-	<p><label for="remember_me">Remember me:</label>
-	<%= check_box_tag 'remember_me' %></p>
+		<p><label for="remember_me">Remember me:</label>
+		<%= check_box_tag 'remember_me' %></p>
 
-	<p><%= submit_tag 'Log in' %></p>
+		<p><%= submit_tag 'Log in' %></p>
+
+		<p><%= link_to "Need an account? Click here to apply", { :controller => 'users', :action => "new"} %> | <%= link_to "Reset Password" %></p>
 	<% end -%>
+	
 <% end -%>
