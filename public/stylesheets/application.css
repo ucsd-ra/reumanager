@@ -36,7 +36,7 @@ Layout
 	#header h1 a							{ border:0; color:#fff;  }	
 	#header h1 a:hover						{ background-color:inherit; }
 	#header h4								{ color:#eee; font-style:italic; width:600px;  }
-	#notice, #error							{ font-size:1.8em;  }
+	#notice, #error							{ font-size:1.8em; position:absolute; width:910px; z-index:10; }
 	#buttons								{ clear:both; margin:0;  }
 	#buttons li								{ background-color:#024; border:0; color:#fff; display:inline-block; float:right; font-size:12px; margin:2px 4px 0 0; padding:0; -moz-border-radius: 13px 13px 0 0; -webkit-border-top-right-radius: 13px; -webkit-border-top-left-radius: 13px;  }
 	#buttons li.last						{ margin-right:0;  }
@@ -82,6 +82,11 @@ Welcome
 	.speaker h4 							{ margin:0; }
 	
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Extra
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+	textarea.extra							{ height:100px; }	
+	
+/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Projects
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 	#projects h2							{ margin:0; padding:0 20px; }
@@ -96,7 +101,7 @@ Users
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
 	#app_navbar li							{ float:left; font-size:14px; list-style-type:none; margin:0 5px; padding:13px 5px; }
 	#app_navbar li:hover					{ background-color:#effcff; }
-	#app_navbar li a						{ padding:20px 0; }
+	#app_navbar li a						{ padding:13px 0; }
 	#app_navbar li a:hover					{ background-color:inherit; }
 	#app_navbar li a.active					{ color:black; font-weight:bold; }
 	#submit > div							{ margin:20px 0; }

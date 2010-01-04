@@ -14,12 +14,15 @@ class User < ActiveRecord::Base
   validates_length_of       :firstname,     :maximum => 100
   validates_format_of       :lastname,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
   validates_length_of       :lastname,     :maximum => 100
+  validates_length_of       :password, :within => 8..40, :if => :password_required?
+
 
   validates_presence_of     :email
   validates_length_of       :email,    :within => 6..100 #r@a.wk
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
   validates_presence_of     :dob, :street, :city, :state, :zip, :phone, :email, :citizenship
+  
   
 
   # HACK HACK HACK -- how to do attr_accessible from here?

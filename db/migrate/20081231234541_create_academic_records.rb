@@ -10,8 +10,8 @@ class CreateAcademicRecords < ActiveRecord::Migration
       t.column :gpa,                  :string
       t.column :gpa_range,            :string
       t.column :p_college,            :string
-      t.column :pcollege_start,       :string
-      t.column :pcollege_end,         :string
+      t.column :p_college_start,       :string
+      t.column :p_college_end,         :string
       t.timestamps
     end
   end

@@ -1,8 +1,7 @@
 <%= render :partial => "layouts/header_text" %>
 <%= render :partial => "layouts/app_navbar" %>
 			
-<%= error_messages_for :academic_record %>
-<%= error_messages_for :transcript %>
+
 
 
 <% form_for( @academic_record, :url => { :action => "create" }, :method => "post", :html => { :multipart => true } ) do |f| %>

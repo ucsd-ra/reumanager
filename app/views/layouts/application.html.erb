@@ -31,6 +31,23 @@
 			<%= render :partial => "layouts/bioeng_footer" %>
 			<%= render :partial => "layouts/footer" %>
 		</div>
+		
+		<script type="text/javascript" language="javascript">
+		  // <![CDATA[
+		  $('notice').highlight();
+		
+		  $('notice').fade({ duration: 3.5 });
+		  // ]]>
+		</script>
+		
+		<script type="text/javascript" language="javascript">
+		  // <![CDATA[
+		  $('error').highlight();
+		
+		  $('error').fade({ duration: 3.5 });
+		  // ]]>
+		</script>
+		
 		<script type="text/javascript">
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
