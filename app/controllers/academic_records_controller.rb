@@ -48,14 +48,12 @@ class AcademicRecordsController < ApplicationController
     @academic_record = AcademicRecord.new(params[:academic_record]) || AcademicRecord.new
     @academic_record.user_id = current_user.id
     if params[:transcript_file] != ""
-      Transaction.new do |t|
-        t.current_user.transcript.destroy if current_user.transcript
-        t.current_user.transcript = Transcript.new( :uploaded_data => params[:transcript_file] )
-        t.current_user.transcript.save
+      Transcript.transaction do
+        current_user.transcript.destroy if current_user.transcript
+        current_user.transcript = Transcript.new( :uploaded_data => params[:transcript_file] )
+        current_user.transcript.save
       end
     end
-    success = @academic_record && @academic_record.save
-    if success && @academic_record.errors.empty?
       respond_to do |format|
         if current_user.transcript && current_user.transcript.save! && @academic_record.save
           flash[:notice] = 'Academic information was successfully created'
@@ -70,9 +68,8 @@ class AcademicRecordsController < ApplicationController
           format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
         end
       end
-    end
-  rescue
-    flash[:notice] = 'Transcript must be in PDF format'
+  rescue ActiveRecord::RecordInvalid
+    flash[:notice] = 'There was an error with your form.'
     render :action => "new"
   end
 
