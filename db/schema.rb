@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 20091218043643) do
     t.string   "gpa"
     t.string   "gpa_range"
     t.string   "p_college"
-    t.string   "pcollege_start"
-    t.string   "pcollege_end"
+    t.string   "p_college_start"
+    t.string   "p_college_end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
   before_filter :login_from_cookie, :login_required, :except => [ :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :resend_request ]
   
+  def index
+    if current_user && current_user.submit_date
+      flash[:notice] = 'You cannot submit your application twice.'
+      redirect_to "/status"
+    elsif current_user
+      redirect_to edit_user_url(current_user)
+    end
+  end
+  
   # Be sure to include AuthenticationSystem in Application Controller instead
   # render new.rhtml
   def new
@@ -99,8 +108,8 @@ class UsersController < ApplicationController
       redirect_to "/status"
     else
       return unless request.post?
-      current_user.send_app_confirmation
-      current_user.send_rec_request
+        current_user.send_app_confirmation
+        current_user.send_rec_request
       redirect_to "/app_thanks"
     end
   end

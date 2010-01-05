@@ -47,7 +47,7 @@ class AcademicRecordsController < ApplicationController
   def create
     @academic_record = AcademicRecord.new(params[:academic_record]) || AcademicRecord.new
     @academic_record.user_id = current_user.id
-    if params[:transcript_file] != ""
+    if params[:transcript_file] != "" 
       Transcript.transaction do
         current_user.transcript.destroy if current_user.transcript
         current_user.transcript = Transcript.new( :uploaded_data => params[:transcript_file] )
@@ -55,7 +55,10 @@ class AcademicRecordsController < ApplicationController
       end
     end
       respond_to do |format|
-        if current_user.transcript && current_user.transcript.save! && @academic_record.save
+        unless current_user.transcript
+          @academic_record.errors.add_to_base "You must upload copy of your most recent transcript."
+        end
+        if @academic_record.save
           flash[:notice] = 'Academic information was successfully created'
           format.html { redirect_to( :controller => "recommenders" ) }
           format.xml  { render :xml => @academic_record, :status => :created, :location => @academic_record }
@@ -64,6 +67,7 @@ class AcademicRecordsController < ApplicationController
           unless current_user.transcript
             @academic_record.errors.add_to_base "You must upload copy of your most recent transcript."
           end
+          flash[:error] = 'Academic information was successfully created'
           format.html { render :action => "new" }
           format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
         end

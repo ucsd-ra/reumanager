@@ -48,7 +48,7 @@ class Recommendation < ActiveRecord::Base
     pdf.text "#{@user.academic_record.college_level.capitalize} majoring in #{@user.academic_record.major} at #{@user.academic_record.college}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     pdf.text "Attended from: #{@user.academic_record.college_start} to #{@user.academic_record.college_end}, GPA: #{@user.academic_record.gpa} out of #{@user.academic_record.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     if @user.academic_record.p_college != ""
-      pdf.text "Previous college: #{@user.academic_record.p_college}, Attended from: #{@user.academic_record.pcollege_start} to #{@user.academic_record.pcollege_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+      pdf.text "Previous college: #{@user.academic_record.p_college}, Attended from: #{@user.academic_record.p_college_start} to #{@user.academic_record.p_college_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     else
       pdf.text "\n"
     end
@@ -107,7 +107,7 @@ class Recommendation < ActiveRecord::Base
     pdf.text "#{@user.academic_record.college_level.capitalize} majoring in #{@user.academic_record.major} at #{@user.academic_record.college}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     pdf.text "Attended from: #{@user.academic_record.college_start} to #{@user.academic_record.college_end}, GPA: #{@user.academic_record.gpa} out of #{@user.academic_record.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     if @user.academic_record.p_college != ""
-      pdf.text "Previous college: #{@user.academic_record.p_college}, Attended from: #{@user.academic_record.pcollege_start} to #{@user.academic_record.pcollege_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+      pdf.text "Previous college: #{@user.academic_record.p_college}, Attended from: #{@user.academic_record.p_college_start} to #{@user.academic_record.p_college_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     else
       pdf.text "\n"
     end

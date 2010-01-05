@@ -8,8 +8,6 @@
 		<% else -%>
 			<h1 class="center padded">Your application is incomplete</h1>
 		<% end -%>
-			<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
-			<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
 			<div class="borded colored padded rounded"  id="personal_data">
 				<h4><%= link_to_unless_current "Personal Data", { :controller => "users", :action => "edit" }%></h4>
 				<%= render :partial => 'show_personal_data', :locals => { :f => current_user } %>

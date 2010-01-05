@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
      pdf.text "#{self.academic_record.college_level.capitalize} majoring in #{self.academic_record.major} at #{self.academic_record.college}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
      pdf.text "Attended from: #{self.academic_record.college_start} to #{self.academic_record.college_end}, GPA: #{self.academic_record.gpa} out of #{self.academic_record.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
      if self.academic_record.p_college != ""
-       pdf.text "Previous college: #{self.academic_record.p_college}, Attended from: #{self.academic_record.pcollege_start} to #{self.academic_record.pcollege_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+       pdf.text "Previous college: #{self.academic_record.p_college}, Attended from: #{self.academic_record.p_college_start} to #{self.academic_record.p_college_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
      else
        pdf.text "\n"
      end

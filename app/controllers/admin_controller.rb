@@ -12,7 +12,7 @@ before_filter :login_from_cookie, :login_required, :check_admin
   def index
     case params[:sort]
     when "name"
-      @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ], :per_page => 15
+      @students = User.paginate :page => params[:page], :order => 'lastname ASC', :per_page => 15
 #    when "college"
 #      @students = User.find(:all, :order => 'college ASC')
 #    when "major"
@@ -20,11 +20,11 @@ before_filter :login_from_cookie, :login_required, :check_admin
 #    when "gpa"
 #      @students = User.find(:all, :order => "gpa DESC")
     when "date"
-      @students = User.paginate :page => params[:page], :order => "created_at ASC", :conditions => [ "id != ? and id != ?", 1, 6 ], :per_page => 15
+      @students = User.paginate :page => params[:page], :order => "created_at ASC", :per_page => 15
     else
-      @students = User.paginate :page => params[:page], :conditions => [ "id != ? and id != ?", 1, 6 ], :per_page => 15
+      @students = User.paginate :page => params[:page], :per_page => 15
     end
-    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ])
+    @all_students = User.find(:all, :order => 'lastname ASC' )
     @user = @students.first
     respond_to do |format|
       format.html # index.html.erb
@@ -33,7 +33,7 @@ before_filter :login_from_cookie, :login_required, :check_admin
   end
   
   def show
-    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ])
+    @all_students = User.find(:all, :order => 'lastname ASC')
     @user = User.find(params[:id])
   end
   
@@ -44,26 +44,28 @@ before_filter :login_from_cookie, :login_required, :check_admin
   end
   
   def report
-    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ])
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ]
+    @all_students = User.find(:all, :order => 'lastname ASC')
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC'
     @user = @students.first
   end
 
   def incomplete_report
-    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ? and submit_date is null", 1, 6 ])
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "id != ? and id != ? and submit_date is null", 1, 6 ], :per_page => 15
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "submit_date is null"])
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is null" ], :per_page => 15
     @user = @students.first
     if @all_students != nil
       render :action => "index"
     else
       flash[:notice] = "There are no incomplete applications"
+      @all_students = User.find(:all, :order => 'lastname ASC' )
+      @user = @all_students.first
       redirect_to :action => "index"
     end
   end
 
   def submitted_report
-    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ? and submit_date is not null and completed is null", 1, 6 ])
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "id != ? and id != ? and submit_date is not null and completed is null", 1, 6 ], :per_page => 15
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "submit_date is not null and completed is null" ])
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is not null and completed is null" ], :per_page => 15
     @user = @students.first
     if @all_students != nil
       render :action => "index"
@@ -74,8 +76,8 @@ before_filter :login_from_cookie, :login_required, :check_admin
   end
 
   def complete_report
-    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ? and completed is not null", 1, 6 ])
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "id != ? and id != ? and completed is not null", 1, 6 ], :per_page => 15
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "completed is not null" ])
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "completed is not null" ], :per_page => 15
     @user = @students.first
     if @all_students != nil
       render :action => "index"
@@ -86,8 +88,8 @@ before_filter :login_from_cookie, :login_required, :check_admin
   end
   
   def create_report
-    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ])
-     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "id != ? and id != ?", 1, 6 ]
+    @all_students = User.find(:all, :order => 'lastname ASC')
+     @students = User.paginate :page => params[:page], :order => 'lastname ASC'
      @user = @students.first
      pdf = PDF::Writer.new
      Recommendation.find(:all).each do |r|
