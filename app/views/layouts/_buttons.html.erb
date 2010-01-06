@@ -8,8 +8,8 @@
 			<% else -%>
 				<li><%= link_to "Application", edit_user_url(current_user) %>
 			<% end -%>
-		<% else -%>
-			<li class="last"><%= link_to "Login/Apply", { :controller => "sessions", :action => "new" } %></li>
+		<% elsif Date.today > Date.parse("January 19 2010") -%>
+				<li class="last"><%= link_to "Login/Apply", { :controller => "sessions", :action => "new" } %></li>
 		<% end -%>
 
 			
@@ -20,14 +20,6 @@
 				<li><%= link_to "Admin", { :controller => "admin" }%>
 			<% end -%>
 		<% end -%>
-		
-		<% unless Date.today < Date.parse("January 10 2010") -%>
-			<% if params[:controller] == "users" -%>
-				<li class="selected"><%= link_to "Apply", { :controller => "users" } %></li>
-			<% else -%>
-				<li><%= link_to "Apply", { :controller => "users", :action => "new" } %></li>
-			<% end -%>
-		<% end -%>	
 		
 		<% if params[:controller] == "projects" && params[:action] == "index" -%>
 			<li class="selected"><%= link_to "Past Projects", { :controller => "projects" } %></li>

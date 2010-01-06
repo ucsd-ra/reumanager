@@ -1,6 +1,12 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
+  def toggle_overlay
+    link_to_function("Toggle Overlay", nil, :id => "overlay_toggle") do |page|
+      page[:overlay].toggle
+    end
+  end
+  
   def check_academic_records
     result = true if current_user && check_academic_record && check_transcript
   end
