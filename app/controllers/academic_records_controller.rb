@@ -81,7 +81,7 @@ class AcademicRecordsController < ApplicationController
   # PUT /academic_records/1.xml
   def update
     @academic_record = AcademicRecord.find_by_user_id(current_user.id)
-    if params[:transcript_file] != ""
+    if params[:transcript_file] != "" && params[:transcript_file]
       current_user.transcript.destroy if current_user.transcript
       current_user.transcript = Transcript.new(:uploaded_data => params[:transcript_file])
       current_user.transcript.save
@@ -89,8 +89,8 @@ class AcademicRecordsController < ApplicationController
     
     if params[:p_college] == "No"
       params[:academic_record][:p_college] = ""
-      params[:academic_record][:p_college] = ""
-      params[:academic_record][:p_college] = ""
+      params[:academic_record][:p_college_start] = nil
+      params[:academic_record][:p_college_end] = nil
     end  
     
     respond_to do |format|

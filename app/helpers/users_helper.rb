@@ -89,5 +89,19 @@ module UsersHelper
       link_to_login_with_IP content_text, options
     end
   end
-
+  
+  #
+  #
+  #
+  #
+  def disability_selection
+    case current_user.disability
+    when nil || ""
+      'Prefer\ not\ to\ respond'
+    when "No"
+      "No"
+    else
+      "Yes"
+    end
+  end
 end

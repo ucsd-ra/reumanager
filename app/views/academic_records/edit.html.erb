@@ -1,8 +1,6 @@
 <%= render :partial => "layouts/header_text" %>
 <%= render :partial => "layouts/app_navbar" %>
 
-<%= error_messages_for :academic_record %>
-<%= error_messages_for :transcript %>
 <% form_for(@academic_record, :url => {:action => "update"}, :method => "put", :html => { :multipart => true }) do |f| %>
 	<%= render :partial => 'academic_information', :locals => { :f => f } %>
 	<p id="submit"><%= f.submit "Update Academic Information" %></p>

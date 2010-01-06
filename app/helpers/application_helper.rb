@@ -12,6 +12,14 @@ module ApplicationHelper
   def check_transcript
     result = true if current_user && current_user.transcript
   end
+  
+  def check_pdf
+    unless current_user.transcript.content_type == "application/pdf" || current_user.transcript.content_type == "application/octet-stream"
+      "<p><strong>Your transcript does not appear to be in the PDF format. Please double check your file or perhaps try a different browser and/or computer.</strong></p>"
+    else
+      nil
+    end
+  end
 
   def check_recommendor
     result = true if current_user && current_user.recommender
@@ -36,4 +44,5 @@ module ApplicationHelper
     return gpa_range
   end
   
+
 end

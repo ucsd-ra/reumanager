@@ -89,15 +89,20 @@ class UsersController < ApplicationController
   end
 
   def observe_dis
-    if params[:disability] == "Yes"
+    case params[:disability]
+    when "Yes"
       render :update do |page|
-        page[:observers].replace_html :partial => "layouts/observers"          
         page[:dis].show
+      end
+    when "No"
+      render :update do |page|
+        page[:dis].hide
+        page[:user_disability].value = "No"
       end
     else
       render :update do |page|
-        page[:observers].replace_html :partial => "layouts/observers"
         page[:dis].hide
+        page[:user_disability].value = ""
       end
     end
   end

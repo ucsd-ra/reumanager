@@ -60,7 +60,7 @@
 </div>
 
 <div class="span-4">
-	<label>Disability</label><br /><%= h(f.disability) %>
+	<label>Disability</label><br /><%= f.disability == "" ? "Prefer not to respond" : h(f.disability) %>
 </div>
 
 <hr class="space" />

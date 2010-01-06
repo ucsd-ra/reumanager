@@ -44,13 +44,14 @@
 
 <hr />
 
-<% if current_user.transcript && current_user.transcript.content_type == "application/pdf" || current_user.transcript && current_user.transcript.content_type == "application/octet-stream" -%>
+<% if current_user.transcript -%>
 	<div>
-		<label>
-			We have received your transcript named "<%= h(current_user.transcript.filename) %>" on <%= h(current_user.transcript.created_at)%><br />
-			Click below to upload a new transcript:
-		</label>
+		<p>You have previous uploaded the following transcript: <%= link_to current_user.transcript.filename, current_user.transcript.public_filename %></p>
+		<%= check_pdf %>
+		<label>Click below to upload a new transcript:</label>
 		<%= file_field_tag :transcript_file %>
+		
+	
 	</div>
 <% else -%>
 	<div>
