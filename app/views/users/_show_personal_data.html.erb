@@ -1,92 +1,67 @@
-<div id="residence">
-	<div class="fieldbox float">
-		<label>Firstname</label><br />
-		<%= h(f.firstname) %>
-	</div>
-	<div class="fieldbox float">
-		<label>Middlename</label><br />
-		<%= h(f.middlename) %>
-	</div>
-	<div class="fieldbox float">
-		<label>Lastname</label><br />
-		<%= h(f.lastname) %>
-	</div>
-	<div class="clear">
-		<label>Date of Birth</label><br />
-		<%= h(f.dob) %>
-	</div>
-	<div class="clear">
-		<label>Street&nbsp;Address</label><br />
-		<%= h(f.street) %>
-	</div>
-	<div class="fieldbox float">
-		<label>City</label><br />
-		<%= h(f.city) %>
-	</div>
-	<div class="fieldbox float">
-		<label>State</label><br />
-		<%= h(f.state) %>
-	</div>
-	<div class="fieldbox float">
-		<label>Zip</label><br />
-		<%= h(f.zip) %>
-	</div>
-	<div class="fieldbox float">
-		<label>Phone</label><br />
-		<%= h(f.phone) %>
-	</div>
-	<div class="fieldbox float">
-		<label>Email</label><br />
-		<%= h(f.email) %>
-	</div>
-	<br style="clear:both;" />
+<div class="span-4">
+	<label>Name</label><br />
+	<%= h(f.firstname) + " " if f.firstname %>
+	<%= h(f.middlename) + " " if f.middlename %>
+	<%= h(f.lastname) + " " if f.lastname %>
 </div>
-<div id="presidence" style="display:none;">
-	<div class="clear">
-		<label>Permanent residence:</label>
-	</div>
-	<div class="fieldbox clear">
-		<label>Street&nbsp;Address</label><br />
-		<%= h(f.pstreet) %>
-	</div>
-	<div class="fieldbox float">
-		<label>City</label><br />
-		<%= h(f.pcity) %>
-	</div>
-	<div class="fieldbox float">
-		<label>State</label><br />
-		<%= h(f.pstate) %>
-	</div>
-	<div class="fieldbox float">
-		<label>Zip</label><br />
-		<%= h(f.pzip) %>
-	</div>
-	<div class="fieldbox float">
-		<label>Phone</label><br />
-		<%= h(f.pphone) %>
-	</div>
+
+<div class="span-4">
+	<label>Date of Birth</label><br />
+	<%= h(f.dob.strftime("%Y.%m.%d")) %>
 </div>
-<div class="fieldbox clear">
-	<label>Citizenship:</label>
-	<%= h(f.citizenship) %>
-	<span class="hidden" id="cor" style="display:none;">
-		<label>Country of Residence:</label>
-		<%= h(f.cresidence) %>
-	</span>
+
+<div class="span-5 last">
+	<label>Street&nbsp;Address</label><br />
+	<%= h(f.street) %><br />
+	<%= h(f.city) %>&nbsp;
+	<%= h(f.state) %>,&nbsp;
+	<%= h(f.zip) %>
 </div>
-<div class="fieldbox clear">
-	<label>Gender*:</label>
-	<%= h(f.gender) %>
+
+<hr class="space" />
+<div class="span-4">
+	<label>Phone</label><br />
+	<%= h(f.phone) %>
 </div>
-<div class="fieldbox clear">
-	<label>Ethnicity*:</label>
-	<%= h(f.ethnicity) %>
+<div class="span-4">
+	<label>Email</label><br />
+	<%= h(f.email) %>
 </div>
-<div class="fieldbox clear">
-	<label>Race*:</label>
-	<%= h(f.race) %>
+<div class="span-5 last">
+	<label>Permanent residence:</label><br />
+	<%= h(f.pstreet) %><br />
+	<%= h(f.pcity) %>,&nbsp;
+	<%= h(f.pstate) %>&nbsp; 
+	<%= h(f.pzip) %><br />
+	<%= h(f.pphone) %>
 </div>
-<div class="fieldbox clear">
-	<label>Disability*:</label>
-	<%= h(f.disability) %>
+
+<hr class="space" />
+<hr />
+
+<h4>Optional Questions</h4>
+<div class="span-4">
+	<%= "<label>Citizenship</label><br />" + h(f.citizenship) if f.citizenship %>
+	<%= "<label>Country of Residence</label><br />" + h(f.cresidence) if f.cresidence %>
 </div>
+
+<div class="span-4">
+	<label>Gender</label><br /><%= h(f.gender) %>
+</div>
+
+<div class="span-4">
+	<label>Ethnicity</label><br /><%= h(f.ethnicity) %>
+</div>
+
+<hr class="space" />
+
+<div class="span-4">
+	<label>Race</label><br /><%= h(f.race) %>
+</div>
+
+<div class="span-4">
+	<label>Disability</label><br /><%= h(f.disability) %>
+</div>
+
+<hr class="space" />
+<small class="right">Last Updated: <%= f.updated_at.strftime("%Y.%m.%d - %I:%M %p") %></small>

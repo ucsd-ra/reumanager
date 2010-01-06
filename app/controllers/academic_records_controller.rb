@@ -86,10 +86,17 @@ class AcademicRecordsController < ApplicationController
       current_user.transcript = Transcript.new(:uploaded_data => params[:transcript_file])
       current_user.transcript.save
     end
+    
+    if params[:p_college] == "No"
+      params[:academic_record][:p_college] = ""
+      params[:academic_record][:p_college] = ""
+      params[:academic_record][:p_college] = ""
+    end  
+    
     respond_to do |format|
-      if current_user.transcript && current_user.transcript.save! && @academic_record.update_attributes(params[:academic_record]) 
+      if current_user.transcript && @academic_record.update_attributes(params[:academic_record]) 
         flash[:notice] = 'Academic information was successfully updated'
-        format.html { redirect_to( :action => "edit" ) }
+        format.html { redirect_to( :controller => "recommenders" ) }
         format.xml  { head :ok }
       else
         unless current_user.transcript
@@ -117,10 +124,10 @@ class AcademicRecordsController < ApplicationController
 #  end
   
   def observe_pcollege
-    if params[:prev_college] == "Yes"
+    if params[:p_college] == "Yes"
       render :update do |page|
         page[:observers].replace_html :partial => "layouts/observers"          
-        page[:pcollege].show
+        page[:pcollege].appear
       end
     else
       render :update do |page|

@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     if @user.update_attributes(params[:user])
       flash[:notice] = 'Personal Data was successfully updated.'
-      redirect_to :action => "edit"
+      redirect_to :controller => "academic_records"
     else
       render :action => "edit"
     end

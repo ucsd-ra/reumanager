@@ -1,54 +1,53 @@
-<div class="fieldbox float">
-	<label>Current College or University</label><br />
+<div class="span-4">
+	<label>University</label><br />
 	<%= h(f.college) %>
 </div>
 
-<br style="clear:both;" />
-<div class="fieldbox float">
-	<label>Dates of Attendance (MM/YY)</label>
+<div class="span-4">
+	<label>Dates of Attendance</label>
+	<%= h(f.college_start.strftime("%Y.%m")) %>&nbsp;-&nbsp;
+	<%= h(f.college_end.strftime("%Y.%m")) %>
 </div>
-<br style="clear:both;" />
-<div class="fieldbox float">
-	<label>From:</label><br /><%= h(f.college_start) %><br style="clear:both;" />
-</div>
-<div class="fieldbox float">
-	<label>To:</label><br /><%= h(f.college_end) %>
-</div>
-<br style="clear:both;" />
-<div id="academicollege_level">
+
+<div class="span-5 last">
 	<label>Current Academic Level:</label>
 	<%= h(f.college_level) %>
 </div>
-<div class="fieldbox clear">
+
+<hr class="space" />
+
+<div class="span-4">
 	<label>Major/Minor</label><br />
 	<%= h(f.major) %>
 </div>
-<div class="fieldbox float">
-	<label>GPA / GPA Scale (e.g. 4.0)</label><br /><%= h(f.gpa) %> / <%= h(f.gpa_range) %>
+
+<div class="span-4">
+	<label>GPA</label><br />
+	<%= h(f.gpa) %> / <%= h(f.gpa_range) %>
 </div>
 
-<div class="fieldbox float">
-	<label>
-		We have received your transcript named "<%= h(current_user.transcript.filename) %>" on <%= h(current_user.transcript.created_at)%><br />
-	</label>
+<div class="span-4">
+	<label>Transcript</label><br />
+	<%= link_to current_user.transcript.filename, current_user.transcript.public_filename %>
 </div>
-<div id="pcollege" style="display:none;">
-	<div>
-		<label>Please enter information about the previous college or university</label>
-	</div>
-	<div class="fieldbox float">
-		<label>Previous College or University</label><br />
+
+<hr class="space" />
+
+<% if f.p_college != "" || nil -%>
+	<div class="span-4">
+		<label>Previous University</label><br />
 		<%= h(f.p_college) %>
 	</div>
-	<br style="clear:both;" />
-	<div class="fieldbox float">
-		<label>Dates of Attendance (MM/YY)</label><br style="clear:both;" />
+
+	<div class="span-4">
+		<label>Dates of Attendance</label><br />
+		<%= h(f.p_college_start.strftime("%Y.%m")) %>&nbsp;-&nbsp;
+		<%= h(f.p_college_end.strftime("%Y.%m")) %>
 	</div>
-	<br style="clear:both;" />
-	<div class="fieldbox float">
-		<label>From:</label><%= h(f.p_college_start) %><br style="clear:both;" />
+
+	<div class="span-4">
+
 	</div>
-	<div class="fieldbox float">
-		<label>To:</label><%= h(f.p_college_end) %>
-	</div>
-</div>
+<hr class="space" />
+<% end -%>
+<small class="right">Last Updated: <%= f.updated_at.strftime("%Y.%m.%d - %I:%M %p") %></small>

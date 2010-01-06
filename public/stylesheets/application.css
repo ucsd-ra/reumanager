@@ -9,6 +9,7 @@ Colors:
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Layout
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+	h1,h2,h3,h4,h5,h6						{ color:#555; }
 	h1										{ font-size:2.5em; }
 	a										{ color:#555; padding:1px 2px; text-decoration:none; }
 	a:hover									{ background-color:#deebff; color:#333; }
@@ -20,7 +21,7 @@ Layout
 	textarea								{ width:460px; }
 	ul,ol,p									{ font-size:1.2em; }
 	ol,ul									{ padding-left:0.5em; }
-	
+	hr.space								{ background-color:inherit; }
 	div#wrapper 							{ background:url(../images/background_sm_repeat_x.gif) repeat-x; width:100%; }
 	ul#navbar 								{ background-color:#002040; float:right; margin:0 0 8px; padding:0; -moz-border-radius: 0 0 13px 13px; -webkit-border-bottom-right-radius:13px; -webkit-border-bottom-left-radius:13px; }
 	#navbar li								{ display:inline-block; float:left; font-size:13px; margin:0 2px 0 0; padding:9px 0; }
@@ -98,13 +99,13 @@ Projects
 	
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Users
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
-	#app_navbar li							{ float:left; font-size:14px; list-style-type:none; margin:0 5px; padding:13px 5px; }
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+	#app_navbar								{ text-align:center; }
+	#app_navbar li							{ float:left; font-size:14px; list-style-type:none; margin:0 10px; padding:13px 5px; }
 	#app_navbar li:hover					{ background-color:#effcff; }
-	#app_navbar li a						{ padding:12px 0; }
+	#app_navbar li a						{ padding:14px 0; }
 	#app_navbar li a:hover					{ background-color:inherit; }
 	#app_navbar li a.active					{ color:black; text-decoration:underline; }
-	#submit > div							{ margin:20px 0; }
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Admin
