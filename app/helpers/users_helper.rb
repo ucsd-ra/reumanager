@@ -95,13 +95,17 @@ module UsersHelper
   #
   #
   def disability_selection
-    case current_user.disability
-    when nil || ""
-      'Prefer\ not\ to\ respond'
-    when "No"
-      "No"
+    if current_user && current_user.disability
+      case current_user.disability
+      when nil || ""
+        'Prefer\ not\ to\ respond'
+      when "No"
+        "No"
+      else
+        "Yes"
+      end
     else
-      "Yes"
+      'Prefer\ not\ to\ respond'
     end
   end
 end
