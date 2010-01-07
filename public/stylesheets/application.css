@@ -48,9 +48,12 @@ Layout
 	#buttons a:hover						{ background-color:#103050; border:0;  color:#fff;  }
 	#buttons a.active						{ background-color:#103050; color:#fff;  }
 	#content								{ padding:20px 0; }
-	#footer 								{ background-color:#f6f6f2; border-top:3px solid #e6e6e2; border-bottom:1px solid #e6e6e2; clear:both; color:#666; height:183px; margin:0 auto; padding:20px; text-shadow:#fff 3 3 3;   }
+	#footer 								{ background-color:#f6f6f2; border-top:3px solid #e6e6e2; border-bottom:1px solid #e6e6e2; clear:both; color:#666; margin:0 auto; padding:13px 0 0 0; text-shadow:#fff 3 3 3;   }
 	#footer p								{ color:#666; font-size:11px; line-height:17px; margin:0.3em auto; width:984px; text-align:center;}
-
+	#be_footer								{ padding:0 0 30px; }
+	#be_footer ul							{ margin:0 0 0 1.5em; padding:0 0 20px 0; }
+	#be_footer h6							{ font-size:12px; }
+	#be_footer li							{ font-size:11px; }
 	.left									{ float:left; }
 	.right									{ float:right; }
 	.center									{ text-align:center; }
