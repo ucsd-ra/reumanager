@@ -67,14 +67,13 @@ class AcademicRecordsController < ApplicationController
           unless current_user.transcript
             @academic_record.errors.add_to_base "You must upload copy of your most recent transcript."
           end
-          flash[:error] = 'Academic information was successfully created'
           format.html { render :action => "new" }
           format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
         end
       end
-  rescue ActiveRecord::RecordInvalid
-    flash[:notice] = 'There was an error with your form.'
-    render :action => "new"
+#  rescue ActiveRecord::RecordInvalid
+#    flash[:notice] = 'There was an error with your form.'
+#    render :action => "new"
   end
 
   # PUT /academic_records/1
@@ -107,7 +106,6 @@ class AcademicRecordsController < ApplicationController
       end
     end
   rescue ActiveRecord::RecordInvalid
-    flash[:notice] = 'Transcript must be in PDF format'
     render :action => "edit"
   end
 

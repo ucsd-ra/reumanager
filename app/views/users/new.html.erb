@@ -7,7 +7,7 @@
 
 	<%= render :partial => 'personal_data', :locals => { :f => f } %>		
 		
-	<p class="right" id="submit"><%= submit_tag 'Sign up', :onclick => "$('submit').hide();alert('Please wait up to 30 seconds for the server to process your request.');" %></p>
+	<p class="right" id="submit"><%= submit_tag 'Sign up', :onclick => "$('submit').hide();$('overlay').show();$('wait_box').show();" %></p>
 	<br class="clear" />
 	<% end -%>
 

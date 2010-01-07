@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   # render new.rhtml
   def new
-    if current_user && current_user.submit_date      
+    if current_user && current_user.submit_date
       flash[:notice] = 'You cannot submit your application twice.'
       redirect_to "/status"
     else
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   end
  
   def create
+    sleep 3
     logout_keeping_session!
     @user = User.new(params[:user])
     @user.login = @user.email
@@ -35,7 +36,6 @@ class UsersController < ApplicationController
       logout_killing_session!
       redirect_back_or_default('/thanks')
     else
-      flash[:error]  = "There were errors with your form, please try again or contact nsfreu@bioeng.ucsd.edu"
       render :action => 'new'
     end
   end

@@ -1,9 +1,9 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
-  def toggle_overlay
-    link_to_function("Toggle Overlay", nil, :id => "overlay_toggle") do |page|
-      page[:overlay].toggle
+  def toggle_wait_box
+    link_to_function("OK", nil, :id => "OK", :class => "padded button") do |page|
+      page[:wait_box].toggle
     end
   end
   
@@ -50,5 +50,8 @@ module ApplicationHelper
     return gpa_range
   end
   
+  def hide_flash
+
+	end
 
 end

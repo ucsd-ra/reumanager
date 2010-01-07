@@ -17,7 +17,6 @@ class CreateUsers < ActiveRecord::Migration
       t.column :pstate,               :string
       t.column :pzip,                 :string
       t.column :pphone,               :string
-      t.column :email,                :string
       t.column :citizenship,          :string
       t.column :cresidence,           :string
       t.column :gender,               :string

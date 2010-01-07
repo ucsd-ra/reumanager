@@ -1,6 +1,6 @@
 <div id="admin_header">
 	<h6>
-		View student: <%= select_tag "student_select", options_for_student_select(@all_students, "id", "lastname", "firstname", @user.id ) %>
+		View student: <%= (select_tag "student_select", options_for_student_select(@all_students, "id", "lastname", "firstname", @user.id )) if @all_students %>
 		<br />
 		<br />
 		<% if params[:controller] == "admin" && params[:action] == "index" -%>

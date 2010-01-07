@@ -46,13 +46,11 @@ before_filter :login_from_cookie, :login_required, :check_admin
   def report
     @all_students = User.find(:all, :order => 'lastname ASC')
     @students = User.paginate :page => params[:page], :order => 'lastname ASC'
-    @user = @students.first
   end
 
   def incomplete_report
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "submit_date is null"])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is null" ], :per_page => 15
-    @user = @students.first
     if @all_students != nil
       render :action => "index"
     else
@@ -66,7 +64,6 @@ before_filter :login_from_cookie, :login_required, :check_admin
   def submitted_report
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "submit_date is not null and completed is null" ])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is not null and completed is null" ], :per_page => 15
-    @user = @students.first
     if @all_students != nil
       render :action => "index"
     else
@@ -78,7 +75,6 @@ before_filter :login_from_cookie, :login_required, :check_admin
   def complete_report
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "completed is not null" ])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "completed is not null" ], :per_page => 15
-    @user = @students.first
     if @all_students != nil
       render :action => "index"
     else
@@ -90,7 +86,6 @@ before_filter :login_from_cookie, :login_required, :check_admin
   def create_report
     @all_students = User.find(:all, :order => 'lastname ASC')
      @students = User.paginate :page => params[:page], :order => 'lastname ASC'
-     @user = @students.first
      pdf = PDF::Writer.new
      Recommendation.find(:all).each do |r|
        r.make_pdf(pdf)

@@ -2,7 +2,6 @@
 <%= render :partial => "layouts/app_navbar" %>
 
 <% form_for(@recommender, :url => {:action => "update"}, :method => "put") do |r| %>
-	<div><label>Please supply the name and contact information of a faculty member who has agreed to write a letter of recommendation in support of your application. Instructions for submitting the letter will be sent directly to the faculty member</label></div>
 	<%= render :partial => "recommender_information", :locals => { :r => r }%>
     <p id="submit"><%= r.submit "Update Faculty Recommendation" %></p>
 	<br style="clear:both;" />	

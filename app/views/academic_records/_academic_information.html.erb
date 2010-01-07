@@ -46,8 +46,11 @@
 
 <% if current_user.transcript -%>
 	<div>
-		<p>You have previous uploaded the following transcript: <%= link_to current_user.transcript.filename, current_user.transcript.public_filename %></p>
-		<%= check_pdf %>
+		<% if current_user.transcript && current_user.transcript.validate -%>
+			<p>You have previous uploaded the following transcript: <%= link_to current_user.transcript.filename, current_user.transcript.public_filename %></p>
+			<%= check_pdf %>
+		<% end -%>
+		
 		<label>Click below to upload a new transcript:</label>
 		<%= file_field_tag :transcript_file %>
 		

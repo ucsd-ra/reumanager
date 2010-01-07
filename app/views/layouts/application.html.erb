@@ -19,17 +19,20 @@
 		</script>
 	</head>
 	<body>
-		<div id="overlay" style="display:none;">
-			<%= toggle_overlay %>
-			<div id="wait_box">Hi</div>
+		<div id="opaque_overlay">
+			<div id="wait_box">
+				<h2 class="padded">Please wait up to 30 seconds for the server to process your request</h2>
+				<%= toggle_wait_box %>
+			</div>
 		</div>
+		<div id="overlay" style="display:none;"></div>
 		
 		<div id="wrapper">
 			<div class="container">			
 				<%= render :partial => "layouts/header" %>
 				<div id="content">
 					<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
-					<%= content_tag 'div', h(flash[:error]), :class => 'notice error', :id => 'error' if flash[:error] %>
+					<%= content_tag 'div', h(flash[:error]), :class => 'error', :id => 'error' if flash[:error] %>
 					<%= yield %>					
 				</div>
 			</div>
@@ -37,15 +40,23 @@
 			<%= render :partial => "layouts/footer" %>
 		</div>
 		
-		<script type="text/javascript" language="javascript">
-		  // <![CDATA[
-		  $('notice').highlight();
-		  $('notice').fade( { duration: 3.5 } );
-		  $('error').highlight();
-		  $('error').fade( { duration: 3.5 } );
-		  // ]]>
-		</script>
-		
+		<% javascript_tag :defer => 'defer' do -%>
+			if (isVisible('notice')) {
+				$('overlay').show();
+				$('wait_box').hide();
+			  	$('notice').fade( { duration: 3 } );
+				Element.fade.delay(0.1, 'overlay');
+			}
+	  	<% end -%>
+		<% javascript_tag :defer => 'defer' do -%>
+			if (isVisible('error')) {
+				$('overlay').show();
+				$('wait_box').hide();
+				$('error').fade( { duration: 3 } );
+				Element.hide.delay(0.1, 'overlay');
+			}
+		<% end -%>	
+
 		<script type="text/javascript">
 			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
