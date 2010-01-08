@@ -1,8 +1,9 @@
 class RecommendationsController < ApplicationController
+
+  ssl_required :index, :new, :edit, :create, :update
+
   # GET /recommendations
   # GET /recommendations.xml
-
-
   def index
     current_user.recommender ? redirect_to(:action => "edit") : redirect_to(:action => "new") 
   end
