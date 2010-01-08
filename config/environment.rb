@@ -82,6 +82,7 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 end
 
+gem 'jscharf-ssl_requirement'
 gem 'mislav-will_paginate', '~> 2.2'
 require 'will_paginate'
 require 'RedCloth'
