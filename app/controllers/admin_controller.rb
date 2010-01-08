@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
 before_filter :login_from_cookie, :login_required, :check_admin
+ssl_required :index, :show, :observe_student_select, :report, :incomplete_report, :submitted_report, :complete_report, :create_report, :delete
+
 
   def check_admin
     unless current_user and (current_user.id == 1 || current_user.id == 6)

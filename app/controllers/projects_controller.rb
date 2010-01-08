@@ -1,4 +1,8 @@
 class ProjectsController < ApplicationController
+  
+  ssl_required :index, :show, :new, :edit, :create, :update, :destroy
+  
+  
   # GET /projects
   # GET /projects.xml
   def index

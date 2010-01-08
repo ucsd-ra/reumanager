@@ -8,12 +8,12 @@
 		<% else -%>
 			<h1 class="center padded">Your application is incomplete</h1>
 		<% end -%>
-			<div class="span-13 push-5 borded colored padded rounded"  id="personal_data">
+			<div class="span-13 push-5 bordered colored padded rounded"  id="personal_data">
 				<h4><%= link_to_unless_current "Personal Data", { :controller => "users", :action => "edit", :id => current_user } %></h4>
 				<%= render :partial => 'show_personal_data', :locals => { :f => current_user } %>
 			</div>
 
-			<div class="span-13 push-5 borded colored padded rounded"  id="academic_record">
+			<div class="span-13 push-5 bordered colored padded rounded"  id="academic_record">
 				<h4><%= link_to_unless_current "Academic Information", { :controller => "academic_records" } %></h4>
 
 				<% if check_academic_records -%>
@@ -24,7 +24,7 @@
 				<% end -%>
 			</div>
 
-			<div class="span-13 push-5 borded colored padded rounded"  id="recommender">
+			<div class="span-13 push-5 bordered colored padded rounded"  id="recommender">
 				<h4><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders" } %></h4>
 				<% if current_user.recommender -%>
 					<%= render :partial => 'show_recommender', :locals => { :r => current_user.recommender } %>
@@ -33,7 +33,7 @@
 				<% end -%>			
 			</div>
 		
-			<div class="span-13 push-5 borded colored padded rounded"  id="extra">
+			<div class="span-13 push-5 bordered colored padded rounded"  id="extra">
 				<h4><%= link_to_unless_current "Additional Information", { :controller => "extras" } %></h4>
 				<% if current_user.extra -%>
 					<%= render :partial => 'show_extra', :locals => { :e => current_user.extra } %>

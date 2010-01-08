@@ -1,28 +1,33 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
-function isVisible( elem ){
+function isVisible(elem){
         var $elem = $(elem);
-        //First check if elem is hidden through css as this is not very costly:
-        if($elem.getStyle('display') == 'none' || $elem.getStyle('visibility') == 'hidden' ){
-                //elem is set through CSS stylesheet or inline to invisible
-                return false;
-        }
-        //Now check for the elem being outside of the viewport
-        var $elemOffset = $elem.viewportOffset();
-        if($elemOffset.left < 0 || $elemOffset.top < 0){ 
-        //elem is left of or above viewport
-                return false;
-        }
-        var vp = document.viewport.getDimensions();
-        if($elemOffset.left > vp.width || $elemOffset.top > vp.height){ 
-        //elem is below or right of vp
-                return false;
-        }
-        //Now check for elements positioned on top:
-        //TODO: build check for this using prototype...
-        //Neither of these was true, so the elem was visible:
-        return true;
+		if ($elem){
+	        //First check if elem is hidden through css as this is not very costly:
+	        if($elem && $elem.getStyle('display') == 'none' || $elem && $elem.getStyle('visibility') == 'hidden' ){
+	                //elem is set through CSS stylesheet or inline to invisible
+	                return false;
+	        }
+	        //Now check for the elem being outside of the viewport
+	        var $elemOffset = $elem.viewportOffset();
+	        if($elemOffset.left < 0 || $elemOffset.top < 0){ 
+	        //elem is left of or above viewport
+	                return false;
+	        }
+	        var vp = document.viewport.getDimensions();
+	        if($elemOffset.left > vp.width || $elemOffset.top > vp.height){ 
+	        //elem is below or right of vp
+	                return false;
+	        }
+	        //Now check for elements positioned on top:
+	        //TODO: build check for this using prototype...
+	        //Neither of these was true, so the elem was visible:
+	        return true;
+		}
+		else {
+			return false;
+		}
 }
 
 
