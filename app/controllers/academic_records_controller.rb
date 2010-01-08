@@ -80,7 +80,7 @@ class AcademicRecordsController < ApplicationController
   # PUT /academic_records/1.xml
   def update
     @academic_record = AcademicRecord.find_by_user_id(current_user.id)
-    if params[:transcript_file] != "" && params[:transcript_file]
+    if params[:transcript_file] && params[:transcript_file] != ""
       current_user.transcript.destroy if current_user.transcript
       current_user.transcript = Transcript.new(:uploaded_data => params[:transcript_file])
       current_user.transcript.save
@@ -93,7 +93,7 @@ class AcademicRecordsController < ApplicationController
     end  
     
     respond_to do |format|
-      if current_user.transcript && @academic_record.update_attributes(params[:academic_record]) 
+      if current_user.transcript.save && @academic_record.update_attributes(params[:academic_record]) 
         flash[:notice] = 'Academic information was successfully updated'
         format.html { redirect_to( :controller => "recommenders" ) }
         format.xml  { head :ok }
@@ -105,8 +105,6 @@ class AcademicRecordsController < ApplicationController
         format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
       end
     end
-  rescue ActiveRecord::RecordInvalid
-    render :action => "edit"
   end
 
   # DELETE /academic_records/1
@@ -120,6 +118,16 @@ class AcademicRecordsController < ApplicationController
 #      format.xml  { head :ok }
 #    end
 #  end
+
+  def destroy_transcript
+    @academic_record = AcademicRecord.find(params[:id])
+    @academic_record.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(academic_records_url) }
+      format.xml  { head :ok }
+    end
+  end
   
   def observe_pcollege
     if params[:p_college] == "Yes"
@@ -134,4 +142,7 @@ class AcademicRecordsController < ApplicationController
       end
     end
   end
+  
+  
+  
 end
