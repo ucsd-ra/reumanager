@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def new
     if current_user && current_user.submit_date
       flash[:notice] = 'You cannot submit your application twice.'
-      redirect_to { :controller => "users", :action => "status" }
+      redirect_to ({ :controller => "users", :action => "status" })
     else
       @user = User.new
     end
