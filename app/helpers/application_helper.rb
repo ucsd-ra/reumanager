@@ -51,7 +51,6 @@ module ApplicationHelper
   end
   
   def hide_flash
-
 	end
 
 end
