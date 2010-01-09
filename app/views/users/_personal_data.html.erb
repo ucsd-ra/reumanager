@@ -90,7 +90,26 @@
 
 <hr />
 
-
+<div>
+	<label>Citizenship</label><br />
+	<%= f.select 'citizenship', %w{United\ States U.S.\ Permanent\ Resident Other} %>
+	<div class="clear" id="cor" style="display:none;">
+		<label>Country of Residence</label>
+		<%= f.text_field 'cresidence' %>
+	</div>
+</div>
+<div>
+	<label>Race*:</label><br />
+	<%= f.select 'race', %w{ Prefer\ not\ to\ respond American\ Indian\ or\ Alaskan\ Native Asian Black\ or\ African\ American Native\ Hawaiian\ or\ Pacific\ Islander White} %>
+</div>
+<div>
+	<label>Disability*:</label><br />
+	<%= select_tag 'disability', options_for_select(%w{ Prefer\ not\ to\ respond No Yes },disability_selection) %><br />
+	<span class="hidden" id="dis" style="display:none;">
+		<label>Specify:</label>
+		<%= f.text_field 'disability' %>
+	</span>
+</div>
 <div class="span-6">
 	<label>Gender*:</label><br />
 	<%= f.select 'gender', %w{ Prefer\ not\ to\ respond Female Male} %>
@@ -99,38 +118,18 @@
 	<label>Ethnicity*</label><br />
 	<%= f.select 'ethnicity', %w{ Prefer\ not\ to\ respond Hispanic\ or\ Latino Not\ Hispanic\ or\ Latino} %>
 </div>
-<div class="fieldbox clear">
-	<label>Citizenship</label><br />
-	<%= f.select 'citizenship', %w{United\ States U.S.\ Permanent\ Resident Other} %>
-	<div class="clear" id="cor" style="display:none;">
-		<label>Country of Residence</label>
-		<%= f.text_field 'cresidence' %>
-	</div>
-</div>
-<div class="fieldbox clear">
-	<label>Race*:</label><br />
-	<%= f.select 'race', %w{ Prefer\ not\ to\ respond American\ Indian\ or\ Alaskan\ Native Asian Black\ or\ African\ American Native\ Hawaiian\ or\ Pacific\ Islander White} %>
-</div>
-<div class="fieldbox clear">
-	<label>Disability*:</label><br />
-	<%= select_tag 'disability', options_for_select(%w{ Prefer\ not\ to\ respond No Yes },disability_selection) %><br />
-	<span class="hidden" id="dis" style="display:none;">
-		<label>Specify:</label>
-		<%= f.text_field 'disability' %>
-	</span>
-</div>
 
 <hr />
 
-<div class="fieldbox clear">
+<div>
 	<label>Password:</label>
 	<%= f.password_field 'password', :size => 14 %>
 </div>
 
-<div class="fieldbox clear">
+<div>
 	<label>Password Confirmation:</label>
 	<%= f.password_field 'password_confirmation', :size => 14 %>
 </div>
 
 
-<p id="disclaimer"><em>* for statistical purposes only</em></p>
+<p><em>* for statistical purposes only</em></p>

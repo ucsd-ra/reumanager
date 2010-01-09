@@ -1,6 +1,6 @@
 class RecommendersController < ApplicationController
   before_filter :login_from_cookie, :login_required
-  ssl_required :index, :new, :edit, :create, :update
+  ssl_required :index, :new, :edit, :create, :update, :destroy  
   
   # GET /recommenders
   # GET /recommenders.xml

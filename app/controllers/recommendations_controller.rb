@@ -1,5 +1,4 @@
 class RecommendationsController < ApplicationController
-
   ssl_required :index, :new, :edit, :create, :update
 
   # GET /recommendations
