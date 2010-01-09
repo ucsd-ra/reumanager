@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def index
     if current_user && current_user.submit_date
       flash[:notice] = 'You cannot submit your application twice.'
-      redirect_to { :controller => "users", :action => "edit" }
+      redirect_to({ :controller => "users", :action => "edit" })
     elsif current_user
       redirect_to edit_user_url(current_user)
     end
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   def edit
     if current_user && current_user.submit_date      
       flash[:notice] = 'You cannot submit your application twice.'
-      redirect_to { :controller => "users", :action => "edit" }
+      redirect_to({ :controller => "users", :action => "edit" })
     else
       @user = User.find(current_user.id)
     end
@@ -111,7 +111,7 @@ class UsersController < ApplicationController
   def submit
     if current_user.submit_date      
       flash[:notice] = 'You cannot submit your application twice.'
-      redirect_to { :controller => "users", :action => "edit" }
+      redirect_to({ :controller => "users", :action => "edit" })
     else
       return unless request.post?
         current_user.send_app_confirmation
@@ -129,7 +129,7 @@ class UsersController < ApplicationController
       current_user.rec_request = Time.now
     else
       flash[:notice] = 'Sorry, you can no longer resend your request, your application is complete.'
-      redirect_to { :controller => "users", :action => "edit" }
+      redirect_to({ :controller => "users", :action => "edit" })
     end
   end
   

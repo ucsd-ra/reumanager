@@ -7,7 +7,7 @@ class AcademicRecordsController < ApplicationController
   def index
     if current_user && current_user.submit_date      
       flash[:notice] = 'You can no longer edit your application.'
-      redirect_to { :controller => "users", :action => "edit" }
+      redirect_to({ :controller => "users", :action => "edit" })
     else
       current_user.academic_record ? redirect_to(:action => "edit") : redirect_to(:action => "new") 
     end
