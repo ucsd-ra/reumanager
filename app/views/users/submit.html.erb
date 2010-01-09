@@ -44,7 +44,7 @@
 			<hr class="clear" />
 			
 		<% if check_all %>
-			<h1><%= link_to "Submit Application", { :action => "submit"}, :method => "post", :onclick => "$('app_submit').hide();alert('Please wait up to 30 seconds for the server to process your request.');", :id => "app_submit" %></h1>
+			<h1><%= link_to "Submit Application", { :action => "submit"}, :method => "post", :onclick => "$('app_submit').hide();alert('Please wait up to 30 seconds for the server to process your request.');", :class => "button center positive", :id => "app_submit" %></h1>
 		<% end -%>
 	</div>
 </div>
