@@ -26,7 +26,7 @@
 		<% if params[:controller] == "users" && params[:action] == "submit" -%>
 			<li class="active bordered colored rounded"><%= link_to "5. Submit Application", { :controller => "users", :action => "submit" }, :class => "active" %></li>
 		<% else -%>
-			<li class="bordered colored rounded"><%= link_to "5. Submit Application", "/submit" %></li>
+			<li class="bordered colored rounded"><%= link_to "5. Submit Application", { :controller => "users", :action => "submit" } %></li>
 		<% end -%>
 	</ul>
 	<br style="clear:both;" />

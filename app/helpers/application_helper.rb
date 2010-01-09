@@ -49,8 +49,5 @@ module ApplicationHelper
     gpa_range << sprintf("%.1f", float += 0.1) while float < 9.9
     return gpa_range
   end
-  
-  def hide_flash
-	end
 
 end
