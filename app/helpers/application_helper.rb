@@ -16,7 +16,7 @@ module ApplicationHelper
   end
   
   def check_transcript
-    result = true if current_user && current_user.transcript.valid?
+    result = true if current_user && current_user.transcript && current_user.transcript.valid?
   end
   
   def check_pdf
