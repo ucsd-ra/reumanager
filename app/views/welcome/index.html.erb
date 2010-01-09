@@ -1,4 +1,5 @@
 <div id="welcome">
+	
 		<%= render :partial => "layouts/header_text" %>
 		<div class="center" id="images">
 			<%= image_tag("library.jpg")%>
@@ -23,7 +24,6 @@
 			 	<li>Professional workshops &amp; networking events</li>
 			</ul>
 		</div>
-		
 		<div class="span-6">
 			<h4 class="bold center">Eligibility Requirements</h4>
 			<ul>
@@ -32,7 +32,6 @@
 			 	<li>U.S. citizen or permanent resident</li>
 			</ul>
 		</div>
-		
 		<div class="span-10 last">
 			<h4 class="bold center">Application Information</h4>
 			<ul>
@@ -50,13 +49,14 @@
 		<% if Date.today < Date.parse("January 10 2010") -%>
 			<h3 class="center"><b>Please check back in January 2010 to submit your application</b></h3>
 		<% else -%>
-			<h3 class="center"><b>Registration is now closed. Please <%= link_to "login", "/login" %> to check the status of your application</b></h3>
+			<h3 class="center"><b>Registration is now closed. Please <%= link_to "login", { :controller => 'sessions', :action => 'new' } %> to check the status of your application</b></h3>
 		<% end -%>
 			
 		<% if Date.today > Date.parse("February 20 2010") -%>
 			<div id="status-form">
 				<% form_tag({:action=> "status"}) do %>
 					<table>
+						<tr><td colspan=3><%= content_tag 'div', h(flash[:status]), :class => 'status_error', :id => 'status_error' if flash[:status] %></td></tr>
 						<tr><td colspan=3 align="center" class="status_header">Enter your email address to check the status of your application</td></tr>
 						<tr>						
 			    			<td align="right"><label for="email">Email:</label></td>
@@ -65,11 +65,13 @@
 						</tr>
 					</table>
 					<script type="text/javascript">
-					//<![CDATA[
+						//<![CDATA[
 						Form.Element.focus('email');
 						//]]>
 					</script>
 				<% end -%>
 			</div>
 		<% end -%>
+
+	</div>
 </div>

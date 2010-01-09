@@ -13,15 +13,12 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   filter_parameter_logging :password, :password_confirmation, :lastname, :dob, :street, :city, :state, :zip, :phone, :pstreet, :pcity, :pstate, :pzip, :pphone, :citizenship, :cresidence, :gender, :ethnicity, :race, :disability
 
+  require 'pdf/writer'
+  include AuthenticatedSystem
   include SslRequirement
   
   def ssl_required?
     return false if local_request? || RAILS_ENV == 'test'
     super
-  end
-
-  include AuthenticatedSystem
-  
-  require 'pdf/writer'
-  
+  end  
 end

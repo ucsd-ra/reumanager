@@ -102,7 +102,7 @@ end
 describe <%= controller_class_name %>Controller do
   describe "route generation" do
     it "should route the new <%= controller_controller_name %> action correctly" do
-      route_for(:controller => '<%= controller_controller_name %>', :action => 'new').should == "/login"
+      route_for(:controller => '<%= controller_controller_name %>', :action => 'new').should == { :controller => 'sessions', :action => 'new' }
     end
     it "should route the create <%= controller_controller_name %> correctly" do
       route_for(:controller => '<%= controller_controller_name %>', :action => 'create').should == "/<%= controller_routing_path %>"

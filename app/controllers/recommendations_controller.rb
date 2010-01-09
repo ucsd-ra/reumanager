@@ -39,7 +39,7 @@ class RecommendationsController < ApplicationController
     respond_to do |format|
       if @recommendation.save
         flash[:notice] = 'Recommendation was successfully created.'
-        format.html { redirect_to( "/rec_thanks" ) }
+        format.html { redirect_to( {:controller => 'users', :action => 'rec_thanks'} ) }
         format.xml  { render :xml => @recommendation, :status => :created, :location => @recommendation }
       else
         format.html { render :action => "new" }

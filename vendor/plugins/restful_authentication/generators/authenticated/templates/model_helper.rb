@@ -59,10 +59,10 @@ module <%= model_controller_class_name %>Helper
   #
   # Examples:
   #   link_to_login_with_IP
-  #   # => <a href="/login" title="169.69.69.69">169.69.69.69</a>
+  #   # => <a href={ :controller => 'sessions', :action => 'new' } title="169.69.69.69">169.69.69.69</a>
   #
   #   link_to_login_with_IP :content_text => 'not signed in'
-  #   # => <a href="/login" title="169.69.69.69">not signed in</a>
+  #   # => <a href={ :controller => 'sessions', :action => 'new' } title="169.69.69.69">not signed in</a>
   #
   def link_to_login_with_IP content_text=nil, options={}
     ip_addr           = request.remote_ip

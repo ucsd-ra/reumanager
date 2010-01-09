@@ -6,7 +6,7 @@ ssl_required :index, :show, :observe_student_select, :report, :incomplete_report
   def check_admin
     unless current_user and (current_user.id == 1 || current_user.id == 6)
       flash[:notice] = "You are not an administrator."
-      redirect_to "/"
+      redirect_to( { :controller => "welcome" })
     end
     
   end

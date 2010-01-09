@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def index
     if current_user && current_user.submit_date
       flash[:notice] = 'You cannot submit your application twice.'
-      redirect_to "/status"
+      redirect_to { :controller => "users", :action => "edit" }
     elsif current_user
       redirect_to edit_user_url(current_user)
     end
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def new
     if current_user && current_user.submit_date
       flash[:notice] = 'You cannot submit your application twice.'
-      redirect_to "/status"
+      redirect_to { :controller => "users", :action => "status" }
     else
       @user = User.new
     end
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       # reset session
       self.current_user = @user # !! now logged in
       logout_killing_session!
-      redirect_back_or_default('/thanks')
+      redirect_back_or_default({ :controller => 'users', :action => 'thanks' })
     else
       render :action => 'new'
     end
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   def edit
     if current_user && current_user.submit_date      
       flash[:notice] = 'You cannot submit your application twice.'
-      redirect_to "/status"
+      redirect_to { :controller => "users", :action => "edit" }
     else
       @user = User.find(current_user.id)
     end
@@ -111,7 +111,7 @@ class UsersController < ApplicationController
   def submit
     if current_user.submit_date      
       flash[:notice] = 'You cannot submit your application twice.'
-      redirect_to "/status"
+      redirect_to { :controller => "users", :action => "edit" }
     else
       return unless request.post?
         current_user.send_app_confirmation
@@ -129,7 +129,7 @@ class UsersController < ApplicationController
       current_user.rec_request = Time.now
     else
       flash[:notice] = 'Sorry, you can no longer resend your request, your application is complete.'
-      redirect_to "/status"
+      redirect_to { :controller => "users", :action => "edit" }
     end
   end
   
