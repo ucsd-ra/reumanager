@@ -40,7 +40,7 @@ module ApplicationHelper
   end
 
   def check_all
-    result = true if current_user && check_academic_records && check_recommendor && check_extras
+    result = true if current_user && check_academic_records && check_recommender && check_extras
   end
 
   def gpa_range
