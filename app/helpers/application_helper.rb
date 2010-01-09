@@ -27,7 +27,7 @@ module ApplicationHelper
     end
   end
 
-  def check_recommendor
+  def check_recommender
     result = true if current_user && current_user.recommender
   end
 
