@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
 before_filter :login_from_cookie, :login_required, :check_admin
-ssl_required :index, :show, :observe_student_select, :report, :incomplete_report, :submitted_report, :complete_report, :create_report, :delete
+ssl_required :index, :show, :observe_student_select, :report, :incomplete, :submitted, :complete, :create_report, :delete
 
 
   def check_admin
@@ -26,8 +26,6 @@ ssl_required :index, :show, :observe_student_select, :report, :incomplete_report
     else
       @students = User.paginate :page => params[:page], :per_page => 15
     end
-    @all_students = User.find(:all, :order => 'lastname ASC' )
-    @user = @students.first
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @students }
@@ -35,7 +33,6 @@ ssl_required :index, :show, :observe_student_select, :report, :incomplete_report
   end
   
   def show
-    @all_students = User.find(:all, :order => 'lastname ASC')
     @user = User.find(params[:id])
   end
   
@@ -46,43 +43,21 @@ ssl_required :index, :show, :observe_student_select, :report, :incomplete_report
   end
   
   def report
-    @all_students = User.find(:all, :order => 'lastname ASC')
     @students = User.paginate :page => params[:page], :order => 'lastname ASC'
   end
 
-  def incomplete_report
-    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "submit_date is null"])
+  def incomplete
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is null" ], :per_page => 15
-    if @all_students != nil
-      render :action => "index"
-    else
-      flash[:notice] = "There are no incomplete applications"
-      @all_students = User.find(:all, :order => 'lastname ASC' )
-      @user = @all_students.first
-      redirect_to :action => "index"
-    end
+    render :action => "index"
   end
 
-  def submitted_report
-    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "submit_date is not null and completed is null" ])
+  def submitted
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is not null and completed is null" ], :per_page => 15
-    if @all_students != nil
-      render :action => "index"
-    else
-      flash[:notice] = "There are no submitted applications"
-      redirect_to :action => "index"
-    end
+    render :action => "index"
   end
 
-  def complete_report
-    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => [ "completed is not null" ])
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "completed is not null" ], :per_page => 15
-    if @all_students != nil
-      render :action => "index"
-    else
-      flash[:notice] = "There are no complete applications"
-      redirect_to :action => "index"
-    end
+  def complete
+    render :action => "index"
   end
   
   def create_report
@@ -93,9 +68,9 @@ ssl_required :index, :show, :observe_student_select, :report, :incomplete_report
        r.make_pdf(pdf)
        pdf.start_new_page
      end
-     if pdf.save_as("#{RAILS_ROOT}/public/pdf/complete_report.pdf")
+     if pdf.save_as("#{RAILS_ROOT}/public/pdf/complete.pdf")
        flash[:notice] = "Report created."
-       @report = "/pdf/complete_report.pdf"
+       @report = "/pdf/complete.pdf"
      else
        flash[:notice] = "There were errors. Please try again or contact jgrevich@ucsd.edu"
        redirect_to :action => "index"

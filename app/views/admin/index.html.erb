@@ -1,6 +1,6 @@
 <%= render :partial => "admin/admin_header" %>
 
-<% unless @students -%>
+<% unless @students && @students.count > 0 -%>
 	<h1>No Students</h1>
 <% else -%>
 	<h1>Listing Students Applicants</h1>
@@ -10,7 +10,6 @@
 	<table cellspacing="0">
 		<tr>
 			<th>#</th>
-			<th>id</th>
 			<th class="name"><%= link_to "Name", { :controller => "admin", :sort => "name" } %></th>
 			<th class="college">College / University</th>
 			<th class="major">Major</th>
@@ -27,7 +26,6 @@
 	  	<% for student in @students %>
 	  		<tr style="background-color:#<%= cycle("edf5fa","fff") %>;">
 				<td><% @n += 1 %><%= (@n).to_s %></td>
-				<td><%= student.id.to_s %></td>
 				<td class="name">
 					<% if student.firstname && student.lastname -%>
 						<%= link_to "#{student.firstname} #{student.lastname}", { :action => "show", :id => student } %>
@@ -48,7 +46,7 @@
 						<%= link_to "#{student.academic_record.gpa[0..2]}/#{student.academic_record.gpa_range[0..2]}", { :action => "show", :id => student } %>
 					<% end -%>
 				</td>
-	   			<td class="date"><%= link_to "#{student.created_at.strftime("%b %d<br />[%H:%M %Z]")}", { :action => "show", :id => student } %></td>
+	   			<td class="date"><%= link_to "#{student.created_at.strftime("%b %d, %H:%M %p")}", { :action => "show", :id => student } %></td>
 
 				<td class="del">
 					<%= link_to "Delete", { :action => "delete", :id => student }, { :confirm => "You are about to delete all associated records for #{student.firstname} #{student.lastname}. Are you sure about this?", :method => :delete } %>

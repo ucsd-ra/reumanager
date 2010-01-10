@@ -68,7 +68,7 @@ Layout
 	table									{ border-bottom:1px solid #ccc; }
 	tr:hover								{ background-color:#fefbbc; }
 	tr:first-child:hover					{ background-color:#fff; }
-	tr td 									{ border-top:1px solid #ace; }
+	tr td 									{ border-top:1px solid #ace; padding: 2px 10px 2px 5px; }
 	.light									{ background-color:#f6f6f2; }
 	.dark									{ background-color:#deebff; }
 	td a:hover								{ text-decoration:underline; }
