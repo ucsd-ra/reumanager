@@ -42,9 +42,9 @@ class UsersController < ApplicationController
   end
   
   def edit
-    if current_user && current_user.submit_date      
-      flash[:notice] = 'You cannot submit your application twice.'
-      redirect_to({ :controller => "users", :action => "edit" })
+    if current_user && current_user.submit_date
+      flash[:notice] = 'You application has already be submitted.'
+      redirect_to({ :controller => "users", :action => "status" })
     else
       @user = User.find(current_user.id)
     end
@@ -125,12 +125,13 @@ class UsersController < ApplicationController
   end
   
   def resend_request
-    if current_user.completed && current_user.completed == nil && current_user.send_rec_request
-      current_user.rec_request = Time.now
+    if current_user && current_user.completed == nil && current_user.send_rec_request
+      flash[:notice] = 'Your recommendation request has been sent.'
+      current_user.rec_request = Time.now      
     else
       flash[:notice] = 'Sorry, you can no longer resend your request, your application is complete.'
-      redirect_to({ :controller => "users", :action => "edit" })
     end
+    redirect_to({ :controller => "users", :action => "status" })
   end
   
 end

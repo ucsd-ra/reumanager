@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   include SslRequirement
   
   def ssl_required?
-    return false if local_request? || RAILS_ENV == 'test' || RAILS_ENV == 'dev'
+    return false if RAILS_ENV == 'test' || RAILS_ENV == 'development'
     super
   end  
 end

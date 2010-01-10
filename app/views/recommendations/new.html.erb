@@ -1,4 +1,3 @@
-<%= error_messages_for :recommendation %>
 <% form_for(@recommendation, :url => { :action => "create", :id => @user.token }, :method => "post") do |f| %>
 	<%= render :partial => "recommendation_information", :locals => { :f => f }%>
 	<br style="clear:both;" />

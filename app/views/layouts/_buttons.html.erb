@@ -1,13 +1,23 @@
 <% unless params[:action] == "login" -%>
 	<ul id="buttons">
 		<% if logged_in? -%>
+	
 			<li class="last"><%= link_to "Logout", { :controller => "sessions", :action => "destroy" } %></li>
-
 			<% if params[:controller] == "users" || params[:controller] == "academic_records" || params[:controller] == "recommenders" || params[:controller] == "extras" -%>
-				<li class="selected"><%= link_to "Application", edit_user_url(current_user) %>
+			
+				<% if current_user && current_user.submit_date %>
+					<li class="selected"><%= link_to "Application", { :controller => "users", :action => "status" }%></li>
+				<% else -%>
+					<li class="selected"><%= link_to "Application", edit_user_url(current_user) %></li>
+				<% end -%>				
 			<% else -%>
-				<li><%= link_to "Application", edit_user_url(current_user) %>
+				<% if current_user && current_user.submit_date %>
+					<li><%= link_to "Application", { :controller => "users", :action => "status" }%></li>
+				<% else -%>
+					<li><%= link_to "Application", edit_user_url(current_user) %></li>
+				<% end -%>
 			<% end -%>
+	
 		<% elsif Date.today > Date.parse("January 19 2010") -%>
 				<li class="last"><%= link_to "Login/Apply", { :controller => "sessions", :action => "new" } %></li>
 		<% end -%>
@@ -15,9 +25,9 @@
 			
 		<% if current_user && current_user.id == 1 -%>		
 			<% if params[:controller] == "admin" -%>
-				<li class="selected"><%= link_to "Admin", { :controller => "admin" }%>
+				<li class="selected"><%= link_to "Admin", { :controller => "admin" }%></li>
 			<% else -%>
-				<li><%= link_to "Admin", { :controller => "admin" }%>
+				<li><%= link_to "Admin", { :controller => "admin" }%></li>
 			<% end -%>
 		<% end -%>
 		

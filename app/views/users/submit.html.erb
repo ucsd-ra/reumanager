@@ -41,10 +41,14 @@
 				<% end -%>
 			</div>
 			
-			<hr class="clear" />
+			<% if check_all %>
+				<div class="span-13 push-5">
+					<div class="right">
+						<%= link_to "Submit Application", { :action => "submit"}, :method => "post", :onclick => "$('app_submit').hide();alert('Please wait up to 30 seconds for the server to process your request.');", :class => "button positive", :id => "app_submit" %>
+					</div>
+				</div>
+			<% end -%>
 			
-		<% if check_all %>
-			<h3 class="right"><%= link_to "Submit Application", { :action => "submit"}, :method => "post", :onclick => "$('app_submit').hide();alert('Please wait up to 30 seconds for the server to process your request.');", :class => "button positive", :id => "app_submit" %></h3>
-		<% end -%>
+
 	</div>
 </div>
