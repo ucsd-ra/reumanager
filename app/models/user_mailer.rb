@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 
-  def reg_confirmation( firstname, lastname, email)
+  def reg_confirmation( firstname, lastname, email, token)
     @subject    = "UCSD Bioengineering - NSF REU Registration Confirmation for #{firstname} #{lastname}"
     @recipients = email
     @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
@@ -12,7 +12,8 @@ class UserMailer < ActionMailer::Base
       :body => render_message("reg_confirmation",
                               :firstname => firstname,
                               :lastname => lastname,
-                              :email => email)
+                              :email => email,
+                              :token => token)
       )
   end
 

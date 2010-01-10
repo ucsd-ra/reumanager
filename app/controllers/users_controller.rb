@@ -1,6 +1,31 @@
 class UsersController < ApplicationController
-  before_filter :login_from_cookie, :login_required, :except => [ :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :resend_request ]
-  ssl_required :index, :new, :create, :edit, :update, :status, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :resend_request, :submit
+  before_filter :login_from_cookie, :login_required, :except => [ :activate, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :resend_request ]
+  ssl_required :index, :new, :create, :edit, :update, :status, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :resend_request, :submit, :activate
+  
+#  def activate
+#    @user = User.find_by_token(params[:token])
+#    if @user && @user.activated_at = Time.now && @user.save && 
+#      flash[:notice] = 'Your account has been activated'
+#      redirect_to :controller => 'academic_records', :action => 'new'
+#    end
+#  end
+  
+  def activate
+    logout_keeping_session!
+    user = User.find_by_token(params[:token]) unless params[:token].blank?
+    case
+    when (!params[:token].blank?) && user && !user.active?
+      user.activate!
+      flash[:notice] = "Signup complete! Please sign in to continue."
+      redirect_back_or_default(:controller => "welcome")
+    when params[:token].blank?
+      flash[:error] = "The activation code was missing.  Please follow the URL from your email."
+      redirect_back_or_default(:controller => "welcome")
+    else
+      flash[:error] = "We  #{user.firstname} couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."    
+      redirect_back_or_default(:controller => "welcome")
+    end
+  end
   
   def index
     if current_user && current_user.submit_date

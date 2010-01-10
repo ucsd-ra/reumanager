@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates_length_of       :lastname,     :maximum => 100
   validates_length_of       :password, :within => 8..40, :if => :password_required?
 
-  validates_presence_of     :email
+  validates_presence_of     :email, :firstname, :lastname
   validates_length_of       :email,    :within => 6..100 #r@a.wk
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
@@ -39,10 +39,33 @@ class User < ActiveRecord::Base
   
   before_create :make_token
   after_create  :send_reg_confirmation
+    
+  # Activates the user in the database.
+  def activate!
+    @activated = true
+    self.activated_at = Time.now.utc
+    save(false)
+  end
   
+  # Returns true if the user has just been activated.
+  def recently_activated?
+    @activated
+  end
+
+  def active?
+    # the lack of an activation code means they have not activated yet
+    !self.activated_at.nil?
+  end
+  
+  # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
+  #
+  # uff.  this is really an authorization, not authentication routine.  
+  # We really need a Dispatch Chain here or something.
+  # This will also let us return a human error message.
+  #
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
-    u = find_by_login(login) # need to get the salt
+    u = find :first, :conditions => ['login = ? and activated_at IS NOT NULL', login] # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 
@@ -88,7 +111,7 @@ class User < ActiveRecord::Base
    end
 
    def send_reg_confirmation
-     email = UserMailer.create_reg_confirmation(self.firstname, self.lastname, self.email)
+     email = UserMailer.create_reg_confirmation(self.firstname, self.lastname, self.email, self.token)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end

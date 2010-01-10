@@ -16,9 +16,9 @@
 
 	<% unless current_user.completed != nil -%>
 		<% if current_user.rec_request -%>
-			<%= link_to_unless_current "Resend Recommendation Request", { :controller => "users", :action => "resend_request" } , :confirm => "You are about to resend your recommendation request. This request was previously sent on #{ current_user.rec_request.strftime("%B %d at %I:%M %p") }.", :class => "button" %>
+			<%= link_to_unless_current "Resend Recommendation Request", { :controller => "users", :action => "resend_request" }, { :class => "button", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" } %>
 		<% else -%>
-			<%= link_to_unless_current "Send Recommendation Request",  { :controller => "users", :action => "resend_request" } , :class => "button" %>
+			<%= link_to_unless_current "Send Recommendation Request",  { :controller => "users", :action => "resend_request" } , :class => "button", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %>
 		<% end -%>
 	<% end -%>	
 </div>
