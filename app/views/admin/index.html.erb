@@ -3,8 +3,6 @@
 <% unless @students && @students.count > 0 -%>
 	<h1>No Students</h1>
 <% else -%>
-	<h1>Listing Students Applicants</h1>
-	
 	<%= will_paginate @students %>
 	
 	<table cellspacing="0">

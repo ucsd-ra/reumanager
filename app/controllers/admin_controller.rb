@@ -2,13 +2,11 @@ class AdminController < ApplicationController
 before_filter :login_from_cookie, :login_required, :check_admin
 ssl_required :index, :show, :observe_student_select, :report, :incomplete, :submitted, :complete, :create_report, :delete
 
-
   def check_admin
     unless current_user and (current_user.id == 1 || current_user.id == 6)
       flash[:notice] = "You are not an administrator."
       redirect_to( { :controller => "welcome" })
     end
-    
   end
   
   def index
@@ -47,16 +45,17 @@ ssl_required :index, :show, :observe_student_select, :report, :incomplete, :subm
   end
 
   def incomplete
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is null" ], :per_page => 15
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is null" ], :per_page => 25
     render :action => "index"
   end
 
   def submitted
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is not null and completed is null" ], :per_page => 15
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is not null and completed is null" ], :per_page => 25
     render :action => "index"
   end
 
-  def complete
+  def complete    
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is not null and completed is not null" ], :per_page => 25
     render :action => "index"
   end
   

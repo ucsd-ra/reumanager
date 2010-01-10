@@ -7,6 +7,10 @@ module ApplicationHelper
     end
   end
   
+  def check_admin
+    current_user.id == 1
+  end
+  
   def check_academic_records
     result = true if current_user && check_academic_record && check_transcript
   end
