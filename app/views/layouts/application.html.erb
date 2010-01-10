@@ -19,14 +19,13 @@
 		</script>
 	</head>
 	<body>
+		<div id="overlay" style="display:none;"></div>
 		<div id="opaque_overlay" style="display:none;">
 			<div id="wait_box">
 				<h2 class="padded">Please wait up to 30 seconds for the server to process your request</h2>
-				<%= toggle_wait_box %>
+				<%= image_tag("spinner6.gif") %>
 			</div>
 		</div>
-		<div id="overlay" style="display:none;"></div>
-		
 		<div id="wrapper">
 			<div class="container">			
 				<%= render :partial => "layouts/header" %>

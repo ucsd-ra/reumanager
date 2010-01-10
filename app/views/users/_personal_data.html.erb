@@ -98,6 +98,9 @@
 		<%= f.text_field 'cresidence' %>
 	</div>
 </div>
+
+<hr />
+
 <div>
 	<label>Race*:</label><br />
 	<%= f.select 'race', %w{ Prefer\ not\ to\ respond American\ Indian\ or\ Alaskan\ Native Asian Black\ or\ African\ American Native\ Hawaiian\ or\ Pacific\ Islander White} %>
@@ -119,6 +122,8 @@
 	<%= f.select 'ethnicity', %w{ Prefer\ not\ to\ respond Hispanic\ or\ Latino Not\ Hispanic\ or\ Latino} %>
 </div>
 
+<p style="small clear"><em>*&nbsp;for&nbsp;statistical&nbsp;purposes&nbsp;only</em></p>
+
 <hr />
 
 <div>
@@ -130,6 +135,3 @@
 	<label>Password Confirmation:</label>
 	<%= f.password_field 'password_confirmation', :size => 14 %>
 </div>
-
-
-<p><em>* for statistical purposes only</em></p>

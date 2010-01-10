@@ -1,5 +1,5 @@
 <% form_for(@recommendation, :url => { :action => "create", :id => @user.token }, :method => "post") do |f| %>
 	<%= render :partial => "recommendation_information", :locals => { :f => f }%>
 	<br style="clear:both;" />
-    <p id="submit"><%= f.submit "Create", :onclick => "$('submit').hide();alert('Please wait up to 30 seconds for the server to process your request.');" %></p>
+    <p id="submit"><%= f.submit "Create", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %></p>
 <% end %>

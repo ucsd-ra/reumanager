@@ -4,12 +4,14 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   
+  belongs_to                :role
+  
   has_one                   :academic_record, :dependent => :destroy
   has_one                   :recommendation, :dependent => :destroy
   has_one                   :recommender, :dependent => :destroy
   has_one                   :extra, :dependent => :destroy
   has_one                   :transcript, :dependent => :destroy
-
+  
   validates_format_of       :firstname,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
   validates_length_of       :firstname,     :maximum => 100
   validates_format_of       :lastname,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
@@ -60,6 +62,7 @@ class User < ActiveRecord::Base
      pdf.text "Personal Data\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
      pdf.text "#{self.street}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
      pdf.text "#{self.city}, #{self.state} #{self.zip}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+     
      if self.citizenship == "United States"
        pdf.text "Citizenship: #{self.citizenship}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
      else
@@ -69,6 +72,7 @@ class User < ActiveRecord::Base
      pdf.text "Academic Info\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
      pdf.text "#{self.academic_record.college_level.capitalize} majoring in #{self.academic_record.major} at #{self.academic_record.college}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
      pdf.text "Attended from: #{self.academic_record.college_start} to #{self.academic_record.college_end}, GPA: #{self.academic_record.gpa} out of #{self.academic_record.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+     
      if self.academic_record.p_college != ""
        pdf.text "Previous college: #{self.academic_record.p_college}, Attended from: #{self.academic_record.p_college_start} to #{self.academic_record.p_college_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
      else
@@ -84,11 +88,7 @@ class User < ActiveRecord::Base
    end
 
    def send_reg_confirmation
-     email = UserMailer.create_reg_confirmation(
-       self.firstname, 
-       self.lastname, 
-       self.email
-     )      
+     email = UserMailer.create_reg_confirmation(self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end
