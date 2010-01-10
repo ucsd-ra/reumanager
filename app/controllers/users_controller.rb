@@ -141,7 +141,7 @@ class UsersController < ApplicationController
       return unless request.post?
         current_user.send_app_confirmation
         current_user.send_rec_request
-      redirect_to "/app_thanks"
+      redirect_to( :controller => "users", :action => "/app_thanks" )
     end
   end
   
