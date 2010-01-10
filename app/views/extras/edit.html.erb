@@ -5,5 +5,5 @@
 <% form_for(@extra, :url => { :action => "update" }, :method => "put") do |e| %>
 	<%= render :partial => "additional_information", :locals => { :e => e } %>
 	<br style="clear:both;" />
-    <p id="submit"><%= e.submit "Update Additional Info" %></p>
+    <p id="submit"><%= e.submit "Update Additional Info", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %></p>
 <% end %>

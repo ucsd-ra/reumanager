@@ -3,7 +3,7 @@
 			
 <% form_for( @academic_record, :url => { :action => "create" }, :method => "post", :html => { :multipart => true } ) do |f| %>
 	<%= render :partial => 'academic_information', :locals => { :f => f } %>
-	<p id="submit"><%= f.submit "Add Academic Information" %></p>
+	<p id="submit"><%= f.submit "Add Academic Information", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %></p>
 <% end %>
 
 <div id="observers">

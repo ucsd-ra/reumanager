@@ -44,7 +44,7 @@
 			<% if check_all %>
 				<div class="span-13 push-5">
 					<div class="right">
-						<%= link_to "Submit Application", { :action => "submit"}, :method => "post", :onclick => "$('app_submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();", :class => "button positive", :id => "app_submit" %>
+						<%= link_to "Submit Application", { :action => "submit"}, :method => "post", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();", :class => "button positive", :id => "submit" %>
 					</div>
 				</div>
 			<% end -%>

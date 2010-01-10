@@ -3,6 +3,6 @@
 
 <% form_for(@recommender, :url => {:action => "update"}, :method => "put") do |r| %>
 	<%= render :partial => "recommender_information", :locals => { :r => r }%>
-    <p id="submit"><%= r.submit "Update Faculty Recommendation" %></p>
+    <p id="submit"><%= r.submit "Update Faculty Recommendation", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %></p>
 	<br style="clear:both;" />	
 <% end %>
