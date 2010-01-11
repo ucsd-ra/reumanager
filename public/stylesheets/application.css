@@ -111,7 +111,11 @@ Users
 	#app_navbar li a						{ padding:14px 0; }
 	#app_navbar li a:hover					{ background-color:inherit; }
 	#app_navbar li a.active					{ color:black; text-decoration:underline; }
-
+	#app_navbar li.positive:hover			{ background-color:#f0faca; }
+	
+	.positive								{ background-color:#E6EFC2;border:1px solid #C6D880;color:#529214; }
+	.postive:hover							{ background-color:#f0faca;}
+	
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Admin
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
