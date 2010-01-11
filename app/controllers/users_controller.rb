@@ -48,7 +48,6 @@ class UsersController < ApplicationController
   end
  
   def create
-    sleep 3
     logout_keeping_session!
     @user = User.new(params[:user])
     @user.login = @user.email
