@@ -30,7 +30,7 @@ class AcademicRecordsController < ApplicationController
     if current_user
       @academic_record = AcademicRecord.new
     else
-        redirect_to()
+      redirect_to()
     end
   end
 
@@ -64,10 +64,6 @@ class AcademicRecordsController < ApplicationController
           format.html { redirect_to( :controller => "recommenders" ) }
           format.xml  { render :xml => @academic_record, :status => :created, :location => @academic_record }
         else
-          current_user.academic_record.destroy if current_user.academic_record
-          unless current_user.transcript
-            @academic_record.errors.add_to_base "You must upload copy of your most recent transcript."
-          end
           format.html { render :action => "new" }
           format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
         end

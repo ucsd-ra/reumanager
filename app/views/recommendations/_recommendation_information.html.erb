@@ -1,15 +1,16 @@
 <%= error_messages_for :recommendation %>
+
 <h4>Student Information</h4>
 <div>
 	<label>How long have you known the applicant?</label>
 	<%= f.select 'known_student', %w{ <1\ year 1-2\ years 2-3\ years 3-4\ years >4\ years } %>
 </div>
-<br style="clear:both;" />
+
 <div>
 	<label>In what capacity have you known the applicant?</label>
 	<%= f.select 'know_capacity', %w{ Undergrad\ in\ one\ course Undergrad\ in\ multiple\ courses Research\ Assistant Teaching\ Assistant Other} %>
 </div>
-<br style="clear:both;" />
+
 <div>
 	<label>Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers:</label><br />
 	<span class="small"><%= f.radio_button 'rating', 'Top 1%' %><label>Top 1%</label>&nbsp;
@@ -19,16 +20,12 @@
 	<%= f.radio_button 'rating', 'average' %><label>average</label>&nbsp;
 	<%= f.radio_button 'rating', 'below average' %><label>below average</label>&nbsp;</span>
 </div>
-<br style="clear:both;" />
+
 <div>
 	<label>Is your institution primarily an undergraduate institution?</label>&nbsp;<%= f.select 'undergrad_inst', %w{ No Yes } %>
 </div>
-<br style="clear:both;" />
-<br style="clear:both;" />
 
 <div>
 	<label>Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance.</label>
 </div>
-<br style="clear:both;" />
-<br style="clear:both;" />
 <div><%= f.text_area 'faculty_comment' %></div>

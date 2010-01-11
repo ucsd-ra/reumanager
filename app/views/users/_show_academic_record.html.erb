@@ -28,7 +28,7 @@
 
 <div class="span-4">
 	<label>Transcript</label><br />
-	<%= link_to current_user.transcript.filename, current_user.transcript.public_filename %>
+	<%= link_to current_user.transcript.filename, current_user.transcript.public_filename.gsub("transcripts","nsfreu/transcripts") %>
 </div>
 
 <hr class="space" />

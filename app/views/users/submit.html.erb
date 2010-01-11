@@ -1,50 +1,49 @@
 <%= render :partial => "layouts/app_navbar" %>
 <div id="submit">
-		<% if check_all -%>
-			<h1 class="center padded">Please verify your application data</h1>
-		<% else -%>
-			<h1 class="center padded">Your application is incomplete</h1>
-		<% end -%>
-			<div class="span-13 push-5 bordered colored padded rounded"  id="personal_data">
-				<h4><%= link_to_unless_current "Personal Data", { :controller => "users", :action => "edit", :id => current_user } %></h4>
-				<%= render :partial => 'show_personal_data', :locals => { :f => current_user } %>
-			</div>
-
-			<div class="span-13 push-5 bordered colored padded rounded"  id="academic_record">
-				<h4><%= link_to_unless_current "Academic Information", { :controller => "academic_records" } %></h4>
-
-				<% if check_academic_records -%>
-					<%= render :partial => 'show_academic_record', :locals => { :f => current_user.academic_record } %>
-				<% else -%>
-					<%= content_tag 'p', 'You have not added your academic records.', :class => 'blood_red' unless current_user.academic_record %>
-					<%= content_tag 'p', 'You have not uploaded a PDF copy of your unofficial transcript.', :class => 'blood_red' unless current_user.transcript && current_user.transcript.content_type == 'application/pdf' %>				
-				<% end -%>
-			</div>
-
-			<div class="span-13 push-5 bordered colored padded rounded"  id="recommender">
-				<h4><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders" } %></h4>
-				<% if current_user.recommender -%>
-					<%= render :partial => 'show_recommender', :locals => { :r => current_user.recommender } %>
-				<% else -%>
-					<p class="blood_red">You have not entered the faculty recommendation info.</p>
-				<% end -%>			
-			</div>
-		
-			<div class="span-13 push-5 bordered colored padded rounded"  id="extra">
-				<h4><%= link_to_unless_current "Additional Information", { :controller => "extras" } %></h4>
-				<% if current_user.extra -%>
-					<%= render :partial => 'show_extra', :locals => { :e => current_user.extra } %>
-				<% else -%>
-					<p class="blood_red">You have not entered your additional info.</p>
-				<% end -%>
-			</div>
-			
-			<% if check_all %>
-				<div class="span-13 push-5">
-					<div class="right">
-						<%= link_to "Submit Application", { :action => "submit"}, :method => "post", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();", :class => "button positive" %>
-					</div>
-				</div>
-			<% end -%>
+	<% if check_all -%>
+		<h1 class="center padded">Please verify your application data</h1>
+	<% else -%>
+		<h1 class="center padded">Your application is incomplete</h1>
+	<% end -%>
+	<div class="span-13 push-5 bordered colored padded rounded"  id="personal_data">
+		<h4><%= link_to_unless_current "Personal Data", { :controller => "users", :action => "edit", :id => current_user } %></h4>
+		<%= render :partial => 'show_personal_data', :locals => { :f => current_user } %>
 	</div>
+
+	<div class="span-13 push-5 bordered colored padded rounded"  id="academic_record">
+		<h4><%= link_to_unless_current "Academic Information", { :controller => "academic_records" } %></h4>
+
+		<% if check_academic_records -%>
+			<%= render :partial => 'show_academic_record', :locals => { :f => current_user.academic_record } %>
+		<% else -%>
+			<%= content_tag 'p', 'You have not added your academic records.', :class => 'blood_red' unless current_user.academic_record %>
+			<%= content_tag 'p', 'You have not uploaded a PDF copy of your unofficial transcript.', :class => 'blood_red' unless current_user.transcript && current_user.transcript.content_type == 'application/pdf' %>				
+		<% end -%>
+	</div>
+
+	<div class="span-13 push-5 bordered colored padded rounded"  id="recommender">
+		<h4><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders" } %></h4>
+		<% if current_user.recommender -%>
+			<%= render :partial => 'show_recommender', :locals => { :r => current_user.recommender } %>
+		<% else -%>
+			<p class="blood_red">You have not entered the faculty recommendation info.</p>
+		<% end -%>			
+	</div>
+	
+	<div class="span-13 push-5 bordered colored padded rounded"  id="extra">
+		<h4><%= link_to_unless_current "Additional Information", { :controller => "extras" } %></h4>
+		<% if current_user.extra -%>
+			<%= render :partial => 'show_extra', :locals => { :e => current_user.extra } %>
+		<% else -%>
+			<p class="blood_red">You have not entered your additional info.</p>
+		<% end -%>
+	</div>
+		
+	<% if check_all %>
+		<div class="span-13 push-5">
+			<div class="right">
+				<%= link_to "Submit Application", { :action => "submit"}, :method => "post", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();", :class => "button positive" %>
+			</div>
+		</div>
+	<% end -%>
 </div>
