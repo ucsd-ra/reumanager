@@ -20,5 +20,13 @@ class ApplicationController < ActionController::Base
   def ssl_required?
     return false if RAILS_ENV == 'test' || RAILS_ENV == 'development'
     super
-  end  
+  end
+  
+  before_filter  :set_p3p
+
+  def set_p3p
+    response.headers["P3P"]="CP='CAO PSA OUR'"
+  end
+
+  
 end
