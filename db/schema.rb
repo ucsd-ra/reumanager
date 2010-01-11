@@ -9,20 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091218043643) do
+ActiveRecord::Schema.define(:version => 20100110031958) do
 
   create_table "academic_records", :force => true do |t|
     t.integer  "user_id"
     t.string   "college"
-    t.string   "college_start"
-    t.string   "college_end"
+    t.datetime "college_start"
+    t.datetime "college_end"
     t.string   "college_level"
     t.string   "major"
     t.string   "gpa"
     t.string   "gpa_range"
     t.string   "p_college"
-    t.string   "p_college_start"
-    t.string   "p_college_end"
+    t.datetime "p_college_start"
+    t.datetime "p_college_end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -71,6 +71,12 @@ ActiveRecord::Schema.define(:version => 20091218043643) do
     t.string   "college"
     t.string   "phone"
     t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
