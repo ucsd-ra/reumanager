@@ -37,26 +37,28 @@
 			</div>
 			<%= render :partial => "layouts/footer" %>
 		</div>
-		<% javascript_tag :defer => 'defer' do -%>
-			if (isVisible('notice')) {
-				$('opaque_overlay').show();		
-				$('overlay').show();
-				$('wait_box').hide();
-			  	$('notice').fade( { duration: 3 } );
-				Element.fade.delay(0.1, 'overlay');
-				Element.fade.delay(0.1, 'opaque_overlay');				
-			}
-	  	<% end -%>
-		<% javascript_tag :defer => 'defer' do -%>
-			if (isVisible('error')) {
-				$('opaque_overlay').show();
-				$('overlay').show();
-				$('wait_box').hide();
-				$('error').fade( { duration: 3 } );
-				Element.hide.delay(0.1, 'overlay');
-				Element.fade.delay(0.1, 'opaque_overlay');
-			}
-		<% end -%>	
+		<% unless params[:controller] == "welcome" -%>
+			<% javascript_tag :defer => 'defer' do -%>
+				if (isVisible('notice')) {
+					$('opaque_overlay').show();		
+					$('overlay').show();
+					$('wait_box').hide();
+				  	$('notice').fade( { duration: 3 } );
+					Element.fade.delay(0.1, 'overlay');
+					Element.fade.delay(0.1, 'opaque_overlay');				
+				}
+		  	<% end -%>
+			<% javascript_tag :defer => 'defer' do -%>
+				if (isVisible('error')) {
+					$('opaque_overlay').show();
+					$('overlay').show();
+					$('wait_box').hide();
+					$('error').fade( { duration: 3 } );
+					Element.hide.delay(0.1, 'overlay');
+					Element.fade.delay(0.1, 'opaque_overlay');
+				}
+			<% end -%>
+		<% end -%>
 
 		<script type="text/javascript">
 			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

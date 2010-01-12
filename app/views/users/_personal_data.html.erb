@@ -102,11 +102,11 @@
 <hr />
 
 <div>
-	<label>Race*:</label><br />
+	<label>Race:</label><br />
 	<%= f.select 'race', %w{ Prefer\ not\ to\ respond American\ Indian\ or\ Alaskan\ Native Asian Black\ or\ African\ American Native\ Hawaiian\ or\ Pacific\ Islander White} %>
 </div>
 <div>
-	<label>Disability*:</label><br />
+	<label>Disability:</label><br />
 	<%= select_tag 'disability', options_for_select(%w{ Prefer\ not\ to\ respond No Yes },disability_selection) %><br />
 	<span class="hidden" id="dis" style="display:none;">
 		<label>Specify:</label>
@@ -114,24 +114,25 @@
 	</span>
 </div>
 <div class="span-6">
-	<label>Gender*:</label><br />
+	<label>Gender:</label><br />
 	<%= f.select 'gender', %w{ Prefer\ not\ to\ respond Female Male} %>
 </div>
 <div class="span-6 last">
-	<label>Ethnicity*</label><br />
+	<label>Ethnicity</label><br />
 	<%= f.select 'ethnicity', %w{ Prefer\ not\ to\ respond Hispanic\ or\ Latino Not\ Hispanic\ or\ Latino} %>
 </div>
 
-<p style="small clear"><em>*&nbsp;for&nbsp;statistical&nbsp;purposes&nbsp;only</em></p>
-
 <hr />
 
-<div>
-	<label>Password:</label>
-	<%= f.password_field 'password', :size => 14 %>
+<div class="span-6">
+	<label>Password:</label><br />
+	<%= f.password_field 'password', :size => 14 %><br />
+	<small>Please use more than 8 characters</small>
 </div>
 
-<div>
-	<label>Password Confirmation:</label>
+<div class="span-6 last">
+	<label>Password Confirmation:</label><br />
 	<%= f.password_field 'password_confirmation', :size => 14 %>
 </div>
+
+<hr />

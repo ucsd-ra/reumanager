@@ -13,9 +13,9 @@
 		<% end -%>
 	
 		<% if params[:controller] == "recommenders" -%>
-			<li class="active bordered colored rounded <%= "positive" if check_recommender %>"><%= link_to "3. Faculty Recommendation", { :controller => "recommenders" }, :class => "active"  %></li>
+			<li class="active bordered colored rounded <%= "positive" if check_recommender %>"><%= link_to "3. Faculty Recommendation Information", { :controller => "recommenders" }, :class => "active"  %></li>
 		<% else -%>
-			<li class="bordered colored rounded <%= "positive" if check_recommender %>"><%= link_to "3. Faculty Recommendation", { :controller => "recommenders " } %></li>
+			<li class="bordered colored rounded <%= "positive" if check_recommender %>"><%= link_to "3. Recommender Information", { :controller => "recommenders " } %></li>
 		<% end -%>
 	
 		<% if params[:controller] == "extras" -%>
@@ -29,5 +29,4 @@
 			<li class="bordered colored rounded"><%= link_to "5. Submit Application", { :controller => "users", :action => "submit" } %></li>
 		<% end -%>
 	</ul>
-	<br style="clear:both;" />
 </div>
