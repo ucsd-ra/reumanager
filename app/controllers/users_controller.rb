@@ -154,7 +154,7 @@ class UsersController < ApplicationController
   
   def resend_request
     if current_user && current_user.completed_at == nil && current_user.send_rec_request
-      flash[:notice] = 'Your recommendation request has been sent.'
+      flash[:notice] = 'Your recommendation request has been resent.'
       current_user.rec_request_at = Time.now      
     else
       flash[:notice] = 'Sorry, you can no longer resend your request, your application is complete.'
