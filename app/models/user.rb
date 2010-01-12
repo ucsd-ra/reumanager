@@ -131,7 +131,7 @@ class User < ActiveRecord::Base
 
    def send_rec_request
      self.update_attribute("rec_request_at", Time.now)
-     email = UserMailer.create_rec_request_at(
+     email = UserMailer.create_rec_request(
       self.recommender.email, 
       self.id, 
       self.token, 
