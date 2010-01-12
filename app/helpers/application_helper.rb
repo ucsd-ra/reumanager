@@ -7,6 +7,17 @@ module ApplicationHelper
     end
   end
   
+  def dynamic_title
+    case
+    when params[:controller] == "welcome"
+      return "<title>UC San Diego, Department of Bioengineering | NSF Research Experience for Undergraduates (NSFREU)</title>"
+    when params[:controller] == "projects"
+      return "<title>UCSD NSF Research Experience for Undergraduates ::: Projects</title>"
+    when params[:controller] == "users" || params[:controller] == "academic_records" || params[:controller] == "extras" || params[:controller] == "recommenders" 
+      return "<title>UCSD NSF Research Experience for Undergraduates ::: Application</title>"    
+    end
+  end
+  
   def check_admin
     current_user.id == 1
   end
