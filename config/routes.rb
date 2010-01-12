@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/activate/:token', :controller => "users", :action => "activate"
   map.connect '/activate', :controller => "users", :action => "activate"
   map.connect '/activated', :controller => "users", :action => "activated"
-  map.connect '/saved', :controller => "users", :action => "activated"
+  map.connect '/saved', :controller => "users", :action => "saved"
   map.resources :projects
   map.resources :users
   map.resource :session
