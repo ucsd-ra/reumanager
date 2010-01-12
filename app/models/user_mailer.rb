@@ -34,7 +34,7 @@ class UserMailer < ActionMailer::Base
       )
   end
 
-  def rec_request_at(remail, id, token, firstname, lastname, email)
+  def rec_request(remail, id, token, firstname, lastname, email)
     @subject    = "UCSD Bioengineering - NSF REU Recommendation Request from #{firstname} #{lastname}"
     @recipients = remail
     @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
@@ -43,7 +43,7 @@ class UserMailer < ActionMailer::Base
 
     part(
       :content_type => "text/html", 
-      :body => render_message("rec_request_at", 
+      :body => render_message("rec_request", 
                               :id => id,
                               :token => token,
                               :firstname => firstname,
