@@ -21,15 +21,6 @@
 		<% end -%>
 	</div>
 
-	<div class="span-13 push-5 bordered colored padded rounded"  id="recommender">
-		<h4><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders" } %></h4>
-		<% if current_user.recommender -%>
-			<%= render :partial => 'show_recommender', :locals => { :r => current_user.recommender } %>
-		<% else -%>
-			<p class="blood_red">You have not entered the faculty recommendation info.</p>
-		<% end -%>			
-	</div>
-	
 	<div class="span-13 push-5 bordered colored padded rounded"  id="extra">
 		<h4><%= link_to_unless_current "Additional Information", { :controller => "extras" } %></h4>
 		<% if current_user.extra -%>
@@ -37,6 +28,15 @@
 		<% else -%>
 			<p class="blood_red">You have not entered your additional info.</p>
 		<% end -%>
+	</div>
+
+	<div class="span-13 push-5 bordered colored padded rounded"  id="recommender">
+		<h4><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders" } %></h4>
+		<% if current_user.recommender -%>
+			<%= render :partial => 'show_recommender', :locals => { :r => current_user.recommender } %>
+		<% else -%>
+			<p class="blood_red">You have not entered the faculty recommendation info.</p>
+		<% end -%>			
 	</div>
 		
 	<% if check_all %>

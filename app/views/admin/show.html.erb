@@ -1,38 +1,78 @@
 <%= render :partial => "admin_header" %>
 
 <div id="submit">
-			<div class="span-13 push-5 bordered colored padded rounded"  id="personal_data">
-				<h4><%= link_to_unless_current "Personal Data", { :controller => "users", :action => "edit", :id => @user } %></h4>
-				<%= render :partial => 'users/show_personal_data', :locals => { :f => @user } %>
-			</div>
+	<div class="span-13 push-5 bordered colored padded rounded"  id="personal_data">
+		<h4><%= link_to_unless_current "Personal Data", { :controller => "users", :action => "edit", :id => @user } %></h4>
+		<%= render :partial => 'users/show_personal_data', :locals => { :f => @user } %>
+	</div>
 
-			<div class="span-13 push-5 bordered colored padded rounded"  id="academic_record">
-				<h4><%= link_to_unless_current "Academic Information", { :controller => "academic_records" } %></h4>
+	<div class="span-13 push-5 bordered colored padded rounded"  id="academic_record">
+		<h4><%= link_to_unless_current "Academic Information", { :controller => "academic_records" } %></h4>
 
-				<% if check_academic_records -%>
-					<%= render :partial => 'users/show_academic_record', :locals => { :f => @user.academic_record } %>
-				<% else -%>
-					<%= content_tag 'p', 'You have not added your academic records.', :class => 'blood_red' unless @user.academic_record %>
-					<%= content_tag 'p', 'You have not uploaded a PDF copy of your unofficial transcript.', :class => 'blood_red' unless @user.transcript && @user.transcript.content_type == 'application/pdf' %>				
-				<% end -%>
-			</div>
+		<% if check_academic_records -%>
+			<%= render :partial => 'users/show_academic_record', :locals => { :f => @user.academic_record } %>
+		<% else -%>
+			<%= content_tag 'p', 'You have not added your academic records.', :class => 'blood_red' unless @user.academic_record %>
+			<%= content_tag 'p', 'You have not uploaded a PDF copy of your unofficial transcript.', :class => 'blood_red' unless @user.transcript && @user.transcript.content_type == 'application/pdf' %>				
+		<% end -%>
+	</div>
 
-			<div class="span-13 push-5 bordered colored padded rounded"  id="recommender">
-				<h4><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders" } %></h4>
-				<% if @user.recommender -%>
-					<%= render :partial => 'users/show_recommender', :locals => { :r => @user.recommender } %>
-				<% else -%>
-					<p class="blood_red">You have not entered the faculty recommendation info.</p>
-				<% end -%>			
+	<div class="span-13 push-5 bordered colored padded rounded"  id="extra">
+		<h4><%= link_to_unless_current "Additional Information", { :controller => "extras" } %></h4>
+		<% if @user.extra -%>
+			<%= render :partial => 'users/show_extra', :locals => { :e => @user.extra } %>
+		<% else -%>
+			<p class="blood_red">You have not entered your additional info.</p>
+		<% end -%>
+	</div>
+	
+	<div class="span-13 push-5 bordered colored padded rounded"  id="recommender">
+		<h4><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders" } %></h4>
+		<% if @user.recommender -%>
+			<%= render :partial => 'users/show_recommender', :locals => { :r => @user.recommender } %>
+		<% else -%>
+			<p class="clear blood_red">You have not entered the faculty recommendation info.</p>
+		<% end -%>
+				
+		<br class="clear" /><br class="clear" />
+		<% if @user.recommendation -%>
+			<div>
+				<label>How long have you known the applicant?</label>
+				<%=h @user.recommendation.known_student %>
 			</div>
+			<br />
+			
+			<div>
+				<label>In what capacity have you known the applicant?</label>
+				<%=h @user.recommendation.know_capacity %>
+			</div>
+			<br />
+			
+			<div>
+				<label>Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers:</label>
+				<%=h @user.recommendation.rating %>
+			</div>
+			<br />
+			
+			<div>
+				<label>Is your institution primarily an undergraduate institution?</label>
+				<%= @user.recommendation.undergrad_inst %>
+			</div>
+			<br />
+			
+			<div>
+				<label>Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance.</label>
+				<br />
+				<%= @user.recommendation.faculty_comment %>
+			</div>
+		<% else -%>
+			<p>A recommendation has not been received for this student.</p>
+		<% end -%>
 		
-			<div class="span-13 push-5 bordered colored padded rounded"  id="extra">
-				<h4><%= link_to_unless_current "Additional Information", { :controller => "extras" } %></h4>
-				<% if @user.extra -%>
-					<%= render :partial => 'users/show_extra', :locals => { :e => @user.extra } %>
-				<% else -%>
-					<p class="blood_red">You have not entered your additional info.</p>
-				<% end -%>
-			</div>
+		<br class="clear" /><br class="clear" />
+
+		<small class="right">Last Updated: <%= @user.recommendation.updated_at.strftime("%Y.%m.%d - %I:%M %p") %></small>
+	</div>
+	
 </div>
 <%= render :partial => "admin_observers" %>

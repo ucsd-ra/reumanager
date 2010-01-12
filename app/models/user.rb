@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
   
   belongs_to                :role
-  
   has_one                   :academic_record, :dependent => :destroy
   has_one                   :recommendation, :dependent => :destroy
   has_one                   :recommender, :dependent => :destroy

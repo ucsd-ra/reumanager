@@ -15,6 +15,7 @@
 	<%= h(r.phone) %>
 	<%= h(r.email) %>
 </div>
-<br class="clear" /><br class="clear" />
-
-<small class="right">Last Updated: <%= r.updated_at.strftime("%Y.%m.%d - %I:%M %p") %></small>
+<% unless current_user.role && current_user.role.name == "admin" -%>
+	<br class="clear" /><br class="clear" />
+	<small class="right">Last Updated: <%= r.updated_at.strftime("%Y.%m.%d - %I:%M %p") %></small>
+<% end -%>
