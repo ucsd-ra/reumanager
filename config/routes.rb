@@ -1,19 +1,20 @@
 ActionController::Routing::Routes.draw do |map|
-  map.connect '/academic_records/sorry', :controller => 'academic_records', :action => "sorry"
-  map.thanks '/thanks', :controller => 'users', :action => 'thanks'
-  map.rec_thanks '/rec_thanks', :controller => 'users', :action => 'rec_thanks'
-  map.app_thanks '/app_thanks', :controller => 'users', :action => 'app_thanks'
-  map.resend_request '/resend_request', :controller => 'users', :action => 'resend_request'
+  map.login  '/login',  :controller => 'sessions', :action => 'new'
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.apply '/apply', :controller => "users", :action => "new"
   map.submit '/submit', :controller => "users", :action => 'submit'
   map.status '/status', :controller => "users", :action => "status"
-  map.login  '/login',  :controller => 'sessions', :action => 'new'
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'  
+  map.thanks '/thanks', :controller => 'users', :action => 'thanks'
+  map.connect '/academic_records/sorry', :controller => 'academic_records', :action => "sorry"
+  map.rec_thanks '/rec_thanks', :controller => 'users', :action => 'rec_thanks'
+  map.app_thanks '/app_thanks', :controller => 'users', :action => 'app_thanks'
+  map.resend_request '/resend_request', :controller => 'users', :action => 'resend_request'
   map.signup  '/signup', :controller => 'users',   :action => 'new'
   map.connect '/users/edit', :controller => "users", :action => "edit"
   map.connect '/activate/:token', :controller => "users", :action => "activate"
   map.connect '/activate', :controller => "users", :action => "activate"
   map.connect '/activated', :controller => "users", :action => "activated"
+  map.connect '/saved', :controller => "users", :action => "activated"
   map.resources :projects
   map.resources :users
   map.resource :session
