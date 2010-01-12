@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   def index
     if current_user && current_user.submitted_at
       flash[:notice] = 'You cannot submit your application twice.'
-      redirect_to({ :controller => "users", :action => "edit" })
+      redirect_to( :controller => "users", :action => "status" )
     elsif current_user
       redirect_to edit_user_url(current_user)
     end
@@ -136,12 +136,12 @@ class UsersController < ApplicationController
     if current_user.submitted_at      
       flash[:notice] = 'You cannot submit your application twice.'
       render :update do |page|
-        page.redirect_to( :controller => "users", :action => "edit" )
+        page.redirect_to( :controller => "users", :action => "status" )
       end
     else
       return unless request.post?
       current_user.send_app_confirmation
-      current_user.send_rec_request_at
+      current_user.send_rec_request
       render :update do |page|
         page.redirect_to( :controller => "users", :action => "app_thanks" )
       end
@@ -153,7 +153,7 @@ class UsersController < ApplicationController
   end
   
   def resend_request
-    if current_user && current_user.completed_at == nil && current_user.send_rec_request_at
+    if current_user && current_user.completed_at == nil && current_user.send_rec_request
       flash[:notice] = 'Your recommendation request has been sent.'
       current_user.rec_request_at = Time.now      
     else
