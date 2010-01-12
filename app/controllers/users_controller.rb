@@ -154,11 +154,13 @@ class UsersController < ApplicationController
   
   def resend_request
     if current_user && current_user.completed_at == nil && current_user.send_rec_request
+      if (current_user.rec_request_at == nil || ((Time.now - current_user.rec_request_at)/60) > Time.now) 
       flash[:notice] = 'Your recommendation request has been resent.'
       current_user.rec_request_at = Time.now      
     else
       flash[:notice] = 'Sorry, you can no longer resend your request, your application is complete.'
     end
+    
     redirect_to({ :controller => "users", :action => "status" })
   end
   
