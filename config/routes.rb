@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/users/edit', :controller => "users", :action => "edit"
   map.connect '/activate/:token', :controller => "users", :action => "activate"
   map.connect '/activate', :controller => "users", :action => "activate"
+  map.connect '/activated', :controller => "users", :action => "activated"
   map.resources :projects
   map.resources :users
   map.resource :session

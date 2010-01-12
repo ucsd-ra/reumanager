@@ -45,17 +45,17 @@ ssl_required :index, :show, :observe_student_select, :report, :incomplete, :subm
   end
 
   def incomplete
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is null" ], :per_page => 25
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is null" ], :per_page => 25
     render :action => "index"
   end
 
   def submitted
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is not null and completed is null" ], :per_page => 25
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null" ], :per_page => 25
     render :action => "index"
   end
 
   def complete    
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submit_date is not null and completed is not null" ], :per_page => 25
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null" ], :per_page => 25
     render :action => "index"
   end
   

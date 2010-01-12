@@ -120,9 +120,10 @@ ActiveRecord::Schema.define(:version => 20100110031958) do
     t.string   "ethnicity"
     t.string   "race"
     t.string   "disability"
-    t.datetime "submit_date"
-    t.datetime "rec_request"
-    t.datetime "completed"
+    t.datetime "activated_at"
+    t.datetime "submitted_at"
+    t.datetime "rec_request_at"
+    t.datetime "completed_at"
     t.string   "token"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"

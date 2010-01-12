@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
         if (user.email == "jgrevich@ucsd.edu" || user.email == "mmicous@ucsd.edu")
           redirect_to( :controller => "admin" )
         else
-          if user.submit_date
+          if user.submitted_at
             redirect_to( :controller => "users", :action => "status" )
           else
             redirect_to( :controller => "users", :action => "edit" )
@@ -37,9 +37,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    logout_killing_session!
-    flash[:notice] = "You have been logged out."
-    redirect_back_or_default( :controller => "welcome" )
+    if current_user.completed_at || current_user.role == "admin"
+      logout_killing_session!
+      redirect_back_or_default( :controller => "welcome" )
+    else
+      logout_killing_session!
+      redirect_back_or_default( :controller => "users", :action => "saved" )
+    end
   end
 
 protected

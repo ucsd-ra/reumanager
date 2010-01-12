@@ -5,7 +5,7 @@ class AcademicRecordsController < ApplicationController
   # GET /academic_records
   # GET /academic_records.xml
   def index
-    if current_user && current_user.submit_date      
+    if current_user && current_user.submitted_at      
       flash[:notice] = 'You can no longer edit your application.'
       redirect_to({ :controller => "users", :action => "edit" })
     else

@@ -13,7 +13,7 @@
 		<% end -%>
 	
 		<% if params[:controller] == "recommenders" -%>
-			<li class="active bordered colored rounded <%= "positive" if check_recommender %>"><%= link_to "3. Faculty Recommendation Information", { :controller => "recommenders" }, :class => "active"  %></li>
+			<li class="active bordered colored rounded <%= "positive" if check_recommender %>"><%= link_to "3. Recommender Information", { :controller => "recommenders" }, :class => "active"  %></li>
 		<% else -%>
 			<li class="bordered colored rounded <%= "positive" if check_recommender %>"><%= link_to "3. Recommender Information", { :controller => "recommenders " } %></li>
 		<% end -%>
@@ -24,9 +24,9 @@
 			<li class="bordered colored rounded <%= "positive" if check_extras %>"><%= link_to "4. Additional Information", { :controller => "extras " } %></li>
 		<% end -%>
 		<% if params[:controller] == "users" && params[:action] == "submit" -%>
-			<li class="active bordered colored rounded"><%= link_to "5. Submit Application", { :controller => "users", :action => "submit" }, :class => "active" %></li>
+			<li class="active bordered colored rounded"><%= link_to "5. Submit/Save Application", { :controller => "users", :action => "submit" }, :class => "active" %></li>
 		<% else -%>
-			<li class="bordered colored rounded"><%= link_to "5. Submit Application", { :controller => "users", :action => "submit" } %></li>
+			<li class="bordered colored rounded"><%= link_to "5. Submit/Save Application", { :controller => "users", :action => "submit" } %></li>
 		<% end -%>
 	</ul>
 </div>

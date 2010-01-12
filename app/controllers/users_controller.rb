@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :login_from_cookie, :login_required, :except => [ :activate, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :resend_request ]
-  ssl_required :index, :new, :create, :edit, :update, :status, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :resend_request, :submit
+  before_filter :login_from_cookie, :login_required, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :resend_request ]
+  ssl_required :index, :new, :create, :edit, :update, :status, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :resend_request, :submit, :saved
   
 #  def activate
 #    @user = User.find_by_token(params[:token])
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    if current_user && current_user.submit_date
+    if current_user && current_user.submitted_at
       flash[:notice] = 'You cannot submit your application twice.'
       redirect_to({ :controller => "users", :action => "edit" })
     elsif current_user
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   # render new.rhtml
   def new
-    if current_user && current_user.submit_date
+    if current_user && current_user.submitted_at
       flash[:notice] = 'You cannot submit your application twice.'
       redirect_to ({ :controller => "users", :action => "status" })
     else
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-    if current_user && current_user.submit_date
+    if current_user && current_user.submitted_at
       flash[:notice] = 'You application has already be submitted.'
       redirect_to({ :controller => "users", :action => "status" })
     else
@@ -133,7 +133,7 @@ class UsersController < ApplicationController
   end
   
   def submit
-    if current_user.submit_date      
+    if current_user.submitted_at      
       flash[:notice] = 'You cannot submit your application twice.'
       render :update do |page|
         page.redirect_to( :controller => "users", :action => "edit" )
@@ -141,7 +141,7 @@ class UsersController < ApplicationController
     else
       return unless request.post?
       current_user.send_app_confirmation
-      current_user.send_rec_request
+      current_user.send_rec_request_at
       render :update do |page|
         page.redirect_to( :controller => "users", :action => "app_thanks" )
       end
@@ -153,9 +153,9 @@ class UsersController < ApplicationController
   end
   
   def resend_request
-    if current_user && current_user.completed == nil && current_user.send_rec_request
+    if current_user && current_user.completed_at == nil && current_user.send_rec_request_at
       flash[:notice] = 'Your recommendation request has been sent.'
-      current_user.rec_request = Time.now      
+      current_user.rec_request_at = Time.now      
     else
       flash[:notice] = 'Sorry, you can no longer resend your request, your application is complete.'
     end

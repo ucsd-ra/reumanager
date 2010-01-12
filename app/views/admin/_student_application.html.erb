@@ -1,5 +1,5 @@
 <div id="student_application">
-	<% if user.completed -%><%= image_tag "complete.gif", :id => "app_status" %><% else -%><%= image_tag "incomplete.gif", :id => "app_status" %><% end -%>
+	<% if user.completed_at -%><%= image_tag "complete.gif", :id => "app_status" %><% else -%><%= image_tag "incomplete.gif", :id => "app_status" %><% end -%>
 	<h1><%= "##{user.id} #{user.firstname} #{user.lastname}"%></h1>
 	<br />
 	<h3>Recommendation</h3>
@@ -76,5 +76,5 @@
 		<p>We have not received this student's additional information</p>
 	<% end -%>
 	
-	<h3 class="center"><%= link_to "Download PDF of Application", "/pdf/#{user.id.to_s}_#{user.lastname}.pdf" if user.completed %></h5>
+	<h3 class="center"><%= link_to "Download PDF of Application", "/pdf/#{user.id.to_s}_#{user.lastname}.pdf" if user.completed_at %></h5>
 </div>

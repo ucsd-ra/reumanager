@@ -117,7 +117,7 @@ class User < ActiveRecord::Base
    end
 
    def send_app_confirmation
-     self.update_attribute("submit_date", Time.now)     
+     self.update_attribute("submitted_at", Time.now)     
      email = UserMailer.create_app_confirmation(
        self.id, 
        self.token, 
@@ -129,9 +129,9 @@ class User < ActiveRecord::Base
      UserMailer.deliver(email)
    end
 
-   def send_rec_request
-     self.update_attribute("rec_request", Time.now)
-     email = UserMailer.create_rec_request(
+   def send_rec_request_at
+     self.update_attribute("rec_request_at", Time.now)
+     email = UserMailer.create_rec_request_at(
       self.recommender.email, 
       self.id, 
       self.token, 
@@ -144,7 +144,7 @@ class User < ActiveRecord::Base
    end
 
    def send_complete_app
-     self.update_attribute("completed", Time.now)     
+     self.update_attribute("completed_at", Time.now)     
      email = UserMailer.create_complete_app(
        self.id,
        self.firstname, 
