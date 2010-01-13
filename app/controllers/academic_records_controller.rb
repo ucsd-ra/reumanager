@@ -61,7 +61,7 @@ class AcademicRecordsController < ApplicationController
         end
         if @academic_record.save
           flash[:notice] = 'Academic information was successfully created'
-          format.html { redirect_to( :controller => "recommenders" ) }
+          format.html { redirect_to( :controller => "extras" ) }
           format.xml  { render :xml => @academic_record, :status => :created, :location => @academic_record }
         else
           format.html { render :action => "new" }
@@ -92,7 +92,7 @@ class AcademicRecordsController < ApplicationController
     respond_to do |format|
       if current_user.transcript.save && @academic_record.update_attributes(params[:academic_record]) 
         flash[:notice] = 'Academic information was successfully updated'
-        format.html { redirect_to( :controller => "recommenders" ) }
+        format.html { redirect_to( :controller => "extras" ) }
         format.xml  { head :ok }
       else
         unless current_user.transcript

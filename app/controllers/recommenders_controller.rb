@@ -32,7 +32,7 @@ class RecommendersController < ApplicationController
     respond_to do |format|
       if @recommender.save
         flash[:notice] = 'Recommender was successfully created.'
-        format.html { redirect_to( :controller => "extras" ) }
+        format.html { redirect_to( :controller => "users", :action => "submit" ) }
         format.xml  { render :xml => @recommender, :status => :created, :location => @recommender }
       else
         format.html { render :action => "new" }
@@ -49,7 +49,7 @@ class RecommendersController < ApplicationController
     respond_to do |format|
       if @recommender.update_attributes(params[:recommender])
         flash[:notice] = 'Recommender was successfully updated.'
-        format.html { redirect_to( :controller => "extras" ) }
+        format.html { redirect_to( :controller => "users", :action => "submit" ) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
