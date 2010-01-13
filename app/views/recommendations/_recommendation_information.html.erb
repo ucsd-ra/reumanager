@@ -1,4 +1,6 @@
 <%= error_messages_for :recommendation %>
+<%= error_messages_for 'recommender', :object => @user.recommender, :object_name => "contact info"%>
+
 <% fields_for @user.recommender do |r| %>
 	<h4>Please verify your contact info:</h4>
 	<div class="fieldbox float">

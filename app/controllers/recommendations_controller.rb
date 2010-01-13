@@ -36,7 +36,7 @@ class RecommendationsController < ApplicationController
     @recommendation.user_id = @user.id
     @recommendation.recommender_id = @user.recommender.id
     respond_to do |format|
-      if @recommendation.save @user.recommender.update_attributes(params[:recommender])
+      if @user.recommender.update_attributes(params[:recommender]) && @recommendation.save
         flash[:notice] = 'Recommendation was successfully created.'
         format.html { redirect_to( {:controller => 'users', :action => 'rec_thanks'} ) }
         format.xml  { render :xml => @recommendation, :status => :created, :location => @recommendation }

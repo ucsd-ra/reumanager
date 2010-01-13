@@ -34,6 +34,7 @@ class CreateUsers < ActiveRecord::Migration
       t.column :salt,                 :string, :limit => 40
       t.column :created_at,           :datetime
       t.column :updated_at,           :datetime
+      t.column :role_id,              :integer, :default => 2
     end
     add_index :users, :login, :unique => true
   end
