@@ -113,7 +113,7 @@ Users
 	#app_navbar li a:hover					{ background-color:inherit; }
 	#app_navbar li a.active					{ color:black; text-decoration:underline; }
 	#app_navbar li.positive:hover			{ background-color:#f0faca; }
-	.positive								{ background-color:#e6efc2;border:1px solid #C6D880;color:#529214; }
+	#app_navbar .positive					{ background-color:#e6efc2;border:1px solid #C6D880;color:#529214; }
 	#app_navbar li.postive:hover			{ background-color:#f0faca;}
 	#app_navbar li.postive a:hover			{ background-color:#f0faca;}
 	

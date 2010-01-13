@@ -39,6 +39,14 @@ class User < ActiveRecord::Base
   before_create :make_token
   after_create  :send_reg_confirmation
     
+    
+  def name
+    @name = ""
+    @name << (self.firstname + " ") if self.firstname
+    @name << (self.middlename + " ") if self.middlename
+    @name << (self.lastname + " ") if self.lastname
+  end
+  
   # Activates the user in the database.
   def activate!
     @activated = true

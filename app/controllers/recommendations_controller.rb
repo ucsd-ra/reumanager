@@ -12,7 +12,7 @@ class RecommendationsController < ApplicationController
   def new
     if @user = User.find_by_token(params[:id])  
       @recommendation = Recommendation.new
-      @recommender = @user.recommender
+      @recommender = Recommender.find(@user.recommender)
     
       respond_to do |format|
         format.html # new.html.erb
