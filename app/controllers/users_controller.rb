@@ -17,12 +17,12 @@ class UsersController < ApplicationController
     when (!params[:token].blank?) && user && !user.active?
       user.activate!
       flash[:notice] = "Activation complete! Please login to continue."
-      redirect_back_or_default(:controller => "welcome")
+      redirect_back_or_default(:controller => "activated")
     when params[:token].blank?
       flash[:error] = "The activation code was missing.  Please follow the URL from your email."
       redirect_back_or_default(:controller => "welcome")
     else
-      flash[:error] = "We  #{user.firstname} couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."    
+      flash[:error] = "We couldn't find a user with that activation code. Please double check your email to make sure you copied the correct code, or maybe you've already activated -- try signing in."    
       redirect_back_or_default(:controller => "welcome")
     end
   end
