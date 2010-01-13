@@ -67,6 +67,9 @@ Rails::Initializer.run do |config|
   config.action_mailer.default_charset = "utf-8"
   config.action_mailer.raise_delivery_errors = true
   
+  
+  config.gem 'Lipsiasoft-exception-notifier', :lib => 'exception_notifier', :source => 'http://gems.github.com'
+  
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
   # (create the session table with "rake db:sessions:create")
