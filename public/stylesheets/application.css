@@ -65,6 +65,7 @@ Layout
 	.rounded								{ -moz-border-radius:8px; -webkit-border-radius:8px; }
 	.bordered								{ border:1px solid #bdf; }
 	.bold									{ font-weight:bold; }
+	.margined								{ margin:20px 0; }
 	table									{ border-bottom:1px solid #ccc; }
 	tr:hover								{ background-color:#fefbbc; }
 	tr:first-child:hover					{ background-color:#fff; }

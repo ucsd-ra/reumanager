@@ -55,22 +55,19 @@ class AcademicRecordsController < ApplicationController
         current_user.transcript.save
       end
     end
-      respond_to do |format|
-        unless current_user.transcript
+    respond_to do |format|
+      unless @academic_record.save && current_user.transcript && current_user.transcript.save
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
+      else
+        unless current_user.transcript && current_user.transcript.save
           @academic_record.errors.add_to_base "You must upload copy of your most recent transcript."
         end
-        if @academic_record.save
-          flash[:notice] = 'Academic information was successfully created'
-          format.html { redirect_to( :controller => "extras" ) }
-          format.xml  { render :xml => @academic_record, :status => :created, :location => @academic_record }
-        else
-          format.html { render :action => "new" }
-          format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
-        end
+        flash[:notice] = 'Academic information was successfully created'
+        format.html { redirect_to( :controller => "extras" ) }
+        format.xml  { render :xml => @academic_record, :status => :created, :location => @academic_record }
       end
-#  rescue ActiveRecord::RecordInvalid
-#    flash[:notice] = 'There was an error with your form.'
-#    render :action => "new"
+    end
   end
 
   # PUT /academic_records/1
@@ -88,9 +85,8 @@ class AcademicRecordsController < ApplicationController
       params[:academic_record][:p_college_start] = nil
       params[:academic_record][:p_college_end] = nil
     end  
-    
     respond_to do |format|
-      if current_user.transcript.save && @academic_record.update_attributes(params[:academic_record]) 
+      if current_user.transcript && current_user.transcript.save && @academic_record.update_attributes(params[:academic_record]) 
         flash[:notice] = 'Academic information was successfully updated'
         format.html { redirect_to( :controller => "extras" ) }
         format.xml  { head :ok }
@@ -139,7 +135,5 @@ class AcademicRecordsController < ApplicationController
       end
     end
   end
-  
-  
   
 end
