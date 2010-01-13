@@ -14,15 +14,15 @@
 	
 
 		<% if params[:controller] == "extras" -%>
-			<li class="active bordered colored rounded <%= "positive" if check_extras %>"><%= link_to "4. Additional Information", { :controller => "extras" }, :class => "active"  %></li>
+			<li class="active bordered colored rounded <%= "positive" if check_extras %>"><%= link_to "3. Additional Information", { :controller => "extras" }, :class => "active"  %></li>
 		<% else -%>
-			<li class="bordered colored rounded <%= "positive" if check_extras %>"><%= link_to "4. Additional Information", { :controller => "extras " } %></li>
+			<li class="bordered colored rounded <%= "positive" if check_extras %>"><%= link_to "3. Additional Information", { :controller => "extras " } %></li>
 		<% end -%>
 
 		<% if params[:controller] == "recommenders" -%>
-			<li class="active bordered colored rounded <%= "positive" if check_recommender %>"><%= link_to "5. Recommender Information", { :controller => "recommenders" }, :class => "active"  %></li>
+			<li class="active bordered colored rounded <%= "positive" if check_recommender %>"><%= link_to "4. Recommender Information", { :controller => "recommenders" }, :class => "active"  %></li>
 		<% else -%>
-			<li class="bordered colored rounded <%= "positive" if check_recommender %>"><%= link_to "5. Recommender Information", { :controller => "recommenders " } %></li>
+			<li class="bordered colored rounded <%= "positive" if check_recommender %>"><%= link_to "4. Recommender Information", { :controller => "recommenders " } %></li>
 		<% end -%>
 
 		<% if params[:controller] == "users" && params[:action] == "submit" -%>
