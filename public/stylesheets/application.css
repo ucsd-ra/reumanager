@@ -86,7 +86,7 @@ Welcome
 	.speaker 								{ float:left; margin:14px; width:160px; }
 	.speaker a:hover 						{ background-color:inherit; }
 	.speaker h4 							{ margin:0; }
-	
+	#apply_now								{ padding:8px 16px; margin:10px; }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Extra
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/

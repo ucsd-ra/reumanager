@@ -17,8 +17,8 @@
 				<% end -%>
 			<% end -%>
 	
-		<% elsif Date.today > Date.parse("January 13 2010") -%>
-				<li class="last"><%= link_to "Login/Apply", { :controller => "sessions", :action => "new" } %></li>
+		<% elsif Date.today > Date.parse("January 11 2010") -%>
+				<li class="last"><%= link_to "Login", { :controller => "sessions", :action => "new" } %></li>
 		<% end -%>
 
 			
