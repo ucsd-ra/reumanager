@@ -3,9 +3,9 @@ before_filter :login_from_cookie, :login_required, :check_admin
 ssl_required :index, :show, :observe_student_select, :report, :incomplete, :submitted, :complete, :create_report, :delete
 
   def check_admin
-    unless current_user and (current_user.id == 6 || current_user.id == 1)
+    unless current_user and (current_user.role == "admin" || current_user.id == 1)
       flash[:notice] = "You are not an administrator."
-      redirect_to( { :controller => "welcome" })
+      redirect_to( :controller => "welcome" )
     end
   end
   
