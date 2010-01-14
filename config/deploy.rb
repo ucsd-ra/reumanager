@@ -35,3 +35,12 @@ deploy.task :stop do
 end
 
 after :deploy, 'deploy:cleanup'
+
+after "deploy:symlink", :link_files 
+
+task :link_files do
+  %w{transcripts}.each do |share|
+    run "rm -rf #{deploy_to}/current/public/#{share}"
+    run "ln -nfs #{deploy_to}/shared/system/#{share} #{deploy_to}/current/public/#{share}"
+  end
+end
