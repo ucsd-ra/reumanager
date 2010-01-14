@@ -19,7 +19,7 @@ module ApplicationHelper
   end
   
   def check_admin
-    current_user.id == 1
+    current_user.id == 1 || current_user.role.name == "admin"
   end
   
   def check_academic_records(user)

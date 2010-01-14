@@ -10,7 +10,7 @@
 			    <h4><%=h project.title %></h4>
 			    <p><%=h project.participant %>, <%=h project.participant_university %><br /><%=h project.faculty_mentor %></p>
 
-				<% if logged_in? -%>
+				<% if logged_in? && check_admin -%>
 				    <%= link_to 'Show', project %>
 				    <%= link_to 'Edit', edit_project_path(project) %>
 				    <%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %>
