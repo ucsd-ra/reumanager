@@ -15,6 +15,8 @@ module ApplicationHelper
       return "<title>UCSD NSF Research Experience for Undergraduates ::: Projects</title>"
     when params[:controller] == "users" || params[:controller] == "academic_records" || params[:controller] == "extras" || params[:controller] == "recommenders" 
       return "<title>UCSD NSF Research Experience for Undergraduates ::: Application</title>"    
+    else
+      return "UC San Diego, Department of Bioengineering | NSF Research Experience for Undergraduates (NSFREU)"
     end
   end
   
