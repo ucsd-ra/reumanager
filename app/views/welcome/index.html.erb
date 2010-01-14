@@ -1,78 +1,55 @@
 <div id="welcome">
-		<%= render :partial => "layouts/header_text" %>
-		
-		<div class="center" id="images">
-			<%= image_tag("library.jpg")%>
-			<%= image_tag("sun_god.jpg")%>
-			<%= image_tag("shores.jpg")%>
-		</div>
-		
-		<p>The <%= link_to "Department of Bioengineering", "http://www.be.ucsd.edu/" %> at the <%= link_to "University of California, San Diego", "http://ucsd.edu" %> is pleased to offer a National Science Foundation Research Experience for Undergraduates (<%= link_to "NSF-REU", "http://www.nsf.gov/crssprgm/reu/" %>) program in Regenerative Medicine, Multi-Scale Bioengineering, and Systems Biology.</p>
-		<p>This exciting 10 week summer program provides undergraduate students access to state-of-the-art facilities, the opportunity to work with accomplished and experienced faculty mentors, and to participate in highly collaborative, cutting-edge <%= link_to "research projects", { :controller => "projects" } %>. In addition to the training students receive in individual research laboratories, extensive professional development opportunities will be provided through weekly workshops, an undergraduate research conference, seminars, and panel discussions.</p>
-
-		<hr />
-		
-		<div class="span-8">
-			<h4 class="bold center">Highlights</h4>
-			<ul>
-			 	<li>$4,500 stipend</li>
-			 	<li>Free on-campus housing or housing allowance</li>
-			 	<li>Free travel to and from San Diego</li>
-			 	<li>Hands-on research experience</li>
-			 	<li>Present at the UCSD Summer Research Conference</li>
-				<li>Opportunity to present at Biomedical Engineering Society (<%= link_to "BMES", "http://bmes.ucsd.edu" %>) Annual Meeting</li>
-			 	<li>Professional workshops &amp; networking events</li>
-			</ul>
-		</div>
-		<div class="span-6">
-			<h4 class="bold center">Eligibility Requirements</h4>
-			<ul>
-			 	<li>Full-time undergraduate student</li>
-			 	<li>Graduating fall 2010 or later</li>
-			 	<li>U.S. citizen or permanent resident</li>
-			</ul>
-		</div>
-		<div class="span-10 last">
-			<h4 class="bold center">Application Information</h4>
-			<ul>
-			 	<li>Applications will be accepted through Feb 26, 2010</li>
-				<li>Applicants will be notified via email in mid-March</li>
-			 	<li>Major components of the online application include: a personal statement, an electronic copy of your unofficial school transcript (as a pdf), and contact information for 1 reference only</li>
-			 	<li>The person writing your letter of recommendation will be contacted via e-mail and will submit their letter online</li>
-				<li>Once you begin an application, you can check the status of it any time by logging into this website</li>
-				<li>Only complete applications will be reviewed</li>
-			</ul>
-		</div>
-		
-		<hr class="clear" />
-		
-		<% if Date.today < Date.parse("January 11 2010") -%>
-			<h3 class="center"><b>Please check back in January 2010 to submit your application</b></h3>
-		<% else -%>
-		
-			<h1 class="padded center"><b><%= link_to "Apply Now", { :controller => 'users', :action => 'new' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
-		<% end -%>
-			
-		<% if Date.today > Date.parse("February 26 2010") -%>
-			<div id="status-form">
-				<% form_tag({:action=> "status"}) do %>
-					<table>
-						<tr><td colspan=3><%= content_tag 'div', h(flash[:status]), :class => 'status_error', :id => 'status_error' if flash[:status] %></td></tr>
-						<tr><td colspan=3 align="center" class="status_header">Enter your email address to check the status of your application</td></tr>
-						<tr>						
-			    			<td align="right"><label for="email">Email:</label></td>
-			    			<td class="input"><%= text_field_tag 'email', nil, :size => 33 %></td>
-							<td align="left" class="submit"><p><%= submit_tag "Check Status" %></p></td>
-						</tr>
-					</table>
-					<script type="text/javascript">
-						//<![CDATA[
-						Form.Element.focus('email');
-						//]]>
-					</script>
-				<% end -%>
-			</div>
-		<% end -%>
-
+	<%= render :partial => "layouts/header_text" %>
+	
+	<div class="center" id="images">
+		<%= image_tag("library.jpg")%>
+		<%= image_tag("sun_god.jpg")%>
+		<%= image_tag("shores.jpg")%>
 	</div>
+	
+	<p>The <%= link_to "Department of Bioengineering", "http://www.be.ucsd.edu/" %> at the <%= link_to "University of California, San Diego", "http://ucsd.edu" %> is pleased to offer a National Science Foundation Research Experience for Undergraduates (<%= link_to "NSF-REU", "http://www.nsf.gov/crssprgm/reu/" %>) program in Regenerative Medicine, Multi-Scale Bioengineering, and Systems Biology.</p>
+	<p>This exciting 10 week summer program provides undergraduate students access to state-of-the-art facilities, the opportunity to work with accomplished and experienced faculty mentors, and to participate in highly collaborative, cutting-edge <%= link_to "research projects", { :controller => "projects" } %>. In addition to the training students receive in individual research laboratories, extensive professional development opportunities will be provided through weekly workshops, an undergraduate research conference, seminars, and panel discussions.</p>
+
+	<hr />
+	
+	<div class="span-8">
+		<h4 class="bold center">Highlights</h4>
+		<ul>
+		 	<li>$4,500 stipend</li>
+		 	<li>Free on-campus housing or housing allowance</li>
+		 	<li>Free travel to and from San Diego</li>
+		 	<li>Hands-on research experience</li>
+		 	<li>Present at the UCSD Summer Research Conference</li>
+			<li>Opportunity to present at Biomedical Engineering Society (<%= link_to "BMES", "http://bmes.ucsd.edu" %>) Annual Meeting</li>
+		 	<li>Professional workshops &amp; networking events</li>
+		</ul>
+	</div>
+	<div class="span-6">
+		<h4 class="bold center">Eligibility Requirements</h4>
+		<ul>
+		 	<li>Full-time undergraduate student</li>
+		 	<li>Graduating fall 2010 or later</li>
+		 	<li>U.S. citizen or permanent resident</li>
+		</ul>
+	</div>
+	<div class="span-10 last">
+		<h4 class="bold center">Application Information</h4>
+		<ul>
+		 	<li>Applications will be accepted through Feb 26, 2010</li>
+			<li>Applicants will be notified via email in mid-March</li>
+		 	<li>Major components of the online application include: a personal statement, an electronic copy of your unofficial school transcript (as a pdf), and contact information for 1 reference only</li>
+		 	<li>The person writing your letter of recommendation will be contacted via e-mail and will submit their letter online</li>
+			<li>Once you begin an application, you can check the status of it any time by logging into this website</li>
+			<li>Only complete applications will be reviewed</li>
+		</ul>
+	</div>
+	
+	<hr class="clear" />
+	
+	<% if Date.today < Date.parse("January 11 2010") -%>
+		<h3 class="center"><b>Please check back in January 2010 to submit your application</b></h3>
+	<% else -%>
+	
+		<h1 class="padded center"><b><%= link_to "Apply Now", { :controller => 'users', :action => 'new' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
+	<% end -%>
 </div>

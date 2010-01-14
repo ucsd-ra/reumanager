@@ -122,10 +122,14 @@ Users
 Admin
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
 	#admin									{ padding:20px 0; }
-	#admin table .number					{ width:10px; }
-	#admin table .title						{ width:200px; }
-	#admin table .tag_list					{ width:240px; }
-	#admin table .admin						{ width:72px; }	
+	table .number							{ width:20px; }
+	table td.name							{ width:130px; max-width:130px; }
+	table .college							{ width:80px; }
+	table .major							{ width:80px;}
+	table .gpa								{ width:20px;}
+	table .date								{ width:60px; }
+	table .del								{ width:20px; }
+	
 	#app_status								{ float:right; }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Pagination

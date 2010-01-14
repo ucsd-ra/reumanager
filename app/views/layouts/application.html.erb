@@ -7,16 +7,14 @@
 		<meta name="robots" content="index,follow"/>
 		<meta name="revisit-after" content="14 days"/>
 		<meta name="googlebot" content="index,follow"/>
-		<%= dynamic_title %>
-		
+		<%= dynamic_title %>		
 		<%= stylesheet_link_tag 'print', :media => "print" %>
 		<%= stylesheet_link_tag 'screen' %>
 		<!--[if lt IE 8]><%= stylesheet_link_tag 'ie' %><![endif]-->
 		<%= stylesheet_link_tag 'application' %>
 	    <%= javascript_include_tag :defaults %>
-	    <%= javascript_include_tag 'slideshow' %>
 		<script type="text/javascript">
-		var curvyCornersVerbose = false;
+			var curvyCornersVerbose = false;
 		</script>
 	</head>
 	<body>
@@ -38,6 +36,7 @@
 			</div>
 			<%= render :partial => "layouts/footer" %>
 		</div>
+		
 		<% unless params[:controller] == "welcome" -%>
 			<% javascript_tag :defer => 'defer' do -%>
 				if (isVisible('notice')) {
