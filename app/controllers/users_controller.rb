@@ -139,6 +139,7 @@ class UsersController < ApplicationController
         page.redirect_to( :controller => "users", :action => "status" )
       end
     else
+      @user = current_user
       return unless request.post?
       current_user.send_app_confirmation
       current_user.send_rec_request

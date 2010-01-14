@@ -22,40 +22,40 @@ module ApplicationHelper
     current_user.id == 1
   end
   
-  def check_academic_records
-    result = true if current_user && check_academic_record && check_transcript
+  def check_academic_records(user)
+    result = true if user && check_academic_record(user) && check_transcript(user)
   end
 
-  def check_academic_record
-    result = true if current_user && current_user.academic_record
+  def check_academic_record(user)
+    result = true if user && user.academic_record
   end
   
-  def check_transcript
-    result = true if current_user && current_user.transcript && current_user.transcript.valid?
+  def check_transcript(user)
+    result = true if user && user.transcript && user.transcript.valid?
   end
   
-  def check_pdf
-    unless current_user.transcript.content_type == "application/pdf" || current_user.transcript.content_type == "application/octet-stream"
+  def check_pdf(user)
+    unless user.transcript.content_type == "application/pdf" || user.transcript.content_type == "application/octet-stream"
       "<p><strong>Your transcript does not appear to be in the PDF format. Please double check your file or perhaps try a different browser and/or computer.</strong></p>"
     else
       nil
     end
   end
 
-  def check_recommender
-    result = true if current_user && current_user.recommender
+  def check_recommender(user)
+    result = true if user && user.recommender
   end
 
-  def check_recommendation
-    result = true if current_user && current_user.recommendation
+  def check_recommendation(user)
+    result = true if user && user.recommendation
   end
 
-  def check_extras
-    result = true if current_user && current_user.extra
+  def check_extras(user)
+    result = true if user && user.extra
   end
 
-  def check_all
-    result = true if current_user && check_academic_records && check_recommender && check_extras
+  def check_all(user)
+    result = true if user && check_academic_records(user) && check_recommender(user) && check_extras(user)
   end
 
   def gpa_range

@@ -48,7 +48,7 @@
 	<div>
 		<% if current_user.transcript && current_user.transcript.valid? -%>
 			<p>You have previous uploaded the following transcript: <%= link_to current_user.transcript.filename, current_user.transcript.public_filename.gsub("transcripts","nsfreu/transcripts") %></p>
-			<%= check_pdf %>
+			<%= check_pdf(current_user) %>
 		<% end -%>
 		
 		<label>Click below to upload a new transcript:</label>
