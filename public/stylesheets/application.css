@@ -121,16 +121,18 @@ Users
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Admin
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
-	#admin									{ padding:20px 0; }
-	table .number							{ width:20px; }
-	table td.name							{ width:130px; max-width:130px; }
-	table .college							{ width:80px; }
-	table .major							{ width:80px;}
-	table .gpa								{ width:20px;}
-	table .date								{ width:60px; }
-	table .del								{ width:20px; }
+	#admin_listing							{ padding:20px 0; width:auto; }
 	
-	#app_status								{ float:right; }
+	#admin_listing th a						{ padding:0; }
+	#admin_listing td a						{ padding:0; }
+	#admin_listing .number					{ width:20px; }
+	#admin_listing .name					{ width:140px; }
+	#admin_listing .college					{ width:230px; }
+	#admin_listing .major					{ width:340px;}
+	#admin_listing .gpa						{ width:50px;}
+	#admin_listing .date					{ width:146px; }
+	#admin_listing .del						{ width:80px; }
+	
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Pagination
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/

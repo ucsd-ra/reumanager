@@ -12,7 +12,7 @@ ssl_required :index, :show, :observe_student_select, :report, :incomplete, :subm
   def index
     case params[:sort]
     when "name"
-      @students = User.paginate :page => params[:page], :order => 'lastname ASC', :per_page => 15
+      @students = User.paginate :page => params[:page], :order => 'lastname ASC', :per_page => 20
 #    when "college"
 #      @students = User.find(:all, :order => 'college ASC')
 #    when "major"
@@ -20,9 +20,9 @@ ssl_required :index, :show, :observe_student_select, :report, :incomplete, :subm
 #    when "gpa"
 #      @students = User.find(:all, :order => "gpa DESC")
     when "date"
-      @students = User.paginate :page => params[:page], :order => "created_at ASC", :per_page => 15
+      @students = User.paginate :page => params[:page], :order => "created_at ASC", :per_page => 20
     else
-      @students = User.paginate :page => params[:page], :per_page => 15
+      @students = User.paginate :page => params[:page], :per_page => 20
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -45,17 +45,17 @@ ssl_required :index, :show, :observe_student_select, :report, :incomplete, :subm
   end
 
   def incomplete
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is null" ], :per_page => 25
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is null" ], :per_page => 20
     render :action => "index"
   end
 
   def submitted
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null" ], :per_page => 25
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null" ], :per_page => 20
     render :action => "index"
   end
 
   def complete    
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null" ], :per_page => 25
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null" ], :per_page => 20
     render :action => "index"
   end
   

@@ -5,14 +5,13 @@
 <% else -%>
 	<%= will_paginate @students %>
 	
-	<table cellspacing="0">
+	<table cellspacing="0" id="admin_listing">
 		<tr>
 			<th>#</th>
 			<th class="name"><%= link_to "Name", { :controller => "admin", :sort => "name" } %></th>
 			<th class="college">College / University</th>
 			<th class="major">Major</th>
 			<th class="gpa">GPA</th>
-			<th class="date"><%= link_to "Reg.", { :controller => "admin", :sort => "date" } %></th>
 			<th class="del">&nbsp;</th>
 		</tr>
 		
@@ -45,8 +44,6 @@
 						<%= link_to "#{student.academic_record.gpa[0..2]}/#{student.academic_record.gpa_range[0..2]}", { :action => "show", :id => student } %>
 					<% end -%>
 				</td>
-	   			<td class="date"><%= link_to "#{student.created_at.strftime("%b %d, %I:%M %p")}", { :action => "show", :id => student } %></td>
-
 				<td class="del">
 					<%= link_to "Delete", { :action => "delete", :id => student }, { :confirm => "You are about to delete all associated records for #{student.firstname} #{student.lastname}. Are you sure about this?", :method => :delete } %>
 				</td>
