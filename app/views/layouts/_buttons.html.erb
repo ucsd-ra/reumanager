@@ -22,7 +22,7 @@
 		<% end -%>
 
 			
-		<% if current_user && current_user.id == 1 -%>		
+		<% if current_user && check_admin -%>		
 			<% if params[:controller] == "admin" -%>
 				<li class="selected"><%= link_to "Admin", { :controller => "admin" }%></li>
 			<% else -%>
