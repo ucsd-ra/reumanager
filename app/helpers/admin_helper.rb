@@ -11,4 +11,12 @@ module AdminHelper
     @all_students = User.find(:all, :order => 'lastname ASC')
   end
   
+  def admin_selected_user
+    if @user
+      return @user.id
+    else
+      return all_students.first.id
+    end
+  end
+  
 end

@@ -1,6 +1,6 @@
 <div id="admin_header">
 	<h6 class='right'>
-		View student: <%= (select_tag "student_select", options_for_student_select(all_students, "id", "lastname", "firstname", all_students.first || nil )) if all_students %>
+		View student: <%= (select_tag "student_select", options_for_student_select(all_students, "id", "lastname", "firstname", admin_selected_user )) if all_students %>
 	</h6>
 	<h6>
 		<br />
