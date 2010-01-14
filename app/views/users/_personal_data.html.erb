@@ -50,7 +50,7 @@
 <div  id="perm_bool">
 	<p><label>Is the above address your permanent residence?</label>
 	&nbsp;
-	<% if @user && @user.pstreet != "" -%>
+	<% if @user && @user.pstreet && @user.pstreet != ""  -%>
 		<%= radio_button_tag 'paddress', 'yes'%><label>Yes</label>
 		&nbsp;&nbsp;
 		<%= radio_button_tag 'paddress', 'no', true %><label>No</label>
@@ -62,7 +62,7 @@
 	</p>
 </div>
 
-<% if  @user && @user.pstreet != "" -%>
+<% if @user && @user.pstreet && @user.pstreet != ""  -%>
 	<div id="presidence">
 <% else -%>
 	<div id="presidence" style="display:none;">
@@ -80,7 +80,7 @@
 	</div>
 	<div class="span-4">
 		<label>State</label><br />
-		<%= f.state_select 'pstate', :selected => "California" %>
+		<%= f.state_select 'pstate', :selected => "California" if @user && @user.pstreet != "" %>
 	</div>
 	<div class="span-3">
 		<label>Zip</label><br />

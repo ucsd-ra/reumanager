@@ -27,16 +27,19 @@
 	<label>Email</label><br />
 	<%= h(f.email) %>
 </div>
-<div class="span-5 last">
-	<label>Permanent residence:</label><br />
-	<%= h(f.pstreet) %><br />
-	<%= h(f.pcity) %>,&nbsp;
-	<%= h(f.pstate) %>&nbsp; 
-	<%= h(f.pzip) %><br />
-	<%= h(f.pphone) %>
-</div>
 
-<hr class="space" />
+<% if @user && @user.pstreet && @user.pstreet != ""  -%>
+	<div class="span-5 last">
+		<label>Permanent residence:</label><br />
+		<%= h(f.pstreet) %><br />
+		<%= h(f.pcity) %>,&nbsp;
+		<%= h(f.pstate) %>&nbsp; 
+		<%= h(f.pzip) %><br />
+		<%= h(f.pphone) %>
+	</div>
+<% end -%>
+
+<hr class="clear space" />
 <hr />
 
 <h4>Optional Questions</h4>
