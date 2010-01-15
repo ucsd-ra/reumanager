@@ -66,5 +66,20 @@ module ApplicationHelper
     gpa_range << sprintf("%.1f", float += 0.1) while float < 9.9
     return gpa_range
   end
+  
+  def disability_selection(user)
+    if user && user.disability
+      case user.disability
+      when nil || ""
+        'Prefer\ not\ to\ respond'
+      when "No"
+        "No"
+      else
+        "Yes"
+      end
+    else
+      'Prefer\ not\ to\ respond'
+    end
+  end
 
 end

@@ -107,7 +107,7 @@
 </div>
 <div>
 	<label>Disability:</label><br />
-	<%= select_tag 'disability', options_for_select(%w{ Prefer\ not\ to\ respond No Yes },disability_selection) %><br />
+	<%= select_tag 'disability', options_for_select(%w{ Prefer\ not\ to\ respond No Yes },disability_selection(@user)) %><br />
 	<span class="hidden" id="dis" style="display:none;">
 		<label>Specify:</label>
 		<%= f.text_field 'disability' %>

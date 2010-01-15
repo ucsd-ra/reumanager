@@ -27,6 +27,13 @@ class ApplicationController < ActionController::Base
      response.headers["P3P"]='CP="CAO PSA OUR"'
   end
   
+  def check_admin
+    unless current_user && current_user.role.name == "admin"
+      flash[:notice] = "You are not an administrator."
+      redirect_to(:back || :controller => "welcome")
+    end
+  end
+  
   def is_admin
     current_user.role.name == "admin" || current_user.id == 1 
   end

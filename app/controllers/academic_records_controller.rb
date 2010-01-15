@@ -5,9 +5,9 @@ class AcademicRecordsController < ApplicationController
   # GET /academic_records
   # GET /academic_records.xml
   def index
-    if current_user && current_user.submitted_at      
+    if current_user.submitted_at && !is_admin
       flash[:notice] = 'You can no longer edit your application.'
-      redirect_to({ :controller => "users", :action => "edit" })
+      redirect_to( :controller => "users", :action => "edit" )
     else
       current_user.academic_record ? redirect_to(:action => "edit") : redirect_to(:action => "new") 
     end
@@ -17,7 +17,6 @@ class AcademicRecordsController < ApplicationController
   # GET /academic_records/1.xml
   def show
     @academic_record = AcademicRecord.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @academic_record }
@@ -27,20 +26,15 @@ class AcademicRecordsController < ApplicationController
   # GET /academic_records/new
   # GET /academic_records/new.xml
   def new
-    if current_user
-      @academic_record = AcademicRecord.new
-    else
-      redirect_to()
-    end
+    @academic_record = AcademicRecord.new
   end
 
   # GET /academic_records/1/edit
   def edit
-    if current_user
-      redirect_to(:action => "new") unless @academic_record = AcademicRecord.find_by_user_id(current_user.id)
-    else
-      redirect_to({ :controller => 'sessions', :action => 'new' })
-    end
+    current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
+    @user = User.find(@id)
+    @user = current_user
+    @academic_record = AcademicRecord.find_by_user_id(current_user.id)
   end
 
   # POST /academic_records
@@ -78,8 +72,7 @@ class AcademicRecordsController < ApplicationController
       current_user.transcript.destroy if current_user.transcript
       current_user.transcript = Transcript.new(:uploaded_data => params[:transcript_file])
       current_user.transcript.save
-    end
-    
+    end  
     if params[:p_college] == "No"
       params[:academic_record][:p_college] = ""
       params[:academic_record][:p_college_start] = nil

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :login_from_cookie, :login_required, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :resend_request ]
+  before_filter :login_from_cookie, :login_required, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks ]
   ssl_required :index, :new, :create, :edit, :update, :status, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :resend_request, :submit, :saved
   
 #  def activate
@@ -70,13 +70,14 @@ class UsersController < ApplicationController
       flash[:notice] = 'You application has already be submitted.'
       redirect_to( :controller => "users", :action => "status" )
     else
-      @user = User.find(params[:id] || current_user.id)
-      if @user != current_user && current_user 
+      current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
+      @user = User.find(@id)
     end
   end
   
   def update
-    @user = User.find(current_user.id)
+    current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
+    @user = User.find(@id)
     if @user.update_attributes(params[:user])
       flash[:notice] = 'Personal Data was successfully updated.'
       redirect_to :controller => "academic_records"

@@ -90,20 +90,7 @@ module UsersHelper
     end
   end
   
-  def disability_selection
-    if current_user && current_user.disability
-      case current_user.disability
-      when nil || ""
-        'Prefer\ not\ to\ respond'
-      when "No"
-        "No"
-      else
-        "Yes"
-      end
-    else
-      'Prefer\ not\ to\ respond'
-    end
-  end
+
 
 
 end

@@ -44,11 +44,11 @@
 
 <hr />
 
-<% if current_user.transcript -%>
+<% if @user.transcript -%>
 	<div>
-		<% if current_user.transcript && current_user.transcript.valid? -%>
-			<p>You have previous uploaded the following transcript: <%= link_to current_user.transcript.filename, current_user.transcript.public_filename.gsub("transcripts","nsfreu/transcripts") %></p>
-			<%= check_pdf(current_user) %>
+		<% if @user.transcript && @user.transcript.valid? -%>
+			<p>You have previous uploaded the following transcript: <%= link_to @user.transcript.filename, @user.transcript.public_filename.gsub("transcripts","nsfreu/transcripts") %></p>
+			<%= check_pdf(@user) %>
 		<% end -%>
 		
 		<label>Click below to upload a new transcript:</label>
@@ -67,14 +67,14 @@
 
 <div>
 	<label>Did you attend another college or university previously?</label>
-	<% if current_user.academic_record && current_user.academic_record.p_college != "" %>
+	<% if @user.academic_record && @user.academic_record.p_college != "" %>
 		<%= select_tag 'p_college', options_for_select(%w{No Yes}, "Yes") %>
 	<% else -%>
 		<%= select_tag 'p_college', options_for_select(%w{No Yes}, "No") %>
 	<% end -%>
 </div>
 
-<% if current_user.academic_record && current_user.academic_record.p_college != "" %>
+<% if @user.academic_record && @user.academic_record.p_college != "" %>
 	<div id="pcollege">
 <% else -%>
 	<div id="pcollege" style="display:none;">

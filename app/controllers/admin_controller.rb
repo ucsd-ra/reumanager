@@ -2,17 +2,10 @@ class AdminController < ApplicationController
 before_filter :login_from_cookie, :login_required, :check_admin
 ssl_required :index, :show, :observe_student_select, :report, :incomplete, :submitted, :complete, :create_report, :delete
 
-  def check_admin
-    unless current_user && current_user.role.name == "admin"
-      flash[:notice] = "You are not an administrator."
-      redirect_to( :controller => "welcome" )
-    end
-  end
-  
   def index
     case params[:sort]
     when "name"
-      @students = User.paginate :page => params[:page], :order => 'lastname ASC', :per_page => 20
+      @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "role_id = ?", 2], :per_page => 20
 #    when "college"
 #      @students = User.find(:all, :order => 'college ASC')
 #    when "major"
@@ -20,9 +13,9 @@ ssl_required :index, :show, :observe_student_select, :report, :incomplete, :subm
 #    when "gpa"
 #      @students = User.find(:all, :order => "gpa DESC")
     when "date"
-      @students = User.paginate :page => params[:page], :order => "created_at ASC", :per_page => 20
+      @students = User.paginate :page => params[:page], :order => "created_at ASC", :conditions => [ "role_id = ?", 2], :per_page => 20
     else
-      @students = User.paginate :page => params[:page], :per_page => 20
+      @students = User.paginate :page => params[:page], :conditions => [ "role_id = ?", 2], :per_page => 20
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -45,17 +38,17 @@ ssl_required :index, :show, :observe_student_select, :report, :incomplete, :subm
   end
 
   def incomplete
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is null" ], :per_page => 20
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ], :per_page => 20
     render :action => "index"
   end
 
   def submitted
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null" ], :per_page => 20
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ], :per_page => 20
     render :action => "index"
   end
 
   def complete    
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null" ], :per_page => 20
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ], :per_page => 20
     render :action => "index"
   end
   
