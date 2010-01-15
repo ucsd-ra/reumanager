@@ -25,5 +25,9 @@ class ApplicationController < ActionController::Base
 
   def set_p3p
      response.headers["P3P"]='CP="CAO PSA OUR"'
-  end  
+  end
+  
+  def is_admin
+    current_user.role.name == "admin" || current_user.id == 1 
+  end
 end

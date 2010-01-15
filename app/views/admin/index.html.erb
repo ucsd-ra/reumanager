@@ -22,6 +22,8 @@
 		end	%>			
 	
 	  	<% for student in @students %>
+		<% next if student.role.name == "admin" -%>
+
 	  		<tr style="background-color:#<%= cycle("edf5fa","fff") %>;">
 				<td class="number"><% @n += 1 %><%= (@n).to_s %></td>
 				<td class="name">

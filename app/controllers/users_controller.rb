@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def new
     if current_user && current_user.submitted_at
       flash[:notice] = 'You cannot submit your application twice.'
-      redirect_to ({ :controller => "users", :action => "status" })
+      redirect_to ( :controller => "users", :action => "status" )
     else
       @user = User.new
     end
@@ -66,11 +66,12 @@ class UsersController < ApplicationController
   end
   
   def edit
-    if current_user && current_user.submitted_at
+    if current_user && current_user.submitted_at && !is_admin
       flash[:notice] = 'You application has already be submitted.'
-      redirect_to({ :controller => "users", :action => "status" })
+      redirect_to( :controller => "users", :action => "status" )
     else
-      @user = User.find(current_user.id)
+      @user = User.find(params[:id] || current_user.id)
+      if @user != current_user && current_user 
     end
   end
   
