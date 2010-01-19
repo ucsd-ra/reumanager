@@ -1,31 +1,77 @@
 
-quentin:
-  id:                        1
-  login:                     quentin
-  email:                     quentin@example.com
-  salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
-  crypted_password:          4bc4399b14e88d59678f8fe603e4017403ca6a2f # 'monkey'
-  created_at:                <%= 5.days.ago.to_s :db  %>
-  remember_token_expires_at: <%= 1.days.from_now.to_s %>
-  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+jgrevich:
+    id: 1
+    role_id: 1
+
+    login: jgrevich@ucsd.edu
+    email: jgrevich@ucsd.edu
+
+    firstname: Justin
+    middlename: James2
+    lastname: Grevich
+    street: 3348 Via Alicante
+    city: La Jolla
+    state: California
+    zip: "92037"
+    phone: "13177470895"
+    dob: 1970-01-17 00:00:00
+    citizenship: United States
+
+    pstreet: 2782 Parkview Drive
+    pstate: Minnesota
+    pcity: Medina
+    pzip: "55340"
+    pphone: 
+
+    rec_request_at: 
+    submitted_at: 
+    updated_at: <%= 1.days.ago.to_s :db %>
+    activated_at: <%= 1.days.ago.to_s :db %>
+    created_at: <%= 1.days.ago.to_s :db %>
+    remember_token: 
+    remember_token_expires_at: 
+    token: 8299eb273163b72b9b9edace4a35dd34faab6759
+    salt: 9cfb5fe030902bd225d6476cda37de5fd83eacf6
+    crypted_password: 116d1919cc1060109060ff8f96852d0823d8afc8 # 8foldpath
+    
       
 aaron:
-  id:                        2
-  login:                     aaron
-  email:                     aaron@example.com
-  salt:                      da4b9237bacccdf19c0760cab7aec4a8359010b0 # SHA1('1')
-  crypted_password:          e4f7d6b6ac95a657bd2e1d7b1fd1010b2f2477d4 # 'monkey'
-  created_at:                <%= 1.days.ago.to_s :db %>
-  remember_token_expires_at: 
-  remember_token:            
+    id: 3
+    role_id: 2
+
+    login: jgrevich@gmail.com
+    email: jgrevich@gmail.com
+
+    firstname: Justin
+    middlename: James2
+    lastname: Grevich
+    street: 3348 Via Alicante
+    city: La Jolla
+    state: California
+    zip: "92037"
+    phone: "13177470895"
+    dob: 1970-01-17 00:00:00
+    citizenship: United States
+
+    pstreet: 2782 Parkview Drive
+    pstate: Minnesota
+    pcity: Medina
+    pzip: "55340"
+    pphone: 
+
+    rec_request_at: 
+    submitted_at: 
+    updated_at: <%= 1.days.ago.to_s :db %>
+    activated_at: <%= 1.days.ago.to_s :db %>
+    created_at: <%= 1.days.ago.to_s :db %>
+    remember_token: 
+    remember_token_expires_at: 
+    token: 8299eb273163b72b9b9edace4a35dd34faab6759
+    salt: 9cfb5fe030902bd225d6476cda37de5fd83eacf6
+    crypted_password: 116d1919cc1060109060ff8f96852d0823d8afc8 # 8foldpath 
 
 
 old_password_holder:
-  id:                        3
-  login:                     old_password_holder
-  email:                     salty_dog@example.com
-  salt:                      7e3041ebc2fc05a40c60028e2c4901a81035d3cd
-  crypted_password:          00742970dc9e6319f8019fd54864d3ea740f04b1 # test
-  created_at:                <%= 1.days.ago.to_s :db %>
+jgrevich@ucsd.edu
 
 

@@ -1,7 +1,6 @@
+<%= app_navbar %>
 
-<%= render :partial => "layouts/app_navbar" %>
-
-<% form_for(@academic_record, :url => {:action => "update"}, :method => "put", :html => { :multipart => true }) do |f| %>
+<% form_for(@academic_record, :url => {:action => "update", :id => @user }, :method => "put", :html => { :multipart => true }) do |f| %>
 	<%= render :partial => 'academic_information', :locals => { :f => f } %>
 	<p id="submit"><%= f.submit "Update", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %></p>
 <% end %>

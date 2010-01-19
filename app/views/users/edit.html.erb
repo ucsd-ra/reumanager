@@ -1,5 +1,4 @@
-
-<%= render :partial => "layouts/app_navbar" %>
+<%= app_navbar %>
 
 <% form_for(@user) do |f| %>
 	<%= render :partial => 'personal_data', :locals => { :f => f } %>

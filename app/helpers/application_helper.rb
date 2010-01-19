@@ -1,6 +1,10 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
+  def app_navbar
+    check_admin ? render(:partial => "layouts/admin_app_navbar") : render(:partial => "layouts/app_navbar")
+  end
+  
   def toggle_wait_box
     link_to_function("OK", nil, :id => "OK", :class => "padded button") do |page|
       page[:wait_box].toggle
@@ -21,7 +25,7 @@ module ApplicationHelper
   end
   
   def check_admin
-    current_user.role.name == "admin" || current_user.id == 1 
+    current_user && current_user.role.name == "admin" || current_user.id == 1 
   end
   
   def check_academic_records(user)

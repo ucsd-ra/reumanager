@@ -3,7 +3,13 @@ class ExtrasController < ApplicationController
   ssl_required :index, :new, :edit, :create, :update
   
   def index
-    current_user.extra ? redirect_to(:action => "edit") : redirect_to(:action => "new")
+    if current_user.submitted_at && !is_admin
+      flash[:notice] = 'You can no longer edit your application.'
+      redirect_to(:controller => "users", :action => "status")
+    else
+      current_user.extra ? redirect_to(:action => "edit", :id => params[:id] || nil) : redirect_to(:action => "new")
+    end
+    
   end
   
   # GET /extras/new
@@ -19,13 +25,18 @@ class ExtrasController < ApplicationController
   end
 
   # GET /extras/1/edit
-  def edit
-    @extra = Extra.find_by_user_id(current_user.id)
+  def edit    
+    current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
+    @user = User.find(@id)
+    @extra = Extra.find_by_user_id(@id)
   end
 
   # POST /extras
   # POST /extras.xml
   def create
+    current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
+    @user = User.find(@id)
+    
     @extra = Extra.new(params[:extra])
     @extra.user_id = current_user.id
 

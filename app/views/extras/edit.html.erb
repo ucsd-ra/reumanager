@@ -1,5 +1,4 @@
-
-<%= render :partial => "layouts/app_navbar" %>
+<%= app_navbar %>
 
 <%= error_messages_for :extra %>
 <% form_for(@extra, :url => { :action => "update" }, :method => "put") do |e| %>
