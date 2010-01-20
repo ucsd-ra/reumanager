@@ -33,6 +33,13 @@ class ApplicationController < ActionController::Base
       redirect_to(:back || :controller => "welcome")
     end
   end
+
+  def application_complete?
+    if current_user && current_user.submitted_at && !is_admin
+      flash[:notice] = 'You can no longer edit your application.'
+      redirect_to(:controller => "users", :action => "status")
+    end
+  end
   
   def is_admin
     current_user.role.name == "admin" || current_user.id == 1 

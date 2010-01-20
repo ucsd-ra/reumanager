@@ -1,5 +1,5 @@
 class ExtrasController < ApplicationController
-  before_filter :login_from_cookie, :login_required
+  before_filter :login_from_cookie, :login_required, :application_complete?
   ssl_required :index, :new, :edit, :create, :update
   
   def index
@@ -15,9 +15,10 @@ class ExtrasController < ApplicationController
   # GET /extras/new
   # GET /extras/new.xml
   def new
+    current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
+    @user = User.find(@id)
     @extra = Extra.new
-    @extra.user_id = current_user.id
-    
+      
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @extra }
