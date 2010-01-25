@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: AcademicRecordsController</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">AcademicRecordsController</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/controllers/academic_records_controller_rb.html">
+                app/controllers/academic_records_controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="ApplicationController.html">
+                ApplicationController
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000042">create</a>&nbsp;&nbsp;
+      <a href="#M000044">destroy_transcript</a>&nbsp;&nbsp;
+      <a href="#M000041">edit</a>&nbsp;&nbsp;
+      <a href="#M000038">index</a>&nbsp;&nbsp;
+      <a href="#M000040">new</a>&nbsp;&nbsp;
+      <a href="#M000045">observe_pcollege</a>&nbsp;&nbsp;
+      <a href="#M000039">show</a>&nbsp;&nbsp;
+      <a href="#M000043">update</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000042" class="method-detail">
+        <a name="M000042"></a>
+
+        <div class="method-heading">
+          <a href="#M000042" class="method-signature">
+          <span class="method-name">create</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+POST /academic_records POST /academic_records.xml
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000042-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000042-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/academic_records_controller.rb, line 45</span>
+45:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
+46:     <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">role</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;admin&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>] <span class="ruby-operator">:</span> <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>
+47:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-ivar">@id</span>)
+48:     <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">academic_record</span> = (<span class="ruby-constant">AcademicRecord</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:academic_record</span>]) <span class="ruby-operator">||</span> <span class="ruby-constant">AcademicRecord</span>.<span class="ruby-identifier">new</span>)
+49:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:transcript_file</span>] <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;&quot;</span> 
+50:       <span class="ruby-constant">Transcript</span>.<span class="ruby-identifier">transaction</span> <span class="ruby-keyword kw">do</span>
+51:         <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span>.<span class="ruby-identifier">destroy</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span>
+52:         <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span> = <span class="ruby-constant">Transcript</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:uploaded_data</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:transcript_file</span>])
+53:         <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span>.<span class="ruby-identifier">save</span>
+54:       <span class="ruby-keyword kw">end</span>
+55:     <span class="ruby-keyword kw">end</span>
+56:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+57:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">academic_record</span>.<span class="ruby-identifier">save</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span>.<span class="ruby-identifier">save</span>
+58:         <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">'Academic information was successfully created'</span>
+59:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>( <span class="ruby-identifier">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;extras&quot;</span> ) }
+60:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">academic_record</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:created</span>, <span class="ruby-identifier">:location</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">academic_record</span> }
+61:       <span class="ruby-keyword kw">else</span>
+62:         <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span>.<span class="ruby-identifier">save</span>
+63:           <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">academic_record</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add_to_base</span> <span class="ruby-value str">&quot;You must upload copy of your most recent transcript.&quot;</span>
+64:         <span class="ruby-keyword kw">end</span>
+65:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;new&quot;</span> }
+66:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">academic_record</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:unprocessable_entity</span> }
+67:       <span class="ruby-keyword kw">end</span>
+68:     <span class="ruby-keyword kw">end</span>
+69:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000044" class="method-detail">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+          <a href="#M000044" class="method-signature">
+          <span class="method-name">destroy_transcript</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+DELETE /academic_records/1 DELETE /academic_records/1.xml
+</p>
+<pre>
+ def destroy
+   @academic_record = AcademicRecord.find(params[:id])
+   @academic_record.destroy
+
+   respond_to do |format|
+     format.html { redirect_to(academic_records_url) }
+     format.xml  { head :ok }
+   end
+ end
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000044-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000044-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/academic_records_controller.rb, line 114</span>
+114:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy_transcript</span>
+115:     <span class="ruby-ivar">@academic_record</span> = <span class="ruby-constant">AcademicRecord</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+116:     <span class="ruby-ivar">@academic_record</span>.<span class="ruby-identifier">destroy</span>
+117: 
+118:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+119:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">academic_records_url</span>) }
+120:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">head</span> <span class="ruby-identifier">:ok</span> }
+121:     <span class="ruby-keyword kw">end</span>
+122:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000041" class="method-detail">
+        <a name="M000041"></a>
+
+        <div class="method-heading">
+          <a href="#M000041" class="method-signature">
+          <span class="method-name">edit</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+GET /academic_records/1/edit
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000041-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000041-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/academic_records_controller.rb, line 36</span>
+36:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit</span>
+37:     <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">role</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;admin&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>] <span class="ruby-operator">:</span> <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>
+38:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-ivar">@id</span>)
+39:     <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">academic_record</span>.<span class="ruby-identifier">errors</span> = <span class="ruby-keyword kw">nil</span>
+40:     <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">academic_record</span> = <span class="ruby-constant">AcademicRecord</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>)
+41:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000038" class="method-detail">
+        <a name="M000038"></a>
+
+        <div class="method-heading">
+          <a href="#M000038" class="method-signature">
+          <span class="method-name">index</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+GET /academic_records GET /academic_records.xml
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000038-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000038-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/academic_records_controller.rb, line 7</span>
+ 7:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
+ 8:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">role</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;admin&quot;</span>
+ 9:       <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>]) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>]
+10:       <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">academic_record</span> <span class="ruby-value">? </span><span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;edit&quot;</span>, <span class="ruby-identifier">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">nil</span> ) <span class="ruby-operator">:</span> <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;new&quot;</span>, <span class="ruby-identifier">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span>) 
+11:     <span class="ruby-keyword kw">else</span>
+12:       <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">academic_record</span> <span class="ruby-value">? </span><span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;edit&quot;</span>, <span class="ruby-identifier">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">nil</span> ) <span class="ruby-operator">:</span> <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;new&quot;</span>) 
+13:     <span class="ruby-keyword kw">end</span>
+14:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000040" class="method-detail">
+        <a name="M000040"></a>
+
+        <div class="method-heading">
+          <a href="#M000040" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+GET /academic_records/new GET /academic_records/new.xml
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000040-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000040-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/academic_records_controller.rb, line 28</span>
+28:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>
+29:     <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">role</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;admin&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>] <span class="ruby-operator">:</span> <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>
+30:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-ivar">@id</span>)
+31:     
+32:     <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">academic_record</span> = <span class="ruby-constant">AcademicRecord</span>.<span class="ruby-identifier">new</span>
+33:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000045" class="method-detail">
+        <a name="M000045"></a>
+
+        <div class="method-heading">
+          <a href="#M000045" class="method-signature">
+          <span class="method-name">observe_pcollege</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000045-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000045-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/academic_records_controller.rb, line 124</span>
+124:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">observe_pcollege</span>
+125:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:p_college</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;Yes&quot;</span>
+126:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:update</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span>
+127:         <span class="ruby-identifier">page</span>[<span class="ruby-identifier">:observers</span>].<span class="ruby-identifier">replace_html</span> <span class="ruby-identifier">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;layouts/observers&quot;</span>          
+128:         <span class="ruby-identifier">page</span>[<span class="ruby-identifier">:pcollege</span>].<span class="ruby-identifier">appear</span>
+129:       <span class="ruby-keyword kw">end</span>
+130:     <span class="ruby-keyword kw">else</span>
+131:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:update</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span>
+132:         <span class="ruby-identifier">page</span>[<span class="ruby-identifier">:observers</span>].<span class="ruby-identifier">replace_html</span> <span class="ruby-identifier">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;layouts/observers&quot;</span>
+133:         <span class="ruby-identifier">page</span>[<span class="ruby-identifier">:pcollege</span>].<span class="ruby-identifier">hide</span>
+134:       <span class="ruby-keyword kw">end</span>
+135:     <span class="ruby-keyword kw">end</span>
+136:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000039" class="method-detail">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+          <a href="#M000039" class="method-signature">
+          <span class="method-name">show</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+GET /academic_records/1 GET /academic_records/1.xml
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000039-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000039-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/academic_records_controller.rb, line 18</span>
+18:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
+19:     <span class="ruby-ivar">@academic_record</span> = <span class="ruby-constant">AcademicRecord</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+20:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+21:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># show.html.erb</span>
+22:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@academic_record</span> }
+23:     <span class="ruby-keyword kw">end</span>
+24:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000043" class="method-detail">
+        <a name="M000043"></a>
+
+        <div class="method-heading">
+          <a href="#M000043" class="method-signature">
+          <span class="method-name">update</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+PUT /academic_records/1 PUT /academic_records/1.xml
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000043-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000043-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/academic_records_controller.rb, line 73</span>
+ 73:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
+ 74:     <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">role</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;admin&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>] <span class="ruby-operator">:</span> <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>
+ 75:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-ivar">@id</span>)
+ 76:     <span class="ruby-ivar">@academic_record</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">academic_record</span>
+ 77:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:transcript_file</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:transcript_file</span>] <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;&quot;</span>
+ 78:       <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span>.<span class="ruby-identifier">destroy</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span>
+ 79:       <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span> = <span class="ruby-constant">Transcript</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:uploaded_data</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:transcript_file</span>])
+ 80:       <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span>.<span class="ruby-identifier">save</span>
+ 81:     <span class="ruby-keyword kw">end</span>  
+ 82:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:p_college</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;No&quot;</span>
+ 83:       <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:academic_record</span>][<span class="ruby-identifier">:p_college</span>] = <span class="ruby-value str">&quot;&quot;</span>
+ 84:       <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:academic_record</span>][<span class="ruby-identifier">:p_college_start</span>] = <span class="ruby-keyword kw">nil</span>
+ 85:       <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:academic_record</span>][<span class="ruby-identifier">:p_college_end</span>] = <span class="ruby-keyword kw">nil</span>
+ 86:     <span class="ruby-keyword kw">end</span>  
+ 87:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+ 88:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span>.<span class="ruby-identifier">save</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@academic_record</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:academic_record</span>]) 
+ 89:         <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">'Academic information was successfully updated'</span>
+ 90:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;extras&quot;</span>, <span class="ruby-identifier">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@id</span>) }
+ 91:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">head</span> <span class="ruby-identifier">:ok</span> }
+ 92:       <span class="ruby-keyword kw">else</span>
+ 93:         <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">transcript</span>
+ 94:           <span class="ruby-ivar">@academic_record</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add_to_base</span> <span class="ruby-value str">&quot;You must upload copy of your most recent transcript.&quot;</span>
+ 95:         <span class="ruby-keyword kw">end</span>
+ 96:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;edit&quot;</span> }
+ 97:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@academic_record</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:unprocessable_entity</span> }
+ 98:       <span class="ruby-keyword kw">end</span>
+ 99:     <span class="ruby-keyword kw">end</span>
+100:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
