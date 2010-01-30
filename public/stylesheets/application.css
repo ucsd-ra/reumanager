@@ -121,8 +121,6 @@ Users
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Admin
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/	
-	#admin_listing							{ }
-	
 	#admin_listing th a						{ padding:0; }
 	#admin_listing td a						{ padding:0; }
 	#admin_listing .number					{ width:20px; }
