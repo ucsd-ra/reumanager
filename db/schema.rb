@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(:version => 20100110031958) do
     t.string   "salt",                      :limit => 40
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "role_id",                                  :default => 2
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

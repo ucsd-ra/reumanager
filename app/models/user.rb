@@ -125,49 +125,33 @@ class User < ActiveRecord::Base
 
    def send_app_confirmation
      self.update_attribute("submitted_at", Time.now)     
-     email = UserMailer.create_app_confirmation(
-       self.id, 
-       self.token, 
-       self.firstname, 
-       self.lastname, 
-       self.email
-     )      
+     email = UserMailer.create_app_confirmation(self.id, self.token, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end
 
    def send_rec_request
      self.update_attribute("rec_request_at", Time.now)
-     email = UserMailer.create_rec_request(
-      self.recommender.email, 
-      self.id, 
-      self.token, 
-      self.firstname, 
-      self.lastname, 
-      self.email
-      )
+     email = UserMailer.create_rec_request(self.recommender.email, self.id, self.token, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end
 
    def send_complete_app
-     self.update_attribute("completed_at", Time.now)     
-     email = UserMailer.create_complete_app(
-       self.id,
-       self.firstname, 
-       self.lastname, 
-       self.email
-     )      
+     self.update_attribute("completed_at", Time.now)
+     email = UserMailer.create_complete_app(self.id, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end
    
    def send_complete_app_student
-     email = UserMailer.create_complete_app_student(
-       self.firstname, 
-       self.lastname, 
-       self.email
-     )      
+     email = UserMailer.create_complete_app_student(self.firstname, self.lastname, self.email)
+     email.set_content_type('multipart', 'mixed')
+     UserMailer.deliver(email)
+   end
+   
+   def send_application_reminder
+     email = UserMailer.create_application_reminder(self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end

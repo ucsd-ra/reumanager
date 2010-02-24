@@ -86,5 +86,20 @@ class UserMailer < ActionMailer::Base
           )
       end
     
+    def application_reminder(firstname, lastname, email)
+        @subject    = "UCSD REU Application Reminder for #{firstname} #{lastname}"
+        @recipients = email
+        @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
+        @sent_on    = Time.now
+        @headers    = {}
+
+        part(
+          :content_type => "text/html", 
+          :body => render_message("application_reminder",
+                                  :firstname => firstname,
+                                  :lastname => lastname, 
+                                  :email => email)
+          )
+      end
 
 end
