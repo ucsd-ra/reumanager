@@ -36,7 +36,6 @@ class AcademicRecordsController < ApplicationController
   def edit
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
-    @user.academic_record.errors = nil
     @user.academic_record = AcademicRecord.find_by_user_id(current_user.id)
   end
 
