@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :login_from_cookie, :login_required, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks ]
-  before_filter :application_complete?, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :status ]
+  before_filter :application_complete?, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :status, :resend_request ]
   ssl_required :index, :new, :create, :edit, :update, :status, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :resend_request, :submit, :saved
   
 #  def activate
@@ -43,6 +43,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'You cannot submit your application twice.'
       redirect_to ( :controller => "users", :action => "status" )
     else
+      logout_killing_session!
       @user = User.new
     end
   end
@@ -156,7 +157,9 @@ class UsersController < ApplicationController
   end
   
   def resend_request
+    ## check to make sure they are logged in and if the application is incomplete 
     if current_user && current_user.completed_at == nil
+      ## used to throttle the amount of requests to 1 every 3 hrs.
       if current_user.rec_request_at == nil || ((Time.now - current_user.rec_request_at)/60) > 180
         current_user.send_rec_request
         flash[:notice] = 'Your recommendation request has been resent.'

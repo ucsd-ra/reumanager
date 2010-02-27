@@ -6,14 +6,11 @@
 			<% if params[:controller] == "users" || params[:controller] == "academic_records" || params[:controller] == "recommenders" || params[:controller] == "extras" -%>
 				<% if current_user && current_user.submitted_at && !check_admin && params[:controller] != "recommendation" %>
 					<li class="selected"><%= link_to "Application", { :controller => "users", :action => "status" }%></li>
-				<% elsif !check_admin  && params[:controller] != "recommendation" -%>
-					<li class="selected"><%= link_to "Application", edit_user_url(current_user) %></li>
 				<% end -%>				
 			<% else -%>
 				<% if current_user && current_user.submitted_at && !check_admin && params[:controller] != "recommendation" %>
 					<li><%= link_to "Application", { :controller => "users", :action => "status" }%></li>
-				<% elsif !check_admin -%>
-					<li><%= link_to "Application", edit_user_url(current_user) %></li>
+
 				<% end -%>
 			<% end -%>
 	
