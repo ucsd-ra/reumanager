@@ -44,12 +44,5 @@
 		</ul>
 	</div>
 	
-	<hr class="clear" />
 	
-	<% if Date.today < Date.parse("January 11 2010") -%>
-		<h3 class="center"><b>Please check back in January 2010 to submit your application</b></h3>
-	<% else -%>
-	
-		<h1 class="padded center"><b><%= link_to "Apply Now", { :controller => 'users', :action => 'new' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
-	<% end -%>
 </div>

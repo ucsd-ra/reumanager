@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
           if user.submitted_at
             redirect_to( :controller => "users", :action => "status" )
           else
-            redirect_to( :controller => "users", :action => "edit" )
+            redirect_to( :controller => "users", :action => "new" )
           end
         end
         flash[:notice] = "Logged in successfully"

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :login_from_cookie, :login_required, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks ]
-  before_filter :application_complete?, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks ]
+  before_filter :application_complete?, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :status ]
   ssl_required :index, :new, :create, :edit, :update, :status, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :resend_request, :submit, :saved
   
 #  def activate
