@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def new
     if current_user && current_user.submitted_at
       flash[:notice] = 'You cannot submit your application twice.'
-      redirect_to ( :controller => "users", :action => "status" )
+      redirect_to( :controller => "users", :action => "status" )
     else
       logout_killing_session!
       @user = User.new
