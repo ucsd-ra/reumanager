@@ -34,23 +34,6 @@ class UserMailer < ActionMailer::Base
       )
   end
 
-  def rec_request(remail, id, token, firstname, lastname, email)
-    @subject    = "Recommendation Request for #{firstname} #{lastname}"
-    @recipients = remail
-    @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
-    @sent_on    = Time.now
-    @headers    = {}
-
-    part(
-      :content_type => "text/html", 
-      :body => render_message("rec_request", 
-                              :id => id,
-                              :token => token,
-                              :firstname => firstname,
-                              :lastname => lastname, 
-                              :email => email )
-      )
-  end
     
   def complete_app(id, firstname, lastname, email)
       @subject    = "UCSD REU Completed Application for #{firstname} #{lastname}"
@@ -68,7 +51,7 @@ class UserMailer < ActionMailer::Base
                                 :email => email)
         )
       attachment :content_type => "application/pdf", :filename => "#{id.to_s}_#{lastname}.pdf", :body => File.read("#{RAILS_ROOT}/public/pdf/#{id.to_s}_#{lastname}.pdf")
-    end
+  end
     
     def complete_app_student(firstname, lastname, email)
         @subject    = "UCSD REU Completed Application for #{firstname} #{lastname}"
@@ -102,4 +85,41 @@ class UserMailer < ActionMailer::Base
           )
       end
 
+      def rec_request(remail, id, token, firstname, lastname, email)
+      @subject    = "Recommendation Request for #{firstname} #{lastname}"
+      @recipients = remail
+      @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
+      @sent_on    = Time.now
+      @headers    = {}
+
+      part(
+        :content_type => "text/html", 
+        :body => render_message("rec_request", 
+                                :id => id,
+                                :token => token,
+                                :firstname => firstname,
+                                :lastname => lastname, 
+                                :email => email )
+        )
+    end
+    
+    def rec_reminder(remail, id, token, firstname, lastname, email)
+        @subject    = "UCSD REU Recommendation Request for #{firstname} #{lastname}"
+        @recipients = remail
+        @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
+        @sent_on    = Time.now
+        @headers    = {}
+
+        part(
+          :content_type => "text/html", 
+          :body => render_message("rec_reminder",
+                                  :id => id,
+                                  :token => token,
+                                  :firstname => firstname,
+                                  :lastname => lastname, 
+                                  :email => email )
+          )
+    end
+    
 end
+  

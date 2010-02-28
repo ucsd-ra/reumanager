@@ -24,13 +24,19 @@
 				<h2 class="padded">Please wait up to 30 seconds for the server to process your request</h2>
 				<%= image_tag("spinner6.gif") %>
 			</div>
+			<%= content_tag('div', '&nbsp;', :class => "bordered colored rounded padded span-10 push-7", :id => "excel_export", :style => "display:none;") if params[:controller] == "admin" %>
+			
 		</div>
 		<div id="wrapper">
+			<div id="flashbox" <%= %Q{style="display:none"} unless flash[:error] || flash[:notice] || flash[:success] %>>
+				<%= content_tag 'div', h(flash[:error]), :class => 'error', :id => 'error' if flash[:error] %>
+				<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %>
+				<%= content_tag 'div', h(flash[:success]), :class => 'success', :id => 'success' if flash[:success] %>
+			</div>
+			
 			<div class="container">			
 				<%= render :partial => "layouts/header" %>
 				<div id="content">
-					<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %> 
-					<%= content_tag 'div', h(flash[:error]), :class => 'error', :id => 'error' if flash[:error] %>
 					<%= yield %>					
 				</div>
 			</div>
@@ -38,6 +44,16 @@
 		</div>
 		
 		<% unless params[:controller] == "welcome" -%>
+			<% javascript_tag :defer => 'defer' do -%>
+				if (isVisible('success')) {
+					$('opaque_overlay').show();		
+					$('overlay').show();
+					$('wait_box').hide();
+				  	$('success').fade( { duration: 3 } );
+					Element.fade.delay(0.1, 'overlay');
+					Element.fade.delay(0.1, 'opaque_overlay');				
+				}
+		  	<% end -%>
 			<% javascript_tag :defer => 'defer' do -%>
 				if (isVisible('notice')) {
 					$('opaque_overlay').show();		

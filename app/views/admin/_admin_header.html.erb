@@ -2,33 +2,33 @@
 	<h6 class='right'>
 		View student: <%= (select_tag "student_select", options_for_student_select(all_students, "id", "lastname", "firstname", admin_selected_user )) if all_students %>
 	</h6>
-	<h6>
+	
+	<ul>
 		<br />
 		<br />
 		<% if params[:controller] == "admin" && params[:action] == "index" -%>
-			<%= link_to "All Applications", { :controller => "admin" }, :class => "active" %>
+			<li class="first"><%= link_to "All Applications", { :controller => "admin" }, :class => "active button" %></li>
 		<% else -%>
-			<%= link_to "All Applications", { :controller => "admin" } %>
+			<li class="first"><%= link_to "All Applications", { :controller => "admin" }, :class => "button" %></li>
 		<% end -%>
-		 - 
+		
 		<% if params[:controller] == "admin" && params[:action] == "incomplete" -%>
-			<%= link_to "View incomplete applications", { :controller => "admin", :action => "incomplete" }, :class => "active" %>
+			<li><%= link_to "View incomplete applications", { :controller => "admin", :action => "incomplete" }, :class => "active button" %></li>
 		<% else -%>
-			<%= link_to "View incomplete applications", { :controller => "admin", :action => "incomplete" } %>
+			<li><%= link_to "View incomplete applications", { :controller => "admin", :action => "incomplete" }, :class => "button" %></li>
 		<% end -%>
-		 - 		
+		
 		<% if params[:controller] == "admin" && params[:action] == "submitted" -%>
-			<%= link_to "View submitted applications", { :controller => "admin", :action => "submitted" }, :class => "active" %>
+			<li><%= link_to "View submitted applications", { :controller => "admin", :action => "submitted" }, :class => "active button" %></li>
 		<% else -%>
-			<%= link_to "View submitted applications", { :controller => "admin", :action => "submitted" } %>
+			<li><%= link_to "View submitted applications", { :controller => "admin", :action => "submitted" }, :class => "button" %></li>
 		<% end -%>
-		 - 
+		
 		<% if params[:controller] == "admin" && params[:action] == "complete" -%>
-			<%= link_to "View complete applications", { :controller => "admin", :action => "complete" }, :class => "active" %>
+			<li><%= link_to "View complete applications", { :controller => "admin", :action => "complete" }, :class => "active button" %></li>
 		<% else -%>
-			<%= link_to "View complete applications", { :controller => "admin", :action => "complete" } %>
+			<li><%= link_to "View complete applications", { :controller => "admin", :action => "complete" }, :class => "button" %></li>
 		<% end -%>		
-	</h6>
+	</ul>
 </div>
 <hr />
-

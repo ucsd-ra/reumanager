@@ -59,16 +59,18 @@ Rails::Initializer.run do |config|
     :secret      => '9e4b55560c0e8d28b3ca245987755dbf2d249b68a6cf18391cc3fe52d9754f8607be95f34095dfc5891df6ffe9f8d9d277bfb8d33ccffdeaf72ebcf9f736d289'
   }
 
-  require 'rubygems'
-  require 'tlsmail'
+  config.gem 'action_mailer_tls', :lib => "smtp_tls.rb"
   config.action_mailer.delivery_method =  :smtp
-  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
   config.action_mailer.smtp_settings = { :address => "be-mail.ucsd.edu", :port => 25, :authentication => :plain, :domain => 'bioeng.ucsd.edu', :user_name => "nsfreu", :password => "4saihung" }
   config.action_mailer.default_charset = "utf-8"
   config.action_mailer.raise_delivery_errors = true
   
   
   config.gem 'Lipsiasoft-exception-notifier', :lib => 'exception_notifier', :source => 'http://gems.github.com'
+  config.gem 'spreadsheet', :lib => 'spreadsheet'
+  config.gem 'jscharf-ssl_requirement', :lib => 'ssl_requirement', :source => 'http://gems.github.com', :version => '1.1.1'
+  config.gem 'will_paginate', :source => 'http://gems.github.com', :version => '2.3.12'
+  config.gem 'RedCloth', :lib => 'RedCloth'
   
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
@@ -84,8 +86,3 @@ Rails::Initializer.run do |config|
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 end
-
-gem 'jscharf-ssl_requirement'
-gem 'mislav-will_paginate', '~> 2.2'
-require 'will_paginate'
-require 'RedCloth'

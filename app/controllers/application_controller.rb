@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation, :lastname, :dob, :street, :city, :state, :zip, :phone, :pstreet, :pcity, :pstate, :pzip, :pphone, :citizenship, :cresidence, :gender, :ethnicity, :race, :disability
 
   require 'pdf/writer'
+  require 'spreadsheet'
   include AuthenticatedSystem
   include SslRequirement
   
