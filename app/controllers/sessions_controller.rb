@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
             redirect_to( :controller => "users", :action => "new" )
           end
         end
-        flash[:notice] = "Logged in successfully"
+        flash[:success] = "Logged in successfully"
     else
       note_failed_signin
       @login       = params[:login]

@@ -1,5 +1,5 @@
 <h2>Database Export</h2>
-<p><%= link_to "&nbsp;", @spreadsheet_file, :class => "ss_page_white_excel ss_sprite" %><%= link_to @filename || "Download", @spreadsheet_file %></p>
+<p><%= link_to "&nbsp;", "/spreadsheets/" + @filename, :class => "ss_page_white_excel ss_sprite" %><%= link_to @filename || "Download", "/spreadsheets/" + @filename %></p>
 
 <br class="clear">
 
