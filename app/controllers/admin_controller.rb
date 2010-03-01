@@ -97,7 +97,7 @@ require 'ftools'
     worksheet.row(0).default_format = page_title_format
     worksheet[0,0] = "2010 UCSD NSFREU Applicant Data" 
     worksheet.row(1).default_format = header_format
-    worksheet.row(1).concat %w{ID Name Gender Race Ethnicity Disability Current University Academic Year Major/Minor GPA Recommender\ Name Recommender\ Association Overall\ Promise Undergrad\ Institution?}
+    worksheet.row(1).concat %w{ID Name Gender Race Ethnicity Disability Current\ University Academic\ Year Major/Minor GPA Recommender\ Name Recommender\ Association Overall\ Promise Undergrad\ Institution?}
     worksheet.row(1).default_format = header_format
     # get applicant data
     @applicants = User.all :order => "id ASC", :conditions => ["role_id = ? AND completed_at IS NOT ?", 2, nil], :include => [ :academic_record, :recommender, :recommendation ]
