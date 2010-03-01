@@ -107,7 +107,7 @@ require 'ftools'
     @row = 1
     @applicants.each do |a|
       @row += 1
-      worksheet.row(@row).concat [a.id, "#{a.firstname} #{a.lastname}", a.gender, a.race, a.ethnicity, a.disability, a.academic_record.college, a.academic_record.college_level, a.academic_record.major, a.recommender.name, "#{a.recommender.department} / #{a.recommender.college}", a.recommendation.rating, a.recommendation.undergrad_inst]
+      worksheet.row(@row).concat [a.id, "#{a.firstname} #{a.lastname}", a.gender, a.race, a.ethnicity, a.disability, a.academic_record.college, a.academic_record.college_level, a.academic_record.major, a.academic_record.gpa, a.recommender.name, "#{a.recommender.department} / #{a.recommender.college}", a.recommendation.rating, a.recommendation.undergrad_inst]
     end
         
     # write file
