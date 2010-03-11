@@ -8,7 +8,7 @@ module AdminHelper
   end
 
   def all_students
-    @all_students = User.find(:all, :order => 'lastname ASC', :condition => ['role_id = ?', 2)
+    @all_students = User.find(:all, :order => 'lastname ASC', :condition => ['role_id = ?', 2]
   end
   
   def admin_selected_user
