@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
   def reg_confirmation( firstname, lastname, email, token)
     @subject    = "UCSD Bioengineering - NSF REU Registration Confirmation for #{firstname} #{lastname}"
     @recipients = email
-    @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
+    @from       = 'UCSD Bioengineering - NSFREU <nsfreu@be.ucsd.edu>'
     @sent_on    = Time.now
     @headers    = {}
 
@@ -20,7 +20,7 @@ class UserMailer < ActionMailer::Base
   def app_confirmation( id, token, firstname, lastname, email)
     @subject    = "UCSD REU Confirmation for #{firstname} #{lastname}"
     @recipients = email
-    @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
+    @from       = 'UCSD Bioengineering - NSFREU <nsfreu@be.ucsd.edu>'
     @sent_on    = Time.now
     @headers    = {}
 
@@ -37,8 +37,8 @@ class UserMailer < ActionMailer::Base
     
   def complete_app(id, firstname, lastname, email)
       @subject    = "UCSD REU Completed Application for #{firstname} #{lastname}"
-      @recipients = ['UCSD Bioengineering - NSF REU <nsfreu@bioeng.ucsd.edu>', 'jgrevich@ucsd.edu']
-      @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
+      @recipients = ['UCSD Bioengineering - NSF REU <nsfreu@be.ucsd.edu>', 'jgrevich@ucsd.edu']
+      @from       = 'UCSD Bioengineering - NSFREU <nsfreu@be.ucsd.edu>'
       @sent_on    = Time.now
       @headers    = {}
 
@@ -56,7 +56,7 @@ class UserMailer < ActionMailer::Base
     def complete_app_student(firstname, lastname, email)
         @subject    = "UCSD REU Completed Application for #{firstname} #{lastname}"
         @recipients = email
-        @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
+        @from       = 'UCSD Bioengineering - NSFREU <nsfreu@be.ucsd.edu>'
         @sent_on    = Time.now
         @headers    = {}
 
