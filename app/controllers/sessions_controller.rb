@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    if current_user && current_user.completed_at || current_user && current_user.submitted_at || current_user && current_user.role == "admin"
+    if current_user && current_user.completed_at || current_user && current_user.submitted_at || current_user && current_user.role_id == 1
       logout_killing_session!
       redirect_back_or_default( :controller => "welcome" )
     else
