@@ -97,7 +97,7 @@ require 'ftools'
     worksheet.row(0).default_format = page_title_format
     worksheet[0,0] = "2010 UCSD NSFREU Applicant Data" 
     worksheet.row(1).default_format = header_format
-    worksheet.row(1).concat %w{ID Name Gender Race Ethnicity Disability Current\ University Academic\ Year Major/Minor GPA Recommender\ Name Recommender\ Association Overall\ Promise Undergrad\ Institution?}
+    worksheet.row(1).concat %w{ID Name Email Gender Race Ethnicity Disability Current\ University Academic\ Year Major/Minor GPA Recommender\ Name Recommender\ Association Overall\ Promise Undergrad\ Institution?}
     worksheet.row(1).default_format = header_format
     # get applicant data
     @applicants = User.all :order => "id ASC", :conditions => ["role_id = ? AND completed_at IS NOT ?", 2, nil], :include => [ :academic_record, :recommender, :recommendation ]
@@ -107,7 +107,7 @@ require 'ftools'
     @row = 1
     @applicants.each do |a|
       @row += 1
-      worksheet.row(@row).concat [a.id, "#{a.firstname} #{a.lastname}", a.gender, a.race, a.ethnicity, a.disability, a.academic_record.college, a.academic_record.college_level, a.academic_record.major, a.academic_record.gpa, a.recommender.name, "#{a.recommender.department} / #{a.recommender.college}", a.recommendation.rating, a.recommendation.undergrad_inst]
+      worksheet.row(@row).concat [a.id, "#{a.firstname} #{a.lastname}", a.email, a.gender, a.race, a.ethnicity, a.disability, a.academic_record.college, a.academic_record.college_level, a.academic_record.major, a.academic_record.gpa, a.recommender.name, "#{a.recommender.department} / #{a.recommender.college}", a.recommendation.rating, a.recommendation.undergrad_inst]
     end
         
     # write file
