@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.8' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -27,6 +27,11 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
+  config.gem 'Lipsiasoft-exception-notifier', :lib => 'exception_notifier', :source => 'http://gems.github.com'
+  config.gem 'spreadsheet', :lib => 'spreadsheet'
+  config.gem 'jscharf-ssl_requirement', :lib => 'ssl_requirement', :source => 'http://gems.github.com', :version => '1.1.1'
+  config.gem 'will_paginate', :source => 'http://gems.github.com', :version => '2.3.12'
+  config.gem 'RedCloth', :lib => 'RedCloth'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -59,18 +64,9 @@ Rails::Initializer.run do |config|
     :secret      => '9e4b55560c0e8d28b3ca245987755dbf2d249b68a6cf18391cc3fe52d9754f8607be95f34095dfc5891df6ffe9f8d9d277bfb8d33ccffdeaf72ebcf9f736d289'
   }
 
-  config.gem 'action_mailer_tls', :lib => "smtp_tls.rb"
-  config.action_mailer.delivery_method =  :smtp
-  config.action_mailer.smtp_settings = { :address => "be-mail.ucsd.edu", :port => 25, :authentication => :plain, :domain => 'bioeng.ucsd.edu', :user_name => "nsfreu", :password => "4saihung" }
+  config.action_mailer.smtp_settings = { :address => "be-mail.ucsd.edu", :port => 25, :authentication => :plain, :domain => 'bioeng.ucsd.edu', :user_name => "nsfreu", :password => "4saihung", :tls => true }
   config.action_mailer.default_charset = "utf-8"
   config.action_mailer.raise_delivery_errors = true
-  
-  
-  config.gem 'Lipsiasoft-exception-notifier', :lib => 'exception_notifier', :source => 'http://gems.github.com'
-  config.gem 'spreadsheet', :lib => 'spreadsheet'
-  config.gem 'jscharf-ssl_requirement', :lib => 'ssl_requirement', :source => 'http://gems.github.com', :version => '1.1.1'
-  config.gem 'will_paginate', :source => 'http://gems.github.com', :version => '2.3.12'
-  config.gem 'RedCloth', :lib => 'RedCloth'
   
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
