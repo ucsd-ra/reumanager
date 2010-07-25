@@ -2,7 +2,7 @@ require 'erb'
 require 'config/ubuntu-server/ubuntu_tasks'
 default_run_options[:pty] = true
 
-set :application, "alumni" #matches names used in smf_template.erb
+set :application, "nsfreu" #matches names used in smf_template.erb
 set :repository,  "https://be-web02.ucsd.edu/svn/nsfreu/trunk"
 set :domain, 'be-web02.ucsd.edu'
 set :deploy_to, "/var/rails/#{application}" # I like this location

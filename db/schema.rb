@@ -14,15 +14,15 @@ ActiveRecord::Schema.define(:version => 20100110031958) do
   create_table "academic_records", :force => true do |t|
     t.integer  "user_id"
     t.string   "college"
-    t.datetime "college_start"
-    t.datetime "college_end"
+    t.string   "college_start"
+    t.string   "college_end"
     t.string   "college_level"
     t.string   "major"
     t.string   "gpa"
     t.string   "gpa_range"
     t.string   "p_college"
-    t.datetime "p_college_start"
-    t.datetime "p_college_end"
+    t.string   "p_college_start"
+    t.string   "p_college_end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(:version => 20100110031958) do
     t.string   "firstname",                 :limit => 100, :default => ""
     t.string   "middlename",                :limit => 100, :default => ""
     t.string   "lastname",                  :limit => 100, :default => ""
-    t.string   "email"
+    t.string   "email",                     :limit => 100
     t.datetime "dob"
     t.string   "street"
     t.string   "city"

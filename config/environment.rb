@@ -27,10 +27,10 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'Lipsiasoft-exception-notifier', :lib => 'exception_notifier', :source => 'http://gems.github.com'
+  config.gem 'Lipsiasoft-exception-notifier', :lib => 'exception_notifier'
   config.gem 'spreadsheet', :lib => 'spreadsheet'
-  config.gem 'jscharf-ssl_requirement', :lib => 'ssl_requirement', :source => 'http://gems.github.com', :version => '1.1.1'
-  config.gem 'will_paginate', :source => 'http://gems.github.com', :version => '2.3.12'
+  config.gem 'ssl_requirement', :lib => 'ssl_requirement'
+  config.gem 'will_paginate'
   config.gem 'RedCloth', :lib => 'RedCloth'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
@@ -49,7 +49,8 @@ Rails::Initializer.run do |config|
   # in the database in UTC, and return them converted to the specified local zone.
   # Run "rake -D time" for a list of tasks for finding time zone names. Comment line to use default local time.
   # config.time_zone = 'UTC -08:00'
-
+  config.time_zone = 'Pacific Time (US & Canada)'
+  
   # The internationalization framework can be changed to have another default locale (standard is :en) or more load paths.
   # All files from config/locales/*.rb,yml are added automatically.
   # config.i18n.load_path << Dir[File.join(RAILS_ROOT, 'my', 'locales', '*.{rb,yml}')]
