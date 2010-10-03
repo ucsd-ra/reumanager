@@ -10,6 +10,7 @@ class CreateExtras < ActiveRecord::Migration
       t.column :personal_statement,   :text
       t.timestamps
     end
+    add_index :extras, :user_id, :unique => true
   end
 
   def self.down

@@ -27,11 +27,19 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'Lipsiasoft-exception-notifier', :lib => 'exception_notifier'
+  config.gem 'carmen'
+  config.gem 'exception_notification', :lib => 'exception_notification'
+  config.gem 'faker', :lib => 'faker' 
+  config.gem 'paperclip'
+#  config.gem 'machinist', :lib => 'machinist'
+#  config.gem 'pickle'
+  config.gem 'redbox'
+  config.gem 'RedCloth', :lib => 'RedCloth'
+  config.gem 'restful_authentication', :lib => 'restful_authentication'
   config.gem 'spreadsheet', :lib => 'spreadsheet'
   config.gem 'ssl_requirement', :lib => 'ssl_requirement'
-  config.gem 'will_paginate'
-  config.gem 'RedCloth', :lib => 'RedCloth'
+  config.gem 'will_paginate', :lib => 'will_paginate'
+  config.gem 'yaml_db'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -55,25 +63,7 @@ Rails::Initializer.run do |config|
   # All files from config/locales/*.rb,yml are added automatically.
   # config.i18n.load_path << Dir[File.join(RAILS_ROOT, 'my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
-
-  # Your secret key for verifying cookie session data integrity.
-  # If you change this key, all old sessions will become invalid!
-  # Make sure the secret is at least 30 characters and all random, 
-  # no regular words or you'll be exposed to dictionary attacks.
-  config.action_controller.session = {
-    :session_key => '_nsfreu_session',
-    :secret      => '9e4b55560c0e8d28b3ca245987755dbf2d249b68a6cf18391cc3fe52d9754f8607be95f34095dfc5891df6ffe9f8d9d277bfb8d33ccffdeaf72ebcf9f736d289'
-  }
-
-  config.action_mailer.smtp_settings = { :address => "be-mail.ucsd.edu", :port => 25, :authentication => :plain, :domain => 'bioeng.ucsd.edu', :user_name => "nsfreu", :password => "4saihung", :tls => true }
-  config.action_mailer.default_charset = "utf-8"
-  config.action_mailer.raise_delivery_errors = true
   
-  # Use the database for sessions instead of the cookie-based default,
-  # which shouldn't be used to store highly confidential information
-  # (create the session table with "rake db:sessions:create")
-  # config.action_controller.session_store = :active_record_store
-
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,
   # like if you have constraints or database-specific column types
@@ -82,4 +72,9 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+
+  config.action_mailer.smtp_settings = { :address => "127.0.0.1", :port => 25, :domain => 'be.ucsd.edu' }
+  config.action_mailer.default_charset = "utf-8"
+  config.action_mailer.raise_delivery_errors = true
+  
 end

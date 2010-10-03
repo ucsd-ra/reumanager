@@ -14,18 +14,24 @@ ActiveRecord::Schema.define(:version => 20100110031958) do
   create_table "academic_records", :force => true do |t|
     t.integer  "user_id"
     t.string   "college"
-    t.string   "college_start"
-    t.string   "college_end"
+    t.datetime "college_start"
+    t.datetime "college_end"
     t.string   "college_level"
     t.string   "major"
     t.string   "gpa"
     t.string   "gpa_range"
     t.string   "p_college"
-    t.string   "p_college_start"
-    t.string   "p_college_end"
+    t.datetime "p_college_start"
+    t.datetime "p_college_end"
+    t.string   "transcript_filename"
+    t.string   "transcript_content_type"
+    t.integer  "transcript_file_size"
+    t.datetime "transcript_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "academic_records", ["user_id"], :name => "index_academic_records_on_user_id", :unique => true
 
   create_table "extras", :force => true do |t|
     t.integer  "user_id"
@@ -38,6 +44,8 @@ ActiveRecord::Schema.define(:version => 20100110031958) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "extras", ["user_id"], :name => "index_extras_on_user_id", :unique => true
 
   create_table "projects", :force => true do |t|
     t.string   "title"
@@ -63,6 +71,8 @@ ActiveRecord::Schema.define(:version => 20100110031958) do
     t.datetime "updated_at"
   end
 
+  add_index "recommendations", ["user_id"], :name => "index_recommendations_on_user_id", :unique => true
+
   create_table "recommenders", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -75,24 +85,10 @@ ActiveRecord::Schema.define(:version => 20100110031958) do
     t.datetime "updated_at"
   end
 
+  add_index "recommenders", ["user_id"], :name => "index_recommenders_on_user_id", :unique => true
+
   create_table "roles", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "simple_captcha_data", :force => true do |t|
-    t.string   "key",        :limit => 40
-    t.string   "value",      :limit => 6
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "transcripts", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "size"
-    t.string   "content_type"
-    t.string   "filename"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

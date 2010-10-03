@@ -1,5 +1,5 @@
 class AcademicRecordsController < ApplicationController
-  before_filter :login_from_cookie, :login_required, :application_complete?
+#  before_filter :login_from_cookie, :login_required, :application_complete?
   ssl_required :index, :show, :new, :edit, :create, :update, :destroy_transcript, :observe_pcollege
   
   # GET /academic_records
@@ -28,15 +28,14 @@ class AcademicRecordsController < ApplicationController
   def new
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
-    
-    @user.academic_record = AcademicRecord.new
+    @academic_record = AcademicRecord.new
   end
 
   # GET /academic_records/1/edit
   def edit
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
-    @user.academic_record = AcademicRecord.find_by_user_id(current_user.id)
+    @academic_record = AcademicRecord.find_by_user_id(current_user.id)
   end
 
   # POST /academic_records
@@ -45,22 +44,13 @@ class AcademicRecordsController < ApplicationController
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
     @user.academic_record = (AcademicRecord.new(params[:academic_record]) || AcademicRecord.new)
-    if params[:transcript_file] != "" 
-      Transcript.transaction do
-        @user.transcript.destroy if @user.transcript
-        @user.transcript = Transcript.new(:uploaded_data => params[:transcript_file])
-        @user.transcript.save
-      end
-    end
+
     respond_to do |format|
-      if @user.academic_record.save && @user.transcript && @user.transcript.save
+      if @user.academic_record.save
         flash[:notice] = 'Academic information was successfully created'
         format.html { redirect_to( :controller => "extras" ) }
         format.xml  { render :xml => @user.academic_record, :status => :created, :location => @user.academic_record }
       else
-        unless @user.transcript && @user.transcript.save
-          @user.academic_record.errors.add_to_base "You must upload copy of your most recent transcript."
-        end
         format.html { render :action => "new" }
         format.xml  { render :xml => @user.academic_record.errors, :status => :unprocessable_entity }
       end
@@ -73,25 +63,18 @@ class AcademicRecordsController < ApplicationController
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
     @academic_record = @user.academic_record
-    if params[:transcript_file] && params[:transcript_file] != ""
-      @user.transcript.destroy if @user.transcript
-      @user.transcript = Transcript.new(:uploaded_data => params[:transcript_file])
-      @user.transcript.save
-    end  
+    
     if params[:p_college] == "No"
       params[:academic_record][:p_college] = ""
       params[:academic_record][:p_college_start] = nil
       params[:academic_record][:p_college_end] = nil
     end  
     respond_to do |format|
-      if @user.transcript && @user.transcript.save && @academic_record.update_attributes(params[:academic_record]) 
+      if @academic_record.update_attributes(params[:academic_record]) 
         flash[:notice] = 'Academic information was successfully updated'
         format.html { redirect_to(:controller => "extras", :id => @id) }
         format.xml  { head :ok }
       else
-        unless @user.transcript
-          @academic_record.errors.add_to_base "You must upload copy of your most recent transcript."
-        end
         format.html { render :action => "edit" }
         format.xml  { render :xml => @academic_record.errors, :status => :unprocessable_entity }
       end
@@ -109,16 +92,6 @@ class AcademicRecordsController < ApplicationController
 #      format.xml  { head :ok }
 #    end
 #  end
-
-  def destroy_transcript
-    @academic_record = AcademicRecord.find(params[:id])
-    @academic_record.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(academic_records_url) }
-      format.xml  { head :ok }
-    end
-  end
   
   def observe_pcollege
     if params[:p_college] == "Yes"

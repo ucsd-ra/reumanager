@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   has_one                   :recommendation, :dependent => :destroy
   has_one                   :recommender, :dependent => :destroy
   has_one                   :extra, :dependent => :destroy
-  has_one                   :transcript, :dependent => :destroy
   
   validates_format_of       :firstname,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
   validates_length_of       :firstname,     :maximum => 100

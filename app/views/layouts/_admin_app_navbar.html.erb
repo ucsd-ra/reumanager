@@ -1,4 +1,3 @@
-<%= "#{@user.id} - #{@user.name}"%>
 <div id="app_navbar_wrapper">
 	<ul id="app_navbar">
 		<% if params[:controller] == "users" && ( params[:action] == "edit" || params[:action] == "new" ) -%>
@@ -27,9 +26,9 @@
 		<% end -%>
 
 		<% if params[:controller] == "users" && params[:action] == "submit" -%>
-			<li class="active bordered colored rounded"><%= link_to "5. Submit/Save Application", { :controller => "users", :action => "submit", :id => @user.id }, :class => "active" %></li>
+			<li class="active bordered colored rounded"><%= link_to "5. Review/Submit Application", { :controller => "users", :action => "submit", :id => @user.id }, :class => "active" %></li>
 		<% else -%>
-			<li class="bordered colored rounded"><%= link_to "5. Submit/Save Application", { :controller => "users", :action => "submit", :id => @user.id } %></li>
+			<li class="bordered colored rounded"><%= link_to "5. Review/Submit Application", { :controller => "users", :action => "submit", :id => @user.id } %></li>
 		<% end -%>
 	</ul>
 </div>

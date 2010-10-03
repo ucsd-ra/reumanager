@@ -10,6 +10,7 @@ class CreateRecommenders < ActiveRecord::Migration
       t.column :email,                :string
       t.timestamps
     end
+    add_index :recommenders, :user_id, :unique => true
   end
 
   def self.down

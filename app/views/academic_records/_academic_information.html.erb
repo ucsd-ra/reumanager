@@ -1,5 +1,4 @@
-<%= error_messages_for :academic_record, :object => @user.academic_record %>
-<%= error_messages_for :transcript, :object => @user.transcript %>
+<%= error_messages_for :academic_record, :object => @academic_record %>
 
 <div>
 	<label>Current College or University</label><br />
@@ -44,37 +43,25 @@
 
 <hr />
 
-<% if @user.transcript -%>
+
+
 	<div>
-		<% if @user.transcript && @user.transcript.valid? -%>
-			<p>You have previous uploaded the following transcript: <%= link_to @user.transcript.filename, @user.transcript.public_filename.gsub("transcripts","nsfreu/transcripts") %></p>
-			<%= check_pdf(@user) %>
-		<% end -%>
-		
-		<label>Click below to upload a new transcript:</label>
-		<%= file_field_tag :transcript_file %>
-		
-	
-	</div>
-<% else -%>
-	<div>
+		<%= f.file_field :transcript %>		
 		<label>Please upload a PDF of your most recent (unofficial is ok) transcript:</label>
-		<%= file_field_tag :transcript_file %>
 	</div>
-<% end -%>
 
 <hr />
 
 <div>
 	<label>Did you attend another college or university previously?</label>
-	<% if @user.academic_record && @user.academic_record.p_college != "" %>
+	<% if @academic_record && @academic_record.p_college %>
 		<%= select_tag 'p_college', options_for_select(%w{No Yes}, "Yes") %>
 	<% else -%>
 		<%= select_tag 'p_college', options_for_select(%w{No Yes}, "No") %>
 	<% end -%>
 </div>
 
-<% if @user.academic_record && @user.academic_record.p_college != "" %>
+<% if @academic_record && @academic_record.p_college %>
 	<div id="pcollege">
 <% else -%>
 	<div id="pcollege" style="display:none;">

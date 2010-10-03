@@ -1,4 +1,19 @@
 ActionController::Routing::Routes.draw do |map|
+
+  # The priority is based upon order of creation: first created -> highest priority.
+
+  # Sample of regular route:
+  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+  # Keep in mind you can assign values other than :controller and :action
+  map.connect '/users/edit', :controller => "users", :action => "edit"
+  map.connect '/activate/:token', :controller => "users", :action => "activate"
+  map.connect '/activate', :controller => "users", :action => "activate"
+  map.connect '/activated', :controller => "users", :action => "activated"
+  map.connect '/saved', :controller => "users", :action => "saved"
+
+  # Sample of named route:
+  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
+  # This route can be invoked with purchase_url(:id => product.id)
   map.login  '/login',  :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.apply '/apply', :controller => "users", :action => "new"
@@ -10,27 +25,12 @@ ActionController::Routing::Routes.draw do |map|
   map.app_thanks '/app_thanks', :controller => 'users', :action => 'app_thanks'
   map.resend_request '/resend_request', :controller => 'users', :action => 'resend_request'
   map.signup  '/signup', :controller => 'users',   :action => 'new'
-  map.connect '/users/edit', :controller => "users", :action => "edit"
-  map.connect '/activate/:token', :controller => "users", :action => "activate"
-  map.connect '/activate', :controller => "users", :action => "activate"
-  map.connect '/activated', :controller => "users", :action => "activated"
-  map.connect '/saved', :controller => "users", :action => "saved"
-  map.resources :projects
-  map.resources :users
-  map.resource :session
-  
-  # The priority is based upon order of creation: first created -> highest priority.
-
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
+  map.resources :projects
+  map.resources :users
+  map.resource :session
 
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }

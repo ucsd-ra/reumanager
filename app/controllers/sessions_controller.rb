@@ -25,8 +25,7 @@ class SessionsController < ApplicationController
             redirect_to( :controller => "users", :action => "status" )
           else
             # closed registration, prevent users from continuing unfinished apps or creating new ones
-            logout_killing_session!
-            redirect_to( :controller => "users", :action => "new" )
+            redirect_to( :controller => "users", :action => "edit" )
           end
         end
         flash[:success] = "Logged in successfully"
