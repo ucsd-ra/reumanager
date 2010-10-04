@@ -10,7 +10,7 @@
 </div>
 
 <div class="span-5 last">
-	<label>Current Academic Level:</label>
+	<label>Current Academic Level</label><br />
 	<%= h(f.college_level) %>
 </div>
 
@@ -21,14 +21,15 @@
 	<%= h(f.major) %>
 </div>
 
-<div class="span-4">
+<div class="span-8 last">
 	<label>GPA</label><br />
 	<%= h(f.gpa) %> / <%= h(f.gpa_range) %>
 </div>
 
-<div class="span-4">
-	<label>Transcript</label><br />
-	<%= link_to @user.transcript.filename, @user.transcript.public_filename.gsub("transcripts","nsfreu/transcripts") %>
+<hr class="space" />
+
+<div class="span-12 last transcript">
+	<label>Transcript</label> <%= link_to " #{@user.academic_record.transcript.original_filename}", @user.academic_record.transcript.url, :class => "ss_sprite ss_page_white_acrobat" %>
 </div>
 
 <hr class="space" />

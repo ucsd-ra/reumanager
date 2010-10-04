@@ -130,7 +130,7 @@
 20:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">app_confirmation</span>( <span class="ruby-identifier">id</span>, <span class="ruby-identifier">token</span>, <span class="ruby-identifier">firstname</span>, <span class="ruby-identifier">lastname</span>, <span class="ruby-identifier">email</span>)
 21:     <span class="ruby-ivar">@subject</span>    = <span class="ruby-node">&quot;UCSD REU Confirmation for #{firstname} #{lastname}&quot;</span>
 22:     <span class="ruby-ivar">@recipients</span> = <span class="ruby-identifier">email</span>
-23:     <span class="ruby-ivar">@from</span>       = <span class="ruby-value str">'UCSD Bioengineering - NSFREU &lt;nsfreu@bioeng.ucsd.edu&gt;'</span>
+23:     <span class="ruby-ivar">@from</span>       = <span class="ruby-value str">'UCSD Bioengineering - NSFREU &lt;nsfreu@be.ucsd.edu&gt;'</span>
 24:     <span class="ruby-ivar">@sent_on</span>    = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
 25:     <span class="ruby-ivar">@headers</span>    = {}
 26: 
@@ -165,8 +165,8 @@
     <span class="ruby-comment cmt"># File app/models/user_mailer.rb, line 55</span>
 55:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">complete_app</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">firstname</span>, <span class="ruby-identifier">lastname</span>, <span class="ruby-identifier">email</span>)
 56:       <span class="ruby-ivar">@subject</span>    = <span class="ruby-node">&quot;UCSD REU Completed Application for #{firstname} #{lastname}&quot;</span>
-57:       <span class="ruby-ivar">@recipients</span> = [<span class="ruby-value str">'UCSD Bioengineering - NSF REU &lt;nsfreu@bioeng.ucsd.edu&gt;'</span>, <span class="ruby-value str">'jgrevich@ucsd.edu'</span>]
-58:       <span class="ruby-ivar">@from</span>       = <span class="ruby-value str">'UCSD Bioengineering - NSFREU &lt;nsfreu@bioeng.ucsd.edu&gt;'</span>
+57:       <span class="ruby-ivar">@recipients</span> = [<span class="ruby-value str">'UCSD Bioengineering - NSF REU &lt;nsfreu@be.ucsd.edu&gt;'</span>, <span class="ruby-value str">'jgrevich@ucsd.edu'</span>]
+58:       <span class="ruby-ivar">@from</span>       = <span class="ruby-value str">'UCSD Bioengineering - NSFREU &lt;nsfreu@be.ucsd.edu&gt;'</span>
 59:       <span class="ruby-ivar">@sent_on</span>    = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
 60:       <span class="ruby-ivar">@headers</span>    = {}
 61: 
@@ -203,7 +203,7 @@
 73:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">complete_app_student</span>(<span class="ruby-identifier">firstname</span>, <span class="ruby-identifier">lastname</span>, <span class="ruby-identifier">email</span>)
 74:         <span class="ruby-ivar">@subject</span>    = <span class="ruby-node">&quot;UCSD REU Completed Application for #{firstname} #{lastname}&quot;</span>
 75:         <span class="ruby-ivar">@recipients</span> = <span class="ruby-identifier">email</span>
-76:         <span class="ruby-ivar">@from</span>       = <span class="ruby-value str">'UCSD Bioengineering - NSFREU &lt;nsfreu@bioeng.ucsd.edu&gt;'</span>
+76:         <span class="ruby-ivar">@from</span>       = <span class="ruby-value str">'UCSD Bioengineering - NSFREU &lt;nsfreu@be.ucsd.edu&gt;'</span>
 77:         <span class="ruby-ivar">@sent_on</span>    = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
 78:         <span class="ruby-ivar">@headers</span>    = {}
 79: 
@@ -238,7 +238,7 @@
 37:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rec_request</span>(<span class="ruby-identifier">remail</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">token</span>, <span class="ruby-identifier">firstname</span>, <span class="ruby-identifier">lastname</span>, <span class="ruby-identifier">email</span>)
 38:     <span class="ruby-ivar">@subject</span>    = <span class="ruby-node">&quot;Recommendation Request for #{firstname} #{lastname}&quot;</span>
 39:     <span class="ruby-ivar">@recipients</span> = <span class="ruby-identifier">remail</span>
-40:     <span class="ruby-ivar">@from</span>       = <span class="ruby-value str">'UCSD Bioengineering - NSFREU &lt;nsfreu@bioeng.ucsd.edu&gt;'</span>
+40:     <span class="ruby-ivar">@from</span>       = <span class="ruby-value str">'UCSD Bioengineering - NSFREU &lt;nsfreu@be.ucsd.edu&gt;'</span>
 41:     <span class="ruby-ivar">@sent_on</span>    = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
 42:     <span class="ruby-ivar">@headers</span>    = {}
 43: 
@@ -275,7 +275,7 @@
  3:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reg_confirmation</span>( <span class="ruby-identifier">firstname</span>, <span class="ruby-identifier">lastname</span>, <span class="ruby-identifier">email</span>, <span class="ruby-identifier">token</span>)
  4:     <span class="ruby-ivar">@subject</span>    = <span class="ruby-node">&quot;UCSD Bioengineering - NSF REU Registration Confirmation for #{firstname} #{lastname}&quot;</span>
  5:     <span class="ruby-ivar">@recipients</span> = <span class="ruby-identifier">email</span>
- 6:     <span class="ruby-ivar">@from</span>       = <span class="ruby-value str">'UCSD Bioengineering - NSFREU &lt;nsfreu@bioeng.ucsd.edu&gt;'</span>
+ 6:     <span class="ruby-ivar">@from</span>       = <span class="ruby-value str">'UCSD Bioengineering - NSFREU &lt;nsfreu@be.ucsd.edu&gt;'</span>
  7:     <span class="ruby-ivar">@sent_on</span>    = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
  8:     <span class="ruby-ivar">@headers</span>    = {}
  9: 

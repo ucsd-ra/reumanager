@@ -18,7 +18,7 @@
 		<%= render :partial => 'show_academic_record', :locals => { :f => @user.academic_record } %>
 	<% else -%>
 		<%= content_tag 'p', 'You have not added your academic records.', :class => 'blood_red' unless @user.academic_record %>
-		<%= content_tag 'p', 'You have not uploaded a PDF copy of your unofficial transcript.', :class => 'blood_red' unless @user.transcript && @user.transcript.content_type == 'application/pdf' %>				
+		<%= content_tag 'p', 'You have not uploaded a PDF copy of your unofficial transcript.', :class => 'blood_red' unless @user.academic_record && @user.academic_record.transcript && @user.academic_record.transcript.content_type == 'application/pdf' %>				
 	<% end -%>
 </div>
 

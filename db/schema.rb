@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20100110031958) do
     t.string   "p_college"
     t.datetime "p_college_start"
     t.datetime "p_college_end"
-    t.string   "transcript_filename"
+    t.string   "transcript_file_name"
     t.string   "transcript_content_type"
     t.integer  "transcript_file_size"
     t.datetime "transcript_updated_at"

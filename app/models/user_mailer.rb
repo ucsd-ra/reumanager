@@ -72,7 +72,7 @@ class UserMailer < ActionMailer::Base
     def application_reminder(firstname, lastname, email)
         @subject    = "UCSD REU Application Reminder for #{firstname} #{lastname}"
         @recipients = email
-        @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
+        @from       = 'UCSD Bioengineering - NSFREU <nsfreu@be.ucsd.edu>'
         @sent_on    = Time.now
         @headers    = {}
 
@@ -88,7 +88,7 @@ class UserMailer < ActionMailer::Base
       def rec_request(remail, id, token, firstname, lastname, email)
       @subject    = "Recommendation Request for #{firstname} #{lastname}"
       @recipients = remail
-      @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
+      @from       = 'UCSD Bioengineering - NSFREU <nsfreu@be.ucsd.edu>'
       @sent_on    = Time.now
       @headers    = {}
 
@@ -106,7 +106,7 @@ class UserMailer < ActionMailer::Base
     def rec_reminder(remail, id, token, firstname, lastname, email)
         @subject    = "UCSD REU Recommendation Request for #{firstname} #{lastname}"
         @recipients = remail
-        @from       = 'UCSD Bioengineering - NSFREU <nsfreu@bioeng.ucsd.edu>'
+        @from       = 'UCSD Bioengineering - NSFREU <nsfreu@be.ucsd.edu>'
         @sent_on    = Time.now
         @headers    = {}
 

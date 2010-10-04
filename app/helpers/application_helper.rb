@@ -29,23 +29,23 @@ module ApplicationHelper
   end
   
   def check_academic_records(user)
- #   result = true if user && check_academic_record(user) && check_transcript(user)
+    result = true if user && check_academic_record(user) && check_transcript(user)
   end
 
   def check_academic_record(user)
-  #  result = true if user && user.academic_record
+    result = true if user && user.academic_record
   end
   
   def check_transcript(user)
-#    result = true if user && user.academic_record.transcript && user.academic_record.transcript.valid?
+    result = true if user && user.academic_record.transcript && user.academic_record.valid?
   end
   
   def check_pdf(user)
-#    unless user.transcript.content_type == "application/pdf" || user.transcript.content_type == "application/octet-stream"
-  #    "<p><strong>Your transcript does not appear to be in the PDF format. Please double check your file or perhaps try a different browser and/or computer.</strong></p>"
- #   else
- #     nil
-#    end
+    unless user.academic_record.transcript.content_type == "application/pdf" || user.academic_record.transcript.content_type == "application/octet-stream"
+      "<p><strong>Your transcript does not appear to be in the PDF format. Please double check your file or perhaps try a different browser and/or computer.</strong></p>"
+    else
+      nil
+    end
   end
 
   def check_recommender(user)

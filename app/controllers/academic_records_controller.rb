@@ -44,7 +44,8 @@ class AcademicRecordsController < ApplicationController
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
     @user.academic_record = (AcademicRecord.new(params[:academic_record]) || AcademicRecord.new)
-
+    @academic_record = @user.academic_record
+    
     respond_to do |format|
       if @user.academic_record.save
         flash[:notice] = 'Academic information was successfully created'

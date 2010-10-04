@@ -1,4 +1,4 @@
-<%= error_messages_for :academic_record, :object => @academic_record %>
+<%= f.error_messages %>
 
 <div>
 	<label>Current College or University</label><br />
@@ -7,13 +7,11 @@
 
 <hr />
 
-<div>
-	<label>Dates of Attendance:</label>
-</div>
 <div class="span-6">
+	<label>Dates of Attendance:</label><br />
 	<label>From:</label>&nbsp;&nbsp;<%= f.date_select 'college_start', :discard_day => true %><br style="clear:both;" />
 </div>
-<div class="span-6 last">
+<div class="span-6 last"><br />
 	<label>To:</label>&nbsp;&nbsp;<%= f.date_select 'college_end', :discard_day => true %>
 </div>
 
@@ -42,26 +40,38 @@
 </div>
 
 <hr />
-
-
-
-	<div>
-		<%= f.file_field :transcript %>		
-		<label>Please upload a PDF of your most recent (unofficial is ok) transcript:</label>
+	
+<% if @academic_record.transcript && @academic_record.transcript.original_filename != nil %>
+	<div id="transcript">
+		<label>We have received the following transcript:</label>
+		<p class='right'><%= link_to_function 'Replace', "$('transcript_fields').show();$('transcript').hide();", :class => 'button' %></p>
+		<p><%= display_transcript_link(@academic_record) %></p>
 	</div>
+	
+	<div style='display:none;' id="transcript_fields">
+		<label>Please upload a PDF of your most recent (unofficial is ok) transcript:</label>
+		<%= f.file_field :transcript %>
+		<p class='right'><%= link_to_function 'Cancel', "$('transcript_fields').hide();$('transcript').show();", :class => "negative button" %></p>
+	</div>
+<% else -%>
+	<div>
+		<label>Please upload a PDF of your most recent (unofficial is ok) transcript:</label>
+		<%= f.file_field :transcript %>		
+	</div>
+<% end -%>
 
 <hr />
 
 <div>
 	<label>Did you attend another college or university previously?</label>
-	<% if @academic_record && @academic_record.p_college %>
+	<% if @academic_record && @academic_record.p_college != '' && @academic_record.p_college != nil %>
 		<%= select_tag 'p_college', options_for_select(%w{No Yes}, "Yes") %>
 	<% else -%>
 		<%= select_tag 'p_college', options_for_select(%w{No Yes}, "No") %>
 	<% end -%>
 </div>
 
-<% if @academic_record && @academic_record.p_college %>
+<% if @academic_record && @academic_record.p_college != '' && @academic_record.p_college != nil %>
 	<div id="pcollege">
 <% else -%>
 	<div id="pcollege" style="display:none;">
@@ -81,10 +91,10 @@
 	</div>
 	
 	<div class="span-6">
-		<label>From:</label><%= f.date_select 'p_college_start', :discard_day => true %><br style="clear:both;" />
+		<label>From: </label><%= f.date_select 'p_college_start', :discard_day => true %><br style="clear:both;" />
 	</div>
 
 	<div class="span-6 last">
-		<label>To:</label><%= f.date_select 'p_college_end', :discard_day => true %>
+		<label>To: </label><%= f.date_select 'p_college_end', :discard_day => true %>
 	</div>	
 </div>
