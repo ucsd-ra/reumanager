@@ -31,6 +31,7 @@ Rails::Initializer.run do |config|
   config.gem 'exception_notification', :lib => 'exception_notification'
   config.gem 'faker', :lib => 'faker' 
   config.gem 'paperclip'
+  config.gem 'pdf-writer'
 #  config.gem 'machinist', :lib => 'machinist'
 #  config.gem 'pickle'
   config.gem 'redbox'
