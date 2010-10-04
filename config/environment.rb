@@ -39,7 +39,7 @@ Rails::Initializer.run do |config|
   config.gem 'spreadsheet', :lib => 'spreadsheet'
   config.gem 'ssl_requirement', :lib => 'ssl_requirement'
   config.gem 'will_paginate', :lib => 'will_paginate'
-  config.gem 'yaml_db'
+  config.gem 'yaml_db', :version => '0.1.0'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

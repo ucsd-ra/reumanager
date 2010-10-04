@@ -6,7 +6,7 @@ set :application, "nsfreu" #matches names used in smf_template.erb
 set :repository,  "https://www.be.ucsd.edu/svn/nsfreu/trunk"
 set :domain, 'fortuna.ucsd.edu'
 set :deploy_to, "/var/rails/#{application}" # I like this location
-set :user, "justin"
+set :user, "beadmin"
 
 role :app, domain
 role :web, domain
@@ -28,5 +28,3 @@ end
 
 after :deploy, 'deploy:cleanup'
 after :deploy, 'ubuntu:chown'
-
-end
