@@ -120,6 +120,15 @@ class UserMailer < ActionMailer::Base
                                   :email => email )
           )
     end
-    
-end
+
+    def reset_password(user)
+        @subject    = "UCSD REU Password reset link for #{user.firstname} #{user.lastname}"
+        @recipients = user.email
+        @from       = 'UCSD Bioengineering - NSFREU <nsfreu@be.ucsd.edu>'
+        @sent_on    = Time.now
+        @headers    = {}
+
+        part( :content_type => "text/html", :body => render_message("reset_password", :user => user ))
+    end
   
+end

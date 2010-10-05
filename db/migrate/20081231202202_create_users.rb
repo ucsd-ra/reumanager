@@ -28,6 +28,7 @@ class CreateUsers < ActiveRecord::Migration
       t.column :rec_request_at,            :datetime
       t.column :completed_at,              :datetime
       t.column :token,                     :string
+      t.column :token_created_at,           :datetime
       t.column :remember_token,            :string, :limit => 40
       t.column :remember_token_expires_at, :datetime
       t.column :crypted_password,          :string, :limit => 40

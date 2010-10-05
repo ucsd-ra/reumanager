@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :login_from_cookie, :login_required, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks ]
+  before_filter :login_from_cookie, :login_required, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :reset ]
   before_filter :application_complete?, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :status, :resend_request ]
   ssl_required :index, :new, :create, :edit, :update, :status, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :resend_request, :submit, :saved
   
@@ -170,6 +170,28 @@ class UsersController < ApplicationController
       flash[:notice] = 'Sorry, you can no longer resend your request, your application is complete.'
     end
     redirect_to( :controller => "users", :action => "status" )
+  end
+  
+  def resend_request
+    
+  end
+  
+  def reset
+    unless @user = User.find_by_token(params[:id])
+      redirect_to :controller =>'sessions', :action => 'new'
+    end
+    if request.post?
+      @user = User.find_by_token(params[:id])
+      @user.password = params[:password]
+      @user.password_confirmation = params[:password_confirmation]
+      
+      if @user.save && params[:password] != '' && params[:password_confirmation] != ''
+        flash = 'Password was updated, please login.'
+        render :controller => "sessions", :action => 'new'
+      else
+        render :action => "reset", :id => @user.id
+      end
+    end
   end
   
 end

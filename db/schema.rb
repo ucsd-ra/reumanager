@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20100110031958) do
     t.datetime "rec_request_at"
     t.datetime "completed_at"
     t.string   "token"
+    t.datetime "token_created_at"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
     t.string   "crypted_password",          :limit => 40

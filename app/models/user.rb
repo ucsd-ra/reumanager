@@ -164,6 +164,7 @@ class User < ActiveRecord::Base
    
   protected
     def make_token 
-      self.token = Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by{rand}.join) 
+      self.token = Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by{rand}.join)
+      self.token_created_at = Time.now
     end
 end

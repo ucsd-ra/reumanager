@@ -46,6 +46,18 @@ class SessionsController < ApplicationController
       redirect_back_or_default( :controller => "users", :action => "saved" )
     end
   end
+  
+  def forgot
+    return unless request.post?
+    if @user = User.find_by_email(params[:email])
+      UserMailer.deliver_reset_password(@user)
+      flash[:notice] = "Password resent link, sent."  
+      redirect_to( :controller => "sessions", :action => "emailed"  )
+    else
+      flash[:notice] = "There was an error or no user by that email."  
+      render :action => 'forgot'
+    end
+  end
 
 protected
   # Track failed login attempts

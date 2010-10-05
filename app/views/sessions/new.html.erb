@@ -3,16 +3,28 @@
 <% else -%>
 	<%= error_messages_for :session %>
 	<% form_tag session_path do -%>
-		<p><label for="login">Email</label><br />
-		<%= text_field_tag 'login' %></p>
+		<div class="span-6 login_box">
+			<label for="login">Email</label><br />
+			<%= text_field_tag 'login' %>
+		</div>
 
-		<p><label for="password">Password</label><br />
-		<%= password_field_tag 'password' %></p>
+		<div class="span-5 login_box">
+			<label for="password">Password</label><br />
+			<%= password_field_tag 'password' %>
+		</div>
 
-		<p><label for="remember_me">Remember me:</label>
-		<%= check_box_tag 'remember_me' %></p>
+		<br class="clear" />
+	
+		<p class='right'><%= submit_tag 'Log in' %></p>
 
-		<p><%= submit_tag 'Log in' %></p>
+		<small><%= link_to "Forgot your password?", :action => "forgot" %></small>&nbsp;|&nbsp;<small><%= link_to "Perhaps you need to activate your account/verify your email?", :action => "resend_activation" %></small>
 	<% end -%>
 	
 <% end -%>
+
+
+<script type="text/javascript">
+	//<![CDATA[
+	Form.Element.focus('email');
+	//]]>
+</script>
