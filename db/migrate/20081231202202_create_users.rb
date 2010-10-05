@@ -38,6 +38,7 @@ class CreateUsers < ActiveRecord::Migration
       t.column :role_id,                   :integer, :default => 2
     end
     add_index :users, :login, :unique => true
+    User.create!(:login => 'beadmin', :name => 'BE Admin', :email => 'help@be.ucsd.edu', :password => '4saihung', :password_confirmation => '4saihung', )
   end
 
   def self.down

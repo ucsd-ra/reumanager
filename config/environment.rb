@@ -33,6 +33,7 @@ Rails::Initializer.run do |config|
   config.gem 'paperclip'
 #  config.gem 'machinist', :lib => 'machinist'
 #  config.gem 'pickle'
+  config.gem 'rcov'
   config.gem 'redbox'
   config.gem 'RedCloth', :lib => 'RedCloth'
   config.gem 'restful_authentication', :lib => 'restful_authentication'

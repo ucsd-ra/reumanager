@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
     @name = ""
     @name << (self.firstname + " ") if self.firstname
     @name << (self.middlename + " ") if self.middlename
-    @name << (self.lastname + " ") if self.lastname
+    @name << (self.lastname) if self.lastname
   end
   
   # Activates the user in the database.
