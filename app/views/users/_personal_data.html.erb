@@ -93,7 +93,7 @@
 <div>
 	<label>Citizenship</label><br />
 	<%= f.select 'citizenship', %w{United\ States U.S.\ Permanent\ Resident Other} %>
-	<div class="clear" id="cor" style="display:none;">
+	<div class="clear" id="cor" style="<%= "display:none;" unless @user.citizenship == "U.S. Permanent Resident" || @user.citizenship == "Other" %>">
 		<label>Country of Residence</label>
 		<%= f.text_field 'cresidence' %>
 	</div>

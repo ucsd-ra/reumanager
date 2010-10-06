@@ -41,6 +41,14 @@
 			<% end -%>
 		<% end -%>
 
+		<% unless current_user && current_user.role.name == 'student' -%>
+			<% if params[:controller] == "users" && params[:action] == "new" -%>
+				<li class="selected"><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
+			<% else -%>
+				<li><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
+			<% end -%>
+		<% end -%>
+
 		<% if params[:controller] == "welcome" && params[:action] == "index" -%>
 			<li class="selected"><%= link_to "REU Welcome", { :controller => "welcome" } %></li>
 		<% else -%>
