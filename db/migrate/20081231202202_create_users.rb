@@ -38,10 +38,12 @@ class CreateUsers < ActiveRecord::Migration
       t.column :role_id,                   :integer, :default => 2
     end
     add_index :users, :login, :unique => true
-    @u = User.new(:firstname => 'BE', :lastname => 'Admin', :email => 'help@be.ucsd.edu', :password => '4saihung', :password_confirmation => '4saihung', :role_id => 1 )
-    @u.save_with_validation(false)    
-    @u = User.new(:firstname => 'Melissa', :lastname => 'Micou', :email => 'help@be.ucsd.edu', :password => '4saihung', :password_confirmation => '4saihung', :role_id => 1 )
+    @u = User.new(:firstname => 'BE', :lastname => 'Admin', :login => 'help@be.ucsd.edu', :email => 'help@be.ucsd.edu', :password => '4saihung', :password_confirmation => '4saihung', :role_id => 1 )
     @u.save_with_validation(false)
+    @u.set_to_admin!
+    @u = User.new(:firstname => 'Melissa', :lastname => 'Micou', :login => 'mmicou@ucsd.edu', :email => 'mmicou@ucsd.edu', :password => '4saihung', :password_confirmation => '4saihung', :role_id => 1 )
+    @u.save_with_validation(false)
+    @u.set_to_admin!
   end
 
   def self.down

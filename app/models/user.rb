@@ -162,6 +162,12 @@ class User < ActiveRecord::Base
      UserMailer.deliver(email)
    end
    
+   def set_to_admin!
+     self.activate!
+     self.role = Role.find 1
+     self.save_with_validation(false)
+   end
+   
   protected
     def make_token 
       self.token = Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by{rand}.join)

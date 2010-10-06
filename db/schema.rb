@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100110031958) do
+ActiveRecord::Schema.define(:version => 20091218043643) do
 
   create_table "academic_records", :force => true do |t|
     t.integer  "user_id"

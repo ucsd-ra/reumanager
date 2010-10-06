@@ -51,7 +51,7 @@ class SessionsController < ApplicationController
     return unless request.post?
     if @user = User.find_by_email(params[:email])
       UserMailer.deliver_reset_password(@user)
-      flash[:notice] = "Password resent link, sent."  
+      flash[:notice] = "Password reset link, sent."  
       redirect_to( :controller => "sessions", :action => "emailed"  )
     else
       flash[:notice] = "There was an error or no user by that email."  
@@ -59,6 +59,18 @@ class SessionsController < ApplicationController
     end
   end
 
+  def activate
+    return unless request.post?
+    if @user = User.find_by_email(params[:email])
+      @user.send_reg_confirmation
+      flash[:notice] = "Activation link sent"  
+      redirect_to( :controller => "sessions", :action => "emailed"  )
+    else
+      flash[:notice] = "There was an error or no user by that email."  
+      render :action => 'activate'
+    end    
+  end
+  
 protected
   # Track failed login attempts
   def note_failed_signin

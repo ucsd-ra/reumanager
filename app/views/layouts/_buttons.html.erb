@@ -33,6 +33,14 @@
 			<li><%= link_to "Past Projects", { :controller => "projects" } %></li>
 		<% end -%>
 
+		<% if current_user && current_user.role.name == 'student' -%>
+			<% if params[:controller] == "users" && params[:action] == "edit" -%>
+				<li class="selected"><%= link_to "Your Application", { :controller => "users" } %></li>
+			<% else -%>
+				<li><%= link_to "Your Application", { :controller => "users" } %></li>
+			<% end -%>
+		<% end -%>
+
 		<% if params[:controller] == "welcome" && params[:action] == "index" -%>
 			<li class="selected"><%= link_to "REU Welcome", { :controller => "welcome" } %></li>
 		<% else -%>

@@ -62,7 +62,7 @@
 	</p>
 </div>
 
-<% if @user && @user.pstreet && @user.pstreet != ""  -%>
+<% if @user && @user.pstreet && @user.pstreet != @user.street && @user.pstreet != ''  -%>
 	<div id="presidence">
 <% else -%>
 	<div id="presidence" style="display:none;">

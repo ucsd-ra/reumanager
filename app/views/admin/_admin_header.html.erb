@@ -1,10 +1,10 @@
 <div id="admin_header">
-	<h6 class='right'>
-		View student: <%= (select_tag "student_select", options_for_student_select(all_students, "id", "lastname", "firstname", admin_selected_user )) if all_students %>
-	</h6>
-	
+	<% if @all_students -%>
+		<h6 class='right'>
+			View student: <%= (select_tag "student_select", options_for_student_select(all_students, "id", "lastname", "firstname", admin_selected_user )) %>
+		</h6>
+	<% end -%>
 	<ul>
-		<br />
 		<br />
 		<% if params[:controller] == "admin" && params[:action] == "index" -%>
 			<li class="first"><%= link_to "All Applications", { :controller => "admin" }, :class => "active button" %></li>
