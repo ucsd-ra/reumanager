@@ -51,7 +51,7 @@ class SessionsController < ApplicationController
     return unless request.post?
     if @user = User.find_by_email(params[:email])
       @user.make_token
-      @user.save_with_validations(false)
+      @user.save_with_validation(false)
       UserMailer.deliver_reset_password(@user)
       flash[:notice] = "Password reset link, sent."  
       redirect_to( :controller => "sessions", :action => "emailed"  )
@@ -65,7 +65,7 @@ class SessionsController < ApplicationController
     return unless request.post?
     if @user = User.find_by_email(params[:email])
       @user.send_reg_confirmation
-      @user.save_with_validations(false)
+      @user.save_with_validation(false)
       flash[:notice] = "Activation link sent"  
       redirect_to( :controller => "sessions", :action => "emailed"  )
     else
