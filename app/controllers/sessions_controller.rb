@@ -50,6 +50,8 @@ class SessionsController < ApplicationController
   def forgot
     return unless request.post?
     if @user = User.find_by_email(params[:email])
+      @user.make_token
+      @user.save
       UserMailer.deliver_reset_password(@user)
       flash[:notice] = "Password reset link, sent."  
       redirect_to( :controller => "sessions", :action => "emailed"  )

@@ -186,8 +186,9 @@ class UsersController < ApplicationController
       @user.password_confirmation = params[:password_confirmation]
       
       if @user.save && params[:password] != '' && params[:password_confirmation] != ''
-        flash = 'Password was updated, please login.'
-        render :controller => "sessions", :action => 'new'
+        logout_killing_session!
+        flash[:notice] = 'Password was updated, please login.'
+        redirect_to :controller => "sessions", :action => 'new'
       else
         render :action => "reset", :id => @user.id
       end
