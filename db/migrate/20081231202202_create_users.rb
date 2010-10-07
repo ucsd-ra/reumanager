@@ -33,9 +33,10 @@ class CreateUsers < ActiveRecord::Migration
       t.column :remember_token_expires_at, :datetime
       t.column :crypted_password,          :string, :limit => 40
       t.column :salt,                      :string, :limit => 40
+      t.column :status,                    :string
+      t.column :role_id,                   :integer, :default => 2      
       t.column :created_at,                :datetime
       t.column :updated_at,                :datetime
-      t.column :role_id,                   :integer, :default => 2
     end
     add_index :users, :login, :unique => true
     @u = User.new(:firstname => 'BE', :lastname => 'Admin', :login => 'help@be.ucsd.edu', :email => 'help@be.ucsd.edu', :password => '4saihung', :password_confirmation => '4saihung', :role_id => 1 )
