@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
 before_filter :login_from_cookie, :login_required, :check_admin
-ssl_required :index, :show, :observe_student_select, :report, :incomplete, :submitted, :complete, :create_report, :delete, :export, :expunge_excel_files, :close_export
+ssl_required :index, :show, :select_student, :change_status, :report, :incomplete, :submitted, :complete, :create_report, :delete, :export, :expunge_excel_files, :close_export
 require 'ftools'
 
   def index
@@ -36,7 +36,12 @@ require 'ftools'
     @user = User.find(params[:id])
     @user.update_attribute(:status, params[:status])
     render :update do |page|
-      page.insert_html :bottom, 'status', 'updated'
+      page.insert_html :bottom, 'status', %(<h3 class='left positive' id="updated">Status Updated!</h3>)
+      page[:updated].highlight
+      page.delay(1) do
+        page[:updated].fade
+        page[:updated].remove        
+      end
     end
   end
     

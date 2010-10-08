@@ -10,6 +10,7 @@
 			<th class="college">College / University</th>
 			<th class="major">Major</th>
 			<th class="gpa">GPA</th>
+			<th class="status">Status</th>
 			<th class="del">&nbsp;</th>
 		</tr>
 		
@@ -43,6 +44,9 @@
 						<%= link_to "#{student.academic_record.gpa[0..2]}/#{student.academic_record.gpa_range[0..2]}", { :action => "show", :id => student } %>
 					<% end -%>
 				</td>
+	   			<td class="status">
+					<%= link_to "#{student.status}", { :action => "show", :id => student } %>
+				</td>				
 				<td class="del">
 					<%= link_to "Delete", { :action => "delete", :id => student }, { :confirm => "You are about to delete all associated records for #{student.firstname} #{student.lastname}. Are you sure about this?", :method => :delete } %>
 				</td>
