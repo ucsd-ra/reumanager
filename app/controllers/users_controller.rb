@@ -59,6 +59,7 @@ class UsersController < ApplicationController
       # button. Uncomment if you understand the tradeoffs.
       # reset session
       self.current_user = @user # !! now logged in
+      @user.send_reg_confirmation
       logout_killing_session!
       redirect_back_or_default({ :controller => 'users', :action => 'thanks' })
     else

@@ -38,8 +38,6 @@ class User < ActiveRecord::Base
   @@per_page = 20
   
   before_create :make_token
-  after_create  :send_reg_confirmation
-    
     
   def name
     @name = ""
