@@ -9,10 +9,10 @@
 
 <div class="span-6">
 	<label>Dates of Attendance:</label><br />
-	<label>From:</label>&nbsp;&nbsp;<%= f.date_select 'college_start', :discard_day => true, :default => Time.now - 2.years %><br style="clear:both;" />
+	<label>From:</label>&nbsp;&nbsp;<%= f.date_select 'college_start', :discard_day => true, :default => Time.now - 2.years, :start_year => 2000, :end_year => Time.now.year %><br style="clear:both;" />
 </div>
 <div class="span-6 last"><br />
-	<label>To:</label>&nbsp;&nbsp;<%= f.date_select 'college_end', :discard_day => true %>
+	<label>To:</label>&nbsp;&nbsp;<%= f.date_select 'college_end', :discard_day => true, :start_year => 2004, :end_year => Time.now.year %>
 </div>
 
 <hr />
@@ -91,10 +91,10 @@
 	</div>
 	
 	<div class="span-6">
-		<label>From: </label><%= f.date_select 'p_college_start', :discard_day => true, :default => Time.now - 2.years %><br style="clear:both;" />
+		<label>From: </label><%= f.date_select 'p_college_start', :discard_day => true, :start_year => 2000, :end_year => Time.now.year %><br style="clear:both;" />
 	</div>
 
 	<div class="span-6 last">
-		<label>To: </label><%= f.date_select 'p_college_end', :discard_day => true %>
+		<label>To: </label><%= f.date_select 'p_college_end', :discard_day => true, :start_year => 2004, :end_year => Time.now.year %>
 	</div>	
 </div>
