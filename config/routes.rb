@@ -9,6 +9,10 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/activate/:token', :controller => "users", :action => "activate"
   map.connect '/activate', :controller => "users", :action => "activate"
   map.connect '/activated', :controller => "users", :action => "activated"
+  map.connect '/users/reactivate', :controller => "users", :action => "reactivate"
+  map.connect '/users/emailed', :controller => "users", :action => "emailed"
+  map.connect '/users/forgot', :controller => "users", :action => "forgot"
+  map.connect '/users/pwreset', :controller => "users", :action => "pwreset"
   map.connect '/saved', :controller => "users", :action => "saved"
 
   # Sample of named route:

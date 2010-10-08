@@ -1,1 +1,2 @@
-<%= observe_field 'student_select', :url => { :action => 'observe_student_select' }, :with => 'student_select' %>
+<%= observe_field 'student_select', :url => { :action => 'select_student' }, :with => 'student' %>
+<%= observe_field 'user_status', :url => { :action => 'change_status', :id => @user }, :with => :status %>

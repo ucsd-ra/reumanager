@@ -138,7 +138,7 @@ Admin
 	#admin_listing .date					{ width:146px; }
 	#admin_listing .del						{ width:80px; }
 	#excel_export							{ position:absolute; top:26%; z-index:10; text-align:left; }
-
+	#status form { border:0; margin:0; padding:0; float:right; width:auto; }
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Pagination
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/

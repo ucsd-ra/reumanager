@@ -46,34 +46,7 @@ class SessionsController < ApplicationController
       redirect_back_or_default( :controller => "users", :action => "saved" )
     end
   end
-  
-  def forgot
-    return unless request.post?
-    if @user = User.find_by_email(params[:email])
-      @user.make_token
-      @user.save_with_validation(false)
-      UserMailer.deliver_reset_password(@user)
-      flash[:notice] = "Password reset link, sent."  
-      redirect_to( :controller => "sessions", :action => "emailed"  )
-    else
-      flash[:notice] = "There was an error or no user by that email."  
-      render :action => 'forgot'
-    end
-  end
 
-  def activate
-    return unless request.post?
-    if @user = User.find_by_email(params[:email])
-      @user.send_reg_confirmation
-      @user.save_with_validation(false)
-      flash[:notice] = "Activation link sent"  
-      redirect_to( :controller => "sessions", :action => "emailed"  )
-    else
-      flash[:notice] = "There was an error or no user by that email."  
-      render :action => 'activate'
-    end    
-  end
-  
 protected
   # Track failed login attempts
   def note_failed_signin

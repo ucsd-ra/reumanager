@@ -28,12 +28,18 @@ require 'ftools'
     @user = User.find(params[:id])
   end
   
-  def observe_student_select
+  def select_student
+    redirect_to :action => "show", :id => params[:student]
+  end
+
+  def change_status
+    @user = User.find(params[:id])
+    @user.update_attribute(:status, params[:status])
     render :update do |page|
-      page.redirect_to :action => "show", :id => params[:student_select]
+      page.insert_html :bottom, 'status', 'updated'
     end
   end
-  
+    
   def report
     @students = User.paginate :page => params[:page], :order => 'lastname ASC'
   end

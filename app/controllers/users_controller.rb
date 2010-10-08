@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :login_from_cookie, :login_required, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :reset ]
+  before_filter :login_from_cookie, :login_required, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :reset, :forgot, :reactivate, :emailed, :pwreset ]
   before_filter :application_complete?, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :status, :resend_request ]
   ssl_required :index, :new, :create, :edit, :update, :status, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :resend_request, :submit, :saved
   
@@ -171,28 +171,56 @@ class UsersController < ApplicationController
     end
     redirect_to( :controller => "users", :action => "status" )
   end
-  
-  def resend_request
-    
+
+  def forgot
+    return unless request.post?
+    if @user = User.find_by_email(params[:email])
+      @user.make_token
+      @user.save_with_validation(false)
+      UserMailer.deliver_reset_password(@user)
+      flash[:notice] = "Password reset link, sent."  
+      redirect_to( :action => "emailed")
+    else
+      flash[:notice] = "There was an error or no user by that email."  
+      render :action => 'forgot'
+    end
   end
-  
+
   def reset
     unless @user = User.find_by_token(params[:id])
       redirect_to :controller =>'sessions', :action => 'new'
     end
+
     if request.post?
       @user = User.find_by_token(params[:id])
       @user.password = params[:password]
       @user.password_confirmation = params[:password_confirmation]
-      
-      if @user.save && params[:password] != '' && params[:password_confirmation] != ''
+    
+      if @user.save && params[:password] != '' && params[:password_confirmation] != '' && params[:password]
         logout_killing_session!
         flash[:notice] = 'Password was updated, please login.'
-        redirect_to :controller => "sessions", :action => 'new'
+        redirect_to :action => 'pwreset'
       else
-        render :action => "reset", :id => @user.id
+        render :action => "reset", :id => @user.token
       end
+
     end
+  end
+
+  def reactivate
+    return unless request.post?
+    if @user = User.find_by_email(params[:email])
+      @user.send_reg_confirmation
+      @user.save_with_validation(false)
+      flash[:notice] = "Activation link sent"  
+      redirect_to( :action => "emailed"  )
+    else
+      flash[:notice] = "There was an error or no user by that email."  
+      render :action => 'reactivate'
+    end    
+  end
+  
+  def pwreset
   end
   
 end

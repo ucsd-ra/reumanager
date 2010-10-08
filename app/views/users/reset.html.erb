@@ -1,25 +1,20 @@
-<% if logged_in? %>
-	<h5>You are already logged in.</h5>
-<% else -%>
-	<%= error_messages_for :session %>
-	<% form_tag( { :action => "reset", :id => params[:id]} ) do -%>
-		<%= error_messages_for :user %>
-		<h4>Reset Password</h4>
-		<div class="span-6 login_box">
-			<label for="login">Password</label><br />
-			<%= password_field_tag 'password' %>
-		</div>
+<%= error_messages_for :session %>
+<% form_tag( { :action => "reset", :id => params[:id]} ) do -%>
+	<%= error_messages_for :user %>
+	<h4>Reset Password</h4>
+	<div class="span-6 login_box">
+		<label for="login">Password</label><br />
+		<%= password_field_tag 'password' %>
+	</div>
 
-		<div class="span-5 login_box">
-			<label for="password">Password Confirmation</label><br />
-			<%= password_field_tag 'password_confirmation' %>
-		</div>
-	
-		<p class='right'><%= submit_tag 'Reset Password' %></p>
+	<div class="span-5 login_box">
+		<label for="password">Password Confirmation</label><br />
+		<%= password_field_tag 'password_confirmation' %>
+	</div>
 
-		<br class="clear" />
-	<% end -%>
-	
+	<p class='right'><%= submit_tag 'Reset Password' %></p>
+
+	<br class="clear" />
 <% end -%>
 
 

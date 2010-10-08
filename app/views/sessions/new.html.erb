@@ -17,7 +17,7 @@
 	
 		<p class='right'><%= submit_tag 'Log in' %></p>
 
-		<small><%= link_to "Forgot your password?", :action => "forgot" %></small>&nbsp;|&nbsp;<small><%= link_to "Perhaps you need to activate your account/verify your email?", :action => "activate" %></small>
+		<small><%= link_to "Forgot your password?", {:controller => "users", :action => "forgot"} %></small>&nbsp;|&nbsp;<small><%= link_to "Perhaps you need to activate your account/verify your email?", {:controller => "users", :action => "reactivate"} %></small>
 	<% end -%>
 	
 <% end -%>

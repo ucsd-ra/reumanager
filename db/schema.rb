@@ -126,9 +126,10 @@ ActiveRecord::Schema.define(:version => 20091218043643) do
     t.datetime "remember_token_expires_at"
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
+    t.string   "status"
+    t.integer  "role_id",                                  :default => 2
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "role_id",                                  :default => 2
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
