@@ -1,5 +1,4 @@
-
-jgrevich:
+users_001:
     id: 1
     role_id: 1
 
@@ -7,7 +6,7 @@ jgrevich:
     email: jgrevich@ucsd.edu
 
     firstname: Justin
-    middlename: James2
+    middlename: James
     lastname: Grevich
     street: 3348 Via Alicante
     city: La Jolla
@@ -34,16 +33,15 @@ jgrevich:
     salt: 9cfb5fe030902bd225d6476cda37de5fd83eacf6
     crypted_password: 116d1919cc1060109060ff8f96852d0823d8afc8 # 8foldpath
     
-      
-aaron:
-    id: 3
+users_002:
+    id: 2
     role_id: 2
 
     login: jgrevich@gmail.com
     email: jgrevich@gmail.com
 
     firstname: Justin
-    middlename: James2
+    middlename: James
     lastname: Grevich
     street: 3348 Via Alicante
     city: La Jolla
@@ -68,10 +66,4 @@ aaron:
     remember_token_expires_at: 
     token: 8299eb273163b72b9b9edace4a35dd34faab6759
     salt: 9cfb5fe030902bd225d6476cda37de5fd83eacf6
-    crypted_password: 116d1919cc1060109060ff8f96852d0823d8afc8 # 8foldpath 
-
-
-old_password_holder:
-jgrevich@ucsd.edu
-
-
+    crypted_password: 116d1919cc1060109060ff8f96852d0823d8afc8 # 8foldpath

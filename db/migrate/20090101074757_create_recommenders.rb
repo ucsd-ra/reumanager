@@ -8,6 +8,7 @@ class CreateRecommenders < ActiveRecord::Migration
       t.column :college,              :string
       t.column :phone,                :string
       t.column :email,                :string
+      t.column :waive_rights,         :boolean
       t.timestamps
     end
     add_index :recommenders, :user_id, :unique => true
