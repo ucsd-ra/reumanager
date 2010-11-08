@@ -28,14 +28,14 @@
 		<h4 class="bold center">Eligibility Requirements</h4>
 		<ul>
 		 	<li>Full-time undergraduate student</li>
-		 	<li>Graduating fall 2010 or later</li>
+		 	<li>Graduating fall 2011 or later</li>
 		 	<li>U.S. citizen or permanent resident</li>
 		</ul>
 	</div>
 	<div class="span-10 last">
 		<h4 class="bold center">Application Information</h4>
 		<ul>
-		 	<li>Applications will be accepted through Feb 26, 2010</li>
+		 	<li>Applications will be accepted through Feb 26, 2011</li>
 			<li>Applicants will be notified via email in mid-March</li>
 		 	<li>Major components of the online application include: a personal statement, an electronic copy of your unofficial school transcript (as a pdf), and contact information for 1 reference only</li>
 		 	<li>The person writing your letter of recommendation will be contacted via e-mail and will submit their letter online</li>
@@ -44,8 +44,8 @@
 		</ul>
 	</div>
 	
-	<% if Date.today < Date.parse("January 11 2010") -%>
-		<h3 class="center"><b>Please check back in January 2010 to submit your application</b></h3>
+	<% if Date.today < Date.parse("January 11 2011") -%>
+		<h3 class="center"><b>Please check back in January 2011 to submit your application</b></h3>
 	<% else -%>
 	
 		<h1 class="padded center"><b><%= link_to "Apply Now", { :controller => 'users', :action => 'new' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>

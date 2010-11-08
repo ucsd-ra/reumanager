@@ -106,7 +106,7 @@ require 'ftools'
     
     # setup headers
     worksheet.row(0).default_format = page_title_format
-    worksheet[0,0] = "2010 UCSD NSFREU Applicant Data" 
+    worksheet[0,0] = "2011 UCSD NSFREU Applicant Data" 
     worksheet.row(1).default_format = header_format
     worksheet.row(1).concat %w{ID Name Email Gender Race Ethnicity Disability Current\ University Academic\ Year Major/Minor GPA Recommender\ Name Recommender\ Association Overall\ Promise Undergrad\ Institution?}
     worksheet.row(1).default_format = header_format
