@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(:version => 20091218043643) do
     t.string   "college"
     t.string   "phone"
     t.string   "email"
-    t.boolean  "waive_rights"
+    t.boolean  "waive_rights", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

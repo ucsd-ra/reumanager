@@ -43,19 +43,19 @@
 	
 <% if @academic_record.transcript && @academic_record.transcript.original_filename != nil %>
 	<div id="transcript">
-		<label>We have received the following transcript:</label>
+		<%= f.label :transcript, "We have received the following transcript:" %>
 		<p class='right'><%= link_to_function 'Replace', "$('transcript_fields').show();$('transcript').hide();", :class => 'button' %></p>
 		<p><%= display_transcript_link(@academic_record) %></p>
 	</div>
 	
 	<div style='display:none;' id="transcript_fields">
-		<label>Please upload a PDF of your most recent (unofficial is ok) transcript:</label>
+		<%= f.label :transcript, "Please upload a PDF of your most recent (unofficial is ok) transcript:" %>
 		<%= f.file_field :transcript %>
 		<p class='right'><%= link_to_function 'Cancel', "$('transcript_fields').hide();$('transcript').show();", :class => "negative button" %></p>
 	</div>
 <% else -%>
 	<div>
-		<label>Please upload a PDF of your most recent (unofficial is ok) transcript:</label>
+		<%= f.label :transcript, "Please upload a PDF of your most recent (unofficial is ok) transcript:" %>
 		<%= f.file_field :transcript %>		
 	</div>
 <% end -%>
