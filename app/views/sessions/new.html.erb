@@ -16,8 +16,12 @@
 		<br class="clear" />
 	
 		<p class='right'><%= submit_tag 'Log in' %></p>
-
-		<small><%= link_to "Forgot your password?", {:controller => "users", :action => "forgot"} %></small>&nbsp;|&nbsp;<small><%= link_to "Perhaps you need to activate your account/verify your email?", {:controller => "users", :action => "reactivate"} %></small>
+		
+		<div id="small_links">
+			<small><%= link_to "Forgot your password?", {:controller => "users", :action => "forgot"} %></small>
+			&nbsp;|&nbsp;
+			<small><%= link_to "Perhaps you need to activate your account/verify your email?", {:controller => "users", :action => "reactivate"} %></small>
+		</div>
 	<% end -%>
 	
 <% end -%>
