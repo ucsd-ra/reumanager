@@ -20,7 +20,7 @@
 		 	<li>Free travel to and from San Diego</li>
 		 	<li>Hands-on research experience</li>
 		 	<li>Present at the UCSD Summer Research Conference</li>
-			<li>Opportunity to present at Biomedical Engineering Society (<%= link_to "BMES", "http://bmes.ucsd.edu" %>) Annual Meeting</li>
+			<li>Opportunity to present at Biomedical Engineering Society (<%= link_to "BMES", "http://bmes.org" %>) Annual Meeting</li>
 		 	<li>Professional workshops &amp; networking events</li>
 		</ul>
 	</div>
@@ -35,8 +35,6 @@
 	<div class="span-10 last">
 		<h4 class="bold center">Application Information</h4>
 		<ul>
-		 	<li>Applications will be accepted through Feb 26, 2011</li>
-			<li>Applicants will be notified via email in mid-March</li>
 		 	<li>Major components of the online application include: a personal statement, an electronic copy of your unofficial school transcript (as a pdf), and contact information for 1 reference only</li>
 		 	<li>The person writing your letter of recommendation will be contacted via e-mail and will submit their letter online</li>
 			<li>Once you begin an application, you can check the status of it any time by logging into this website</li>
@@ -44,8 +42,8 @@
 		</ul>
 	</div>
 	
-	<% if Date.today < Date.parse("January 11 2011") -%>
-		<h3 class="center"><b>Please check back in January 2011 to submit your application</b></h3>
+	<% if Date.today < Date.parse("March 11 2011") -%>
+		<h3 class="center clear"><b>Please check back in February for Summer 2011 Information</b></h3>
 	<% else -%>
 	
 		<h1 class="padded center"><b><%= link_to "Apply Now", { :controller => 'users', :action => 'new' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>

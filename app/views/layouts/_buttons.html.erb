@@ -41,11 +41,13 @@
 			<% end -%>
 		<% end -%>
 
-		<% unless current_user && current_user.role.name == 'student' -%>
-			<% if params[:controller] == "users" && params[:action] == "new" -%>
-				<li class="selected"><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
-			<% else -%>
-				<li><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
+		<% if Date.today > Date.parse("March 11 2011") -%>
+			<% unless current_user && current_user.role.name == 'student' -%>
+				<% if params[:controller] == "users" && params[:action] == "new" -%>
+					<li class="selected"><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
+				<% else -%>
+					<li><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
+				<% end -%>
 			<% end -%>
 		<% end -%>
 

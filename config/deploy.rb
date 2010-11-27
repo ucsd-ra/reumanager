@@ -4,9 +4,9 @@ default_run_options[:pty] = true
 
 set :application, "nsfreu" #matches names used in smf_template.erb
 set :repository,  "https://www.be.ucsd.edu/svn/nsfreu/trunk"
-set :domain, 'fortuna.ucsd.edu'
+set :domain, 'be.ucsd.edu'
 set :deploy_to, "/var/rails/#{application}" # I like this location
-set :user, "beadmin"
+set :user, "justin"
 
 role :app, domain
 role :web, domain
