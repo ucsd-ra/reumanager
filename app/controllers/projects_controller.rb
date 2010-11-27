@@ -4,8 +4,8 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects_2008 = Project.all :conditions => [ "year = ?", 2008 ]
     @projects_2009 = Project.all :conditions => [ "year = ?", 2009 ]
+    @projects_2010 = Project.all :conditions => [ "year = ?", 2010 ]
 
     respond_to do |format|
       format.html # index.html.erb
