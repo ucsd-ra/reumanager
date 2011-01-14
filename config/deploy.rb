@@ -7,6 +7,7 @@ set :repository,  "https://www.be.ucsd.edu/svn/nsfreu/trunk"
 set :domain, 'be.ucsd.edu'
 set :deploy_to, "/var/rails/#{application}" # I like this location
 set :user, "justin"
+set :keep_releases, 2
 
 role :app, domain
 role :web, domain
