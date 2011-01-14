@@ -72,6 +72,8 @@ Layout
 	tr td 									{ border-top:1px solid #ace; padding: 2px 10px 2px 5px; }
 	.light									{ background-color:#f6f6f2; }
 	.dark									{ background-color:#deebff; }
+	.red									{ color:#c00; }
+	.green									{ color:#529214; }
 	td a:hover								{ text-decoration:underline; }
 	p + p 									{ text-indent:0; margin-top:0; }
 	input[type='password']					{ margin: 0.5em 0px; }

@@ -41,7 +41,7 @@
 			<% end -%>
 		<% end -%>
 
-		<% if Date.today > Date.parse("March 11 2011") -%>
+		<% if Date.today > Date.parse("January 13 2011") -%>
 			<% unless current_user && current_user.role.name == 'student' -%>
 				<% if params[:controller] == "users" && params[:action] == "new" -%>
 					<li class="selected"><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>

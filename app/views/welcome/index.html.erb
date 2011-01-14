@@ -42,11 +42,11 @@
 		</ul>
 	</div>
 	
-	<% if Date.today < Date.parse("March 11 2011") -%>
+	<% if Date.today < Date.parse("Jan 14 2011") -%>
 		<h3 class="center clear"><b>Please check back in February for Summer 2011 Information</b></h3>
 	<% else -%>
-	
-		<h1 class="padded center"><b><%= link_to "Apply Now", { :controller => 'users', :action => 'new' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
+		<h3 class='clear center red'>Application Deadline March 5</h3>
+		<h1 class="padded center clear"><b><%= link_to "Apply Now", { :controller => 'users', :action => 'new' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
 	<% end -%>
 	
 </div>
