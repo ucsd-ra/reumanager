@@ -29,7 +29,7 @@
 <hr class="space" />
 
 <div class="span-12 last transcript">
-	<label>Transcript</label> <%= link_to " #{@user.academic_record.transcript.original_filename}", @user.academic_record.transcript.url, :class => "ss_sprite ss_page_white_acrobat" %>
+	<label>Transcript</label> <%= link_to " #{@user.academic_record.transcript.original_filename}", ("/nsfreu" + @user.academic_record.transcript.url), :class => "ss_sprite ss_page_white_acrobat" %>
 </div>
 
 <hr class="space" />
