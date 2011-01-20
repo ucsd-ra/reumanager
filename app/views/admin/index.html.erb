@@ -6,7 +6,7 @@
 	<table cellspacing="0" id="admin_listing">
 		<tr>
 			<th>#</th>
-			<th class="name"><%= link_to "Name", { :controller => "admin", :sort => "name" } %></th>
+			<th class="name"><%= link_to "Name", { :controller => "admin", :sort => "name", :q => params[:q] } %></th>
 			<th class="college">College / University</th>
 			<th class="major">Major</th>
 			<th class="gpa">GPA</th>

@@ -5,20 +5,40 @@ require 'ftools'
 
   def index
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
-    case params[:sort]
-    when "name"
-      @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "role_id = ?", 2], :per_page => 20
-#    when "college"
-#      @students = User.find(:all, :order => 'college ASC')
-#    when "major"
-#      @students = User.find(:all, :order => 'major ASC')
-#    when "gpa"
-#      @students = User.find(:all, :order => "gpa DESC")
-    when "date"
-      @students = User.paginate :page => params[:page], :order => "created_at ASC", :conditions => [ "role_id = ?", 2], :per_page => 20
-    else
-      @students = User.paginate :page => params[:page], :conditions => [ "role_id = ?", 2], :per_page => 20
-    end
+
+		case params[:sort]
+		when "name"
+			order = "lastname ASC"
+			#    when "college"
+			#      @students = User.find(:all, :order => 'college ASC')
+			#    when "major"
+			#      @students = User.find(:all, :order => 'major ASC')
+			#    when "gpa"
+			#      @students = User.find(:all, :order => "gpa DESC")
+			#    when "date"
+			#      @students = User.paginate :page => params[:page], :order => "created_at ASC", :conditions => [ "role_id = ?", 2]
+		end
+
+
+		if params[:q] != nil
+			and_conditions = []
+			and_key_values = {}
+			
+			and_conditions << "users.role_id = :role_id AND"
+			and_key_values[:role_id] = 2
+			
+
+			and_conditions << "(users.firstname like :q or users.lastname like :q)"
+			and_key_values[:q] = "%#{params[:q]}%"
+
+			conditions = []
+			conditions << and_conditions.join(" ")
+			conditions << and_key_values
+			@students = User.paginate :page => params[:page], :order => order, :conditions => conditions
+		else
+			@students = User.paginate :page => params[:page], :order => order, :conditions => ['role_id = ?', 2]
+		end
+		
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @students }
@@ -26,11 +46,14 @@ require 'ftools'
   end
   
   def show
+	  @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @user = User.find(params[:id])
   end
   
   def select_student
-    redirect_to :action => "show", :id => params[:student]
+		render :update do |page|
+			page.redirect_to :action => "show", :id => params[:student]
+		end
   end
 
   def change_status
@@ -53,19 +76,19 @@ require 'ftools'
 
   def incomplete
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ], :per_page => 20
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ]
     render :action => "index"
   end
 
   def submitted
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ], :per_page => 20
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ]
     render :action => "index"
   end
 
   def complete    
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ], :per_page => 20
+    @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ]
     render :action => "index"
   end
   
