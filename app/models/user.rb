@@ -172,4 +172,12 @@ class User < ActiveRecord::Base
       self.token = Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by{rand}.join)
       self.token_created_at = Time.now
     end
+
+		def self.send_reminders
+			@users = User.all :conditions => ["role_id = ?", 1]
+			@users.each do |u|
+				u.send_reg_confirmation
+			end
+	  end
+
 end

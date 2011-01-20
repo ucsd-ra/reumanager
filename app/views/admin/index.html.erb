@@ -45,7 +45,7 @@
 					<% end -%>
 				</td>
 	   			<td class="status">
-					<%= link_to "", { :action => "show", :id => student } %>
+					<%= link_to "#{student.status}", { :action => "show", :id => student } %>
 				</td>				
 				<td class="del">
 					<%= link_to "Delete", { :action => "delete", :id => student }, { :confirm => "You are about to delete all associated records for #{student.firstname} #{student.lastname}. Are you sure about this?", :method => :delete } %>

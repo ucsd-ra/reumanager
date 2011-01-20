@@ -40,7 +40,7 @@ Rails::Initializer.run do |config|
   config.gem 'restful_authentication', :lib => 'restful_authentication'
   config.gem 'spreadsheet', :lib => 'spreadsheet'
   config.gem 'ssl_requirement', :lib => 'ssl_requirement'
-  config.gem 'will_paginate', :lib => 'will_paginate'
+  config.gem 'will_paginate', :lib => 'will_paginate', :version => '2.3.15'
   config.gem 'yaml_db', :version => '0.1.0'
 
   # Only load the plugins named here, in the order given. By default, all plugins 

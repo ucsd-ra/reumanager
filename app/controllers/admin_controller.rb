@@ -4,6 +4,7 @@ ssl_required :index, :show, :select_student, :change_status, :report, :incomplet
 require 'ftools'
 
   def index
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     case params[:sort]
     when "name"
       @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "role_id = ?", 2], :per_page => 20
@@ -40,32 +41,36 @@ require 'ftools'
       page[:updated].highlight
       page.delay(1) do
         page[:updated].fade
-        page[:updated].remove        
+        page[:updated].remove
       end
     end
   end
     
   def report
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC'
   end
 
   def incomplete
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ], :per_page => 20
     render :action => "index"
   end
 
   def submitted
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ], :per_page => 20
     render :action => "index"
   end
 
   def complete    
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ], :per_page => 20
     render :action => "index"
   end
   
   def create_report
-    @all_students = User.find(:all, :order => 'lastname ASC')
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
      @students = User.paginate :page => params[:page], :order => 'lastname ASC'
      pdf = PDF::Writer.new
      Recommendation.find(:all).each do |r|

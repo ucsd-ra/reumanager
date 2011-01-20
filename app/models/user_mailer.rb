@@ -130,5 +130,5 @@ class UserMailer < ActionMailer::Base
 
         part( :content_type => "text/html", :body => render_message("reset_password", :user => user ))
     end
-  
+
 end
