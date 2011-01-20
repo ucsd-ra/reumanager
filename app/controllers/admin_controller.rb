@@ -28,13 +28,13 @@ require 'ftools'
 			and_key_values[:role_id] = 2
 			
 
-			and_conditions << "(users.firstname like :q or users.lastname like :q)"
+			and_conditions << "(users.firstname like :q or users.lastname like :q or academic_records.college like :q or academic_records.major like :q or academic_records.gpa like :q )"
 			and_key_values[:q] = "%#{params[:q]}%"
 
 			conditions = []
 			conditions << and_conditions.join(" ")
 			conditions << and_key_values
-			@students = User.paginate :page => params[:page], :order => order, :conditions => conditions
+			@students = User.paginate :page => params[:page], :order => order, :conditions => conditions, :include => :academic_record
 		else
 			@students = User.paginate :page => params[:page], :order => order, :conditions => ['role_id = ?', 2]
 		end
