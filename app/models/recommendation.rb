@@ -4,7 +4,7 @@ class Recommendation < ActiveRecord::Base
   validates_presence_of     :known_student, :know_capacity, :rating, :undergrad_inst, :faculty_comment
   
   after_create :make_pdf_and_send_app
-  after_create :send_confirmaiton
+  after_create :send_confirmation
   
   def make_pdf_and_send_app
     @user = User.find_by_id(self.user_id)
