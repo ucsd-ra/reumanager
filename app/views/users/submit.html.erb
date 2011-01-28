@@ -42,11 +42,11 @@
 	
 <% if check_all(@user) %>
 	<div class="span-13 push-5">
+		<small>*Your recommendation request will not be sent until you submit your application.</small>
+		<br class='clear' />
 		<div class="right">
 			<%= link_to "Save", { :controller => "sessions", :action => "destroy" }, :class => "button positive" %>
 			<%= link_to_remote "Submit Application", { :action => "submit"}, { :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();", :class => "button positive", :id => "submit" } %>
 		</div>
-		<br class='clear' />
-		<small>*Your recommendation request will not be sent until you submit your application.</small>
 	</div>
 <% end -%>
