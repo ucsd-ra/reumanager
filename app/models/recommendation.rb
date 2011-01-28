@@ -4,6 +4,7 @@ class Recommendation < ActiveRecord::Base
   validates_presence_of     :known_student, :know_capacity, :rating, :undergrad_inst, :faculty_comment
   
   after_create :make_pdf_and_send_app
+  after_create :send_confirmaiton
   
   def make_pdf_and_send_app
     @user = User.find_by_id(self.user_id)
@@ -119,4 +120,9 @@ class Recommendation < ActiveRecord::Base
     end
   end
     
+  def send_confirmation
+    email = UserMailer.create_rec_confirmation(self.recommender.email, self.user.id, self.user.firstname, self.user.lastname, self.user.email)
+    email.set_content_type('multipart', 'mixed')
+    UserMailer.deliver(email)
+  end
 end

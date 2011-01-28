@@ -121,6 +121,22 @@ class UserMailer < ActionMailer::Base
           )
     end
 
+    def rec_confirmation(remail, firstname, lastname, email)
+        @subject    = "UCSD REU Recommendation Confirmation for #{firstname} #{lastname}"
+        @recipients = remail
+        @from       = 'UCSD Bioengineering - NSFREU <nsfreu@be.ucsd.edu>'
+        @sent_on    = Time.now
+        @headers    = {}
+
+        part(
+          :content_type => "text/html", 
+          :body => render_message("rec_confirmation",
+                                  :firstname => firstname,
+                                  :lastname => lastname, 
+                                  :email => email )
+          )
+    end
+
     def reset_password(user)
         @subject    = "UCSD REU Password reset link for #{user.firstname} #{user.lastname}"
         @recipients = user.email
