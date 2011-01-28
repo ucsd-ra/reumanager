@@ -28,7 +28,7 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'carmen'
-  config.gem 'exception_notification', :lib => 'exception_notification'
+  config.gem 'exceptional' 
   config.gem 'faker', :lib => 'faker' 
   config.gem 'paperclip'
   config.gem 'pdf-writer', :lib => 'pdf/writer'

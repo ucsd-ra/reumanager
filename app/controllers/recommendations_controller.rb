@@ -35,6 +35,7 @@ class RecommendationsController < ApplicationController
     @user = User.find_by_token(params[:id])
     @recommendation.user_id = @user.id
     @recommendation.recommender_id = @user.recommender.id
+    @previous_rec = Recommendation.find_by_user_id
     respond_to do |format|
       if @user.recommender.update_attributes(params[:recommender]) && @recommendation.save
         flash[:notice] = 'Recommendation was successfully created.'
