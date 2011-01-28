@@ -121,7 +121,7 @@ class Recommendation < ActiveRecord::Base
   end
     
   def send_confirmation
-    email = UserMailer.create_rec_confirmation(self.recommender.email, self.user.id, self.user.firstname, self.user.lastname, self.user.email)
+    email = UserMailer.create_rec_confirmation(self.recommender.email, self.user.firstname, self.user.lastname, self.user.email)
     email.set_content_type('multipart', 'mixed')
     UserMailer.deliver(email)
   end
