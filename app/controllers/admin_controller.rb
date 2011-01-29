@@ -4,6 +4,13 @@ ssl_required :index, :show, :select_student, :change_status, :report, :incomplet
 require 'ftools'
 
   def index
+    @total = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])    
+    @incomplete = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ]
+    @submitted = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ]
+    @complete = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ]
+  end
+  
+  def list
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
 
 		case params[:sort]
@@ -77,19 +84,19 @@ require 'ftools'
   def incomplete
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ]
-    render :action => "index"
+    render :action => "list"
   end
 
   def submitted
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ]
-    render :action => "index"
+    render :action => "list"
   end
 
   def complete    
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ]
-    render :action => "index"
+    render :action => "list"
   end
   
   def create_report

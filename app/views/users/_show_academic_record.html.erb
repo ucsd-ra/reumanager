@@ -5,8 +5,8 @@
 
 <div class="span-4">
 	<label>Dates of Attendance</label>
-	<%= h(f.college_start.strftime("%Y.%m")) %>&nbsp;-&nbsp;
-	<%= h(f.college_end.strftime("%Y.%m")) %>
+	<%= h(f.college_start.to_date.strftime("%Y.%m")) %>&nbsp;-&nbsp;
+	<%= h(f.college_end.to_date.strftime("%Y.%m")) %>
 </div>
 
 <div class="span-5 last">
@@ -42,8 +42,8 @@
 
 	<div class="span-4">
 		<label>Dates of Attendance</label><br />
-		<%= h(f.p_college_start.strftime("%Y.%m")) %>&nbsp;-&nbsp;
-		<%= h(f.p_college_end.strftime("%Y.%m")) %>
+		<%= h(f.p_college_start.to_date.strftime("%Y.%m")) %>&nbsp;-&nbsp;
+		<%= h(f.p_college_end.to_date.strftime("%Y.%m")) %>
 	</div>
 
 	<div class="span-4">
@@ -51,4 +51,4 @@
 	</div>
 <hr class="space" />
 <% end -%>
-<small class="right">Last Updated: <%= f.updated_at.strftime("%Y.%m.%d - %I:%M %p") %></small>
+<small class="right">Last Updated: <%= f.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>

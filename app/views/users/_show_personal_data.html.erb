@@ -7,7 +7,7 @@
 
 <div class="span-4">
 	<label>Date of Birth</label><br />
-	<%= h(f.dob.strftime("%Y.%m.%d")) %>
+	<%= h(f.dob.to_date.strftime("%Y.%m.%d")) %>
 </div>
 
 <div class="span-5 last">
@@ -67,4 +67,4 @@
 </div>
 
 <hr class="space" />
-<small class="right">Last Updated: <%= f.updated_at.strftime("%Y.%m.%d - %I:%M %p") %></small>
+<small class="right">Last Updated: <%= f.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
