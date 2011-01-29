@@ -10,9 +10,9 @@
 	<ul class='clear'>
 		<br />
 		<% if params[:controller] == "admin" && params[:action] == "index" -%>
-			<li class="first"><%= link_to "All Applications", { :controller => "admin" }, :class => "active button" %></li>
+			<li class="first"><%= link_to "All Applications", { :controller => "admin", :action => "list" }, :class => "active button" %></li>
 		<% else -%>
-			<li class="first"><%= link_to "All Applications", { :controller => "admin" }, :class => "button" %></li>
+			<li class="first"><%= link_to "All Applications", { :controller => "admin", :action => "list" }, :class => "button" %></li>
 		<% end -%>
 		
 		<% if params[:controller] == "admin" && params[:action] == "incomplete" -%>
