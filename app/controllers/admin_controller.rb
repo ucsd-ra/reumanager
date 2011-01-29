@@ -10,7 +10,7 @@ require 'ftools'
     @complete = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ]
     @in_review = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'In Review', 2 ]
     @waitlisted = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Waitlist',  2 ]
-    @rejected = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Recject',  2 ]
+    @rejected = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Reject',  2 ]
     @accepted = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Accept',  2 ]
   end
   
