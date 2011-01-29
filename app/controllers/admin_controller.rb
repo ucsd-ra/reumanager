@@ -47,7 +47,7 @@ require 'ftools'
 		end
 		
     respond_to do |format|
-      format.html { render :aciton => 'list' }# index.html.erb
+      format.html # index.html.erb
       format.xml  { render :xml => @students }
     end
   end
