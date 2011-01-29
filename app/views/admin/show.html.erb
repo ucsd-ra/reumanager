@@ -74,7 +74,7 @@
 	<br class="clear" /><br class="clear" />
 	
 	<% if @user.recommendation -%>
-		<small class="right">Last Updated: <%= @user.recommendation.updated_at.strftime("%Y.%m.%d - %I:%M %p") %></small>
+		<small class="right">Last Updated: <%= @user.recommendation.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
 	<% end -%>
 </div>
 <%= render :partial => "admin_observers" %>

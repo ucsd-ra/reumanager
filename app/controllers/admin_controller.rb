@@ -4,10 +4,14 @@ ssl_required :index, :show, :select_student, :change_status, :report, :incomplet
 require 'ftools'
 
   def index
-    @total = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])    
-    @incomplete = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ]
-    @submitted = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ]
-    @complete = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ]
+    @total = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
+    @incomplete = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ]
+    @submitted = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ]
+    @complete = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ]
+    @in_review = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'In Review', 2 ]
+    @waitlisted = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Waitlist',  2 ]
+    @rejected = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Recject',  2 ]
+    @accepted = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Accept',  2 ]
   end
   
   def list
@@ -26,13 +30,13 @@ require 'ftools'
 			#      @students = User.paginate :page => params[:page], :order => "created_at ASC", :conditions => [ "role_id = ?", 2]
 		end
 
-
 		if params[:q] != nil
 			and_conditions = []
 			and_key_values = {}
 			
-			and_conditions << "users.role_id = :role_id AND"
+			and_conditions << "users.role_id = :role_id AND users.status = :status"
 			and_key_values[:role_id] = 2
+			and_key_values[:status] = (params[:status] || 'In Review')
 			
 
 			and_conditions << "(users.firstname like :q or users.lastname like :q or academic_records.college like :q or academic_records.major like :q or academic_records.gpa like :q )"
@@ -43,7 +47,11 @@ require 'ftools'
 			conditions << and_key_values
 			@students = User.paginate :page => params[:page], :order => order, :conditions => conditions, :include => :academic_record
 		else
-			@students = User.paginate :page => params[:page], :order => order, :conditions => ['role_id = ?', 2]
+		  if params[:status]
+			  @students = User.paginate :page => params[:page], :order => order, :conditions => ['status = ? AND role_id = ?', params[:status], 2]
+			else
+			  @students = User.paginate :page => params[:page], :order => order, :conditions => ['role_id = ?', 2]
+			end
 		end
 		
     respond_to do |format|
