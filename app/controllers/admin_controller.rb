@@ -10,7 +10,7 @@ require 'ftools'
     @complete = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ]
     @in_review = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'In Review', 2 ]
     @waitlisted = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Waitlist',  2 ]
-    @rejected = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Reject',  2 ]
+    @rejected = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Recject',  2 ]
     @accepted = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Accept',  2 ]
   end
   
@@ -30,14 +30,17 @@ require 'ftools'
 			#      @students = User.paginate :page => params[:page], :order => "created_at ASC", :conditions => [ "role_id = ?", 2]
 		end
 
-		if params[:q] != nil
+		if params != nil
 			and_conditions = []
 			and_key_values = {}
 			
-			and_conditions << "users.role_id = :role_id AND users.status = :status"
+			and_conditions << "users.role_id = :role_id AND"
 			and_key_values[:role_id] = 2
-			and_key_values[:status] = (params[:status] || 'In Review')
 			
+			if params[:status] != nil
+			  and_conditions << "users.status = :status AND"
+			  and_key_values[:status] = (params[:status])
+			end
 
 			and_conditions << "(users.firstname like :q or users.lastname like :q or academic_records.college like :q or academic_records.major like :q or academic_records.gpa like :q )"
 			and_key_values[:q] = "%#{params[:q]}%"
@@ -47,11 +50,8 @@ require 'ftools'
 			conditions << and_key_values
 			@students = User.paginate :page => params[:page], :order => order, :conditions => conditions, :include => :academic_record
 		else
-		  if params[:status]
-			  @students = User.paginate :page => params[:page], :order => order, :conditions => ['status = ? AND role_id = ?', params[:status], 2]
-			else
-			  @students = User.paginate :page => params[:page], :order => order, :conditions => ['role_id = ?', 2]
-			end
+		  
+			@students = User.paginate :page => params[:page], :order => order, :conditions => ['role_id = ?', 2]
 		end
 		
     respond_to do |format|

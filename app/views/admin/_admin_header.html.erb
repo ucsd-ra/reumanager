@@ -1,7 +1,7 @@
 <div id="admin_header">
 	<% if @all_students -%>
 		<div id="search">
-			<% form_tag("", :method => 'get', :class => 'clearfix') do %><%= text_field_tag 'q', params[:q] || "Search...", :onfocus => "if ($('q').value == 'Search...') $('q').value = '';", :onblur => "if ($('q').value == '') $('q').value = 'Search...';" %><% end -%>
+			<% form_tag('', :method => 'get', :class => 'clearfix') do %><%= text_field_tag 'q', params[:q] || "Search...", :onfocus => "if ($('q').value == 'Search...') $('q').value = '';", :onblur => "if ($('q').value == '') $('q').value = 'Search...';" %><% end -%>
 		</div>
 		<h6 class='right'>
 			<%= (select_tag "student_select", options_for_student_select(all_students, "id", "lastname", "firstname", "status", admin_selected_user )) %>

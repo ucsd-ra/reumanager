@@ -1,10 +1,16 @@
 <%= render :partial => "admin_header" %>
-<div class="span-13 push-5 bordered colored padded rounded"  id="personal_data">
+<div class='info right'>
+	<div class='clearfix' id="print">
+		<%= link_to "Print Application", :action => "print", :id => @user %>
+	</div>
 	<div class='clearfix' id="status">
 		<% form_for @user do |f| -%>
 		  <%= f.select :status, options_for_select(%w{Accept Reject Waitlist In\ Review}, :selected => @user.status)%>
 		<% end -%>
 	</div>
+</div>
+
+<div class="span-13 push-5 bordered colored padded rounded"  id="personal_data">
 	<h4><%= link_to_unless_current "Personal Data", { :controller => "users", :action => "edit", :id => @user } %></h4>
 	<%= render :partial => 'users/show_personal_data', :locals => { :f => @user } %>
 </div>
