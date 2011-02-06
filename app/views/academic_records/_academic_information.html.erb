@@ -91,10 +91,10 @@
 	</div>
 	
 	<div class="span-6">
-		<label>From: </label><%= f.date_select 'p_college_start', :discard_day => true, :end_year => Time.now.year + 1, :start_year => Time.now.year - 15 %><br style="clear:both;" />
+		<label>From: </label><%= f.date_select 'p_college_start', :discard_day => true, :end_year => Time.now.year - 1, :start_year => Time.now.year - 15 %><br style="clear:both;" />
 	</div>
 
 	<div class="span-6 last">
-		<label>To: </label><%= f.date_select 'p_college_end', :discard_day => true, :start_year => Time.now.year - 1 %>
+		<label>To: </label><%= f.date_select 'p_college_end', :discard_day => true, :start_year => Time.now.year - 14 %>
 	</div>	
 </div>
