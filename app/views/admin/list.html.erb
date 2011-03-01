@@ -55,7 +55,7 @@
 	</table>
 	<h2 class='clear'><%= @students.total_entries %> students match this criteria</h2>
 	
-	<%= link_to_remote "Export To Excel", :url => {:action => "export", :id => params[:action], :status => params[:status]}, :html => {:class => "positive button"} %>
+	<%= link_to_remote "Export To Excel", :url => {:action => "export", :action => params[:action], :status => params[:status]}, :html => {:class => "positive button"} %>
 	
 	<br class="clear">
 	<br class="clear">

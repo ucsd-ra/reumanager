@@ -122,23 +122,23 @@ require 'ftools'
     render :action => "list"
   end
   
-  def create_report
-    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC'
-    pdf = PDF::Writer.new
-     Recommendation.find(:all).each do |r|
-       r.make_pdf(pdf)
-       pdf.start_new_page
-     end
-     if pdf.save_as("#{RAILS_ROOT}/public/pdf/complete.pdf")
-       flash[:notice] = "Report created."
-       @report = "/pdf/complete.pdf"
+	def create_report
+		@all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
+		@students = User.paginate :page => params[:page], :order => 'lastname ASC'
+		pdf = PDF::Writer.new
+		Recommendation.find(:all).each do |r|
+			r.make_pdf(pdf)
+			pdf.start_new_page
+		end
+		if pdf.save_as("#{RAILS_ROOT}/public/pdf/complete.pdf")
+			flash[:notice] = "Report created."
+			@report = "/pdf/complete.pdf"
 			render :action => "list"
-     else
-       flash[:notice] = "There were errors. Please try again or contact jgrevich@ucsd.edu"
-       redirect_to :action => "index"
-     end
-   end
+		else
+			flash[:notice] = "There were errors. Please try again or contact jgrevich@ucsd.edu"
+			redirect_to :action => "index"
+		end
+	end
   
   def delete
     if request.delete? and User.find(params[:id]).destroy
@@ -171,15 +171,7 @@ require 'ftools'
     worksheet.row(1).default_format = header_format
 
     # get applicant data
-		case params[:id] && params[:status]
-		when "list" && "Accept"
-			@applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Accept',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
-		when "list" && "In Review"
-	    @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'In Review', 2 ], :include => [ :academic_record, :recommender, :recommendation ]
-		when "list" && "Waitlist"
-			@applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Waitlist',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
-		when "list" && "Reject"
-	    @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Reject',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
+		case params[:action]
 		when "incomomplete" && nil
 			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
 		when "submitted" && nil
@@ -189,7 +181,18 @@ require 'ftools'
 		when "total" && nil
 			@applicants = User.all :order => 'lastname ASC', :conditions => ['role_id = ?', 2], :include => [ :academic_record, :recommender, :recommendation ]
 		else
-	    @applicants = User.all(:order => "id ASC", :conditions => ["role_id = ? AND completed_at IS NOT ?", 2, nil], :include => [ :academic_record, :recommender, :recommendation ])
+			case params[:status]
+			when "Accept"
+				@applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Accept',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
+			when "In Review"
+		    @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'In Review', 2 ], :include => [ :academic_record, :recommender, :recommendation ]
+			when "Waitlist"
+				@applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Waitlist',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
+			when "Reject"
+		    @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Reject',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
+			else
+		    @applicants = User.all(:order => "id ASC", :conditions => ["role_id = ? AND completed_at IS NOT ?", 2, nil], :include => [ :academic_record, :recommender, :recommendation ])
+			end
 		end
     
     # iterate over each applicant
