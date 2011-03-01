@@ -9,14 +9,14 @@ module AdminHelper
 
 	def options_for_application_status
 		options = []
-		options << ["Accepted", url_for(:action => 'list', :status => "Accept")]
-		options << ["In Review", url_for(:action => 'list', :status => "In Review")]
-		options << ["Waitlisted", url_for(:action => 'list', :status => "Waitlist")]
-		options << ["Rejected", url_for(:action => 'list', :status => "Reject")]
-		options << ["Incomplete", url_for(:action => 'incomplete')]
-		options << ["Submitted", url_for(:action => 'submitted')]
-		options << ["Complete", url_for(:action => 'complete')]
-		options << ["Total", url_for(:action => 'total')]
+		options << ["Accepted", ("/nsfreu" + url_for(:action => 'list', :status => "Accept"))]
+		options << ["In Review", ("/nsfreu" + url_for(:action => 'list', :status => "In Review"))]
+		options << ["Waitlisted", ("/nsfreu" + url_for(:action => 'list', :status => "Waitlist"))]
+		options << ["Rejected", ("/nsfreu" + url_for(:action => 'list', :status => "Reject"))]
+		options << ["Incomplete", ("/nsfreu" + url_for(:action => 'incomplete'))]
+		options << ["Submitted", ("/nsfreu" + url_for(:action => 'submitted'))]
+		options << ["Complete", ("/nsfreu" + url_for(:action => 'complete'))]
+		options << ["Total", ("/nsfreu" + url_for(:action => 'total'))]
 
 		case params[:status]
 		when "Accept"
