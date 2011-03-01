@@ -171,13 +171,13 @@ require 'ftools'
 
     # get applicant data
 		case params[:prev_action]
-		when "incomomplete" && nil
+		when "incomomplete"
 			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
-		when "submitted" && nil
+		when "submitted"
 			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
-		when "complete" && nil
+		when "complete"
 			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
-		when "total" && nil
+		when "total"
 			@applicants = User.all :order => 'lastname ASC', :conditions => ['role_id = ?', 2], :include => [ :academic_record, :recommender, :recommendation ]
 		else
 			case params[:status]
