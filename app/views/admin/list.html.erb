@@ -53,12 +53,15 @@
 			</tr>
 		<% end %>
 	</table>
-	<%= link_to_remote "Export To Excel", :url => { :action => "export", :id => params[:action] }, :html => {:class => "positive button"} if params[:action] == "complete" %>
+	<h2 class='clear'><%= @students.total_entries %> students match this criteria</h2>
+	
+	<%= link_to_remote "Export To Excel", :url => {:action => "export", :id => params[:action], :status => params[:status]}, :html => {:class => "positive button"} %>
 	
 	<br class="clear">
 	<br class="clear">
 	
 	<%= will_paginate @students %>
+	
 <% end -%>
 
 <%= render :partial => "admin_observers" %>

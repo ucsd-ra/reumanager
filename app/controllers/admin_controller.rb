@@ -55,7 +55,7 @@ require 'ftools'
 		end
 		
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html. 	
       format.xml  { render :xml => @students }
     end
   end
@@ -63,6 +63,12 @@ require 'ftools'
   def show
 	  @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @user = User.find(params[:id])
+  end
+
+  def select_status
+		render :update do |page|
+			page.redirect_to (params[:application_status]) || url_for(:controller => 'admin')
+		end
   end
   
   def select_student
@@ -84,26 +90,35 @@ require 'ftools'
     end
   end
     
-  def report
+  def total
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC'
+		@export = User.all :order => 'lastname ASC', :conditions => [ "role_id = ?", 2 ]
+		
+    render :action => "list"
   end
 
   def incomplete
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ]
+		@export = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ]
+		
     render :action => "list"
   end
 
   def submitted
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ]
+		@export = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ]
+
     render :action => "list"
   end
 
   def complete    
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ]
+		@export = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ]
+
     render :action => "list"
   end
   
@@ -118,6 +133,7 @@ require 'ftools'
      if pdf.save_as("#{RAILS_ROOT}/public/pdf/complete.pdf")
        flash[:notice] = "Report created."
        @report = "/pdf/complete.pdf"
+			render :action => "list"
      else
        flash[:notice] = "There were errors. Please try again or contact jgrevich@ucsd.edu"
        redirect_to :action => "index"
@@ -137,7 +153,7 @@ require 'ftools'
   def export
     # initialize new speadsheet
     @spreadsheet_dir = File.makedirs "#{RAILS_ROOT}/public/spreadsheets" unless File.exist?("#{RAILS_ROOT}/public/spreadsheets")
-    @spreadsheet_file = "#{RAILS_ROOT}/public/spreadsheets/#{params[:id]}_applicants_#{Date.today}_#{Time.now.strftime("%H-%M_%p")}.xls"
+    @spreadsheet_file = "#{RAILS_ROOT}/public/spreadsheets/#{(params[:status] || params[:id])}_applicants_#{Date.today}_#{Time.now.strftime("%H-%M_%p")}.xls"
     workbook = Spreadsheet::Workbook.new # Spreadsheet.open(spreadsheet_dir+spreadsheet_file)
     worksheet = workbook.create_worksheet :name => "Applicant Data"
     
@@ -153,15 +169,49 @@ require 'ftools'
     worksheet.row(1).default_format = header_format
     worksheet.row(1).concat %w{ID Name Email Gender Race Ethnicity Disability Current\ University Academic\ Year Major/Minor GPA Recommender\ Name Recommender\ Association Overall\ Promise Undergrad\ Institution?}
     worksheet.row(1).default_format = header_format
+
     # get applicant data
-    @applicants = User.all :order => "id ASC", :conditions => ["role_id = ? AND completed_at IS NOT ?", 2, nil], :include => [ :academic_record, :recommender, :recommendation ]
+		case params[:id] && params[:status]
+		when "list" && "Accept"
+			@applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Accept',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
+		when "list" && "In Review"
+	    @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'In Review', 2 ], :include => [ :academic_record, :recommender, :recommendation ]
+		when "list" && "Waitlist"
+			@applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Waitlist',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
+		when "list" && "Reject"
+	    @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Reject',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
+		when "incomomplete" && nil
+			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
+		when "submitted" && nil
+			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
+		when "complete" && nil
+			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
+		when "total" && nil
+			@applicants = User.all :order => 'lastname ASC', :conditions => ['role_id = ?', 2], :include => [ :academic_record, :recommender, :recommendation ]
+		else
+	    @applicants = User.all(:order => "id ASC", :conditions => ["role_id = ? AND completed_at IS NOT ?", 2, nil], :include => [ :academic_record, :recommender, :recommendation ])
+		end
     
     # iterate over each applicant
     # @applicants.each_with_index do |a,i|
     @row = 1
     @applicants.each do |a|
       @row += 1
-      worksheet.row(@row).concat [a.id, "#{a.firstname} #{a.lastname}", a.email, a.gender, a.race, a.ethnicity, a.disability, a.academic_record.college, a.academic_record.college_level, a.academic_record.major, a.academic_record.gpa, a.recommender.name, "#{a.recommender.department} / #{a.recommender.college}", a.recommendation.rating, a.recommendation.undergrad_inst]
+      worksheet.row(@row).concat [a.id, 
+				"#{a.firstname} #{a.lastname}", 
+				a.email, 
+				a.gender, 
+				a.race, 
+				a.ethnicity, 
+				a.disability, 
+				(a.academic_record.college if a.academic_record), 
+				(a.academic_record.college_level if a.academic_record), 
+				(a.academic_record.major if a.academic_record), 
+				(a.academic_record.gpa if a.academic_record), 
+				(a.recommender.name if a.recommender), 
+				(("#{a.recommender.department} / #{a.recommender.college}") if a.recommender), 
+				(a.recommendation.rating if a.recommendation), 
+				(a.recommendation.undergrad_inst if a.recommendation)]
     end
         
     # write file

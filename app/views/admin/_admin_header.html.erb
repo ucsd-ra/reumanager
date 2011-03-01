@@ -3,35 +3,12 @@
 		<div id="search">
 			<% form_tag('', :method => 'get', :class => 'clearfix') do %><%= text_field_tag 'q', params[:q] || "Search...", :onfocus => "if ($('q').value == 'Search...') $('q').value = '';", :onblur => "if ($('q').value == '') $('q').value = 'Search...';" %><% end -%>
 		</div>
+		<h6 class='left'>
+			&nbsp;&nbsp;<label>Filter by application status:</label> <%= (select_tag "application_status", options_for_application_status) %>
+		</h6>
 		<h6 class='right'>
-			<%= (select_tag "student_select", options_for_student_select(all_students, "id", "lastname", "firstname", "status", admin_selected_user )) %>
+			<label>View application:</label> <%= (select_tag "student_select", options_for_student_select(all_students, "id", "lastname", "firstname", "status", admin_selected_user )) %>
 		</h6>
 	<% end -%>
-	<ul class='clear'>
-		<br />
-		<% if params[:controller] == "admin" && params[:action] == "index" -%>
-			<li class="first"><%= link_to "All Applications", { :controller => "admin", :action => "list" }, :class => "active button" %></li>
-		<% else -%>
-			<li class="first"><%= link_to "All Applications", { :controller => "admin", :action => "list" }, :class => "button" %></li>
-		<% end -%>
-		
-		<% if params[:controller] == "admin" && params[:action] == "incomplete" -%>
-			<li><%= link_to "View incomplete applications", { :controller => "admin", :action => "incomplete" }, :class => "active button" %></li>
-		<% else -%>
-			<li><%= link_to "View incomplete applications", { :controller => "admin", :action => "incomplete" }, :class => "button" %></li>
-		<% end -%>
-		
-		<% if params[:controller] == "admin" && params[:action] == "submitted" -%>
-			<li><%= link_to "View submitted applications", { :controller => "admin", :action => "submitted" }, :class => "active button" %></li>
-		<% else -%>
-			<li><%= link_to "View submitted applications", { :controller => "admin", :action => "submitted" }, :class => "button" %></li>
-		<% end -%>
-		
-		<% if params[:controller] == "admin" && params[:action] == "complete" -%>
-			<li><%= link_to "View complete applications", { :controller => "admin", :action => "complete" }, :class => "active button" %></li>
-		<% else -%>
-			<li><%= link_to "View complete applications", { :controller => "admin", :action => "complete" }, :class => "button" %></li>
-		<% end -%>		
-	</ul>
 </div>
 <hr />
