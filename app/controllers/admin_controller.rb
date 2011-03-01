@@ -50,7 +50,6 @@ require 'ftools'
 			conditions << and_key_values
 			@students = User.paginate :page => params[:page], :order => order, :conditions => conditions, :include => :academic_record
 		else
-		  
 			@students = User.paginate :page => params[:page], :order => order, :conditions => ['role_id = ?', 2]
 		end
 		
@@ -153,7 +152,7 @@ require 'ftools'
   def export
     # initialize new speadsheet
     @spreadsheet_dir = File.makedirs "#{RAILS_ROOT}/public/spreadsheets" unless File.exist?("#{RAILS_ROOT}/public/spreadsheets")
-    @spreadsheet_file = "#{RAILS_ROOT}/public/spreadsheets/#{(params[:status] || params[:id])}_applicants_#{Date.today}_#{Time.now.strftime("%H-%M_%p")}.xls"
+    @spreadsheet_file = "#{RAILS_ROOT}/public/spreadsheets/#{(params[:status] || params[:action])}_applicants_#{Date.today}_#{Time.now.strftime("%H-%M_%p")}.xls"
     workbook = Spreadsheet::Workbook.new # Spreadsheet.open(spreadsheet_dir+spreadsheet_file)
     worksheet = workbook.create_worksheet :name => "Applicant Data"
     
@@ -171,7 +170,7 @@ require 'ftools'
     worksheet.row(1).default_format = header_format
 
     # get applicant data
-		case params[:action]
+		case params[:prev_action]
 		when "incomomplete" && nil
 			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
 		when "submitted" && nil
