@@ -152,7 +152,7 @@ require 'ftools'
   def export
     # initialize new speadsheet
     @spreadsheet_dir = File.makedirs "#{RAILS_ROOT}/public/spreadsheets" unless File.exist?("#{RAILS_ROOT}/public/spreadsheets")
-    @spreadsheet_file = "#{RAILS_ROOT}/public/spreadsheets/#{(params[:status] || params[:action])}_applicants_#{Date.today}_#{Time.now.strftime("%H-%M_%p")}.xls"
+    @spreadsheet_file = "#{RAILS_ROOT}/public/spreadsheets/#{(params[:status] || params[:prev_action])}_applicants_#{Date.today}_#{Time.now.strftime("%H-%M_%p")}.xls"
     workbook = Spreadsheet::Workbook.new # Spreadsheet.open(spreadsheet_dir+spreadsheet_file)
     worksheet = workbook.create_worksheet :name => "Applicant Data"
     
