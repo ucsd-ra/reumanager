@@ -66,7 +66,7 @@ require 'ftools'
 
   def select_status
 		render :update do |page|
-			page.redirect_to (params[:application_status]) || url_for(:controller => 'admin')
+			page.redirect_to((params[:application_status]) || url_for(:controller => 'admin'))
 		end
   end
   

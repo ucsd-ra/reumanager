@@ -290,7 +290,7 @@ a.negative:active {background-color:#d12f19;border:1px solid #d12f19;color:#fff;
 .tabs li.label {border:none;font-weight:bold;line-height:1.5;margin-right:.5em;padding:.25em .33em .25em .33em;}
 
 /* sprites */
-.ss_sprite{display:inline; overflow:hidden; height:18px; padding-left:14px; padding-bottom:3px; background-repeat:no-repeat; background-image:url(src/sprites.png); }
+.ss_sprite{display:inline; overflow:hidden; height:18px; padding-left:14px; padding-bottom:3px; background-repeat:no-repeat; background-image:url(images/sprites.png); }
 .ss_accept{background-position:0px 0px}
 .ss_add{background-position:0px -19px}
 .ss_anchor{background-position:0px -37px}
