@@ -1,5 +1,5 @@
 class AcademicRecordsController < ApplicationController
-#  before_filter :login_from_cookie, :login_required, :application_complete?
+  before_filter :login_from_cookie, :login_required
   ssl_required :index, :show, :new, :edit, :create, :update, :destroy_transcript, :observe_pcollege
   
   # GET /academic_records
@@ -16,7 +16,9 @@ class AcademicRecordsController < ApplicationController
   # GET /academic_records/1
   # GET /academic_records/1.xml
   def show
+    current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @academic_record = AcademicRecord.find(params[:id])
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @academic_record }
