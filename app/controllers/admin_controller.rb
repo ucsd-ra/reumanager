@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
 before_filter :login_from_cookie, :login_required, :check_admin
-ssl_required :index, :show, :select_student, :change_status, :report, :incomplete, :submitted, :complete, :create_report, :delete, :export, :expunge_excel_files, :close_export, :select_status
+ssl_required :index, :list, :show, :select_student, :change_status, :total, :incomplete, :submitted, :complete, :create_report, :delete, :export, :expunge_excel_files, :close_export, :select_status
 require 'ftools'
 
   def index
