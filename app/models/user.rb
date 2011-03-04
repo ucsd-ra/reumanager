@@ -139,7 +139,7 @@ class User < ActiveRecord::Base
 				pdf.text "Is your institution primarily an undergraduate institution: #{self.recommendation.undergrad_inst}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33 
 
 				pdf.text "Faculty Recommendation\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
-				pdf.text "#{self.faculty_comment}", :font_size => 11, :justification => :left, :left => 33, :right => 33
+				pdf.text "#{self.recommendation.faculty_comment}", :font_size => 11, :justification => :left, :left => 33, :right => 33
 			else
 				pdf.text "No recommendation yet..."
 			end
