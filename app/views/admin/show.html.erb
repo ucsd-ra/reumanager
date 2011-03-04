@@ -1,7 +1,7 @@
 <%= render :partial => "admin_header" %>
 <div class='info right'>
 	<div class='clearfix' id="print">
-		<%= link_to "Print Application", :action => "print", :id => @user %>
+		<%= link_to_remote "Print Application", :url => {:action => "print", :id => @user} %>
 	</div>
 	<div class='clearfix' id="status">
 		<% form_for @user do |f| -%>

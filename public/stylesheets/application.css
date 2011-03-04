@@ -144,7 +144,7 @@ Admin
 	#admin_overview  h2						{ margin:0; }
 	#admin_overview h1 a:hover		{ background-color:inherit; text-decoration:underline; }
 	#print { float:right; }
-	#excel_export							{ position:absolute; top:26%; z-index:10; text-align:left; }
+	#excel_export, #print_download	{ position:absolute; top:26%; z-index:10; text-align:left; }
 	#status form { border:0; margin:0; padding:0; float:right; width:auto; }
 	#status h3 { padding:3px; position:absolute; text-align:center; -moz-border-radius:8px; -webkit-border-radius:8px;}
 	#search { float:left; }

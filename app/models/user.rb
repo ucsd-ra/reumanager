@@ -83,38 +83,72 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
-  def make_pdf
-     pdf = PDF::Writer.new
-     pdf.text "NSF REU Application for #{self.firstname} #{self.lastname}\n\n", :font_size => 22, :justification => :center
-     pdf.move_pointer(24)
+	def make_pdf
+		pdf = PDF::Writer.new
+		pdf.text "NSF REU Application for #{self.firstname} #{self.lastname}\n\n", :font_size => 22, :justification => :center
+		pdf.move_pointer(24)
 
-     pdf.text "Personal Data\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
-     pdf.text "#{self.street}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
-     pdf.text "#{self.city}, #{self.state} #{self.zip}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
-     
-     if self.citizenship == "United States"
-       pdf.text "Citizenship: #{self.citizenship}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
-     else
-       pdf.text "Citizenship: #{self.citizenship}, Country of Residence: #{self.cresidence}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
-     end
+		pdf.text "Personal Data\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+		pdf.text "#{self.street}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+		pdf.text "#{self.city}, #{self.state} #{self.zip}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
 
-     pdf.text "Academic Info\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
-     pdf.text "#{self.academic_record.college_level.capitalize} majoring in #{self.academic_record.major} at #{self.academic_record.college}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
-     pdf.text "Attended from: #{self.academic_record.college_start} to #{self.academic_record.college_end}, GPA: #{self.academic_record.gpa} out of #{self.academic_record.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
-     
-     if self.academic_record.p_college != ""
-       pdf.text "Previous college: #{self.academic_record.p_college}, Attended from: #{self.academic_record.p_college_start} to #{self.academic_record.p_college_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
-     else
-       pdf.text "\n"
-     end
+		if self.citizenship == "United States"
+			pdf.text "Citizenship: #{self.citizenship}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+		else
+			pdf.text "Citizenship: #{self.citizenship}, Country of Residence: #{self.cresidence}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+		end
 
-     @methods = %w{awards lab_skills comp_skills gpa_comments personal_statement}
-     @methods.each do |m|  
-       pdf.text "#{m.gsub("_"," ").capitalize }\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
-       pdf.text "#{self.extra.send(m)}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
-     end
-       pdf.save_as("#{RAILS_ROOT}/public/pdf/#{self.id.to_s}_#{self.lastname}.pdf")
-   end
+		if self.academic_record
+			pdf.text "Academic Info\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+
+			pdf.text "#{self.academic_record.college_level.capitalize} majoring in #{self.academic_record.major} at #{self.academic_record.college}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+			pdf.text "Attended from: #{self.academic_record.college_start} to #{self.academic_record.college_end}, GPA: #{self.academic_record.gpa} out of #{self.academic_record.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+
+			if self.academic_record.p_college != ""
+				pdf.text "Previous college: #{self.academic_record.p_college}, Attended from: #{self.academic_record.p_college_start} to #{self.academic_record.p_college_end}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+			else
+				pdf.text "\n"
+			end
+
+			@methods = %w{awards lab_skills comp_skills gpa_comments personal_statement}
+			@methods.each do |m|
+				if self.extra
+					pdf.text "#{m.gsub("_"," ").capitalize }\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+					pdf.text "#{self.extra.send(m)}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+				end
+			end
+		else
+			pdf.text "No academic record yet.."
+		end
+
+		if self.recommender && @recommender = Recommender.find_by_id(self.recommender)
+			pdf.text "Recommendation for #{self.firstname} #{self.lastname}\n\n", :font_size => 20, :justification => :left
+			pdf.move_pointer(24)
+
+			pdf.text "Recommender Personal Data\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+			pdf.text "#{@recommender.name}, #{@recommender.title}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+			pdf.text "#{@recommender.college}, #{@recommender.department}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+			pdf.text "#{@recommender.email}, #{@recommender.phone}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+
+			if self.recommendation
+				pdf.text "Student Information\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+				pdf.text "How long have you known the applicant: #{self.recommendation.known_student}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+				pdf.text "In what capacity have you known the applicant: #{self.recommendation.know_capacity}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+				pdf.text "Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers: #{self.recommendation.rating}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+				pdf.text "What is the applicant's GPA: #{self.recommendation.gpa} out of #{self.recommendation.gpa_range}\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
+				pdf.text "Is your institution primarily an undergraduate institution: #{self.recommendation.undergrad_inst}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33 
+
+				pdf.text "Faculty Recommendation\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
+				pdf.text "#{self.faculty_comment}", :font_size => 11, :justification => :left, :left => 33, :right => 33
+			else
+				pdf.text "No recommendation yet..."
+			end
+		else
+				pdf.text "No recommender yet..."
+		end
+		
+		pdf.save_as("#{RAILS_ROOT}/public/pdf/#{self.id.to_s}_#{self.lastname}.pdf")
+	end
 
    def send_reg_confirmation
      email = UserMailer.create_reg_confirmation(self.firstname, self.lastname, self.email, self.token)

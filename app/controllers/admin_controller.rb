@@ -121,6 +121,20 @@ require 'ftools'
     render :action => "list"
   end
   
+	def print
+		if @s = User.find(params[:id])
+			@s.make_pdf
+			@filename = "pdf/#{@s.id.to_s}_#{@s.lastname}.pdf"
+		end
+    render :update do |page|
+      page[:overlay].show
+      page[:opaque_overlay].show
+      page[:wait_box].hide
+      page[:print_download].replace_html :partial => "print_download"
+      page[:print_download].show
+    end
+	end
+
 	def create_report
 		@all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
 		@students = User.paginate :page => params[:page], :order => 'lastname ASC'

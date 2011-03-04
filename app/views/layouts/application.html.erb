@@ -25,7 +25,7 @@
 				<%= image_tag("spinner6.gif") %>
 			</div>
 			<%= content_tag('div', '&nbsp;', :class => "bordered colored rounded padded span-10 push-7", :id => "excel_export", :style => "display:none;") if params[:controller] == "admin" %>
-			
+			<%= content_tag('div', '&nbsp;', :class => "bordered colored rounded padded span-10 push-7", :id => "print_download", :style => "display:none;") if params[:controller] == "admin" %>
 		</div>
 		<div id="wrapper">
 			<div id="flashbox" <%= %Q{style="display:none"} unless flash[:error] || flash[:notice] || flash[:success] %>>
