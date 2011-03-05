@@ -24,16 +24,18 @@ class ApplicationController < ActionController::Base
 	rescue_from(ActionController::RoutingError) { render :file => 'public/404.html', :status => 404 }
 	rescue_from(ActionController::InvalidAuthenticityToken) { render :file => 'public/422.html', :status => 422}
 
-	before_filter :filter_my_ips
-	
-	def filter_my_ips
-		@my_ips = ["76.88.119.175", "132.239.8.57", "184.72.43.42", "127.0.0.1"]
-		if @my_ips.include?(request.remote_ip)
-			logger.level = Logger::FATAL
-		else
-			logger.level = Logger::INFO
-		end
-	end
+# I want to exclude my IPs from the logs, but the below code didn't work as I had hoped.
+#
+#	before_filter :filter_my_ips
+#	
+#	def filter_my_ips
+#		@my_ips = ["76.88.119.175", "132.239.8.57", "184.72.43.42", "127.0.0.1"]
+#		if @my_ips.include?(request.remote_ip)
+#			logger.level = Logger::FATAL
+#		else
+#			logger.level = Logger::INFO
+#		end
+#	end
 	
   def ssl_required?
     return false if RAILS_ENV == 'test' || RAILS_ENV == 'development'
