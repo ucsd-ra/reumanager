@@ -8,34 +8,39 @@ class SessionsController < ApplicationController
   end
 
   def create
-    logout_keeping_session!
-    user = User.authenticate(params[:login], params[:password])
-    if user
-      # Protects against session fixation attacks, causes request forgery
-      # protection if user resubmits an earlier form using back
-      # button. Uncomment if you understand the tradeoffs.
-      # reset_session
-        self.current_user = user
-        new_cookie_flag = (params[:remember_me] == "1")
-        handle_remember_cookie! new_cookie_flag
-        if user && user.role && user.role.name == "admin"
-          redirect_to( :controller => "admin" )
-        else
-          if user.submitted_at
-            redirect_to( :controller => "users", :action => "status" )
-          else
-            # closed registration, prevent users from continuing unfinished apps or creating new ones
-            redirect_to( :controller => "users", :action => "edit" )
-          end
-        end
-        flash[:success] = "Logged in successfully"
-    else
-      note_failed_signin
-      @login       = params[:login]
-      @remember_me = params[:remember_me]
-      render :action => 'new'
-    end
-  end
+		logout_keeping_session!
+		user = User.authenticate(params[:login], params[:password])
+		if user
+			# Protects against session fixation attacks, causes request forgery
+			# protection if user resubmits an earlier form using back
+			# button. Uncomment if you understand the tradeoffs.
+			# reset_session
+			self.current_user = user
+			new_cookie_flag = (params[:remember_me] == "1")
+			handle_remember_cookie! new_cookie_flag
+			if user && user.role && user.role.name == "admin"
+				redirect_to( :controller => "admin" )
+			else
+				if user.submitted_at
+					redirect_to( :controller => "users", :action => "status" )
+				else
+					if Time.now > DateTime.new(2011,3,6,0,0)
+						
+						redirect_to( :controller => "users", :action => "status" )
+					else
+						# closed registration, prevent users from continuing unfinished apps or creating new ones
+						redirect_to( :controller => "users", :action => "edit" )
+					end
+				end
+			end
+			flash[:success] = "Logged in successfully"
+		else
+			note_failed_signin
+			@login       = params[:login]
+			@remember_me = params[:remember_me]
+			render :action => 'new'
+		end
+	end
 
   def destroy
     if current_user && current_user.completed_at || current_user && current_user.submitted_at || current_user && current_user.role_id == 1
