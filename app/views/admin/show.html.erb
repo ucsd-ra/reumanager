@@ -10,68 +10,81 @@
 	</div>
 </div>
 
-<div class="span-13 push-5 bordered colored padded rounded"  id="personal_data">
-	<h4><%= link_to_unless_current "Personal Data", { :controller => "users", :action => "edit", :id => @user } %></h4>
-	<%= render :partial => 'users/show_personal_data', :locals => { :f => @user } %>
+<% @spacer = "&nbsp;&nbsp;&nbsp; " %>
+
+<div class="span-20"  id="personal_data">
+	<small class="right green"><b>LAST&nbsp;UPDATED</b>&nbsp;<%= @user.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
+	<h1><%= link_to_unless_current @user.name.titlecase, { :controller => "users", :action => "edit", :id => @user } %></h1>
+
+	<%= render :partial => 'show_personal_data', :locals => { :f => @user } %>
 </div>
+<hr class="clear space" />
 
-<div class="span-13 push-5 bordered colored padded rounded"  id="academic_record">
-	<h4><%= link_to_unless_current "Academic Information", { :controller => "academic_records", :id => @user } %></h4>
-
+<div class="span-20"  id="academic_record">
 	<% if check_academic_records(@user) -%>
-		<%= render :partial => 'users/show_academic_record', :locals => { :f => @user.academic_record } %>
+		<small class="right green"><b>LAST UPDATED</b> <%= @user.academic_record.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
+		<h2><%= link_to_unless_current "Academic Information", { :controller => "academic_records", :id => @user } %></h2>
+		
+		<%= render :partial => 'show_academic_record', :locals => { :f => @user.academic_record } %>
 	<% else -%>
-		<%= content_tag 'p', 'You have not added your academic records.', :class => 'blood_red' unless @user.academic_record %>
+		<%= content_tag 'p', 'Applicant has not added any academic records.', :class => 'blood_red' unless @user.academic_record %>
 	<% end -%>
 </div>
+<hr class="clear space" />
 
-<div class="span-13 push-5 bordered colored padded rounded"  id="extra">
-	<h4><%= link_to_unless_current "Additional Information", { :controller => "extras", :id => @user } %></h4>
+<div class="span-20"  id="extra">
+	<small class="right green"><%= "<b>LAST UPDATED</b> " + @user.extra.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") if @user.extra  %></small>
+	<h2><%= link_to_unless_current "Additional Information", { :controller => "extras", :id => @user } %></h2>
 	<% if @user.extra -%>
-		<%= render :partial => 'users/show_extra', :locals => { :e => @user.extra } %>
+		<%= render :partial => 'show_extra', :locals => { :e => @user.extra } %>
 	<% else -%>
 		<p class="blood_red">You have not entered your additional info.</p>
 	<% end -%>
 </div>
+<hr class="clear space" />
 
-<div class="span-13 push-5 bordered colored padded rounded"  id="recommender">
-	<h4><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders", :id => @user } %></h4>
+<div class="span-20"  id="recommender">
+	<% if @user.recommendation -%>
+		<small class="right green"><b>LAST UPDATED</b> <%= @user.recommendation.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
+	<% end -%>
+	<h2><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders", :id => @user } %></h2>
+
 	<% if @user.recommender -%>
-		<%= render :partial => 'users/show_recommender', :locals => { :r => @user.recommender } %>
+		<%= render :partial => 'show_recommender', :locals => { :r => @user.recommender } %>
 	<% else -%>
 		<p class="clear blood_red">You have not entered the faculty recommendation info.</p>
 	<% end -%>
 			
-	<br class="clear" /><br class="clear" />
+	<br class="clear" />
+	
 	<% if @user.recommendation -%>
 		<div>
 			<label>How long have you known the applicant?</label>
-			<%=h @user.recommendation.known_student %>
+			<%= @spacer + h(@user.recommendation.known_student) %>
 		</div>
 		<br />
-		
+			
 		<div>
 			<label>In what capacity have you known the applicant?</label>
-			<%=h @user.recommendation.know_capacity %>
+			<%= @spacer + h(@user.recommendation.know_capacity) %>
 		</div>
 		<br />
 		
 		<div>
-			<label>Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers:</label>
-			<%=h @user.recommendation.rating %>
+			<label>Applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers</label>
+			<%= @spacer + h(@user.recommendation.rating) %>
 		</div>
 		<br />
 		
 		<div>
 			<label>Is your institution primarily an undergraduate institution?</label>
-			<%= @user.recommendation.undergrad_inst %>
+			<%= @spacer + h(@user.recommendation.undergrad_inst) %>
 		</div>
 		<br />
 		
 		<div>
-			<label>Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance.</label>
-			<br />
-			<%= @user.recommendation.faculty_comment %>
+			<label>Quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, any circumstances that may be helpful in evaluating the applicant's academic performance.</label><br />
+			<%= h(@user.recommendation.faculty_comment).gsub("\n", "<br />") %>
 		</div>
 	<% else -%>
 		<p>A recommendation has not been received for this student.</p>
@@ -79,8 +92,6 @@
 	
 	<br class="clear" /><br class="clear" />
 	
-	<% if @user.recommendation -%>
-		<small class="right">Last Updated: <%= @user.recommendation.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
-	<% end -%>
 </div>
+
 <%= render :partial => "admin_observers" %>

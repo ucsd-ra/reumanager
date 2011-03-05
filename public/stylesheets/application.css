@@ -11,8 +11,8 @@ Layout
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 	h1,h2,h3,h4,h5,h6						{ color:#444; }
 	h1										{ font-size:2.5em; }
-	a										{ color:#555; padding:1px 2px; text-decoration:none; }
-	a:hover									{ background-color:#deebff; color:#333; }
+	a										{ color:#555; text-decoration:none; }
+	a:hover									{ color:#333; text-decoration:underline;}
 	a.ss_sprite								{ padding:0 0 0 18px; }
 	button a:hover							{ background-color:inherit; }
 	form									{ background-color:#deebff; border:1px solid #bdf; clear:both; margin:20px auto; padding:20px; width:480px; -moz-border-radius:8px; -webkit-border-radius:8px; }
