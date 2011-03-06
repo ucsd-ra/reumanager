@@ -63,4 +63,12 @@ class ApplicationController < ActionController::Base
   def is_admin
     current_user.role.name == "admin" || current_user.id == 1 
   end
+
+	def logger
+		if ['127.0.0.1','76.88.119.175'].include?(request.remote_ip)
+			return nil
+		else
+			super
+		end
+	end
 end
