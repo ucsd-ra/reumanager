@@ -37,7 +37,11 @@ class AcademicRecordsController < ApplicationController
   def edit
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
-    @academic_record = AcademicRecord.find_by_user_id(current_user.id)
+		if @user
+			@academic_record = AcademicRecord.find_by_user_id(current_user.id)
+		else
+			redirect_to login_path
+		end
   end
 
   # POST /academic_records
