@@ -26,6 +26,6 @@
 	<% unless @user.completed_at != nil || @recommendation -%>
 		<% if @user.rec_request_at -%>
 			<%= link_to "Resend Recommendation Request", { :controller => "users", :action => "resend_request" }, :class => "button", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %>
-		<% end -%>
+ 		<% end -%>
 	<% end -%>	
 </div>
