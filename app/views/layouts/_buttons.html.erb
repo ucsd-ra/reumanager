@@ -1,7 +1,6 @@
 <% unless params[:action] == "login" -%>
 	<ul id="buttons">
 		<% if logged_in? -%>
-	
 			<li class="last"><%= link_to "Logout", { :controller => "sessions", :action => "destroy" } %></li>
 			<% if params[:controller] == "users" || params[:controller] == "academic_records" || params[:controller] == "recommenders" || params[:controller] == "extras" -%>
 				<% if current_user && current_user.submitted_at && !check_admin && params[:controller] != "recommendation" %>
@@ -13,7 +12,6 @@
 
 				<% end -%>
 			<% end -%>
-	
 		<% elsif Date.today > Date.parse("January 11 2010") -%>
 				<li class="last"><%= link_to "Login", { :controller => "sessions", :action => "new" } %></li>
 		<% end -%>
@@ -56,6 +54,5 @@
 		<% else -%>
 			<li><%= link_to "REU Welcome", { :controller => "welcome" } %></li>
 		<% end -%>
-		
 	</ul>
 <% end -%>

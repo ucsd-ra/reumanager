@@ -65,9 +65,9 @@ class ApplicationController < ActionController::Base
   end
 
 	def logger
-		@hosts = ['127.0.0.1','76.88.119.175','184.72.43.42','132.239.8.57']
+		@hosts = ['127.0.0.1', '76.88.119.175', '184.72.43.42', '132.239.8.57']
 		if @hosts.include?(request.remote_ip)
-			return nil
+			logger.level = Logger::ERROR
 		else
 			super
 		end
