@@ -24,8 +24,7 @@ class SessionsController < ApplicationController
 				if user.submitted_at
 					redirect_to( :controller => "users", :action => "status" )
 				else
-					if Time.now > DateTime.new(2011,3,6,0,0)
-						
+					if Time.now > DateTime.new(2011,3,6,8,0)
 						redirect_to( :controller => "users", :action => "status" )
 					else
 						# closed registration, prevent users from continuing unfinished apps or creating new ones
