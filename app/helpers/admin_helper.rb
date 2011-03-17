@@ -13,6 +13,7 @@ module AdminHelper
 		options << ["In Review", url_for(:action => 'list', :status => "In Review")]
 		options << ["Waitlisted", url_for(:action => 'list', :status => "Waitlist")]
 		options << ["Rejected", url_for(:action => 'list', :status => "Reject")]
+		options << ["Withdrawn", url_for(:action => 'list', :status => 'Withdrawn')]
 		options << ["Incomplete", url_for(:action => 'incomplete')]
 		options << ["Submitted", url_for(:action => 'submitted')]
 		options << ["Complete", url_for(:action => 'complete')]
@@ -37,6 +38,8 @@ module AdminHelper
 				@selected = url_for(:action => 'list', :status => "Waitlist")
 			when "Reject"
 				@selected = url_for(:action => 'list', :status => "Reject")
+			when "Withdrawn"
+				@selected = url_for(:action => 'list', :status => "Withdrawn")
 			else
 				@selected = url_for(:action => 'total')
 			end

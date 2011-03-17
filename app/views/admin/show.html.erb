@@ -5,7 +5,7 @@
 	</div>
 	<div class='clearfix' id="status">
 		<% form_for @user do |f| -%>
-		  <%= f.select :status, options_for_select(%w{Accept Reject Waitlist In\ Review}, :selected => @user.status)%>
+		  <%= f.select :status, options_for_select(%w{Accept Reject Waitlist In\ Review Withdrawn}, :selected => @user.status)%>
 		<% end -%>
 	</div>
 </div>

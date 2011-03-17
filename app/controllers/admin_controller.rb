@@ -11,6 +11,7 @@ require 'ftools'
     @in_review = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'In Review', 2 ]
     @waitlisted = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Waitlist',  2 ]
     @rejected = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Reject',  2 ]
+    @withdrawn = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Withdrawn', 2]
     @accepted = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Accept',  2 ]
   end
   

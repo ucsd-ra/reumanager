@@ -10,6 +10,9 @@
 	<h2>Application Status</h2>
 	<div class='span-6'><h2 class='info'><%= link_to "#{@in_review.count}&nbsp;In&nbsp;Review", :action => "list", :status => 'In Review' %></h2></div>
 	<div class='span-6'><h2 class='info'><%= link_to "#{@waitlisted.count}&nbsp;Waitlisted", :action => "list", :status => 'Waitlist' %></h2></div>
+	<div class='span-6'><h2 class='info'><%= link_to "#{@withdrawn.count}&nbsp;Withdrawn", :action => "list", :status => 'Withdrawn' %></h2></div>
+	<br class='clear' />
+	<br class='clear' />
 	<div class='span-6'><h2 class='error'><%= link_to "#{@rejected.count}&nbsp;Rejected", :action => "list", :status => 'Reject' %></h2></div>
 	<div class='span-6 last'><h2 class='success'><%= link_to "#{@accepted.count}&nbsp;Accepted", :action => "list", :status => 'Accept' %></h2></div>
 	<br class='clear' />
