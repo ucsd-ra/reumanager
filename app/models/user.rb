@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :firstname, :middlename, :lastname, :dob, :street, :city, :state, :zip, :phone, :pstreet, :pcity, :pstate, :pzip, :pphone, :citizenship, :cresidence, :gender, :ethnicity, :race, :disability, :password, :password_confirmation
+  attr_accessible :login, :email, :firstname, :middlename, :lastname, :dob, :street, :city, :state, :zip, :phone, :pstreet, :pcity, :pstate, :pzip, :pphone, :citizenship, :cresidence, :gender, :ethnicity, :race, :disability, :password, :password_confirmation, :emailed_rejection_letter_at, :emailed_waitlist_letter_at
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   def name
     @name = ""
     @name << (self.firstname + " ") if self.firstname
-    @name << (self.middlename + " ") if self.middlename
+    @name << (self.middlename + " ") if self.middlename && self.middlename != ''
     @name << (self.lastname) if self.lastname
   end
   
@@ -213,5 +213,35 @@ class User < ActiveRecord::Base
 				u.send_reg_confirmation
 			end
 	  end
+	  
+	  def send_rejection_letter
+      if self.emailed_rejection_letter_at == nil
+        email = UserMailer.create_rejection_letter(self)
+        email.set_content_type('multipart', 'mixed')
+        if sleep(0.5) && UserMailer.deliver(email)
+          self.update_attribute(:emailed_rejection_letter_at, Time.now)
+          puts "--> delivered rejection letter for #{self.name} (#{self.email})"
+        else
+          puts "*** Error sending rejection letter"
+        end
+      else
+        self.emailed_rejection_letter_at == nil ? puts("*** Already sent waitlist letter to #{self.name} (#{self.email})") : puts("*** Already sent rejection letter to #{self.name} (#{self.email})")
+      end
+    end
+
+    def send_waitlist_letter
+      if self.emailed_waitlist_letter_at == nil && self.emailed_rejection_letter_at == nil
+        email = UserMailer.create_waitlist_letter(self)
+        email.set_content_type('multipart', 'mixed')
+        if sleep(0.5) && UserMailer.deliver(email)
+          self.update_attribute(:emailed_waitlist_letter_at, Time.now)
+          puts "---> delivered waitlist letter for #{self.name} (#{self.email})"
+        else
+          puts "*** Error sending waitlist letter"
+        end
+      else
+        self.emailed_rejection_letter_at == nil ? puts("*** Already sent waitlist letter to #{self.name} (#{self.email})") : puts("*** Already sent rejection letter to #{self.name} (#{self.email})")
+      end
+    end
 
 end
