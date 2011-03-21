@@ -152,6 +152,7 @@ class UserMailer < ActionMailer::Base
     @subject    = "UCSD REU Application Status for #{user.firstname} #{user.lastname}"
     @recipients = user.email
     @from       = 'UCSD Bioengineering - NSFREU <nsfreu@be.ucsd.edu>'
+    @bcc        = "jgrevich@ucsd.edu"
     @sent_on    = Time.now
     @headers    = {}
 
@@ -162,6 +163,7 @@ class UserMailer < ActionMailer::Base
     @subject    = "UCSD REU Application Status for #{user.firstname} #{user.lastname}"
     @recipients = user.email
     @from       = 'UCSD Bioengineering - NSFREU <nsfreu@be.ucsd.edu>'
+    @bcc        = "jgrevich@ucsd.edu"
     @sent_on    = Time.now
     @headers    = {}
 
