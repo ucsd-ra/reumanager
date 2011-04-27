@@ -1,0 +1,15 @@
+<div class="push-5 span-12" id="login_page">
+	<% form_tag( { :action => "reactivate"}, :class => "prepend-1") do -%>
+	<h3>Resend Activation Link</h3>
+	<p>You must verify your account by clinking the activation link in the email you received after registration.  Please check your spam filter if you cannot find the email with the activation link.  If you still can't find it, please enter the email account used on our site and we'll send you a new link (*note, the old link will be expired).</p>
+	<div class='right'>
+		<p id="submit"><%= submit_tag 'Send', :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %></p>		
+	</div>
+	
+		<div>
+			<label for="email">Email</label>
+			&nbsp;&nbsp;
+			<%= text_field_tag 'email' %>			
+		</div>
+	<% end -%>
+</div>

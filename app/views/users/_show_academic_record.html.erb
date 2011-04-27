@@ -1,0 +1,54 @@
+<div class="span-4">
+	<label>University</label><br />
+	<%= h(f.college) %>
+</div>
+
+<div class="span-4">
+	<label>Dates of Attendance</label>
+	<%= h(f.college_start.to_date.strftime("%Y.%m")) %>&nbsp;-&nbsp;
+	<%= h(f.college_end.to_date.strftime("%Y.%m")) %>
+</div>
+
+<div class="span-5 last">
+	<label>Current Academic Level</label><br />
+	<%= h(f.college_level) %>
+</div>
+
+<hr class="space" />
+
+<div class="span-4">
+	<label>Major/Minor</label><br />
+	<%= h(f.major) %>
+</div>
+
+<div class="span-8 last">
+	<label>GPA</label><br />
+	<%= h(f.gpa) %> / <%= h(f.gpa_range) %>
+</div>
+
+<hr class="space" />
+
+<div class="span-12 last transcript">
+	<label>Transcript</label> <%= link_to " #{@user.academic_record.transcript.original_filename}", ("/nsfreu" + @user.academic_record.transcript.url), :class => "ss_sprite ss_page_white_acrobat" %>
+</div>
+
+<hr class="space" />
+
+<% if f.p_college != "" || nil -%>
+	<div class="span-4">
+		<label>Previous University</label><br />
+		<%= h(f.p_college) %>
+	</div>
+
+	<div class="span-4">
+		<label>Dates of Attendance</label><br />
+		<%= h(f.p_college_start.to_date.strftime("%Y.%m")) %>&nbsp;-&nbsp;
+		<%= h(f.p_college_end.to_date.strftime("%Y.%m")) %>
+	</div>
+
+	<div class="span-4">
+
+	</div>
+<hr class="space" />
+<% end -%>
+<small class="right">Last Updated: <%= f.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>

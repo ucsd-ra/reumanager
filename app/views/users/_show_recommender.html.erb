@@ -1,0 +1,21 @@
+<div class="span-4">
+	<label>Name</label><br />
+	<%= h(r.name) %><br />
+	<%= h(r.title) %>
+	
+</div>
+<div class="span-4">
+	<label>Association</label><br />
+	<%= h(r.department) %><br />
+	<%= h(r.college) %>
+</div>
+
+<div class="span-4 last">
+	<label>Contact Info</label><br />
+	<%= h(r.phone) %>
+	<%= h(r.email) %>
+</div>
+<% unless current_user.role && current_user.role.name == "admin" -%>
+	<br class="clear" /><br class="clear" />
+	<small class="right">Last Updated: <%= r.updated_at.strftime("%Y.%m.%d - %I:%M %p") %></small>
+<% end -%>

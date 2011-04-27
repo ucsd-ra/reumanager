@@ -1,0 +1,100 @@
+<%= f.error_messages %>
+
+<div>
+	<label>Current College or University</label><br />
+	<%= f.text_field 'college' %>
+</div>
+
+<hr />
+
+<div class="span-6">
+	<label>Dates of Attendance:</label><br />
+	<label>From:</label>&nbsp;&nbsp;<%= f.date_select 'college_start', :discard_day => true, :end_year => Time.now.year + 1 %><br style="clear:both;" />
+</div>
+<div class="span-6 last"><br />
+	<label>To:</label>&nbsp;&nbsp;<%= f.date_select 'college_end', :discard_day => true, :start_year => Time.now.year %>
+</div>
+
+<hr />
+
+<div id="academicollege_level">
+	<label>Current Academic Level:</label><br />
+	<%= f.radio_button 'college_level', 'Freshman' %><label>Freshman</label>
+	&nbsp;&nbsp;
+	<%= f.radio_button 'college_level', 'Sophomore' %><label>Sophomore</label>
+	&nbsp;&nbsp;
+	<%= f.radio_button 'college_level', 'Junior' %><label>Junior</label>
+	&nbsp;&nbsp;
+	<%= f.radio_button 'college_level', 'Senior' %><label>Senior</label>
+</div>
+
+<hr />
+
+<div class="span-6">
+	<label>Major/Minor</label><br />
+	<%= f.text_field 'major', :size => 16 %>
+</div>
+
+<div class="span-4">
+	<label>GPA</label><br /><%= f.select "gpa", gpa_range %> / <%= f.select "gpa_range", [4.0, 5.0, 10.0] %>
+</div>
+
+<hr />
+	
+<% if @academic_record.transcript && @academic_record.transcript.original_filename != nil %>
+	<div id="transcript">
+		<%= f.label :transcript, "We have received the following transcript:" %>
+		<p class='right'><%= link_to_function 'Replace', "$('transcript_fields').show();$('transcript').hide();", :class => 'button' %></p>
+		<p><%= display_transcript_link(@academic_record) %></p>
+	</div>
+	
+	<div style='display:none;' id="transcript_fields">
+		<%= f.label :transcript, "Please upload a PDF of your most recent (unofficial is ok) transcript:" %>
+		<%= f.file_field :transcript %>
+		<p class='right'><%= link_to_function 'Cancel', "$('transcript_fields').hide();$('transcript').show();", :class => "negative button" %></p>
+	</div>
+<% else -%>
+	<div>
+		<%= f.label :transcript, "Please upload a PDF of your most recent (unofficial is ok) transcript:" %>
+		<%= f.file_field :transcript %>		
+	</div>
+<% end -%>
+
+<hr />
+
+<div>
+	<label>Did you attend another college or university previously?</label>
+	<% if @academic_record && @academic_record.p_college != '' && @academic_record.p_college != nil %>
+		<%= select_tag 'p_college', options_for_select(%w{No Yes}, "Yes") %>
+	<% else -%>
+		<%= select_tag 'p_college', options_for_select(%w{No Yes}, "No") %>
+	<% end -%>
+</div>
+
+<% if @academic_record && @academic_record.p_college != '' && @academic_record.p_college != nil %>
+	<div id="pcollege">
+<% else -%>
+	<div id="pcollege" style="display:none;">
+<% end -%>
+	<div>
+		<label>Please enter information about the previous college or university</label>
+	</div>
+	<div>
+		<label>Previous College or University</label><br />
+		<%= f.text_field 'p_college' %>
+	</div>
+	
+	<hr />
+	
+	<div>
+		<label>Dates of Attendance</label><br style="clear:both;" />
+	</div>
+	
+	<div class="span-6">
+		<label>From: </label><%= f.date_select 'p_college_start', :discard_day => true, :end_year => Time.now.year - 1, :start_year => Time.now.year - 15 %><br style="clear:both;" />
+	</div>
+
+	<div class="span-6 last">
+		<label>To: </label><%= f.date_select 'p_college_end', :discard_day => true, :start_year => Time.now.year - 14 %>
+	</div>	
+</div>

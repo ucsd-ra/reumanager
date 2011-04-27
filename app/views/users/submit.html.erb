@@ -1,0 +1,52 @@
+<%= render :partial => "layouts/app_navbar" %>
+
+<% if check_all(@user) -%>
+	<h1 class="center padded">Please verify your application data</h1>
+<% else -%>
+	<h1 class="center padded">Your application is incomplete</h1>
+<% end -%>
+
+<div class="span-13 push-5 bordered colored padded rounded"  id="personal_data">
+	<h4><%= link_to_unless_current "Personal Data", { :controller => "users", :action => "edit", :id => @user } %></h4>
+	<%= render :partial => 'show_personal_data', :locals => { :f => @user } %>
+</div>
+
+<div class="span-13 push-5 bordered colored padded rounded"  id="academic_record">
+	<h4><%= link_to_unless_current "Academic Information", { :controller => "academic_records" } %></h4>
+
+	<% if check_academic_records(@user) -%>
+		<%= render :partial => 'show_academic_record', :locals => { :f => @user.academic_record } %>
+	<% else -%>
+		<%= content_tag 'p', 'You have not added your academic records.', :class => 'blood_red' unless @user.academic_record %>
+		<%= content_tag 'p', 'You have not uploaded a PDF copy of your unofficial transcript.', :class => 'blood_red' unless @user.academic_record && @user.academic_record.transcript && @user.academic_record.transcript.content_type == 'application/pdf' %>				
+	<% end -%>
+</div>
+
+<div class="span-13 push-5 bordered colored padded rounded"  id="extra">
+	<h4><%= link_to_unless_current "Additional Information", { :controller => "extras" } %></h4>
+	<% if @user.extra -%>
+		<%= render :partial => 'show_extra', :locals => { :e => @user.extra } %>
+	<% else -%>
+		<p class="blood_red">You have not entered your additional info.</p>
+	<% end -%>
+</div>
+
+<div class="span-13 push-5 bordered colored padded rounded"  id="recommender">
+	<h4><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders" } %></h4>
+	<% if @user.recommender -%>
+		<%= render :partial => 'show_recommender', :locals => { :r => @user.recommender } %>
+	<% else -%>
+		<p class="blood_red">You have not entered the faculty recommendation info.</p>
+	<% end -%>			
+</div>
+	
+<% if check_all(@user) %>
+	<div class="span-13 push-5">
+		<p class='center'><small><b>*Your recommendation request will not be sent until you submit your application.</b></small>
+		<br class='clear' />
+		<div class="right">
+			<%= link_to "Save", { :controller => "sessions", :action => "destroy" }, :class => "button positive" %>
+			<%= link_to_remote "Submit Application", { :action => "submit"}, { :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();", :class => "button positive", :id => "submit" } %>
+		</div>
+	</div>
+<% end -%>

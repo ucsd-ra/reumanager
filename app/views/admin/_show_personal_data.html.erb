@@ -1,0 +1,36 @@
+<div class='span-10'>
+	<label>DOB</label>&nbsp;<%= h(f.dob.to_date.strftime("%Y.%m.%d")) + @spacer %>
+	<label>PHONE</label>&nbsp;<%= h(f.phone) + @spacer %>
+	<label>EMAIL</label>&nbsp;<%= h(f.email) + @spacer %>
+	<label>ADDRESS</label>&nbsp;
+	<%= h(f.street) %>,&nbsp;
+	<%= h(f.city) %>,&nbsp;
+	<%= h(f.state) %>,&nbsp;
+	<%= h(f.zip) %>
+</div>
+
+<div class="span-14 last">
+	<% if @user && @user.pstreet && @user.pstreet != ""  -%>
+		<label>PERMANENT RESIDENCE</label>&nbsp;
+		<%= h(f.pstreet) %>,&nbsp;
+		<%= h(f.pcity) %>,&nbsp;
+		<%= h(f.pstate) %>,&nbsp;
+		<%= h(f.pzip) %>&nbsp;
+		<%= h(f.pphone) %>
+		<br class='clear' />
+		<br class='clear' />
+	<% else -%>
+		&nbsp;
+	<% end -%>
+</div>
+
+<h3 class='clear'>Optional Questions</h3>
+
+<div class="span-20 last">
+	<%= "<label>CITIZENSHIP</label>&nbsp;" + h(f.citizenship) + @spacer if f.citizenship %>
+	<%= "<label>COUNTRY OF RESIDENCE</label>&nbsp;" + h(f.cresidence) + "&nbsp;&nbsp;&nbsp; " unless f.cresidence == '' || f.cresidence == nil %>
+	<label>GENDER</label>&nbsp;<%= h(f.gender) + @spacer %>
+	<label>ETHNICITY</label>&nbsp;<%= h(f.ethnicity) + @spacer%> 
+	<label>RACE</label>&nbsp;<%= h(f.race) + @spacer %>
+	<label>DISABILITY</label>&nbsp;<%= f.disability == "" ? ("Prefer not to respond" + @spacer) : (h(f.disability) + @spacer) %>
+</div>

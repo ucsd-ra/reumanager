@@ -1,0 +1,6 @@
+<h2>Database Export</h2>
+<p><%= link_to "&nbsp;", "/nsfreu/spreadsheets/" + @filename, :class => "ss_page_white_excel ss_sprite" %><%= link_to @filename || "Download", "/nsfreu/spreadsheets/" + @filename %></p>
+
+<br class="clear">
+
+<%= link_to_remote "Close", :url => { :action => "close_export" }, :html => {:class => "button"} %>

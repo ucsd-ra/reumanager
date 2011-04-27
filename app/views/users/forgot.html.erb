@@ -1,0 +1,16 @@
+<div class="push-5 span-12" id="login_page">
+	<% form_tag( { :action => "forgot"}, :class => "prepend-1") do -%>
+	<h3>Password Reset</h3>
+	<p>Please enter the email account used on our site</p>
+	<div class='right'>
+		<p id="submit"><%= submit_tag 'Send', :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %></p>		
+	</div>
+	
+		<div>
+			<label for="email">Email</label>
+			&nbsp;&nbsp;
+			<%= text_field_tag 'email' %>			
+		</div>
+	<% end -%>
+	
+</div>
