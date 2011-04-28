@@ -1,0 +1,14 @@
+development:
+  domain: localhost:3000
+
+test:
+  domain: test.host
+
+production:
+  domain: be.ucsd.edu/nsfreu
+  university: UC San Diego
+  department: Bioengineering
+  application_deadline: Tue, 6 Mar 2012 00:00:00 -0700
+  start_date: Mon, 11 Jun 2012
+  end_date: Mon, 20 Aug 2012
+  check_back_date: Fri, 1 Feb 2013
