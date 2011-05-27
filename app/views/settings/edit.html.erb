@@ -1,20 +1,18 @@
-<h1>Editing setting</h1>
-
-<% form_for(@setting) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :value %><br />
-    <%= f.text_area :value %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @setting %> |
-<%= link_to 'Back', settings_path %>
+<% form_tag({:action => 'edit'}) do %>
+	<h2>Settings</h2>
+	<div>
+		<p><%= setting_text_field :app_title, :label => "Application Title" %></p>
+		<p><%= setting_text_field :domain %></p>
+		<p><%= setting_text_field :university %></p>
+		<p><%= setting_text_field :department %></p>
+		<p><%= setting_datetime_select :application_deadline %></p>
+		<p><%= setting_date_select :program_start_date %></p>
+		<p><%= setting_date_select :program_end_date %></p>
+		<p><%= setting_date_select :check_back_date %></p>
+		<p><%= setting_text_field :mail_from %></p>
+		<p><%= setting_text_field :password_min_length %></p>
+		<p><%= setting_text_field :attachment_max_size %></p>
+	</div>
+	
+	<%= submit_tag ('Save') %>
+<% end -%>	

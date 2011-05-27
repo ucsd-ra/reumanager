@@ -16,6 +16,13 @@
 				<li class="last"><%= link_to "Login", { :controller => "sessions", :action => "new" } %></li>
 		<% end -%>
 
+		<% if current_user && check_admin -%>		
+			<% if params[:controller] == "settings" -%>
+				<li class="selected"><%= link_to "Settings", { :controller => 'settings' }%></li>
+			<% else -%>
+				<li><%= link_to "Settings", { :controller => 'settings' }%></li>
+			<% end -%>
+		<% end -%>
 			
 		<% if current_user && check_admin -%>		
 			<% if params[:controller] == "admin" -%>
