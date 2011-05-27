@@ -33,7 +33,7 @@ class SettingsController < ApplicationController
         value.delete_if {|v| v.blank? } if value.is_a?(Array)
         Setting[name] = value
       end
-      flash[:notice] = ('Successfull update')
+      flash[:notice] = ('Settings updated successfully')
       redirect_to :action => 'edit'
     else
       

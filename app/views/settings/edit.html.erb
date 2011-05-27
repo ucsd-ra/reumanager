@@ -11,7 +11,7 @@
 		<p><%= setting_date_select :check_back_date %></p>
 		<p><%= setting_text_field :mail_from %></p>
 		<p><%= setting_text_field :password_min_length %></p>
-		<p><%= setting_text_field :attachment_max_size %></p>
+		<p><%= setting_text_field :attachment_max_size, :label => "Attachment Max Size (in KB)" %></p>
 	</div>
 	
 	<%= submit_tag ('Save') %>

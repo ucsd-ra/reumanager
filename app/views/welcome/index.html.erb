@@ -28,7 +28,7 @@
 		<h4 class="bold center">Eligibility Requirements</h4>
 		<ul>
 		 	<li>Full-time undergraduate student</li>
-		 	<li>Graduating fall 2011 or later</li>
+		 	<li>Graduating fall <%= Time.now.year %> or later</li>
 		 	<li>U.S. citizen or permanent resident</li>
 		</ul>
 	</div>
@@ -43,13 +43,14 @@
 	</div>
 	
 	<br class='clear'/>
-	<% if Date.today > Date.parse("Mar 5 2011") -%>
-		<h2 class='center red'><s>Application Deadline March 5, 2011</s></h2>
+	<%=  %>
+	<% if Date.today > Date.parse(Setting.application_deadline.to_date.strftime("%b %d %Y")) -%>
+		<h2 class='center red'><s>Application Deadline <%= Setting.application_deadline.to_date.strftime("%B %d, %Y") %></s></h2>
 		<h3 class="">The deadline has now passed.  If you already created an application, you can check the status using the button below.</h3>
 		<h1 class="padded center clears"><b><%= link_to "Application Status", { :controller => 'users', :action => 'status' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
-		<h3 class='clear'><b>Please check back in February for Summer 2012 Information</b></h3>
+		<h3 class='clear'><b>Please check back in <%= Setting.check_back_date.to_date.strftime("%B") %> for Summer <%= Setting.check_back_date.to_date.year %> Information</b></h3>
 	<% else -%>
-		<h3 class='clear center red'>Application Deadline March 5, 2011</h3>
+		<h3 class='clear center red'>Application Deadline <%= Setting.application_deadline.to_date.strftime("%B %d, %Y") %></h3>
 		<h1 class="padded center clear"><b><%= link_to "Apply Now", { :controller => 'users', :action => 'new' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
 	<% end -%>
 	

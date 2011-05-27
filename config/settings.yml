@@ -1,11 +1,11 @@
 app_title:
-  default: UCSD Bioengineerin NSFREU
+  default: NSF Research Experience for Undergraduates
 domain:
   default: be.ucsd.edu/nsfreu
 university:
   default: UC San Diego
 department:
-  default: Bioengineering
+  default: Department of Bioengineering
 application_deadline:
   default: Tue, 6 Mar 2012 00:00:00 -0700
 program_start_date:
