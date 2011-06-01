@@ -33,16 +33,14 @@
 				<%= content_tag 'div', h(flash[:notice]), :class => 'notice', :id => 'notice' if flash[:notice] %>
 				<%= content_tag 'div', h(flash[:success]), :class => 'success', :id => 'success' if flash[:success] %>
 			</div>
-			
-			<div class="container">			
+			<div class="container">
 				<%= render :partial => "layouts/header" %>
 				<div id="content">
-					<%= yield %>					
+					<%= yield %>
 				</div>
 			</div>
 			<%= render :partial => "layouts/footer" %>
 		</div>
-		
 		<% unless params[:controller] == "welcome" -%>
 			<% javascript_tag :defer => 'defer' do -%>
 				if (isVisible('success')) {
@@ -61,7 +59,7 @@
 					$('wait_box').hide();
 				  	$('notice').fade( { duration: 4 } );
 					Element.fade.delay(0.1, 'overlay');
-					Element.fade.delay(0.1, 'opaque_overlay');				
+					Element.fade.delay(0.1, 'opaque_overlay');
 				}
 		  	<% end -%>
 			<% javascript_tag :defer => 'defer' do -%>
@@ -84,7 +82,6 @@
 		reinvigorate.track("f4599-rg1096s3x4");
 		} catch(err) {}
 		</script>
-		
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-18195734-12']);

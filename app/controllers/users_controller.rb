@@ -44,7 +44,7 @@ class UsersController < ApplicationController
       redirect_to( :controller => "users", :action => "status" )
     else
       logout_killing_session!
-			if Time.now > DateTime.new(2011,3,6,8,0)
+			if Time.now > Setting.application_deadline.to_date
 	      flash[:notice] = 'The application deadline has past.'
       	redirect_to(:controller => 'welcome')
       else
