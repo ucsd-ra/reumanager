@@ -52,8 +52,12 @@ module SettingsHelper
   end
 
   def setting_label(setting, options={})
+    @html = ''
     label = options.delete(:label)
-    label != false ? content_tag("label", (label || "#{setting.to_s.titleize}")) : ''
+    description = options.delete(:description)
+    label != false ? @html << content_tag("label", (label || "#{setting.to_s.titleize}")) : @html
+    description != nil ? @html << ("<br /><small>" + description + "</small>") : nil
+    return @html
   end
 
 end

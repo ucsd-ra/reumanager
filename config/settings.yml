@@ -6,6 +6,8 @@ university:
   default: UC San Diego
 department:
   default: Department of Bioengineering
+application_start:
+  default: Mon, 2 Jan 2012 00:00:00 -0700
 application_deadline:
   default: Tue, 6 Mar 2012 00:00:00 -0700
 program_start_date:
