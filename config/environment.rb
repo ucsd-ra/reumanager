@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.11' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.12' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -27,19 +27,19 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'carmen'
+  config.gem 'carmen', :version => '0.2.8'
   config.gem 'exception_notification', :version => '2.3.3.0'
   config.gem 'faker', :lib => 'faker' 
-  config.gem 'paperclip'
-  config.gem 'pdf-writer', :lib => 'pdf/writer'
+  config.gem 'paperclip', :version => '2.3.15'
+  config.gem 'pdf-writer', :lib => 'pdf/writer', :version => '1.1.8'
 #  config.gem 'machinist', :lib => 'machinist'
 #  config.gem 'pickle'
-  config.gem 'rcov'
-  config.gem 'redbox'
-  config.gem 'RedCloth', :lib => 'RedCloth'
-  config.gem 'restful_authentication', :lib => 'restful_authentication'
-  config.gem 'spreadsheet', :lib => 'spreadsheet'
-  config.gem 'ssl_requirement', :lib => 'ssl_requirement'
+  config.gem 'rcov', :version => '0.9.9'
+  config.gem 'redbox', :version => '1.0.4'
+  config.gem 'RedCloth', :lib => 'RedCloth', :version => '4.2.7'
+  config.gem 'restful_authentication', :lib => 'restful_authentication', :version => '1.1.6'
+  config.gem 'spreadsheet', :lib => 'spreadsheet', :version => '0.6.5.5'
+  config.gem 'ssl_requirement', :lib => 'ssl_requirement', :version => '0.1.0'
   config.gem 'will_paginate', :lib => 'will_paginate', :version => '2.3.15'
   config.gem 'yaml_db', :version => '0.1.0'
 

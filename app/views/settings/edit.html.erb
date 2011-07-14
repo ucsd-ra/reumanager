@@ -1,6 +1,6 @@
 <% form_tag({:action => 'edit'}) do %>
 	<h2>Settings</h2>
-	<p><small>The settings below are used as variables throughout the site.  You can use these through the site's template files.</small>
+	<p><small>The settings below are used as variables throughout the site. The descriptions below are for the default locations.  You may change the location of these variables through the site's template files by adding/removing markup in the following format:<br /> &lt;%= Setting.setting_name %> &nbsp;&nbsp;&nbsp;(e.g. &lt;%= Setting.application_deadline %> ).</small>
 	<div>
 		<p><%= setting_text_field :app_title, :label => "Application Title", :description => "This text will appear in the Page Title and in the Header" %></p>
 		<p><%= setting_text_field :domain, :description => "This is used to create the links used in email confirmations.  This needs to be the same as the website (e.g. nsfreu.be.ucsd.edu or be.ucsd.edu/nsfreu)" %></p>
@@ -17,4 +17,4 @@
 	</div>
 	
 	<%= submit_tag ('Save') %>
-<% end -%>	
+<% end -%>
