@@ -60,4 +60,9 @@ module AdminHelper
     end
   end
   
+  def student_select
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
+    @html = "<label>View application:</label> "
+    @html <<  select_tag("student_select", options_for_student_select(all_students, "id", "lastname", "firstname", "status", admin_selected_user )) if @all_students != []
+  end
 end
