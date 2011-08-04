@@ -39,7 +39,7 @@ Rails::Initializer.run do |config|
   config.gem 'RedCloth', :lib => 'RedCloth', :version => '4.2.7'
   config.gem 'restful_authentication', :lib => 'restful_authentication', :version => '1.1.6'
   config.gem 'spreadsheet', :lib => 'spreadsheet', :version => '0.6.5.5'
-  config.gem 'ssl_requirement', :lib => 'ssl_requirement', :version => '0.1.0'
+#  config.gem 'ssl_requirement', :lib => 'ssl_requirement', :version => '0.1.0'
   config.gem 'will_paginate', :lib => 'will_paginate', :version => '2.3.15'
   config.gem 'yaml_db', :version => '0.1.0'
 
