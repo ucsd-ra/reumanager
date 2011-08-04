@@ -64,6 +64,21 @@ class ApplicationController < ActionController::Base
     current_user.role.name == "admin" || current_user.id == 1 
   end
 
+private
+  def ensure_proper_protocol
+    return true if ssl_allowed?
+
+    if ssl_required? && !request.ssl?
+      redirect_to "https://" + request.host + "/nsfreu" + request.request_uri
+      flash.keep
+      return false
+    elsif request.ssl? && !ssl_required?
+      redirect_to "http://" + request.host + "/nsfreu" + request.request_uri
+      flash.keep
+      return false
+    end
+  end
+    
 #	def logger
 #		@hosts = ['76.88.119.175', '184.72.43.42', '132.239.8.57']
 #		if @hosts.include?(request.remote_ip)
