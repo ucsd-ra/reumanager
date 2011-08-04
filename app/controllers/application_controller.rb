@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
   require 'pdf/writer'
   require 'spreadsheet'
   include AuthenticatedSystem
-  include SslRequirement
   
 	rescue_from(ActionController::RoutingError) { render :file => 'public/404.html', :status => 404 }
 	rescue_from(ActionController::InvalidAuthenticityToken) { render :file => 'public/422.html', :status => 422}
