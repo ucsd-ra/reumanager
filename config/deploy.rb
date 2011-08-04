@@ -1,5 +1,6 @@
 require 'erb'
-require 'config/ubuntu-server/ubuntu_tasks'
+require "rvm/capistrano"
+set :rvm_ruby_string, "ree"
 default_run_options[:pty] = true
 
 set :application, "nsfreu" #matches names used in smf_template.erb
@@ -15,17 +16,27 @@ role :db,  domain, :primary => true
  
 set :server_name, "fortuna.ucsd.edu"
 
-deploy.task :restart do
-  ubuntu.restart
-end
- 
-deploy.task :start do
-  ubuntu.start
-end
- 
-deploy.task :stop do
-  ubuntu.stop
-end
+## modified for passenger standalone
+set :rails_env,      "production"
+set :passenger_port, 3000
+set :passenger_cmd,  "passenger"
 
-after :deploy, 'deploy:cleanup'
-after :deploy, 'ubuntu:chown'
+namespace :deploy do
+  task :start, :roles => :app, :except => { :no_release => true } do
+    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
+  end
+
+  task :stop, :roles => :app, :except => { :no_release => true } do
+    run "cd #{current_path} && #{passenger_cmd} stop -p #{passenger_port}"
+  end
+
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run <<-CMD
+      if [[ -f #{current_path}/tmp/pids/passenger.#{passenger_port}.pid ]];
+      then
+        cd #{current_path} && #{passenger_cmd} stop -p #{passenger_port};
+      fi
+    CMD
+    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
+  end
+end
