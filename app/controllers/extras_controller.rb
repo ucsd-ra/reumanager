@@ -1,6 +1,6 @@
 class ExtrasController < ApplicationController
   before_filter :login_from_cookie, :login_required, :application_complete?
-  ssl_required :index, :new, :edit, :create, :update
+#  ssl_required :index, :new, :edit, :create, :update
   
   def index
     if current_user.submitted_at && !is_admin
