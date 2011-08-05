@@ -1,13 +1,15 @@
 require 'erb'
+require "bundler/capistrano"
 require "rvm/capistrano"
+
 set :rvm_ruby_string, "ree"
 default_run_options[:pty] = true
 
 set :application, "nsfreu" #matches names used in smf_template.erb
 set :repository,  "https://www.be.ucsd.edu/svn/nsfreu/trunk"
-set :domain, 'laguna.ucsd.edu'
+set :domain, 'vishnu.ucsd.edu'
 set :deploy_to, "/var/rails/#{application}" # I like this location
-set :user, "beadmin"
+set :user, "ubuntu"
 set :keep_releases, 2
 
 role :app, domain
