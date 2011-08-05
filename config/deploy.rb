@@ -15,8 +15,7 @@ set :keep_releases, 2
 role :app, domain
 role :web, domain
 role :db,  domain, :primary => true
- 
-set :server_name, "fortuna.ucsd.edu"
+set :server_name, "vishnu.ucsd.edu"
 
 ## modified for passenger standalone
 set :rails_env,      "production"
