@@ -18,14 +18,16 @@ class SettingsController < ApplicationController
           key = key.gsub(/\(\di\)/,'')
           date = Date.civil(params['date_settings']["#{key}(1i)"].to_i,params['date_settings']["#{key}(2i)"].to_i,params['date_settings']["#{key}(3i)"].to_i)
           settings[key] = date.to_s
+          logger.info "Setting for date_setting #{key} added to settings hash."
         end
       end
 
       params['datetime_settings'].each do |key, value|
-        if key.include? '(1i)'
+        if key.include? '(4i)'
           key = key.gsub(/\(\di\)/,'')
           date = DateTime.civil(params['datetime_settings']["#{key}(1i)"].to_i,params['datetime_settings']["#{key}(2i)"].to_i,params['datetime_settings']["#{key}(3i)"].to_i,params['datetime_settings']["#{key}(4i)"].to_i,params['datetime_settings']["#{key}(5i)"].to_i)
           settings[key] = date.to_s
+          logger.info "Setting for datetime_setting #{key} added to settings hash."
         end
       end
   
@@ -34,6 +36,7 @@ class SettingsController < ApplicationController
         # remove blank values in array settings
         value.delete_if {|v| v.blank? } if value.is_a?(Array)
         Setting[name] = value
+        logger.info "Setting added for #{name}"
       end
       flash[:notice] = ('Settings updated successfully')
       redirect_to :action => 'edit'
