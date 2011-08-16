@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110428003820) do
+ActiveRecord::Schema.define(:version => 20110816222400) do
 
   create_table "academic_records", :force => true do |t|
     t.integer  "user_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20110428003820) do
     t.text     "personal_statement"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "learn_more"
   end
 
   add_index "extras", ["user_id"], :name => "index_extras_on_user_id", :unique => true

@@ -20,14 +20,20 @@
 </div>
 <%= e.text_area 'gpa_comments', :class => "extra" %>
 
-<div>
+<div id="learn">
 	<label>How did you learn about Research Experience for Undergrads (REU)?</label><br />
 	<%= e.radio_button 'learn', 'NSF REU Website' %><label>NSF REU Website</label>&nbsp;&nbsp;&nbsp;
 	<%= e.radio_button 'learn', 'Professor' %><label>Professor</label>&nbsp;&nbsp;&nbsp;
 	<%= e.radio_button 'learn', 'Poster' %><label>Poster</label>&nbsp;&nbsp;&nbsp;
 	<%= e.radio_button 'learn', 'Email' %><label>Email</label>&nbsp;&nbsp;&nbsp;
-	<%= e.radio_button 'learn', 'Other' %><label>Other</label>&nbsp;&nbsp;&nbsp;
+	<%= e.radio_button 'learn', 'Other', :onclick => "$('learn_more').show();" %><label>Other</label>&nbsp;&nbsp;&nbsp;
+  <div id="learn_more" style="display:none;">
+  	<label>Please elaborate:</label><br />
+    <%= e.text_field 'learn_more', :class => "extra" %>  
+    <small><%= link_to_function "Cancel", "$('learn_more').hide();" %></small>
+  </div>
 </div>
+
 <br style="clear:both;" />
 <div>
 	<label>Please Complete a brief essay (up to 250 words) explaining why you are interested in our program and how the experience may help you achieve your future goals:</label>
