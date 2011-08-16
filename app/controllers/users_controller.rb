@@ -162,7 +162,6 @@ class UsersController < ApplicationController
 		@user = current_user
 		@recommendation = current_user.recommendation
 		@recommender = current_user.recommender
-		logout_killing_session!
 	end
   
   def app_thanks
