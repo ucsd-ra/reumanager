@@ -15,6 +15,8 @@
 		<p><%= setting_text_field :mail_from, :description => "This will be used in the reply-to value for emails sent from the application. This is also used in the footer as the email to contact for questions or comments about the website." %></p>
 		<p><%= setting_text_field :password_min_length, :description => "This sets the minimum length of the user password. A number larger than 7 is suggested." %></p>
 		<p><%= setting_text_field :attachment_max_size, :label => "Attachment Max Size (in KB)", :description => "This sets the maximum attachment size for file uploads. You may have trouble if you set this above 20MB in value.  By default this is set to 10 MB." %></p>
+		<h3>Text Snippets</h3>
+		<p>Below are various text snippets used throughout the site.  The application uses a Markup engine called RedCloth to style the text.  The content can be formatted with additional styling and advanced markup such as lists, tables, and links can be created. Please see the <%= link_to "reference", "http://redcloth.org/textile" %> for complete information on the styling capabilities.</p>
 		<p><%= setting_text_area :general_description, :description => "This is the text used as a 'general description' for your program.  It is displayed on the front page under the main image." %></p>
 		<p><%= setting_text_area :highlights, :description => "" %></p>
 		<p><%= setting_text_area :eligibility_requirements, :description => "" %></p>
