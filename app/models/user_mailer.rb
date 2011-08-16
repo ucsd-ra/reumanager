@@ -1,7 +1,7 @@
 class UserMailer < ActionMailer::Base
 
   def reg_confirmation( firstname, lastname, email, token)
-    @subject    = "UCSD Bioengineering - NSF REU Registration Confirmation for #{firstname} #{lastname}"
+    @subject    = "#{Setting.application_title} Confirmation for #{firstname} #{lastname}"
     @recipients = email
     @from       = "#{Setting.university} #{Setting.department} <#{Setting.mail_from}>"
     @sent_on    = Time.now
@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def app_confirmation( id, token, firstname, lastname, email)
-    @subject    = "UCSD REU Confirmation for #{firstname} #{lastname}"
+    @subject    = "#{Setting.application_title} Confirmation for #{firstname} #{lastname}"
     @recipients = email
     @from       = "#{Setting.university} #{Setting.department} <#{Setting.mail_from}>"
     @sent_on    = Time.now
@@ -36,8 +36,8 @@ class UserMailer < ActionMailer::Base
 
     
   def complete_app(id, firstname, lastname, email)
-    @subject    = "UCSD REU Completed Application for #{firstname} #{lastname}"
-    @recipients = ['jgrevich@ucsd.edu'] # 'UCSD Bioengineering - NSF REU <nsfreu@be.ucsd.edu>', 
+    @subject    = "#{Setting.application_title} Completed Application for #{firstname} #{lastname}"
+    @recipients = # 'UCSD Bioengineering - NSF REU <nsfreu@be.ucsd.edu>', 
     @from       = "#{Setting.university} #{Setting.department} <#{Setting.mail_from}>"
     @sent_on    = Time.now
     @headers    = {}
@@ -54,7 +54,7 @@ class UserMailer < ActionMailer::Base
   end
   
   def complete_app_student(firstname, lastname, email)
-    @subject    = "UCSD REU Completed Application for #{firstname} #{lastname}"
+    @subject    = "#{Setting.application_title} Completed Application for #{firstname} #{lastname}"
     @recipients = email
     @from       = "#{Setting.university} #{Setting.department} <#{Setting.mail_from}>"
     @sent_on    = Time.now
@@ -70,7 +70,7 @@ class UserMailer < ActionMailer::Base
   end
   
   def application_reminder(firstname, lastname, email)
-    @subject    = "UCSD REU Application Reminder for #{firstname} #{lastname}"
+    @subject    = "#{Setting.application_title} Application Reminder for #{firstname} #{lastname}"
     @recipients = email
     @from       = "#{Setting.university} #{Setting.department} <#{Setting.mail_from}>"
     @sent_on    = Time.now
@@ -86,7 +86,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def rec_request(remail, id, token, firstname, lastname, email)
-    @subject    = "Recommendation Request for #{firstname} #{lastname}"
+    @subject    = "#{Setting.application_title} Recommendation Request for #{firstname} #{lastname}"
     @recipients = remail
     @from       = "#{Setting.university} #{Setting.department} <#{Setting.mail_from}>"
     @sent_on    = Time.now
@@ -104,7 +104,7 @@ class UserMailer < ActionMailer::Base
   end
   
   def rec_reminder(remail, id, token, firstname, lastname, email)
-    @subject    = "UCSD REU Recommendation Request for #{firstname} #{lastname}"
+    @subject    = "#{Setting.application_title} Recommendation Request for #{firstname} #{lastname}"
     @recipients = remail
     @from       = "#{Setting.university} #{Setting.department} <#{Setting.mail_from}>"
     @sent_on    = Time.now
@@ -122,7 +122,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def rec_confirmation(remail, firstname, lastname, email)
-    @subject    = "UCSD REU Recommendation Confirmation for #{firstname} #{lastname}"
+    @subject    = "#{Setting.application_title} Recommendation Confirmation for #{firstname} #{lastname}"
     @recipients = remail
     @from       = "#{Setting.university} #{Setting.department} <#{Setting.mail_from}>"
     @sent_on    = Time.now
@@ -138,7 +138,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def reset_password(user)
-    @subject    = "UCSD REU Password reset link for #{user.firstname} #{user.lastname}"
+    @subject    = "#{Setting.application_title} Password reset link for #{user.firstname} #{user.lastname}"
     @recipients = user.email
     @from       = "#{Setting.university} #{Setting.department} <#{Setting.mail_from}>"
     @sent_on    = Time.now
@@ -149,10 +149,9 @@ class UserMailer < ActionMailer::Base
 
   def rejection_letter(user)
     sleep(4.5)
-    @subject    = "UCSD REU Application Status for #{user.firstname} #{user.lastname}"
+    @subject    = "#{Setting.application_title} Application Status for #{user.firstname} #{user.lastname}"
     @recipients = user.email
     @from       = "#{Setting.university} #{Setting.department} <#{Setting.mail_from}>"
-    @bcc        = "jgrevich@ucsd.edu"
     @sent_on    = Time.now
     @headers    = {}
 
@@ -163,7 +162,6 @@ class UserMailer < ActionMailer::Base
     @subject    = "UCSD REU Application Status for #{user.firstname} #{user.lastname}"
     @recipients = user.email
     @from       = "#{Setting.university} #{Setting.department} <#{Setting.mail_from}>"
-    @bcc        = "jgrevich@ucsd.edu"
     @sent_on    = Time.now
     @headers    = {}
 

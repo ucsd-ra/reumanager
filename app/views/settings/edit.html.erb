@@ -6,8 +6,9 @@
 		<p><%= setting_text_field :domain, :description => "This is used to create the links used in email confirmations.  This needs to be the same as the website (e.g. nsfreu.be.ucsd.edu or be.ucsd.edu/nsfreu)" %></p>
 		<p><%= setting_text_field :university, :description => "This is used in the header and footer, by default, along with the department value below." %></p>
 		<p><%= setting_text_field :department, :description => "Similar to the above, this is used throughout the site to personalize your site." %></p>
-		<p><%= setting_datetime_select :application_start, :description => "This value is used to set an 'opening date' for the application system. After this date, students can apply. This also controls what buttons are displayed in the navbar and on the homepage (e.g. Apply Now and Login)" %></p>
-		<p><%= setting_datetime_select :application_deadline, :description => "This value is used to set a date for when applications can no longer be created or updated. Similar to the above value, buttons to apply are removed after this date." %></p>
+		<p><%= setting_datetime_select :application_start, :description => "This is the 'opening date' for the application system. After this date, students can apply. This also controls what buttons are displayed in the navbar and on the homepage (e.g. Apply Now and Login)" %></p>
+		<p><%= setting_datetime_select :application_deadline, :description => "This date determines when applications can no longer be created or updated. Similar to the above value, buttons to apply are removed after this date." %></p>
+		<p><%= setting_datetime_select :notification_date, :description => "This date is used to let the applicants know when to expect a response.  This is used in the confirmation emails." %></p>
 		<p><%= setting_date_select :program_start_date, :description => "This date is used in the header and confirmation emails to set when the NSFREU program begins." %></p>
 		<p><%= setting_date_select :program_end_date, :description => "Similar to the above value, this marks the end date for your NSFREU program." %></p>
 		<p><%= setting_date_select :check_back_date, :description => "Once the application process is closed (after the application deadline), this value will inform students when to check back for information about next year's application." %></p>

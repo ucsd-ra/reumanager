@@ -1,6 +1,10 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
+  def app_in_progress?
+    @alive = Time.now > Setting.application_start.to_date && Time.now < Setting.application_deadline.to_date
+  end
+  
   def app_navbar
     check_admin ? render(:partial => "layouts/admin_app_navbar") : render(:partial => "layouts/app_navbar")
   end

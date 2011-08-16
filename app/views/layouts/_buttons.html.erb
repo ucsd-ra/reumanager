@@ -46,13 +46,11 @@
 			<% end -%>
 		<% end -%>
 
-		<% if Time.now > Setting.application_start.to_date && Time.now < Setting.application_deadline.to_date  -%>
-			<% unless current_user -%>
-				<% if params[:controller] == "users" && params[:action] == "new" -%>
-					<li class="selected"><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
-				<% else -%>
-					<li><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
-				<% end -%>
+		<% if app_in_progress? && current_user == nil -%>
+			<% if params[:controller] == "users" && params[:action] == "new" -%>
+				<li class="selected"><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
+			<% else -%>
+				<li><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
 			<% end -%>
 		<% end -%>
 
