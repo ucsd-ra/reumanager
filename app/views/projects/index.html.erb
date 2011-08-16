@@ -22,7 +22,7 @@
 	
 	<br class="clear" />
 
-	<% if logged_in? -%>
-		<%= link_to 'New project', new_project_path %>
+	<% if logged_in? && check_admin -%>
+		<h3><%= link_to 'New project', new_project_path %></h3>
 	<% end -%>
 </div>

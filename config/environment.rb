@@ -27,21 +27,6 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'carmen', :version => '0.2.8'
-  config.gem 'exception_notification', :version => '2.3.3.0'
-  config.gem 'faker', :lib => 'faker' 
-  config.gem 'paperclip', :version => '2.3.15'
-  config.gem 'pdf-writer', :lib => 'pdf/writer', :version => '1.1.8'
-#  config.gem 'machinist', :lib => 'machinist'
-#  config.gem 'pickle'
-  config.gem 'rcov', :version => '0.9.9'
-  config.gem 'redbox', :version => '1.0.4'
-  config.gem 'RedCloth', :lib => 'RedCloth', :version => '4.2.7'
-  config.gem 'restful_authentication', :lib => 'restful_authentication', :version => '1.1.6'
-  config.gem 'spreadsheet', :lib => 'spreadsheet', :version => '0.6.5.5'
-#  config.gem 'ssl_requirement', :lib => 'ssl_requirement', :version => '0.1.0'
-  config.gem 'will_paginate', :lib => 'will_paginate', :version => '2.3.15'
-  config.gem 'yaml_db', :version => '0.1.0'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
