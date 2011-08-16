@@ -46,8 +46,8 @@
 			<% end -%>
 		<% end -%>
 
-		<% unless Time.now > DateTime.new(2011,3,6,8,0) -%>
-			<% unless current_user && current_user.role.name == 'student' -%>
+		<% if Time.now > Setting.application_start.to_date && Time.now < Setting.application_deadline.to_date  -%>
+			<% unless current_user -%>
 				<% if params[:controller] == "users" && params[:action] == "new" -%>
 					<li class="selected"><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
 				<% else -%>

@@ -1,4 +1,6 @@
 class SettingsController < ApplicationController
+  before_filter :login_from_cookie, :login_required, :check_admin
+
   # GET /settings
   # GET /settings.xml
 
