@@ -36,7 +36,7 @@ class SettingsController < ApplicationController
         # remove blank values in array settings
         value.delete_if {|v| v.blank? } if value.is_a?(Array)
         Setting[name] = value
-        logger.info "Setting updated for #{name} #{value}, it is now #{Setting[name]}"
+        logger.info "\n==========Setting updated for #{name}\n========== #{value}\n==========, it is now\n========== #{Setting[name]}\n=========="
       end
       flash[:notice] = ('Settings updated successfully')
       redirect_to :action => 'edit'
