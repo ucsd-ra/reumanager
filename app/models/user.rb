@@ -202,10 +202,15 @@ class User < ActiveRecord::Base
      self.save_with_validation(false)
    end
    
-    def make_token 
-      self.token = Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by{rand}.join)
-      self.token_created_at = Time.now
-    end
+   def make_token
+     self.token = Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by{rand}.join)
+     self.token_created_at = Time.now
+   end
+
+   def make_pw_token
+     self.pw_token = Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by{rand}.join)
+     self.pw_token_created_at = Time.now
+   end
 
 		def self.send_reminders
 			@users = User.all :conditions => ["role_id = ?", 1]

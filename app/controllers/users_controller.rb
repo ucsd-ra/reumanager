@@ -187,7 +187,7 @@ class UsersController < ApplicationController
   def forgot
     return unless request.post?
     if @user = User.find_by_email(params[:email])
-      @user.make_token
+      @user.make_pw_token
       @user.save_with_validation(false)
       UserMailer.deliver_reset_password(@user)
       flash[:notice] = "Password reset link, sent."  
@@ -199,21 +199,22 @@ class UsersController < ApplicationController
   end
 
   def reset
-    unless @user = User.find_by_token(params[:id])
+    unless @user = User.find_by_pw_token(params[:id])
       redirect_to :controller =>'sessions', :action => 'new'
     end
 
     if request.post?
-      @user = User.find_by_token(params[:id])
+      @user = User.find_by_pw_token(params[:id])
       @user.password = params[:password]
       @user.password_confirmation = params[:password_confirmation]
     
       if @user.save && params[:password] != '' && params[:password_confirmation] != '' && params[:password]
+        @user.update_attributes(:pw_token => nil, :pw_token_created_at => nil)
         logout_killing_session!
         flash[:notice] = 'Password was updated, please login.'
         redirect_to :action => 'pwreset'
       else
-        render :action => "reset", :id => @user.token
+        render :action => "reset", :id => @user.pw_token
       end
 
     end
