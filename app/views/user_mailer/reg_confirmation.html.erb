@@ -15,4 +15,4 @@
 	</li>
 </ol>
 
-<p>Please verify your account and continue your REU application by clicking the following link: <%= link_to "https://www.be.ucsd.edu/nsfreu/activate/#{@token}", "https://www.be.ucsd.edu/nsfreu/activate/#{@token}" %></p>
+<p>Please verify your account and continue your REU application by clicking the following link: <%= link_to ("https://" + Settings.domain + "/activate/#{@token}"), ("https://" + Settings.domain + "/activate/#{@token}") %></p>
