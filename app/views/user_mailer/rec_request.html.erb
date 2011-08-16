@@ -1,4 +1,4 @@
-<p><%= @firstname + " " + @lastname + "( " + @email + " )" %> has requested a recommendation for the <%= Setting.application_title %> summer program at the <%= Setting.department %>, <%= Setting.university %>.</p>
+<p><%= @firstname + " " + @lastname + "( " + @email + " )" %> has requested a recommendation for the <%= Setting.app_title %> summer program at the <%= Setting.department %>, <%= Setting.university %>.</p>
 
 <p>Please submit your recommendation online by <%= Setting.application_deadline.to_date.strftime("%A, %b %d") %> at: <%= link_to ("https://" + Setting.domain + "/recommendations/new/#{@token}"), ("https://" + Setting.domain + "/recommendations/new/#{@token}") %></p>
 
