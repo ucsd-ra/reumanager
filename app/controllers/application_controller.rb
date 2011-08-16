@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   filter_parameter_logging :password, :password_confirmation, :lastname, :dob, :street, :city, :state, :zip, :phone, :pstreet, :pcity, :pstate, :pzip, :pphone, :citizenship, :cresidence, :gender, :ethnicity, :race, :disability
-
+  before_filter :check_settings_cache
+  
   require 'pdf/writer'
   require 'spreadsheet'
   include AuthenticatedSystem
@@ -35,6 +36,13 @@ class ApplicationController < ActionController::Base
 #			logger.level = Logger::INFO
 #		end
 #	end
+
+  def check_settings_cache
+    # Checks if settings have changed since the values were read
+    # and clears the cache hash if it's the case
+    # Called once per request
+    Setting.check_cache
+	end
 	
   def ssl_required?
     return false if RAILS_ENV == 'test' || RAILS_ENV == 'development'

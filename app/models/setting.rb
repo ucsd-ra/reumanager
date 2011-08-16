@@ -62,7 +62,6 @@ class Setting < ActiveRecord::Base
       per_page_options.split(%r{[\s,]}).collect(&:to_i).select {|n| n > 0}.sort
     end
 
-
     # Checks if settings have changed since the values were read
     # and clears the cache hash if it's the case
     # Called once per request
