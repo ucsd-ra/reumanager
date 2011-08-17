@@ -149,6 +149,9 @@ Admin
 	#status h3 { padding:3px; position:absolute; text-align:center; -moz-border-radius:8px; -webkit-border-radius:8px;}
 	#search { float:left; }
 	#search form { background-color:#fff; border:0; margin:0; padding:0; width:auto; }
+	#reset {float:left; }
+	a.reset {color:#c00}
+	a:hover.reset {background-color:#c00; color:#fff;}
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Pagination
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/

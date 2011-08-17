@@ -254,6 +254,19 @@ require 'ftools'
     end
   end
   
+  def reset_db
+    if request.post? 
+      if params[:delete] == 'delete'
+        system "cd #{RAILS_ROOT};rake db:migrate:reset RAILS_ENV='production';touch tmp/restart.txt;"
+        flash[:succes] = "Database wiped.  You may need to restart your web server for the changes to take effect."
+        redirect_to admin_path
+      else
+        flash[:error] = "There was some sort of problem. Try again."
+        redirect_to reset_db_path
+      end
+    end
+  end
+  
   protected
   def expunge_excel_files
     Dir["#{RAILS_ROOT}/public/spreadsheets/*"].each {|f| File.delete f} if File.exist?("#{RAILS_ROOT}/public/spreadsheets")
