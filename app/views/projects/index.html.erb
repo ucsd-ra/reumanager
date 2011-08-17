@@ -2,7 +2,7 @@
 	<%= render :partial => "layouts/header_text" %>
 	<br />
 	<hr />
-	
+	<%= content_tag :h2, "No projects added." if @projects.count < 1%>
 	<% @years.each do |y| %>
 		<div class="span-11 bordered colored rounded projects_column">
 			<h2><%= y %></h2>
