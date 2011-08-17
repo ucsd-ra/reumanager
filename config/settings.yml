@@ -33,5 +33,5 @@ highlights:
 eligibility_requirements:
   default: "h4. Eligibility Requirements\n\n* Full-time undergraduate student\n* U.S. citizen or permanent resident"
 application_information:
-  default: "h4. Application Information* Major components of the online application include: a personal statement, a copy of your unofficial school transcript (as a pdf), and contact information for one reference\n* The person writing your letter of recommendation will be contacted via e-mail and will submit their letter online\n* Once you begin an application, you can check the status of it any time by logging into this website\n* Only complete applications will be reviewed"
+  default: "h4. Application Information\n\n* Major components of the online application include: a personal statement, a copy of your unofficial school transcript (as a pdf), and contact information for one reference\n* The person writing your letter of recommendation will be contacted via e-mail and will submit their letter online\n* Once you begin an application, you can check the status of it any time by logging into this website\n* Only complete applications will be reviewed"
   
