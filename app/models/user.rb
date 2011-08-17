@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
   def activate!
     @activated = true
     self.activated_at = Time.now.utc
+    self.make_token
     save(false)
   end
   
