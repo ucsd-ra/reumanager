@@ -8,7 +8,7 @@
 </div>
 
 <div class="span-17 last transcript">
-	<label>TRANSCRIPT</label>&nbsp;<%= link_to " #{@user.academic_record.transcript.original_filename}", (ActionController::Base.relative_url_root + @user.academic_record.transcript.url), :class => "ss_sprite ss_page_white_acrobat" %>
+	<label>TRANSCRIPT</label>&nbsp;<%= link_to " #{@user.academic_record.transcript.original_filename}", ((ActionController::Base.relative_url_root || '') + @user.academic_record.transcript.url), :class => "ss_sprite ss_page_white_acrobat" %>
 	<% if f.p_college != "" && f.p_college != nil -%>
 		<br /><label>PREVIOUS UNIVERSITY</label>&nbsp;<%= h(f.p_college) %>
 		(<%= h(f.p_college_start.to_date.strftime("%Y.%m")) %>&nbsp;-&nbsp;

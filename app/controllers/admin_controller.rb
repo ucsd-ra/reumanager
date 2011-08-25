@@ -92,7 +92,7 @@ require 'ftools'
     
   def total
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC'
+    @students = User.paginate :conditions => ['role_id = ?', 2], :page => params[:page], :order => 'lastname ASC'
 		@export = User.all :order => 'lastname ASC', :conditions => [ "role_id = ?", 2 ]
 		
     render :action => "list"
@@ -179,15 +179,16 @@ require 'ftools'
     
     # setup headers
     worksheet.row(0).default_format = page_title_format
-    worksheet[0,0] = "#{Time.now.year} UCSD NSFREU Applicant Data" 
+    worksheet[0,0] = "#{Time.now.year} NSFREU Applicant Data" 
     worksheet.row(1).default_format = header_format
     worksheet.row(1).concat %w{ID Name Email Gender Race Ethnicity Disability Current\ University Academic\ Year Major/Minor GPA Recommender\ Name Recommender\ Association Overall\ Promise Undergrad\ Institution?}
     worksheet.row(1).default_format = header_format
 
     # get applicant data
 		case params[:prev_action]
-		when "incomomplete"
-			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
+		when "incomplete"
+		  logger.info "exporting incomplete applicants"
+			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is ? and role_id = ?", nil, 2 ], :include => [ :academic_record, :recommender, :recommendation ]
 		when "submitted"
 			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
 		when "complete"

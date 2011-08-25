@@ -7,8 +7,8 @@ class Recommendation < ActiveRecord::Base
   after_create :send_confirmation
   
   def make_pdf_and_send_app
-    @user = User.find_by_id(self.user_id)
-    @recommender = Recommender.find_by_id(self.recommender_id)
+    @user = User.find(self.user_id)
+    @recommender = @user.recommender
     pdf = PDF::Writer.new
     pdf.text "Recommendation for #{@user.firstname} #{@user.lastname}\n\n", :font_size => 20, :justification => :left
     pdf.move_pointer(24)
@@ -66,8 +66,8 @@ class Recommendation < ActiveRecord::Base
   end
   
   def make_pdf(pdf)
-    @user = User.find_by_id(self.user_id)
-    @recommender = Recommender.find_by_id(self.recommender_id)
+    @user = User.find(self.user_id)
+    @recommender = @user.recommender
     pdf.text "Recommendation for #{@user.firstname} #{@user.lastname}\n\n", :font_size => 20, :justification => :left
     pdf.move_pointer(24)
 
