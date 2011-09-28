@@ -29,7 +29,7 @@ attachment_max_size:
 general_description:
   default: "h3. General Description\n\nThe National Science Foundation's Research Experience for Undergraduates (NSF-REU) program provides undergraduate students access to state-of-the-art facilities, the opportunity to work with accomplished and experienced faculty mentors, and to participate in highly collaborative, cutting-edge research projects.\n"
 highlights:
-  default: "h4. Highlights\n\n* $4,500 stipend\n* On-campus housing or housing allowance\n* Travel to and from the REU Site\n* Hands-on research experience\n* Weekly professional development workshops\n* Social events"
+  default: "h4. Highlights\n\n* $X,XXX stipend\n* On-campus housing or housing allowance\n* Travel to and from the REU Site\n* Hands-on research experience\n* Weekly professional development workshops\n* Social events"
 eligibility_requirements:
   default: "h4. Eligibility Requirements\n\n* Full-time undergraduate student\n* U.S. citizen or permanent resident"
 application_information:
