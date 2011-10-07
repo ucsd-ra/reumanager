@@ -206,7 +206,7 @@ require 'ftools'
 			when "Reject"
 		    @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Reject',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
 			else
-		    @applicants = User.all(:order => "id ASC", :conditions => ["role_id = ? AND completed_at IS NOT ?", 2, nil], :include => [ :academic_record, :recommender, :recommendation ])
+		    @applicants = User.all :order => 'lastname ASC', :conditions => ['role_id = ?', 2], :include => [ :academic_record, :recommender, :recommendation ]
 			end
 		end
     

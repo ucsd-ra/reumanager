@@ -1,7 +1,7 @@
 app_title:
   default: NSFREU Demo (Your App Title Here)
 domain:
-  default: vishnu.ucsd.edu/nsfreu
+  default: www.be.ucsd.edu/nsfreudemo
 university:
   default: UC San Diego
 department:
