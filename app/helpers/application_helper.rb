@@ -41,7 +41,7 @@ module ApplicationHelper
   end
   
   def check_transcript(user)
-    result = true if user && user.academic_record.transcript && user.academic_record.valid?
+    result = true if user && user.academic_record.transcript_file_name && user.academic_record.valid?
   end
   
   def check_pdf(user)
@@ -61,7 +61,7 @@ module ApplicationHelper
   end
 
   def check_extras(user)
-    result = true if user && user.extra
+    result = true if user && user.extra && user.extra.personal_statement.size > 2
   end
 
   def check_all(user)
