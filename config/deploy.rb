@@ -8,7 +8,6 @@ set :user, "ubuntu"
 set :keep_releases, 2
 set :rvm_ruby_string, "ree@#{application}"
 set :server_name, "vishnu.ucsd.edu"
-set :use_sudo, true
 
 default_run_options[:pty] = true
 
