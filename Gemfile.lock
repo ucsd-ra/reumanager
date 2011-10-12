@@ -23,7 +23,6 @@ GEM
     cocaine (0.2.0)
     color (1.4.1)
     daemon_controller (0.2.6)
-    exception_notification (2.3.3.0)
     faker (1.0.1)
       i18n (~> 0.4)
     fastthread (1.0.7)
@@ -92,7 +91,6 @@ DEPENDENCIES
   RedCloth (= 4.2.7)
   capistrano
   carmen (= 0.2.8)
-  exception_notification (= 2.3.3.0)
   faker
   mocha
   mysql

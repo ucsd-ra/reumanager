@@ -3,7 +3,7 @@ source 'http://gems.github.com'
 
 gem 'rails', '2.3.14'
 gem 'carmen', '0.2.8'
-gem 'exception_notification', '2.3.3.0'
+#gem 'exception_notification', '2.3.3.0'
 gem 'faker', :require => 'faker'
 gem 'paperclip', '2.3.15'
 gem 'pdf-writer', '1.1.8', :require => 'pdf/writer'
