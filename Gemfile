@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'rails', '2.3.12'
+gem 'rails', '2.3.14'
 gem 'carmen', '0.2.8'
 #gem 'exception_notification', '2.3.3.0'
 gem 'faker', :require => 'faker'
