@@ -6,7 +6,6 @@ gem 'carmen', '0.2.8'
 gem 'exception_notification', '2.3.3.0'
 gem 'faker', :require => 'faker'
 gem 'paperclip', '2.3.15'
-gem 'passenger'
 gem 'pdf-writer', '1.1.8', :require => 'pdf/writer'
 #gem 'machinist', :require => 'machinist'
 #gem 'pickle'
@@ -36,4 +35,5 @@ end
 
 group :production do
 	gem 'mysql'
+  gem 'passenger'
 end
