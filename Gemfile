@@ -18,6 +18,7 @@ gem 'restful_authentication', '1.1.6', :require => 'restful_authentication'
 gem 'rvm'
 gem 'spreadsheet', '0.6.5.5', :require => 'spreadsheet'
 #gem 'ssl_requirement', :require => 'ssl_requirement', '0.1.0'
+gem 'whenever', :require => false
 gem 'will_paginate', '2.3.15', :require => 'will_paginate'
 gem 'yaml_db', '0.1.0'
 

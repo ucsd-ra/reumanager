@@ -1,5 +1,7 @@
 require "bundler/capistrano"
 require "rvm/capistrano"
+require "whenever/capistrano"
+
 set :application, "nsfreu" #matches names used in smf_template.erb
 set :repository,  "https://vishnu.ucsd.edu/svn/#{application}/trunk"
 set :domain, 'vishnu.ucsd.edu'
