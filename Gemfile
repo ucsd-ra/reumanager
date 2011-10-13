@@ -33,7 +33,6 @@ group :test do
   gem "mocha"
 end
 
-
 group :production do
 	gem 'mysql'
   gem 'passenger'
