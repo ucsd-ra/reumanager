@@ -2,6 +2,7 @@
 
 <% form_for(@recommender, :url => { :action => "create" }, :method => "post") do |r| %>
 	<%= render :partial => "recommender_information", :locals => { :r => r }%>
-	<br style="clear:both;" />
 	<p id="submit"><%= r.submit "Save", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %></p>
+	<br style="clear:both;" />
+	<p class='red clear'>The recommendation request is not sent until you submit a complete application.</p>
 <% end %>

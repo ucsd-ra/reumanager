@@ -1,4 +1,5 @@
 <div class="span-13 push-5 bordered colored padded rounded">
 	<h1>Thanks!</h1>
-	<p>Your application has been submitted. We will notify you of our decision via email on April 1.</p>
+	<p>Your application has been submitted. We will notify you of our decision via email on <%= Setting.notification_date.to_date.strftime("%B %e") %>.</p>
+	<p>You can login at anytime to resend the recommendation request and check the status of your application.</p>
 </div>
