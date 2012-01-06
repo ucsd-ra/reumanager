@@ -19,19 +19,16 @@
 <div>
 	<label>Do you feel your GPA accurately reflects your academic abilities?  Please comment on why or why not in the space provided:</label><br style="clear:both;"/>
 	<%= e.gpa_comments.size > 4 ? e.gpa_comments : "You have not answered this question." %>
-	<%= e.gpa_comments %>
 </div>
 <br style="clear:both;"/>
 
 <div>
 	<label>How did you learn about Research Experience for Undergrads (REU)?</label><br />
-	<%= e.learn.size > 4 ? e.learn : "You have not answered this question." %>
-	<%= e.learn %>
+	<%= e.learn ? e.learn : "You have not answered this question." %>
 </div>
 <br style="clear:both;"/>
 
 <div>
 	<label>Please Complete a brief essay (up to 250 words) explaining why you are interested in our program and how the experience may help you achieve your future goals</label>
 	<%= e.personal_statement.size > 4 ? e.personal_statement : "You must complete your personal statement." %>
-	<%= e.personal_statement %>
 </div>
