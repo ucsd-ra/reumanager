@@ -12,7 +12,7 @@
 
 				<% end -%>
 			<% end -%>
-		<% elsif Date.today > Date.parse("January 11 2010") -%>
+		<% elsif app_in_progress? -%>
 				<li class="last"><%= link_to "Login", { :controller => "sessions", :action => "new" } %></li>
 		<% end -%>
 

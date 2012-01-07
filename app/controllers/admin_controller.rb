@@ -258,7 +258,7 @@ require 'ftools'
   def reset_db
     if request.post? 
       if params[:delete] == 'delete'
-        system "cd #{RAILS_ROOT};rake db:migrate:reset RAILS_ENV='production';touch tmp/restart.txt;"
+        system "cd #{RAILS_ROOT};rake db:migrate:reset RAILS_ENV='production' && rake db:seed RAILS_ENV='production';touch tmp/restart.txt;"
         flash[:succes] = "Database wiped.  You may need to restart your web server for the changes to take effect."
         redirect_to admin_path
       else
