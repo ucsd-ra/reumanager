@@ -1,0 +1,26 @@
+<% form_for(@project) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :participant %><br />
+    <%= f.text_field :participant %>
+  </p>
+  <p>
+    <%= f.label :participant_university %><br />
+    <%= f.text_field :participant_university %>
+  </p>
+  <p>
+    <%= f.label :faculty_mentor %><br />
+    <%= f.text_field :faculty_mentor %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @project %> |
+<%= link_to 'Back', projects_path %>

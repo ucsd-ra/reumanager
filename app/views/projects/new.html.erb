@@ -1,0 +1,28 @@
+<% form_for(@project) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :participant, "Participant(s)" %><br />
+    <%= f.text_field :participant %>
+  </p>
+  <p>
+    <%= f.label :participant_university %><br />
+    <%= f.text_field :participant_university, :value => @project.participant_university || Setting.university %>
+  </p>
+  <p>
+    <%= f.label :faculty_mentor, "Faculty Mentor(s)" %><br />
+    <%= f.text_field :faculty_mentor %>
+  </p>
+  <p>
+    <%= f.label :year %><br />
+    <%= f.text_field :year, :value => @project.year || Time.now.year %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<h4><%= link_to 'Back', projects_path %></h4>
+<% end %>
+

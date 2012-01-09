@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: User</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">User</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/models/user_rb.html">
+                app/models/user.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                ActiveRecord::Base
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000019">activate!</a>&nbsp;&nbsp;
+      <a href="#M000021">active?</a>&nbsp;&nbsp;
+      <a href="#M000022">authenticate</a>&nbsp;&nbsp;
+      <a href="#M000024">email=</a>&nbsp;&nbsp;
+      <a href="#M000023">login=</a>&nbsp;&nbsp;
+      <a href="#M000025">make_pdf</a>&nbsp;&nbsp;
+      <a href="#M000033">make_token</a>&nbsp;&nbsp;
+      <a href="#M000018">name</a>&nbsp;&nbsp;
+      <a href="#M000020">recently_activated?</a>&nbsp;&nbsp;
+      <a href="#M000027">send_app_confirmation</a>&nbsp;&nbsp;
+      <a href="#M000032">send_application_reminder</a>&nbsp;&nbsp;
+      <a href="#M000030">send_complete_app</a>&nbsp;&nbsp;
+      <a href="#M000031">send_complete_app_student</a>&nbsp;&nbsp;
+      <a href="#M000029">send_rec_reminder</a>&nbsp;&nbsp;
+      <a href="#M000028">send_rec_request</a>&nbsp;&nbsp;
+      <a href="#M000026">send_reg_confirmation</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name">Authentication</span>
+        <span class="include-name">Authentication::ByPassword</span>
+        <span class="include-name">Authentication::ByCookieToken</span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <a href="#M000022" class="method-signature">
+          <span class="method-name">authenticate</span><span class="method-args">(login, password)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Authenticates a user by their login <a href="User.html#M000018">name</a>
+and unencrypted password. Returns the user or nil.
+</p>
+<p>
+uff. this is really an authorization, not authentication routine. We really
+need a Dispatch Chain here or something. This will also let us return a
+human error message.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000022-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 72</span>
+72:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">login</span>, <span class="ruby-identifier">password</span>)
+73:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">login</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">password</span>.<span class="ruby-identifier">blank?</span>
+74:     <span class="ruby-identifier">u</span> = <span class="ruby-identifier">find</span> <span class="ruby-identifier">:first</span>, <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value str">'login = ? and activated_at IS NOT NULL'</span>, <span class="ruby-identifier">login</span>] <span class="ruby-comment cmt"># need to get the salt</span>
+75:     <span class="ruby-identifier">u</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">u</span>.<span class="ruby-identifier">authenticated?</span>(<span class="ruby-identifier">password</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">u</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+76:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="#M000019" class="method-signature">
+          <span class="method-name">activate!</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Activates the user in the database.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000019-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 50</span>
+50:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">activate!</span>
+51:     <span class="ruby-ivar">@activated</span> = <span class="ruby-keyword kw">true</span>
+52:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">activated_at</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">utc</span>
+53:     <span class="ruby-identifier">save</span>(<span class="ruby-keyword kw">false</span>)
+54:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <a href="#M000021" class="method-signature">
+          <span class="method-name">active?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000021-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 61</span>
+61:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">active?</span>
+62:     <span class="ruby-comment cmt"># the lack of an activation code means they have not activated yet</span>
+63:     <span class="ruby-operator">!</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">activated_at</span>.<span class="ruby-identifier">nil?</span>
+64:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <a href="#M000024" class="method-signature">
+          <span class="method-name">email=</span><span class="method-args">(value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000024-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 82</span>
+82:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">email=</span>(<span class="ruby-identifier">value</span>)
+83:     <span class="ruby-identifier">write_attribute</span> <span class="ruby-identifier">:email</span>, (<span class="ruby-identifier">value</span> <span class="ruby-value">? </span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">downcase</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>)
+84:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="#M000023" class="method-signature">
+          <span class="method-name">login=</span><span class="method-args">(value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000023-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 78</span>
+78:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">login=</span>(<span class="ruby-identifier">value</span>)
+79:     <span class="ruby-identifier">write_attribute</span> <span class="ruby-identifier">:login</span>, (<span class="ruby-identifier">value</span> <span class="ruby-value">? </span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">downcase</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>)
+80:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <a href="#M000025" class="method-signature">
+          <span class="method-name">make_pdf</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000025-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000025-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 86</span>
+ 86:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">make_pdf</span>
+ 87:      <span class="ruby-identifier">pdf</span> = <span class="ruby-constant">PDF</span><span class="ruby-operator">::</span><span class="ruby-constant">Writer</span>.<span class="ruby-identifier">new</span>
+ 88:      <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-node">&quot;NSF REU Application for #{self.firstname} #{self.lastname}\n\n&quot;</span>, <span class="ruby-identifier">:font_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">22</span>, <span class="ruby-identifier">:justification</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:center</span>
+ 89:      <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">move_pointer</span>(<span class="ruby-value">24</span>)
+ 90: 
+ 91:      <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-value str">&quot;Personal Data\n&quot;</span>, <span class="ruby-identifier">:font_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">13</span>, <span class="ruby-identifier">:justification</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:left</span>, <span class="ruby-identifier">:left</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>, <span class="ruby-identifier">:right</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>
+ 92:      <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-node">&quot;#{self.street}\n&quot;</span>, <span class="ruby-identifier">:font_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">11</span>, <span class="ruby-identifier">:justification</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:left</span>, <span class="ruby-identifier">:left</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>, <span class="ruby-identifier">:right</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>
+ 93:      <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-node">&quot;#{self.city}, #{self.state} #{self.zip}\n&quot;</span>, <span class="ruby-identifier">:font_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">11</span>, <span class="ruby-identifier">:justification</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:left</span>, <span class="ruby-identifier">:left</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>, <span class="ruby-identifier">:right</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>
+ 94:      
+ 95:      <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">citizenship</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;United States&quot;</span>
+ 96:        <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-node">&quot;Citizenship: #{self.citizenship}\n\n&quot;</span>, <span class="ruby-identifier">:font_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">11</span>, <span class="ruby-identifier">:justification</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:left</span>, <span class="ruby-identifier">:left</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>, <span class="ruby-identifier">:right</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>
+ 97:      <span class="ruby-keyword kw">else</span>
+ 98:        <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-node">&quot;Citizenship: #{self.citizenship}, Country of Residence: #{self.cresidence}\n\n&quot;</span>, <span class="ruby-identifier">:font_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">11</span>, <span class="ruby-identifier">:justification</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:left</span>, <span class="ruby-identifier">:left</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>, <span class="ruby-identifier">:right</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>
+ 99:      <span class="ruby-keyword kw">end</span>
+100: 
+101:      <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-value str">&quot;Academic Info\n&quot;</span>, <span class="ruby-identifier">:font_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">13</span>, <span class="ruby-identifier">:justification</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:left</span>, <span class="ruby-identifier">:left</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>, <span class="ruby-identifier">:right</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>
+102:      <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-node">&quot;#{self.academic_record.college_level.capitalize} majoring in #{self.academic_record.major} at #{self.academic_record.college}\n&quot;</span>, <span class="ruby-identifier">:font_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">11</span>, <span class="ruby-identifier">:justification</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:left</span>, <span class="ruby-identifier">:left</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>, <span class="ruby-identifier">:right</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>
+103:      <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-node">&quot;Attended from: #{self.academic_record.college_start} to #{self.academic_record.college_end}, GPA: #{self.academic_record.gpa} out of #{self.academic_record.gpa_range}\n&quot;</span>, <span class="ruby-identifier">:font_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">11</span>, <span class="ruby-identifier">:justification</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:left</span>, <span class="ruby-identifier">:left</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>, <span class="ruby-identifier">:right</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>
+104:      
+105:      <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">academic_record</span>.<span class="ruby-identifier">p_college</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;&quot;</span>
+106:        <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-node">&quot;Previous college: #{self.academic_record.p_college}, Attended from: #{self.academic_record.p_college_start} to #{self.academic_record.p_college_end}\n\n&quot;</span>, <span class="ruby-identifier">:font_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">11</span>, <span class="ruby-identifier">:justification</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:left</span>, <span class="ruby-identifier">:left</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>, <span class="ruby-identifier">:right</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>
+107:      <span class="ruby-keyword kw">else</span>
+108:        <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-value str">&quot;\n&quot;</span>
+109:      <span class="ruby-keyword kw">end</span>
+110: 
+111:      <span class="ruby-ivar">@methods</span> = <span class="ruby-node">%w{awards lab_skills comp_skills gpa_comments personal_statement}</span>
+112:      <span class="ruby-ivar">@methods</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>  
+113:        <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-node">&quot;#{m.gsub(&quot;_&quot;,&quot; &quot;).capitalize }\n&quot;</span>, <span class="ruby-identifier">:font_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">13</span>, <span class="ruby-identifier">:justification</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:left</span>, <span class="ruby-identifier">:left</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>, <span class="ruby-identifier">:right</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>
+114:        <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-node">&quot;#{self.extra.send(m)}\n\n&quot;</span>, <span class="ruby-identifier">:font_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">11</span>, <span class="ruby-identifier">:justification</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:left</span>, <span class="ruby-identifier">:left</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>, <span class="ruby-identifier">:right</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">33</span>
+115:      <span class="ruby-keyword kw">end</span>
+116:        <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">save_as</span>(<span class="ruby-node">&quot;#{RAILS_ROOT}/public/pdf/#{self.id.to_s}_#{self.lastname}.pdf&quot;</span>)
+117:    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <a href="#M000018" class="method-signature">
+          <span class="method-name">name</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000018-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000018-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 42</span>
+42:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">name</span>
+43:     <span class="ruby-ivar">@name</span> = <span class="ruby-value str">&quot;&quot;</span>
+44:     <span class="ruby-ivar">@name</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">firstname</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; &quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">firstname</span>
+45:     <span class="ruby-ivar">@name</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">middlename</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; &quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">middlename</span>
+46:     <span class="ruby-ivar">@name</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">lastname</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">lastname</span>
+47:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="#M000020" class="method-signature">
+          <span class="method-name">recently_activated?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns true if the user has just been activated.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000020-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 57</span>
+57:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recently_activated?</span>
+58:     <span class="ruby-ivar">@activated</span>
+59:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="#M000027" class="method-signature">
+          <span class="method-name">send_app_confirmation</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000027-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000027-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 125</span>
+125:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_app_confirmation</span>
+126:      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-value str">&quot;submitted_at&quot;</span>, <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)     
+127:      <span class="ruby-identifier">email</span> = <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">create_app_confirmation</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">id</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">token</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">firstname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">lastname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">email</span>)
+128:      <span class="ruby-identifier">email</span>.<span class="ruby-identifier">set_content_type</span>(<span class="ruby-value str">'multipart'</span>, <span class="ruby-value str">'mixed'</span>)
+129:      <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">deliver</span>(<span class="ruby-identifier">email</span>)
+130:    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000032" class="method-detail">
+        <a name="M000032"></a>
+
+        <div class="method-heading">
+          <a href="#M000032" class="method-signature">
+          <span class="method-name">send_application_reminder</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000032-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000032-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 159</span>
+159:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_application_reminder</span>
+160:      <span class="ruby-identifier">email</span> = <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">create_application_reminder</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">firstname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">lastname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">email</span>)
+161:      <span class="ruby-identifier">email</span>.<span class="ruby-identifier">set_content_type</span>(<span class="ruby-value str">'multipart'</span>, <span class="ruby-value str">'mixed'</span>)
+162:      <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">deliver</span>(<span class="ruby-identifier">email</span>)
+163:    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
+
+        <div class="method-heading">
+          <a href="#M000030" class="method-signature">
+          <span class="method-name">send_complete_app</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000030-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000030-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 146</span>
+146:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_complete_app</span>
+147:      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-value str">&quot;completed_at&quot;</span>, <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)
+148:      <span class="ruby-identifier">email</span> = <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">create_complete_app</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">id</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">firstname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">lastname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">email</span>)
+149:      <span class="ruby-identifier">email</span>.<span class="ruby-identifier">set_content_type</span>(<span class="ruby-value str">'multipart'</span>, <span class="ruby-value str">'mixed'</span>)
+150:      <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">deliver</span>(<span class="ruby-identifier">email</span>)
+151:    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000031" class="method-detail">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+          <a href="#M000031" class="method-signature">
+          <span class="method-name">send_complete_app_student</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000031-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000031-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 153</span>
+153:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_complete_app_student</span>
+154:      <span class="ruby-identifier">email</span> = <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">create_complete_app_student</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">firstname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">lastname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">email</span>)
+155:      <span class="ruby-identifier">email</span>.<span class="ruby-identifier">set_content_type</span>(<span class="ruby-value str">'multipart'</span>, <span class="ruby-value str">'mixed'</span>)
+156:      <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">deliver</span>(<span class="ruby-identifier">email</span>)
+157:    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
+
+        <div class="method-heading">
+          <a href="#M000029" class="method-signature">
+          <span class="method-name">send_rec_reminder</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000029-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000029-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 139</span>
+139:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_rec_reminder</span>
+140:      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-value str">&quot;rec_request_at&quot;</span>, <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)
+141:      <span class="ruby-identifier">email</span> = <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">create_rec_reminder</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">recommender</span>.<span class="ruby-identifier">email</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">id</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">token</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">firstname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">lastname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">email</span>)
+142:      <span class="ruby-identifier">email</span>.<span class="ruby-identifier">set_content_type</span>(<span class="ruby-value str">'multipart'</span>, <span class="ruby-value str">'mixed'</span>)
+143:      <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">deliver</span>(<span class="ruby-identifier">email</span>)
+144:    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="#M000028" class="method-signature">
+          <span class="method-name">send_rec_request</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000028-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000028-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 132</span>
+132:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_rec_request</span>
+133:      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-value str">&quot;rec_request_at&quot;</span>, <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)
+134:      <span class="ruby-identifier">email</span> = <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">create_rec_request</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">recommender</span>.<span class="ruby-identifier">email</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">id</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">token</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">firstname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">lastname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">email</span>)
+135:      <span class="ruby-identifier">email</span>.<span class="ruby-identifier">set_content_type</span>(<span class="ruby-value str">'multipart'</span>, <span class="ruby-value str">'mixed'</span>)
+136:      <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">deliver</span>(<span class="ruby-identifier">email</span>)
+137:    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <a href="#M000026" class="method-signature">
+          <span class="method-name">send_reg_confirmation</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000026-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000026-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 119</span>
+119:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_reg_confirmation</span>
+120:      <span class="ruby-identifier">email</span> = <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">create_reg_confirmation</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">firstname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">lastname</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">email</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">token</span>)
+121:      <span class="ruby-identifier">email</span>.<span class="ruby-identifier">set_content_type</span>(<span class="ruby-value str">'multipart'</span>, <span class="ruby-value str">'mixed'</span>)
+122:      <span class="ruby-constant">UserMailer</span>.<span class="ruby-identifier">deliver</span>(<span class="ruby-identifier">email</span>)
+123:    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M000033" class="method-detail">
+        <a name="M000033"></a>
+
+        <div class="method-heading">
+          <a href="#M000033" class="method-signature">
+          <span class="method-name">make_token</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000033-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000033-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 166</span>
+166:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">make_token</span> 
+167:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">token</span> = <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">//</span>).<span class="ruby-identifier">sort_by</span>{<span class="ruby-identifier">rand</span>}.<span class="ruby-identifier">join</span>)
+168:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">token_created_at</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+169:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

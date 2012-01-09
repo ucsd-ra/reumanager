@@ -1,0 +1,34 @@
+<div id="app_navbar_wrapper">
+	<ul id="app_navbar">
+		<% if params[:controller] == "users" && ( params[:action] == "edit" || params[:action] == "new" ) -%>
+			<li class="active bordered colored rounded positive"><%= link_to "1. Personal Data", { :controller => "users", :action => "edit", :id => @user.id }, :class => "active" %></li>
+		<% else -%>
+			<li class="bordered colored rounded positive"><%= link_to "1. Personal Data", { :controller => "users", :action => "edit", :id => @user.id }%></li>
+		<% end -%>
+
+		<% if params[:controller] == "academic_records" -%>
+			<li class="active bordered colored rounded <%= "positive" if check_academic_records(@user) %>"><%= link_to "2. Academic Information", { :controller => "academic_records", :id => @user.id }, :class => "active"  %></li>
+		<% else -%>
+			<li class="bordered colored rounded <%= "positive" if check_academic_records(@user) %>"><%= link_to "2. Academic Information", { :controller => "academic_records", :id => @user.id } %></li>
+		<% end -%>
+	
+
+		<% if params[:controller] == "extras" -%>
+			<li class="active bordered colored rounded <%= "positive" if check_extras(@user) %>"><%= link_to "3. Additional Information", { :controller => "extras", :id => @user.id }, :class => "active"  %></li>
+		<% else -%>
+			<li class="bordered colored rounded <%= "positive" if check_extras(@user) %>"><%= link_to "3. Additional Information", { :controller => "extras", :id => @user.id } %></li>
+		<% end -%>
+
+		<% if params[:controller] == "recommenders" -%>
+			<li class="active bordered colored rounded <%= "positive" if check_recommender(@user) %>"><%= link_to "4. Recommender Information", { :controller => "recommenders", :id => @user.id }, :class => "active"  %></li>
+		<% else -%>
+			<li class="bordered colored rounded <%= "positive" if check_recommender(@user) %>"><%= link_to "4. Recommender Information", { :controller => "recommenders", :id => @user.id } %></li>
+		<% end -%>
+
+		<% if params[:controller] == "users" && params[:action] == "submit" -%>
+			<li class="active bordered colored rounded"><%= link_to "5. Review/Submit Application", { :controller => "users", :action => "submit", :id => @user.id }, :class => "active" %></li>
+		<% else -%>
+			<li class="bordered colored rounded"><%= link_to "5. Review/Submit Application", { :controller => "users", :action => "submit", :id => @user.id } %></li>
+		<% end -%>
+	</ul>
+</div>
