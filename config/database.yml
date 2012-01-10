@@ -1,8 +1,8 @@
 development:
   adapter: mysql
-  database: nsfreudemo
+  database: nsfreu
   encoding: utf8
-  username: nsfreudemo
+  username: nsfreu
   password: sqz_EI7=FpEojbeY4:MtmIMg
   host: localhost
   
@@ -16,8 +16,8 @@ test:
 
 production:
   adapter: mysql
-  database: nsfreudemo
+  database: nsfreu
   encoding: utf8
-  username: nsfreudemo
+  username: nsfreu
   password: sqz_EI7=FpEojbeY4:MtmIMg
   host: localhost
