@@ -9,10 +9,9 @@
 			<% else -%>
 				<% if current_user && current_user.submitted_at && !check_admin && params[:controller] != "recommendation" %>
 					<li><%= link_to "Application", { :controller => "users", :action => "status" }%></li>
-
 				<% end -%>
 			<% end -%>
-		<% elsif app_in_progress? -%>
+		<% else -%>
 				<li class="last"><%= link_to "Login", { :controller => "sessions", :action => "new" } %></li>
 		<% end -%>
 
