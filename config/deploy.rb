@@ -3,7 +3,7 @@ require "rvm/capistrano"
 require "whenever/capistrano"
 
 set :application, "nsfreu" #matches names used in smf_template.erb
-set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/trunk"
+set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/ucsd_bioengineering"
 set :domain, 'vishnu.ucsd.edu'
 set :deploy_to, "/var/rails/#{application}" # I like this location
 set :user, "ubuntu"
