@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  include ExceptionNotification::Notifiable
+#  include ExceptionNotification::Notifiable
   
   helper :all # include all helpers, all the time
 #  before_filter  :set_p3p
@@ -15,11 +15,11 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   filter_parameter_logging :password, :password_confirmation, :lastname, :dob, :street, :city, :state, :zip, :phone, :pstreet, :pcity, :pstate, :pzip, :pphone, :citizenship, :cresidence, :gender, :ethnicity, :race, :disability
-
+  before_filter :check_settings_cache
+  
   require 'pdf/writer'
   require 'spreadsheet'
   include AuthenticatedSystem
-  include SslRequirement
   
 	rescue_from(ActionController::RoutingError) { render :file => 'public/404.html', :status => 404 }
 	rescue_from(ActionController::InvalidAuthenticityToken) { render :file => 'public/422.html', :status => 422}
@@ -36,6 +36,13 @@ class ApplicationController < ActionController::Base
 #			logger.level = Logger::INFO
 #		end
 #	end
+
+  def check_settings_cache
+    # Checks if settings have changed since the values were read
+    # and clears the cache hash if it's the case
+    # Called once per request
+    Setting.check_cache
+	end
 	
   def ssl_required?
     return false if RAILS_ENV == 'test' || RAILS_ENV == 'development'
@@ -63,7 +70,7 @@ class ApplicationController < ActionController::Base
   def is_admin
     current_user.role.name == "admin" || current_user.id == 1 
   end
-
+    
 #	def logger
 #		@hosts = ['76.88.119.175', '184.72.43.42', '132.239.8.57']
 #		if @hosts.include?(request.remote_ip)

@@ -1,4 +1,5 @@
 class Extra < ActiveRecord::Base
   belongs_to  :user
-  validates_presence_of       :personal_statement
+# removed to preserve form data
+# validates_presence_of       :personal_statement
 end

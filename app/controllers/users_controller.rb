@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :login_from_cookie, :login_required, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :reset, :forgot, :reactivate, :emailed, :pwreset ]
   before_filter :application_complete?, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :status, :resend_request ]
-  ssl_required :index, :new, :create, :edit, :update, :status, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :resend_request, :submit, :saved, :reset, :forgot, :reactivate, :emailed, :pwreset
+#  ssl_required :index, :new, :create, :edit, :update, :status, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :resend_request, :submit, :saved, :reset, :forgot, :reactivate, :emailed, :pwreset
   
 #  def activate
 #    @user = User.find_by_token(params[:token])
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
       redirect_to( :controller => "users", :action => "status" )
     else
       logout_killing_session!
-			if Time.now > DateTime.new(2011,3,6,8,0)
+			if Time.now > Setting.application_deadline.to_date
 	      flash[:notice] = 'The application deadline has past.'
       	redirect_to(:controller => 'welcome')
       else
@@ -162,7 +162,6 @@ class UsersController < ApplicationController
 		@user = current_user
 		@recommendation = current_user.recommendation
 		@recommender = current_user.recommender
-		logout_killing_session!
 	end
   
   def app_thanks
@@ -188,7 +187,7 @@ class UsersController < ApplicationController
   def forgot
     return unless request.post?
     if @user = User.find_by_email(params[:email])
-      @user.make_token
+      @user.make_pw_token
       @user.save_with_validation(false)
       UserMailer.deliver_reset_password(@user)
       flash[:notice] = "Password reset link, sent."  
@@ -200,21 +199,22 @@ class UsersController < ApplicationController
   end
 
   def reset
-    unless @user = User.find_by_token(params[:id])
+    unless @user = User.find_by_pw_token(params[:id])
       redirect_to :controller =>'sessions', :action => 'new'
     end
 
     if request.post?
-      @user = User.find_by_token(params[:id])
+      @user = User.find_by_pw_token(params[:id])
       @user.password = params[:password]
       @user.password_confirmation = params[:password_confirmation]
     
       if @user.save && params[:password] != '' && params[:password_confirmation] != '' && params[:password]
+        @user.update_attributes(:pw_token => nil, :pw_token_created_at => nil)
         logout_killing_session!
         flash[:notice] = 'Password was updated, please login.'
         redirect_to :action => 'pwreset'
       else
-        render :action => "reset", :id => @user.token
+        render :action => "reset", :id => @user.pw_token
       end
 
     end

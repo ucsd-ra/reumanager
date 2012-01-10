@@ -1,4 +1,4 @@
-<h3 class='clear center red'>Application Deadline March 5</h3>
+<h3 class='clear center red'>Application Deadline <%= Setting.application_deadline.to_date.strftime("%B %e") %></h3>
 
 <div id="app_navbar_wrapper">
 	<ul id="app_navbar">
@@ -14,7 +14,6 @@
 			<li class="bordered colored rounded <%= "positive" if check_academic_records(current_user) %>"><%= link_to "2. Academic Information", { :controller => "academic_records" } %></li>
 		<% end -%>
 	
-
 		<% if params[:controller] == "extras" -%>
 			<li class="active bordered colored rounded <%= "positive" if check_extras(current_user) %>"><%= link_to "3. Additional Information", { :controller => "extras" }, :class => "active"  %></li>
 		<% else -%>
@@ -33,4 +32,5 @@
 			<li class="bordered colored rounded"><%= link_to "5. Review/Submit Application", { :controller => "users", :action => "submit" } %></li>
 		<% end -%>
 	</ul>
+	<p class='red clear'>The buttons above will turn green once the section is complete with all required information.</p>
 </div>

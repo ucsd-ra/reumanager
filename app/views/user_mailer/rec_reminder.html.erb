@@ -1,6 +1,2 @@
-<p>
-	Dear Recommender,<br /><br />
-	This is a reminder from the UC San Diego NSFREU program in Regenerative Medicine, Multi-Scale Bioengineering, and Systems Biology. <%= @firstname + " " + @lastname + "( " + @email + " )" %> has requested a recommendation from you. To help us review all applications in a timely manner, please submit your recommendation as soon as possible using the following link <%= link_to "https://www.be.ucsd.edu/nsfreu/recommendations/new/#{@token}", "https://www.be.ucsd.edu/nsfreu/recommendations/new/#{@token}"%>
-</p>
-
-<p>Thank you so much for taking the time to provide us with this helpful information.</p>
+<p>Dear Recommender,<br /><br />
+This is a reminder from the <%= Setting.department %>, <%= Setting.university %> <%= Setting.app_title %>. <%= @firstname + " " + @lastname + "( " + @email + " )" %> has requested a recommendation from you. To help us review all applications in a timely manner, please submit your recommendation before the deadline of <%= Setting.application_deadline.to_date.strftime("%A, %b %d") %> using the following link <%= link_to ("https://" + Setting.domain + "/recommendations/new/#{@token}"), ("https://" + Setting.domain + "/recommendations/new/#{@token}")%></p>

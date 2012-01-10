@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
 before_filter :login_from_cookie, :login_required, :check_admin
-ssl_required :index, :list, :show, :select_student, :change_status, :total, :incomplete, :submitted, :complete, :create_report, :delete, :export, :expunge_excel_files, :close_export, :select_status, :print
+# ssl_required :index, :list, :show, :select_student, :change_status, :total, :incomplete, :submitted, :complete, :create_report, :delete, :export, :expunge_excel_files, :close_export, :select_status, :print
 require 'ftools'
 
   def index
@@ -92,7 +92,7 @@ require 'ftools'
     
   def total
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
-    @students = User.paginate :page => params[:page], :order => 'lastname ASC'
+    @students = User.paginate :conditions => ['role_id = ?', 2], :page => params[:page], :order => 'lastname ASC'
 		@export = User.all :order => 'lastname ASC', :conditions => [ "role_id = ?", 2 ]
 		
     render :action => "list"
@@ -179,15 +179,16 @@ require 'ftools'
     
     # setup headers
     worksheet.row(0).default_format = page_title_format
-    worksheet[0,0] = "2011 UCSD NSFREU Applicant Data" 
+    worksheet[0,0] = "#{Time.now.year} NSFREU Applicant Data" 
     worksheet.row(1).default_format = header_format
     worksheet.row(1).concat %w{ID Name Email Gender Race Ethnicity Disability Current\ University Academic\ Year Major/Minor GPA Recommender\ Name Recommender\ Association Overall\ Promise Undergrad\ Institution?}
     worksheet.row(1).default_format = header_format
 
     # get applicant data
 		case params[:prev_action]
-		when "incomomplete"
-			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
+		when "incomplete"
+		  logger.info "exporting incomplete applicants"
+			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is ? and role_id = ?", nil, 2 ], :include => [ :academic_record, :recommender, :recommendation ]
 		when "submitted"
 			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
 		when "complete"
@@ -205,7 +206,7 @@ require 'ftools'
 			when "Reject"
 		    @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Reject',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
 			else
-		    @applicants = User.all(:order => "id ASC", :conditions => ["role_id = ? AND completed_at IS NOT ?", 2, nil], :include => [ :academic_record, :recommender, :recommendation ])
+		    @applicants = User.all :order => 'lastname ASC', :conditions => ['role_id = ?', 2], :include => [ :academic_record, :recommender, :recommendation ]
 			end
 		end
     
@@ -251,6 +252,19 @@ require 'ftools'
       page[:overlay].hide
       page[:opaque_overlay].hide
       page[:wait_box].show
+    end
+  end
+  
+  def reset_db
+    if request.post? 
+      if params[:delete] == 'delete'
+        system "cd #{RAILS_ROOT};rake db:migrate:reset RAILS_ENV='production' && rake db:seed RAILS_ENV='production';touch tmp/restart.txt;"
+        flash[:succes] = "Database wiped.  You may need to restart your web server for the changes to take effect."
+        redirect_to admin_path
+      else
+        flash[:error] = "There was some sort of problem. Try again."
+        redirect_to reset_db_path
+      end
     end
   end
   

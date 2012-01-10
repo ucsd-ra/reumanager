@@ -1,4 +1,4 @@
-<p>This email is to confirm that an account has been created for <%= @firstname + " " + @lastname + " ( " + @email + " )" %> for the purpose of applying to the REU program in Regenerative Medicine, Multi-Scale Bioengineering, and Systems Biology at UC San Diego. In order to complete your application you will need to submit the following information by March 5, 2011:</p>
+<p>This email is to confirm that an account has been created for <%= @firstname + " " + @lastname + " ( " + @email + " )" %> for the purpose of applying to the <%= Setting.department %>, <%= Setting.university %> <%= Setting.app_title %>. In order to complete your application you will need to submit the following information by <%= Setting.application_deadline.to_date.strftime("%A, %b %d") %>:</p>
 
 <ol>
 	<li>The name and contact information of one faculty member who is willing to provide a short letter of recommendation. You should ask the faculty member if they are willing to serve as a reference prior to including this information in your application.</li>
@@ -15,4 +15,4 @@
 	</li>
 </ol>
 
-<p>Please verify your account and continue your REU application by clicking the following link: <%= link_to "https://www.be.ucsd.edu/nsfreu/activate/#{@token}", "https://www.be.ucsd.edu/nsfreu/activate/#{@token}" %></p>
+<p>Please verify your account and continue your REU application by clicking the following link: <%= link_to ("https://" + Setting.domain + "/activate/#{@token}"), ("https://" + Setting.domain + "/activate/#{@token}") %></p>

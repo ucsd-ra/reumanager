@@ -2,8 +2,8 @@
 	<h2>Application Overview</h2>
 	<div class='span-6'><h2 class='info'><%= link_to "#{@total.count}&nbsp;Total", :action => "list" %></h2></div>
 	<div class='span-6'><h2 class='info'><%= link_to "#{@incomplete.count}&nbsp;Incomplete", :action => "incomplete" %></h2></div>
-	<div class='span-6'><h2 class='info'><%= link_to "#{@submitted.count}&nbsp;Submitted", :action => "submitted" %></h2></div>
-	<div class='span-6 last'><h2 class='info'><%= link_to "#{@complete.count}&nbsp;Complete", :action => "complete" %></h2></div>
+	<div class='span-6'><h2 class='info'><%= link_to "#{@submitted.count}&nbsp;Submitted", :action => "submitted" %></h2><p>Awaiting Recommendation</p></div>
+	<div class='span-6 last'><h2 class='info'><%= link_to "#{@complete.count}&nbsp;Complete", :action => "complete" %></h2><p>Complete Application w/Recommendation</p></div>
 	<br class='clear' />
 	<br class='clear' />
 
@@ -17,4 +17,5 @@
 	<div class='span-6 last'><h2 class='success'><%= link_to "#{@accepted.count}&nbsp;Accepted", :action => "list", :status => 'Accept' %></h2></div>
 	<br class='clear' />
 	<br class='clear' />
+	<h2><%= link_to 'Reset Database', reset_db_path, :class => "reset" %></h2>
 </div>

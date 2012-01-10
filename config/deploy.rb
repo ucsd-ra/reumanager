@@ -1,31 +1,43 @@
-require 'erb'
-require 'config/ubuntu-server/ubuntu_tasks'
-default_run_options[:pty] = true
+require "bundler/capistrano"
+require "rvm/capistrano"
+require "whenever/capistrano"
 
-set :application, "nsfreu" #matches names used in smf_template.erb
-set :repository,  "https://www.be.ucsd.edu/svn/nsfreu/trunk"
-set :domain, 'be.ucsd.edu'
+set :application, "nsfreudemo" #matches names used in smf_template.erb
+set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/trunk"
+set :domain, 'vishnu.ucsd.edu'
 set :deploy_to, "/var/rails/#{application}" # I like this location
-set :user, "justin"
+set :user, "ubuntu"
 set :keep_releases, 2
+set :rvm_ruby_string, "ree@#{application}"
+set :server_name, "vishnu.ucsd.edu"
+
+default_run_options[:pty] = true
 
 role :app, domain
 role :web, domain
 role :db,  domain, :primary => true
- 
-set :server_name, "fortuna.ucsd.edu"
 
-deploy.task :restart do
-  ubuntu.restart
-end
- 
-deploy.task :start do
-  ubuntu.start
-end
- 
-deploy.task :stop do
-  ubuntu.stop
-end
+## modified for passenger standalone
+set :rails_env,      "production"
+set :passenger_port, 4030
+set :passenger_cmd,  "passenger"
 
-after :deploy, 'deploy:cleanup'
-after :deploy, 'ubuntu:chown'
+namespace :deploy do
+  task :start, :roles => :app, :except => { :no_release => true } do
+    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
+  end
+
+  task :stop, :roles => :app, :except => { :no_release => true } do
+    run "cd #{current_path} && #{passenger_cmd} stop -p #{passenger_port}"
+  end
+
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run <<-CMD
+      if [[ -f #{current_path}/tmp/pids/passenger.#{passenger_port}.pid ]];
+      then
+        cd #{current_path} && #{passenger_cmd} stop -p #{passenger_port};
+      fi
+    CMD
+    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
+  end
+end

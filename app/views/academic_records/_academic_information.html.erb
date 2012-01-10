@@ -12,7 +12,7 @@
 	<label>From:</label>&nbsp;&nbsp;<%= f.date_select 'college_start', :discard_day => true, :end_year => Time.now.year + 1 %><br style="clear:both;" />
 </div>
 <div class="span-6 last"><br />
-	<label>To:</label>&nbsp;&nbsp;<%= f.date_select 'college_end', :discard_day => true, :start_year => Time.now.year %>
+	<label>To:</label>&nbsp;&nbsp;<%= f.date_select 'college_end', :discard_day => true, :start_year => Time.now.year - 3, :end_year => Time.now.year + 7 %>
 </div>
 
 <hr />

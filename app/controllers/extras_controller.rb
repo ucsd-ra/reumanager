@@ -1,6 +1,6 @@
 class ExtrasController < ApplicationController
   before_filter :login_from_cookie, :login_required, :application_complete?
-  ssl_required :index, :new, :edit, :create, :update
+#  ssl_required :index, :new, :edit, :create, :update
   
   def index
     if current_user.submitted_at && !is_admin
@@ -16,7 +16,7 @@ class ExtrasController < ApplicationController
   # GET /extras/new.xml
   def new
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
-    @user = User.find(@id)
+    @user = User.find(@id) if @id
     @extra = Extra.new
       
     respond_to do |format|

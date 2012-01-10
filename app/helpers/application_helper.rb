@@ -1,6 +1,10 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
+  def app_in_progress?
+    @alive = Time.now > Setting.application_start.to_date && Time.now < Setting.application_deadline.to_date
+  end
+  
   def app_navbar
     check_admin ? render(:partial => "layouts/admin_app_navbar") : render(:partial => "layouts/app_navbar")
   end
@@ -14,13 +18,13 @@ module ApplicationHelper
   def dynamic_title
     case
     when params[:controller] == "welcome"
-      return "<title>UC San Diego, Department of Bioengineering | NSF Research Experience for Undergraduates (NSFREU)</title>"
+      return "<title>#{Setting.department}, Department of #{Setting.department} NSF Research Experience for Undergraduates (NSFREU)</title>"
     when params[:controller] == "projects"
-      return "<title>UCSD NSF Research Experience for Undergraduates ::: Projects</title>"
+      return "<title>#{Setting.department}, Department of #{Setting.department} NSF Research Experience for Undergraduates ::: Projects</title>"
     when params[:controller] == "users" || params[:controller] == "academic_records" || params[:controller] == "extras" || params[:controller] == "recommenders" 
-      return "<title>UCSD NSF Research Experience for Undergraduates ::: Application</title>"    
+      return "<title>#{Setting.department}, Department of #{Setting.department} NSF Research Experience for Undergraduates ::: Application</title>"    
     else
-      return "<title>UC San Diego, Department of Bioengineering | NSF Research Experience for Undergraduates (NSFREU)</title>"
+      return "<title>#{Setting.department}, Department of #{Setting.department} NSF Research Experience for Undergraduates (NSFREU)</title>"
     end
   end
   
@@ -37,7 +41,7 @@ module ApplicationHelper
   end
   
   def check_transcript(user)
-    result = true if user && user.academic_record.transcript && user.academic_record.valid?
+    result = true if user && user.academic_record.transcript_file_name && user.academic_record.valid?
   end
   
   def check_pdf(user)
@@ -57,7 +61,7 @@ module ApplicationHelper
   end
 
   def check_extras(user)
-    result = true if user && user.extra
+    result = true if user && user.extra && user.extra.personal_statement.size > 2
   end
 
   def check_all(user)

@@ -1,5 +1,5 @@
- <p><%= @firstname + " " + @lastname + "( " + @email + " )" %> has requested a recommendation for the NSF Research Experience for Undergraduates summer program in Bioengineering at UC San Diego.</p>
+<p><%= @firstname + " " + @lastname + "( " + @email + " )" %> has requested a recommendation for the <%= Setting.app_title %> summer program at the <%= Setting.department %>, <%= Setting.university %>.</p>
 
-<p>Please submit your recommendation online by March 5 at: <%= link_to "https://www.be.ucsd.edu/nsfreu/recommendations/new/#{@token}", "https://www.be.ucsd.edu/nsfreu/recommendations/new/#{@token}"%></p>
+<p>Please submit your recommendation online by <%= Setting.application_deadline.to_date.strftime("%A, %b %d") %> at: <%= link_to ("https://" + Setting.domain + "/recommendations/new/#{@token}"), ("https://" + Setting.domain + "/recommendations/new/#{@token}") %></p>
 
 <p>Thank you so much for taking the time to provide us with this helpful information.</p>

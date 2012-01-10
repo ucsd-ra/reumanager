@@ -2,62 +2,27 @@
 	<%= render :partial => "layouts/header_text" %>
 	<br />
 	<hr />
-	<div class="span-11 bordered colored rounded projects_column">
-		
-		<h2>2010</h2>
-		<% @projects_2010.each do |project| %>
-			<div class="padded project">
-			    <h4><%=h project.title %></h4>
-			    <p><%=h project.participant %>, <%=h project.participant_university %><br /><%=h project.faculty_mentor %></p>
-
-				<% if logged_in? && check_admin -%>
-				    <%= link_to 'Edit', edit_project_path(project) %>
-				    <%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %>
-				<% end -%>
-				
-				<%= "<hr />" unless @projects_2010.last == project %>
-			</div>
-		<% end %>		
-	</div>
-
-	<div class="span-11 push-1 bordered colored rounded last projects_column">
-		<h2>2009</h2>
-		<% @projects_2009.each do |project| %>
-			<div class="project">
-			    <h4><%=h project.title %></h4>
-			    <p><%=h project.participant %>, <%=h project.participant_university %><br /><%=h project.faculty_mentor %></p>
-
-				<% if logged_in? && check_admin -%>
-				    <%= link_to 'Edit', edit_project_path(project) %>
-				    <%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %>
-				<% end -%>
-
-				<%= "<hr />" unless @projects_2009.last == project %>
-			</div>
-		<% end %>		
-	</div>
-	
-	<div class="span-11 bordered colored rounded projects_column">
-		
-		<h2>2008</h2>
-		<% @projects_2008.each do |project| %>
-			<div class="padded project">
-			    <h4><%=h project.title %></h4>
-			    <p><%=h project.participant %>, <%=h project.participant_university %><br /><%=h project.faculty_mentor %></p>
-
-				<% if logged_in? && check_admin -%>
-				    <%= link_to 'Edit', edit_project_path(project) %>
-				    <%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %>
-				<% end -%>
-				
-				<%= "<hr />" unless @projects_2008.last == project %>
-			</div>
-		<% end %>
-	</div>
+	<%= content_tag :h2, "No projects added." if @projects.count < 1%>
+	<% @years.each do |y| %>
+		<div class="span-11 bordered colored rounded projects_column">
+			<h2><%= y %></h2>
+			<% instance_variable_get("@projects_#{y}").each do |project| %>
+				<div class="padded project">
+					<h4><%=h project.title %></h4>
+					<p><%=h project.participant %>, <%=h project.participant_university %><br /><%=h project.faculty_mentor %></p>
+					<% if logged_in? && check_admin -%>
+					    <%= link_to 'Edit', edit_project_path(project) %>
+					    <%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %>
+					<% end -%>
+					<%= "<hr />" unless instance_variable_get("@projects_#{y}").last == project %>
+				</div>
+			<% end %>
+		</div>
+	<% end -%>
 	
 	<br class="clear" />
 
-	<% if logged_in? -%>
-		<%= link_to 'New project', new_project_path %>
+	<% if logged_in? && check_admin -%>
+		<h3><%= link_to 'New project', new_project_path %></h3>
 	<% end -%>
 </div>

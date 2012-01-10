@@ -1,6 +1,6 @@
 class AcademicRecordsController < ApplicationController
 	before_filter :login_from_cookie, :login_required, :application_complete?
-	ssl_required :index, :show, :new, :edit, :create, :update, :destroy_transcript, :observe_pcollege
+#	ssl_required :index, :show, :new, :edit, :create, :update, :destroy_transcript, :observe_pcollege
   
   # GET /academic_records
   # GET /academic_records.xml

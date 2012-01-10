@@ -1,13 +1,15 @@
 class ProjectsController < ApplicationController
-  ssl_required :index, :show, :new, :edit, :create
+#  ssl_required :index, :show, :new, :edit, :create
 
   # GET /projects
   # GET /projects.xml
   def index
-    @projects_2008 = Project.all :conditions => [ "year = ?", 2008 ]
-    @projects_2009 = Project.all :conditions => [ "year = ?", 2009 ]
-    @projects_2010 = Project.all :conditions => [ "year = ?", 2010 ]
-
+    @years = []
+    @projects = Project.all
+    @projects.each {|p| @years << p.year}
+    @years = @years.uniq.sort.reverse
+    @years.each {|y| instance_variable_set("@projects_#{y}", Project.all(:conditions => ['year = ?', y]))}
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @projects }

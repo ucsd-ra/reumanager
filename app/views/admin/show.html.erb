@@ -14,7 +14,7 @@
 
 <div class="span-20"  id="personal_data">
 	<small class="right green"><b>LAST&nbsp;UPDATED</b>&nbsp;<%= @user.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
-	<h1><%= link_to_unless_current @user.name.titlecase, { :controller => "users", :action => "edit", :id => @user } %></h1>
+	<h1><%= link_to_unless_current @user.name.titlecase, '' %></h1>
 
 	<%= render :partial => 'show_personal_data', :locals => { :f => @user } %>
 </div>
@@ -23,7 +23,7 @@
 <div class="span-20"  id="academic_record">
 	<% if check_academic_records(@user) -%>
 		<small class="right green"><b>LAST UPDATED</b> <%= @user.academic_record.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
-		<h2><%= link_to_unless_current "Academic Information", { :controller => "academic_records", :id => @user } %></h2>
+		<h2><%= link_to_unless_current "Academic Information", '' %></h2>
 		
 		<%= render :partial => 'show_academic_record', :locals => { :f => @user.academic_record } %>
 	<% else -%>
@@ -34,7 +34,7 @@
 
 <div class="span-20"  id="extra">
 	<small class="right green"><%= "<b>LAST UPDATED</b> " + @user.extra.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") if @user.extra  %></small>
-	<h2><%= link_to_unless_current "Additional Information", { :controller => "extras", :id => @user } %></h2>
+	<h2><%= link_to_unless_current "Additional Information", '' %></h2>
 	<% if @user.extra -%>
 		<%= render :partial => 'show_extra', :locals => { :e => @user.extra } %>
 	<% else -%>
@@ -47,7 +47,7 @@
 	<% if @user.recommendation -%>
 		<small class="right green"><b>LAST UPDATED</b> <%= @user.recommendation.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
 	<% end -%>
-	<h2><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders", :id => @user } %></h2>
+	<h2><%= link_to_unless_current "Faculty Recommendation", '' %></h2>
 
 	<% if @user.recommender -%>
 		<%= render :partial => 'show_recommender', :locals => { :r => @user.recommender } %>

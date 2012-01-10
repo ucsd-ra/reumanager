@@ -6,9 +6,7 @@
 		<h6 class='left'>
 			&nbsp;&nbsp;<label>Filter by application status:</label> <%= (select_tag "application_status", options_for_application_status) %>
 		</h6>
-		<h6 class='right'>
-			<label>View application:</label> <%= (select_tag "student_select", options_for_student_select(all_students, "id", "lastname", "firstname", "status", admin_selected_user )) %>
-		</h6>
+		<h6 class='right'><%= student_select %></h6>
 	<% end -%>
 </div>
 <hr />

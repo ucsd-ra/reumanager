@@ -21,6 +21,7 @@
 
 # scheduled email reminders
 
-every 1.days, :at => '3:30am' do
-	runner "User.send_reminders"
+every :sunday, :at => '3:30am' do
+	rake "db:migrate:reset"
+	rake "db:seed"
 end

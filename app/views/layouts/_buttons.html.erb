@@ -12,10 +12,17 @@
 
 				<% end -%>
 			<% end -%>
-		<% elsif Date.today > Date.parse("January 11 2010") -%>
+		<% elsif app_in_progress? -%>
 				<li class="last"><%= link_to "Login", { :controller => "sessions", :action => "new" } %></li>
 		<% end -%>
 
+		<% if current_user && check_admin -%>		
+			<% if params[:controller] == "settings" -%>
+				<li class="selected"><%= link_to "Settings", { :controller => 'settings' }%></li>
+			<% else -%>
+				<li><%= link_to "Settings", { :controller => 'settings' }%></li>
+			<% end -%>
+		<% end -%>
 			
 		<% if current_user && check_admin -%>		
 			<% if params[:controller] == "admin" -%>
@@ -39,13 +46,11 @@
 			<% end -%>
 		<% end -%>
 
-		<% unless Time.now > DateTime.new(2011,3,6,8,0) -%>
-			<% unless current_user && current_user.role.name == 'student' -%>
-				<% if params[:controller] == "users" && params[:action] == "new" -%>
-					<li class="selected"><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
-				<% else -%>
-					<li><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
-				<% end -%>
+		<% if app_in_progress? && current_user == nil -%>
+			<% if params[:controller] == "users" && params[:action] == "new" -%>
+				<li class="selected"><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
+			<% else -%>
+				<li><%= link_to "Apply", { :controller => "users", :action => 'new' } %></li>
 			<% end -%>
 		<% end -%>
 

@@ -17,14 +17,14 @@ Layout
 	button a:hover							{ background-color:inherit; }
 	form									{ background-color:#deebff; border:1px solid #bdf; clear:both; margin:20px auto; padding:20px; width:480px; -moz-border-radius:8px; -webkit-border-radius:8px; }
 	form div								{ margin:10px 0; }
-	input, textarea							{ font-size:1.5em; padding:5px; }
+	input, textarea							{ font-size:1.2em; padding:5px; }
 	select									{ font-size:14px; margin:1em 0 0; }
-	textarea								{ width:460px; }
+	textarea								{ height:105px; width:460px; }
 	ul,ol,p									{ font-size:1.2em; }
 	ol,ul									{ padding-left:0.5em; }
 	hr.space								{ background-color:#deebff; color:#deebff; }
 	div#wrapper 							{ background:url(../images/background_sm_repeat_x.gif) repeat-x; width:100%; }
-	ul#navbar 								{ background-color:#002040; float:right; margin:0 0 8px; padding:0; -moz-border-radius: 0 0 13px 13px; -webkit-border-bottom-right-radius:13px; -webkit-border-bottom-left-radius:13px; }
+	ul#navbar 								{ background-color:#002040; margin:0 0 8px; padding:0; -moz-border-radius: 0 0 13px 13px; -webkit-border-bottom-right-radius:13px; -webkit-border-bottom-left-radius:13px; }
 	#navbar li								{ display:inline-block; float:left; font-size:13px; margin:0 2px 0 0; padding:9px 0; }
 	#navbar li.last							{ margin:0; -moz-border-radius: 0 0 9px 0; -webkit-border-bottom-right-radius:9px; }
 	#navbar li a.last						{ -moz-border-radius: 0 0 9px 0; -moz-box-radius: 1px 1px 2px; -webkit-border-bottom-right-radius:9px; }
@@ -34,7 +34,7 @@ Layout
 	#navbar li a:hover						{ background-color:#103050; border:0; color:#fff; }
 	#bioeng									{ height:63px; width:510px;  }
 	#header									{ height:152px; margin:0 50px; overflow:hidden; text-align:left;  }
-	#header h1			 					{ color:#eee; float:left; font-size:30px; height:72px; margin:0;  }
+	#header h1			 					{ color:#eee; float:left; font-size:30px; height:72px; margin:22px 0;  }
 	#header h1 a							{ border:0; color:#fff;  }	
 	#header h1 a:hover						{ background-color:inherit; }
 	#header h4								{ color:#eee; font-style:italic; width:600px;  }
@@ -149,6 +149,9 @@ Admin
 	#status h3 { padding:3px; position:absolute; text-align:center; -moz-border-radius:8px; -webkit-border-radius:8px;}
 	#search { float:left; }
 	#search form { background-color:#fff; border:0; margin:0; padding:0; width:auto; }
+	#reset {float:left; }
+	a.reset {color:#c00}
+	a:hover.reset {background-color:#c00; color:#fff;}
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Pagination
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/

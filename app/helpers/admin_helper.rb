@@ -15,8 +15,8 @@ module AdminHelper
 		options << ["Rejected", url_for(:action => 'list', :status => "Reject")]
 		options << ["Withdrawn", url_for(:action => 'list', :status => 'Withdrawn')]
 		options << ["Incomplete", url_for(:action => 'incomplete')]
-		options << ["Submitted", url_for(:action => 'submitted')]
-		options << ["Complete", url_for(:action => 'complete')]
+		options << ["Submitted (awaiting recommendation)", url_for(:action => 'submitted')]
+		options << ["Complete (complete app w/recommendation)", url_for(:action => 'complete')]
 		options << ["Total", url_for(:action => 'total')]
 
 		case params[:action]
@@ -60,4 +60,9 @@ module AdminHelper
     end
   end
   
+  def student_select
+    @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
+    @html = "<label>View application:</label> "
+    @html <<  select_tag("student_select", options_for_student_select(all_students, "id", "lastname", "firstname", "status", admin_selected_user )) if @all_students != []
+  end
 end

@@ -1,18 +1,7 @@
 <div id="header">
-	<ul id="navbar">
-		<li><%= link_to "About Us", "http://be.ucsd.edu/about", :class => "first" %></li>
-		<li><%= link_to "Faculty &amp; Research", "http://be.ucsd.edu/faculty" %></li>
-		<li><%= link_to "Graduate", "http://be.ucsd.edu/graduate" %></li>
-		<li class="selected"><%= link_to "Undergraduate", "http://be.ucsd.edu/undergraduate" %></li>
-		<li><%= link_to "Industry Central", "http://be.ucsd.edu/industry" %></li>
-		<li><%= link_to "News", "http://be.ucsd.edu/news" %></li>
-		<li><%= link_to "Seminars", "http://be.ucsd.edu/seminars"%></li>
-		<li><%= link_to "Careers &amp; Internships", "http://be.ucsd.edu/positions" %></li>
-		<li class="last"><%= link_to "Giving", "http://giving.be.ucsd.edu", :class => "last" %></li>
-	</ul>
 	<h1>
 		<br />
-		<%= link_to "UC San Diego, Department of Bioengineering", "/" %>
+		<%= link_to "#{Setting.university}, #{Setting.department}", "/" %>
 	</h1>
 	<%= render :partial => "layouts/buttons" %>
 </div>
