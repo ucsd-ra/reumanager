@@ -2,8 +2,8 @@ app_title:
   default: Student Undergraduate Research Experience (SURF)
 domain:
   default: reu.ucsd.edu/surf
-university: UC San Diego
-  default: 
+university: 
+  default: UC San Diego
 department:
   default: Scripps Institution of Oceanography
 application_start:

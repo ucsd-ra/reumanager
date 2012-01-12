@@ -25,4 +25,3 @@ config.action_controller.perform_caching             = true
 
 
 config.action_mailer.delivery_method = :smtp
-config.action_controller.relative_url_root = "/nsfreu"
