@@ -190,10 +190,10 @@ class UsersController < ApplicationController
       @user.make_pw_token
       @user.save_with_validation(false)
       UserMailer.deliver_reset_password(@user)
-      flash[:notice] = "Password reset link, sent."  
+      flash[:notice] = "Password reset link sent if that email account exists in our system."  
       redirect_to( :action => "emailed")
     else
-      flash[:notice] = "There was an error or no user by that email."  
+      flash[:notice] = "Password reset link sent if that email account exists in our system."  
       render :action => 'forgot'
     end
   end
@@ -225,10 +225,10 @@ class UsersController < ApplicationController
     if @user = User.find_by_email(params[:email])
       @user.send_reg_confirmation
       @user.save_with_validation(false)
-      flash[:notice] = "Activation link sent"  
+      flash[:notice] = "Activation link sent if that email account exists in our system."  
       redirect_to( :action => "emailed"  )
     else
-      flash[:notice] = "There was an error or no user by that email."  
+      flash[:notice] = "Activation link sent if that email account exists in our system."  
       render :action => 'reactivate'
     end    
   end
