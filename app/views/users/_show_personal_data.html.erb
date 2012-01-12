@@ -1,0 +1,70 @@
+<div class="span-4">
+	<label>Name</label><br />
+	<%= h(f.firstname) + " " if f.firstname %>
+	<%= h(f.middlename) + " " if f.middlename %>
+	<%= h(f.lastname) + " " if f.lastname %>
+</div>
+
+<div class="span-4">
+	<label>Date of Birth</label><br />
+	<%= h(f.dob.to_date.strftime("%Y.%m.%d")) %>
+</div>
+
+<div class="span-5 last">
+	<label>Street&nbsp;Address</label><br />
+	<%= h(f.street) %><br />
+	<%= h(f.city) %>&nbsp;
+	<%= h(f.state) %>,&nbsp;
+	<%= h(f.zip) %>
+</div>
+
+<hr class="space" />
+<div class="span-4">
+	<label>Phone</label><br />
+	<%= h(f.phone) %>
+</div>
+<div class="span-4">
+	<label>Email</label><br />
+	<%= h(f.email) %>
+</div>
+
+<% if @user && @user.pstreet && @user.pstreet != ""  -%>
+	<div class="span-5 last">
+		<label>Permanent residence:</label><br />
+		<%= h(f.pstreet) %><br />
+		<%= h(f.pcity) %>,&nbsp;
+		<%= h(f.pstate) %>&nbsp; 
+		<%= h(f.pzip) %><br />
+		<%= h(f.pphone) %>
+	</div>
+<% end -%>
+
+<hr class="clear space" />
+<hr />
+
+<h4>Optional Questions</h4>
+<div class="span-4">
+	<%= "<label>Citizenship</label><br />" + h(f.citizenship) if f.citizenship %>
+	<%= "<label>Country of Residence</label><br />" + h(f.cresidence) if f.cresidence %>
+</div>
+
+<div class="span-4">
+	<label>Gender</label><br /><%= h(f.gender) %>
+</div>
+
+<div class="span-4">
+	<label>Ethnicity</label><br /><%= h(f.ethnicity) %>
+</div>
+
+<hr class="space" />
+
+<div class="span-4">
+	<label>Race</label><br /><%= h(f.race) %>
+</div>
+
+<div class="span-4">
+	<label>Disability</label><br /><%= f.disability == "" ? "Prefer not to respond" : h(f.disability) %>
+</div>
+
+<hr class="space" />
+<small class="right">Last Updated: <%= f.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
