@@ -81,7 +81,7 @@ Layout
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Welcome
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
-	#nsf									{ float:left; margin:5px 0 0 0; padding:0 0 0 42px; position:absolute; }
+	#nsf									{ float:left; margin:5px 0 0 0; padding:32px 0 0 12px; position:absolute; }
 	#welcome p								{ font-size:1.2em; }
 	#images									{ margin:25px 0; }
 	#slideshow 								{ padding:0 0 10px; }
