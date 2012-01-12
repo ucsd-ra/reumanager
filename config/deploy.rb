@@ -19,7 +19,7 @@ role :db,  domain, :primary => true
 
 ## modified for passenger standalone
 set :rails_env,      "production"
-set :passenger_port, 4000
+set :passenger_port, 4020
 set :passenger_cmd,  "passenger"
 
 namespace :deploy do
