@@ -1,6 +1,6 @@
 development:
   adapter: mysql
-  database: nsfreu
+  database: nsfreu_dev
   encoding: utf8
   username: nsfreu
   password: sqz_EI7=FpEojbeY4:MtmIMg

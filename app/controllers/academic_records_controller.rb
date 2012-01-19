@@ -53,7 +53,7 @@ class AcademicRecordsController < ApplicationController
   def create
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
-    @user.academic_record = (AcademicRecord.new(params[:academic_record]) || AcademicRecord.new)
+    @user.academic_record = AcademicRecord.new(params[:academic_record])
     @academic_record = @user.academic_record
     
     respond_to do |format|
@@ -117,5 +117,5 @@ class AcademicRecordsController < ApplicationController
       end
     end
   end
-  
+    
 end

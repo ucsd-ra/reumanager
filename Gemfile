@@ -9,7 +9,7 @@ gem 'paperclip', '2.3.15'
 gem 'pdf-writer', '1.1.8', :require => 'pdf/writer'
 #gem 'machinist', :require => 'machinist'
 #gem 'pickle'
-gem 'rake'
+gem 'rake', '0.9.2.2'
 gem 'rcov', '0.9.9'
 gem 'rdoc'
 gem 'redbox', '1.0.4'
@@ -25,6 +25,7 @@ gem 'yaml_db', '0.1.0'
 group :development do
   gem 'capistrano'
 	gem 'sqlite3-ruby', :require => 'sqlite3'
+	gem 'ruby-debug'
 	gem 'wirble'
 end
 
