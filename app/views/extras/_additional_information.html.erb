@@ -19,10 +19,10 @@
 <%= e.text_area 'gpa_comments', :class => "extra" %>
 
 <div id="learn">
-	<label>How did you learn about the Scripps Undergraduate Research Program (SURF) REU?</label><br />
+	<label>How did you learn about the Scripps Undergraduate Research Program (SURF)?</label><br />
 	<%= e.radio_button 'learn', 'NSF REU Website', :onclick => "$('learn_more').hide();" %><label>NSF REU Website</label>&nbsp;&nbsp;&nbsp;
 	<%= e.radio_button 'learn', 'Scripps Oceanography Website', :onclick => "$('learn_more').hide();" %><label>Scripps Oceanography Website</label>&nbsp;&nbsp;&nbsp;
-	<%= e.radio_button 'learn', 'Professor', :onclick => "$('learn_more').hide();" %><label>Professor</label>&nbsp;&nbsp;&nbsp;
+	<%= e.radio_button 'learn', 'Professor', :onclick => "$('learn_more').hide();" %><label>Professor</label>&nbsp;&nbsp;&nbsp;<br />
 	<%= e.radio_button 'learn', 'Undergraduate major program', :onclick => "$('learn_more').hide();" %><label>Undergraduate major program</label>&nbsp;&nbsp;&nbsp;
 	<%= e.radio_button 'learn', 'Email', :onclick => "$('learn_more').hide();" %><label>Email</label>&nbsp;&nbsp;&nbsp;
 	<%= e.radio_button 'learn', 'Other', :onclick => "$('learn_more').show();" %><label>Other</label>&nbsp;&nbsp;&nbsp;
@@ -37,14 +37,3 @@
 	<label>Please Complete a brief essay (up to 250 words) explaining why you are interested in our program and how the experience may help you achieve your future goals:</label>
 </div>	
 <%= e.text_area 'personal_statement', :class => "extra" %>
-
-
-
-
-
-
-
-<div>
-	<label>What else would you like to share regarding your qualifications or desires as a candidate for the SURF REU program?</label>
-	<%= e.personal_statement.size > 4 ? e.personal_statement : "You have not entered data for this section." %>
-</div>

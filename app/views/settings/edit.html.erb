@@ -4,8 +4,8 @@
 	<div>
 		<p><%= setting_text_field :app_title, :label => "Application Title", :description => "This text will appear in the Page Title and in the Header" %></p>
 		<p><%= setting_text_field :domain, :description => "This is used to create the links used in email confirmations.  This needs to be the same as the website (e.g. nsfreu.be.ucsd.edu or be.ucsd.edu/nsfreu)" %></p>
-		<p><%= setting_text_field :university, :description => "This is used in the header and footer, by default, along with the department value below." %></p>
-		<p><%= setting_text_field :department, :description => "Similar to the above, this is used throughout the site to personalize your site." %></p>
+		<p><%= setting_text_field :university, :description => "This is used in the header, footer, and emails sent by the web app.  It is included with the department value below. (e.g. Department, University)" %></p>
+		<p><%= setting_text_field :department %></p>
 		<p><%= setting_datetime_select :application_start, :description => "This is the 'opening date' for the application system. After this date, students can apply. This also controls what buttons are displayed in the navbar and on the homepage (e.g. Apply Now and Login)" %></p>
 		<p><%= setting_datetime_select :application_deadline, :description => "This date determines when applications can no longer be created or updated. Similar to the above value, buttons to apply are removed after this date." %></p>
 		<p><%= setting_datetime_select :notification_date, :description => "This date is used to let the applicants know when to expect a response.  This is used in the confirmation emails." %></p>

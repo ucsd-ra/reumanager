@@ -142,7 +142,7 @@ class UsersController < ApplicationController
   end
   
   def submit
-    if current_user.submitted_at      
+    if current_user.submitted_at
       flash[:notice] = 'You cannot submit your application twice.'
       render :update do |page|
         page.redirect_to( :controller => "users", :action => "status" )
