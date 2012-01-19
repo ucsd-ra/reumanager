@@ -1,34 +1,34 @@
 <div>
-	<label>Please list up to five academic awards that you have received (e.g. Award - Date Received [mm/yy])</label><br />
-	<%= e.awards.size > 4 ? e.awards : "You have not added any academic awards." %>
+	<label>Why are you applying to the Scripps Undergraduate Research Fellowship (SURF) REU program?</label><br />
+	<%= e.awards.size > 4 ? e.awards : "You have not entered data for this section." %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>Please list any laboratory skills:</label><br />
-	<%= e.lab_skills.size > 4 ? e.lab_skills : "You have not added any lab skills."%>
+	<label>What, if any, research experience do you have?  What type(s) of research experience would you like to experience and develop? (note: previous research experience is not required for participation in the program)</label><br />
+	<%= e.lab_skills.size > 4 ? e.lab_skills : "You have not entered data for this section."%>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>Please list any computer skills:</label><br />
-	<%= e.comp_skills.size > 4 ? e.comp_skills : "You have not added any computer skills." %>
+	<label>Please list any laboratory or computer skills you currently possess.  Which existing skills would you like to improve, or new skills would you like to develop?</label><br />
+	<%= e.comp_skills.size > 4 ? e.comp_skills : "You have not entered data for this section." %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>Do you feel your GPA accurately reflects your academic abilities?  Please comment on why or why not in the space provided:</label><br style="clear:both;"/>
-	<%= e.gpa_comments.size > 4 ? e.gpa_comments : "You have not answered this question." %>
+	<label>Do you feel that your academic record accurately reflects your abilities as a student?  Please explain.</label><br style="clear:both;"/>
+	<%= e.gpa_comments.size > 4 ? e.gpa_comments : "You have not entered data for this section." %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>How did you learn about Research Experience for Undergrads (REU)?</label><br />
-	<%= e.learn ? e.learn : "You have not answered this question." %>
+	<label>How did you learn about the Scripps Undergraduate Research Program (SURF) REU?</label><br />
+	<%= e.learn ? e.learn : "You have not entered data for this section." %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>Please Complete a brief essay (up to 250 words) explaining why you are interested in our program and how the experience may help you achieve your future goals</label>
-	<%= e.personal_statement.size > 4 ? e.personal_statement : "You must complete your personal statement." %>
+	<label>What else would you like to share regarding your qualifications or desires as a candidate for the SURF REU program?</label>
+	<%= e.personal_statement.size > 4 ? e.personal_statement : "You have not entered data for this section." %>
 </div>
