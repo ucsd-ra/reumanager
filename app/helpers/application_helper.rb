@@ -22,9 +22,9 @@ module ApplicationHelper
     when params[:controller] == "projects"
       return "<title>Department of #{Setting.department} NSF REU::: Projects</title>"
     when params[:controller] == "users" || params[:controller] == "academic_records" || params[:controller] == "extras" || params[:controller] == "recommenders" 
-      return "Department of #{Setting.department} NSF REU ::: Application</title>"
+      return "<title>Department of #{Setting.department} NSF REU ::: Application</title>"
     else
-      return "Department of #{Setting.department} NSF REU</title>"
+      return "<title>Department of #{Setting.department} NSF REU</title>"
     end
   end
   
