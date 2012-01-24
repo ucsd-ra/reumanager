@@ -83,7 +83,7 @@ Welcome
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 	#nsf									{ float:left; margin:-16px 0 0 0; padding:0; position:absolute; }
 	#welcome p								{ font-size:1.2em; }
-	#images									{ margin:25px 0; }
+	#image									{ margin-bottom:30px; }
 	#slideshow 								{ padding:0 0 10px; }
 	ul#welcome_slideshow 					{ height:500px; margin:0; padding:0; min-width:950px; width:950px; position:relative; }
 	ul#welcome_slideshow li 				{ display: block; height:500px; list-style:none; margin:0; padding:0; position:absolute; text-align:center; min-width:950px; width:950px;}

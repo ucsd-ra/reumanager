@@ -1,17 +1,19 @@
 <div id="welcome">
 	<%= render :partial => "layouts/header_text" %>
 	
-	<div class="center" id="images">
-		<%= image_tag("pier.jpg")%>
-		<%= image_tag("cruiseshot.jpg")%>
-		<%= image_tag("wall.jpg")%>
+	<br class='clear'/>
+
+	<div class="span-14" id="image">
+		<%= image_tag("surf.jpg", :width => 520)%>
 	</div>
+	<div class="span-10 last" id="general">
+        <%= textilize Setting.general_description %>
+
+        <p>Please see the <%= link_to "2012 Flyer", "/REU-SURF-2012.pdf", :class => "ss_sprite ss_page_white_acrobat" %> for more information.</p>	
+	</div>
+
+	<br class='clear'/>
 	
-  <%= textilize Setting.general_description %>
-
-  <p>Please see the <%= link_to "2012 Flyer", "/REU-SURF-2012.pdf", :class => "ss_sprite ss_page_white_acrobat" %> for more information.</p>
-	<hr />
-
 	<div class="span-8">
     <%= textilize Setting.highlights %>
 	</div>
