@@ -5,7 +5,7 @@
 			<% if params[:controller] == "users" || params[:controller] == "academic_records" || params[:controller] == "recommenders" || params[:controller] == "extras" -%>
 				<% if current_user && current_user.submitted_at && !check_admin && params[:controller] != "recommendation" %>
 					<li class="selected"><%= link_to "Application", { :controller => "users", :action => "status" }%></li>
-				<% end -%>				
+				<% end -%>
 			<% else -%>
 				<% if current_user && current_user.submitted_at && !check_admin && params[:controller] != "recommendation" %>
 					<li><%= link_to "Application", { :controller => "users", :action => "status" }%></li>
@@ -31,11 +31,13 @@
 			<% end -%>
 		<% end -%>
 		
-		<% if params[:controller] == "projects" && params[:action] == "index" -%>
-			<li class="selected"><%= link_to "Past Projects", { :controller => "projects" } %></li>
-		<% else -%>
-			<li><%= link_to "Past Projects", { :controller => "projects" } %></li>
-		<% end -%>
+		<% if Project.all != [] || check_admin %>
+    		<% if params[:controller] == "projects" && params[:action] == "index" -%>
+    			<li class="selected"><%= link_to "Past Projects", { :controller => "projects" } %></li>
+    		<% else -%>
+    			<li><%= link_to "Past Projects", { :controller => "projects" } %></li>
+    		<% end -%>
+    	<% end -%>
 
 		<% if current_user && current_user.role.name == 'student' -%>
 			<% if params[:controller] == "users" && params[:action] == "edit" -%>
