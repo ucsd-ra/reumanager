@@ -83,6 +83,7 @@ class ExtrasController < ApplicationController
 #  end
 
   def mentor
+    @extra = Extra.find_by_user_id(current_user.id)
     id = params.keys.select {|k| k.include? "men"}.join.last
     value = params["mentor#{id}"]
     
@@ -95,6 +96,7 @@ class ExtrasController < ApplicationController
   end
   
   def restore_mentor_select
+    @extra = Extra.find_by_user_id(current_user.id)
     id = params[:id]
     
     render :update do |page|
