@@ -29,6 +29,14 @@
 <br style="clear:both;"/>
 
 <div>
+	<label>Top 3 preferences for potential faculty mentors</label><br />
+	1. <%= e.mentor1 ? e.mentor1 : "You have not entered your first choice." %><br />
+	2. <%= e.mentor2 ? e.mentor2 : "You have not entered your second choice." %><br />
+	3. <%= e.mentor3 ? e.mentor3 : "You have not entered your third choice." %><br />
+</div>
+<br style="clear:both;"/>
+
+<div>
 	<label>What else would you like to share regarding your qualifications or desires as a candidate for the SURF REU program?</label>
 	<%= e.personal_statement.size > 4 ? e.personal_statement : "You have not entered data for this section." %>
 </div>

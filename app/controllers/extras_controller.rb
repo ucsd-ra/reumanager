@@ -81,4 +81,27 @@ class ExtrasController < ApplicationController
 #      format.xml  { head :ok }
 #    end
 #  end
+
+  def mentor
+    id = params.keys.select {|k| k.include? "men"}.join.last
+    value = params["mentor#{id}"]
+    
+    render :update do |page|
+      if value == "Other"
+        page["extra_mentor#{id}"].replace :partial => "mentor_input", :locals => {:id => id}
+        page[:mentor_observers].replace :partial => "mentor_observers"
+      end
+    end
+  end
+  
+  def restore_mentor_select
+    id = params[:id]
+    
+    render :update do |page|
+      page["extra_mentor#{id}"].replace :partial => "mentor_select", :locals => {:id => id}
+      page["cancel_extra_mentor#{id}"].remove
+      page[:mentor_observers].replace :partial => "mentor_observers"
+    end
+    
+  end
 end

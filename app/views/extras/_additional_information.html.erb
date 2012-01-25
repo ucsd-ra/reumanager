@@ -32,8 +32,19 @@
   </div>
 </div>
 
+<div id="preference">
+	<label>Please select your top 3 preferences for potential faculty mentors.</label><br />
+	Please refer to <%= link_to "http://sioundergrad.ucsd.edu/research/", 'http://sioundergrad.ucsd.edu/research/' %> for more information.<br />
+	
+	<%= render :partial => "mentor_select", :locals => {:id => "1"} %>
+	<%= render :partial => "mentor_select", :locals => {:id => 2} %>
+	<%= render :partial => "mentor_select", :locals => {:id => 3} %>
+</div>
+
 <br style="clear:both;" />
 <div>
-	<label>Please Complete a brief essay (up to 250 words) explaining why you are interested in our program and how the experience may help you achieve your future goals:</label>
+	<label>Please Complete a brief essay (up to 300 words) explaining why you are interested in our program and how the experience may help you achieve your future goals:</label>
 </div>	
 <%= e.text_area 'personal_statement', :class => "extra" %>
+
+<%= render :partial => "mentor_observers" %>
