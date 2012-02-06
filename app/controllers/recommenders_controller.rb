@@ -27,6 +27,8 @@ class RecommendersController < ApplicationController
   # POST /recommenders
   # POST /recommenders.xml
   def create
+    # strip trailing whitespace from email input
+    params[:recommender][:email] = params[:recommender][:email].strip
     @recommender = Recommender.new(params[:recommender])
     @recommender.user_id = current_user.id
     respond_to do |format|
@@ -44,7 +46,9 @@ class RecommendersController < ApplicationController
   # PUT /recommenders/1
   # PUT /recommenders/1.xml
   def update
+    # strip trailing whitespace from email input
     @recommender = Recommender.find(current_user.recommender)
+    params[:recommender][:email] = params[:recommender][:email].strip
 
     respond_to do |format|
       if @recommender.update_attributes(params[:recommender])
