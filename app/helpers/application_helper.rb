@@ -61,7 +61,7 @@ module ApplicationHelper
   end
 
   def check_extras(user)
-    result = true if user && user.extra && user.extra.personal_statement.size > 2 && user.extra.mentor1 != '' && user.extra.mentor2 != '' && user.extra.mentor3 != ''
+    result = true if user && user.extra && user.extra.personal_statement && user.extra.personal_statement.size > 2 && user.extra.mentor1 != '' && user.extra.mentor2 != '' && user.extra.mentor3 != ''
   end
 
   def check_all(user)
