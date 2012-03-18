@@ -16,7 +16,7 @@
 # Please note: if you change this, all the passwords will be invalidated, so DO
 # keep it someplace secure.  Use the random value given or type in the lyrics to
 # your favorite Jay-Z song or something; any moderately long, unpredictable text.
-REST_AUTH_SITE_KEY         = '8f4829bd3a84f9c14c2d897e0ef6546c04e392c1'
+REST_AUTH_SITE_KEY         = '8f4829bd3a8sd4f9c14casa2d897e0ef6546c04e392c1'
   
 # Repeated applications of the hash make brute force (even with a compromised
 # database and site key) harder, and scale with Moore's law.
