@@ -9,9 +9,9 @@ department:
 application_start:
   default: Mon, 15 Aug 2011 00:00:00 -0700
 application_deadline:
-  default: Tue, 6 Mar 2012 00:00:00 -0700
+  default: Mon, 30 Apr 2012 00:00:00 -0700
 notification_date:
-  default: Mon, 2 Apr 2012 00:00:00 -0700
+  default: Mon, 7 May 2012 00:00:00 -0700
 program_start_date:
   default: Mon, 11 Jun 2012
 program_end_date:
