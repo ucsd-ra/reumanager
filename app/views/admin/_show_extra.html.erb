@@ -1,7 +1,7 @@
 <div>
 	<label>Please list up to five academic awards that you have received (e.g. Award - Date Received [mm/yy])</label><%= @spacer %>
 
-	<%= e.awards.gsub("\n", "<br />") %>
+	<%= e.awards ? e.awards.gsub("\n", "<br />") : e.awards %>
 </div>
 <br style="clear:both;"/>
 

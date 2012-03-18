@@ -27,6 +27,9 @@ class RecommendersController < ApplicationController
   # POST /recommenders
   # POST /recommenders.xml
   def create
+    # strip trailing whitespace from email input
+    params[:recommender][:email] = params[:recommender][:email].strip
+
     @recommender = Recommender.new(params[:recommender])
     @recommender.user_id = current_user.id
     respond_to do |format|
