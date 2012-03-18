@@ -19,7 +19,7 @@ s.save
 # SUBMITTED STUDENT
 #
 # create sample students
-s = User.new(:firstname => "John", :middlename => "Quincy", :lastname => "Adams", :email => "jqadams@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442\n 9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
+s = User.new(:firstname => "James", :middlename => "", :lastname => "Madison", :email => "jmadison@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
   :phone => "805-663-4445", :pstreet => "1132 Orange Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
@@ -56,7 +56,7 @@ s.save
 # COMPLETE STUDENT
 #
 # create sample students
-s = User.new(:firstname => "John", :middlename => "Quincy", :lastname => "Adams", :email => "jqadams@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442\n 9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
+s = User.new(:firstname => "John", :middlename => "Quincy", :lastname => "Adams", :email => "jqadams@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
   :phone => "805-663-4445", :pstreet => "2522 Orange Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
@@ -99,7 +99,7 @@ s.save
 # WITHDRAWN STUDENT
 #
 # create sample students
-s = User.new(:firstname => "John", :middlename => "Quincy", :lastname => "Adams", :email => "jqadams@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442\n 9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
+s = User.new( :firstname => "Theodore", :middlename => "", :lastname => "Roosevelt", :email => "troosevelt@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442  450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
   :phone => "805-663-0000", :pstreet => "1221 Orange Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
