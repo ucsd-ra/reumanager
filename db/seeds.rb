@@ -8,7 +8,7 @@ u.set_to_admin!
 #
 # create sample students
 s = User.new(:firstname => "Abe", :middlename => "", :lastname => "Lincoln", :email => "alincoln@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
-  :phone => "805-663-4445", :pstreet => "252 Plum Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
+  :phone => "805-663-4445", :pstreet => "1212 Plum Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
   :password => "nsfreudemo", :password_confirmation => "nsfreudemo" ,:status => "In Review", :role_id => 2, 
@@ -20,7 +20,7 @@ s.save
 #
 # create sample students
 s = User.new(:firstname => "James", :middlename => "", :lastname => "Madison", :email => "jmadison@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
-  :phone => "805-663-4445", :pstreet => "252 Plum Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
+  :phone => "805-663-4445", :pstreet => "1132 Plum Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
   :password => "nsfreudemo", :password_confirmation => "nsfreudemo" ,:status => "In Review", :role_id => 2, 
@@ -38,10 +38,10 @@ s.academic_record = AcademicRecord.new( :gpa => "4.0",
   :transcript_content_type => 'application/pdf',
   :transcript_file_size => "193576",
   :transcript_updated_at => '2011-03-02 04:51:21'.to_datetime,
-  :transcript_file_name => "UCSDTranscript.pdf")
+  :transcript_file_name => "transcript.pdf")
 
 # create extra
-s.extra = Extra.new(:awards => "Ronald E. McNair Scholar 2010 to 2011\r\n\r\nDean’s List 6 Semesters, 2007 to present\r\n\r\nAtrisco Heritage Scholarship, Fall 2008, Fall 2009, Fall 2010",
+s.extra = Extra.new(:awards => "Super Science Scholar 2010 to 2011\r\n\r\nDean’s List 6 Semesters, 2007 to present\r\n\r\nSan Francisco Heritage Scholarship, Fall 2008, Fall 2009, Fall 2010",
   :comp_skills => "Proficient in Matlab, Aspen, Word, Excel, PowerPoint, Access, Project, Adobe Acrobat, C3 Suites.",
   :gpa_comments => "I feel my GPA is a relatively fair representation of my academic abilities.  I believe that it could be better, but unfortunately I cannot dedicate my full energy to my academics.  I have to work in order to support myself.  Therefore I cannot dedicate all my time to studies.  Even though I have some time restrictions with my academics, I feel that it makes me truly appreciate of my education and the journey I have to take in order to receive it.",
   :lab_skills => "Unfortunately I am still fairly novice with laboratory skills.  I have run gas chromatography, reflux process, solution preparation, and absorption spectroscopy through various labs in my curriculum.  I have obtained training on safe chemical handling and storage, and cryogens.  As I always, I maintain an eagerness for learning efficient lab techniques.  My lab skills are scarce but the research experience I do have is as follows: My first research experience was working part time in the summer of 2010 at the Advanced Materials Laboratory.  The research I worked on was generating nano-particles for protocell drug delivery systems that targeted diseases such as cancer.  The goal was to determine an appropriate recipe and separation process that produced a certain range of silica nano-particles consisting of a range of certain pore size. I spent my time assisting in the creation of a particle generator, carrying out the creation of the nanoparticles, and trying to learn mass transfer for mathematical modeling and particle size prediction.  Currently I am doing research in a lab at UNM’s Center for Biomedical Engineering.  The area of research is low-cost diagnostics and multiplex lateral flow assays.  I am working to disprove chromatographic sieving on semi-quantitative test strips, by proving homogeneity of an analyte throughout the test strip.",
@@ -57,7 +57,7 @@ s.save
 #
 # create sample students
 s = User.new(:firstname => "John", :middlename => "Quincy", :lastname => "Adams", :email => "jqadams@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
-  :phone => "805-663-4445", :pstreet => "252 Plum Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
+  :phone => "805-663-4445", :pstreet => "2522 Plum Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
   :password => "nsfreudemo", :password_confirmation => "nsfreudemo" ,:status => "In Review", :role_id => 2, 
@@ -76,10 +76,10 @@ s.academic_record = AcademicRecord.new( :gpa => "3.6",
   :transcript_content_type => 'application/pdf',
   :transcript_file_size => "193576",
   :transcript_updated_at => '2011-03-02 04:51:21'.to_datetime,
-  :transcript_file_name => "UCSDTranscript.pdf")
+  :transcript_file_name => "transcript.pdf")
 
 # create extra
-s.extra = Extra.new(:awards => "Ronald E. McNair Scholar 2010 to 2011\r\n\r\nDean’s List 6 Semesters, 2007 to present\r\n\r\nAtrisco Heritage Scholarship, Fall 2008, Fall 2009, Fall 2010",
+s.extra = Extra.new(:awards => "Super Science Scholar 2010 to 2011\r\n\r\nDean’s List 6 Semesters, 2007 to present\r\n\r\nSan Francisco Heritage Scholarship, Fall 2008, Fall 2009, 2010",
   :comp_skills => "Proficient in Matlab, Aspen, Word, Excel, PowerPoint, Access, Project, Adobe Acrobat, C3 Suites.",
   :gpa_comments => "I feel my GPA is a relatively fair representation of my academic abilities.  I believe that it could be better, but unfortunately I cannot dedicate my full energy to my academics.  I have to work in order to support myself.  Therefore I cannot dedicate all my time to studies.  Even though I have some time restrictions with my academics, I feel that it makes me truly appreciate of my education and the journey I have to take in order to receive it.",
   :lab_skills => "Unfortunately I am still fairly novice with laboratory skills.  I have run gas chromatography, reflux process, solution preparation, and absorption spectroscopy through various labs in my curriculum.  I have obtained training on safe chemical handling and storage, and cryogens.  As I always, I maintain an eagerness for learning efficient lab techniques.  My lab skills are scarce but the research experience I do have is as follows: My first research experience was working part time in the summer of 2010 at the Advanced Materials Laboratory.  The research I worked on was generating nano-particles for protocell drug delivery systems that targeted diseases such as cancer.  The goal was to determine an appropriate recipe and separation process that produced a certain range of silica nano-particles consisting of a range of certain pore size. I spent my time assisting in the creation of a particle generator, carrying out the creation of the nanoparticles, and trying to learn mass transfer for mathematical modeling and particle size prediction.  Currently I am doing research in a lab at UNM’s Center for Biomedical Engineering.  The area of research is low-cost diagnostics and multiplex lateral flow assays.  I am working to disprove chromatographic sieving on semi-quantitative test strips, by proving homogeneity of an analyte throughout the test strip.",
@@ -87,20 +87,20 @@ s.extra = Extra.new(:awards => "Ronald E. McNair Scholar 2010 to 2011\r\n\r\nDea
   :learn => "NSF REU Website")
 
 # create recommender
-s.recommender = Recommender.new(:name => "Martin Van Buren", :title => "Professor", :department => "Intergrative Biology", :college => "University of California, Berkeley", :phone => "510-448-8404", :email => "mvburen@be.ucsd.edu", :waive_rights => true)
+s.recommender = Recommender.new(:name => "Martin Van Buren", :title => "Professor", :department => "Intergrative Biology", :college => "University of California, Berkeley", :phone => "510-448-0000", :email => "mvburen@be.ucsd.edu", :waive_rights => true)
 s.save
 
 # create recommendation
 s.recommendation = Recommendation.new( :known_student => "<1 year", :know_capacity => "Undergrad in one course", :rating => "Top 10%", :undergrad_inst => "No",
-  :faculty_comment => "To whom it may concern:\r\n\r\n\tI write to recommend Peter Chen for a summer research internship.  I have known Peter since fall semester, 2010, as a student in my biomedical engineering physiology course, in which he earned a grade of A- and ranked at about the middle among the 132 students.  This course was taught using Koeppen and Stanton’s new sixth edition of Berne and Levy’s Physiology text with full coverage in two semesters.  Students write three critiques of published papers, four exams and quantitative homework problems.  It is the only physiology course outside the medical school curriculum.\r\n\tPeter’s overall performance in all of his classes would rank him among the top 15% of students in engineering at UVA.  He is earning a major in biomedical engineering and doing very well.  He is an engaging student, disciplined and intelligent.  He works hard, is organized, honest and imaginative.  Peter asks thoughtful questions about both his classroom work and his plans for the future.  \r\n\tI believe you will find that Peter will make significant contributions to your program and I recommend him most enthusiastically.  He has demonstrated the highest intellectual rigor and a consistent motivation for excellence in his course work.  I would be happy to respond to questions.\r\n\r\nSincerely,\r\n\r\nJ. Milton Adams Ph.D.\r\nProfessor, Biomedical Engineering\r\nVice Provost for Academic Programs\r\n")
+  :faculty_comment => "To whom it may concern:\r\n\r\n\tI write to recommend John Quincy Adams for a summer research internship.  I have known John since fall semester, 2010, as a student in my biomedical engineering physiology course, in which he earned a grade of A- and ranked at about the middle among the 132 students.  This course was taught using Koeppen and Stanton’s new sixth edition of Berne and Levy’s Physiology text with full coverage in two semesters.  Students write three critiques of published papers, four exams and quantitative homework problems.  It is the only physiology course outside the medical school curriculum.\r\n\tJohn’s overall performance in all of his classes would rank him among the top 15% of students in engineering at UVA.  He is earning a major in biomedical engineering and doing very well.  He is an engaging student, disciplined and intelligent.  He works hard, is organized, honest and imaginative.  John asks thoughtful questions about both his classroom work and his plans for the future.  \r\n\tI believe you will find that John will make significant contributions to your program and I recommend him most enthusiastically.  He has demonstrated the highest intellectual rigor and a consistent motivation for excellence in his course work.  I would be happy to respond to questions.\r\n\r\nSincerely,\r\n\r\nMartin Van Buren Ph.D.\r\nProfessor, Biomedical Engineering\r\nVice Provost for Academic Programs\r\n")
 s.save
 
 #
 # WITHDRAWN STUDENT
 #
 # create sample students
-s = User.new( :firstname => "Theodore", :middlename => "", :lastname => "Roosevelt", :email => "troosevelt@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
-  :phone => "805-663-4445", :pstreet => "252 Plum Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
+s = User.new( :firstname => "Theodore", :middlename => "", :lastname => "Roosevelt", :email => "troosevelt@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442  450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
+  :phone => "805-663-0000", :pstreet => "1221 Plum Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
   :password => "nsfreudemo", :password_confirmation => "nsfreudemo" , :status => "Withdrawn", :role_id => 2, 
@@ -118,5 +118,5 @@ s.academic_record = AcademicRecord.new( :gpa => "3.2",
   :transcript_content_type => 'application/pdf',
   :transcript_file_size => "193576",
   :transcript_updated_at => '2011-03-02 04:51:21'.to_datetime,
-  :transcript_file_name => "UCSDTranscript.pdf")
+  :transcript_file_name => "transcript.pdf")
 s.save
