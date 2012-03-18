@@ -47,8 +47,11 @@ class RecommendersController < ApplicationController
   # PUT /recommenders/1
   # PUT /recommenders/1.xml
   def update
-    @recommender = Recommender.find(current_user.recommender)
+    # strip trailing whitespace from email input
+    params[:recommender][:email] = params[:recommender][:email].strip
 
+    @recommender = Recommender.find(current_user.recommender)
+    
     respond_to do |format|
       if @recommender.update_attributes(params[:recommender])
         flash[:notice] = 'Recommender was successfully updated.'
