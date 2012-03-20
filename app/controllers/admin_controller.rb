@@ -114,7 +114,7 @@ require 'ftools'
     render :action => "list"
   end
 
-  def complete    
+  def complete
     @all_students = User.find(:all, :order => 'lastname ASC', :conditions => ['role_id = ?', 2])
     @students = User.paginate :page => params[:page], :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ]
 		@export = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ]
@@ -181,7 +181,7 @@ require 'ftools'
     worksheet.row(0).default_format = page_title_format
     worksheet[0,0] = "#{Time.now.year} NSFREU Applicant Data" 
     worksheet.row(1).default_format = header_format
-    worksheet.row(1).concat %w{ID Name Email Gender Race Ethnicity Disability Current\ University Academic\ Year Major/Minor GPA Recommender\ Name Recommender\ Association Overall\ Promise Undergrad\ Institution?}
+    worksheet.row(1).concat %w{ID Name Email Gender Race Ethnicity Disability Current\ University Academic\ Year Major/Minor GPA Recommender\ Name Recommender\ Association Overall\ Promise Undergrad\ Institution? Mentor1 Mentor2 Mentor3}
     worksheet.row(1).default_format = header_format
 
     # get applicant data
@@ -228,8 +228,11 @@ require 'ftools'
 				(a.academic_record.gpa if a.academic_record), 
 				(a.recommender.name if a.recommender), 
 				(("#{a.recommender.department} / #{a.recommender.college}") if a.recommender), 
-				(a.recommendation.rating if a.recommendation), 
-				(a.recommendation.undergrad_inst if a.recommendation)]
+				(a.recommendation.rating if a.recommendation.rating), 
+				(a.recommendation.undergrad_inst if a.recommendation.undergrad_inst),
+				(a.extra.mentor1 if a.extra.mentor1),
+				(a.extra.mentor2 if a.extra.mentor2),
+				(a.extra.mentor3 if a.extra.mentor3)]
     end
         
     # write file

@@ -111,7 +111,7 @@ class User < ActiveRecord::Base
 				pdf.text "\n"
 			end
 
-			@methods = %w{awards lab_skills comp_skills gpa_comments personal_statement}
+			@methods = %w{awards lab_skills comp_skills gpa_comments personal_statement mentor1 mentor2 mentor3}
 			@methods.each do |m|
 				if self.extra
 					pdf.text "#{m.gsub("_"," ").capitalize }\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
