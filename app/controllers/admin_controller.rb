@@ -230,9 +230,9 @@ require 'ftools'
 				(("#{a.recommender.department} / #{a.recommender.college}") if a.recommender), 
 				(a.recommendation.rating if a.recommendation && a.recommendation.rating), 
 				(a.recommendation.undergrad_inst if a.recommendation && a.recommendation.undergrad_inst),
-				(a.extra.mentor1 if a.extra.mentor1),
-				(a.extra.mentor2 if a.extra.mentor2),
-				(a.extra.mentor3 if a.extra.mentor3)]
+				(a.extra.mentor1 if a.extra && a.extra.mentor1),
+				(a.extra.mentor2 if a.extra && a.extra.mentor2),
+				(a.extra.mentor3 if a.extra && a.extra.mentor3)]
     end
         
     # write file
