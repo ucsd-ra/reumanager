@@ -228,7 +228,7 @@ require 'ftools'
 				(a.academic_record.gpa if a.academic_record), 
 				(a.recommender.name if a.recommender), 
 				(("#{a.recommender.department} / #{a.recommender.college}") if a.recommender), 
-				(a.recommendation.rating if a.recommendation.rating), 
+				(a.recommendation.rating if a.recommendation && a.recommendation.rating), 
 				(a.recommendation.undergrad_inst if a.recommendation.undergrad_inst),
 				(a.extra.mentor1 if a.extra.mentor1),
 				(a.extra.mentor2 if a.extra.mentor2),
