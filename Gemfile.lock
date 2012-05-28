@@ -73,7 +73,8 @@ GEM
     restful_authentication (1.1.6)
       rails (~> 2.3.4)
     ruby-ole (1.2.11.2)
-    rvm (1.8.6)
+    rvm-capistrano (1.2.2)
+      capistrano (>= 2.0.0)
     spreadsheet (0.6.5.5)
       ruby-ole (>= 1.0)
     sqlite3 (1.3.4)
@@ -107,7 +108,7 @@ DEPENDENCIES
   rdoc
   redbox (= 1.0.4)
   restful_authentication (= 1.1.6)
-  rvm
+  rvm-capistrano
   spreadsheet (= 0.6.5.5)
   sqlite3-ruby
   whenever

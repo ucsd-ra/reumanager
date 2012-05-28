@@ -15,7 +15,7 @@ gem 'rdoc'
 gem 'redbox', '1.0.4'
 gem 'RedCloth', '4.2.7', :require => 'RedCloth'
 gem 'restful_authentication', '1.1.6', :require => 'restful_authentication'
-gem 'rvm'
+gem 'rvm-capistrano'
 gem 'spreadsheet', '0.6.5.5', :require => 'spreadsheet'
 #gem 'ssl_requirement', :require => 'ssl_requirement', '0.1.0'
 gem 'whenever', :require => false
