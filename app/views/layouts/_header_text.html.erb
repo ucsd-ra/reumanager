@@ -1,0 +1,5 @@
+<%= link_to image_tag("nsf_logo.gif", :id => "nsf"), 'http://www.nsf.gov/crssprgm/reu/' %>
+<div class="center" id="header_text">
+	<h1><%= Setting.app_title %></h1>
+	<h3><%= Time.now.year %> Program Dates: <%= "#{Setting.program_start_date.to_date.strftime("%B	 %d")} - #{Setting.program_end_date.to_date.strftime("%B %d")}" %></h3>
+</div>

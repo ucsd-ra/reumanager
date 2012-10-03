@@ -1,0 +1,7 @@
+<%= render :partial => "admin/admin_header" %>
+<% @students.each do |s| %>
+	<%= render :partial => "student_application", :locals => { :user => s } %>
+	<hr />
+<% end -%>
+<%= will_paginate @students %>
+<%= render :partial => "admin_observers" %>

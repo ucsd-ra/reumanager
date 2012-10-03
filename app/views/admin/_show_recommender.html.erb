@@ -1,0 +1,8 @@
+<div>
+	<% unless current_user.role && current_user.role.name == "admin" -%>
+		<small class="right">LAST UPDATED<%= @spacer + r.updated_at.strftime("%Y.%m.%d - %I:%M %p") %></small>
+	<% end -%>
+	<h3><em><%= h(r.name) %> /	<%= h(r.title) %> <%= h(r.department) %> <%= h(r.college) %></em></h3>
+	<label>PHONE</label><%= @spacer + h(r.phone) + @spacer %>
+	<label>EMAIL</label><%= @spacer + h(r.email) %>
+</div>
