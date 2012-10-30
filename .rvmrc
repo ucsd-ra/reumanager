@@ -1,1 +1,5 @@
-rvm ree@surf
+if [[ -s "~/.rvm/environments/ree@surf" ]] ; then
+  . "~/.rvm/environments/ree@surf"
+else
+  rvm --create use  "ree@surf"
+fi
