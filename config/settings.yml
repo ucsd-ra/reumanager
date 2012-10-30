@@ -1,25 +1,25 @@
 app_title:
-  default: NSFREU Demo (Your App Title Here)
+  default: NSF REU Demo (Your App Title Here)
 domain:
-  default: www.be.ucsd.edu/nsfreudemo
+  default: reu.ucsd.edu/demo
 university:
   default: UC San Diego
 department:
   default: Department of Bioengineering
 application_start:
-  default: Mon, 15 Aug 2011 00:00:00 -0700
+  default: Mon, 15 Aug 2012 00:00:00 -0700
 application_deadline:
-  default: Mon, 30 Apr 2012 00:00:00 -0700
+  default: Mon, 30 Apr 2013 00:00:00 -0700
 notification_date:
-  default: Mon, 7 May 2012 00:00:00 -0700
+  default: Mon, 7 May 2013 00:00:00 -0700
 program_start_date:
   default: Mon, 11 Jun 2012
 program_end_date:
-  default: Mon, 20 Aug 2012
+  default: Mon, 20 Aug 2013
 check_back_date:
-  default: Fri, 1 Feb 2013
+  default: Fri, 1 Feb 2014
 mail_from:
-  default: nsfreu@be.ucsd.edu
+  default: reu@ucsd.edu
 password_min_length:
   format: int
   default: 6

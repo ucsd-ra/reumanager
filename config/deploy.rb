@@ -2,14 +2,13 @@ require "bundler/capistrano"
 require "rvm/capistrano"
 require "whenever/capistrano"
 
-set :application, "nsfreudemo" #matches names used in smf_template.erb
+set :application, "demo" #matches names used in smf_template.erb
 set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/trunk"
 set :domain, 'vishnu.ucsd.edu'
 set :deploy_to, "/var/rails/#{application}" # I like this location
 set :user, "ubuntu"
 set :keep_releases, 2
 set :rvm_ruby_string, "ree@#{application}"
-set :server_name, "vishnu.ucsd.edu"
 
 default_run_options[:pty] = true
 
@@ -26,7 +25,7 @@ namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do
     run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
   end
-
+ 
   task :stop, :roles => :app, :except => { :no_release => true } do
     run "cd #{current_path} && #{passenger_cmd} stop -p #{passenger_port}"
   end
