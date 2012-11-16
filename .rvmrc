@@ -1,0 +1,5 @@
+if [[ -s "~/.rvm/environments/ruby-1.9.3@reu" ]] ; then
+  . "~/.rvm/environments/ruby-1.9.3@reu"
+else
+  rvm --create use  "ruby-1.9.3@reu"
+fi

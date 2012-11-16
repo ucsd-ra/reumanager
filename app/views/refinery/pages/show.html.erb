@@ -1,0 +1,22 @@
+<section id='subheader'>
+  <div class="container">
+    <div class="inner clearfix">
+      <%= raw @page.content_for(:top) %>
+    </div>
+  </div>
+</section>
+
+<section id='tryit'>
+  <div class="container">
+    <div class="inner">
+      <%= raw @page.content_for(:middle) %>
+    </div>
+  </div>
+</section>
+
+<section id='bullets'>
+  <div class="container">
+      <%= raw @page.content_for(:bottom) %>
+  </div>
+</section>
+
