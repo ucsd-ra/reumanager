@@ -9,7 +9,9 @@ set :deploy_to, "/var/rails/#{application}" # I like this location
 set :user, "ubuntu"
 set :keep_releases, 2
 set :rvm_ruby_string, "ree@#{application}"
+set :rvm_type, :user
 set :server_name, "vishnu.ucsd.edu"
+set :use_sudo, false
 
 default_run_options[:pty] = true
 
@@ -39,5 +41,11 @@ namespace :deploy do
       fi
     CMD
     run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
+  end
+  
+  desc "chown & chmod to www-data"
+  task :chown do
+    sudo "chown -R ubuntu:www-data #{deploy_to}"
+    sudo "chmod -R 770 #{deploy_to}"
   end
 end
