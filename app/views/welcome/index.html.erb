@@ -23,7 +23,7 @@
 	
 	<br class='clear'/>
 	<% if app_in_progress? -%>
-	  <% if current_user %>
+	  <% if current_user && current_user.role.name != "admin" %>
     	<h3 class='clear center red'>Application Deadline <%= Setting.application_deadline.to_date.strftime("%B %d, %Y") %></h3>
 	    <h1 class="padded center clears"><b><%= link_to "Application Status", { :controller => 'users', :action => 'status' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
 	  <% else -%>
