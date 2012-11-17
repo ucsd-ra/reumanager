@@ -10,7 +10,7 @@ set :application, "reu"
 set :deploy_to, "/var/rails/#{application}" # I like this location
 set :domain, "vishnu.ucsd.edu"
 set :keep_releases, 2
-set :repository,  "https://vishnu.ucsd.edu/svn/#{application}/trunk"
+set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/#{application}"
 set :scm, :subversion
 set :user, 'ubuntu'
 set :use_sudo, false

@@ -1,17 +1,7 @@
 <section id='subheader'>
   <div class="container">
     <div class="inner clearfix">
-      <div id="tour_dots">
-        <%= image_tag "dashboard.png", :class => :screenshot %>
-      </div>
-
-      <div id="pizazz">
-        <h2>Application Management</h2>
-        <p>Effortlessly manage hundreds or thousands of online applications. The REU manager can help automate the process from start to finish.</p>
-
-        <h2>Less Fuss, More Function</h2>
-        <p>Cut the fat out of your workflow. No more paper, no more postal mail, no more scanning. Completely digital (unless you want a printout)</p>      
-      </div>      
+      <%= raw @page.content_for(:top) %>
     </div>
   </div>
 </section>
@@ -19,56 +9,15 @@
 <section id='tryit'>
   <div class="container">
     <div class="inner">
-      <%= link_to "Try REU Manager for free", '', :class => 'btn btn-large btn-success pull-right' %>
-
-      <p>REU manager will simplify your workflow so you can do the job you were hired to do.<br /> Try it for free. No credit card or signup required.</p>      
+      <%= raw @page.content_for(:middle) %>
     </div>
   </div>
 </section>
 
 <section id='bullets'>
   <div class="container">
-    <div class="row">
-        <div class="span4">
-          <div class="inner">
-            <h5><i class="icon-home"></i> Everything Organized Online</h5>
-            <p>You think water moves fast? You should see ice. It moves like it has a mind.</p>            
-          </div>
-        </div>
-        <div class="span4">
-          <div class="inner">
-            <h5><i class="icon-tag"></i> Filter Candidates</h5>
-            <p>Nature is lethal but it doesn't hold a candle to man.</p>            
-          </div>
-        </div>
-        <div class="span4">
-          <div class="inner">
-            <h5><i class="icon-envelope"></i> Automatic Notifications</h5>
-            <p>The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men.</p>            
-          </div>
-        </div>
-        <div class="span4">
-          <div class="inner">
-            <h5><i class="icon-print"></i> Export To Various Formats</h5>
-            <p>Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children.</p>            
-          </div>
-        </div>
-        <div class="span4">
-          <div class="inner">
-            <h5><i class="icon-ok-sign"></i> Pick Applicants</h5>
-            <p>And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers.</p>            
-          </div>
-        </div>
-        <div class="span4">
-          <div class="inner">
-            <h5><i class="icon-refresh"></i> Backup and Reset</h5>
-            <p>And you will know My name is the Lord when I lay My vengeance upon thee.</p>            
-          </div>
-        </div>
-    </div>
-    
-    <div class="inner">
-      <h3>Whether you program is larger or small, the REU Manager strives to be the most efficient solution for your application process.</h3>      
-    </div>
+      <%= raw @page.content_for(:bottom) %>
   </div>
 </section>
+
+
