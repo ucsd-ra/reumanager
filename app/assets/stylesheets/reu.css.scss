@@ -3,7 +3,7 @@
 input.text, input.title, input[type="email"], input[type="text"], input[type="password"] { }
 
 body { background-color:#eee; }
-body,h1,h2,h3,h4,h5,h6,p,li {color:#2C4056; font-weight:300;}
+body,h1,h2,h3,h4,h5,h6,p,li {font-weight:300;}
 
 html, body { height: 100%; }
 
@@ -63,7 +63,7 @@ header, #subheader { background-color:#507AAA; clear:both;
 }
 
 #tryit { background-color: #fff; padding:1em 0; 
-  p { font-family: Georgia, Times, serif; font-size:1.3em; font-style: italic; color: #656565; line-height: 140%; margin:0; }
+  p { font-family: Georgia, Times, serif; font-size:1.3em; font-style: italic; color: #656565; line-height: 40px; margin:0; }
 }
 
 #bullets { padding:1em 0;
