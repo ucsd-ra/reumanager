@@ -23,6 +23,7 @@ Layout
 	ul,ol,p									{ font-size:1.2em; }
 	ol,ul									{ padding-left:0.5em; }
 	hr.space								{ background-color:#deebff; color:#deebff; }
+	#demobar.notice				{ margin:0;}
 	div#wrapper 							{ background:url(../images/background_sm_repeat_x.gif) repeat-x; width:100%; }
 	ul#navbar 								{ background-color:#002040; margin:0 0 8px; padding:0; -moz-border-radius: 0 0 13px 13px; -webkit-border-bottom-right-radius:13px; -webkit-border-bottom-left-radius:13px; }
 	#navbar li								{ display:inline-block; float:left; font-size:13px; margin:0 2px 0 0; padding:9px 0; }

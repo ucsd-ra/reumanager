@@ -18,6 +18,10 @@
 		</script>
 	</head>
 	<body>
+	    <div id="demobar" class='notice'>
+	        <p>This is a <b>DEMO</b> of the REU Manager.  You can <%= link_to 'login', '' %> at anytime using the email, '<b>nsfreu@be.ucsd.edu</b>' and password '<b>DemoApp</b>'</p>
+	       <%= content_for :demobar %>
+	    </div>
 		<div id="overlay" style="display:none;"></div>
 		<div id="opaque_overlay" style="display:none;">
 			<div id="wait_box">
