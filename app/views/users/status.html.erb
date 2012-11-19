@@ -2,9 +2,7 @@
 	<% if @user.submitted_at -%>
 		<p>Your application was successfully submitted on <%= @user.submitted_at.strftime("%B %d at %I:%M %p") %>.</p>
 	<% else -%>
-		<% if Time.now > DateTime.new(2011,3,6,0,0) %>
-			<p>Your application was not submitted because the deadline has past.</p>
-		<% else -%>
+		<% if Time.now > Setting.application_deadline.to_date %>
 			<p>Your application was not submitted because the deadline has past.</p>
 		<% end -%>
 	<% end -%>
