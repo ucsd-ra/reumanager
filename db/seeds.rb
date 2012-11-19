@@ -1,5 +1,5 @@
 # create admins
-u = User.new(:firstname => 'NSFREU', :lastname => 'Admin', :login => 'nsfreu@be.ucsd.edu', :email => 'nsfreu@be.ucsd.edu', :password => 'DemoApp', :password_confirmation => 'DemoApp', :role_id => 1, :dob => Time.now - 30.years, :street => '9500 Gilman Drive #0412', :city => 'La Jolla', :state => "CA", :zip => "92093-0412", :citizenship => "United States", :phone => "858-822-5947")
+u = User.new(:firstname => 'NSFREU', :lastname => 'Admin', :login => 'nsfreu@reu.ucsd.edu', :email => 'nsfreu@reu.ucsd.edu', :password => 'DemoApp', :password_confirmation => 'DemoApp', :role_id => 1, :dob => Time.now - 30.years, :street => '9500 Gilman Drive #0412', :city => 'La Jolla', :state => "CA", :zip => "92093-0412", :citizenship => "United States", :phone => "858-822-5947")
 u.save
 u.set_to_admin!
 
@@ -7,11 +7,11 @@ u.set_to_admin!
 # INCOMPLETE STUDENT
 #
 # create sample students
-s = User.new(:firstname => "Abe", :middlename => "", :lastname => "Lincoln", :email => "alincoln@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
+s = User.new(:firstname => "Abe", :middlename => "", :lastname => "Lincoln", :email => "alincoln@reu.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
   :phone => "805-663-4445", :pstreet => "252 Plum Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
-  :password => "nsfreudemo", :password_confirmation => "nsfreudemo" ,:status => "In Review", :role_id => 2, 
+  :password => "DemoApp", :password_confirmation => "DemoApp" ,:status => "In Review", :role_id => 2, 
   :created_at => "2011-03-01 21:09:23", :updated_at => "2011-03-01 21:09:23", :emailed_rejection_letter_at => nil, :emailed_waitlist_letter_at => nil)
 s.save
 
@@ -19,7 +19,7 @@ s.save
 # SUBMITTED STUDENT
 #
 # create sample students
-s = User.new(:firstname => "James", :middlename => "", :lastname => "Madison", :email => "jmadison@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
+s = User.new(:firstname => "James", :middlename => "", :lastname => "Madison", :email => "jmadison@reu.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
   :phone => "805-663-4445", :pstreet => "252 Plum Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
@@ -49,18 +49,18 @@ s.extra = Extra.new(:awards => "Ronald E. McNair Scholar 2010 to 2011\r\n\r\nDea
   :learn => "NSF REU Website")
 
 # create recommender
-s.recommender = Recommender.new(:name => "James Monroe", :title => "Professor", :department => "Intergrative Biology", :college => "University of California, Berkeley", :phone => "510-448-8404", :email => "jmonroe@be.ucsd.edu", :waive_rights => true)
+s.recommender = Recommender.new(:name => "James Monroe", :title => "Professor", :department => "Intergrative Biology", :college => "University of California, Berkeley", :phone => "510-448-8404", :email => "jmonroe@reu.ucsd.edu", :waive_rights => true)
 s.save
 
 #
 # COMPLETE STUDENT
 #
 # create sample students
-s = User.new(:firstname => "John", :middlename => "Quincy", :lastname => "Adams", :email => "jqadams@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
+s = User.new(:firstname => "John", :middlename => "Quincy", :lastname => "Adams", :email => "jqadams@reu.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
   :phone => "805-663-4445", :pstreet => "252 Plum Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
-  :password => "nsfreudemo", :password_confirmation => "nsfreudemo" ,:status => "In Review", :role_id => 2, 
+  :password => "DemoApp", :password_confirmation => "DemoApp" ,:status => "In Review", :role_id => 2, 
   :created_at => "2011-03-01 21:09:23", :updated_at => "2011-03-01 21:09:23", :emailed_rejection_letter_at => nil, :emailed_waitlist_letter_at => nil )
 s.submitted_at = "2011-03-02 21:09:23"
 s.completed_at = "2011-03-02 21:09:23"
@@ -87,7 +87,7 @@ s.extra = Extra.new(:awards => "Ronald E. McNair Scholar 2010 to 2011\r\n\r\nDea
   :learn => "NSF REU Website")
 
 # create recommender
-s.recommender = Recommender.new(:name => "Martin Van Buren", :title => "Professor", :department => "Intergrative Biology", :college => "University of California, Berkeley", :phone => "510-448-8404", :email => "mvburen@be.ucsd.edu", :waive_rights => true)
+s.recommender = Recommender.new(:name => "Martin Van Buren", :title => "Professor", :department => "Intergrative Biology", :college => "University of California, Berkeley", :phone => "510-448-8404", :email => "mvburen@reu.ucsd.edu", :waive_rights => true)
 s.save
 
 # create recommendation
@@ -99,7 +99,7 @@ s.save
 # WITHDRAWN STUDENT
 #
 # create sample students
-s = User.new( :firstname => "Theodore", :middlename => "", :lastname => "Roosevelt", :email => "troosevelt@be.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
+s = User.new( :firstname => "Theodore", :middlename => "", :lastname => "Roosevelt", :email => "troosevelt@reu.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
   :phone => "805-663-4445", :pstreet => "252 Plum Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
