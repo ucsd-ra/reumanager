@@ -3,6 +3,7 @@ source 'http://gems.github.com'
 
 gem 'rails', '2.3.14'
 gem 'carmen', '0.2.8'
+gem 'capistrano'
 #gem 'exception_notification', '2.3.3.0'
 gem 'faker', :require => 'faker'
 gem 'paperclip', '2.3.15'
@@ -23,7 +24,6 @@ gem 'will_paginate', '2.3.15', :require => 'will_paginate'
 gem 'yaml_db', '0.1.0'
 
 group :development do
-  gem 'capistrano'
 	gem 'sqlite3-ruby', :require => 'sqlite3'
 	gem 'wirble'
 end
