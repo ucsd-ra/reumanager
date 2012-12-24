@@ -2,13 +2,13 @@ require "bundler/capistrano"
 require "rvm/capistrano"
 
 set :rvm_ruby_string, "1.9.3@microcirculation"
-set :rvm_type, :user
+set :rvm_type, :system
 
 default_run_options[:pty] = true
 
 set :application, "reu"
-set :deploy_to, "/var/rails/#{application}" # I like this location
-set :domain, "vishnu.ucsd.edu"
+set :deploy_to, "/var/www/#{application}" # I like this location
+set :domain, "192.168.126.147"
 set :keep_releases, 2
 set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/#{application}"
 set :scm, :subversion
@@ -23,6 +23,8 @@ namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
+    chown
+    symlink_sub_uri
     run "touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 
@@ -30,6 +32,14 @@ namespace :deploy do
   task :chown do
     sudo "chown -R ubuntu:www-data #{deploy_to}"
     sudo "chmod -R 770 #{deploy_to}"
+  end
+  
+  desc "Create symlinks for sites that run from sub-uris"
+  task :symlink_sub_uri do
+    run "ln -s /var/www/be/current/public #{current_path}/public/be"
+    run "ln -s /var/www/gitlabhq/current/public #{current_path}/public/gitlabhq"
+    run "ln -s /var/www/reu3/current/public #{current_path}/public/reu3"
+    run "ln -s /var/www/surf/current/public #{current_path}/public/surf"
   end
   
   namespace :assets do
@@ -50,5 +60,4 @@ namespace :deploy do
   
 end
 
-after "deploy:update", "deploy:cleanup"
-after :deploy, 'deploy:chown'
+after "deploy:update", "deploy:cleanup" 
