@@ -204,6 +204,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.0)
   devise
   figaro
+  font-awesome-sass-rails
   formtastic
   haml
   jquery-rails

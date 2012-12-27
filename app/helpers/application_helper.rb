@@ -34,7 +34,7 @@ module ApplicationHelper
   end
   
   def microsloth_sucks
-    html = '<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>'
+    html = '<script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript" charset="utf-8"></script>'
   end
   
   def gpa_range
