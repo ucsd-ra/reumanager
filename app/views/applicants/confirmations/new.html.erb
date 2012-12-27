@@ -1,0 +1,16 @@
+<div class='inner'>
+  <h2>Resend confirmation instructions</h2>
+
+  <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+    <%= custom_error_messages! %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    
+    <hr class='inner clear' / >
+
+    <%= f.submit "Resend confirmation instructions", :class => 'btn' %>
+  <% end %>
+
+  <%= render :partial => "devise/shared/links" %>
+</div>

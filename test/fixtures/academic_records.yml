@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  university: MyString
+  start: 2012-11-25
+  finish: 2012-11-25
+  academic_level: MyString
+  degree: MyString
+  gpa: 1.5
+
+two:
+  university: MyString
+  start: 2012-11-25
+  finish: 2012-11-25
+  academic_level: MyString
+  degree: MyString
+  gpa: 1.5

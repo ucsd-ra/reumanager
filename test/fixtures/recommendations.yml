@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  known_applicant_for: 1
+  known_capacity: MyString
+  overall_promise: MyString
+  undergraduate_institution?: MyString
+  body: MyText
+  applicant_id: 1
+  recommender_id: 1
+
+two:
+  known_applicant_for: 1
+  known_capacity: MyString
+  overall_promise: MyString
+  undergraduate_institution?: MyString
+  body: MyText
+  applicant_id: 1
+  recommender_id: 1

@@ -1,0 +1,66 @@
+<fieldset>
+  <div class="inner">
+    <legend>Recommender</legend>
+  </div>
+  <div class="row">
+
+  <div class="span4">
+    <div class="inner">
+      <%= f.text_field :first_name, :placeholder => 'First Name' %>
+    </div>
+  </div>
+
+  <div class="span4 offset1">
+    <div class="inner">
+      <%= f.text_field :last_name, :placeholder => 'Last Name' %>
+    </div>
+  </div>
+
+  <div class="span4">
+    <div class="inner">
+      <%= f.text_field :email, :placeholder => :Email %>
+    </div>
+  </div>
+
+  <div class="span4 offset1">
+    <div class="inner">
+      <%= f.text_field :phone, :placeholder => :Phone %>
+    </div>
+  </div>
+  
+  <div class="span9">
+    <div class="inner">
+      <%= f.text_field :url, :placeholder => :URL %>
+    </div>
+  </div>    
+
+
+  <div class="span4">
+    <div class="inner">
+      <%= f.text_field :organization, :placeholder => 'Organization or University' %>
+    </div>
+  </div>
+
+  <div class="span4 offset1">
+    <div class="inner">
+      <%= f.text_field :department, :placeholder => :Department %>
+    </div>
+  </div>
+  
+  
+  <div class="span9">
+    <div class="inner">
+      <%= f.text_field :title, :placeholder => :Title %>
+    </div>
+  </div>
+
+  <div class="span9">
+    <div class="inner">
+      <%= f.hidden_field :_destroy %>
+      <%= link_to "remove this recommender", '#', class: "remove_fields btn btn-mini btn-danger" %>    
+    </div>
+  </div>
+  
+  <hr class="inner clear" />
+ </div>
+</fieldset>
