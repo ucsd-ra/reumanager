@@ -2,7 +2,7 @@ development:
   adapter: mysql
   database: nsfreu_dev
   encoding: utf8
-  username: nsfreu
+  username: nsfreu_be
   password: sqz_EI7=FpEojbeY4:MtmIMg
   host: localhost
   
@@ -18,6 +18,6 @@ production:
   adapter: mysql
   database: nsfreu
   encoding: utf8
-  username: nsfreu
+  username: nsfreu_be
   password: sqz_EI7=FpEojbeY4:MtmIMg
   host: localhost
