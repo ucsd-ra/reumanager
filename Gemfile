@@ -56,6 +56,7 @@ group :assets do
   gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
   gem 'coffee-rails', " ~> 3.2.0"
   gem 'sass-rails', " ~> 3.2.0"
+  gem 'font-awesome-sass-rails'
   gem 'uglifier'
   gem 'therubyracer'
 end
