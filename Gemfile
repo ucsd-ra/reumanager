@@ -7,13 +7,15 @@ gem 'rails', '3.2.8'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'capistrano-database', :git => "git://github.com/jgrevich/capistrano-database.git"
+gem 'rvm-capistrano'
+
 gem 'carmen'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'mysql2'
 gem 'paperclip'
 gem 'rails_admin'
-gem 'rvm-capistrano'
 
 
 # Gems used only for assets and not required

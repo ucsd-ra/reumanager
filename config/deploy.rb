@@ -1,7 +1,8 @@
 require "bundler/capistrano"
 require "rvm/capistrano"
+require 'capistrano/ext/database'
 
-set :rvm_ruby_string, "1.9.3@microcirculation"
+set :rvm_ruby_string, "1.9.3@reu"
 set :rvm_type, :system
 
 default_run_options[:pty] = true
@@ -12,8 +13,21 @@ set :domain, "192.168.126.147"
 set :keep_releases, 2
 set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/#{application}"
 set :scm, :subversion
+set :scm_passphrase, "5'utr $Saihung"
 set :user, 'ubuntu'
 set :use_sudo, false
+
+set :db_credentials_file, "db_credentials_file.yml"
+set :db_root_credentials_file, "root_db_credentials_file.yml"
+set :db_server_app, "mysql"
+set :db_database_name, 'reu_production'
+set :db_username, 'reu'
+set :backup_path, "#{shared_path}/system"
+
+# set :mysqldump_bin, "/usr/local/mysql/bin/mysqldump"
+#set :mysqldump_remote_tmp_dir, "/tmp"
+#set :mysqldump_local_tmp_dir, "/tmp"
+#set :mysqldump_location, :remote
 
 role :web, domain                          # Your HTTP server, Apache/etc
 role :app, domain                          # This may be the same as your `Web` server
@@ -37,18 +51,18 @@ namespace :deploy do
   desc "Create symlinks for sites that run from sub-uris"
   task :symlink_sub_uri do
     run "ln -s /var/www/be/current/public #{current_path}/public/be"
-    run "ln -s /var/www/gitlabhq/current/public #{current_path}/public/gitlabhq"
+    run "ln -s /var/www/git/current/public #{current_path}/public/git"
     run "ln -s /var/www/reu3/current/public #{current_path}/public/reu3"
     run "ln -s /var/www/surf/current/public #{current_path}/public/surf"
   end
   
   namespace :assets do
 
-#      task :precompile, :roles => :web, :except => { :no_release => true } do
-      # unquote to precompile assets on deploy   
- #      run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
-      # logger.info "Skipping asset pre-compilation because there were no asset changes"
-#     end
+      # task :precompile, :roles => :web, :except => { :no_release => true } do
+      #   unquote to precompile assets on deploy   
+      #   run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
+      #   logger.info "Skipping asset pre-compilation because there were no asset changes"
+      # end
 
      desc 'Run the precompile task locally and rsync with shared'
      task :precompile, :roles => :web, :except => { :no_release => true } do
