@@ -2,10 +2,10 @@ require "bundler/capistrano"
 require "rvm/capistrano"
 require "whenever/capistrano"
 
-set :application, "surf" #matches names used in smf_template.erb
+set :application, "reu_surf" #matches names used in smf_template.erb
 set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/surf"
-set :domain, 'vishnu.ucsd.edu'
-set :deploy_to, "/var/rails/#{application}" # I like this location
+set :domain, '192.168.126.147'
+set :deploy_to, "/var/www/#{application}" # I like this location
 set :user, "ubuntu"
 set :keep_releases, 2
 set :rvm_ruby_string, "ree@#{application}"
