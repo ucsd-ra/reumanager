@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/jgrevich/capistrano-database.git
-  revision: 85f159736954acae39214916a25383f92ddfb318
+  revision: 695a298ea356aa64edc21b5e5a4327384cf2dd4c
   specs:
     capistrano-database (0.0.8)
       rake
@@ -110,7 +110,7 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.5.6)
     orm_adapter (0.0.7)
-    paper_trail (2.6.4)
+    paper_trail (2.7.0)
       activerecord (~> 3.0)
       railties (~> 3.0)
     paperclip (3.4.0)
