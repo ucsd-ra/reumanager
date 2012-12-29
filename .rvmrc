@@ -1,1 +1,5 @@
-rvm ree@nsfreu
+if [[ -s "~/.rvm/environments/ree@be" ]] ; then
+  . "~/.rvm/environments/ree@be"
+else
+  rvm --create use  "ree@be"
+fi
