@@ -1,6 +1,5 @@
 require "bundler/capistrano"
 require "rvm/capistrano"
-require "whenever/capistrano"
 
 set :application, "surf" #matches names used in smf_template.erb
 set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/surf"
@@ -22,7 +21,7 @@ role :db,  domain, :primary => true
 ## modified for passenger standalone
 set :rails_env,      "production"
 set :passenger_port, 4060
-set :passenger_cmd,  "passenger"
+set :passenger_cmd,  "bundle exec passenger"
 
 # variables for cap-db
 set :backup_path, "#{shared_path}/system"
