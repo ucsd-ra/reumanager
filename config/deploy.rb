@@ -44,7 +44,7 @@ namespace :deploy do
 
   desc "chown & chmod to www-data"
   task :chown do
-    sudo "chown -R ubuntu:www-data #{deploy_to}"
+    sudo "chown -R #{user}:www-data #{deploy_to}"
     sudo "chmod -R 770 #{deploy_to}"
   end
   
