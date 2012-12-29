@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/jgrevich/capistrano-database.git
+  revision: 695a298ea356aa64edc21b5e5a4327384cf2dd4c
+  specs:
+    capistrano-database (0.0.8)
+      rake
+
 GEM
   remote: http://rubygems.org/
   remote: http://gems.github.com/
@@ -95,6 +102,7 @@ PLATFORMS
 DEPENDENCIES
   RedCloth (= 4.2.7)
   capistrano
+  capistrano-database!
   carmen (= 0.2.8)
   faker
   mocha
