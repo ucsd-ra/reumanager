@@ -18,6 +18,6 @@ production:
   adapter: mysql
   database: reu_surf
   encoding: utf8
-  username: reu_surf
+  username: reu_surf_production
   password: sqz_EIz_EIpEojbeY4EojIMg
   host: localhost
