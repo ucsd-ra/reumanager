@@ -23,6 +23,7 @@ role :db,  domain, :primary => true
 set :rails_env,      "production"
 set :passenger_port, 4000
 set :passenger_cmd,  "bundle exec passenger"
+set :whenever_command, "bundle exec whenever"
 
 # variables for cap-db
 set :backup_path, "#{shared_path}/system"
