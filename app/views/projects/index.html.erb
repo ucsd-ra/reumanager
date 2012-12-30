@@ -1,0 +1,28 @@
+<div id="projects">
+	<%= render :partial => "layouts/header_text" %>
+	<br />
+	<hr />
+	<%= content_tag :h2, "No projects added." if @projects.count < 1%>
+	<% @years.each do |y| %>
+		<div class="span-11 bordered colored rounded projects_column">
+			<h2><%= y %></h2>
+			<% instance_variable_get("@projects_#{y}").each do |project| %>
+				<div class="padded project">
+					<h4><%=h project.title %></h4>
+					<p><%=h project.participant %>, <%=h project.participant_university %><br /><%=h project.faculty_mentor %></p>
+					<% if logged_in? && check_admin -%>
+					    <%= link_to 'Edit', edit_project_path(project) %>
+					    <%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %>
+					<% end -%>
+					<%= "<hr />" unless instance_variable_get("@projects_#{y}").last == project %>
+				</div>
+			<% end %>
+		</div>
+	<% end -%>
+	
+	<br class="clear" />
+
+	<% if logged_in? && check_admin -%>
+		<h3><%= link_to 'New project', new_project_path %></h3>
+	<% end -%>
+</div>

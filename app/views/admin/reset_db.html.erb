@@ -1,0 +1,13 @@
+<div class='clearfix span-24' id="admin_overview">
+  <p>To reset the database click the button below.  This will completely wipe the database and remove any files related to the current application.</p>
+  
+  <h1><%= link_to_function "Reset Database", "$('reset').show();", :class => 'negative button'%></h1>
+  <div id="reset" style='display:none;'>
+    <% form_tag reset_db_path do %>
+      <%= label_tag "Type 'delete' if you are sure you want to reset your database, then click 'Reset Database'."%><br />
+      <%= text_field_tag :delete %>
+      <%= submit_tag "Reset Database" %>
+      <%= link_to "Cancel", admin_path %>
+    <% end -%>
+  </div>
+</div>

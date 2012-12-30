@@ -1,0 +1,36 @@
+app_title:
+  default: University of Florida REU in Infrastructure Materials
+domain:
+  default: reumanager.com/uf
+university:
+  default: University of Florida
+department:
+  default: Materials Science and Engineering
+application_start:
+  default: Mon, 14 Jan 2012 00:00:00 -0700
+application_deadline:
+  default: Sun, 1 Mar 2013 00:00:00 -0700
+notification_date:
+  default: Fri, 15 Mar 2013 00:00:00 -0700
+program_start_date:
+  default: Sun, 19 May 2013
+program_end_date:
+  default: Sat, 27 Jul 2013
+check_back_date:
+  default: Tue, 1 Oct 2013
+mail_from:
+  default: no-reply-uf@reumanager.com
+password_min_length:
+  format: int
+  default: 6
+attachment_max_size:
+  format: int
+  default: 10240
+general_description:
+  default: "h3. General Description\n\nThe University of Florida is hosting a summer research experience for undergraduates. This 10 week program will allow you to conduct research in a lab while participating in a variety of professional and social events. You will work in a research lab on topics related to the science and engineering of materials and devices used for infrastructure applications, learning the techniques and skills needed to succeed in a career in science and engineering."
+highlights:
+  default: "h4. Highlights\n\n* $4,000 stipend\n* Housing in apartment-style dorms\n* Travel allowance for transportation to and from UF for the summer\n* $1000 to attend a conference to present the results of your research\n* Professional development activities on communication, attending graduate school, and entrepreneurship."
+eligibility_requirements:
+  default: "h4. Eligibility Requirements\n\n* Full-time undergraduate student\n* U.S. citizen or permanent resident\n* Students current enrolled at the University of Florida are not eligible."
+application_information:
+  default: "h4. Application Information\n\n* Complete the online application form\n* A statement in which you address why you are interested in this program and what you hope to gain from it\n * A copy of your academic transcripts\n* One letter of recommendation

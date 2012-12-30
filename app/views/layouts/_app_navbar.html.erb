@@ -1,0 +1,36 @@
+<h3 class='clear center red'>Application Deadline <%= Setting.application_deadline.to_date.strftime("%B %e") %></h3>
+
+<div id="app_navbar_wrapper">
+	<ul id="app_navbar">
+		<% if params[:controller] == "users" && ( params[:action] == "edit" || params[:action] == "new" ) -%>
+			<li class="active bordered colored rounded positive"><%= link_to "1. Personal Data", { :controller => "users", :action => "edit" }, :class => "active" %></li>
+		<% else -%>
+			<li class="bordered colored rounded positive"><%= link_to "1. Personal Data", { :controller => "users", :action => "edit" }%></li>
+		<% end -%>
+
+		<% if params[:controller] == "academic_records" -%>
+			<li class="bordered colored rounded active <%= "positive" if check_academic_records(current_user) %>"><%= link_to "2. Academic Information", { :controller => "academic_records" }, :class => "active"  %></li>
+		<% else -%>
+			<li class="bordered colored rounded <%= "positive" if check_academic_records(current_user) %>"><%= link_to "2. Academic Information", { :controller => "academic_records" } %></li>
+		<% end -%>
+	
+		<% if params[:controller] == "extras" -%>
+			<li class="active bordered colored rounded <%= "positive" if check_extras(current_user) %>"><%= link_to "3. Additional Information", { :controller => "extras" }, :class => "active"  %></li>
+		<% else -%>
+			<li class="bordered colored rounded <%= "positive" if check_extras(current_user) %>"><%= link_to "3. Additional Information", { :controller => "extras " } %></li>
+		<% end -%>
+
+		<% if params[:controller] == "recommenders" -%>
+			<li class="active bordered colored rounded <%= "positive" if check_recommender(current_user) %>"><%= link_to "4. Recommender Information", { :controller => "recommenders" }, :class => "active"  %></li>
+		<% else -%>
+			<li class="bordered colored rounded <%= "positive" if check_recommender(current_user) %>"><%= link_to "4. Recommender Information", { :controller => "recommenders" } %></li>
+		<% end -%>
+
+		<% if params[:controller] == "users" && params[:action] == "submit" -%>
+			<li class="active bordered colored rounded"><%= link_to "5. Review/Submit Application", { :controller => "users", :action => "submit" }, :class => "active" %></li>
+		<% else -%>
+			<li class="bordered colored rounded"><%= link_to "5. Review/Submit Application", { :controller => "users", :action => "submit" } %></li>
+		<% end -%>
+	</ul>
+	<p class='red clear'>The buttons above will turn green once the section is complete with all required information.</p>
+</div>

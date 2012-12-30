@@ -1,0 +1,971 @@
+# Logfile created on Sat Dec 29 23:59:04 -0800 2012  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-29 23:59:10) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (0.0ms)[0m   [0;1mMysql::Error: Table 'reu_uf_production.settings' doesn't exist: SHOW FIELDS FROM `settings`[0m
+
+ActiveRecord::StatementInvalid (Mysql::Error: Table 'reu_uf_production.settings' doesn't exist: SHOW FIELDS FROM `settings`):
+  app/models/setting.rb:69:in `check_cache'
+  app/controllers/application_controller.rb:44:in `check_settings_cache'
+  /Users/jjg/.rvm/rubies/ree-1.8.7-2012.02/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/jjg/.rvm/rubies/ree-1.8.7-2012.02/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/jjg/.rvm/rubies/ree-1.8.7-2012.02/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /Users/jjg/.rvm/rubies/ree-1.8.7-2012.02/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /Users/jjg/.rvm/rubies/ree-1.8.7-2012.02/lib/ruby/1.8/webrick/server.rb:162
+
+Rendered rescues/_trace (18.9ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (34.8ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `schema_migrations`[0m
+  [4;35;1mSQL (4.7ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateRoles (20080110031958)
+  [4;36;1mSQL (8.7ms)[0m   [0;1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mRole Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mRole Create (0.1ms)[0m   [0mINSERT INTO `roles` (`updated_at`, `created_at`, `name`) VALUES('2012-12-30 07:59:24', '2012-12-30 07:59:24', 'admin')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mRole Create (0.1ms)[0m   [0;1mINSERT INTO `roles` (`updated_at`, `created_at`, `name`) VALUES('2012-12-30 07:59:24', '2012-12-30 07:59:24', 'student')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20080110031958')[0m
+Migrating to CreateUsers (20081231202202)
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (11.2ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(100), `firstname` varchar(100) DEFAULT '', `middlename` varchar(100) DEFAULT '', `lastname` varchar(100) DEFAULT '', `email` varchar(100), `dob` datetime, `street` varchar(255), `city` varchar(255), `state` varchar(255), `zip` varchar(255), `phone` varchar(255), `pstreet` varchar(255), `pcity` varchar(255), `pstate` varchar(255), `pzip` varchar(255), `pphone` varchar(255), `citizenship` varchar(255), `cresidence` varchar(255), `gender` varchar(255), `ethnicity` varchar(255), `race` varchar(255), `disability` varchar(255), `activated_at` datetime, `submitted_at` datetime, `rec_request_at` datetime, `completed_at` datetime, `token` varchar(255), `token_created_at` datetime, `remember_token` varchar(40), `remember_token_expires_at` datetime, `crypted_password` varchar(40), `salt` varchar(40), `status` varchar(255) DEFAULT 'In Review', `role_id` int(11) DEFAULT 2, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (5.0ms)[0m   [0;1mCREATE UNIQUE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081231202202')[0m
+Migrating to CreateAcademicRecords (20081231234541)
+  [4;36;1mSQL (13.1ms)[0m   [0;1mCREATE TABLE `academic_records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `college` varchar(255), `college_start` datetime, `college_end` datetime, `college_level` varchar(255), `major` varchar(255), `gpa` varchar(255), `gpa_range` varchar(255), `p_college` varchar(255), `p_college_start` datetime, `p_college_end` datetime, `transcript_file_name` varchar(255), `transcript_content_type` varchar(255), `transcript_file_size` int(11), `transcript_updated_at` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `academic_records`[0m
+  [4;36;1mSQL (4.1ms)[0m   [0;1mCREATE UNIQUE INDEX `index_academic_records_on_user_id` ON `academic_records` (`user_id`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081231234541')[0m
+Migrating to CreateRecommendations (20090101074121)
+  [4;36;1mSQL (13.1ms)[0m   [0;1mCREATE TABLE `recommendations` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `recommender_id` int(11), `known_student` varchar(255), `know_capacity` varchar(255), `rating` varchar(255), `gpa` varchar(255), `gpa_range` varchar(255), `undergrad_inst` varchar(255), `faculty_comment` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `recommendations`[0m
+  [4;36;1mSQL (3.8ms)[0m   [0;1mCREATE UNIQUE INDEX `index_recommendations_on_user_id` ON `recommendations` (`user_id`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090101074121')[0m
+Migrating to CreateRecommenders (20090101074757)
+  [4;36;1mSQL (13.7ms)[0m   [0;1mCREATE TABLE `recommenders` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `name` varchar(255), `title` varchar(255), `department` varchar(255), `college` varchar(255), `phone` varchar(255), `email` varchar(255), `waive_rights` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `recommenders`[0m
+  [4;36;1mSQL (3.8ms)[0m   [0;1mCREATE UNIQUE INDEX `index_recommenders_on_user_id` ON `recommenders` (`user_id`)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090101074757')[0m
+Migrating to CreateExtras (20090101195449)
+  [4;36;1mSQL (3.9ms)[0m   [0;1mCREATE TABLE `extras` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `awards` text, `lab_skills` text, `comp_skills` text, `gpa_comments` text, `learn` varchar(255), `personal_statement` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `extras`[0m
+  [4;36;1mSQL (3.8ms)[0m   [0;1mCREATE UNIQUE INDEX `index_extras_on_user_id` ON `extras` (`user_id`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090101195449')[0m
+Migrating to CreateProjects (20091218043643)
+  [4;36;1mSQL (14.1ms)[0m   [0;1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `participant` varchar(255), `participant_university` varchar(255), `faculty_mentor` varchar(255), `year` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091218043643')[0m
+Migrating to AddEmailedAtToUser (20110321031236)
+  [4;36;1mSQL (4.1ms)[0m   [0;1mALTER TABLE `users` ADD `emailed_rejection_letter_at` datetime[0m
+  [4;35;1mSQL (3.8ms)[0m   [0mALTER TABLE `users` ADD `emailed_waitlist_letter_at` datetime[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110321031236')[0m
+Migrating to CreateSettings (20110428003820)
+  [4;35;1mSQL (7.6ms)[0m   [0mCREATE TABLE `settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT '' NOT NULL, `value` text, `updated_on` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `settings`[0m
+  [4;35;1mSQL (4.0ms)[0m   [0mCREATE INDEX `index_settings_on_name` ON `settings` (`name`)[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110428003820')[0m
+Migrating to AddLearnMoreToExtras (20110816222400)
+  [4;35;1mSQL (5.8ms)[0m   [0mALTER TABLE `extras` ADD `learn_more` varchar(255)[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110816222400')[0m
+Migrating to AddPwTokenToUser (20110816233125)
+  [4;35;1mSQL (7.1ms)[0m   [0mALTER TABLE `users` ADD `pw_token` varchar(255)[0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1mALTER TABLE `users` ADD `pw_token_created_at` datetime[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110816233125')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `academic_records`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `academic_records`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `academic_records`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `extras`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `extras`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `extras`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `projects`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `projects`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `projects`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `recommendations`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `recommendations`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `recommendations`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `recommenders`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `recommenders`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `recommenders`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `settings`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `settings`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 00:05:27) [GET]
+  Parameters: {"action"=>"index", "controller"=>"welcome"}
+  [4;36;1mSetting Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.9ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (3.2ms)
+Rendered layouts/_header (6.4ms)
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (1.7ms)
+Completed in 58ms (View: 51, DB: 5) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 00:05:34) [GET]
+  Parameters: {"action"=>"index", "controller"=>"welcome"}
+  [4;36;1mSetting Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.2ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (1.1ms)
+Rendered layouts/_header (48.6ms)
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (1.0ms)
+Completed in 65ms (View: 58, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2012-12-30 00:05:35) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mSetting Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_personal_data (11.3ms)
+Rendered layouts/_observers (1.5ms)
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+Rendered layouts/_buttons (1.2ms)
+Rendered layouts/_header (1.8ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.8ms)
+Completed in 67ms (View: 50, DB: 4) | 200 OK [http://localhost/apply]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProjectsController#index (for 127.0.0.1 at 2012-12-30 00:05:36) [GET]
+  Parameters: {"action"=>"index", "controller"=>"projects"}
+  [4;36;1mSetting Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+  [4;36;1mProject Load (0.1ms)[0m   [0;1mSELECT * FROM `projects` [0m
+Rendering template within layouts/application
+Rendering projects/index
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.3ms)
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+Rendered layouts/_buttons (1.7ms)
+Rendered layouts/_header (2.3ms)
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.9ms)
+Completed in 39ms (View: 32, DB: 3) | 200 OK [http://localhost/projects]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProjectsController#index (for 127.0.0.1 at 2012-12-30 00:05:37) [GET]
+  Parameters: {"action"=>"index", "controller"=>"projects"}
+  [4;35;1mSetting Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `settings`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+  [4;35;1mProject Load (0.1ms)[0m   [0mSELECT * FROM `projects` [0m
+Rendering template within layouts/application
+Rendering projects/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.2ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+Rendered layouts/_buttons (1.7ms)
+Rendered layouts/_header (2.2ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (1.0ms)
+Completed in 13ms (View: 7, DB: 2) | 200 OK [http://localhost/projects]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 00:05:38) [GET]
+  Parameters: {"action"=>"index", "controller"=>"welcome"}
+  [4;36;1mSetting Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.1ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.5ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.8ms)
+Completed in 15ms (View: 10, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2012-12-30 00:20:06) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mSetting Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_personal_data (30.7ms)
+Rendered layouts/_observers (0.6ms)
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+Rendered layouts/_buttons (2.4ms)
+Rendered layouts/_header (4.7ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.9ms)
+Completed in 54ms (View: 40, DB: 5) | 200 OK [http://localhost/apply]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ProjectsController#index (for 127.0.0.1 at 2012-12-30 00:20:08) [GET]
+  Parameters: {"action"=>"index", "controller"=>"projects"}
+  [4;36;1mSetting Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+  [4;36;1mProject Load (0.1ms)[0m   [0;1mSELECT * FROM `projects` [0m
+Rendering template within layouts/application
+Rendering projects/index
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.0ms)
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+Rendered layouts/_buttons (1.6ms)
+Rendered layouts/_header (2.1ms)
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (1.4ms)
+Completed in 15ms (View: 8, DB: 4) | 200 OK [http://localhost/projects]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 00:20:11) [GET]
+  Parameters: {"action"=>"index", "controller"=>"welcome"}
+  [4;35;1mSetting Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `settings`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.1ms)
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.4ms)
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.8ms)
+Completed in 17ms (View: 10, DB: 5) | 200 OK [http://localhost/]
+  [4;36;1mSQL (2.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 10:24:41) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (6.2ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.5ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (4.0ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (3.0ms)
+Rendered layouts/_header (6.1ms)
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (1.7ms)
+Completed in 75ms (View: 63, DB: 11) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 10:30:54) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.3ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (1.0ms)
+Rendered layouts/_header (1.7ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.9ms)
+Completed in 20ms (View: 13, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 11:07:17) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (1.9ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.5ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.9ms)
+Completed in 16ms (View: 9, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 11:16:23) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.1ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.4ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.9ms)
+Completed in 16ms (View: 10, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 11:16:41) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (8.1ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.1ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.4ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.8ms)
+Completed in 22ms (View: 9, DB: 10) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 11:16:59) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.2ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (1.0ms)
+Rendered layouts/_header (1.6ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (1.0ms)
+Completed in 17ms (View: 11, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 11:17:20) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.8ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (1.1ms)
+Rendered layouts/_header (45.0ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.9ms)
+Completed in 62ms (View: 55, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 11:18:07) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.2ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.3ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.9ms)
+Completed in 20ms (View: 13, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 11:18:23) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.0ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.4ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (1.0ms)
+Completed in 20ms (View: 13, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 11:19:22) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.1ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.4ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.9ms)
+Completed in 15ms (View: 10, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 11:19:28) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (1.9ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.7ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.8ms)
+Completed in 16ms (View: 10, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 11:19:34) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (1.9ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.5ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.8ms)
+Completed in 16ms (View: 10, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 11:19:36) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (1.9ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.5ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.9ms)
+Completed in 15ms (View: 10, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 11:19:58) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.1ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.4ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.8ms)
+Completed in 16ms (View: 10, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 11:20:07) [GET]
+  Parameters: {"controller"=>"welcome", "action"=>"index"}
+  [4;36;1mSetting Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (1.8ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.5ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.8ms)
+Completed in 16ms (View: 9, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUser Columns (4.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (2.1ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY 'jgrevich@ucsd.edu') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY 'jgrevich@ucsd.edu') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 12:01:06) [GET]
+  Parameters: {"action"=>"index", "controller"=>"welcome"}
+  [4;36;1mSetting Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.6ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (2.6ms)
+Rendered layouts/_header (5.6ms)
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (1.5ms)
+Completed in 55ms (View: 48, DB: 4) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2012-12-30 12:01:25) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mSetting Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_personal_data (12.7ms)
+Rendered layouts/_observers (1.7ms)
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+Rendered layouts/_buttons (1.2ms)
+Rendered layouts/_header (1.8ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.9ms)
+Completed in 114ms (View: 52, DB: 5) | 200 OK [http://localhost/apply]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2012-12-30 12:01:30) [POST]
+  Parameters: {"disability"=>"[FILTERED]", "commit"=>"Apply", "action"=>"create", "authenticity_token"=>"[FILTERED]", "paddress"=>"yes", "controller"=>"users", "user"=>{"disability"=>"[FILTERED]", "zip"=>"[FILTERED]", "cresidence"=>"[FILTERED]", "pstreet"=>"[FILTERED]", "city"=>"[FILTERED]", "pzip"=>"[FILTERED]", "pcity"=>"[FILTERED]", "race"=>"[FILTERED]", "citizenship"=>"[FILTERED]", "state"=>"[FILTERED]", "street"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "gender"=>"[FILTERED]", "pstate"=>"[FILTERED]", "dob(3i)"=>"[FILTERED]", "dob(2i)"=>"[FILTERED]", "dob(1i)"=>"[FILTERED]", "ethnicity"=>"[FILTERED]", "email"=>"", "phone"=>"[FILTERED]", "middlename"=>"", "password"=>"[FILTERED]", "lastname"=>"[FILTERED]", "firstname"=>""}}
+  [4;36;1mSetting Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY '') LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_personal_data (34.3ms)
+Rendered layouts/_observers (0.6ms)
+  [4;36;1mSetting Load (0.3ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+Rendered layouts/_buttons (1.7ms)
+Rendered layouts/_header (2.3ms)
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (1.0ms)
+Completed in 58ms (View: 41, DB: 5) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2012-12-30 12:05:07) [POST]
+  Parameters: {"action"=>"create", "paddress"=>"yes", "controller"=>"users", "commit"=>"Apply", "disability"=>"[FILTERED]", "user"=>{"city"=>"[FILTERED]", "firstname"=>"", "phone"=>"[FILTERED]", "middlename"=>"", "pstate"=>"[FILTERED]", "dob(1i)"=>"[FILTERED]", "disability"=>"[FILTERED]", "zip"=>"[FILTERED]", "email"=>"", "dob(3i)"=>"[FILTERED]", "dob(2i)"=>"[FILTERED]", "pzip"=>"[FILTERED]", "race"=>"[FILTERED]", "password"=>"[FILTERED]", "gender"=>"[FILTERED]", "pstreet"=>"[FILTERED]", "lastname"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "state"=>"[FILTERED]", "street"=>"[FILTERED]", "cresidence"=>"[FILTERED]", "pcity"=>"[FILTERED]", "ethnicity"=>"[FILTERED]", "citizenship"=>"[FILTERED]"}, "authenticity_token"=>"[FILTERED]"}
+  [4;36;1mSetting Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY '') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_personal_data (14.9ms)
+Rendered layouts/_observers (1.4ms)
+  [4;36;1mSetting Load (0.3ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+Rendered layouts/_buttons (3.5ms)
+Rendered layouts/_header (6.2ms)
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (1.2ms)
+Completed in 80ms (View: 62, DB: 4) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2012-12-30 12:28:43) [GET]
+  Parameters: {"action"=>"index", "controller"=>"welcome"}
+  [4;35;1mSetting Columns (8.0ms)[0m   [0mSHOW FIELDS FROM `settings`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+Rendering template within layouts/application
+Rendering welcome/index
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'app_title') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_start_date') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'program_end_date') LIMIT 1[0m
+Rendered layouts/_header_text (2.2ms)
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'general_description') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'highlights') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'eligibility_requirements') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_information') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+Rendered layouts/_buttons (0.9ms)
+Rendered layouts/_header (1.4ms)
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.8ms)
+Completed in 48ms (View: 36, DB: 9) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2012-12-30 12:28:45) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;35;1mSetting Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `settings`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_personal_data (28.3ms)
+Rendered layouts/_observers (0.6ms)
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+Rendered layouts/_buttons (1.4ms)
+Rendered layouts/_header (1.9ms)
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.8ms)
+Completed in 53ms (View: 41, DB: 4) | 200 OK [http://localhost/apply]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2012-12-30 12:28:47) [POST]
+  Parameters: {"action"=>"create", "paddress"=>"yes", "controller"=>"users", "commit"=>"Apply", "disability"=>"[FILTERED]", "user"=>{"city"=>"[FILTERED]", "firstname"=>"", "phone"=>"[FILTERED]", "middlename"=>"", "pstate"=>"[FILTERED]", "dob(1i)"=>"[FILTERED]", "disability"=>"[FILTERED]", "zip"=>"[FILTERED]", "email"=>"", "dob(3i)"=>"[FILTERED]", "dob(2i)"=>"[FILTERED]", "pzip"=>"[FILTERED]", "race"=>"[FILTERED]", "password"=>"[FILTERED]", "gender"=>"[FILTERED]", "pstreet"=>"[FILTERED]", "lastname"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "state"=>"[FILTERED]", "street"=>"[FILTERED]", "cresidence"=>"[FILTERED]", "pcity"=>"[FILTERED]", "ethnicity"=>"[FILTERED]", "citizenship"=>"[FILTERED]"}, "authenticity_token"=>"[FILTERED]"}
+  [4;35;1mSetting Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `settings`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+  [4;35;1mUser Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY '') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_personal_data (33.5ms)
+Rendered layouts/_observers (0.6ms)
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+Rendered layouts/_buttons (1.5ms)
+Rendered layouts/_header (2.0ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.8ms)
+Completed in 109ms (View: 40, DB: 5) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2012-12-30 12:29:22) [POST]
+  Parameters: {"action"=>"create", "paddress"=>"yes", "controller"=>"users", "commit"=>"Apply", "disability"=>"[FILTERED]", "user"=>{"city"=>"[FILTERED]", "firstname"=>"", "phone"=>"[FILTERED]", "middlename"=>"", "pstate"=>"[FILTERED]", "dob(1i)"=>"[FILTERED]", "disability"=>"[FILTERED]", "zip"=>"[FILTERED]", "email"=>"", "dob(3i)"=>"[FILTERED]", "dob(2i)"=>"[FILTERED]", "pzip"=>"[FILTERED]", "race"=>"[FILTERED]", "password"=>"[FILTERED]", "gender"=>"[FILTERED]", "pstreet"=>"[FILTERED]", "lastname"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "state"=>"[FILTERED]", "street"=>"[FILTERED]", "cresidence"=>"[FILTERED]", "pcity"=>"[FILTERED]", "ethnicity"=>"[FILTERED]", "citizenship"=>"[FILTERED]"}, "authenticity_token"=>"[FILTERED]"}
+  [4;36;1mSetting Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `settings`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY '') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_personal_data (34.1ms)
+Rendered layouts/_observers (0.8ms)
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+Rendered layouts/_buttons (1.6ms)
+Rendered layouts/_header (2.2ms)
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.8ms)
+Completed in 62ms (View: 43, DB: 5) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2012-12-30 12:29:55) [POST]
+  Parameters: {"action"=>"create", "paddress"=>"yes", "controller"=>"users", "commit"=>"Apply", "disability"=>"[FILTERED]", "user"=>{"city"=>"[FILTERED]", "firstname"=>"", "phone"=>"[FILTERED]", "middlename"=>"", "pstate"=>"[FILTERED]", "dob(1i)"=>"[FILTERED]", "disability"=>"[FILTERED]", "zip"=>"[FILTERED]", "email"=>"", "dob(3i)"=>"[FILTERED]", "dob(2i)"=>"[FILTERED]", "pzip"=>"[FILTERED]", "race"=>"[FILTERED]", "password"=>"[FILTERED]", "gender"=>"[FILTERED]", "pstreet"=>"[FILTERED]", "lastname"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "state"=>"[FILTERED]", "street"=>"[FILTERED]", "cresidence"=>"[FILTERED]", "pcity"=>"[FILTERED]", "ethnicity"=>"[FILTERED]", "citizenship"=>"[FILTERED]"}, "authenticity_token"=>"[FILTERED]"}
+  [4;35;1mSetting Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `settings`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max(`settings`.updated_on) AS max_updated_on FROM `settings` [0m
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY '') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_personal_data (34.2ms)
+Rendered layouts/_observers (0.6ms)
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'department') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'university') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_start') LIMIT 1[0m
+  [4;36;1mSetting Load (0.1ms)[0m   [0;1mSELECT * FROM `settings` WHERE (`settings`.`name` = 'application_deadline') LIMIT 1[0m
+Rendered layouts/_buttons (1.7ms)
+Rendered layouts/_header (2.3ms)
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM `settings` WHERE (`settings`.`name` = 'mail_from') LIMIT 1[0m
+Rendered layouts/_footer (0.8ms)
+Completed in 60ms (View: 43, DB: 6) | 200 OK [http://localhost/users]

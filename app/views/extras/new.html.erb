@@ -1,0 +1,8 @@
+<%= app_navbar %>
+
+<%= error_messages_for :extra %>
+<% form_for(@extra, :url => { :action => "create" }, :method => "post") do |e| %>
+	<%= render :partial => "additional_information", :locals => { :e => e }%>
+	<br style="clear:both;" />
+    <p id="submit"><%= e.submit "Save", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %></p>
+<% end %>
