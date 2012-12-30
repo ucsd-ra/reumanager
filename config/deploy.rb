@@ -3,17 +3,16 @@ require "rvm/capistrano"
 require 'capistrano/ext/database'
 
 set :rvm_ruby_string, "1.9.3@reu"
-set :rvm_type, :system
+set :rvm_type, :user
 
 default_run_options[:pty] = true
 
 set :application, "reu"
-set :deploy_to, "/var/www/#{application}" # I like this location
-set :domain, "192.168.126.147"
+set :deploy_to, "/var/rails/#{application}" # I like this location
+set :domain, "vishnu.ucsd.edu"
 set :keep_releases, 2
 set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/#{application}"
 set :scm, :subversion
-set :scm_passphrase, "5'utr $Saihung"
 set :user, 'ubuntu'
 set :use_sudo, false
 
@@ -50,10 +49,11 @@ namespace :deploy do
   
   desc "Create symlinks for sites that run from sub-uris"
   task :symlink_sub_uri do
-    run "ln -s /var/www/be/current/public #{current_path}/public/be"
-    run "ln -s /var/www/git/current/public #{current_path}/public/git"
-    run "ln -s /var/www/reu3/current/public #{current_path}/public/reu3"
-    run "ln -s /var/www/surf/current/public #{current_path}/public/surf"
+    run "ln -s /var/rails/be/current/public #{current_path}/public/be"
+    run "ln -s /var/rails/git/current/public #{current_path}/public/git"
+    run "ln -s /var/rails/reu3/current/public #{current_path}/public/reu3"
+    run "ln -s /var/rails/surf/current/public #{current_path}/public/surf"
+    run "ln -s /var/rails/uf/current/public #{current_path}/public/uf"
   end
   
   namespace :assets do
