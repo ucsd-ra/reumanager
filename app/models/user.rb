@@ -221,6 +221,7 @@ class User < ActiveRecord::Base
 	  end
 	  
 	  def send_rejection_letter
+	    @app_count = User.count
       if self.emailed_rejection_letter_at == nil
         email = UserMailer.create_rejection_letter(self)
         email.set_content_type('multipart', 'mixed')
@@ -236,6 +237,7 @@ class User < ActiveRecord::Base
     end
 
     def send_waitlist_letter
+	    @app_count = User.count
       if self.emailed_waitlist_letter_at == nil && self.emailed_rejection_letter_at == nil
         email = UserMailer.create_waitlist_letter(self)
         email.set_content_type('multipart', 'mixed')
