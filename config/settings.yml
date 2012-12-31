@@ -19,7 +19,7 @@ program_end_date:
 check_back_date:
   default: Tue, 1 Oct 2013
 mail_from:
-  default: no-reply-uf@reumanager.com
+  default: uf-mse@reumanager.com
 password_min_length:
   format: int
   default: 6
