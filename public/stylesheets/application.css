@@ -106,7 +106,8 @@ Projects
 	#projects p								{ line-height:1.25; margin:0; }
 	#projects hr							{ margin:13px 0; }
 	.project								{ padding:0 20px; }
-	.projects_column						{ padding:20px 8px; }
+	.projects_column						{ margin: 20px 0; padding:20px 8px; }
+	.odd											{ clear:left; margin-right: 20px; }
 	
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Users
