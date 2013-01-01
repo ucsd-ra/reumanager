@@ -8,7 +8,7 @@ set :deploy_to, "/var/rails/#{application}" # I like this location
 set :user, "ubuntu"
 set :keep_releases, 2
 set :rvm_ruby_string, "ree@#{application}"
-set :rvm_type, :system
+set :rvm_type, :user
 set :scm, :subversion
 
 default_run_options[:pty] = true
