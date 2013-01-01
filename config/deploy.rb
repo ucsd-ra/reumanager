@@ -3,14 +3,13 @@ require "rvm/capistrano"
 
 set :application, "surf" #matches names used in smf_template.erb
 set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/surf"
-set :domain, '192.168.126.147'
-set :deploy_to, "/var/www/#{application}" # I like this location
+set :domain, "vishnu.ucsd.edu"
+set :deploy_to, "/var/rails/#{application}" # I like this location
 set :user, "ubuntu"
 set :keep_releases, 2
 set :rvm_ruby_string, "ree@#{application}"
 set :rvm_type, :system
 set :scm, :subversion
-set :scm_passphrase, "5'utr $Saihung"
 
 default_run_options[:pty] = true
 
