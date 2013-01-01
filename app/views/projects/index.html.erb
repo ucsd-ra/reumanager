@@ -4,7 +4,7 @@
 	<hr />
 	<%= content_tag :h2, "No projects added." if @projects.count < 1%>
 	<% @years.each do |y| %>
-		<div class="span-11 bordered colored rounded projects_column">
+		<div class="span-11 bordered colored rounded projects_column <%= cycle('odd', nil) %>">
 			<h2><%= y %></h2>
 			<% instance_variable_get("@projects_#{y}").each do |project| %>
 				<div class="padded project">
