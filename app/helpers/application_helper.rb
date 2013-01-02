@@ -18,13 +18,13 @@ module ApplicationHelper
   def dynamic_title
     case
     when params[:controller] == "welcome"
-      return "<title>Department of #{Setting.department} NSF REU</title>"
+      return "<title>#{Setting.university}, #{Setting.department} NSF REU</title>"
     when params[:controller] == "projects"
-      return "<title>Department of #{Setting.department} NSF REU::: Projects</title>"
+      return "<title>#{Setting.university}, #{Setting.department} NSF REU::: Projects</title>"
     when params[:controller] == "users" || params[:controller] == "academic_records" || params[:controller] == "extras" || params[:controller] == "recommenders" 
-      return "<title>Department of #{Setting.department} NSF REU ::: Application</title>"
+      return "<title>#{Setting.university}, #{Setting.department} NSF REU ::: Application</title>"
     else
-      return "<title>Department of #{Setting.department} NSF REU</title>"
+      return "<title>#{Setting.university}, #{Setting.department} NSF REU</title>"
     end
   end
   
