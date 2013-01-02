@@ -1,7 +1,7 @@
 app_title:
   default: NSFREU Demo (Your App Title Here)
 domain:
-  default: reu.ucsd.edu/demo
+  default: reumanager.com/demo
 university:
   default: Your University Here
 department:
@@ -13,13 +13,13 @@ application_deadline:
 notification_date:
   default: Mon, 2 Apr 2013 00:00:00 -0700
 program_start_date:
-  default: Mon, 11 Jun 2012
+  default: Tue, 11 Jun 2013
 program_end_date:
   default: Mon, 20 Aug 2013
 check_back_date:
   default: Fri, 1 Feb 2014
 mail_from:
-  default: reu@ucsd.edu
+  default: demo@reumanager.com
 password_min_length:
   format: int
   default: 6

@@ -1,5 +1,5 @@
 # create admins
-u = User.new(:firstname => 'NSFREU', :lastname => 'Admin', :login => 'admin@reu.ucsd.edu', :email => 'admin@reu.ucsd.edu', :password => 'DemoApp', :password_confirmation => 'DemoApp', :role_id => 1, :dob => Time.now - 30.years, :street => '9500 Gilman Drive #0412', :city => 'La Jolla', :state => "CA", :zip => "92093-0412", :citizenship => "United States", :phone => "858-822-5947")
+u = User.new(:firstname => 'NSFREU', :lastname => 'Admin', :login => 'admin@reumanager.com', :email => 'admin@reumanager.com', :password => 'DemoApp', :password_confirmation => 'DemoApp', :role_id => 1, :dob => Time.now - 30.years, :street => '9500 Gilman Drive #0412', :city => 'La Jolla', :state => "CA", :zip => "92093-0412", :citizenship => "United States", :phone => "858-822-5947")
 u.save
 u.set_to_admin!
 
@@ -7,7 +7,7 @@ u.set_to_admin!
 # INCOMPLETE STUDENT
 #
 # create sample students
-s = User.new(:firstname => "James", :middlename => "", :lastname => "Madison", :email => "jmadison@reu.ucsd.edu", :login => "jmadison@reu.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
+s = User.new(:firstname => "James", :middlename => "", :lastname => "Madison", :email => "jmadison@reumanager.com", :login => "jmadison@reumanager.com", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
   :phone => "805-663-4445", :pstreet => "252 Palminos Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93054", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
@@ -20,7 +20,7 @@ s.save_with_validation(false)
 # SUBMITTED STUDENT
 #
 # create sample students
-s = User.new(:firstname => "Abe", :middlename => "", :lastname => "Lincoln", :email => "alincoln@reu.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
+s = User.new(:firstname => "Abe", :middlename => "", :lastname => "Lincoln", :email => "alincoln@reumanager.com", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
   :phone => "805-663-4445", :pstreet => "1252 Natko Ave", :pcity => "Reallin", :pstate => "CA", :pzip => "95441", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
@@ -50,7 +50,7 @@ s.extra = Extra.new(:awards => "Ronald E. McNair Scholar 2010 to 2011\r\n\r\nDea
   :learn => "NSF REU Website")
 
 # create recommender
-s.recommender = Recommender.new(:name => "James Monroe", :title => "Professor", :department => "Intergrative Biology", :college => "University of California, Berkeley", :phone => "510-448-8404", :email => "jmonroe@reu.ucsd.edu", :waive_rights => true)
+s.recommender = Recommender.new(:name => "James Monroe", :title => "Professor", :department => "Intergrative Biology", :college => "University of California, Berkeley", :phone => "510-448-8404", :email => "jmonroe@reumanager.com", :waive_rights => true)
 s.activate!
 s.save_with_validation(false)
 
@@ -58,7 +58,7 @@ s.save_with_validation(false)
 # COMPLETE STUDENT
 #
 # create sample students
-s = User.new(:firstname => "John", :middlename => "Quincy", :lastname => "Adams", :email => "jqadams@reu.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
+s = User.new(:firstname => "John", :middlename => "Quincy", :lastname => "Adams", :email => "jqadams@reumanager.com", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
   :phone => "805-663-4445", :pstreet => "6841 Lonhox Ave", :pcity => "Culver City", :pstate => "CA", :pzip => "90044", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
@@ -89,7 +89,7 @@ s.extra = Extra.new(:awards => "Ronald E. McNair Scholar 2010 to 2011\r\n\r\nDea
   :learn => "NSF REU Website")
 
 # create recommender
-s.recommender = Recommender.new(:name => "Martin Van Buren", :title => "Professor", :department => "Intergrative Biology", :college => "University of California, Berkeley", :phone => "510-448-8404", :email => "mvburen@reu.ucsd.edu", :waive_rights => true)
+s.recommender = Recommender.new(:name => "Martin Van Buren", :title => "Professor", :department => "Intergrative Biology", :college => "University of California, Berkeley", :phone => "510-448-8404", :email => "mvburen@reumanager.com", :waive_rights => true)
 s.activate!
 s.save_with_validation(false)
 
@@ -102,7 +102,7 @@ s.save
 # WITHDRAWN STUDENT
 #
 # create sample students
-s = User.new( :firstname => "Theodore", :middlename => "", :lastname => "Roosevelt", :email => "troosevelt@reu.ucsd.edu", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
+s = User.new( :firstname => "Theodore", :middlename => "", :lastname => "Roosevelt", :email => "troosevelt@reumanager.com", :dob => "1991-07-12 07:00:00", :street => "PO#50442    9450 Gilman Dr", :city => "La Jolla", :state => "CA", :zip => "92092", 
   :phone => "805-663-4445", :pstreet => "252 Plum Ave", :pcity => "Ventura", :pstate => "CA", :pzip => "93004", :pphone => nil, :citizenship => "United States", :cresidence => "", 
   :gender => "Male", :ethnicity => "Prefer not to respond", :race => "White", :disability => "No", :activated_at => nil, :submitted_at => nil, :rec_request_at => nil, :completed_at => nil, 
   :token => "37a6d51c6696091ca67e6b8e9beaaa0f3e0f6411", :token_created_at => "2011-03-01 21:09:23", :remember_token => nil, :remember_token_expires_at => nil, 
