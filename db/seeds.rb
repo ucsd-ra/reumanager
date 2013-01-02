@@ -36,10 +36,7 @@ s.academic_record = AcademicRecord.new( :gpa => "4.0",
   :college_start => "2009-09-01 07:00:00".to_datetime,
   :college_level => 'Sophomore',
   :college_end => "2013-06-01 07:00:00".to_datetime,
-  :transcript_content_type => 'application/pdf',
-  :transcript_file_size => "193576",
-  :transcript_updated_at => '2011-03-02 04:51:21'.to_datetime,
-  :transcript_file_name => "UCSDTranscript.pdf")
+  :transcript => File.new("#{RAILS_ROOT}/public/sample_transcript.jpg", "r"))
 
 # create extra
 s.extra = Extra.new(:awards => "Ronald E. McNair Scholar 2010 to 2011\r\n\r\nDean’s List 6 Semesters, 2007 to present\r\n\r\nAtrisco Heritage Scholarship, Fall 2008, Fall 2009, Fall 2010",
@@ -75,10 +72,7 @@ s.academic_record = AcademicRecord.new( :gpa => "3.6",
   :college_start => "2009-09-01 07:00:00".to_datetime,
   :college_level => 'Sophomore',
   :college_end => "2013-06-01 07:00:00".to_datetime,
-  :transcript_content_type => 'application/pdf',
-  :transcript_file_size => "193576",
-  :transcript_updated_at => '2011-03-02 04:51:21'.to_datetime,
-  :transcript_file_name => "UCSDTranscript.pdf")
+  :transcript => File.new("#{RAILS_ROOT}/public/sample_transcript.jpg", "r"))
 
 # create extra
 s.extra = Extra.new(:awards => "Ronald E. McNair Scholar 2010 to 2011\r\n\r\nDean’s List 6 Semesters, 2007 to present\r\n\r\nAtrisco Heritage Scholarship, Fall 2008, Fall 2009, Fall 2010",
@@ -118,9 +112,7 @@ s.academic_record = AcademicRecord.new( :gpa => "3.2",
   :college_start => "2009-09-01 07:00:00".to_datetime,
   :college_level => 'Sophomore',
   :college_end => "2013-06-01 07:00:00".to_datetime,
-  :transcript_content_type => 'application/pdf',
-  :transcript_file_size => "193576",
-  :transcript_updated_at => '2011-03-02 04:51:21'.to_datetime,
-  :transcript_file_name => "UCSDTranscript.pdf")
+  :transcript => File.new("#{RAILS_ROOT}/public/sample_transcript.jpg", "r"))
+
 s.activate!
 s.save_with_validation(false)

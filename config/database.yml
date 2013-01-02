@@ -1,8 +1,8 @@
 development:
   adapter: mysql
-  database: reu_demo_development
+  database: nsfreudemo
   encoding: utf8
-  username: reu_demo
+  username: nsfreudemo
   password: sqz_EI7=FpEojbeY4:MtmIMg
   host: localhost
   
