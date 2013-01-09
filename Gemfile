@@ -4,7 +4,7 @@ source 'http://gems.github.com'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
-gem 'rails', '2.3.14'
+gem 'rails', '2.3.15'
 gem 'carmen', '0.2.8'
 #gem 'exception_notification', '2.3.3.0'
 gem 'faker', :require => 'faker'
