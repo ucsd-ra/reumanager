@@ -15,6 +15,9 @@ class Extra < ActiveRecord::Base
     ['Failure Analysis of Racing Engine Components – Gerhard Fuchs'],
     ['Design and Development of High Performance Shape Memory Alloys – Michele Manuel'],
     ['Engineered Zircaloy Cladding Modifications for Improved Accident Tolerance of LWR (Light Water Reactor) Fuel – Yong Yang'],
-    ['Development and testing of pressure sensors for hurricane wind load monitoring – Kurt Gurley']
+    ['Development and testing of pressure sensors for hurricane wind load monitoring – Kurt Gurley'],
+    ['Design of brittle ductile laminates for crack arresting structures – Jack Mecholsky'],
+    ['Effect of Moisture Diffusion in Concrete and Epoxy – H. R. Hamilton III'],
+    ['Direct Shear Test of Epoxy-Concrete Bond – H. R. Hamilton III']
   end
 end
