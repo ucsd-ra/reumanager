@@ -98,7 +98,8 @@ Welcome
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Extra
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
-	textarea.extra							{ height:100px; }	
+	textarea.extra							{ height:100px; }
+	#preference select { width:470px; }
 	
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Projects
