@@ -4,11 +4,11 @@
 			<li class="last"><%= link_to "Logout", { :controller => "sessions", :action => "destroy" } %></li>
 			<% if params[:controller] == "users" || params[:controller] == "academic_records" || params[:controller] == "recommenders" || params[:controller] == "extras" -%>
 				<% if current_user && current_user.submitted_at && !check_admin && params[:controller] != "recommendation" %>
-					<li class="selected"><%= link_to "Application", { :controller => "users", :action => "status" }%></li>
+					<li class="selected"><%= link_to "Application Status", { :controller => "users", :action => "status" }%></li>
 				<% end -%>				
 			<% else -%>
 				<% if current_user && current_user.submitted_at && !check_admin && params[:controller] != "recommendation" %>
-					<li><%= link_to "Application", { :controller => "users", :action => "status" }%></li>
+					<li><%= link_to "Application Status", { :controller => "users", :action => "status" }%></li>
 
 				<% end -%>
 			<% end -%>
