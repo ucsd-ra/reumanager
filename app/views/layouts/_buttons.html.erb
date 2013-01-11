@@ -32,10 +32,10 @@
 			<% end -%>
 		<% end -%>
 		
-		<% if params[:controller] == "projects" && params[:action] == "index" -%>
-			<li class="selected"><%= link_to "Projects", { :controller => "projects" } %></li>
+		<% if params[:controller] == "projects" && params[:action] == "current" -%>
+			<li class="selected"><%= link_to "Current Projects", { :controller => "projects", :action => 'current' } %></li>
 		<% else -%>
-			<li><%= link_to "Projects", { :controller => "projects" } %></li>
+			<li><%= link_to "Current Projects", { :controller => "projects", :action => 'current' } %></li>
 		<% end -%>
 
 		<% if current_user && current_user.role.name == 'student' -%>

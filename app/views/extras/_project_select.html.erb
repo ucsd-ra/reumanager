@@ -1,0 +1,1 @@
+<%= select_tag "extra[project#{id}]", ("<option value='' disabled='disabled'>#{id}st Choice</option>" + options_for_select(Extra.project_options,  @extra.send("project#{id}".to_sym))) %>

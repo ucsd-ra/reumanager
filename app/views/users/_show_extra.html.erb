@@ -29,6 +29,15 @@
 <br style="clear:both;"/>
 
 <div>
+	<label>Top 3 projects preferences</label><br />
+	1. <%= e.project1 ? e.project1 : "You have not entered your first choice." %><br />
+	2. <%= e.project2 ? e.project2 : "You have not entered your second choice." %><br />
+	3. <%= e.project3 ? e.project3 : "You have not entered your third choice." %><br />
+</div>
+<br style="clear:both;"/>
+
+<div>
 	<label>Please Complete a brief essay (up to 250 words) explaining why you are interested in our program and how the experience may help you achieve your future goals</label>
 	<%= e.personal_statement.size > 4 ? e.personal_statement : "You must complete your personal statement." %>
 </div>
+

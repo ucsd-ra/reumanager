@@ -1,4 +1,11 @@
 <div>
+	<label>Please List your top 3 preferences for potential faculty projects.</label><%= @spacer %><br />
+
+	1.) <%= e.project1 if e.project1 %> &nbsp;&nbsp;&nbsp;&nbsp; 2.) <%= e.project2 if e.project2 %> &nbsp;&nbsp;&nbsp;&nbsp; 3.) <%= e.project3 if e.project3 %>
+</div>
+<br style="clear:both;"/>
+
+<div>
 	<label>Please list up to five academic awards that you have received (e.g. Award - Date Received [mm/yy])</label><%= @spacer %>
 
 	<%= e.awards.gsub("\n", "<br />") %>

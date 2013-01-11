@@ -36,6 +36,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
+  map.current_projects '/projects/current', :controller => 'projects', :action => 'current'
   map.resources :projects
   map.resources :users
   map.resource :session

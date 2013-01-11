@@ -33,6 +33,14 @@
   </div>
 </div>
 
+<div id="preference">
+	<label>Please select your top 3 project preferences.</label><br />
+	Refer to <%= link_to "the current projects page", current_projects_url %> for more information.<br />
+    <%= render :partial => "project_select", :locals => {:id => 1} %><br />
+    <%= render :partial => "project_select", :locals => {:id => 2} %><br />	
+    <%= render :partial => "project_select", :locals => {:id => 3} %>
+</div>
+
 <br style="clear:both;" />
 <div>
 	<label>Please Complete a brief essay (up to 250 words) explaining why you are interested in our program and how the experience may help you achieve your future goals:</label>
