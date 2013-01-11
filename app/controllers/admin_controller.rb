@@ -163,28 +163,29 @@ require 'ftools'
       redirect_to :action => "index"
     end
   end
-  
-  def export
-    # initialize new speadsheet
-    @spreadsheet_dir = File.makedirs "#{RAILS_ROOT}/public/spreadsheets" unless File.exist?("#{RAILS_ROOT}/public/spreadsheets")
-    @spreadsheet_file = "#{RAILS_ROOT}/public/spreadsheets/#{(params[:status] || params[:prev_action])}_applicants_#{Date.today}_#{Time.now.strftime("%H-%M_%p")}.xls"
-    workbook = Spreadsheet::Workbook.new # Spreadsheet.open(spreadsheet_dir+spreadsheet_file)
-    worksheet = workbook.create_worksheet :name => "Applicant Data"
-    
-    # create styles
-    page_title_format = Spreadsheet::Format.new( :color => "black", :bold => true, :size => 30 )
-    header_format = Spreadsheet::Format.new( :color => "black", :bold => true, :size => 12 )
-    data_format = Spreadsheet::Format.new( :color => "black", :bold => true, :size => 10 )
-    workbook.default_format = data_format
-    
-    # setup headers
-    worksheet.row(0).default_format = page_title_format
-    worksheet[0,0] = "#{Time.now.year} NSFREU Applicant Data" 
-    worksheet.row(1).default_format = header_format
-    worksheet.row(1).concat %w{ID Name Email Gender Race Ethnicity Disability Current\ University Academic\ Year Major/Minor GPA Recommender\ Name Recommender\ Association Overall\ Promise Undergrad\ Institution?}
-    worksheet.row(1).default_format = header_format
 
-    # get applicant data
+
+ def export
+   # initialize new speadsheet
+   @spreadsheet_dir = File.makedirs "#{RAILS_ROOT}/public/spreadsheets" unless File.exist?("#{RAILS_ROOT}/public/spreadsheets")
+   @spreadsheet_file = "#{RAILS_ROOT}/public/spreadsheets/#{(params[:status] || params[:prev_action])}_applicants_#{Date.today}_#{Time.now.strftime("%H-%M_%p")}.xls"
+   workbook = Spreadsheet::Workbook.new # Spreadsheet.open(spreadsheet_dir+spreadsheet_file)
+   worksheet = workbook.create_worksheet :name => "Applicant Data"
+   
+   # create styles
+   page_title_format = Spreadsheet::Format.new( :color => "black", :bold => true, :size => 30 )
+   header_format = Spreadsheet::Format.new( :color => "black", :bold => true, :size => 12 )
+   data_format = Spreadsheet::Format.new( :color => "black", :bold => true, :size => 10 )
+   workbook.default_format = data_format
+   
+   # setup headers
+   worksheet.row(0).default_format = page_title_format
+   worksheet[0,0] = "#{Time.now.year} NSFREU Applicant Data" 
+   worksheet.row(1).default_format = header_format
+   worksheet.row(1).concat %w{ID Name Email Gender Race Ethnicity Disability Current\ University Academic\ Year Major/Minor GPA Recommender\ Name Recommender\ Association Overall\ Promise Undergrad\ Institution? project1 project2 project3}
+   worksheet.row(1).default_format = header_format
+
+   # get applicant data
 		case params[:prev_action]
 		when "incomplete"
 		  logger.info "exporting incomplete applicants"
@@ -209,13 +210,13 @@ require 'ftools'
 		    @applicants = User.all :order => 'lastname ASC', :conditions => ['role_id = ?', 2], :include => [ :academic_record, :recommender, :recommendation ]
 			end
 		end
-    
-    # iterate over each applicant
-    # @applicants.each_with_index do |a,i|
-    @row = 1
-    @applicants.each do |a|
-      @row += 1
-      worksheet.row(@row).concat [a.id, 
+   
+   # iterate over each applicant
+   # @applicants.each_with_index do |a,i|
+   @row = 1
+   @applicants.each do |a|
+     @row += 1
+     worksheet.row(@row).concat [a.id, 
 				"#{a.firstname} #{a.lastname}", 
 				a.email, 
 				a.gender, 
@@ -228,22 +229,24 @@ require 'ftools'
 				(a.academic_record.gpa if a.academic_record), 
 				(a.recommender.name if a.recommender), 
 				(("#{a.recommender.department} / #{a.recommender.college}") if a.recommender), 
-				(a.recommendation.rating if a.recommendation), 
-				(a.recommendation.undergrad_inst if a.recommendation)]
-    end
-        
-    # write file
-    workbook.write @spreadsheet_file
-    @filename = @spreadsheet_file.split("/").last
-    render :update do |page|
-      page[:overlay].show
-      page[:opaque_overlay].show
-      page[:wait_box].hide
-      page[:excel_export].replace_html :partial => "excel_export"
-      page[:excel_export].show
-    end
-  end
-  
+				(a.recommendation.rating if a.recommendation && a.recommendation.rating), 
+				(a.recommendation.undergrad_inst if a.recommendation && a.recommendation.undergrad_inst),
+				(a.extra.project1 if a.extra && a.extra.project1),
+				(a.extra.project2 if a.extra && a.extra.project2),
+				(a.extra.project3 if a.extra && a.extra.project3)]
+   end
+       
+   # write file
+   workbook.write @spreadsheet_file
+   @filename = @spreadsheet_file.split("/").last
+   render :update do |page|
+     page[:overlay].show
+     page[:opaque_overlay].show
+     page[:wait_box].hide
+     page[:excel_export].replace_html :partial => "excel_export"
+     page[:excel_export].show
+   end
+ end
   def close_export
     # clean up tmp files
     expunge_excel_files
