@@ -59,8 +59,8 @@ class Recommendation < ActiveRecord::Base
       pdf.text "#{e.gsub("_"," ").capitalize }\n", :font_size => 13, :justification => :left, :left => 33, :right => 33
       pdf.text "#{@user.extra.send(e)}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     end    
-    pdf.save_as("#{RAILS_ROOT}/public/pdf/#{@user.id.to_s}_#{@user.lastname}.pdf")
-    @user.send_complete_app
+    pdf.save_as("#{RAILS_ROOT}/public/pdf/#{self.firstname}-#{self.lastname}-#{self.token}.pdf")
+#    @user.send_complete_app
     @user.send_complete_app_student
     @user.completed_at = Time.now
   end

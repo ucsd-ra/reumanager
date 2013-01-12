@@ -125,7 +125,7 @@ require 'ftools'
 	def print
 		if @s = User.find(params[:id])
 			@s.make_pdf
-			@filename = "pdf/#{@s.id.to_s}_#{@s.lastname}.pdf"
+			@filename = "pdf/#{@s.firstname}-#{@s.lastname}-#{@s.token}.pdf"
 		end
     render :update do |page|
       page[:overlay].show

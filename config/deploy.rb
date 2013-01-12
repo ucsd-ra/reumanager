@@ -1,5 +1,7 @@
 require "bundler/capistrano"
 require "rvm/capistrano"
+
+set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
 
 set :application, "nsfreudemo" #matches names used in smf_template.erb
@@ -59,4 +61,11 @@ namespace :deploy do
     CMD
     run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
   end
+  
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && #{whenever_command} --update-crontab #{application}"
+  end
 end
+
+after "deploy:symlink", "deploy:update_crontab"

@@ -50,7 +50,7 @@ class UserMailer < ActionMailer::Base
                               :lastname => lastname, 
                               :email => email)
     )
-    attachment :content_type => "application/pdf", :filename => "#{id.to_s}_#{lastname}.pdf", :body => File.read("#{RAILS_ROOT}/public/pdf/#{id.to_s}_#{lastname}.pdf")
+    attachment :content_type => "application/pdf", :filename => "#{id.to_s}_#{lastname}.pdf", :body => File.read("#{RAILS_ROOT}/public/pdf/#{self.firstname}-#{self.lastname}-#{self.token}.pdf")
   end
   
   def complete_app_student(firstname, lastname, email)

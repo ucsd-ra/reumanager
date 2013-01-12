@@ -148,7 +148,7 @@ class User < ActiveRecord::Base
 				pdf.text "No recommender yet..."
 		end
 		
-		pdf.save_as("#{RAILS_ROOT}/public/pdf/#{self.id.to_s}_#{self.lastname}.pdf")
+		pdf.save_as("#{RAILS_ROOT}/public/pdf/#{self.firstname}-#{self.lastname}-#{self.token}.pdf")
 	end
 
    def send_reg_confirmation
