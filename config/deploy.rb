@@ -3,12 +3,12 @@ require "rvm/capistrano"
 
 set :application, "surf" #matches names used in smf_template.erb
 set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/surf"
-set :domain, "vishnu.ucsd.edu"
-set :deploy_to, "/var/rails/#{application}" # I like this location
+set :domain, "192.168.10.103"
+set :deploy_to, "/var/www/#{application}" # I like this location
 set :user, "ubuntu"
 set :keep_releases, 2
 set :rvm_ruby_string, "ree@#{application}"
-set :rvm_type, :user
+set :rvm_type, :system
 set :scm, :subversion
 
 default_run_options[:pty] = true
@@ -19,7 +19,7 @@ role :db,  domain, :primary => true
 
 ## modified for passenger standalone
 set :rails_env,      "production"
-set :passenger_port, 4060
+set :passenger_port, 4020
 set :passenger_cmd,  "bundle exec passenger"
 
 # variables for cap-db
