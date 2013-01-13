@@ -22,7 +22,7 @@ role :db,  domain, :primary => true
 
 ## modified for passenger standalone
 set :rails_env,      "production"
-set :passenger_port, 4050
+set :passenger_port, 4000
 set :passenger_cmd,  "bundle exec passenger"
 set :whenever_command, "bundle exec whenever"
 
