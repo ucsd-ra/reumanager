@@ -62,7 +62,7 @@ class Recommendation < ActiveRecord::Base
     pdf.save_as("#{RAILS_ROOT}/public/pdf/#{@user.firstname}-#{@user.lastname}-#{@user.token}.pdf")
 #    @user.send_complete_app
     @user.send_complete_app_student
-    @user.completed_at = Time.now
+    @user.update_attribute :completed_at, Time.now    
   end
   
   def make_pdf(pdf)
