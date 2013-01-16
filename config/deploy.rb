@@ -4,14 +4,14 @@ require "rvm/capistrano"
 set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
 
-set :application, "demo" #matches names used in smf_template.erb
-set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/nsfreu_demo"
-set :domain, '192.168.10.103'
+set :application, "efore" #matches names used in smf_template.erb
+set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/efore"
+set :domain, 'vishnu.ucsd.edu'
 set :deploy_to, "/var/www/#{application}" # I like this location
 set :user, "ubuntu"
 set :keep_releases, 2
 set :rvm_ruby_string, "ree@#{application}"
-set :rvm_type, :system
+set :rvm_type, :user
 set :scm, :subversion
 
 default_run_options[:pty] = true
@@ -22,7 +22,7 @@ role :db,  domain, :primary => true
 
 ## modified for passenger standalone
 set :rails_env,      "production"
-set :passenger_port, 4000
+set :passenger_port, 4090
 set :passenger_cmd,  "bundle exec passenger"
 set :whenever_command, "bundle exec whenever"
 
