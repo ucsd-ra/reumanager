@@ -9,11 +9,10 @@ default_run_options[:pty] = true
 
 set :application, "reu3" #matches names used in smf_template.erb
 set :deploy_to, "/var/www/#{application}" # I like this location
-set :domain, "192.168.126.147"
+set :domain, "192.168.10.103"
 set :keep_releases, 2
 set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/#{application}"
 set :scm, :subversion
-set :scm_passphrase, "5'utr $Saihung"
 set :user, 'ubuntu'
 set :use_sudo, false
 

@@ -6,7 +6,7 @@ end
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.11'
 
 gem 'aasm'
 gem 'carmen'
@@ -60,6 +60,7 @@ group :assets do
   gem 'bootstrap-sass', '~> 2.1.0.0'
   gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
   gem 'coffee-rails', " ~> 3.2.0"
+  gem 'libv8', '~> 3.11.8'
   gem 'sass-rails', " ~> 3.2.0"
   gem 'font-awesome-sass-rails'
   gem 'uglifier'
