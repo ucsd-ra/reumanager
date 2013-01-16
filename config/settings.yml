@@ -1,0 +1,36 @@
+app_title:
+  default: Engineers for Exploration
+domain:
+  default: reumanager.com/efore
+university:
+  default: UC San Diego
+department:
+  default: Jacobs School of Engineering
+application_start:
+  default: Mon, 7 Jan 2012 00:00:00 -0700
+application_deadline:
+  default: Tue, 16 Mar 2013 00:00:00 -0700
+notification_date:
+  default: Mon, 19 Apr 2013 00:00:00 -0700
+program_start_date:
+  default: Tue, 10 Jun 2013
+program_end_date:
+  default: Mon, 18 Aug 2013
+check_back_date:
+  default: Fri, 2 Jan 2014
+mail_from:
+  default: efore@reumanager.com
+password_min_length:
+  format: int
+  default: 7
+attachment_max_size:
+  format: int
+  default: 15360
+general_description:
+  default: "h3. General Description\n\nSince its inception over two years ago, the Engineers for Exploration program has engaged over 50 undergraduate students from a broad range of disciplines in cyber-physical systems research motivated by real world challenges in exploration and scientific discovery. The program’s aim is to give a 'once in a lifetime' experience for motivated students by providing an intimate mentored lab environment at UC San Diego, and a structured collaboration with scientists, explorers, and engineers at our partner organizations. These include the National Geographic Society, Hubbs SeaWorld Research Institute, the research arm of the San Diego Zoo, NOAA, the Organization of Latin American Subacuatica (OLAS), the Waitt Institute, and the Canadian Department of Environment and Conservation. The program provides undergraduates with a unique opportunity to develop technology that will be deployed across the world;  the projects involve scientific research that literally spans across every continent and into the far corners of the globe."
+highlights:
+  default: "h4. Highlights\n\n* Involve students in intellectually stimulating, multidisciplinary projects\n* Provide real-world projects with mentorship from explorers and scientists\n* Work with a diverse population of top quality students including upper and lower division students from a variety of backgrounds and GPA's.\n* Develop mentorship, leadership and teamwork skills amongst the post-doctoral scholars, graduate students, and REU participants.\n* Live in San Diego for 10 weeks!"
+eligibility_requirements:
+  default: "h4. Eligibility Requirements\n\n* Full-time undergraduate student\n* Enthusiasm and passion for hands-on projects and real-world research\n* Majoring in Engineering or Computer Science"
+application_information:
+  default: "h4. Application Information\n\n* Major components of the online application include:\n* Two letters of recommendation\n* Statement of Intent\n* Academic Preparation"

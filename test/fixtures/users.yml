@@ -1,0 +1,69 @@
+users_001:
+    id: 1
+    role_id: 1
+
+    login: jgrevich@ucsd.edu
+    email: jgrevich@ucsd.edu
+
+    firstname: Justin
+    middlename: James
+    lastname: Grevich
+    street: 3348 Via Alicante
+    city: La Jolla
+    state: California
+    zip: "92037"
+    phone: "13177470895"
+    dob: 1970-01-17 00:00:00
+    citizenship: United States
+
+    pstreet: 2782 Parkview Drive
+    pstate: Minnesota
+    pcity: Medina
+    pzip: "55340"
+    pphone: 
+
+    rec_request_at: 
+    submitted_at: 
+    updated_at: <%= 1.days.ago.to_s :db %>
+    activated_at: <%= 1.days.ago.to_s :db %>
+    created_at: <%= 1.days.ago.to_s :db %>
+    remember_token: 
+    remember_token_expires_at: 
+    token: 8299eb273163b72b9b9edace4a35dd34faab6759
+    salt: 9cfb5fe030902bd225d6476cda37de5fd83eacf6
+    crypted_password: 116d1919cc1060109060ff8f96852d0823d8afc8 # 8foldpath
+    
+users_002:
+    id: 2
+    role_id: 2
+
+    login: jgrevich@gmail.com
+    email: jgrevich@gmail.com
+
+    firstname: Justin
+    middlename: James
+    lastname: Grevich
+    street: 3348 Via Alicante
+    city: La Jolla
+    state: California
+    zip: "92037"
+    phone: "13177470895"
+    dob: 1970-01-17 00:00:00
+    citizenship: United States
+
+    pstreet: 2782 Parkview Drive
+    pstate: Minnesota
+    pcity: Medina
+    pzip: "55340"
+    pphone: 
+
+    rec_request_at: 
+    submitted_at: 
+    updated_at: <%= 1.days.ago.to_s :db %>
+    activated_at: <%= 1.days.ago.to_s :db %>
+    created_at: <%= 1.days.ago.to_s :db %>
+    remember_token: 
+    remember_token_expires_at: 
+    token: 8299eb273163b72b9b9edace4a35dd34faab6759
+    salt: 9cfb5fe030902bd225d6476cda37de5fd83eacf6
+    crypted_password: 116d1919cc1060109060ff8f96852d0823d8afc8 # 8foldpath

@@ -1,0 +1,38 @@
+<div id="welcome">
+	<%= render :partial => "layouts/header_text" %>
+	
+	<div class="center" id="images">
+		<%= image_tag("efore.jpg")%>
+	</div>
+	
+  <%= textilize Setting.general_description %>
+
+	<hr />
+
+	<div class="span-12">
+    <%= textilize Setting.highlights %>
+	</div>
+	<div class="span-6">
+    <%= textilize Setting.eligibility_requirements %>
+	</div>
+	<div class="span-6 last">
+    <%= textilize Setting.application_information %>
+	</div>
+	
+	<br class='clear'/>
+	<% if app_in_progress? -%>
+	  <% if current_user && current_user.role.name != "admin" %>
+    	<h3 class='clear center red'>Application Deadline <%= Setting.application_deadline.to_date.strftime("%B %d, %Y") %></h3>
+	    <h1 class="padded center clears"><b><%= link_to "Application Status", { :controller => 'users', :action => 'status' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
+	  <% else -%>
+    	<h3 class='clear center red'>Application Deadline <%= Setting.application_deadline.to_date.strftime("%B %d, %Y") %></h3>
+    	<h1 class="padded center clear"><b><%= link_to "Apply Now", { :controller => 'users', :action => 'new' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
+    <% end -%>
+	<% else -%>
+  	<h2 class='center red'><s>Application Deadline <%= Setting.application_deadline.to_date.strftime("%B %d, %Y") %></s></h2>
+  	<h3 class="">The deadline has now passed.  If you already created an application, you can check the status using the button below.</h3>
+  	<h1 class="padded center clears"><b><%= link_to "Application Status", { :controller => 'users', :action => 'status' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
+  	<h3 class='clear'><b>Please check back in <%= Setting.check_back_date.to_date.strftime("%B") %> for Summer <%= Setting.check_back_date.to_date.year %> Information</b></h3>
+	<% end -%>
+	
+</div>

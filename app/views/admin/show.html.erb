@@ -1,0 +1,97 @@
+<%= render :partial => "admin_header" %>
+<div class='info right'>
+	<div class='clearfix' id="print">
+		<%= link_to_remote "Print Application", :url => {:action => "print", :id => @user} %>
+	</div>
+	<div class='clearfix' id="status">
+		<% form_for @user do |f| -%>
+		  <%= f.select :status, options_for_select(%w{Accept Reject Waitlist In\ Review Withdrawn}, :selected => @user.status)%>
+		<% end -%>
+	</div>
+</div>
+
+<% @spacer = "&nbsp;&nbsp;&nbsp; " %>
+
+<div class="span-20"  id="personal_data">
+	<small class="right green"><b>LAST&nbsp;UPDATED</b>&nbsp;<%= @user.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
+	<h1><%= link_to_unless_current @user.name.titlecase, '' %></h1>
+
+	<%= render :partial => 'show_personal_data', :locals => { :f => @user } %>
+</div>
+<hr class="clear space" />
+
+<div class="span-20"  id="academic_record">
+	<% if check_academic_records(@user) -%>
+		<small class="right green"><b>LAST UPDATED</b> <%= @user.academic_record.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
+		<h2><%= link_to_unless_current "Academic Information", '' %></h2>
+		
+		<%= render :partial => 'show_academic_record', :locals => { :f => @user.academic_record } %>
+	<% else -%>
+		<%= content_tag 'p', 'Applicant has not added any academic records.', :class => 'blood_red' unless @user.academic_record %>
+	<% end -%>
+</div>
+<hr class="clear space" />
+
+<div class="span-20"  id="extra">
+	<small class="right green"><%= "<b>LAST UPDATED</b> " + @user.extra.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") if @user.extra  %></small>
+	<h2><%= link_to_unless_current "Additional Information", '' %></h2>
+	<% if @user.extra -%>
+		<%= render :partial => 'show_extra', :locals => { :e => @user.extra } %>
+	<% else -%>
+		<p class="blood_red">You have not entered your additional info.</p>
+	<% end -%>
+</div>
+<hr class="clear space" />
+
+<div class="span-20"  id="recommender">
+	<% if @user.recommendation -%>
+		<small class="right green"><b>LAST UPDATED</b> <%= @user.recommendation.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
+	<% end -%>
+	<h2><%= link_to_unless_current "Faculty Recommendation", '' %></h2>
+
+	<% if @user.recommender -%>
+		<%= render :partial => 'show_recommender', :locals => { :r => @user.recommender } %>
+	<% else -%>
+		<p class="clear blood_red">You have not entered the faculty recommendation info.</p>
+	<% end -%>
+			
+	<br class="clear" />
+	
+	<% if @user.recommendation -%>
+		<div>
+			<label>How long have you known the applicant?</label>
+			<%= @spacer + h(@user.recommendation.known_student) %>
+		</div>
+		<br />
+			
+		<div>
+			<label>In what capacity have you known the applicant?</label>
+			<%= @spacer + h(@user.recommendation.know_capacity) %>
+		</div>
+		<br />
+		
+		<div>
+			<label>Applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers</label>
+			<%= @spacer + h(@user.recommendation.rating) %>
+		</div>
+		<br />
+		
+		<div>
+			<label>Is your institution primarily an undergraduate institution?</label>
+			<%= @spacer + h(@user.recommendation.undergrad_inst) %>
+		</div>
+		<br />
+		
+		<div>
+			<label>Quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, any circumstances that may be helpful in evaluating the applicant's academic performance.</label><br />
+			<%= h(@user.recommendation.faculty_comment).gsub("\n", "<br />") %>
+		</div>
+	<% else -%>
+		<p>A recommendation has not been received for this student.</p>
+	<% end -%>
+	
+	<br class="clear" /><br class="clear" />
+	
+</div>
+
+<%= render :partial => "admin_observers" %>

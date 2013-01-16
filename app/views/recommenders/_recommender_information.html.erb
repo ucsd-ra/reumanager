@@ -1,0 +1,35 @@
+<%= error_messages_for :recommender %>
+
+<p>Please supply the name and contact information of a faculty member who has agreed to write a letter of recommendation in support of your application. Instructions for submitting the letter will be sent directly to the faculty member via email after you complete the application.</p>
+
+
+<div class="fieldbox float">
+	<%= r.label :waive_rights, "I " %>
+	<%= r.select 'waive_rights', options_for_select([['',nil], ['do', true], ['do not', false]], :selected => @recommender.waive_rights ) %>
+	waive my right to examine the accompanying letter of recommendation.	
+</div>
+
+<div class="fieldbox float">
+	<label>Recommender Name</label><br />
+	<%= r.text_field 'name' %>
+</div>
+<div class="fieldbox float">
+	<label>Title</label><br />
+	<%= r.text_field 'title' %>
+</div>
+<div class="fieldbox float">
+	<label>Department</label><br />
+	<%= r.text_field 'department' %>
+</div>
+<div>
+	<label>College or University</label><br />
+	<%= r.text_field 'college' %>
+</div>
+<div class="fieldbox float">
+	<label>Phone</label><br />
+	<%= r.text_field 'phone' %>
+</div>
+<div class="fieldbox float">
+	<label>Email</label><br />
+	<%= r.text_field 'email' %>
+</div>

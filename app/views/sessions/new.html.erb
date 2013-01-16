@@ -1,0 +1,34 @@
+<% if logged_in? %>
+	<h5>You are already logged in.</h5>
+<% else -%>
+	<%= error_messages_for :session %>
+	<% form_tag session_path do -%>
+		<div class="span-6 login_box">
+			<label for="login">Email</label><br />
+			<%= text_field_tag 'login' %>
+		</div>
+
+		<div class="span-5 login_box">
+			<label for="password">Password</label><br />
+			<%= password_field_tag 'password' %>
+		</div>
+
+		<br class="clear" />
+	
+		<p class='right'><%= submit_tag 'Log in' %></p>
+		
+		<div id="small_links">
+			<small><%= link_to "Forgot your password?", {:controller => "users", :action => "forgot"} %></small>
+			&nbsp;|&nbsp;
+			<small><%= link_to "Perhaps you need to activate your account/verify your email?", {:controller => "users", :action => "reactivate"} %></small>
+		</div>
+	<% end -%>
+	
+<% end -%>
+
+
+<script type="text/javascript">
+	//<![CDATA[
+	Form.Element.focus('email');
+	//]]>
+</script>
