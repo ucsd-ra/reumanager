@@ -3,18 +3,18 @@ require "rvm/capistrano"
 require 'capistrano/ext/database'
 
 set :rvm_ruby_string, "1.9.3@reu"
-set :rvm_type, :user
+set :rvm_type, :system
 
 default_run_options[:pty] = true
 
 set :application, "reu"
-set :deploy_to, "/var/rails/#{application}" # I like this location
-set :domain, "vishnu.ucsd.edu"
+set :deploy_to, "/var/www/#{application}" # I like this location
+#set :domain, "vishnu.ucsd.edu"
+set :domain, "192.168.10.103"
 set :keep_releases, 2
 set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/#{application}"
 set :scm, :subversion
 set :user, 'ubuntu'
-set :use_sudo, false
 
 set :db_credentials_file, "db_credentials_file.yml"
 set :db_root_credentials_file, "root_db_credentials_file.yml"
