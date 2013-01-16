@@ -19,7 +19,7 @@ program_end_date:
 check_back_date:
   default: Fri, 2 Jan 2014
 mail_from:
-  default: efore@reumanager.com
+  default: ucsd-efore@reumanager.com
 password_min_length:
   format: int
   default: 7
