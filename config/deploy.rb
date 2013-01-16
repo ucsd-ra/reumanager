@@ -7,7 +7,7 @@ require "whenever/capistrano"
 set :application, "efore" #matches names used in smf_template.erb
 set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/efore"
 set :domain, 'vishnu.ucsd.edu'
-set :deploy_to, "/var/www/#{application}" # I like this location
+set :deploy_to, "/var/rails/#{application}" # I like this location
 set :user, "ubuntu"
 set :keep_releases, 2
 set :rvm_ruby_string, "ree@#{application}"
