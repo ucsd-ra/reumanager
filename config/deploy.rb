@@ -31,8 +31,8 @@ set :backup_path, "#{shared_path}/system"
 set :db_credentials_file, "db_credentials_file.yml"
 set :db_root_credentials_file, "root_db_credentials_file.yml"
 set :db_server_app, "mysql"
-set :db_database_name, 'reu_demo_production'
-set :db_username, 'reu_demo'
+set :db_database_name, 'reu_efore_production'
+set :db_username, 'reu_efore'
 
 
 namespace :deploy do
