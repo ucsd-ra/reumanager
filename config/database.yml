@@ -1,9 +1,9 @@
 development:
   adapter: mysql
-  database: nsfreudemo
+  database: reu_efore_development
   encoding: utf8
-  username: nsfreudemo
-  password: sqz_EI7=FpEojbeY4:MtmIMg
+  username: reu_efore
+  password: rud-om-bash-cag-ej-aws-u
   host: localhost
   
 # Warning: The database defined as 'test' will be erased and
@@ -16,8 +16,8 @@ test:
 
 production:
   adapter: mysql
-  database: reu_demo_production
+  database: reu_efore_production
   encoding: utf8
-  username: reu_demo
-  password: sqz_EI7=FpEojbeY4:MtmIMg
+  username: reu_efore
+  password: rud-om-bash-cag-ej-aws-u
   host: localhost
