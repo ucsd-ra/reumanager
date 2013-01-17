@@ -1,4 +1,4 @@
-<p>This email is to confirm that an account has been created for <%= @firstname + " " + @lastname + " ( " + @email + " )" %> for the purpose of applying to the <%= Setting.department %>, <%= Setting.university %> <%= Setting.app_title %>. The application needs to be completed by <%= Setting.application_deadline.to_date.strftime("%A, %b %d") %>:</p>
+<p>This email is to confirm that an account has been created for <%= @firstname + " " + @lastname + " ( " + @email + " )" %> for the purpose of applying to the <%= Setting.department %>, <%= Setting.university %> <%= Setting.app_title %> REU program. Your application needs to be completed by <%= Setting.application_deadline.to_date.strftime("%A, %b %d") %>.</p>
 
 
 <p>Please verify your account and continue with your REU application by clicking the following link: <%= link_to ("https://" + Setting.domain + "/activate/#{@token}"), ("https://" + Setting.domain + "/activate/#{@token}") %></p>
