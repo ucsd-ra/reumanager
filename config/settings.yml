@@ -13,9 +13,9 @@ application_deadline:
 notification_date:
   default: Mon, 19 Apr 2013 00:00:00 -0700
 program_start_date:
-  default: Tue, 10 Jun 2013
+  default: Tue, 20 Jun 2013
 program_end_date:
-  default: Mon, 18 Aug 2013
+  default: Mon, 29 Aug 2013
 check_back_date:
   default: Fri, 2 Jan 2014
 mail_from:
@@ -25,7 +25,7 @@ password_min_length:
   default: 7
 attachment_max_size:
   format: int
-  default: 15360
+  default: 10240
 general_description:
   default: "h3. General Description\n\nSince its inception over two years ago, the Engineers for Exploration program has engaged over 50 undergraduate students from a broad range of disciplines in cyber-physical systems research motivated by real world challenges in exploration and scientific discovery. The program’s aim is to give a 'once in a lifetime' experience for motivated students by providing an intimate mentored lab environment at UC San Diego, and a structured collaboration with scientists, explorers, and engineers at our partner organizations. These include the National Geographic Society, Hubbs SeaWorld Research Institute, the research arm of the San Diego Zoo, NOAA, the Organization of Latin American Subacuatica (OLAS), the Waitt Institute, and the Canadian Department of Environment and Conservation. The program provides undergraduates with a unique opportunity to develop technology that will be deployed across the world;  the projects involve scientific research that literally spans across every continent and into the far corners of the globe."
 highlights:
