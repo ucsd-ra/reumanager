@@ -186,6 +186,7 @@ class User < ActiveRecord::Base
    end
    
    def send_complete_app_student
+     self.update_attribute("completed_at", Time.now)
      email = UserMailer.create_complete_app_student(self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
