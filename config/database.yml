@@ -17,9 +17,9 @@ test:
 production:
   adapter: mysql
 #  database: reu_be_production
-  database: reu_be_production
+  database: nsfreu
   encoding: utf8
 #  username: reu_be
-  username: reu_be
+  username: nsfreu
   password: sqz_EI7=FpEojbeY4:MtmIMg
   host: localhost
