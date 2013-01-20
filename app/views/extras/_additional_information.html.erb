@@ -33,24 +33,12 @@
 </div>
 
 <div id="preference">
-	<label>Please select your top 3 preferences for potential faculty mentors.</label><br />
-	Please refer to <%= link_to "http://sioundergrad.ucsd.edu/research/", 'http://sioundergrad.ucsd.edu/research/' %> for more information.<br />
+	<label>Please select your top 3 preferences for projects/potential faculty mentors.</label><br />
+	Refer to <%= link_to "http://sioundergrad.ucsd.edu/research/", 'http://sioundergrad.ucsd.edu/research/' %> and the <%= link_to "current projects page", current_projects_path %> for more information.<br />
 	
-	<% if Extra.mentor_list.include? @extra.mentor1 %>
 	    <%= render :partial => "mentor_select", :locals => {:id => 1} %><br />
-	<% else %>
-        <%= render :partial => "mentor_input", :locals => {:id => 1} %><br />
-    <% end -%>
-	<% if Extra.mentor_list.include? @extra.mentor2 %>
 	    <%= render :partial => "mentor_select", :locals => {:id => 2} %><br />
-	<% else %>
-        <%= render :partial => "mentor_input", :locals => {:id => 2} %><br />
-    <% end -%>
-	<% if Extra.mentor_list.include? @extra.mentor3 %>
 	    <%= render :partial => "mentor_select", :locals => {:id => 3} %><br />
-	<% else %>
-        <%= render :partial => "mentor_input", :locals => {:id => 3} %><br />
-    <% end -%>
 </div>
 
 <br style="clear:both;" />
