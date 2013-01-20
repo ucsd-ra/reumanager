@@ -20,8 +20,3 @@
 # Learn more: http://github.com/javan/whenever
 
 # scheduled email reminders
-
-every :sunday, :at => '3:30am' do
-	rake "db:migrate:reset"
-	rake "db:seed"
-end
