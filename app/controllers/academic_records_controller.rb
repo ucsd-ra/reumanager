@@ -57,8 +57,10 @@ class AcademicRecordsController < ApplicationController
     @academic_record = @user.academic_record
     
     respond_to do |format|
-      if @user.academic_record.save
+      if @academic_record.save
         flash[:notice] = 'Academic information was successfully created'
+        # hack to randomize filename on first save.
+        @academic_record.update_attributes(params[:academic_record])
         format.html { redirect_to( :controller => "extras" ) }
         format.xml  { render :xml => @user.academic_record, :status => :created, :location => @user.academic_record }
       else
