@@ -31,6 +31,12 @@
 				<li><%= link_to "Admin", { :controller => "admin" }%></li>
 			<% end -%>
 		<% end -%>
+
+    	<% if params[:controller] == "projects" && params[:action] == "index" -%>
+    		<li class="selected"><%= link_to "Past Projects", projects_url %></li>
+    	<% else -%>
+    		<li><%= link_to "Past Projects", projects_url %></li>
+    	<% end -%>
 		
     	<% if params[:controller] == "projects" && params[:action] == "index" -%>
     		<li class="selected"><%= link_to "Current Projects", current_projects_url %></li>
