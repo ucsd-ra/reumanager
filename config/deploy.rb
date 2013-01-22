@@ -11,7 +11,7 @@ set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/nsfreu_demo"
 set :domain, 'vishnu.ucsd.edu'
 set :deploy_to, "/var/rails/#{application}" # I like this location
 set :user, "ubuntu"
-set :keep_releases, 2
+set :keep_releases, 4
 set :rvm_ruby_string, "ree@#{application}"
 set :rvm_type, :user
 set :scm, :subversion

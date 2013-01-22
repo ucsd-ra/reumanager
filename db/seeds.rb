@@ -89,7 +89,7 @@ s.save_with_validation(false)
 
 # create recommendation
 s.recommendation = Recommendation.new( :known_student => "<1 year", :know_capacity => "Undergrad in one course", :rating => "Top 10%", :undergrad_inst => "No",
-  :faculty_comment => "To whom it may concern:\r\n\r\n\tSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. \r\n\tNeque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.\r\n\r\nSincerely,\r\n\r\nJ. Milton Adams Ph.D.\r\nProfessor, Biomedical Engineering\r\r\n")
+  :faculty_comment => "To whom it may concern:\r\n\r\n\tSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. \r\n\tNeque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.\r\n\r\nSincerely,\r\n\r\nMartin Van Buren Ph.D.\r\nProfessor, Biomedical Engineering\r\r\n")
 s.save
 
 #
