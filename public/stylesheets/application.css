@@ -50,7 +50,7 @@ Layout
 	#buttons a.active						{ background-color:#103050; color:#fff;  }
 	#content								{ padding:20px 0; }
 	#footer 								{ background-color:#f6f6f2; border-top:3px solid #e6e6e2; border-bottom:1px solid #e6e6e2; clear:both; color:#666; margin:0 auto; padding:13px 0 0 0; text-shadow:#fff 3 3 3;   }
-	#footer p								{ color:#666; font-size:11px; line-height:17px; margin:0.3em auto; width:984px; text-align:center;}
+	#footer p								{ color:#666; font-size:11px; line-height:17px; margin:0.3em auto; width:984px;}
 	#be_footer								{ padding:0 0 34px; }
 	#be_footer li a							{ color:#543125; }
 	#be_footer div							{ border-left:1px solid #ccc; display:inline-block; }
