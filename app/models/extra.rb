@@ -18,6 +18,7 @@ class Extra < ActiveRecord::Base
     ['Development and testing of pressure sensors for hurricane wind load monitoring – Kurt Gurley'],
     ['Design of brittle ductile laminates for crack arresting structures – Jack Mecholsky'],
     ['Effect of Moisture Diffusion in Concrete and Epoxy – H. R. Hamilton III'],
-    ['Direct Shear Test of Epoxy-Concrete Bond – H. R. Hamilton III']
+    ['Direct Shear Test of Epoxy-Concrete Bond – H. R. Hamilton III'],
+    ['Structural Behavior of a Bangladeshi House Subjected to Cyclone and Tornado Loads Using 3D FEM Analysis – David O. Prevatt']
   end
 end
