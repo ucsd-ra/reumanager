@@ -77,3 +77,4 @@ namespace :deploy do
 end
 
 after "deploy:symlink", "deploy:update_crontab"
+after "deploy:update", "deploy:cleanup" 
