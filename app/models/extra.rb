@@ -32,7 +32,8 @@ class Extra < ActiveRecord::Base
     ["Characteristics of reef growth, coral settlement and community composition across the islands of the central Pacific; responses of marine organisms to ocean acidification/distribution and ecology of invasive seaweeds along the CA coast (Prof. Jennifer Smith)"],
     ["Aquatic Ecosystem Ecology: Intra-specific variation in thermal tolerance of zooplankton collected from the Yosemite lakes/Investigating the effect of sea-level rise on salt marsh communities (Prof. Jon Shurin)"],
     ["Applications of magnetic measurements on local igneous rocks to examine the record of the magnetic field during the Cretaceous (Prof. Lisa Tauxe)"],
-    ["Climate Studies: Using observation and numerical model results to analyze the variability of air-sea exchanges of carbon dioxide (CO2) in the California Current Ecosystem.  The goal of this research is to determine the impact of various physical and biological processes on the ocean carbon cycle. (Dr. Ariane Verdy)"]
+    ["Climate Studies: Using observation and numerical model results to analyze the variability of air-sea exchanges of carbon dioxide (CO2) in the California Current Ecosystem.  The goal of this research is to determine the impact of various physical and biological processes on the ocean carbon cycle. (Dr. Ariane Verdy)"],
+    ["Other"]
   end
   
   
