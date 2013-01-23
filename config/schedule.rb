@@ -23,5 +23,8 @@
 
 every :sunday, :at => '3:30am' do
 	rake "db:migrate:reset"
+end
+
+every :sunday, :at => '3:31am' do
 	rake "db:seed"
 end
