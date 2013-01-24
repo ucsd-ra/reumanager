@@ -9,10 +9,10 @@ html, body { height: 100%; }
 
 /* Wrapper for page content to push down footer */
 /* Negative indent footer by it's height */
-#wrap { min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -120px; }
+#wrap { min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -200px; }
 
 /* Set the fixed height of the footer here */
-#push, #footer { height:120px; }
+#push, #footer { height:200px; }
 
 .clear {clear:both;}
 
@@ -118,7 +118,8 @@ section#body_content {
 
 footer#footer { background-color: #fff; font-size:0.8em;
   .inner { 
-    p { float:left; }
+    p { 
+      img { display:block; margin:1em auto; }}
   }
 }
   

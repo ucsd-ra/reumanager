@@ -1,18 +1,21 @@
 <div class="container">
   <div class="inner">  
     <p>
-      <%= link_to "Home",  '' %>
-      <span class="divider">/</span>
-      <%= link_to "Tour",  '' %>
-      <span class="divider">/</span>
-      <%= link_to "Pricing & Signup",  '' %>
-      <span class="divider">/</span>
-      <%= link_to "Try REU Manager for Free",  '' %>
-      <span class="divider">/</span>
-      <%= link_to "Support",  '' %>
-      <br />
-      <%= t('.copyright', :year => Time.now.year, :site_name => Refinery::Core.site_name) %>
-    </p>
-
+        <%= link_to "Home",  root_url %>
+        <span class="divider">/</span>
+        <%= link_to "Tour",  page_url(:id => :tour) %>
+        <span class="divider">/</span>
+        <%= link_to "Pricing & Signup",  page_url(:id => 'pricing-signup') %>
+        <span class="divider">/</span>
+        <%= link_to "Try REU Manager for Free", 'https://reumanager.com/demo' %>
+        <span class="divider">/</span>
+        <%= link_to "Support",  'https://iem.ucsd.edu/redmine/projects/nsfreu/wiki' %>
+        ::: 
+        <%= link_to t('.copyright', :year => Time.now.year, :site_name => Refinery::Core.site_name), root_url %>
+        :::
+        Development for this project is supported by NSF <%= link_to 'EEC-1062979', "http://www.nsf.gov/awardsearch/showAward?AWD_ID=1062979" %> &amp; <%= link_to 'EEC0754718', "http://www.nsf.gov/awardsearch/showAward?AWD_ID=0754718" %><br />
+        Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation<br />
+        <%= link_to image_tag('nsf_logo.png'), 'http://www.nsf.gov' %>
+	</p>
   </div>  
 </div>
