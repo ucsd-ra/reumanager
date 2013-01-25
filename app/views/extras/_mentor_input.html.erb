@@ -1,2 +1,9 @@
-<input id='extra_mentor<%= id %>' name='extra[mentor<%= id %>]' size='30' type='text' <% if @extra.send("mentor#{id}".to_sym) != nil %>value='<%= @extra.send("mentor#{id}".to_sym) %>'<% else %>placeholder='Other mentor'<% end -%> >&nbsp;
-<%= link_to_remote "cancel", :url => {:action => :restore_mentor_select, :id => id},  :html => {:id => "cancel_extra_mentor#{id}" } %><br />
+<div id="mfield<%= id %>">
+    <% if @extra %>
+        <input id='extra_mentor<%= id %>' name='extra[mentor<%= id %>]' size='30' type='text' value='<%= [@extra.send("mentor#{id}".to_sym)] %>'>&nbsp;
+        <%= link_to_remote "cancel", :url => {:action => :restore_mentor_select, :id => id},  :html => {:id => "cancel_extra_mentor#{id}" } %>
+    <% else %>
+        <input id='extra_mentor<%= id %>' name='extra[mentor<%= id %>]' size='30' type='text' placeholder='Other mentor'>&nbsp;
+        <%= link_to_remote "cancel", :url => {:action => :restore_mentor_select, :id => id},  :html => {:id => "cancel_extra_mentor#{id}" } %>
+    <% end %>
+</div>

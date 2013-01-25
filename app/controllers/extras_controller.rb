@@ -89,7 +89,7 @@ class ExtrasController < ApplicationController
     
     render :update do |page|
       if value == "Other"
-        page["extra_mentor#{id}"].replace :partial => "mentor_input", :locals => {:id => id}
+        page["mfield#{id}"].replace :partial => "mentor_input", :locals => {:id => id}
         page[:mentor_observers].replace :partial => "mentor_observers"
       end
     end
@@ -100,8 +100,7 @@ class ExtrasController < ApplicationController
     id = params[:id]
     
     render :update do |page|
-      page["extra_mentor#{id}"].replace :partial => "mentor_select", :locals => {:id => id}
-      page["cancel_extra_mentor#{id}"].remove
+      page["mfield#{id}"].replace :partial => "mentor_select", :locals => {:id => id}
       page[:mentor_observers].replace :partial => "mentor_observers"
     end
     

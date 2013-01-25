@@ -1,1 +1,7 @@
-<%= select_tag "extra[mentor#{id}]", ("<option value='' disabled='disabled'>#{id}st Choice</option>" + options_for_select(Extra.mentor_list,  @extra.send("mentor#{id}".to_sym))) %>
+<div id="mfield<%= id %>">
+    <% if @extra %>
+        <%= select_tag "extra[mentor#{id}]", ("<option value='' disabled='disabled'>#{id}st Choice</option>" + options_for_select(Extra.mentor_list,  [@extra.send("mentor#{id}".to_sym)])) %>
+    <% else %>
+        <%= select_tag "extra[mentor#{id}]", ("<option value='' disabled='disabled'>#{id}st Choice</option>" + options_for_select(Extra.mentor_list)) %>
+    <% end %>
+</div>
