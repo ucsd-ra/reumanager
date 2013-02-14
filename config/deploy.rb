@@ -4,13 +4,13 @@ require "rvm/capistrano"
 set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
 
-set :application, "efore" #matches names used in smf_template.erb
-set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/efore"
+set :application, "reu_ust" #matches names used in smf_template.erb
+set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/ust"
 set :domain, 'vishnu.ucsd.edu'
 set :deploy_to, "/var/rails/#{application}" # I like this location
 set :user, "ubuntu"
 set :keep_releases, 2
-set :rvm_ruby_string, "ree@#{application}"
+set :rvm_ruby_string, "ree@ust"
 set :rvm_type, :user
 set :scm, :subversion
 
@@ -31,8 +31,8 @@ set :backup_path, "#{shared_path}/system"
 set :db_credentials_file, "db_credentials_file.yml"
 set :db_root_credentials_file, "root_db_credentials_file.yml"
 set :db_server_app, "mysql"
-set :db_database_name, 'reu_efore_production'
-set :db_username, 'reu_efore'
+set :db_database_name, 'reu_ust_production'
+set :db_username, 'reu_ust'
 
 
 namespace :deploy do

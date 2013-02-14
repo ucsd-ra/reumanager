@@ -1,5 +1,5 @@
-if [[ -s "~/.rvm/environments/ree@reu_efore" ]] ; then
-  . "~/.rvm/environments/ree@reu_efore"
+if [[ -s "~/.rvm/environments/ree@reu_ust" ]] ; then
+  . "~/.rvm/environments/ree@reu_ust"
 else
-  rvm --create use  "ree@reu_efore"
+  rvm --create use  "ree@reu_ust"
 fi

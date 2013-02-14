@@ -1,11 +1,11 @@
 app_title:
-  default: Engineers for Exploration
+  default: University System of Taiwan (UST) Research Experience for UC San Diego Undergraduates
 domain:
-  default: reumanager.com/efore
+  default: reumanager.com/ust
 university:
-  default: UC San Diego
+  default: University System of Taiwan
 department:
-  default: Jacobs School of Engineering
+  default: 
 application_start:
   default: Mon, 7 Jan 2012 00:00:00 -0700
 application_deadline:
@@ -19,7 +19,7 @@ program_end_date:
 check_back_date:
   default: Fri, 2 Jan 2014
 mail_from:
-  default: ucsd-efore@reumanager.com
+  default: ucsd-ust@reumanager.com
 password_min_length:
   format: int
   default: 7
