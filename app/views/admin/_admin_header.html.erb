@@ -1,0 +1,12 @@
+<div id="admin_header">
+	<% if @all_students -%>
+		<div id="search">
+			<% form_tag(url_for(:controller => "admin", :action => 'list'), :method => 'get', :class => 'clearfix') do %><%= text_field_tag 'q', params[:q] || "Search...", :onfocus => "if ($('q').value == 'Search...') $('q').value = '';", :onblur => "if ($('q').value == '') $('q').value = 'Search...';" %><% end -%>
+		</div>
+		<h6 class='left'>
+			&nbsp;&nbsp;<label>Filter by application status:</label> <%= (select_tag "application_status", options_for_application_status) %>
+		</h6>
+		<h6 class='right'><%= student_select %></h6>
+	<% end -%>
+</div>
+<hr />
