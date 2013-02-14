@@ -16,7 +16,7 @@ module AdminHelper
 		options << ["Withdrawn", url_for(:action => 'list', :status => 'Withdrawn')]
 		options << ["Incomplete", url_for(:action => 'incomplete')]
 		options << ["Submitted (awaiting recommendation)", url_for(:action => 'submitted')]
-		options << ["Complete (complete app w/recommendation)", url_for(:action => 'complete')]
+		options << ["Complete (app w/recommendation)", url_for(:action => 'complete')]
 		options << ["Total", url_for(:action => 'total')]
 
 		case params[:action]
