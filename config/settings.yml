@@ -7,17 +7,17 @@ university:
 department:
   default: 
 application_start:
-  default: Mon, 7 Jan 2012 00:00:00 -0700
+  default: Fri, 15 Feb 2013 00:00:00 -0700
 application_deadline:
-  default: Tue, 16 Mar 2013 00:00:00 -0700
+  default: Sat, 30 Mar 2013 00:00:00 -0700
 notification_date:
-  default: Mon, 19 Apr 2013 00:00:00 -0700
+  default: Mon, 15 Apr 2013 00:00:00 -0700
 program_start_date:
   default: Tue, 20 Jun 2013
 program_end_date:
   default: Mon, 29 Aug 2013
 check_back_date:
-  default: Fri, 2 Jan 2014
+  default: Sat, 1 Feb 2014
 mail_from:
   default: ucsd-ust@reumanager.com
 password_min_length:
@@ -25,7 +25,7 @@ password_min_length:
   default: 7
 attachment_max_size:
   format: int
-  default: 10240
+  default: 5120
 general_description:
   default: "h3. General Description\n\nUC San Diego is pleased to offer an apportunity for up to ten high-achieving, undergraduate students to conduct research at select labs within the University System of Taiwan during this summer."
 highlights:
