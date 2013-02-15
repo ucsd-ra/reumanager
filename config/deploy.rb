@@ -10,7 +10,7 @@ set :domain, 'vishnu.ucsd.edu'
 set :deploy_to, "/var/rails/#{application}" # I like this location
 set :user, "ubuntu"
 set :keep_releases, 2
-set :rvm_ruby_string, "ree@ust"
+set :rvm_ruby_string, "ree@reu_ust"
 set :rvm_type, :user
 set :scm, :subversion
 

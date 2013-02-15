@@ -16,7 +16,7 @@ test:
 
 production:
   adapter: mysql
-  database: reu_eustfore_production
+  database: reu_ust_production
   encoding: utf8
   username: reu_ust
   password: ti-sto-que-wreuj-vuj-mam
