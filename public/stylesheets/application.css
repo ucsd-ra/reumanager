@@ -34,12 +34,12 @@ Layout
 	#navbar li a							{ border:0; color:#dfdfdf; padding:11px 8px; }
 	#navbar li a:hover						{ background-color:#103050; border:0; color:#fff; }
 	#bioeng									{ height:63px; width:510px;  }
-	#header									{ height:152px; margin:0 50px; overflow:hidden; text-align:left;  }
+	#header									{  margin:0 50px; overflow:hidden; text-align:left;  }
 	#header h1			 					{ color:#eee; float:left; font-size:30px; height:72px; margin:22px 0;  }
 	#header h1 a							{ border:0; color:#fff;  }	
 	#header h1 a:hover						{ background-color:inherit; }
-	#header h4								{ color:#eee; font-style:italic; width:600px;  }
-	#buttons								{ clear:both; margin:0;  }
+	#header h3								{ color:#fff; font-style:italic; float:left;  }
+	#buttons								{ margin:0;  }
 	#buttons li								{ background-color:#024; border:0; color:#fff; display:inline-block; float:right; font-size:12px; margin:2px 4px 0 0; padding:0; -moz-border-radius: 13px 13px 0 0; -webkit-border-top-right-radius: 13px; -webkit-border-top-left-radius: 13px;  }
 	#buttons li.last						{ margin-right:0;  }
 	#buttons li.selected					{ background-color:#fff; color:#333;  }
