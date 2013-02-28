@@ -24,12 +24,12 @@ class SessionsController < ApplicationController
 				if user.submitted_at
 					redirect_to( :controller => "users", :action => "status" )
 				else
-					if Time.now > Setting.application_deadline.to_date
-						redirect_to( :controller => "users", :action => "status" )
-					else
-						# closed registration, prevent users from continuing unfinished apps or creating new ones
-						redirect_to( :controller => "users", :action => "edit" )
-					end
+					#if Time.now > Setting.application_deadline.to_date
+					#	redirect_to( :controller => "users", :action => "status" )
+					#else
+					# closed registration, prevent users from continuing unfinished apps or creating new ones
+					redirect_to( :controller => "users", :action => "edit" )
+					#end
 				end
 			end
 			flash[:success] = "Logged in successfully"
