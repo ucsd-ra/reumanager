@@ -206,6 +206,9 @@ require 'ftools'
 				@applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Waitlist',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
 			when "Reject"
 		    @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Reject',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
+		  when "Withdrawn"
+  		  @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Withdrawn',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
+  			
 			else
 		    @applicants = User.all :order => 'lastname ASC', :conditions => ['role_id = ?', 2], :include => [ :academic_record, :recommender, :recommendation ]
 			end

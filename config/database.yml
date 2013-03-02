@@ -1,6 +1,6 @@
 development:
   adapter: mysql
-  database: reu_uf_production
+  database: reu_uf_development
   encoding: utf8
   username: reu_uf
   password: ;7%9)48{62(%6tv

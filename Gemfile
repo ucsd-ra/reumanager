@@ -25,6 +25,7 @@ gem 'will_paginate', '2.3.15', :require => 'will_paginate'
 gem 'yaml_db', '0.1.0'
 
 group :development do
+  gem 'ruby-debug'
 	gem 'sqlite3-ruby', :require => 'sqlite3'
 	gem 'wirble'
 end
