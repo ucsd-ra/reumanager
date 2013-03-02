@@ -2,7 +2,7 @@
 module ApplicationHelper
   
   def app_in_progress?
-    @alive = Time.now > Setting.application_start.to_datetime && Time.now < Setting.application_deadline.to_datetime
+    DateTime.now.utc > (Setting.application_start.to_datetime + 8.hours) && DateTime.now.utc < (Setting.application_deadline.to_datetime + 8.hours)
   end
   
   def app_navbar

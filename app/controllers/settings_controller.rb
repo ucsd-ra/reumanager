@@ -16,7 +16,7 @@ class SettingsController < ApplicationController
       params['date_settings'].each do |key, value|
         if key.include? '(1i)'
           key = key.gsub(/\(\di\)/,'')
-          date = Date.civil(params['date_settings']["#{key}(1i)"].to_i,params['date_settings']["#{key}(2i)"].to_i,params['date_settings']["#{key}(3i)"].to_i)
+          date = Date.civil(params['date_settings']["#{key}(1i)"].to_i,params['date_settings']["#{key}(2i)"].to_i,params['date_settings']["#{key}(3i)"].to_i, '+7')
           settings[key] = date.to_s
           logger.info "Setting for date_setting #{key} #{value} added to settings hash."
         end
@@ -25,7 +25,7 @@ class SettingsController < ApplicationController
       params['datetime_settings'].each do |key, value|
         if key.include? '(4i)'
           key = key.gsub(/\(\di\)/,'')
-          date = DateTime.civil(params['datetime_settings']["#{key}(1i)"].to_i,params['datetime_settings']["#{key}(2i)"].to_i,params['datetime_settings']["#{key}(3i)"].to_i,params['datetime_settings']["#{key}(4i)"].to_i,params['datetime_settings']["#{key}(5i)"].to_i)
+          date = DateTime.civil(params['datetime_settings']["#{key}(1i)"].to_i,params['datetime_settings']["#{key}(2i)"].to_i,params['datetime_settings']["#{key}(3i)"].to_i,params['datetime_settings']["#{key}(4i)"].to_i,params['datetime_settings']["#{key}(5i)"].to_i, 0, '+7')
           settings[key] = date.to_s
           logger.info "Setting for datetime_setting #{key} #{value} added to settings hash."
         end
