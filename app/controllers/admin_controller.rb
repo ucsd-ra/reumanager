@@ -81,12 +81,7 @@ require 'ftools'
     @user = User.find(params[:id])
     @user.update_attribute(:status, params[:status])
     render :update do |page|
-      page.insert_html :bottom, 'status', %(<h3 class='left positive' id="updated">Status Updated!</h3>)
-      page[:updated].highlight
-      page.delay(1) do
-        page[:updated].fade
-        page[:updated].remove
-      end
+			page.redirect_to :action => "show", :id => params[:id]
     end
   end
     
