@@ -71,7 +71,7 @@ header, #subheader { background-color:#507AAA; clear:both;
   h3 { border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; color:#507AAA; font-weight:400; padding:0.85em 0;}
   h5 { font-size:1em; font-weight:bold; }
   p { font-size:1em; color:#666; }
-  img { margin:0 0 2em 0;  -webkit-box-shadow:0 -10px  64px rgba(0,0,0,0.3); -moz-box-shadow: 0 0 50px rgba(0,0,0,0.7); -box-shadow:-80px -80px 80px rgba(0,0,0,0.7); }
+  img { margin:0 0 2em 0;  -webkit-box-shadow:0 -10px  64px rgba(0,0,0,0.3); -moz-box-shadow: 0 0 50px rgba(0,0,0,0.7); -box-shadow:-80px -80px 80px rgba(0,0,0,0.7); background: white; border: 1px solid black;}
 }
 #side_body { float:left; width:25%; }
 
