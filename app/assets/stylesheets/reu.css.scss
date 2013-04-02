@@ -1,4 +1,7 @@
 @import "bootstrap";
+
+@mixin vignette { background:#fff; border:4px solid #fff; -moz-border-radius:0; -webkit-border-radius:0; border-radius:0; }
+@mixin image_shadow { -webkit-box-shadow:0 -10px  64px rgba(0,0,0,0.3); -moz-box-shadow:0 0 50px rgba(0,0,0,0.7); -box-shadow:-80px -80px 80px rgba(0,0,0,0.7); }
 // @import "bootstrap-responsive";
 input.text, input.title, input[type="email"], input[type="text"], input[type="password"] { }
 
@@ -45,14 +48,13 @@ header, #subheader { background-color:#507AAA; clear:both;
         h3 { color:#fff; font-size:1em; font-weight:bold; margin:0; }        
       }
     }
-    
   }    
 }
 
 #subheader {   background-color:#507AAA; padding-top:1em;
   .inner { padding:0 20px; 
-    .tour_dots { float:right; margin-top:20px; position:relative; width:67%; 
-      img { -webkit-box-shadow:0 -10px  64px rgba(0,0,0,0.3); -moz-box-shadow: 0 0 50px rgba(0,0,0,0.7); -box-shadow:-80px -80px 80px rgba(0,0,0,0.7); }
+    .tour_dots { float:right; margin-top:20px; position:relative; width:67%;
+      img { @include image_shadow }
       span { position:absolute; }
       .badge1 { left:157px; top:119px; }
       .badge2 { left:396px; top:107px; }
@@ -71,7 +73,7 @@ header, #subheader { background-color:#507AAA; clear:both;
   h3 { border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; color:#507AAA; font-weight:400; padding:0.85em 0;}
   h5 { font-size:1em; font-weight:bold; }
   p { font-size:1em; color:#666; }
-  img { margin:0 0 2em 0;  -webkit-box-shadow:0 -10px  64px rgba(0,0,0,0.3); -moz-box-shadow: 0 0 50px rgba(0,0,0,0.7); -box-shadow:-80px -80px 80px rgba(0,0,0,0.7); background: white; border: 1px solid black;}
+  img { @include image_shadow; @include vignette; margin:0 0 2em 0; }
 }
 #side_body { float:left; width:25%; }
 
