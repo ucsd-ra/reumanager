@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title= CONFIG[:app_title]
+    = csrf_meta_tag
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+    /[if lt IE 9]
+      =raw microsloth_sucks
+  %body
+    #flash
+      = content_tag 'div', (flash[:alert]), :class => 'alert', :id => 'alert', :onclick => "$(this).slideUp();" if flash[:alert]
+      = content_tag 'div', (flash[:error]), :class => 'alert alert-error', :id => 'error', :onclick => "$(this).slideUp();" if flash[:error]
+      = content_tag 'div', (flash[:notice]), :class => 'alert alert-notice', :id => 'notice', :onclick => "$(this).slideUp();" if flash[:notice]
+      = content_tag 'div', (flash[:success]), :class => 'alert alert-success', :id => 'success', :onclick => "$(this).slideUp();" if flash[:success]
+    =render "layouts/header"      
+    =render "layouts/navbar"
+    .container.content
+      = yield
+    %footer.container
+      .footer-inner
+        =render "layouts/footer_text"

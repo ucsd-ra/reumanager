@@ -1,0 +1,139 @@
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+
+  <%= custom_error_messages! %>
+  <%= application_status if @user %>
+
+  <div class='row'>    
+    <div class="span9">
+
+      <div class='row'>
+        <div class="span9">    
+          <div class="inner">
+            <h2>Contact Info</h2>
+          </div> <!-- end  inner -->          
+        </div>
+
+        <div class='span4'>
+          <div class="inner control-group">
+            <%= f.text_field :first_name, :placeholder => "First Name" %>
+          </div>
+        </div>
+        <div class='span4 offset1'>
+          <div class="inner control-group">
+            <%= f.text_field :last_name, :placeholer => "Last Name" %>
+          </div>
+        </div>
+
+        <div class='span4'>
+          <div class="inner control-group">
+            <%= f.email_field :email, :placeholder => :Email %>
+          </div>
+        </div>
+        <div class='span4 offset1'>
+          <div class="inner control-group">
+            <%= f.text_field :phone, :placeholder => :Phone %>
+          </div>
+        </div>
+
+        <section class='address'>
+          <div class="span9">
+            <%= f.fields_for :addresses do |builder| %>
+              <%= render 'address_fields', f: builder %>
+            <% end %>            
+            <div class="inner"><%= link_to_add_fields "Add Location", f, :addresses %></div>
+            
+          </div>
+        </section>
+        
+        <div class="span9">
+          <div class="inner">
+            <h2>Personal Info</h2>
+          </div><!-- end  inner -->        
+        </div>
+
+        <div class='span4'>
+          <div class="inner control-group">
+            <%= f.label :dob, "Date of Birth" %>
+            <%= f.text_field :dob, 'data-behaviour' => 'datepicker' %>
+          </div>
+        </div>
+        <div class='span4 offset1'>
+          <div class="inner control-group">
+            <%= f.label :gender %>
+            <%= f.select :gender, options_for_select(%w{Male Female}), :include_blank => "Prefer to not respond" %>
+          </div>
+        </div>
+
+        <div class='span4'>
+          <div class="inner control-group">
+            <%= f.label :ethnicity %>
+            <%= f.select :ethnicity, options_for_select(%w{ Hispanic\ or\ Latino Not\ Hispanic\ or\ Latino }), :include_blank => "Prefer to not respond" %>
+          </div>
+        </div>
+        <div class='span4 offset1'>
+          <div class="inner control-group">
+            <%= f.label :race %>
+            <%= f.select :race, options_for_select(%w{ American\ Indian\ or\ Alaskan\ Native Asian Black\ or\ African\ American Native\ Hawaiian\ or\ Pacific\ Islander   }), :include_blank => "Prefer to not respond" %>
+          </div>
+        </div>
+
+        <div class='span4'>
+          <div class="inner control-group">
+            <%= f.label :citizenship %>
+            <%= f.select :citizenship, options_for_select([['United States','US']] + Carmen.countries), :include_blank => "Prefer to not respond" %>
+          </div>
+        </div>
+        <div class='span4 offset1'>
+          <div class="inner control-group">
+            <%= f.label :disability %>
+            <%- if current_applicant.disability && current_applicant.disability != '' -%>
+              <div id='disability_container' class='input-append'>
+                <%= f.text_field :disability %>
+                <span class='add-on'>Please specify</span>
+                <button id='disability_cancel' class='btn btn-danger' type='button'>Cancel</button>
+              </div>
+            <%- else -%>
+              <%= f.select :disability, options_for_select(%w{No Yes}), :include_blank => "Prefer to not respond" %>
+            <%- end -%>
+          </div>
+        </div>
+        
+
+        <section class='personal_statement'>
+          <div class="span9">
+            <div class="inner">
+              <h2>Personal Statement</h2>
+              <%= f.text_area :statement, :class => 'span8', :rows => 6, :placeholder => "Please Complete a brief essay (up to 250 words) explaining why you are interested in our program and how the experience may help you achieve your future goals."  %>
+            </div> <!-- end  inner -->
+          </div>
+        </section>
+        
+        
+      </div><!-- end  span9 -->
+      
+
+    </div><!-- end  span9 -->
+    
+    <div class="span3">
+      <div class="dropdown application_nav">
+        <!-- Link or button to toggle dropdown -->
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li class='active'><a tabindex="-1" href="#"><i class="icon-exclamation-sign"></i>&nbsp;&nbsp;Profile</a></li>
+          <li><a tabindex="-1" href="#"><i class="icon-exclamation-sign"></i>&nbsp;&nbsp;Academic Info</a></li>
+          <li><a tabindex="-1" href="#"><i class="icon-exclamation-sign"></i>&nbsp;&nbsp;Recommendation</a></li>
+          <li><a tabindex="-1" href="#"><i class="icon-exclamation-sign"></i>&nbsp;&nbsp;Status</a></li>
+        </ul>
+      </div>      
+    </div>
+    
+    <div class="span12">
+      <div class="inner">
+        <hr />
+        <p class='clear'><%= f.submit "Update Profile Data", :class => "btn btn-success" %>&nbsp;&nbsp;&nbsp;Changed your mind? <%= link_to "Delete your application", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-mini btn-danger" %></p>  
+        <small><strong>You can <%= link_to "logout", destroy_applicant_session_path, :method => :delete %> and continue you application at anytime, however, it will not be accepted until all the above data has been submitted.</strong></small>        
+      </div>
+    </div>
+    
+  </div><!-- end  row -->
+  
+<% end %>

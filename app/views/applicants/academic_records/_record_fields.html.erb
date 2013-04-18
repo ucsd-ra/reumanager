@@ -1,0 +1,67 @@
+<fieldset>
+  <div class="inner">
+    <legend>Academic Record</legend>
+  </div>
+  <div class="row">
+
+    <div class="span4">
+      <div class="inner">
+        <%= f.text_field :university, :placeholder => :University %>
+      </div>
+    </div>
+  
+    <div class="span4 offset1">
+      <div class="inner">
+        <%= f.text_field :degree, :placeholder => :Degree %>
+      </div>
+    </div>
+    
+    
+    <div class="span4">
+      <div class="inner">
+        <%= f.text_field :start, 'data-behaviour' => 'datepicker', :placeholder => 'Start' %>
+      </div>
+    </div>
+  
+    <div class="span4 offset1">
+      <div class="inner">
+        <%= f.text_field :finish, 'data-behaviour' => 'datepicker', :placeholder => 'Finish' %>
+      </div>
+    </div>
+    
+    <div class="span4">
+      <div class="inner control-group">
+        <%= f.select :gpa, gpa_range, {:include_blank => 'GPA'}, {:class => :span1} %>
+        <%= f.select :gpa_range, gpa_range, {:include_blank => 'GPA Range'}, {:class => :span2} %>
+      </div>
+    </div>
+  
+    <div class="span4 offset1">
+      <div class="inner">
+        <%= f.select :academic_level, options_for_select(%w{ Freshman Sophomore Junior Senior }), :include_blank => 'Current Academic Level'%>
+      </div>
+    </div>
+
+    <section class='gpa_comment'>
+      <div class="span9">
+        <div class="inner">
+          <h4>GPA Comments</h4>
+          <%= f.text_area :gpa_comment, :class => 'span8', :rows => 2, :placeholder => "Do you feel your GPA accurately reflects your academic abilities? Please comment on why or why not in the space provided."  %>
+        </div> <!-- end  inner -->
+      </div>
+    </section>
+
+
+    <div class="span9">
+      <div class="inner">
+        <%= f.hidden_field :_destroy %>
+        <%= link_to "remove this record", '#', class: "remove_fields btn btn-mini btn-danger" %>    
+      </div>
+    </div>
+    
+    
+  </div>
+
+  <hr class="inner clear" />
+
+</fieldset>

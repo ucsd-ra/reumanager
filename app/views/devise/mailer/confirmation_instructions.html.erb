@@ -1,0 +1,5 @@
+<p>Welcome <%= @resource.email %>!</p>
+
+<p>You can confirm the creation of your application through the link below:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token).gsub("applicants","applicants") %></p>
