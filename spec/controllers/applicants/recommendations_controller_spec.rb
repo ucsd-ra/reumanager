@@ -1,5 +1,6 @@
 require 'spec_helper'
 
-describe RecommendaitonsController
+describe Applicants::RecommendationsController do
+
 
 end

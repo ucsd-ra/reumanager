@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe ConfirmationsController
+describe Applicants::ConfirmationsController do
 
 end
