@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20121217025345) do
     t.text     "cpu_skills"
     t.text     "statement"
     t.datetime "submitted_at"
+    t.datetime "completed_at"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
@@ -73,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20121217025345) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authentication_token"
-    t.string   "aasm_state"
+    t.string   "state"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
@@ -113,7 +114,7 @@ ActiveRecord::Schema.define(:version => 20121217025345) do
     t.string   "undergraduate_institution"
     t.text     "body"
     t.string   "token"
-    t.datetime "toke_created_at"
+    t.datetime "token_created_at"
     t.integer  "applicant_id"
     t.integer  "recommender_id"
     t.datetime "created_at",                :null => false

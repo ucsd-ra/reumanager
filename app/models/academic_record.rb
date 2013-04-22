@@ -8,4 +8,10 @@ class AcademicRecord < ActiveRecord::Base
   validates :finish, :presence => true
   validates :gpa, :presence => true
   validates :gpa_range, :presence => true
+  
+  def to_s
+    record = "#{self.start.strftime("%Y.%m")} - #{self.finish.strftime("%Y.%m")} #{self.academic_level} studying #{self.degree} at #{self.university}"
+    record << "\n#{Markdown.render "GPA Comment: " + self.gpa_comment}" if self.gpa_comment
+  end
+  
 end

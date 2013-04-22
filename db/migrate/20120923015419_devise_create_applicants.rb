@@ -21,6 +21,7 @@ class DeviseCreateApplicants < ActiveRecord::Migration
       t.text :statement
       
       t.datetime :submitted_at
+      t.datetime :completed_at
       
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""
@@ -54,8 +55,8 @@ class DeviseCreateApplicants < ActiveRecord::Migration
       ## Token authenticatable
       t.string :authentication_token
       
-      ## ActsAsStateMachine State
-      t.string :aasm_state
+      ## state_machine state
+      t.string :state
       
       t.timestamps
     end
