@@ -6,6 +6,8 @@ class CreateRecommendations < ActiveRecord::Migration
       t.string :overall_promise
       t.string :undergraduate_institution
       t.text :body
+      t.string :token
+      t.datetime :toke_created_at
       t.integer :applicant_id
       t.integer :recommender_id
 

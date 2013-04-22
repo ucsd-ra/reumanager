@@ -9,60 +9,70 @@ source 'http://gems.github.com'
 gem 'rails', '~>3.2.12'
 
 gem 'aasm'
-gem 'carmen'
-gem 'capistrano'
-# gem 'capistrano-database', :git => "git://github.com/jgrevich/capistrano-database.git"
-gem 'rvm-capistrano'
-
-gem 'devise'
 #gem 'exception_notification', :require => 'exception_notifier'
 gem 'figaro'
 gem 'formtastic'
 gem 'haml'
-gem 'jquery-rails'
+
+gem 'carmen'
+gem 'ckeditor'
+gem 'client_side_validations'
+gem 'cocaine', :git => 'git://github.com/thoughtbot/cocaine.git' 
+gem 'capistrano'
+gem 'devise'
+gem 'eventbrite-client'
+gem 'jquery-rails', '~> 2.1.0'
+gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'mysql2'
 gem 'paperclip'
+gem 'paper_trail'
 gem 'rails_admin'
+gem 'rvm-capistrano'
+gem 'whenever', :require => false
 
-# Use unicorn as the web server
-# gem 'unicorn'
 
-# To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-# gem 'ruby-debug'
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
-
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
-
-group :development, :test do
-#  gem 'bond'
-  gem 'bundler'
-  gem 'map_by_method'
-#  gem 'mocha'  
-  gem 'what_methods'
-  gem 'wirble'
+group :assets do
+  gem 'bootstrap-sass', '~> 2.1.1.0'
+  gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'font-awesome-sass-rails'
+  gem 'libv8', '~> 3.11.8'
+  gem 'modernizr-rails'
+  gem 'therubyracer'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'uglifier', '>= 1.0.3'
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'bootstrap-sass', '~> 2.1.0.0'
-  gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
-  gem 'coffee-rails', " ~> 3.2.0"
-  gem 'libv8', '~> 3.11.8'
-  gem 'sass-rails', " ~> 3.2.0"
-  gem 'font-awesome-sass-rails'
-  gem 'uglifier'
-  gem 'therubyracer'
+group :development do
+  gem "better_errors"
+  gem 'binding_of_caller'
+  gem 'map_by_method'
+  gem 'meta_request'
+  gem 'rb-fchange', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-inotify', :require => false
+  gem 'ruby_gntp'
+  gem 'simplecov'
+  gem 'what_methods'
+	gem 'wirble'
+end
+
+group :test, :development do
+  gem 'capybara'
+  gem "capybara-webkit"
+  gem 'database_cleaner'
+  gem 'debugger'
+  gem 'faker'
+  gem 'factory_girl_rails'
+  gem 'launchy'
+  gem 'poltergeist'
+  gem "rspec-rails", "~> 2.0"
+end
+
+group :test do
+  gem 'guard-livereload'
+  gem 'guard-rspec'
+  gem 'shoulda'
+  gem 'sqlite3'
 end

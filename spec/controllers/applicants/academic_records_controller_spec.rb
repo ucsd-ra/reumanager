@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe AcademicRecordsController do
+describe Applicants::AcademicRecordsController do
   
 end

@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe 'AcademicRecordsHelper' do
+describe 'Applicants::AcademicRecordsHelper' do
   
 end
