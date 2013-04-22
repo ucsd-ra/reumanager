@@ -112,6 +112,8 @@ ActiveRecord::Schema.define(:version => 20121217025345) do
     t.string   "overall_promise"
     t.string   "undergraduate_institution"
     t.text     "body"
+    t.string   "token"
+    t.datetime "toke_created_at"
     t.integer  "applicant_id"
     t.integer  "recommender_id"
     t.datetime "created_at",                :null => false

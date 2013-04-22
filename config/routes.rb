@@ -2,9 +2,11 @@ Reuman::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   namespace :applicants do
+    get "recommendations" => "recommendations#edit"
+    put "recommendations" => "recommendations#update"
+
     get "recommenders" => "recommenders#edit"
     put "recommenders" => "recommenders#update"
-    delete "recommenders" => "recommenders#destroy"
 
     get "records" => "academic_records#edit"
     put "records" => "academic_records#update"

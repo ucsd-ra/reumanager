@@ -10,7 +10,7 @@ class Applicants::AcademicRecordsController < ApplicationController
 
   def update
     if current_applicant.update_attributes params[:applicant]
-      redirect_to applicants_recommenders_url
+      redirect_to applicants_records_url
     else
       render :edit
     end

@@ -8,7 +8,7 @@ class Applicant < ActiveRecord::Base
   has_many :addresses, :class_name => "Address", :dependent => :destroy
   has_many :records, :class_name => "AcademicRecord", :dependent => :destroy
   has_many :awards, :class_name => "Award", :dependent => :destroy
-  has_many :recommendations
+  has_many :recommendations, :dependent => :destroy
   has_many :recommenders, :through => :recommendations,  :dependent => :restrict
   
   validates_associated :addresses, :awards, :records, :recommenders
@@ -29,6 +29,12 @@ class Applicant < ActiveRecord::Base
     label "List of applicants"
   end
   
+  
+  def name
+    name = ""
+    name += "#{self.first_name} #{self.last_name}"
+  end
+
   
   def validates_application_completeness
     validates_presence_of :phone, :on => :update, :message => "can't be blank"

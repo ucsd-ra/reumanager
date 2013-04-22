@@ -1,46 +1,35 @@
 <div class='row'>
-  <div class="span9">
+  <div class="span12">
     <section id="status">
       
-      <div class='span9'>
         <div class="inner">
-          <h2 class='status'><h2>Current Application Status</h2>
           <%= status_error_messages! %>
           <%= application_status %>
 
-          <h3><%= "#{@user.first_name} #{@user.last_name} / #{@user.email} / #{@user.phone == '' || @user.phone == nil ? "No Value" : @user.phone }" %></h3>          
-        </div>
-      </div>
+          <h2 class='status'><h2>Current Application Status for <%= @applicant.name %></h2>
 
-      <div class='span9'>
+          <p>
+            <ul>
+              <li>Email <%= @applicant.email %></li>
+              <li>Phone <%= @applicant.phone %></li>
+            </ul>
+          </p>
+        </div>
+
         <div class="inner">
           <h3>Courses Completed and Grades Assigned</h3>
         </div>
-      </div>      
 
       <hr class='clear inner' />
 
-      <div class='span9'>
         <div class="inner">
           <p class='clear'><%= link_to "Edit Application Data", edit_applicant_registration_path(current_applicant), :class => "btn btn-success" %>&nbsp;&nbsp;&nbsp;Changed your mind? <%= link_to "Delete your aapplication", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-mini btn-danger" %>.</p>
 
           <small><strong>You can <%= link_to "logout", destroy_applicant_session_path, :method => :delete %> and continue you application at anytime, however, it will not be accepted until all the above data has been submitted.</strong></small>          
         </div>
-      </div>
     </section>
   </div> <!-- end .span9 --> 
 
-  <div class="span3">
-    <div class="dropdown application_nav">
-      <!-- Link or button to toggle dropdown -->
-      <ul class="dropdown-menu" role="menu" >
-        <li><a tabindex="-1" href="#"><i class="icon-exclamation-sign"></i>&nbsp;&nbsp;Profile</a></li>
-        <li><a tabindex="-1" href="#"><i class="icon-exclamation-sign"></i>&nbsp;&nbsp;Academic Info</a></li>
-        <li><a tabindex="-1" href="#"><i class="icon-exclamation-sign"></i>&nbsp;&nbsp;Recommendation</a></li>
-        <li class='active'><a tabindex="-1" href="#"><i class="icon-exclamation-sign"></i>&nbsp;&nbsp;Status</a></li>
-      </ul>
-    </div>
-  </div> <!-- end .span3 -->
 
 </div> <!-- end .row -->
 

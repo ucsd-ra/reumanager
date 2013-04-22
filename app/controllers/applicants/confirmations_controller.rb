@@ -37,7 +37,7 @@ class Applicants::ConfirmationsController < Devise::ConfirmationsController
 
     # The path used after confirmation.
     def after_confirmation_path_for(resource_name, resource)
-      edit_applicant_registration_path
+      edit_applicant_registration_url
     end
 
 end

@@ -1,7 +1,7 @@
 class Recommender < ActiveRecord::Base
   attr_accessible :department, :email, :first_name, :last_name, :organization, :phone, :title, :url, :id
 
-  has_many :recommendations
+  has_many :recommendations, :dependent => :destroy
   has_many :applicants, :through => :recommendations
   
   validates :first_name,  :presence => true
