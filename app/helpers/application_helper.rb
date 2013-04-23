@@ -93,18 +93,25 @@ module ApplicationHelper
   
   
   def application_status
-    if current_applicant.errors.empty?
+    case current_applicant.state
+    when 'completed_recommender_info'
+      status = "Ready to submit"
+      message = "<p>Your application is ready to submit.  Please review your data and click the #{link_to "submit button", submit_application_path } when you are ready to submit your application.</p>"
+    when 'submitted'
+      status = "Application submitted"
+      message = "<p>Your application has been submitted and your recommendation request has been sent. Although you will be updated by email, you can continue to monitor this page for status updates or to make modifications to your application before the deadline.</p>"
+    when 'completed'
       status = "Complete"
       message = "<p>Your application is complete.  Please review your data and #{link_to "logout", destroy_applicant_session_path, :method => :delete} when finished.  You will also recieve an email confirming that your application was submitted.</p>"
     else
       status = "Incomplete"
-      message = "<p><strong>Your application is incomplete due to the errors mentioned above.  It will not be accepted until all of the necessary data has been added.</strong></p>"
-      message += "<p>Please go back and #{link_to 'edit', edit_applicant_registration_path } your application.</p>"
+      message = "<p><strong>Your application is incomplete due to the errors mentioned above.  It will not be accepted until all of the necessary data has been added."
+      message += " Please go back and #{link_to 'edit', edit_applicant_registration_path } your application</strong>.</p>"
     end
     
     html = <<-HTML
     <div id="application_status" class=#{current_applicant.errors.empty? ? "'alert alert-success'" : "'alert alert-error'"}>
-      <h3>#{status.upcase}</h3>
+      <h3>#{status}</h3>
       #{message}
     </div>
     HTML

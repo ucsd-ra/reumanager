@@ -8,7 +8,9 @@ FactoryGirl.define do
     overall_promise { ['Top 1%', 'Top 5%', 'Top 10%', 'Top 25%', 'average', 'below average'][rand(6)] }
     undergraduate_institution { ['Yes', 'No', nil][rand(3)] }
     
-    applicant_id { FactoryGirl.create(:applicant).id }
-    recommender_id { FactoryGirl.create(:recommender).id }
+    factory :recommendation_with_associations do
+      applicant_id { FactoryGirl.create(:applicant).id }
+      recommender_id { FactoryGirl.create(:recommender).id }
+    end
   end
 end

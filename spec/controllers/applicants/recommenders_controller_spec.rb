@@ -57,8 +57,8 @@ describe Applicants::RecommendersController do
             put :update, "applicant"=> { "recommenders_attributes" => { "0" => @recommender_attributes } }
           end
 
-          it "redirects to the applicant recommender page" do
-            expect(response).to redirect_to applicants_recommenders_url
+          it "redirects to the applicant edit page" do
+            expect(response).to redirect_to edit_applicant_registration_url
           end
 
           it "creates a recommender object for the authenticated applicant using the provided attributes" do
@@ -161,8 +161,8 @@ describe Applicants::RecommendersController do
             put :update, "applicant"=> { "recommenders_attributes" => { "0" => @recommender_attributes } }
           end
 
-          it "redirects to the applicant recommender page" do
-            expect(response).to redirect_to applicants_recommenders_url
+          it "redirects to the applicant edit page" do
+            expect(response).to redirect_to edit_applicant_registration_url
           end
 
           it "updates the existing recommender using the provided attributes" do
@@ -206,8 +206,8 @@ describe Applicants::RecommendersController do
             put :update, "applicant"=> { "recommenders_attributes" => { "0" => @recommender_attributes } }
           end
 
-          it "redirects to the applicant recommender page" do
-            expect(response).to redirect_to applicants_recommenders_url
+          it "redirects to the applicant edit page" do
+            expect(response).to redirect_to edit_applicant_registration_url
           end
 
           it "creates a recommender object for the authenticated applicant using the provided attributes" do
@@ -223,8 +223,8 @@ describe Applicants::RecommendersController do
             put :update, "applicant"=> { "recommenders_attributes" => { "0" => @recommender_attributes } }
           end
 
-          it "re-renders the edit page" do
-            expect(response).to redirect_to applicants_recommenders_url
+          it "redirects to the applicant edit page" do
+            expect(response).to redirect_to edit_applicant_registration_url
           end
 
           it "replaces the invalid attribute (and others) with those from the existing recommender" do
@@ -247,8 +247,8 @@ describe Applicants::RecommendersController do
               put :update, "applicant"=> { "recommenders_attributes" => { "0" => @recommender0_attributes, "1" => @recommender1_attributes } }
             end
 
-            it "redirects to the applicant recommender page" do
-              expect(response).to redirect_to applicants_recommenders_url
+            it "redirects to the applicant edit page" do
+              expect(response).to redirect_to edit_applicant_registration_url
             end
 
             it "creates a recommender object for the authenticated applicant using the provided attributes" do

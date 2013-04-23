@@ -18,6 +18,11 @@ class Recommender < ActiveRecord::Base
     name += "#{self.first_name} #{self.last_name}"
   end
   
+  def to_s
+    recommender = "#{self.name} (#{self.email}), #{self.title}, #{self.department}, #{self.organization}"
+    #recommender << " <span class='alert-success'>[RECIEVED]</span>" # self.recommendations.received? ? " <span class='alert-success'>[RECIEVED]</span>" : " <span class='alert-error'>[NOT RECIEVED]</span>"
+  end
+  
   private
   
   # parse params for existing recommenders and add to array. returns 

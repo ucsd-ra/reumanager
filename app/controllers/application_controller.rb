@@ -18,4 +18,9 @@ class ApplicationController < ActionController::Base
       Rails.logger.info "REMOTE IP: " + request.env["HTTP_X_FORWARDED_FOR"].split(',').first
     end
   end
+  
+  def set_state
+    current_applicant.set_state
+  end
+  
 end

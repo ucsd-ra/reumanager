@@ -1,7 +1,6 @@
 class Notification < ActionMailer::Base
-  default from:  "Bioengineering Institute of California <bic@ucop.edu>"
-  default subject: "14th UC Systemwide Bioengineering Symposium, June 19-21"
-  default url: "http://bic.ucop.edu/2013"
+  default from:  "Bioengineering Institute of California <demo@reumanager.com"
+  default url: "https://reumanager.com"
   default content_type: "text/plain"
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -25,10 +24,18 @@ class Notification < ActionMailer::Base
  # end
    
   def recommendation_request(recommedation)
-    mail(:to => recommedation.applicant.email, :subject => "REU recommendation request for #{recommedation.applicant.name}")
+    @recommendation = recommedation
+    mail(:to => recommedation.recommender.email, :subject => "REU recommendation request for #{recommedation.applicant.name}")
   end
   
   def recommendation_follow_up_request(recommedation)
-    mail(:to => recommedation.applicant.email, :subject => "REU follow-up recommendation request for #{recommedation.applicant.name}")
-  end
+    @recommendation = recommedation
+    mail(:to => recommedation.recommender.email, :subject => "REU follow-up recommendation request for #{recommedation.applicant.name}")
+  end  
+  
+ def application_submitted(applicant)
+   @applicant = applicant
+   mail(:to => applicant.email, :subject => "REU application received for #{applicant.name}")
+ end
+  
 end

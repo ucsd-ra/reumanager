@@ -8,12 +8,6 @@ source 'http://gems.github.com'
 
 gem 'rails', '~>3.2.12'
 
-gem 'aasm'
-#gem 'exception_notification', :require => 'exception_notifier'
-gem 'figaro'
-gem 'formtastic'
-gem 'haml'
-
 gem 'carmen'
 gem 'ckeditor'
 gem 'client_side_validations'
@@ -21,6 +15,8 @@ gem 'cocaine', :git => 'git://github.com/thoughtbot/cocaine.git'
 gem 'capistrano'
 gem 'devise'
 gem 'eventbrite-client'
+gem 'figaro' # also look at #https://github.com/Squeegy/rails-settings
+gem 'haml'
 gem 'jquery-rails', '~> 2.1.0'
 gem 'jquery-ui-rails'
 gem 'kaminari'
@@ -28,9 +24,10 @@ gem 'mysql2'
 gem 'paperclip'
 gem 'paper_trail'
 gem 'rails_admin'
+gem 'redcarpet'
 gem 'rvm-capistrano'
+gem 'state_machine'
 gem 'whenever', :require => false
-
 
 group :assets do
   gem 'bootstrap-sass', '~> 2.1.1.0'
@@ -45,14 +42,19 @@ group :assets do
 end
 
 group :development do
+  gem 'awesome_print'
   gem "better_errors"
   gem 'binding_of_caller'
-  gem 'map_by_method'
+  gem 'bond'
+  gem 'crack'
+  gem 'hirb-unicode'
   gem 'meta_request'
+  gem 'net-http-spy'
   gem 'rb-fchange', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-inotify', :require => false
   gem 'ruby_gntp'
+  gem 'ruby-graphviz', :require => 'graphviz' 
   gem 'simplecov'
   gem 'what_methods'
 	gem 'wirble'

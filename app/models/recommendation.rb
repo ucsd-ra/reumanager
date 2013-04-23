@@ -12,6 +12,7 @@ class Recommendation < ActiveRecord::Base
   validates_presence_of :applicant
   validates_presence_of :recommender
   
+  before_create :make_token
   after_destroy :remove_orphaned_recommenders
   
   private
@@ -22,8 +23,11 @@ class Recommendation < ActiveRecord::Base
   end
   
   def make_token
-    self.token = "#{Digest::MD5.hexdigest(Time.now.to_s.split(//).sort_by{rand}.join)}-#{Digest::MD5.hexdigest(self.body)}"
+    self.token = "#{Digest::MD5.hexdigest(Time.now.to_s.split(//).sort_by{rand}.join)}-#{Digest::MD5.hexdigest((Time.now - 30.days).to_s.split(//).sort_by{rand}.join)}"
     self.token_created_at = Time.now
   end
   
+  def received?
+    true
+  end
 end
