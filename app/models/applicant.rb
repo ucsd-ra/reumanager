@@ -87,6 +87,11 @@ class Applicant < ActiveRecord::Base
       end
     end
     
+    state :complete do
+      def redirect_url
+        Rails.application.routes.url_helpers.applicant_status_url(:only_path => true)
+      end
+    end
 
     # StateMachine Event transitions
     event :complete_personal_info do

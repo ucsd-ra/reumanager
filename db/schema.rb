@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217025345) do
+ActiveRecord::Schema.define(:version => 20130423170653) do
 
   create_table "academic_records", :force => true do |t|
     t.string   "university"
@@ -133,6 +133,16 @@ ActiveRecord::Schema.define(:version => 20121217025345) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  create_table "settings", :force => true do |t|
+    t.string   "name",         :default => "", :null => false
+    t.text     "value"
+    t.string   "object_class"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  add_index "settings", ["name"], :name => "index_settings_on_name"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
