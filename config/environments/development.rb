@@ -33,9 +33,11 @@ Reuman::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.debug = false
   
   config.action_mailer.default_url_options = { :host => 'dev.reu.local:3000' }
   
   config.action_mailer.smtp_settings = { :enable_starttls_auto => false, :host => 'dev.reu.local' }
 end
+
+Debugger.settings[:autoeval] = true
