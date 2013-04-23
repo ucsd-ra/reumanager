@@ -16,28 +16,28 @@
       - else
         %li
           - if applicant_signed_in?
-            =link_to "Edit Profile", edit_applicant_registration_path, :class => 'active'
+            =link_to "Edit Profile", edit_applicant_registration_path, :class => 'active' unless current_applicant.submitted_at
           - else
             =link_to "Apply Now", new_applicant_registration_url, :class => 'active'
 
       - if params[:controller] == 'applicants/academic_records'
         %li.active
           - if applicant_signed_in?
-            =link_to "Academic Records", applicants_records_url, :class => 'active'
+            =link_to "Academic Records", applicants_records_url, :class => 'active' unless current_applicant.submitted_at
       - else
         %li
           - if applicant_signed_in?
-            =link_to "Academic Records", applicants_records_url, :class => 'active'
+            =link_to "Academic Records", applicants_records_url, :class => 'active' unless current_applicant.submitted_at
 
 
       - if params[:controller] == 'applicants/recommenders'
         %li.active
           - if applicant_signed_in?
-            =link_to "Recommendation", applicants_recommenders_url, :class => 'active'
+            =link_to "Recommendation", applicants_recommenders_url, :class => 'active' unless current_applicant.submitted_at
       - else
         %li
           - if applicant_signed_in?
-            =link_to "Recommendation", applicants_recommenders_url, :class => 'active'
+            =link_to "Recommendation", applicants_recommenders_url, :class => 'active' unless current_applicant.submitted_at
             
             
       - if params[:controller] == 'applicants/registrations' && params[:action] ==  'status'
