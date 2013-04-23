@@ -4,21 +4,12 @@ class Setting < ActiveRecord::Base
   @@available_settings = YAML::load(File.open(Rails.root.join 'config', 'application.yml'))
 
     validates_uniqueness_of :name
-    validates_inclusion_of :name, :in => @@available_settings.keys
-
-    def value
-      v = read_attribute(:value)
-      v
-    end
-
-    def value=(v)
-      v = v.to_yaml if v && @@available_settings[name] && @@available_settings[name]['serialized']
-      write_attribute(:value, v.to_s)
-    end
 
     # Returns the value of the setting named name
     def self.[](name)
-      !find_or_default(name).value.blank? ? find_or_default(name).value : @@available_settings[name]
+      name = name.to_s
+      setting = find_by_name(name)
+      setting ? find_by_name(name).value : @@available_settings[name]
     end
 
     def self.[]=(name, v)

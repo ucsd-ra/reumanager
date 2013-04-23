@@ -23,19 +23,29 @@ class Notification < ActionMailer::Base
 #    mail to: "to@example.org"
  # end
    
-  def recommendation_request(recommedation)
-    @recommendation = recommedation
-    mail(:to => recommedation.recommender.email, :subject => "REU recommendation request for #{recommedation.applicant.name}")
-  end
-  
-  def recommendation_follow_up_request(recommedation)
-    @recommendation = recommedation
-    mail(:to => recommedation.recommender.email, :subject => "REU follow-up recommendation request for #{recommedation.applicant.name}")
-  end  
-  
- def application_submitted(applicant)
+  def application_submitted(applicant)
    @applicant = applicant
    mail(:to => applicant.email, :subject => "REU application received for #{applicant.name}")
- end
+  end
+
+  def recommendation_request(recommendation)
+    @recommendation = recommendation
+    mail(:to => recommendation.recommender.email, :subject => "REU recommendation request for #{recommendation.applicant.name}")
+  end
+  
+  def recommendation_follow_up_request(recommendation)
+    @recommendation = recommendation
+    mail(:to => recommedation.recommender.email, :subject => "REU follow-up recommendation request for #{recommendation.applicant.name}")
+  end  
+
+  def recommendation_received(recommendation)
+    @recommendation = recommendation
+    mail(:to => recommedation.recommender.email, :subject => "REU recommendation received for #{recommendation.applicant.name}")
+  end  
+  
+  def application_complete(applicant)
+    @applicant = applicant
+    mail(:to => applicant.email, :subject => "REU application complete for #{applicant.name}")
+  end
   
 end
