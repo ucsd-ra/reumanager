@@ -69,7 +69,9 @@
   <div class="inner">    
     <%= content_tag :p, link_to("Edit Application Data", edit_applicant_registration_path(current_applicant), :class => "btn btn-mini btn-info") + "&nbsp;&nbsp;&nbsp;" unless current_applicant.submitted_at %>
     <p>Changed your mind? <%= link_to "Delete your aapplication", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-mini btn-danger" %></p>
-    <small><strong>You can <%= link_to "logout", destroy_applicant_session_path, :method => :delete %> and continue you application at anytime, however, it will not be accepted until all the above data has been submitted.</strong></small>
+    <% unless current_applicant.state == 'complete' || current_applicant.state == 'submitted' %>
+      <small><strong>You can <%= link_to "logout", destroy_applicant_session_path, :method => :delete %> and continue you application at anytime<%= ", however, it will not be accepted until all the above data has been submitted" %>.</strong></small>
+    <%- end -%>
   </div>
 </section>
     

@@ -99,10 +99,11 @@ module ApplicationHelper
       message = "<p>Your application is ready to submit.  Please review your data and click the #{link_to "submit button", submit_application_path } when you are ready to submit your application.</p>"
     when 'submitted'
       status = "Application submitted"
-      message = "<p>Your application has been submitted and your recommendation request has been sent. You will receive further updates by email.</p>"
+      message = "<p>Your application has been submitted and your recommendation request has been sent. You will receive further updates 
+      by email.</p>"
     when 'complete'
       status = "Complete"
-      message = "<p>Congratulations, your application is complete.  .</p>"
+      message = "<p>Congratulations, your application is complete. Please check your email for further updates.</p>"
     else
       status = "Incomplete"
       message = "<p><strong>Your application is incomplete due to the errors mentioned above.  It will not be accepted until all of the necessary data has been added."
