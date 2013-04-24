@@ -134,7 +134,7 @@ class Applicant < ActiveRecord::Base
       transition :submitted => :complete, :if => lambda { |applicant| applicant.submitted? }
     end
 
-    after_transition :on => :recommendation_recieved, :do => lambda { |applicant| applicant.update_attribute :completed_at, Time.now }
+    after_transition :on => :recommendation_recieved, :do => :complete_application!
     
     event :missed_deadline do
       transition all => :incomplete
@@ -155,6 +155,12 @@ class Applicant < ActiveRecord::Base
     
   end
     
+  def complete_application!
+    self.update_attribute :completed_at, Time.now
+    Notification.recommendation_thanks(self.recommendation).deliver
+    Notification.application_complete(self).deliver
+  end
+  
   def address
     self.addresses.first
   end  
@@ -165,11 +171,11 @@ class Applicant < ActiveRecord::Base
   end
 
   def recommendation
-    self.recommendations.first
+    self.recommendations.last
   end
   
   def recommender
-    self.recommenders.first
+    self.recommenders.last
   end
   
   def validates_personal_info

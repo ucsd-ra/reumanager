@@ -24,7 +24,7 @@ describe Recommendation do
   end
 
   %w{ applicant_id recommender_id }.each do |relationship|
-    it 'is INVALID without the required #{relationship} relationship' do
+    it "is INVALID without the required #{relationship.gsub("_id",'')} relationship" do
       expect(FactoryGirl.build(:recommendation_with_associations, relationship.to_sym => nil)).to be_invalid
     end
   end

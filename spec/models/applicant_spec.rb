@@ -69,29 +69,6 @@ describe Applicant do
       expect(@applicant.state).to eq('submitted')
     end
 
-    it "sends a recommendation request when the application is submitted" do
-      @applicant.update_attributes statement: Faker::Lorem.sentences(4).join(' '),
-        addresses_attributes: { '0' => FactoryGirl.attributes_for(:address) }, 
-        records_attributes: { '0' => FactoryGirl.attributes_for(:academic_record) },
-        recommenders_attributes: { '0' => FactoryGirl.attributes_for(:recommender) }
-      @applicant.submit_application
-      confirmation_mail = ActionMailer::Base.deliveries[-2]
-
-      expect(confirmation_mail.to.first).to eq(@applicant.email)
-      expect(confirmation_mail.subject).to eq("REU application received for #{@applicant.name}")
-    end
-
-    it "sends a confirmation to the applicant when the application is submitted" do
-      @applicant.update_attributes statement: Faker::Lorem.sentences(4).join(' '),
-        addresses_attributes: { '0' => FactoryGirl.attributes_for(:address) }, 
-        records_attributes: { '0' => FactoryGirl.attributes_for(:academic_record) },
-        recommenders_attributes: { '0' => FactoryGirl.attributes_for(:recommender) }
-      @applicant.submit_application
-      
-      expect(last_email.to.first).to eq(@applicant.recommender.email)
-      expect(last_email.subject).to eq("REU recommendation request for #{@applicant.name}")
-    end
-
     it "transitions back to 'completed_academic_info' and resets submitted_at to nil when a recommender has been removed or modified on a submitted application" do
       @applicant.update_attributes statement: Faker::Lorem.sentences(4).join(' '),
         addresses_attributes: { '0' => FactoryGirl.attributes_for(:address) }, 

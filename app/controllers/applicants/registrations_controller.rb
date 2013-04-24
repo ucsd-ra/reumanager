@@ -39,6 +39,7 @@ class Applicants::RegistrationsController < Devise::RegistrationsController
   # Show view of profile
   def status
     @applicant = current_applicant
+    @applicant.validates_application_completeness
   end
   
   # GET /resource/submit

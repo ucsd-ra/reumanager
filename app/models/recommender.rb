@@ -19,8 +19,7 @@ class Recommender < ActiveRecord::Base
   end
   
   def to_s
-    recommender = "#{self.name} (#{self.email}), #{self.title}, #{self.department}, #{self.organization}"
-    #recommender << " <span class='alert-success'>[RECIEVED]</span>" # self.recommendations.received? ? " <span class='alert-success'>[RECIEVED]</span>" : " <span class='alert-error'>[NOT RECIEVED]</span>"
+    recommender = "#{self.name} (#{self.email})<br /> #{self.title}, #{self.department}, #{self.organization}"
   end
   
   private

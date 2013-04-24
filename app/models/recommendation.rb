@@ -1,14 +1,14 @@
 class Recommendation < ActiveRecord::Base
-  attr_accessible :applicant_id, :body, :known_applicant_for, :known_capacity, :overall_promise, :recommender_id, :undergraduate_institution
+  attr_accessible :applicant_id, :body, :known_applicant_for, :known_capacity, :overall_promise, :recommender_id, :recommender_attributes, :undergraduate_institution
 
   belongs_to :applicant, :class_name => "Applicant"
   belongs_to :recommender, :class_name => "Recommender"
+  accepts_nested_attributes_for :recommender
 
   validates_presence_of :body, :on => :update
   validates_presence_of :known_applicant_for, :on => :update
   validates_presence_of :known_capacity, :on => :update
-  validates_presence_of :overall_promise, :on => :update
-
+  validates_presence_of :overall_promise, :on => :update, message: "can't be blank. Please select one of the following: Top 1%, Top 5%, Top 10%, Top 25%, average, below average"
   validates_presence_of :applicant
   validates_presence_of :recommender
   
@@ -30,4 +30,5 @@ class Recommendation < ActiveRecord::Base
   def received?
     true
   end
+
 end

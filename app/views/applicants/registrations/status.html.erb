@@ -22,7 +22,7 @@
     <div class='span6'>
       <div class='inner'>
         <h2>Personal Statement</h2>
-        <%= raw Markdown.render(current_applicant.statement) %>
+        <%= raw Markdown.render(current_applicant.statement) if current_applicant.statement %>
       </div>
     </div>
 
@@ -33,7 +33,10 @@
         <h2>Recommender Info</h2>
         <ul>
           <%- current_applicant.recommenders.each do |recommender| -%>
-            <li><%= raw recommender %></li>
+            <li>
+              <%= raw recommender %><br />
+              <%= recommendation_received_label(recommender) %>
+            </li>
           <%- end -%>
         </ul>
       </div>
@@ -51,8 +54,8 @@
             <li><b>Award</b> <%= award %></li>
           <%- end -%>
       
-          <li><b>Computer Skills</b> <%= current_applicant.cpu_skills %></li>
-          <li><b>Laboratory Skills</b> <%= current_applicant.lab_skills %></li>
+          <li><b>Computer Skills</b> <%= Markdown.render current_applicant.cpu_skills %></li>
+          <li><b>Laboratory Skills</b> <%= Markdown.render current_applicant.lab_skills %></li>
         </ul>
       </div>
     </div>
@@ -65,7 +68,7 @@
 
   <div class="inner">    
     <%= content_tag :p, link_to("Edit Application Data", edit_applicant_registration_path(current_applicant), :class => "btn btn-mini btn-info") + "&nbsp;&nbsp;&nbsp;" unless current_applicant.submitted_at %>
-    Changed your mind? <%= link_to "Delete your aapplication", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-mini btn-danger" %>.</p>
+    <p>Changed your mind? <%= link_to "Delete your aapplication", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-mini btn-danger" %></p>
     <small><strong>You can <%= link_to "logout", destroy_applicant_session_path, :method => :delete %> and continue you application at anytime, however, it will not be accepted until all the above data has been submitted.</strong></small>
   </div>
 </section>

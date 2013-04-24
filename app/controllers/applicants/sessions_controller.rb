@@ -35,6 +35,6 @@ class Applicants::SessionsController < Devise::SessionsController
   protected
   
   def after_sign_in_path_for(resource)
-    applicant_status_path
+    current_applicant.redirect_url
   end
 end
