@@ -1,15 +1,15 @@
 <section>
   <h3>Program Highlights</h3>
-  <%= CONFIG[:highlights] %>
+  <%= raw Markdown.render(Setting[:highlights]) %>.
 </section>
 
 <section>
   <h3>Eligibility Requirements</h3>
-  <%= CONFIG[:eligibility_requirements] %>
+  <%= raw Markdown.render(Setting[:eligibility_requirements]) %>.
 </section>
 
 <section>
   <h3>Application Information</h3>
-  <%= CONFIG[:application_information] %>  
+  <%= raw Markdown.render(Setting[:application_information]) %>.
 </section>
 

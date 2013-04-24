@@ -1,75 +1,164 @@
-<%= error_messages_for :recommendation %>
-<%= error_messages_for 'recommender', :object => @user.recommender, :object_name => "contact info"%>
+<%= form_for(@recommendation, :url => applicants_recommendations_update_url, :html => { :method => :put }) do |f| %>
+  <%= errors_for @recommendation %>
+  
+  <div class='row'>
+    <div class="span12">
+      <div class="inner">
+        <h2>Recommendation for <%= @recommendation.applicant.name %></h2>
+      </div>
+    </div>
 
-<% fields_for @user.recommender do |r| %>
-	<h4>Please verify your contact info:</h4>
-	<div class="fieldbox float">
-		<label>Name</label><br />
-		<%= r.text_field 'name' %>
-	</div>
-	<div class="fieldbox float">
-		<label>Title</label><br />
-		<%= r.text_field 'title' %>
-	</div>
-	<div class="fieldbox float">
-		<label>Department</label><br />
-		<%= r.text_field 'department' %>
-	</div>
-	<div>
-		<label>College or University</label><br />
-		<%= r.text_field 'college' %>
-	</div>
-	<div class="fieldbox float">
-		<label>Phone</label><br />
-		<%= r.text_field 'phone' %>
-	</div>
-	<div class="fieldbox float">
-		<label>Email</label><br />
-		<%= r.text_field 'email' %>
-	</div>
-<% end -%>
+    
+    <div class="span9">
 
-<hr />
+      <div class='row'>
+        
+        <section class='recommender'>
+          <div class="span9">
+            
+            <%= f.fields_for :recommender do |builder| %>
+              <fieldset>
+                <div class="inner">
+                  <legend>Please update your contact info</legend>
+                </div>
+                <div class="row">
 
-<h4>Recommendation for <%= @user.name %></h4>
+                <div class="span4">
+                  <div class="inner">
+                    <%= builder.text_field :first_name, :placeholder => 'First Name' %>
+                  </div>
+                </div>
 
-<%= student_waiver %>
+                <div class="span4 offset1">
+                  <div class="inner">
+                    <%= builder.text_field :last_name, :placeholder => 'Last Name' %>
+                  </div>
+                </div>
 
-<div>
-	<label>How long have you known the applicant?</label>
-	<%= f.select 'known_student', %w{ <1\ year 1-2\ years 2-3\ years 3-4\ years >4\ years } %>
-</div>
+                <div class="span4">
+                  <div class="inner">
+                    <%= builder.text_field :email, :placeholder => :Email %>
+                  </div>
+                </div>
 
-<br />
+                <div class="span4 offset1">
+                  <div class="inner">
+                    <%= builder.text_field :phone, :placeholder => :Phone %>
+                  </div>
+                </div>
 
-<div>
-	<label>In what capacity have you known the applicant?</label>
-	<%= f.select 'know_capacity', %w{ Undergrad\ in\ one\ course Undergrad\ in\ multiple\ courses Research\ Assistant Teaching\ Assistant Other} %>
-</div>
+                <div class="span9">
+                  <div class="inner">
+                    <%= builder.text_field :url, :placeholder => :URL %>
+                  </div>
+                </div>    
 
-<br />
 
-<div>
-	<label>Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers:</label><br />
-	<span class="small"><%= f.radio_button 'rating', 'Top 1%' %><label>Top 1%</label>&nbsp;
-	<%= f.radio_button 'rating', 'Top 5%' %><label>Top 5%</label>&nbsp;
-	<%= f.radio_button 'rating', 'Top 10%' %><label>Top 10%</label>&nbsp;
-	<%= f.radio_button 'rating', 'Top 25%' %><label>Top 25%</label>&nbsp;
-	<%= f.radio_button 'rating', 'average' %><label>average</label>&nbsp;
-	<%= f.radio_button 'rating', 'below average' %><label>below average</label>&nbsp;</span>
-</div>
+                <div class="span4">
+                  <div class="inner">
+                    <%= builder.text_field :organization, :placeholder => 'Organization or University' %>
+                  </div>
+                </div>
 
-<br />
+                <div class="span4 offset1">
+                  <div class="inner">
+                    <%= builder.text_field :department, :placeholder => :Department %>
+                  </div>
+                </div>
 
-<div>
-	<label>Is your institution primarily an undergraduate institution?</label>&nbsp;<%= f.select 'undergrad_inst', %w{ No Yes } %>
-</div>
+                <div class="span9">
+                  <div class="inner">
+                    <%= builder.text_field :title, :placeholder => :Title %>
+                  </div>
+                </div>
+              
+                <hr class="inner clearfix" />
+            
+              </fieldset>
+            <%- end -%>
+          </div>
+        </section>
+        <section class='recommender'>
+          <div class="span9">
+            <div class='inner'>
+              
+              <%#= student_waiver %>
 
-<br />
+              <div>
+              	<label>How long have you known the applicant?</label>
+              	<%= f.select :known_applicant_for, %w{ <1\ year 1-2\ years 2-3\ years 3-4\ years >4\ years } %>
+              </div>
 
-<div>
-	<label>Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance.</label><br />
-	<small>You can copy and paste into the text box below.</small>
-</div>
+              <br />
 
-<div><%= f.text_area 'faculty_comment' %></div>
+              <div>
+              	<label>In what capacity have you known the applicant?</label>
+              	<%= f.select :known_capacity, %w{ Undergrad\ in\ one\ course Undergrad\ in\ multiple\ courses Research\ Assistant Teaching\ Assistant Other} %>
+              </div>
+
+              <br />
+
+              <div>
+              	<p>Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers:</p>
+
+              	<label class="radio">
+                  <input name="recommendation[overall_promise]" type="radio" value="Top 1%">
+                  Top 1%
+                </label>
+
+              	<label class="radio">
+                  <input name="recommendation[overall_promise]" type="radio" value="Top 5%">
+                  Top 5%
+                </label>
+
+              	<label class="radio">
+                  <input name="recommendation[overall_promise]" type="radio" value="Top 10%">
+                  Top 10%
+                </label>
+
+              	<label class="radio">
+                  <input name="recommendation[overall_promise]" type="radio" value="Top 25%">
+                  Top 25%
+                </label>
+
+              	<label class="radio">
+                  <input name="recommendation[overall_promise]" type="radio" value="below average">
+                  average
+                </label>
+
+              	<label class="radio">
+                  <input name="recommendation[overall_promise]" type="radio" value="below average">
+                  below average
+                </label>
+              </div>
+
+              <br />
+
+              <div>
+              	<label>Is your institution primarily an undergraduate institution?</label>&nbsp;<%= f.select :undergraduate_institution, %w{ No Yes } %>
+              </div>
+
+              <br />
+
+              <div>
+              	<p>Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance.</p>
+              	<p>You can copy and paste into the text box below.</p>
+              </div>
+
+              <div><%= f.text_area :body, rows: 5 %></div>
+            </div>
+          </div>
+        </section>
+      </div> <!-- end .row -->   
+    </div> <!-- end .span9 -->
+    <div class="span12">
+      <div class="inner">
+        <hr />
+        <p class='clear'><%= f.submit "Submit Recommendation Info", :class => "btn btn-success" %></p>
+      	<p><em>Thank you for taking the time to evaluate this applicant. Your opinion will be carefully considered during participant selection.</em></p>
+      </div>
+    </div>
+    
+  </div> <!-- end .row --> 
+
+<% end %>

@@ -8,6 +8,8 @@ class CreateRecommendations < ActiveRecord::Migration
       t.text :body
       t.string :token
       t.datetime :token_created_at
+      t.datetime :request_sent_at
+      t.datetime :received_at
       t.integer :applicant_id
       t.integer :recommender_id
 

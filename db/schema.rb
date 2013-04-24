@@ -115,6 +115,8 @@ ActiveRecord::Schema.define(:version => 20130423170653) do
     t.text     "body"
     t.string   "token"
     t.datetime "token_created_at"
+    t.datetime "request_sent_at"
+    t.datetime "received_at"
     t.integer  "applicant_id"
     t.integer  "recommender_id"
     t.datetime "created_at",                :null => false

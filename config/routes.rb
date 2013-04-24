@@ -2,8 +2,9 @@ Reuman::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   namespace :applicants do
-    get "recommendations" => "recommendations#edit"
-    put "recommendations" => "recommendations#update"
+    match "recommendations/:token" => "recommendations#edit", via: :get, as: :recommendations_edit
+    post "recommendations" => "recommendations#resend_request"
+    match "recommendations/:token" => "recommendations#update", via: :put, as: :recommendations_update
 
     get "recommenders" => "recommenders#edit"
     put "recommenders" => "recommenders#update"
@@ -27,6 +28,7 @@ Reuman::Application.routes.draw do
   end
 
   match "closed" => "welcome#closed"
+  match "thanks" => "welcome#thanks"
 
   root :to => "welcome#index"
 end
