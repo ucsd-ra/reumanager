@@ -7,10 +7,13 @@ class Applicants::RecommendationsController < ApplicationController
 
   # POST /recommendations
   def resend_request
-    if current_applicant
-      redirect_to(applicant_status_path, notice: 'test')
+    recommendation = current_applicant.recommendations.find_by_recommender_id(params[:id])
+    if recommendation.requestable?
+      recommendation.update_attribute :request_sent_at, Time.now
+      Notification.recommendation_follow_up_request(recommendation).deliver
+      redirect_to(applicant_status_path, flash: { success: 'Your recommendation follow-up request has been sent.' } )
     else
-      redirect_to(applicant_status_path, :flash => { :error => "You can only make a recommendation request once every 24 hours" })
+      redirect_to(applicant_status_path, :flash => { :error => "You can only make a recommendation request once every 24 hours. It was last sent at #{recommendation.request_sent_at.strftime("%A, %b %d, %l:%M %p")}" })
     end
   end
   

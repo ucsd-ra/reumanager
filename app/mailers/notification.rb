@@ -17,7 +17,7 @@ class Notification < ActionMailer::Base
   def recommendation_follow_up_request(recommendation)
     @recommendation = recommendation
     @url = applicants_recommendations_edit_path(token: recommendation.token)
-    mail(:to => recommedation.recommender.email, :subject => "REU follow-up recommendation request for #{recommendation.applicant.name}")
+    mail(:to => recommendation.recommender.email, :subject => "REU follow-up recommendation request for #{recommendation.applicant.name}")
   end  
 
   # thank you to recommender once recommendation is received.

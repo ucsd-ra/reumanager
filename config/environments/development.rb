@@ -35,9 +35,11 @@ Reuman::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = false
   
-  config.action_mailer.default_url_options = { :host => 'dev.reu.local:3000' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000/test' }
   
-  config.action_mailer.smtp_settings = { :enable_starttls_auto => false, :host => 'dev.reu.local' }
+  config.action_mailer.smtp_settings = { :enable_starttls_auto => false, :host => 'localhost:3000' }
+  
+  config.time_zone = 'Pacific Time (US & Canada)'
 end
 
 Debugger.settings[:autoeval] = true

@@ -3,7 +3,7 @@ Reuman::Application.routes.draw do
 
   namespace :applicants do
     match "recommendations/:token" => "recommendations#edit", via: :get, as: :recommendations_edit
-    post "recommendations" => "recommendations#resend_request"
+    post "recommendations/:id" => "recommendations#resend_request", as: :recommendations_request
     match "recommendations/:token" => "recommendations#update", via: :put, as: :recommendations_update
 
     get "recommenders" => "recommenders#edit"
