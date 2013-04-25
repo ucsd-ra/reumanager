@@ -15,6 +15,16 @@ class Recommendation < ActiveRecord::Base
   before_create :make_token
   after_destroy :remove_orphaned_recommenders
   
+  # has the recommendation been received and made complete?
+  def received?
+    !self.received_at.nil?
+  end
+
+  # a recommendation request can be sent if one has not been made within the last 24 hours
+  def requestable?
+    return true if self.request_sent_at == nil || Time.now - self.request_sent_at > 24.hours
+  end
+
   private
   
   def remove_orphaned_recommenders
@@ -22,13 +32,10 @@ class Recommendation < ActiveRecord::Base
     recommender.destroy if recommender.recommendations.empty?
   end
   
+  # generate a token to be used by recommenders to access recommedation form
   def make_token
     self.token = "#{Digest::MD5.hexdigest(Time.now.to_s.split(//).sort_by{rand}.join)}-#{Digest::MD5.hexdigest((Time.now - 30.days).to_s.split(//).sort_by{rand}.join)}"
     self.token_created_at = Time.now
   end
   
-  def received?
-    true
-  end
-
 end

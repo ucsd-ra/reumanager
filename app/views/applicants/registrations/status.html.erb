@@ -11,9 +11,9 @@
       <div class='inner'>
         <h2>Contact Info</h2>
         <ul>
-          <li><b>Name</b>  <%= current_applicant.name %></li>
+          <li><b>Name</b>  <%= current_applicant.name if current_applicant.name %></li>
           <li><b>Email</b> <%= current_applicant.email %></li>
-          <li><b>Phone</b> <%= current_applicant.phone %></li>
+          <li><b>Phone</b> <%= current_applicant.phone if current_applicant.phone %></li>
           <li><b>Address</b>  <%= current_applicant.address %></li>
         </ul>
       </div>
@@ -54,8 +54,8 @@
             <li><b>Award</b> <%= award %></li>
           <%- end -%>
       
-          <li><b>Computer Skills</b> <%= Markdown.render current_applicant.cpu_skills %></li>
-          <li><b>Laboratory Skills</b> <%= Markdown.render current_applicant.lab_skills %></li>
+          <li><b>Computer Skills</b> <%= Markdown.render current_applicant.cpu_skills if current_applicant.cpu_skills %></li>
+          <li><b>Laboratory Skills</b> <%= Markdown.render current_applicant.lab_skills if current_applicant.lab_skills %></li>
         </ul>
       </div>
     </div>

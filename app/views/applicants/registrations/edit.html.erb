@@ -40,15 +40,17 @@
             <%= f.fields_for :addresses do |builder| %>
               <%= render 'address_fields', f: builder %>
             <% end %>            
-            <div class="inner"><%= link_to_add_fields "Add Location", f, :addresses %></div>
-            
+            <div class="inner">
+              <p>Please enter at least one postal address.</p>
+              <%= link_to_add_fields "Add Location", f, :addresses %>
+            </div>
           </div>
         </section>
         
         <div class="span9">
           <div class="inner">
             <h2>Personal Info</h2>
-          </div><!-- end  inner -->        
+          </div><!-- end  inner -->
         </div>
 
         <div class='span4'>
