@@ -253,8 +253,9 @@ describe Applicants::RecommendersController do
 
             it "creates a recommender object for the authenticated applicant using the provided attributes" do
               expect(assigns(:applicant).recommenders.count).to eq(2)
-              expect(assigns(:applicant).recommenders.first.email).to eq(@recommender0_attributes['email'])
-              expect(assigns(:applicant).recommenders.last.email).to eq(@recommender1_attributes['email'])
+              
+              expect(assigns(:applicant).recommenders.last.email).to eq(@recommender0_attributes['email'])
+              expect(assigns(:applicant).recommenders.first.email).to eq(@recommender1_attributes['email'])
             end
           end # context 'with valid recommender attributes'
           

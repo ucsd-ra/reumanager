@@ -35,10 +35,13 @@
         <%= f.select :gpa_range, [4.0, 5.0, 10.0], {:include_blank => 'GPA Range'}, {:class => :span2} %>
       </div>
     </div>
-  
+
     <div class="span4 offset1">
       <div class="inner">
-        <%= f.select :academic_level, options_for_select(%w{ Freshman Sophomore Junior Senior }), :include_blank => 'Current Academic Level'%>
+        <%= f.label :transcript %>
+        <p>Attach a PDF or image of your transcript.</p>
+        <%= f.file_field :transcript %>
+        <%= content_tag :p, raw("Current attachment: #{link_to current_applicant.records.find_by_applicant_id(current_applicant).transcript_file_name, current_applicant.records.find_by_applicant_id(current_applicant).transcript.url}") unless f.object.new_record?  %>
       </div>
     </div>
 

@@ -8,7 +8,7 @@ FactoryGirl.define do
     finish { Date.civil(2013,1,20) }
     gpa { rand(0.5..4.0) }
     gpa_range { 4.0 }
-    academic_level { %w{ Freshman Sophomore Junior Senior }[rand(4)] }
     gpa_comment { Faker::Lorem.sentences(3).join(' ') }
+    transcript File.new(Rails.root + 'spec/fixtures/sample_transcript.jpg')
   end
 end

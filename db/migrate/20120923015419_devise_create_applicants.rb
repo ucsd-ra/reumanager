@@ -16,6 +16,7 @@ class DeviseCreateApplicants < ActiveRecord::Migration
       t.string :race
       
       # academic info
+      t.string :academic_level
       t.text :lab_skills
       t.text :cpu_skills
       t.text :statement
