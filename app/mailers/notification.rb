@@ -1,5 +1,5 @@
 class Notification < ActionMailer::Base
-  default from:  "Bioengineering Institute of California <demo@reumanager.com"
+  default from:  "demo@reumanager.com"
   default url: "https://reumanager.com"
   default content_type: "text/plain"
    
