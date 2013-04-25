@@ -184,7 +184,7 @@ class Applicant < ActiveRecord::Base
     validates_presence_of :addresses, :message => "can't be blank.  Please add at least one address to your profile."
     validates_presence_of :phone, :message => "can't be blank. Please add at least one phone number to your profile."
     validates_presence_of :statement, :message => "can't be blank. Please add at least one phone number to your profile."
-    validates_presence_of :statement, :length => { :maximum => 250, :tokenizer => lambda { |str| str.scan(/\w+/) }, :too_long  => "must have at most %{count} words" }
+    validates_length_of :statement, :maximum => 250, :message => "Your personal statement must be under 250 words.", :tokenizer => lambda { |str| str.scan(/\w+/) }
     
     return true if self.errors.empty?
   end
