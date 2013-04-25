@@ -11,20 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130423170653) do
+ActiveRecord::Schema.define(:version => 20130425173551) do
 
   create_table "academic_records", :force => true do |t|
     t.string   "university"
     t.date     "start"
     t.date     "finish"
-    t.string   "academic_level"
     t.string   "degree"
     t.float    "gpa"
-    t.float    "gpa_range",      :default => 4.0
+    t.float    "gpa_range",               :default => 4.0
     t.text     "gpa_comment"
     t.integer  "applicant_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.string   "transcript_file_name"
+    t.string   "transcript_content_type"
+    t.integer  "transcript_file_size"
+    t.datetime "transcript_updated_at"
   end
 
   create_table "addresses", :force => true do |t|
@@ -51,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20130423170653) do
     t.string   "gender"
     t.string   "ethnicity"
     t.string   "race"
+    t.string   "academic_level"
     t.text     "lab_skills"
     t.text     "cpu_skills"
     t.text     "statement"
@@ -122,6 +126,9 @@ ActiveRecord::Schema.define(:version => 20130423170653) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
+
+  add_index "recommendations", ["applicant_id"], :name => "index_recommendations_on_applicant_id"
+  add_index "recommendations", ["recommender_id"], :name => "index_recommendations_on_recommender_id"
 
   create_table "recommenders", :force => true do |t|
     t.string   "first_name"

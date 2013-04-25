@@ -4,7 +4,6 @@ class CreateAcademicRecords < ActiveRecord::Migration
       t.string :university
       t.date :start
       t.date :finish
-      t.string :academic_level
       t.string :degree
       t.float :gpa
       t.float :gpa_range, :default => 4.0
