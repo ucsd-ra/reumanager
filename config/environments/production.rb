@@ -65,9 +65,9 @@ Reuman::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
-  config.action_mailer.default_url_options = { :protocol => 'https',  :host => 'indra.ucsd.edu/reuman' }
+  config.action_mailer.default_url_options = { :protocol => 'https',  :host => 'indra.ucsd.edu' }
     
   config.action_mailer.smtp_settings = { :enable_starttls_auto => false, :host => 'localhost' }
   
-  config.action_controller.relative_url_root = '/reuman'
+  # config.action_controller.relative_url_root = '/reuman'
 end
