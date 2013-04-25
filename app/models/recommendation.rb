@@ -14,7 +14,7 @@ class Recommendation < ActiveRecord::Base
   
   before_create :make_token
   after_destroy :remove_orphaned_recommenders
-  
+    
   # has the recommendation been received and made complete?
   def received?
     !self.received_at.nil?

@@ -1,4 +1,4 @@
-require "bundler/capistrano"
+ require "bundler/capistrano"
 require "rvm/capistrano"
 # require 'capistrano/ext/database'
 
@@ -7,7 +7,7 @@ require "rvm/capistrano"
 
 set :application, "reuman" #matches names used in smf_template.erb
 set :repository,  "https://github.com/reumanager/reumanager.git"
-set :branch, :dev
+set :branch, :rails_admin_customizations
 set :domain, 'indra.ucsd.edu'
 set :deploy_to, "/var/www/#{application}" # I like this location
 set :deploy_via, :remote_cache

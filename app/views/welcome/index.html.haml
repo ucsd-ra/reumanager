@@ -2,7 +2,7 @@
   .span8
     .inner
       %h3 General Info
-      = Setting[:general_description]
+      = raw Snippet[:general_description]
       
       .app_button
         - if applicant_signed_in?
