@@ -32,7 +32,7 @@
     <div class="span4">
       <div class="inner control-group">
         <%= f.select :gpa, gpa_range, {:include_blank => 'GPA'}, {:class => :span1} %>
-        <%= f.select :gpa_range, gpa_range, {:include_blank => 'GPA Range'}, {:class => :span2} %>
+        <%= f.select :gpa_range, [4.0, 5.0, 10.0], {:include_blank => 'GPA Range'}, {:class => :span2} %>
       </div>
     </div>
   
