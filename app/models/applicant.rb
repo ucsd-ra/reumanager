@@ -184,18 +184,18 @@ class Applicant < ActiveRecord::Base
     validates_presence_of :addresses, :message => "can't be blank.  Please add at least one address to your profile."
     validates_presence_of :phone, :message => "can't be blank. Please add at least one phone number to your profile."
     validates_presence_of :statement, :message => "can't be blank. Please add at least one phone number to your profile."
-    
+
     return true if self.errors.empty?
   end
 
   def validates_academic_info
     validates_presence_of :records, :message => "can't be blank.  Please add at least one academic record."
-    return true if self.errors.empty?
+    return true if self.errors.empty? && !self.records.blank? && self.records.last.valid?
   end
   
   def validates_recommender_info
     validates_presence_of :recommenders, :message => "can't be blank.  Please add at least one recommender."
-    return true if self.errors.empty?
+    return true if self.errors.empty? && !self.recommenders.blank? && self.recommenders.last.valid?
   end
   
   def validates_application_completeness

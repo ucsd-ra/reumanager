@@ -1,0 +1,30 @@
+<div class="span3">
+  <div class="dropdown application_nav">
+    <ul class="dropdown-menu" role="menu" >
+      <%= content_tag :li, 
+          link_to(content_tag(:i, raw("&nbsp;&nbsp;Profile"), 
+            class: current_applicant.validates_personal_info ? 'icon-ok' : 'icon-exclamation-sign'), 
+            edit_applicant_registration_path,
+            class: current_applicant.validates_personal_info ? '' : 'alert-error'), 
+          class: current_page?(edit_applicant_registration_path) ? '' : '' %>
+      <%= content_tag :li, 
+          link_to(content_tag(:i, raw("&nbsp;&nbsp;Academic Info"), 
+          class: current_applicant.validates_academic_info ? 'icon-ok' : 'icon-exclamation-sign'), 
+            applicants_records_path,
+            class: current_applicant.validates_academic_info ? '' : 'alert-error'),
+          class: current_page?(applicants_records_path) ? :active : '' %>
+      <%= content_tag :li, 
+          link_to(content_tag(:i, raw("&nbsp;&nbsp;Recommendation"), 
+          class: current_applicant.validates_recommender_info ? 'icon-ok' : 'icon-exclamation-sign'), 
+            applicants_recommenders_path,
+            class: current_applicant.validates_recommender_info ? '' : 'alert-error'), 
+          class: current_page?(applicants_recommenders_path) ? :active : '' %>
+      <%= content_tag :li, 
+          link_to(content_tag(:i, raw("&nbsp;&nbsp;Status"), 
+          class: current_applicant.validates_application_completeness ? 'icon-ok' : 'icon-exclamation-sign'), 
+            applicant_status_path,
+            class: current_applicant.validates_application_completeness ? '' : 'alert-error'), 
+          class: current_page?(applicant_status_path) ? :active : '' %>
+    </ul>
+  </div>
+</div> <!-- end .span3 -->
