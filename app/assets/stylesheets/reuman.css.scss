@@ -51,6 +51,7 @@ div.container.devise { background-color:#fff; border:1px solid #aaa; border-radi
     ul li { float:left; padding:0 34px 0 0; }}}
 
 form {
+  input[type="file"] { height:18; line-height: 1; }
   .dropdown { top:4em; }
   small { position:relative; top:1.4em; }
   select.state_select { width:100%; }
@@ -62,7 +63,16 @@ form {
 
 
 .application_nav { 
-  .dropdown-menu { display:block; }}
+  .dropdown-menu { border:0; display:block; padding:0;
+    li { 
+      a:hover { background-image:none; background-color:inherit; color:#333; }
+      }
+    li.active { 
+      a { background-image:none; background-color:inherit; color:#333; }
+      a:hover { background-image:none; background-color:inherit; color:#333; }
+          }
+    .alert { border:none; margin:0; 
+      }}}
 
 footer.container { font-size:0.8em;
   .footer-inner { padding:0 20px; }}
