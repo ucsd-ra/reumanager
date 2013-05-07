@@ -1,0 +1,21 @@
+<%- recommendations.map do |r| -%>
+
+  <h4>Recommendation from <%= r.recommender.name %> (<%= r.recommender.email %>)</h4>
+
+  <p><b>How long have you known the applicant?</b> <%= r.known_applicant_for %></p>
+
+  <p><b>In what capacity have you known the applicant?</b> <%= r.known_capacity %></p>
+
+  <p><b>Please rate the applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers:</b> <%= r.overall_promise %></p>
+
+  <p><b>Is your institution primarily an undergraduate institution?</b>&nbsp;<%= r.undergraduate_institution %></p>
+
+  <div>
+  	<p><b>Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance.</b></p>
+
+    <%= raw(Markdown.render r.body) if r.body %>
+  </div>
+
+  <hr />
+
+<%- end -%>

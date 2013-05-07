@@ -1,0 +1,9 @@
+Dear <%= @recommendation.recommender.first_name %>,
+
+<%= @recommendation.applicant.name %> has requested a recommendation for the <%= Setting[:app_title] %> summer program at the <%= Setting[:department] %>, <%= Setting[:university] %>.
+
+Please submit your recommendation online by <%= Setting[:application_deadline].to_date.strftime("%A, %b %d") if Setting[:application_deadline] %> at: <%= raw link_to(@url, @url) %>
+
+Thank you so much for taking the time to provide us with this helpful information
+
+Thanks

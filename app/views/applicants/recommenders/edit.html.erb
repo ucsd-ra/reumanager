@@ -1,0 +1,44 @@
+<%= form_for(@applicant, :url => applicants_recommenders_url, :html => { :method => :put }) do |f| %>
+
+  <%= errors_for @applicant %>
+  
+  <div class='row'>
+    <div class="span12">
+      <div class="inner">
+        <h2>Recommender Info</h2>
+      </div>
+    </div>
+
+    
+    <div class="span9">
+
+      <div class='row'>
+        
+        <section class='records'>
+          <div class="span9">
+            <%= f.fields_for :recommenders do |builder| %>
+              <%= render 'recommender_fields', f: builder %>
+            <% end %>
+            <div class="inner">
+              <%= link_to_add_fields "Add recommender", f, :recommenders %>
+              <hr />
+            </div>
+          </div>
+        </section>
+        
+      </div> <!-- end .row -->   
+    </div> <!-- end .span9 --> 
+
+    <%= render "applicants/shared/nav" %>
+
+    <div class="span12">
+      <div class="inner">
+        <hr />
+        <p class='clear'><%= f.submit "Save Recommendation Info", :class => "btn btn-success" %></p>
+        <small><strong>You can <%= link_to "logout", destroy_applicant_session_path, :method => :delete %> and continue you application at anytime, however, it will not be accepted until all the above data has been submitted.</strong></small>
+      </div>
+    </div>
+    
+
+  </div> <!-- end .row --> 
+<%- end -%>

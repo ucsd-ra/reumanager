@@ -1,0 +1,3 @@
+This is a confirmation email for <%= @applicant.name + "( " + @applicant.email + " )" %>. Your recommendation(s) have been received and your application is now complete. We plan to notify you of our decision by <%= Setting[:notification_date].to_date.strftime("%A, %b %d") if Setting[:application_deadline] %>.
+
+Thanks
