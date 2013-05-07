@@ -159,7 +159,7 @@ class Applicant < ActiveRecord::Base
   # I needed to create a method in order to return a custom field in rails admim.
   # Perhaps we can make use of this by returning a plaintext output of the attributes belonging to this method.
   def academic_info
-    "I need to learn rails_admin better"
+    "No academic info."
   end
   
   def address
@@ -199,7 +199,7 @@ class Applicant < ActiveRecord::Base
   end
   
   def recommendation_info
-    "I need to learn rails_admin better"
+    "No recommendation info."
   end
   
   def recommender

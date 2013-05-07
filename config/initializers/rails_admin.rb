@@ -15,16 +15,16 @@ RailsAdmin.config do |config|
   config.navigation_static_label = "Applicant Status Groups"
   # and so forth. verify that they work
   config.navigation_static_links = {
-    'Applied' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=Applied&query=',
-    'Completed Personal Info' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=Completed+Personal+Info&query=',
-    'Completed Academic Info' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=Completed+Academic+Info&query=',
-    'Completed Recommender Info' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=Completed+Recommender+Info&query=',
-    'Submitted' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=Submitted&query=',
-    'Completed' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=Completed&query=',
-    'Missed Deadline' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=Missed+Deadline&query=',
-    'Withdrawn' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=Withdrawn&query=',
-    'Rejected' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=Rejected&query=',
-    'Accepted' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=Accepted&query='
+    'Applied' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=applied&query=',
+    'Completed Personal Info' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=completed_personal_info&query=',
+    'Completed Academic Info' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=completed_academic_info&query=',
+    'Completed Recommender Info' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=completed_recommender_info&query=',
+    'Submitted' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=submitted&query=',
+    'Completed' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=completed&query=',
+    'Missed Deadline' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=missed_deadline&query=',
+    'Withdrawn' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=withdrawn&query=',
+    'Rejected' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=rejected&query=',
+    'Accepted' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=accepted&query='
   }
 
   config.model Applicant do

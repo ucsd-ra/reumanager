@@ -17,12 +17,14 @@ FactoryGirl.define do
     factory :applicant_with_address do
       after(:create) do |applicant|
         applicant.addresses.create FactoryGirl.attributes_for(:address)
+        applicant.set_state
       end
     end
     
     factory :applicant_with_record do
       after(:create) do |applicant|
         applicant.records.create FactoryGirl.attributes_for(:academic_record)
+        applicant.set_state
       end
     end
 
@@ -30,12 +32,14 @@ FactoryGirl.define do
       after(:create) do |applicant|
         applicant.addresses.create FactoryGirl.attributes_for(:address)
         applicant.records.create FactoryGirl.attributes_for(:academic_record)
+        applicant.set_state
       end
     end
 
     factory :applicant_with_recommender do
       after(:create) do |applicant|
         applicant.recommenders.create FactoryGirl.attributes_for(:recommender)
+        applicant.set_state
       end
     end
 
@@ -44,6 +48,7 @@ FactoryGirl.define do
         applicant.addresses.create FactoryGirl.attributes_for(:address)
         applicant.records.create FactoryGirl.attributes_for(:academic_record)
         applicant.recommenders.create FactoryGirl.attributes_for(:recommender)
+        applicant.set_state
       end
     end
 
@@ -53,6 +58,7 @@ FactoryGirl.define do
       end
       after(:create) do |applicant|
         applicant.recommendation.update_attributes FactoryGirl.attributes_for(:recommendation)
+        applicant.set_state
       end
     end
 
@@ -64,6 +70,7 @@ FactoryGirl.define do
       end
       after(:create) do |applicant|
         applicant.recommendation.update_attributes FactoryGirl.attributes_for(:recommendation)
+        applicant.set_state
       end
     end
     
