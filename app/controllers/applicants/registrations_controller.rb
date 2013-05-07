@@ -30,7 +30,7 @@ class Applicants::RegistrationsController < Devise::RegistrationsController
 
     if successfully_updated
       set_flash_message :notice, :updated
-      # Sign in the applicant bypassing validation in case his password changed
+      # Sign in the applicant bypassing validation in case the password changed
       sign_in @applicant, :bypass => true
       @applicant.set_state
       
