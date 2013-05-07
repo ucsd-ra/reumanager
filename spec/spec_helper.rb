@@ -9,6 +9,7 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
 require 'capybara/webkit'
+
 #Capybara.javascript_driver = :poltergeist
 Capybara.javascript_driver = :webkit
 

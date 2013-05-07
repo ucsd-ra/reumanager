@@ -4,6 +4,8 @@ class Applicants::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
     @applicant.set_state
+    @applicant.addresses.build unless @applicant.addresses.count > 0
+    
     render :edit
   end
   
@@ -13,7 +15,10 @@ class Applicants::RegistrationsController < Devise::RegistrationsController
   # the current applicant in place.
   def update
     @applicant = Applicant.find(current_applicant.id)
-
+    
+    # remove blank address attributes to prevent validation error
+    remove_blank_attribs
+    
     successfully_updated = if needs_password?(@applicant, params)
       @applicant.update_with_password(params[:applicant])
     else
@@ -28,7 +33,7 @@ class Applicants::RegistrationsController < Devise::RegistrationsController
       # Sign in the applicant bypassing validation in case his password changed
       sign_in @applicant, :bypass => true
       @applicant.set_state
-
+      
       redirect_to @applicant.redirect_url
     else
       render "edit"
@@ -68,6 +73,14 @@ class Applicants::RegistrationsController < Devise::RegistrationsController
   # extend this as needed
   def needs_password?(applicant, params)
     applicant.email != params[:applicant][:email] || !params[:applicant][:password].blank?
+  end
+  
+  def remove_blank_attribs
+  #  debugger
+    params[:applicant][:addresses_attributes].each do |attribs|
+      # remove destroy flag unless it's set to true/1
+      attribs[1][:_destroy] = '1' if attribs[1][:address].blank? && attribs[1][:city].blank? && attribs[1][:zip].blank?
+    end
   end
   
 end

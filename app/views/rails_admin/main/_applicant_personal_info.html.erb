@@ -1,0 +1,21 @@
+<h4>Academic Records</h4>
+
+<ul>
+  <%- records.map do |r| -%>
+    <li><%= raw %{#{applicant.academic_record(r)} #{link}} %></li>
+  <%- end -%>
+</ul>
+
+<h4>Awards</h4>
+<ul>
+  <%- awards.each do |award| -%>
+    <li><%= award %></li>
+  <%- end -%>
+</ul>
+<%= "No awards listed" if awards.empty? %>
+
+<h4>Lab Skills</h4>
+<%= raw(Markdown.render applicant.lab_skills) if applicant.lab_skills %>
+
+<h4>Computer Skills</h4>
+<%= raw(Markdown.render applicant.cpu_skills) if applicant.cpu_skills %>
