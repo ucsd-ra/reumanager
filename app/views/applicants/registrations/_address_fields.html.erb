@@ -20,22 +20,25 @@
       <div class="inner">
         <%= f.text_field :address, :placeholder => :Address %>
       </div>
+    </div>
+    
+    <div class="span4">
       <div class="inner">
         <%= f.text_field :address2, :placeholder => 'Address Line 2' %>
       </div>
     </div>
-
-    <div class='span3'>
+    <div class="span4 offset1">
       <div class="inner">
         <%= f.text_field :city, :placeholder => :City %>
       </div>
     </div>
-    <div class='span2'>
+
+    <div class='span4'>
       <div class="inner">
-        <%= f.select :state, options_for_select(Carmen.state_codes, f.object.state), {}, {:class => 'state_select'} %>
+        <%= subregion_select f, :state, 'us' %>
       </div>
     </div>
-    <div class='span3'>
+    <div class='span4 offset1'>
       <div class="inner">
         <%= f.text_field :zip, :placeholder => "Zip Code" %>
       </div>

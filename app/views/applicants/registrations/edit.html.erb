@@ -62,27 +62,27 @@
         <div class='span4 offset1'>
           <div class="inner control-group">
             <%= f.label :gender %>
-            <%= f.select :gender, options_for_select(%w{Male Female}), :include_blank => "Prefer to not respond" %>
+            <%= f.select :gender, options_for_select(%w{Male Female}, @applicant.gender), :include_blank => "Prefer to not respond" %>
           </div>
         </div>
 
         <div class='span4'>
           <div class="inner control-group">
             <%= f.label :ethnicity %>
-            <%= f.select :ethnicity, options_for_select(%w{ Hispanic\ or\ Latino Not\ Hispanic\ or\ Latino }), :include_blank => "Prefer to not respond" %>
+            <%= f.select :ethnicity, options_for_select(%w{ Hispanic\ or\ Latino Not\ Hispanic\ or\ Latino }, @applicant.ethnicity), :include_blank => "Prefer to not respond" %>
           </div>
         </div>
         <div class='span4 offset1'>
           <div class="inner control-group">
             <%= f.label :race %>
-            <%= f.select :race, options_for_select(%w{ American\ Indian\ or\ Alaskan\ Native Asian Black\ or\ African\ American Native\ Hawaiian\ or\ Pacific\ Islander   }), :include_blank => "Prefer to not respond" %>
+            <%= f.select :race, options_for_select(%w{ American\ Indian\ or\ Alaskan\ Native Asian Black\ or\ African\ American Native\ Hawaiian\ or\ Pacific\ Islander}, @applicant.race), :include_blank => "Prefer to not respond" %>
           </div>
         </div>
 
         <div class='span4'>
           <div class="inner control-group">
             <%= f.label :citizenship %>
-            <%= f.select :citizenship, options_for_select([['United States','US']] + Carmen.countries), :include_blank => "Prefer to not respond" %>
+            <%= f.select :citizenship, options_for_select(['United States'] + Carmen::Country.all.map(&:name), @applicant.citizenship), :include_blank => "Prefer to not respond" %>
           </div>
         </div>
         <div class='span4 offset1'>
@@ -95,7 +95,7 @@
                 <button id='disability_cancel' class='btn btn-danger' type='button'>Cancel</button>
               </div>
             <%- else -%>
-              <%= f.select :disability, options_for_select(%w{No Yes}), :include_blank => "Prefer to not respond" %>
+              <%= f.select :disability, options_for_select(%w{No Yes}, @applicant.disability), :include_blank => "Prefer to not respond" %>
             <%- end -%>
           </div>
         </div>
