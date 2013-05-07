@@ -8,14 +8,14 @@ source 'http://gems.github.com'
 
 gem 'rails', '~>3.2.12'
 
+gem 'addressable'
 gem 'carmen'
-gem 'ckeditor'
 gem 'client_side_validations'
 gem 'cocaine', :git => 'git://github.com/thoughtbot/cocaine.git' 
 gem 'capistrano'
 gem 'devise'
-gem 'eventbrite-client'
-gem 'figaro' # also look at #https://github.com/Squeegy/rails-settings
+gem 'factory_girl_rails'
+gem 'faker'
 gem 'haml'
 gem 'jquery-rails', '~> 2.1.0'
 gem 'jquery-ui-rails'
@@ -25,9 +25,11 @@ gem 'paperclip'
 gem 'paper_trail'
 gem 'rails_admin'
 gem 'redcarpet'
+gem 'rich'
 gem 'rvm-capistrano'
 gem 'state_machine'
 gem 'whenever', :require => false
+gem 'validates_email_format_of'
 
 group :assets do
   gem 'bootstrap-sass', '~> 2.1.1.0'
@@ -65,8 +67,6 @@ group :test, :development do
   gem "capybara-webkit"
   gem 'database_cleaner'
   gem 'debugger'
-  gem 'faker'
-  gem 'factory_girl_rails'
   gem 'launchy'
   gem 'poltergeist'
   gem "rspec-rails", "~> 2.0"

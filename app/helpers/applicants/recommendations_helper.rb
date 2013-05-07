@@ -1,2 +1,0 @@
-module Applicants::RecommendationsHelper
-end

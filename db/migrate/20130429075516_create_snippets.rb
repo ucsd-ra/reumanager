@@ -1,13 +1,11 @@
-class CreateSettings < ActiveRecord::Migration
+class CreateSnippets < ActiveRecord::Migration
   def change
-    create_table :settings do |t|
+    create_table :snippets do |t|
       t.string :name, :limit => 255, :default => '', :null => false
       t.text :description
-      t.string :value
-      
+      t.text :value
+
       t.timestamps
     end
-    add_index :settings, :name
   end
-
 end

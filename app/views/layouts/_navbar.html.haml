@@ -10,13 +10,13 @@
       - if params[:controller] == 'applicants/registrations' && params[:action] !=  'status'
         %li.active
           - if applicant_signed_in?
-            =link_to "Edit Profile", edit_applicant_registration_path, :class => 'active'
+            =link_to "Profile", edit_applicant_registration_path, :class => 'active'
           - else
             =link_to "Apply Now", new_applicant_registration_url, :class => 'active'
       - else
         %li
           - if applicant_signed_in?
-            =link_to "Edit Profile", edit_applicant_registration_path, :class => 'active' unless current_applicant.submitted_at
+            =link_to "Profile", edit_applicant_registration_path, :class => 'active' unless current_applicant.submitted_at
           - else
             =link_to "Apply Now", new_applicant_registration_url, :class => 'active'
 
@@ -52,7 +52,7 @@
       - if params[:controller] == 'applicants/sessions'
         %li.active
           - if applicant_signed_in? || user_signed_in? #|| user_signed_in?
-            = user_signed_in? ? link_to("Logout1", destroy_user_session_path, :method => :delete) : link_to("Logout2", destroy_applicant_session_path, :method => :delete)
+            = user_signed_in? ? link_to("Logout1", destroy_user_session_path, :method => :delete) : link_to("Logout", destroy_applicant_session_path, :method => :delete)
           - else
             = link_to "Login", new_applicant_session_url, :class => 'active'
       - else
