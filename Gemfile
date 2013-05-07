@@ -9,7 +9,7 @@ source 'http://gems.github.com'
 gem 'rails', '~>3.2.12'
 
 gem 'addressable'
-gem 'carmen'
+gem 'carmen-rails'
 gem 'client_side_validations'
 gem 'cocaine', :git => 'git://github.com/thoughtbot/cocaine.git' 
 gem 'capistrano'
