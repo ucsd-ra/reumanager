@@ -69,7 +69,6 @@ module Applicants::RegistrationsHelper
     html.html_safe
   end
   
-  
   def application_status
     case current_applicant.state
     when 'completed_recommender_info'
@@ -98,5 +97,8 @@ module Applicants::RegistrationsHelper
     html.html_safe
   end
   
+  def show_disability_input?
+    current_applicant.disability && current_applicant.disability != 'No' && current_applicant.disability != ''
+  end
 end
 
