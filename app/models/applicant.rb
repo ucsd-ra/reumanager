@@ -11,16 +11,16 @@ class Applicant < ActiveRecord::Base
   has_many :recommendations, :dependent => :destroy
   has_many :recommenders, :through => :recommendations,  :dependent => :restrict
   
-  validates_associated :addresses, :awards, :records, :recommenders
-  validates_presence_of :first_name, :on => :create, :message => "can't be blank"
-  validates_presence_of :last_name, :on => :create, :message => "can't be blank"
- 
   accepts_nested_attributes_for :addresses, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
   accepts_nested_attributes_for :awards, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
   accepts_nested_attributes_for :records, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
   accepts_nested_attributes_for :recommendations, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
   accepts_nested_attributes_for :recommenders, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
   
+  validates_associated :addresses, :awards, :records, :recommenders
+  validates_presence_of :first_name, :on => :create, :message => "can't be blank"
+  validates_presence_of :last_name, :on => :create, :message => "can't be blank"
+ 
 #  validates_presence_of :records, :if => :academic_records_controller?
   
 #  validate :must_have_academic_record, :if => :academic_records_controller?

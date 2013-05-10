@@ -9,7 +9,7 @@ source 'http://gems.github.com'
 gem 'rails', '~>3.2.12'
 
 gem 'addressable'
-gem 'carmen-rails'
+gem 'carmen-rails', git: 'git://github.com/jgrevich/carmen-rails.git', branch: 'fix_select_option_in_subregion_select'
 gem 'client_side_validations'
 gem 'cocaine', :git => 'git://github.com/thoughtbot/cocaine.git' 
 gem 'capistrano'
@@ -75,6 +75,7 @@ end
 group :test do
   gem 'guard-livereload'
   gem 'guard-rspec'
+  gem 'mocha', require: "mocha/api"
   gem 'shoulda'
   gem 'sqlite3'
 end

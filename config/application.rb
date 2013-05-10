@@ -38,7 +38,7 @@ module Reuman
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password, :password_confirmation, :phone, :dob, :citizenship, :disability, :ethnicity, :race, :address, :address2, :city, :country, :state, :zip, :gpa, :gpa_range]
+    config.filter_parameters += [:password, :password_confirmation, :phone, :dob, :citizenship, :disability, :ethnicity, :race, :address2, :city, :country, :zip, :gpa, :gpa_range]
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true

@@ -34,8 +34,8 @@
     </div>
 
     <div class='span4'>
-      <div class="inner">
-        <%= subregion_select f.object_name, :state, 'US', { priority: ['US','CA'], selected: f.object.state } %>
+      <div class="inner">        
+        <%= subregion_select f.object_name, :state, 'US', { selected: f.object.state ,  :prompt => 'State or Territory' } %>
       </div>
     </div>
     <div class='span4 offset1'>
