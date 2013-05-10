@@ -88,7 +88,7 @@
         <div class='span4 offset1'>
           <div class="inner control-group">
             <%= f.label :disability %>
-            <%- if current_applicant.disability && current_applicant.disability != '' -%>
+            <%- if show_disability_input? -%>
               <div id='disability_container' class='input-append'>
                 <%= f.text_field :disability %>
                 <span class='add-on'>Please specify</span>

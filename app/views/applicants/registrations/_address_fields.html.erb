@@ -6,13 +6,13 @@
     <div class="span4">
       <div class="inner">
         <%= f.label :label %>
-        <%= f.select :label, options_for_select(%w( Home School Other)), :prompt => "Location Label" %>
+        <%= f.select :label, options_for_select(%w( Home School Other), f.object.label), :prompt => "Location Label" %>
       </div>
     </div>
     <div class="span4 offset1">
       <div class="inner">
         <%= f.label 'Permanent Address' %>
-        <%= f.select :permanent, options_for_select(["Yes", "No"]), :prompt => 'Permanent Address?' %>
+        <%= f.select :permanent, options_for_select(["Yes", "No"], f.object.permanent), :prompt => 'Permanent Address?' %>
       </div>
     </div>
 
@@ -35,7 +35,7 @@
 
     <div class='span4'>
       <div class="inner">
-        <%= subregion_select f, :state, 'us' %>
+        <%= subregion_select f.object_name, :state, 'US', { priority: ['US','CA'], selected: f.object.state } %>
       </div>
     </div>
     <div class='span4 offset1'>
