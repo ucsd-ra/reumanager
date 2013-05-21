@@ -1,5 +1,6 @@
-REU Manager
+NSF REU Manager
 ==========
+https://reumanager.com
 
 This program facilitates the application process for science oriented [NSF REU programs](http://www.nsf.gov/crssprgm/reu/) and is developed by the IT staff of the [UC San Diego Institute of Engineering in Medicine](https://iem.ucsd.edu/).
 
