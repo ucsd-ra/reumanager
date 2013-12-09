@@ -7,17 +7,17 @@ university:
 department:
   default: Materials Science and Engineering
 application_start:
-  default: Mon, 14 Jan 2012 00:00:00 -0700
+  default: Mon, 13 Jan 2013 00:00:00 -0700
 application_deadline:
-  default: Sun, 1 Mar 2013 00:00:00 -0700
+  default: Sat, 1 Mar 2014 00:00:00 -0700
 notification_date:
-  default: Fri, 15 Mar 2013 00:00:00 -0700
+  default: Fri, 14 Mar 2014 00:00:00 -0700
 program_start_date:
-  default: Sun, 19 May 2013
+  default: Sun, 18 May 2014
 program_end_date:
-  default: Sat, 27 Jul 2013
+  default: Sat, 26 Jul 2014
 check_back_date:
-  default: Tue, 1 Oct 2013
+  default: Mon, 1 Dec 2014
 mail_from:
   default: uf-mse@reumanager.com
 password_min_length:

@@ -23,9 +23,9 @@ role :db,  domain, :primary => true
 
 ## modified for passenger standalone
 set :rails_env,      "production"
-#set :passenger_port, 4030
-set :passenger_port, 4066
-set :passenger_cmd,  "bundle exec passenger"
+set :passenger_port, 4030
+#set :passenger_port, 4066
+set :passenger_cmd,  "bundle exec thin"
 set :whenever_command, "bundle exec whenever"
 
 # variables for cap-db
