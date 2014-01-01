@@ -52,6 +52,7 @@ namespace :deploy do
 
   task :restart, :roles => :app, :except => { :no_release => true } do
     chown
-    run "cd #{current_path} && #{thin_cmd} restart"
+    stop
+    start
   end
 end
