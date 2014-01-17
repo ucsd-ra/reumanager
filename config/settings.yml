@@ -1,7 +1,7 @@
 app_title:
   default: Student Undergraduate Research Experience (SURF)
 domain:
-  default: reu.ucsd.edu/mstp=surf
+  default: reu.ucsd.edu/mstp-surf
 university: 
   default: UC San Diego
 department:
@@ -19,7 +19,7 @@ program_end_date:
 check_back_date:
   default: Thu, 1 May 2014
 mail_from:
-  default: siodept@sio.ucsd.edu
+  default: mstp@ucsd.edu
 password_min_length:
   format: int
   default: 7
