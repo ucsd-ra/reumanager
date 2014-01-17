@@ -1,4 +1,4 @@
-module RecommendationsHelper
+module SecondRecommendationsHelper
   def student_waiver
     if @user.recommender.waive_rights == true
       return "<strong class='green'>*The student has <em><u>waived</u></em> his/her right to examine the letter of recommendation.</strong>"

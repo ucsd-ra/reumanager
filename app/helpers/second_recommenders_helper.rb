@@ -1,2 +1,2 @@
-module RecommendersHelper
+module SecondRecommendersHelper
 end

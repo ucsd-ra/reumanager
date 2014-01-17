@@ -1,4 +1,4 @@
-class RecommendationsController < ApplicationController
+class SecondRecommendationsController < ApplicationController
 #  ssl_required :index, :new, :edit, :create, :update
 
   # GET /recommendations
@@ -11,9 +11,9 @@ class RecommendationsController < ApplicationController
   # GET /recommendations/new.xml
   def new
     if @user = User.find_by_token(params[:id])
-      @recommendation = Recommendation.new
+      @recommendation = SecondRecommendation.new
       
-      @recommender = Recommender.find(@user.recommender)
+      @recommender = SecondRecommender.find(@user.recommender)
       
       if @recommender.recommendation
          redirect_to :action => :edit, :token => params[:id]
@@ -31,7 +31,7 @@ class RecommendationsController < ApplicationController
   # GET /recommendations/1/edit
   def edit
     if @user = User.find_by_token(params[:token])
-      @recommendation = Recommendation.find_by_user_id(@user)
+      @recommendation = SecondRecommendation.find_by_user_id(@user)
     else
       redirect_to :action => "sorry"
     end
@@ -40,11 +40,11 @@ class RecommendationsController < ApplicationController
   # POST /recommendations
   # POST /recommendations.xml
   def create
-    @recommendation = Recommendation.new(params[:recommendation])
+    @recommendation = SecondRecommendation.new(params[:recommendation])
     @user = User.find_by_token(params[:id])
     @recommendation.user_id = @user.id
     @recommendation.recommender_id = @user.recommender.id
-    @previous_rec = Recommendation.find_by_user_id
+    @previous_rec = SecondRecommendation.find_by_user_id
     respond_to do |format|
       if @user.recommender.update_attributes(params[:recommender]) && @recommendation.save
         flash[:notice] = 'Recommendation was successfully created.'
@@ -61,7 +61,7 @@ class RecommendationsController < ApplicationController
   # PUT /recommendations/1.xml
   def update
     if @user = User.find_by_token(params[:id])
-      @recommendation = Recommendation.find_by_user_id(@user)
+      @recommendation = SecondRecommendation.find_by_user_id(@user)
 
       respond_to do |format|
         if @recommendation.update_attributes(params[:recommendation])

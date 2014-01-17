@@ -1,4 +1,4 @@
-class Recommender < ActiveRecord::Base
+class SecondRecommender < ActiveRecord::Base
   belongs_to  :user
   has_one                     :recommendation
   validates_presence_of       :name, :title, :department, :college, :phone, :email

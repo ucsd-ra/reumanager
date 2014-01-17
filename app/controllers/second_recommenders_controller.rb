@@ -1,4 +1,4 @@
-class RecommendersController < ApplicationController
+class SecondRecommendersController < ApplicationController
   before_filter :login_from_cookie, :login_required, :application_complete?
 #  ssl_required :index, :new, :edit, :create, :update, :destroy  
   
@@ -11,7 +11,7 @@ class RecommendersController < ApplicationController
   # GET /recommenders/new
   # GET /recommenders/new.xml
   def new
-    @recommender = Recommender.new
+    @recommender = SecondRecommender.new
     @recommender.user_id = current_user.id
     respond_to do |format|
       format.html # new.html.erb
@@ -21,7 +21,7 @@ class RecommendersController < ApplicationController
 
   # GET /recommenders/1/edit
   def edit
-    @recommender = Recommender.find(current_user.recommender)
+    @recommender = SecondRecommender.find(current_user.recommender)
   end
 
   # POST /recommenders
@@ -29,7 +29,7 @@ class RecommendersController < ApplicationController
   def create
     # strip trailing whitespace from email input
     params[:recommender][:email] = params[:recommender][:email].strip
-    @recommender = Recommender.new(params[:recommender])
+    @recommender = SecondRecommender.new(params[:recommender])
     @recommender.user_id = current_user.id
     respond_to do |format|
       if @recommender.save
@@ -47,7 +47,7 @@ class RecommendersController < ApplicationController
   # PUT /recommenders/1.xml
   def update
     # strip trailing whitespace from email input
-    @recommender = Recommender.find(current_user.recommender)
+    @recommender = SecondRecommender.find(current_user.recommender)
     params[:recommender][:email] = params[:recommender][:email].strip
 
     respond_to do |format|
