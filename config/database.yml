@@ -13,7 +13,7 @@ test:
 
 production:
   adapter: mysql
-  database: reu_surf_production
+  database: reu_mstp_surf_production
   encoding: utf8
   username: reu_mstp_surf
   password: sqz_EIz_EIpEojbeY4EojIMg

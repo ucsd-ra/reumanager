@@ -2,8 +2,8 @@ require "bundler/capistrano"
 require "rvm/capistrano"
 
 #set :application, "reu_surf" #matches names used in smf_template.erb
-set :application, "surf" #matches names used in smf_template.erb
-set :repository,  "https://iem.ucsd.edu/svn/nsfreu/branches/surf"
+set :application, "mstp_surf" #matches names used in smf_template.erb
+set :repository,  "https://iem.ucsd.edu/svn/nsfreu/branches/mstp_surf"
 #set :domain, "192.168.10.103"
 set :domain, "indra.ucsd.edu"
 #set :deploy_to, "/var/www/#{application}" # I like this location
@@ -22,7 +22,7 @@ role :db,  domain, :primary => true
 
 ## modified for passenger standalone
 set :rails_env,      "production"
-set :thin_port, 4020
+set :thin_port, 4039
 set :thin_cmd,  "bundle exec thin"
 set :whenever_command, "bundle exec whenever"
 
