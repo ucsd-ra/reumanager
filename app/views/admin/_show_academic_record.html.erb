@@ -1,0 +1,17 @@
+<div class="span-17">
+		<%= h(f.major) %>
+		<%= h(f.college_level) %>&nbsp;&nbsp;<b>AT</b>&nbsp;
+		<%= h(f.college) %>&nbsp;
+		(<%= h(f.college_start.to_date.strftime("%Y.%m")) %>&nbsp;-&nbsp;<%= h(f.college_end.to_date.strftime("%Y.%m")) %>)
+		<%= @spacer %>
+		<label>GPA</label>&nbsp;<%= h(f.gpa) %>&nbsp;/&nbsp;<%= h(f.gpa_range) + @spacer %>
+</div>
+
+<div class="span-17 last transcript">
+	<label>TRANSCRIPT</label>&nbsp;<%= link_to " #{@user.academic_record.transcript.original_filename}", ((ActionController::Base.relative_url_root || '') + @user.academic_record.transcript.url), :class => "ss_sprite ss_page_white_acrobat" %>
+	<% if f.p_college != "" && f.p_college != nil -%>
+		<br /><label>PREVIOUS UNIVERSITY</label>&nbsp;<%= h(f.p_college) %>
+		(<%= h(f.p_college_start.to_date.strftime("%Y.%m")) %>&nbsp;-&nbsp;
+		<%= h(f.p_college_end.to_date.strftime("%Y.%m")) %>)
+	<% end -%>
+</div>

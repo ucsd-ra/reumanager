@@ -1,0 +1,36 @@
+app_title:
+  default: Student Undergraduate Research Experience (SURF)
+domain:
+  default: reu.ucsd.edu/surf
+university: 
+  default: UC San Diego
+department:
+  default: School of Medicine
+application_start:
+  default: Wed, 1 Jan 2014 00:00:00 -0700
+application_deadline:
+  default: Fri, 28 Feb 2014 00:00:00 -0700
+notification_date:
+  default: Mon, 31 Mar 2014 00:00:00 -0700
+program_start_date:
+  default: Mon, 23 Jun 2014
+program_end_date:
+  default: Fri, 15 Aug 2014
+check_back_date:
+  default: Thu, 1 May 2014
+mail_from:
+  default: siodept@sio.ucsd.edu
+password_min_length:
+  format: int
+  default: 7
+attachment_max_size:
+  format: int
+  default: 10240
+general_description:
+  default: "h3. General Description\n\nThis program is designed for motivated undergraduate students from groups that have been shown by the National Science Foundation (NSF) to be underrepresented in health sciences on a national basis and who are interested in seeking future training in a combined MD/PhD program or an academically oriented career in medicine.\n"
+highlights:
+  default: "h4. Highlights\n\n* Principal focus is an 8-week research project conducted in the laboratory of a faculty member in the biomedical sciences\n* Weekly seminars\n* Stipend for the eight-week period - $1600/month\n* Includes room (not board)\n* A physician-scientist clinical shadowing experience\n* Career development seminars\n* Presentation of your work at the UCSD Summer Research Conference"
+eligibility_requirements:
+  default: "h4. Eligibility Requirements\n\n* Students appointed to this program must be citizens or non-citizen nationals of the US.\n* Students must have completed at least one undergraduate year\n* Student must either come from a racial and ethnic group shown to be underrepresented in the health sciences,disabled, or come from a disadvantaged background.\n* See website for more detailed information on eligibility: http://mstp.ucsd.edu/surf/Pages/eligibility.aspx"
+application_information:
+  default: "h4. Application Information\n\n* Major components of the online application include: a personal statement, a copy of your unofficial school transcript (as a pdf), and contact information for one reference\n* The person writing your letter of recommendation will be contacted via e-mail and will submit their letter online\n* Once you begin an application, you can check the status of it any time by logging into this website\n* Only complete applications will be reviewed"

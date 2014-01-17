@@ -1,0 +1,42 @@
+<div>
+	<label>Why are you applying to the Scripps Undergraduate Research Fellowship (SURF) REU program?</label><br />
+	<%= e.awards.size > 4 ? e.awards : "You have not entered data for this section." %>
+</div>
+<br style="clear:both;"/>
+
+<div>
+	<label>What, if any, research experience do you have?  What type(s) of research experience would you like to experience and develop? (note: previous research experience is not required for participation in the program)</label><br />
+	<%= e.lab_skills.size > 4 ? e.lab_skills : "You have not entered data for this section."%>
+</div>
+<br style="clear:both;"/>
+
+<div>
+	<label>Please list any laboratory or computer skills you currently possess.  Which existing skills would you like to improve, or new skills would you like to develop?</label><br />
+	<%= e.comp_skills.size > 4 ? e.comp_skills : "You have not entered data for this section." %>
+</div>
+<br style="clear:both;"/>
+
+<div>
+	<label>Do you feel that your academic record accurately reflects your abilities as a student?  Please explain.</label><br style="clear:both;"/>
+	<%= e.gpa_comments.size > 4 ? e.gpa_comments : "You have not entered data for this section." %>
+</div>
+<br style="clear:both;"/>
+
+<div>
+	<label>How did you learn about the Scripps Undergraduate Research Program (SURF)?</label><br />
+	<%= e.learn ? e.learn : "You have not entered data for this section." %>
+</div>
+<br style="clear:both;"/>
+
+<div>
+	<label>Top 3 preferences for potential faculty mentors</label><br />
+	1. <%= e.mentor1 ? e.mentor1 : "You have not entered your first choice." %><br />
+	2. <%= e.mentor2 ? e.mentor2 : "You have not entered your second choice." %><br />
+	3. <%= e.mentor3 ? e.mentor3 : "You have not entered your third choice." %><br />
+</div>
+<br style="clear:both;"/>
+
+<div>
+	<label>What else would you like to share regarding your qualifications or desires as a candidate for the SURF REU program?</label>
+	<%= e.personal_statement.size > 4 ? e.personal_statement : "You have not entered data for this section." %>
+</div>

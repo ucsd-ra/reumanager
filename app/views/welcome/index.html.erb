@@ -1,0 +1,43 @@
+<div id="welcome">
+	<%= render :partial => "layouts/header_text" %>
+	
+	<br class='clear'/>
+
+	<div class="span-14" id="image">
+		<%= image_tag("surf.jpg", :width => 520)%>
+	</div>
+	<div class="span-10 last" id="general">
+        <%= textilize Setting.general_description %>
+
+        <p>Please see our website: <%= link_to "http://sioundergrad.ucsd.edu/surf", "http://sioundergrad.ucsd.edu/surf" %> for more information.</p>	
+	</div>
+
+	<br class='clear'/>
+	
+	<div class="span-8">
+    <%= textilize Setting.highlights %>
+	</div>
+	<div class="span-6">
+	    <%= textilize Setting.eligibility_requirements %>
+	    <%= link_to 'More information on eligibility...', 'http://mstp.ucsd.edu/surf/Pages/eligibility.aspx' %>
+	</div>
+	<div class="span-10 last">
+    <%= textilize Setting.application_information %>
+	</div>
+	
+	<br class='clear'/>
+	<% if app_in_progress? -%>
+	  <% if current_user %>
+    	<h3 class='clear center red'>Application Deadline <%= Setting.application_deadline.to_date.strftime("%B %d, %Y") %></h3>
+	    <h1 class="padded center clears"><b><%= link_to "Application Status", { :controller => 'users', :action => 'status' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
+	  <% else -%>
+    	<h3 class='clear center red'>Application Deadline <%= Setting.application_deadline.to_date.strftime("%B %d, %Y") %></h3>
+    	<h1 class="padded center clear"><b><%= link_to "Apply Now", { :controller => 'users', :action => 'new' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
+    <% end -%>
+	<% else -%>
+  	<h1 class="padded center clears"><b><%= link_to "Application Status", { :controller => 'users', :action => 'status' }, :class => "bordered colored rounded", :id => "apply_now" %></b></h1>
+  	<h3 class="">The deadline has now passed.  If you already started an application, you can continue to submit your data or check on the status using the button above.</h3>
+  	<h3 class='clear'><b>Please check back in <%= Setting.check_back_date.to_date.strftime("%B") %> for Summer <%= Setting.check_back_date.to_date.year %> Information</b></h3>
+	<% end -%>
+	
+</div>
