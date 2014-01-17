@@ -4,7 +4,7 @@ class AcademicRecord < ActiveRecord::Base
   
 #  validates_attachment_presence :transcript
 #  validates_attachment_size :transcript, :less_than => 10.megabytes
-  validates_presence_of     :college, :college_start, :college_end, :college_level, :major, :gpa, :gpa_range
+  validates_presence_of     :college, :college_start, :college_end, :college_level, :major, :gpa, :gpa_range, :funding
   before_post_process :randomize_file_name
 
   private

@@ -1,4 +1,4 @@
-class CreateRecommendations < ActiveRecord::Migration
+class CreateSecondRecommendations < ActiveRecord::Migration
   def self.up
     create_table :second_recommendations do |t|
       t.integer :user_id, :second_recommender_id

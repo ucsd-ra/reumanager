@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140117083501) do
+ActiveRecord::Schema.define(:version => 20140117204142) do
 
   create_table "academic_records", :force => true do |t|
     t.integer  "user_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20140117083501) do
     t.datetime "transcript_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "funding"
   end
 
   add_index "academic_records", ["user_id"], :name => "index_academic_records_on_user_id", :unique => true
@@ -47,6 +48,9 @@ ActiveRecord::Schema.define(:version => 20140117083501) do
     t.string   "mentor1"
     t.string   "mentor2"
     t.string   "mentor3"
+    t.text     "career"
+    t.text     "additional_info"
+    t.text     "research_interests"
   end
 
   add_index "extras", ["user_id"], :name => "index_extras_on_user_id", :unique => true
@@ -97,6 +101,37 @@ ActiveRecord::Schema.define(:version => 20140117083501) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "second_recommendations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "second_recommender_id"
+    t.string   "known_student"
+    t.string   "know_capacity"
+    t.string   "rating"
+    t.string   "gpa"
+    t.string   "gpa_range"
+    t.string   "undergrad_inst"
+    t.text     "faculty_comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "second_recommendations", ["user_id"], :name => "index_second_recommendations_on_user_id", :unique => true
+
+  create_table "second_recommenders", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "title"
+    t.string   "department"
+    t.string   "college"
+    t.string   "phone"
+    t.string   "email"
+    t.boolean  "waive_rights", :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "second_recommenders", ["user_id"], :name => "index_second_recommenders_on_user_id", :unique => true
 
   create_table "settings", :force => true do |t|
     t.string   "name",       :default => "", :null => false

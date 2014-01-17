@@ -1,12 +1,12 @@
 <div>
-	<label>Why are you applying to the Scripps Undergraduate Research Fellowship (SURF) REU program?</label><br />
+	<label>Please explain why you consider yourself eligible for this program as an individual from an ethnicity, background or other group that is disadvantaged and underrepresented in biomedical research.</label><br />
 </div>
-<%= e.text_area 'awards', :class => "extra" %>
+<%= e.text_area 'personal_statement', :class => "extra" %>
 
 <div>
-	<label>What, if any, research experience do you have?  What type(s) of research experience would you like to experience and develop? (note: previous research experience is not required for participation in the program)</label>
+	<label>Discuss your past research experiences. If you have not done any research yet, please list any relevant courses or other experiences you feel are relevant.</label>
 </div>
-<%= e.text_area 'lab_skills', :class => "extra" %>
+<%= e.text_area 'lab_skills', :class => "extra" %> 
 
 <div>
 	<label>Please list any laboratory or computer skills you currently possess.  Which existing skills would you like to improve, or new skills would you like to develop?</label>
@@ -14,9 +14,25 @@
 <%= e.text_area 'comp_skills', :class => "extra" %>
 
 <div>
+	<label>What areas of research are you interested in? *Please note, SURF focuses on research areas in cardiovascular, lung and blood disease. Areas such as cancer biology and neuroscience would be outside the scope of our program.  Please see the <%= link_to 'program website', 'http://mstp.ucsd.edu/surf/Pages/default.aspx' %> for information on factulty researchers involved with this program.</label>
+</div>
+<%= e.text_area 'research_interests', :class => "extra" %>
+
+<div>
 	<label>Do you feel that your academic record accurately reflects your abilities as a student?  Please explain.</label><br />
 </div>
 <%= e.text_area 'gpa_comments', :class => "extra" %>
+
+<div>
+	<label>Briefly discuss your educational and career plans and how this program will advance you towards your goals.</label>
+</div>
+<%= e.text_area 'career', :class => "extra" %>
+
+<div>
+	<label>Please add any additional information that may help us evaluate your application.</label><br />
+</div>
+<%= e.text_area 'additional_info', :class => "extra" %>
+
 
 <div id="learn">
 	<label>How did you learn about the Scripps Undergraduate Research Program (SURF)?</label><br />
@@ -31,32 +47,3 @@
     <%= e.text_field 'learn_more', :class => "extra" %>
   </div>
 </div>
-
-<div id="preference">
-	<label>Please select your top 3 preferences for projects/potential faculty mentors.</label><br />
-	Refer to <%= link_to "http://sioundergrad.ucsd.edu/research/", 'http://sioundergrad.ucsd.edu/research/' %> and the <%= link_to "current projects page", current_projects_path %> for more information.<br />
-	    <%= @extra.mentor1 %>
-	    <% if @extra.mentor1.blank? || Extra.mentor_list.include?([@extra.mentor1]) %>
-    	    <%= render :partial => "mentor_select", :locals => {:id => 1} %><br />
-    	<% else %>
-            <%= render :partial => "mentor_input", :locals => {:id => 1} %><br />
-        <% end -%>
-    	<% if @extra.mentor2.blank? || Extra.mentor_list.include?([@extra.mentor2]) %>
-    	    <%= render :partial => "mentor_select", :locals => {:id => 2} %><br />
-    	<% else %>
-            <%= render :partial => "mentor_input", :locals => {:id => 2} %><br />
-        <% end -%>
-    	<% if @extra.mentor3.blank? || Extra.mentor_list.include?([@extra.mentor3]) %>
-    	    <%= render :partial => "mentor_select", :locals => {:id => 3} %><br />
-    	<% else %>
-            <%= render :partial => "mentor_input", :locals => {:id => 3} %><br />
-        <% end -%>
-</div>
-
-<br style="clear:both;" />
-<div>
-	<label>Please Complete a brief essay (up to 300 words) explaining why you are interested in our program and how the experience may help you achieve your future goals:</label>
-</div>	
-<%= e.text_area 'personal_statement', :class => "extra" %>
-
-<%= render :partial => "mentor_observers" %>

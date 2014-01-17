@@ -1,6 +1,14 @@
 <%= f.error_messages %>
 
 <div>
+	<p>
+		<b>You must mail your official transcripts to:</b><br />
+		UCSD SURF Program<br />
+		9500 Gilman Drive MC 0661<br />
+		La Jolla, CA 92093-0661
+	</p>
+</div>
+<div>
 	<label>Current College or University</label><br />
 	<%= f.text_field 'college' %>
 </div>
@@ -61,6 +69,12 @@
 <% end -%>
 
 <hr />
+
+
+<div>
+	<label>Will you receive funding from any other program throughout the summer?</label>
+		<%= f.select 'funding', options_for_select(%w{\  No Yes}, @academic_record.funding) %>
+</div>
 
 <div>
 	<label>Did you attend another college or university previously?</label>
