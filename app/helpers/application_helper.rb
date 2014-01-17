@@ -60,6 +60,14 @@ module ApplicationHelper
     result = true if user && user.recommendation
   end
 
+  def check_second_recommender(user)
+    result = true if user && user.second_recommender
+  end
+
+  def check_second_recommendation(user)
+    result = true if user && user.second_recommendation
+  end
+
   def check_extras(user)
     result = true if user && user.extra && user.extra.personal_statement && user.extra.personal_statement.size > 2 && user.extra.mentor1 != '' && user.extra.mentor2 != '' && user.extra.mentor3 != ''
   end

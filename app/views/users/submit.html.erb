@@ -41,11 +41,21 @@
 	<% end -%>
 </div>
 	
+<div class="span-13 push-5 bordered colored padded rounded"  id="second_recommender">
+	<h4><%= link_to_unless_current "Second Faculty Recommendation", { :controller => "second_recommenders" } %></h4>
+    <p class='red clear'>The recommendation request is not sent until you submit a complete application.</p>
+	<% if @user.second_recommender -%>
+		<%= render :partial => 'show_recommender', :locals => { :r => @user.second_recommender } %>
+	<% else -%>
+		<p class="blood_red">You have not entered the secondd faculty recommendation info.</p>
+	<% end -%>
+</div>
+
 <% if check_all(@user) %>
 	<div class="span-13 push-5">
 		<br class='clear' />
 		<div class="right">
-			<%= link_to "Save", { :controller => "sessions", :action => "destroy" }, :class => "button positive" %>
+			<%= link_to "Save and Log Out", { :controller => "sessions", :action => "destroy" }, :class => "button positive" %>
 			<%= link_to_remote "Submit Application", { :action => "submit"}, { :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();", :class => "button positive", :id => "submit" } %>
 		</div>
 	</div>

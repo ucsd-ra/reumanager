@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_one                   :academic_record, :dependent => :destroy
   has_one                   :recommendation, :dependent => :destroy
   has_one                   :recommender, :dependent => :destroy
+  has_one                   :second_recommendation, :dependent => :destroy
+  has_one                   :second_recommender, :dependent => :destroy
   has_one                   :extra, :dependent => :destroy
   
   validates_format_of       :firstname,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
@@ -178,6 +180,20 @@ class User < ActiveRecord::Base
      UserMailer.deliver(email)
    end
    
+   def send_second_rec_request
+     self.update_attribute("second_rec_request_at", Time.now)
+     email = UserMailer.create_second_rec_request(self.second_recommender.email, self.id, self.token, self.firstname, self.lastname, self.email)
+     email.set_content_type('multipart', 'mixed')
+     UserMailer.deliver(email)
+   end
+
+   def send_second_rec_reminder
+     self.update_attribute("second_rec_request_at", Time.now)
+     email = UserMailer.create_second_rec_reminder(self.second_recommender.email, self.id, self.token, self.firstname, self.lastname, self.email)
+     email.set_content_type('multipart', 'mixed')
+     UserMailer.deliver(email)
+   end
+
    def send_complete_app
      email = UserMailer.create_complete_app(self.id, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')

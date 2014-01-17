@@ -1,7 +1,7 @@
 <% unless params[:action] == "login" -%>
 	<ul id="buttons">
 		<% if logged_in? -%>
-			<li class="last"><%= link_to "Logout", { :controller => "sessions", :action => "destroy" } %></li>
+			<li class="last"><%= link_to "Log Out", { :controller => "sessions", :action => "destroy" } %></li>
 			<% if params[:controller] == "users" || params[:controller] == "academic_records" || params[:controller] == "recommenders" || params[:controller] == "extras" -%>
 				<% if current_user && current_user.submitted_at && !check_admin && params[:controller] != "recommendation" %>
 					<li class="selected"><%= link_to "Application Status", { :controller => "users", :action => "status" }%></li>
@@ -13,7 +13,7 @@
 				<% end -%>
 			<% end -%>
 		<% elsif app_in_progress? -%>
-				<li class="last"><%= link_to "Login", { :controller => "sessions", :action => "new" } %></li>
+				<li class="last"><%= link_to "Log In", { :controller => "sessions", :action => "new" } %></li>
 		<% end -%>
 		
 		<% if current_user && check_admin -%>		
@@ -32,11 +32,6 @@
 			<% end -%>
 		<% end -%>
 		
-    	<% if params[:controller] == "projects" && params[:action] == "current" -%>
-    		<li class="selected"><%= link_to "Current Projects", current_projects_url %></li>
-    	<% else -%>
-    		<li><%= link_to "Current Projects", current_projects_url %></li>
-    	<% end -%>
 
 		<% if current_user && current_user.role.name == 'student' -%>
 			<% if params[:controller] == "users" && params[:action] == "edit" -%>

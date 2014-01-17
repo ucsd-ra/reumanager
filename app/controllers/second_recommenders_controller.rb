@@ -5,7 +5,7 @@ class SecondRecommendersController < ApplicationController
   # GET /recommenders
   # GET /recommenders.xml
   def index
-    current_user.recommender ? redirect_to(:action => "edit") : redirect_to(:action => "new")
+    current_user.second_recommender ? redirect_to(:action => "edit") : redirect_to(:action => "new")
   end
 
   # GET /recommenders/new
@@ -21,15 +21,15 @@ class SecondRecommendersController < ApplicationController
 
   # GET /recommenders/1/edit
   def edit
-    @recommender = SecondRecommender.find(current_user.recommender)
+    @recommender = SecondRecommender.find(current_user.second_recommender)
   end
 
   # POST /recommenders
   # POST /recommenders.xml
   def create
     # strip trailing whitespace from email input
-    params[:recommender][:email] = params[:recommender][:email].strip
-    @recommender = SecondRecommender.new(params[:recommender])
+    params[:second_recommender][:email] = params[:second_recommender][:email].strip
+    @recommender = SecondRecommender.new(params[:second_recommender])
     @recommender.user_id = current_user.id
     respond_to do |format|
       if @recommender.save
@@ -48,10 +48,10 @@ class SecondRecommendersController < ApplicationController
   def update
     # strip trailing whitespace from email input
     @recommender = SecondRecommender.find(current_user.recommender)
-    params[:recommender][:email] = params[:recommender][:email].strip
+    params[:second_recommender][:email] = params[:second_recommender][:email].strip
 
     respond_to do |format|
-      if @recommender.update_attributes(params[:recommender])
+      if @recommender.update_attributes(params[:second_recommender])
         flash[:notice] = 'Recommender was successfully updated.'
         format.html { redirect_to( :controller => "users", :action => "submit" ) }
         format.xml  { head :ok }
