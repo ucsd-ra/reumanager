@@ -12,10 +12,16 @@
 	<label>Lastname</label><br />
 	<%= f.text_field 'lastname', :size => 10 %>
 </div>
-<div class="clear">
+<div class="span-6">
 	<label>Date of Birth</label><br />
 	<%= f.date_select "dob", :start_year => 1970, :end_year => 1994 %>
 </div>
+
+<div class="span-4">
+	<label>Place of Birth</label><br />
+	<%= f.text_field 'birth_place', :size => 10 %>
+</div>
+
 
 <hr />
 

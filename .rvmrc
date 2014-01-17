@@ -1,5 +1,5 @@
-if [[ -s "~/.rvm/environments/ree@surf" ]] ; then
-  . "~/.rvm/environments/ree@surf"
+if [[ -s "~/.rvm/environments/ree@mstp_surf" ]] ; then
+  . "~/.rvm/environments/ree@mstp_surf"
 else
-  rvm --create use  "ree@surf"
+  rvm --create use  "ree@mstp_surf"
 fi
