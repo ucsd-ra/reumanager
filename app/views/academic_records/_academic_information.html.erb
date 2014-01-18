@@ -1,14 +1,6 @@
 <%= f.error_messages %>
 
 <div>
-	<p>
-		<b>You must mail your official transcripts to:</b><br />
-		UCSD SURF Program<br />
-		9500 Gilman Drive MC 0661<br />
-		La Jolla, CA 92093-0661
-	</p>
-</div>
-<div>
 	<label>Current College or University</label><br />
 	<%= f.text_field 'college' %>
 </div>
@@ -48,6 +40,15 @@
 </div>
 
 <hr />
+
+<div>
+	<p>
+		<b>You must mail your official transcripts to:</b><br />
+		UCSD SURF Program<br />
+		9500 Gilman Drive MC 0661<br />
+		La Jolla, CA 92093-0661
+	</p>
+</div>
 	
 <% if @academic_record.transcript && @academic_record.transcript.original_filename != nil %>
 	<div id="transcript">
