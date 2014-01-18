@@ -73,7 +73,7 @@ module ApplicationHelper
   end
 
   def check_all(user)
-    result = true if user && check_academic_records(user) && check_recommender(user) && check_extras(user)
+    result = true if user && check_academic_records(user) && check_recommender(user) && check_second_recommender(user) && check_extras(user)
   end
 
   def gpa_range
