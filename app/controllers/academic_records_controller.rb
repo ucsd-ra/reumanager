@@ -30,7 +30,8 @@ class AcademicRecordsController < ApplicationController
   def new
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
-    @academic_record = AcademicRecord.new
+    @academic_record = @user.build_academic_record
+    @academic_record.save_without_validation
   end
 
   # GET /academic_records/1/edit
@@ -53,7 +54,7 @@ class AcademicRecordsController < ApplicationController
   def create
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
-    @user.academic_record = AcademicRecord.new(params[:academic_record])
+    @user.build_academic_record params[:academic_record]
     @academic_record = @user.academic_record
     
     respond_to do |format|
@@ -66,6 +67,9 @@ class AcademicRecordsController < ApplicationController
         format.xml  { render :xml => @user.academic_record.errors, :status => :unprocessable_entity }
       end
     end
+
+  rescue RuntimeError
+    binding.pry
   end
 
   # PUT /academic_records/1

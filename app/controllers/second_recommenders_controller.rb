@@ -11,8 +11,8 @@ class SecondRecommendersController < ApplicationController
   # GET /recommenders/new
   # GET /recommenders/new.xml
   def new
-    @recommender = SecondRecommender.new
-    @recommender.user_id = current_user.id
+    @recommender = current_user.build_second_recommender
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @recommender }

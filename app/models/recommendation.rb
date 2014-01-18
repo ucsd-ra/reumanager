@@ -60,9 +60,12 @@ class Recommendation < ActiveRecord::Base
       pdf.text "#{@user.extra.send(e)}\n\n", :font_size => 11, :justification => :left, :left => 33, :right => 33
     end    
     pdf.save_as("#{RAILS_ROOT}/public/pdf/#{@user.id.to_s}_#{@user.lastname}.pdf")
-    #@user.send_complete_app
-    @user.send_complete_app_student
-    @user.completed_at = Time.now
+    
+    if @user.recommendations.count == 2
+      @user.send_complete_app_student
+      @user.completed_at = Time.now
+    end
+    
   end
   
   def make_pdf(pdf)

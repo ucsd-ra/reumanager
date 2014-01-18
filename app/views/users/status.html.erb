@@ -12,7 +12,7 @@
 
 	<div>
 		<% if @recommendation -%>
-			<p>Your recommendation was successfully submitted by <%= @recommendation.recommender.name %> (&nbsp;<%= mail_to @recommendation.recommender.email, @recommender.email %>&nbsp;) on <%= @recommendation.recommendation.created_at.strftime("%B %d at %I:%M %p") %>.</p>
+			<p>Your recommendation was successfully submitted by <%= @recommendation.recommender.name %> (&nbsp;<%= mail_to @recommendation.recommender.email, @recommendation.recommender.email %>&nbsp;) on <%= @recommendation.created_at.strftime("%B %d at %I:%M %p") %>.</p>
 		<% else -%>
 			<p>
 				We have not received a recommendation from <%= current_user.recommender.name %> yet.
@@ -33,7 +33,7 @@
 
 	<div class='clear'>
 		<% if @second_recommendation -%>
-			<p>Your recommendation was successfully submitted by <%= @second_recommendation.recommender.name %> (&nbsp;<%= mail_to @second_recommendation.recommender.email, @second_recommender.email %>&nbsp;) on <%= @second_recommendation.created_at.strftime("%B %d at %I:%M %p") %>.</p>
+			<p>Your recommendation was successfully submitted by <%= @second_recommendation.recommender.name %> (&nbsp;<%= mail_to @second_recommendation.recommender.email, @second_recommendation.recommender.email %>&nbsp;) on <%= @second_recommendation.created_at.strftime("%B %d at %I:%M %p") %>.</p>
 		<% else -%>
 			<p>
 				We have not received a recommendation from <%= current_user.second_recommender.name %> yet.

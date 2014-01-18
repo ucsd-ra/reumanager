@@ -1,0 +1,9 @@
+<%= render :partial => "layouts/header_text" %>
+
+<% form_for(@recommendation, :url => { :action => "update", :id => @user.token }, :method => "post") do |f| %>
+	<%= render :partial => "recommendation_information", :locals => { :f => f }%>
+	<br style="clear:both;" />
+    <p id="submit"><%= f.submit "Submit", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %></p>
+<hr />
+	<p><em>Thank you for taking the time to evaluate this applicant. Your opinion will be carefully considered during participant selection.</em></p>
+<% end %>

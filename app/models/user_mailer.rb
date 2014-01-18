@@ -114,7 +114,7 @@ class UserMailer < ActionMailer::Base
     part(
       :content_type => "text/html", 
       :body => render_message("rec_reminder",
-        :recommender => recommender, 
+        :recommender => recommender,              
         :id => id,
         :token => token,
         :firstname => firstname,
@@ -132,10 +132,7 @@ class UserMailer < ActionMailer::Base
 
     part(
       :content_type => "text/html", 
-      :body => render_message("rec_reminder",
-        :recommender => recommender, 
-        :id => id,
-        :token => token,
+      :body => render_message("rec_confirmation",
         :firstname => firstname,
         :lastname => lastname, 
         :email => email )

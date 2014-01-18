@@ -102,22 +102,6 @@ ActiveRecord::Schema.define(:version => 20140117235555) do
     t.datetime "updated_at"
   end
 
-  create_table "second_recommendations", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "second_recommender_id"
-    t.string   "known_student"
-    t.string   "know_capacity"
-    t.string   "rating"
-    t.string   "gpa"
-    t.string   "gpa_range"
-    t.string   "undergrad_inst"
-    t.text     "faculty_comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "second_recommendations", ["user_id"], :name => "index_second_recommendations_on_user_id", :unique => true
-
   create_table "second_recommenders", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"

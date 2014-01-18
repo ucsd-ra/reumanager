@@ -27,6 +27,8 @@ gem 'yaml_db', '0.1.0'
 group :development do
 	gem 'sqlite3-ruby', :require => 'sqlite3'
 	gem 'wirble'
+	gem 'pry'
+	gem 'pry-nav'
 end
 
 group :test do
