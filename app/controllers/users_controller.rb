@@ -208,7 +208,7 @@ class UsersController < ApplicationController
       @user.password = params[:password]
       @user.password_confirmation = params[:password_confirmation]
     
-      if @user.save && params[:password] != '' && params[:password_confirmation] != '' && params[:password]
+      if @user.save(:validate => false) && params[:password] != '' && params[:password_confirmation] != '' && params[:password]
         @user.update_attributes(:pw_token => nil, :pw_token_created_at => nil)
         logout_killing_session!
         flash[:notice] = 'Password was updated, please login.'

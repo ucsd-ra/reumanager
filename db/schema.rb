@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(:version => 20140117235555) do
     t.string   "mentor1"
     t.string   "mentor2"
     t.string   "mentor3"
-    t.text     "career"
     t.text     "additional_info"
     t.text     "research_interests"
+    t.text     "career"
   end
 
   add_index "extras", ["user_id"], :name => "index_extras_on_user_id", :unique => true

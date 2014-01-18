@@ -37,10 +37,9 @@
 <div id="learn">
 	<label>How did you learn about Research Experience for Undergraduates (REU)?</label><br />
 	<%= e.radio_button 'learn', 'NSF REU Website', :onclick => "$('learn_more').hide();" %><label>NSF REU Website</label>&nbsp;&nbsp;&nbsp;
-	<%= e.radio_button 'learn', 'Scripps Oceanography Website', :onclick => "$('learn_more').hide();" %><label>Scripps Oceanography Website</label>&nbsp;&nbsp;&nbsp;
-	<%= e.radio_button 'learn', 'Professor', :onclick => "$('learn_more').hide();" %><label>Professor</label>&nbsp;&nbsp;&nbsp;<br />
-	<%= e.radio_button 'learn', 'Undergraduate major program', :onclick => "$('learn_more').hide();" %><label>Undergraduate major program</label>&nbsp;&nbsp;&nbsp;
-	<%= e.radio_button 'learn', 'Email', :onclick => "$('learn_more').hide();" %><label>Email</label>&nbsp;&nbsp;&nbsp;
+	<%= e.radio_button 'learn', 'Professor', :onclick => "$('learn_more').hide();" %><label>Professor</label>&nbsp;&nbsp;&nbsp;
+	<%= e.radio_button 'learn', 'Undergraduate program', :onclick => "$('learn_more').hide();" %><label>Undergraduate program</label>&nbsp;&nbsp;&nbsp;
+	<%= e.radio_button 'learn', 'Email', :onclick => "$('learn_more').hide();" %><label>Email</label>&nbsp;&nbsp;&nbsp;<br />
 	<%= e.radio_button 'learn', 'Other', :onclick => "$('learn_more').show();" %><label>Other</label>&nbsp;&nbsp;&nbsp;
   <div id="learn_more" style="display:none;">
   	<label>Please elaborate:</label><br />
