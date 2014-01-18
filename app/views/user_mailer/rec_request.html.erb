@@ -1,5 +1,5 @@
 <p><%= @firstname + " " + @lastname + "( " + @email + " )" %> has requested a recommendation for the <%= Setting.app_title %> summer program at the <%= Setting.department %>, <%= Setting.university %>.</p>
 
-<p>Please submit your recommendation online by <%= Setting.application_deadline.to_date.strftime("%A, %b %d") %> at: <%= link_to ("https://" + Setting.domain + "/recommendations/new/#{@token}"), ("https://" + Setting.domain + "/recommendations/new/#{@token}") %></p>
+<p>Please submit your recommendation online by <%= Setting.application_deadline.to_date.strftime("%A, %b %d") %> at: <%= link_to ("https://" + Setting.domain + "/recommendations/new/#{@token}-#{@recommender.id}"), ("https://" + Setting.domain + "/recommendations/new/#{@token}-#{@recommender.id}") %></p>
 
 <p>Thank you so much for taking the time to provide us with this helpful information.</p>

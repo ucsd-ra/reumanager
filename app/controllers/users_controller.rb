@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :login_from_cookie, :login_required, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :reset, :forgot, :reactivate, :emailed, :pwreset ]
-  before_filter :application_complete?, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :status, :resend_request ]
+  before_filter :application_complete?, :except => [ :saved, :activate, :activated, :welcome, :thanks, :new, :create, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :app_thanks, :rec_thanks, :status, :resend_request, :resend_second_request ]
 #  ssl_required :index, :new, :create, :edit, :update, :status, :observe_perm, :observe_cit, :observe_dis, :observe_pcollege, :resend_request, :submit, :saved, :reset, :forgot, :reactivate, :emailed, :pwreset
   
 #  def activate
@@ -161,9 +161,8 @@ class UsersController < ApplicationController
   end
 
 	def status
-		@user = current_user
-		@recommendation = current_user.recommendation
-		@recommender = current_user.recommender
+		@recommendation = Recommendation.find_by_recommender_id(current_user.recommender)
+    @second_recommendation = Recommendation.find_by_recommender_id(current_user.second_recommender)
 	end
   
   def app_thanks
@@ -176,6 +175,22 @@ class UsersController < ApplicationController
       ## used to throttle the amount of requests to 1 every 3 hrs.
       if current_user.rec_request_at == nil || ((Time.now - current_user.rec_request_at)/60) > 180
         current_user.send_rec_request
+        flash[:notice] = 'Your recommendation request has been resent.'
+      else
+        flash[:notice] = 'Sorry, you must wait at least 3 hours before sending another recommendation request.'
+      end
+    else
+      flash[:notice] = 'Sorry, you can no longer resend your request, your application is complete.'
+    end
+    redirect_to( :controller => "users", :action => "status" )
+  end
+ 
+  def resend_second_request
+    ## check to make sure they are logged in and if the application is incomplete 
+    if current_user && current_user.completed_at == nil
+      ## used to throttle the amount of requests to 1 every 3 hrs.
+      if current_user.second_rec_request_at == nil || ((Time.now - current_user.second_rec_request_at)/60) > 180
+        current_user.send_second_rec_request
         flash[:notice] = 'Your recommendation request has been resent.'
       else
         flash[:notice] = 'Sorry, you must wait at least 3 hours before sending another recommendation request.'

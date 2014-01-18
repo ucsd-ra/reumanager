@@ -56,16 +56,12 @@ module ApplicationHelper
     result = true if user && user.recommender
   end
 
-  def check_recommendation(user)
-    result = true if user && user.recommendation
-  end
-
   def check_second_recommender(user)
     result = true if user && user.second_recommender
   end
 
-  def check_second_recommendation(user)
-    result = true if user && user.second_recommendation
+  def check_recommendation(user)
+    result = true if user && user.recommendation
   end
 
   def check_extras(user)

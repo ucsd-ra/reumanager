@@ -6,9 +6,8 @@ class User < ActiveRecord::Base
   
   belongs_to                :role
   has_one                   :academic_record, :dependent => :destroy
-  has_one                   :recommendation, :dependent => :destroy
+  has_many                  :recommendations, :dependent => :destroy
   has_one                   :recommender, :dependent => :destroy
-  has_one                   :second_recommendation, :dependent => :destroy
   has_one                   :second_recommender, :dependent => :destroy
   has_one                   :extra, :dependent => :destroy
   
@@ -168,28 +167,28 @@ class User < ActiveRecord::Base
 
    def send_rec_request
      self.update_attribute("rec_request_at", Time.now)
-     email = UserMailer.create_rec_request(self.recommender.email, self.id, self.token, self.firstname, self.lastname, self.email)
+     email = UserMailer.create_rec_request(self.recommender, self.id, self.token, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end
 
    def send_rec_reminder
      self.update_attribute("rec_request_at", Time.now)
-     email = UserMailer.create_rec_reminder(self.recommender.email, self.id, self.token, self.firstname, self.lastname, self.email)
+     email = UserMailer.create_rec_reminder(self.recommender, self.id, self.token, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end
    
    def send_second_rec_request
      self.update_attribute("second_rec_request_at", Time.now)
-     email = UserMailer.create_rec_request(self.second_recommender.email, self.id, self.token, self.firstname, self.lastname, self.email)
+     email = UserMailer.create_rec_request(self.second_recommender, self.id, self.token, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end
 
    def send_second_rec_reminder
      self.update_attribute("second_rec_request_at", Time.now)
-     email = UserMailer.create_rec_reminder(self.second_recommender.email, self.id, self.token, self.firstname, self.lastname, self.email)
+     email = UserMailer.create_rec_reminder(self.second_recommender, self.id, self.token, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end

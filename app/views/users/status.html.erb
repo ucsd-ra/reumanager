@@ -1,6 +1,6 @@
 <div class="span-13 push-5 bordered colored padded rounded">
-	<% if @user.submitted_at -%>
-		<p>Your application was successfully submitted on <%= @user.submitted_at.strftime("%B %d at %I:%M %p") %>.</p>
+	<% if current_user.submitted_at -%>
+		<p>Your application was successfully submitted on <%= current_user.submitted_at.strftime("%B %d at %I:%M %p") %>.</p>
 	<% else -%>
 		<% if Time.now > Setting.application_deadline.to_date %>
 			<p>Your application was not submitted because the deadline has past.</p>
@@ -9,23 +9,55 @@
 		<% end -%>
 	<% end -%>
 
-	<% if @recommendation -%>
-		<p>Your recommendation was successfully submitted by <%= @recommender.name %> (&nbsp;<%= mail_to @recommender.email, @recommender.email %>&nbsp;) on <%= @recommendation.created_at.strftime("%B %d at %I:%M %p") %>.</p>
-	<% else -%>
-		<% if @rec_request_at && @recommender -%>
-			<p>We have not received a recommendation yet. Your request was previously sent on <%= @rec_request_at.strftime("%B %d at %I:%M %p") %> to <%= @recommender.name %> at <%= @recommender.email %>.  We will continue to take recommendations after the application deadline.</p>
-		<% end -%>
-	<% end -%>
 
-	<% unless @user.completed_at == nil -%>
+	<div>
+		<% if @recommendation -%>
+			<p>Your recommendation was successfully submitted by <%= @recommendation.recommender.name %> (&nbsp;<%= mail_to @recommendation.recommender.email, @recommender.email %>&nbsp;) on <%= @recommendation.recommendation.created_at.strftime("%B %d at %I:%M %p") %>.</p>
+		<% else -%>
+			<p>
+				We have not received a recommendation from <%= current_user.recommender.name %> yet.
+				<% if current_user.rec_request_at && current_user.recommender -%>
+					Your request was previously sent on <%= current_user.rec_request_at.strftime("%B %d at %I:%M %p") %> to <%= current_user.recommender.name %> at <%= current_user.recommender.email %>.
+				<% else -%>
+					Your request was previously sent on <%= current_user.submitted_at.strftime("%B %d at %I:%M %p") %> to <%= current_user.recommender.name %> at <%= current_user.recommender.email %>
+				<% end -%>
+			</p>
+			<% unless current_user.completed_at != nil -%>
+				<% if current_user.rec_request_at -%>
+					<%= link_to "Resend Recommendation Request to #{current_user.recommender.name}", { :controller => "users", :action => "resend_request" }, :class => "button", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %>
+		 		<% end -%>
+			<% end -%>	
+		<% end -%>
+	</div>
+
+
+	<div class='clear'>
+		<% if @second_recommendation -%>
+			<p>Your recommendation was successfully submitted by <%= @second_recommendation.recommender.name %> (&nbsp;<%= mail_to @second_recommendation.recommender.email, @second_recommender.email %>&nbsp;) on <%= @second_recommendation.created_at.strftime("%B %d at %I:%M %p") %>.</p>
+		<% else -%>
+			<p>
+				We have not received a recommendation from <%= current_user.second_recommender.name %> yet.
+				<% if current_user.second_rec_request_at && current_user.second_recommender -%>
+					Your request was previously sent on <%= current_user.rec_request_at.strftime("%B %d at %I:%M %p") %> to <%= current_user.second_recommender.name %> at <%= current_user.second_recommender.email %>.
+				<% else -%>
+					Your request was previously sent on <%= current_user.submitted_at.strftime("%B %d at %I:%M %p") %> to <%= current_user.second_recommender.name %> at <%= current_user.second_recommender.email %>
+				<% end -%>
+			</p>
+			<% unless current_user.completed_at != nil -%>
+				<% if current_user.rec_request_at -%>
+					<%= link_to "Resend Recommendation Request to #{current_user.second_recommender.name}", { :controller => "users", :action => "resend_second_request" }, :class => "button", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %>
+		 		<% end -%>
+			<% end -%>	
+		<% end -%>		
+	</div>
+
+
+
+	<% unless current_user.completed_at == nil -%>
 		<h5>Congratulations, your application is complete!</h5>
 	<% end %>
 
-	<%= link_to "Application Status", { :controller => "users", :action => "status" }, :class => "button" unless params[:action] == "status" %>
 
-	<% unless @user.completed_at != nil || @recommendation -%>
-		<% if @user.rec_request_at -%>
-			<%= link_to "Resend Recommendation Request", { :controller => "users", :action => "resend_request" }, :class => "button", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %>
- 		<% end -%>
-	<% end -%>	
+
+	<%= link_to "Application Status", { :controller => "users", :action => "status" }, :class => "button" unless params[:action] == "status" %>
 </div>

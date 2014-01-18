@@ -13,8 +13,8 @@ class RecommendationsController < ApplicationController
     if @user = User.find_by_token(params[:id])
       @recommendation = Recommendation.new
       
-      @recommender = Recommender.find(@user.recommender)
-      
+      Recommender.find(@user.recommender) ? @recommender = Recommender.find(@user.recommender) : @recommender = Recommender.find(@user.second_recommender)
+
       if @recommender.recommendation
          redirect_to :action => :edit, :token => params[:id]
       else

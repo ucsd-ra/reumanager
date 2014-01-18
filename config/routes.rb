@@ -32,6 +32,7 @@ ActionController::Routing::Routes.draw do |map|
   map.rec_thanks '/rec_thanks', :controller => 'users', :action => 'rec_thanks'
   map.app_thanks '/app_thanks', :controller => 'users', :action => 'app_thanks'
   map.resend_request '/resend_request', :controller => 'users', :action => 'resend_request'
+  map.resend_second_request '/resend_second_request', :controller => 'users', :action => 'resend_second_request'
   map.signup  '/signup', :controller => 'users',   :action => 'new'
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):

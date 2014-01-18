@@ -85,27 +85,28 @@ class UserMailer < ActionMailer::Base
       )
   end
 
-  def rec_request(remail, id, token, firstname, lastname, email)
+  def rec_request(recommender, id, token, firstname, lastname, email)
     @subject    = "#{Setting.app_title} Recommendation Request for #{firstname} #{lastname}"
-    @recipients = remail
+    @recipients = recommender.email
     @from       = "#{Setting.university} #{Setting.department} <#{Setting.mail_from}>"
     @sent_on    = Time.now
     @headers    = {}
 
     part(
       :content_type => "text/html", 
-      :body => render_message("rec_request", 
-                              :id => id,
-                              :token => token,
-                              :firstname => firstname,
-                              :lastname => lastname, 
-                              :email => email )
-    )
+      :body => render_message("rec_request",
+        :recommender => recommender,              
+        :id => id,
+        :token => token,
+        :firstname => firstname,
+        :lastname => lastname, 
+        :email => email )
+      )
   end
   
-  def rec_reminder(remail, id, token, firstname, lastname, email)
+  def rec_reminder(recommender, id, token, firstname, lastname, email)
     @subject    = "#{Setting.app_title} Recommendation Request for #{firstname} #{lastname}"
-    @recipients = remail
+    @recipients = recommender.email
     @from       = "#{Setting.university} #{Setting.department} <#{Setting.mail_from}>"
     @sent_on    = Time.now
     @headers    = {}
@@ -113,11 +114,12 @@ class UserMailer < ActionMailer::Base
     part(
       :content_type => "text/html", 
       :body => render_message("rec_reminder",
-                              :id => id,
-                              :token => token,
-                              :firstname => firstname,
-                              :lastname => lastname, 
-                              :email => email )
+        :recommender => recommender, 
+        :id => id,
+        :token => token,
+        :firstname => firstname,
+        :lastname => lastname, 
+        :email => email )
     )
   end
 
@@ -130,10 +132,13 @@ class UserMailer < ActionMailer::Base
 
     part(
       :content_type => "text/html", 
-      :body => render_message("rec_confirmation",
-                              :firstname => firstname,
-                              :lastname => lastname, 
-                              :email => email )
+      :body => render_message("rec_reminder",
+        :recommender => recommender, 
+        :id => id,
+        :token => token,
+        :firstname => firstname,
+        :lastname => lastname, 
+        :email => email )
     )
   end
 
