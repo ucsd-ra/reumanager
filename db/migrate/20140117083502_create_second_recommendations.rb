@@ -1,18 +1,5 @@
 class CreateSecondRecommendations < ActiveRecord::Migration
   def self.up
-    create_table :second_recommendations do |t|
-      t.integer :user_id, :second_recommender_id
-      t.column :known_student,        :string
-      t.column :know_capacity,        :string
-      t.column :rating,               :string
-      t.column :gpa,                  :string
-      t.column :gpa_range,            :string
-      t.column :undergrad_inst,       :string
-      t.column :faculty_comment,      :text
-      t.timestamps
-    end
-    add_index :second_recommendations, :user_id, :unique => true
-
     create_table :second_recommenders do |t|
       t.column :user_id,              :integer
       t.column :name,                 :string
@@ -29,7 +16,6 @@ class CreateSecondRecommendations < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :second_recommendations
     drop_table :second_recommenders
   end
 end
