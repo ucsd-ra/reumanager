@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140117204142) do
+ActiveRecord::Schema.define(:version => 20140117235555) do
 
   create_table "academic_records", :force => true do |t|
     t.integer  "user_id"
@@ -185,6 +185,9 @@ ActiveRecord::Schema.define(:version => 20140117204142) do
     t.string   "pw_token"
     t.datetime "pw_token_created_at"
     t.string   "birth_place"
+    t.datetime "second_rec_request_at"
+    t.string   "father_edu"
+    t.string   "mother_edu"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
