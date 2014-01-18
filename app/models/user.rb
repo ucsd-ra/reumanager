@@ -182,14 +182,14 @@ class User < ActiveRecord::Base
    
    def send_second_rec_request
      self.update_attribute("second_rec_request_at", Time.now)
-     email = UserMailer.create_second_rec_request(self.second_recommender.email, self.id, self.token, self.firstname, self.lastname, self.email)
+     email = UserMailer.create_rec_request(self.second_recommender.email, self.id, self.token, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end
 
    def send_second_rec_reminder
      self.update_attribute("second_rec_request_at", Time.now)
-     email = UserMailer.create_second_rec_reminder(self.second_recommender.email, self.id, self.token, self.firstname, self.lastname, self.email)
+     email = UserMailer.create_rec_reminder(self.second_recommender.email, self.id, self.token, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end
