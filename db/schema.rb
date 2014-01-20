@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(:version => 20140119035536) do
     t.datetime "updated_at"
   end
 
-  add_index "recommendations", ["user_id"], :name => "index_recommendations_on_user_id", :unique => true
+  add_index "recommendations", ["user_id"], :name => "index_recommendations_on_user_id"
 
   create_table "recommenders", :force => true do |t|
     t.integer  "user_id"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20140119035536) do
     t.datetime "activated_at"
     t.datetime "submitted_at"
     t.datetime "rec_request_at"
+    t.datetime "second_rec_request_at"
     t.datetime "completed_at"
     t.string   "token"
     t.datetime "token_created_at"
