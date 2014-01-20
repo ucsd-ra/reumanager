@@ -26,6 +26,7 @@ class CreateUsers < ActiveRecord::Migration
       t.column :activated_at,              :datetime
       t.column :submitted_at,              :datetime
       t.column :rec_request_at,            :datetime
+      t.column :second_rec_request_at,     :datetime
       t.column :completed_at,              :datetime
       t.column :token,                     :string
       t.column :token_created_at,           :datetime
