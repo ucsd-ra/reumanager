@@ -44,6 +44,7 @@ class RecommendersController < ApplicationController
     respond_to do |format|
       if @recommender.save
         flash[:notice] = 'Recommender was successfully created.'
+        logger.info "recommender created, primary params: #{params[:recommender][:primary]}" 
         if params[:recommender][:primary] == 'true'
           format.html { redirect_to( :controller => "recommenders", :primary => false ) }
         else
