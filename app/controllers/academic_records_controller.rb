@@ -31,7 +31,6 @@ class AcademicRecordsController < ApplicationController
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
     @academic_record = @user.build_academic_record
-    @academic_record.save_without_validation
   end
 
   # GET /academic_records/1/edit
