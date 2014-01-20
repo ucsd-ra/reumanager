@@ -11,44 +11,44 @@
 
 
 	<div>
-		<% if @recommendation -%>
-			<p>Your recommendation was successfully submitted by <%= @recommendation.recommender.name %> (&nbsp;<%= mail_to @recommendation.recommender.email, @recommendation.recommender.email %>&nbsp;) on <%= @recommendation.created_at.strftime("%B %d at %I:%M %p") %>.</p>
+		<% if current_user.primary_recommendation -%>
+			<p>Your recommendation was successfully submitted by <%= current_user.primary_recommendation.recommender.name %> (&nbsp;<%= mail_to current_user.primary_recommendation.recommender.email, current_user.primary_recommendation.recommender.email %>&nbsp;) on <%= current_user.primary_recommendation.created_at.strftime("%B %d at %I:%M %p") %>.</p>
 		<% else -%>
 			<p>
-				We have not received a recommendation from <%= current_user.recommender.name %> yet.
-				<% if current_user.rec_request_at && current_user.recommender -%>
-					Your request was previously sent on <%= current_user.rec_request_at.strftime("%B %d at %I:%M %p") %> to <%= current_user.recommender.name %> at <%= current_user.recommender.email %>.
+				We have not received a recommendation from <%= current_user.primary_recommender.name %> yet.
+				<% if current_user.rec_request_at && current_user.primary_recommender -%>
+					Your request was previously sent on <%= current_user.rec_request_at.strftime("%B %d at %I:%M %p") %> to <%= current_user.primary_recommender.name %> at <%= current_user.primary_recommender.email %>.
 				<% else -%>
-					Your request was previously sent on <%= current_user.submitted_at.strftime("%B %d at %I:%M %p") %> to <%= current_user.recommender.name %> at <%= current_user.recommender.email %>
+					Your request was previously sent on <%= current_user.submitted_at.strftime("%B %d at %I:%M %p") %> to <%= current_user.primary_recommender.name %> at <%= current_user.primary_recommender.email %>
 				<% end -%>
 			</p>
 			<% unless current_user.completed_at != nil -%>
 				<% if current_user.rec_request_at -%>
-					<%= link_to "Resend Recommendation Request to #{current_user.recommender.name}", { :controller => "users", :action => "resend_request" }, :class => "button", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %>
+					<%= link_to "Resend Recommendation Request to #{current_user.primary_recommender.name}", { :controller => "users", :action => "resend_request" }, :class => "button", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %>
 		 		<% end -%>
 			<% end -%>	
 		<% end -%>
 	</div>
 
 
-	<div class='clear'>
-		<% if @second_recommendation -%>
-			<p>Your recommendation was successfully submitted by <%= @second_recommendation.recommender.name %> (&nbsp;<%= mail_to @second_recommendation.recommender.email, @second_recommendation.recommender.email %>&nbsp;) on <%= @second_recommendation.created_at.strftime("%B %d at %I:%M %p") %>.</p>
+	<div class='clear' >
+		<% if current_user.secondary_recommendation -%>
+			<p>Your recommendation was successfully submitted by <%= current_user.secondary_recommendation.recommender.name %> (&nbsp;<%= mail_to current_user.secondary_recommendation.recommender.email, current_user.secondary_recommendation.recommender.email %>&nbsp;) on <%= current_user.secondary_recommendation.created_at.strftime("%B %d at %I:%M %p") %>.</p>
 		<% else -%>
 			<p>
-				We have not received a recommendation from <%= current_user.second_recommender.name %> yet.
-				<% if current_user.second_rec_request_at && current_user.second_recommender -%>
-					Your request was previously sent on <%= current_user.rec_request_at.strftime("%B %d at %I:%M %p") %> to <%= current_user.second_recommender.name %> at <%= current_user.second_recommender.email %>.
+				We have not received a recommendation from <%= current_user.secondary_recommender.name %> yet.
+				<% if current_user.rec_request_at && current_user.secondary_recommender -%>
+					Your request was previously sent on <%= current_user.rec_request_at.strftime("%B %d at %I:%M %p") %> to <%= current_user.secondary_recommender.name %> at <%= current_user.secondary_recommender.email %>.
 				<% else -%>
-					Your request was previously sent on <%= current_user.submitted_at.strftime("%B %d at %I:%M %p") %> to <%= current_user.second_recommender.name %> at <%= current_user.second_recommender.email %>
+					Your request was previously sent on <%= current_user.submitted_at.strftime("%B %d at %I:%M %p") %> to <%= current_user.secondary_recommender.name %> at <%= current_user.secondary_recommender.email %>
 				<% end -%>
 			</p>
 			<% unless current_user.completed_at != nil -%>
 				<% if current_user.rec_request_at -%>
-					<%= link_to "Resend Recommendation Request to #{current_user.second_recommender.name}", { :controller => "users", :action => "resend_second_request" }, :class => "button", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %>
+					<%= link_to "Resend Recommendation Request to #{current_user.secondary_recommender.name}", { :controller => "users", :action => "resend_request" }, :class => "button", :onclick => "$('submit').hide();$('overlay').show();$('opaque_overlay').show();$('wait_box').show();" %>
 		 		<% end -%>
 			<% end -%>	
-		<% end -%>		
+		<% end -%>
 	</div>
 
 

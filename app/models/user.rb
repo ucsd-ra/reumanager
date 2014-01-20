@@ -56,20 +56,12 @@ class User < ActiveRecord::Base
     self.recommenders.secondary.first
   end
 
-  def primary_recommendation?
-    !self.recommenders.primary.empty?
-  end
-
   def primary_recommendation
-    self.recommenders.primary.first
-  end
-
-  def secondary_recommendation?
-    !self.recommenders.secondary.empty?
+    self.primary_recommender.recommendations(:where => {:user_id => self.id}).first
   end
 
   def secondary_recommendation
-    self.recommenders.secondary.first
+    self.secondary_recommender.recommendations(:where => {:user_id => self.id}).first
   end
 
 

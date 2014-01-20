@@ -161,8 +161,6 @@ class UsersController < ApplicationController
   end
 
 	def status
-		@recommendation = Recommendation.find_by_recommender_id(current_user.recommender)
-    @second_recommendation = Recommendation.find_by_recommender_id(current_user.second_recommender)
 	end
   
   def app_thanks
