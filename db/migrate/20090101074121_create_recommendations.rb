@@ -11,7 +11,7 @@ class CreateRecommendations < ActiveRecord::Migration
       t.column :faculty_comment,      :text
       t.timestamps
     end
-    add_index :recommendations, :user_id, :unique => true
+    add_index :recommendations, :user_id
   end
 
   def self.down
