@@ -2,6 +2,8 @@
 
 <p>Please supply the name and contact information of a faculty member who has agreed to write a letter of recommendation in support of your application. Instructions for submitting the letter will be sent directly to the faculty member via email after you complete the application.</p>
 
+<%= r.hidden_field :primary, :value => @recommender.primary %>
+
 <div class="fieldbox float">
 	<label>Recommender Name</label><br />
 	<%= r.text_field 'name' %>

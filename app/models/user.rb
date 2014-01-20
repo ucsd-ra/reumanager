@@ -1,4 +1,5 @@
 require 'digest/sha1'
+
 class User < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword
@@ -38,7 +39,40 @@ class User < ActiveRecord::Base
   @@per_page = 20
   
   before_create :make_token
-    
+  
+  def primary_recommender?
+    !self.recommenders.primary.empty?
+  end
+
+  def primary_recommender
+    self.recommenders.primary.first
+  end
+
+  def secondary_recommender?
+    !self.recommenders.secondary.empty?
+  end
+
+  def secondary_recommender
+    self.recommenders.secondary.first
+  end
+
+  def primary_recommendation?
+    !self.recommenders.primary.empty?
+  end
+
+  def primary_recommendation
+    self.recommenders.primary.first
+  end
+
+  def secondary_recommendation?
+    !self.recommenders.secondary.empty?
+  end
+
+  def secondary_recommendation
+    self.recommenders.secondary.first
+  end
+
+
   def name
     @name = ""
     @name << (self.firstname + " ") if self.firstname
@@ -166,28 +200,28 @@ class User < ActiveRecord::Base
 
    def send_rec_request
      self.update_attribute("rec_request_at", Time.now)
-     email = UserMailer.create_rec_request(self.recommender, self.id, self.token, self.firstname, self.lastname, self.email)
+     email = UserMailer.create_rec_request(self.primary_recommender, self.id, self.token, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end
 
    def send_second_rec_request
      self.update_attribute("rec_request_at", Time.now)
-     email = UserMailer.create_rec_request(self.second_recommender, self.id, self.token, self.firstname, self.lastname, self.email)
+     email = UserMailer.create_rec_request(self.secondary_recommender, self.id, self.token, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end
 
    def send_rec_reminder
      self.update_attribute("rec_request_at", Time.now)
-     email = UserMailer.create_rec_reminder(self.recommender, self.id, self.token, self.firstname, self.lastname, self.email)
+     email = UserMailer.create_rec_reminder(self.primary_recommender, self.id, self.token, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end
    
    def send_second_rec_reminder
      self.update_attribute("rec_request_at", Time.now)
-     email = UserMailer.create_rec_reminder(self.second_recommender, self.id, self.token, self.firstname, self.lastname, self.email)
+     email = UserMailer.create_rec_reminder(self.secondary_recommender, self.id, self.token, self.firstname, self.lastname, self.email)
      email.set_content_type('multipart', 'mixed')
      UserMailer.deliver(email)
    end
@@ -227,14 +261,14 @@ class User < ActiveRecord::Base
      self.pw_token_created_at = Time.now
    end
 
-		def self.send_reminders
-			@users = User.all :conditions => ["role_id = ?", 1]
-			@users.each do |u|
-				u.send_reg_confirmation
-			end
-	  end
-	  
-	  def send_rejection_letter
+  	def self.send_reminders
+  		@users = User.all :conditions => ["role_id = ?", 1]
+  		@users.each do |u|
+  			u.send_reg_confirmation
+  		end
+    end
+    
+    def send_rejection_letter
       if self.emailed_rejection_letter_at == nil
         email = UserMailer.create_rejection_letter(self)
         email.set_content_type('multipart', 'mixed')

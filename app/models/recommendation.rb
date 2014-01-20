@@ -8,7 +8,7 @@ class Recommendation < ActiveRecord::Base
   
   def make_pdf_and_send_app
     @user = User.find(self.user_id)
-    @recommender = @user.recommender
+    @recommender = self.recommender
     pdf = PDF::Writer.new
     pdf.text "Recommendation for #{@user.firstname} #{@user.lastname}\n\n", :font_size => 20, :justification => :left
     pdf.move_pointer(24)

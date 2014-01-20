@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140117235555) do
+ActiveRecord::Schema.define(:version => 20140119035536) do
 
   create_table "academic_records", :force => true do |t|
     t.integer  "user_id"
@@ -92,30 +92,14 @@ ActiveRecord::Schema.define(:version => 20140117235555) do
     t.boolean  "waive_rights", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "primary",      :default => false
   end
-
-  add_index "recommenders", ["user_id"], :name => "index_recommenders_on_user_id", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "second_recommenders", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.string   "title"
-    t.string   "department"
-    t.string   "college"
-    t.string   "phone"
-    t.string   "email"
-    t.boolean  "waive_rights", :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "second_recommenders", ["user_id"], :name => "index_second_recommenders_on_user_id", :unique => true
 
   create_table "settings", :force => true do |t|
     t.string   "name",       :default => "", :null => false
@@ -169,7 +153,6 @@ ActiveRecord::Schema.define(:version => 20140117235555) do
     t.string   "pw_token"
     t.datetime "pw_token_created_at"
     t.string   "birth_place"
-    t.datetime "second_rec_request_at"
     t.string   "father_edu"
     t.string   "mother_edu"
   end

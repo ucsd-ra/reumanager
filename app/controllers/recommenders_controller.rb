@@ -5,40 +5,52 @@ class RecommendersController < ApplicationController
   # GET /recommenders
   # GET /recommenders.xml
   def index
-    current_user.recommender ? redirect_to(:action => "edit") : redirect_to(:action => "new")
+    if params[:primary]
+      current_user.primary_recommender? ? redirect_to(:action => "edit", :primary => true) : redirect_to(:action => "new", :primary => true)
+    else
+      current_user.secondary_recommender? ? redirect_to(:action => "edit", :primary => false) : redirect_to(:action => "new", :primary => false)
+    end
   end
 
   # GET /recommenders/new
   # GET /recommenders/new.xml
   def new
-    @recommender = current_user.build_recommender
+    if params[:primary]
+      @recommender = current_user.recommenders.build(:primary => true)
+    else
+      @recommender = current_user.recommenders.build(:primary => false)
+    end
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @recommender }
     end
   end
 
   # GET /recommenders/1/edit
   def edit
-    @recommender = Recommender.find(current_user.recommender)
+    if params[:primary]
+      @recommender = current_user.primary_recommender
+    else
+      @recommender = current_user.secondary_recommender
+    end
   end
 
   # POST /recommenders
   # POST /recommenders.xml
   def create
-    # strip trailing whitespace from email input
-    params[:recommender][:email] = params[:recommender][:email].strip
     @recommender = Recommender.new(params[:recommender])
     @recommender.user_id = current_user.id
+
     respond_to do |format|
       if @recommender.save
         flash[:notice] = 'Recommender was successfully created.'
-        format.html { redirect_to( :controller => "second_recommenders", :action => "new" ) }
-        format.xml  { render :xml => @recommender, :status => :created, :location => @recommender }
+        if params[:recommender][:primary] == 'true'
+          format.html { redirect_to( :controller => "recommenders", :primary => false ) }
+        else
+          format.html { redirect_to( :controller => "users", :action => "submit") }
+        end
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @recommender.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -46,18 +58,18 @@ class RecommendersController < ApplicationController
   # PUT /recommenders/1
   # PUT /recommenders/1.xml
   def update
-    # strip trailing whitespace from email input
-    @recommender = Recommender.find(current_user.recommender)
-    params[:recommender][:email] = params[:recommender][:email].strip
+    if params[:recommender][:primary] == 'true'
+      @recommender = Recommender.find(current_user.primary_recommender)
+    else
+      @recommender = Recommender.find(current_user.secondary_recommender)
+    end
 
     respond_to do |format|
       if @recommender.update_attributes(params[:recommender])
         flash[:notice] = 'Recommender was successfully updated.'
-        format.html { redirect_to( :controller => "second_recommenders", :action => "new" ) }
-        format.xml  { head :ok }
+        format.html { redirect_to( :controller => "recommenders", :primary => params[:recommender][:primary] ) }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @recommender.errors, :status => :unprocessable_entity }
       end
     end
   end

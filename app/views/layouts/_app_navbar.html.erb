@@ -20,16 +20,16 @@
 			<li class="bordered colored rounded <%= "positive" if check_extras(current_user) %>"><%= link_to "3. Additional", { :controller => "extras " } %></li>
 		<% end -%>
 
-		<% if params[:controller] == "recommenders" -%>
-			<li class="active bordered colored rounded <%= "positive" if check_recommender(current_user) %>"><%= link_to "4. Recommender", { :controller => "recommenders" }, :class => "active"  %></li>
+		<% if params[:controller] == "recommenders" && params[:primary] == true  -%>
+			<li class="active bordered colored rounded <%= "positive" if current_user.primary_recommender? %>"><%= link_to "4. Recommender", { :controller => "recommenders", :primary => true }, :class => "active"  %></li>
 		<% else -%>
-			<li class="bordered colored rounded <%= "positive" if check_recommender(current_user) %>"><%= link_to "4. Recommender", { :controller => "recommenders" } %></li>
+			<li class="bordered colored rounded <%= "positive" if current_user.primary_recommender? %>"><%= link_to "4. Recommender", { :controller => "recommenders", :primary => true } %></li>
 		<% end -%>
 
-		<% if params[:controller] == "second_recommenders" -%>
-			<li class="active bordered colored rounded <%= "positive" if check_second_recommender(current_user) %>"><%= link_to "5. Second Recommender", { :controller => "second_recommenders" }, :class => "active"  %></li>
+		<% if params[:controller] == "recommenders" && params[:primary] == false -%>
+			<li class="active bordered colored rounded <%= "positive" if current_user.secondary_recommender? %>"><%= link_to "5. Second Recommender", { :controller => "recommenders" , :primary => false}, :class => "active"  %></li>
 		<% else -%>
-			<li class="bordered colored rounded <%= "positive" if check_second_recommender(current_user) %>"><%= link_to "5. Second Recommender", { :controller => "second_recommenders" } %></li>
+			<li class="bordered colored rounded <%= "positive" if current_user.secondary_recommender? %>"><%= link_to "5. Second Recommender", { :controller => "recommenders", :primary => false } %></li>
 		<% end -%>
 
 		<% if params[:controller] == "users" && params[:action] == "submit" -%>

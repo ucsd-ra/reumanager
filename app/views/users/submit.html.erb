@@ -34,8 +34,8 @@
 <div class="span-13 push-5 bordered colored padded rounded"  id="recommender">
 	<h4><%= link_to_unless_current "Faculty Recommendation", { :controller => "recommenders" } %></h4>
     <p class='red clear'>The recommendation request is not sent until you submit a complete application.</p>
-	<% if @user.recommender -%>
-		<%= render :partial => 'show_recommender', :locals => { :r => @user.recommender } %>
+	<% if @user.primary_recommender -%>
+		<%= render :partial => 'show_recommender', :locals => { :r => @user.primary_recommender } %>
 	<% else -%>
 		<p class="blood_red">You have not entered the faculty recommendation info.</p>
 	<% end -%>
@@ -44,8 +44,8 @@
 <div class="span-13 push-5 bordered colored padded rounded"  id="second_recommender">
 	<h4><%= link_to_unless_current "Second Faculty Recommendation", { :controller => "second_recommenders" } %></h4>
     <p class='red clear'>The recommendation request is not sent until you submit a complete application.</p>
-	<% if @user.second_recommender -%>
-		<%= render :partial => 'show_recommender', :locals => { :r => @user.second_recommender } %>
+	<% if @user.secondary_recommender -%>
+		<%= render :partial => 'show_recommender', :locals => { :r => @user.secondary_recommender } %>
 	<% else -%>
 		<p class="blood_red">You have not entered the secondd faculty recommendation info.</p>
 	<% end -%>

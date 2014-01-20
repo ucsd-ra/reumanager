@@ -53,15 +53,15 @@ module ApplicationHelper
   end
 
   def check_recommender(user)
-    result = true if user && user.recommender
+    result = true if user && user.primary_recommender?
   end
 
   def check_second_recommender(user)
-    result = true if user && user.second_recommender
+    result = true if user && user.secondary_recommender?
   end
 
   def check_recommendation(user)
-    result = true if user && user.recommendation
+    result = true if user && user.recommendations.count == 2
   end
 
   def check_extras(user)

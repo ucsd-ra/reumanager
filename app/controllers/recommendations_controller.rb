@@ -10,19 +10,15 @@ class RecommendationsController < ApplicationController
   # GET /recommendations/new
   # GET /recommendations/new.xml
   def new
-    token = params[:id]
+    if @user = User.find_by_token(params[:id])
+      @recommender = Recommender.find_by_email(params[:email])
+      @recommendation = @recommender.recommendations.build(:recommender_id => @recommender)
 
-    if @user = User.find_by_token(token)
-      Recommender.find_by_email(params[:email]) ? @recommender = Recommender.find_by_email(params[:email]) : @recommender = SecondRecommender.find_by_email(params[:email])
-
-      @recommendation = @user.recommendations.build(:recommender_id => @recommender)
-
-      if @user.recommendations.include?(@recommender.recommendation)
+      if @recommender.recommendations(:where => {:user_id => @user}).first
          redirect_to :action => :edit, :token => params[:id], :email => @recommender.email
       else
         respond_to do |format|
           format.html # new.html.erb
-          format.xml  { render :xml => @recommendation }
         end
       end
     else
@@ -36,28 +32,25 @@ class RecommendationsController < ApplicationController
   # GET /recommendations/1/edit
   def edit
     token = params[:token]
-    Recommender.find_by_email(params[:email]) ? @recommender = Recommender.find_by_email(params[:email]) : @recommender = SecondRecommender.find_by_email(params[:email])
+    @recommender = Recommender.find_by_email(params[:email])
     @user = User.find_by_token(token)
-    @recommendation = Recommendation.find_by_recommender_id_and_user_id(@recommender, @user)
-    @recommender = @recommendation.recommender
+    @recommendation = @recommender.recommendations(:where => { :user_id => @user }).first
   end
 
   # POST /recommendations
   # POST /recommendations.xml
   def create
     @user = User.find_by_token(params[:id])
-    Recommender.find_by_email(params[:recommender][:email]) ? @recommender = Recommender.find_by_email(params[:recommender][:email]) : @recommender = SecondRecommender.find_by_email(params[:recommender][:email])
+    @recommender = Recommender.find_by_email(params[:recommender][:email])
     @recommendation = @user.recommendations.build(params[:recommendation])
-    @recommendation.recommender_id = @recommender
+    @recommendation.recommender = @recommender
     
     respond_to do |format|
       if @recommendation.save
         flash[:notice] = 'Recommendation was successfully created.'
         format.html { redirect_to( rec_thanks_url ) }
-        format.xml  { render :xml => @recommendation, :status => :created, :location => @recommendation }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @recommendation.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -72,10 +65,8 @@ class RecommendationsController < ApplicationController
         if @recommendation.update_attributes(params[:recommendation])
           flash[:notice] = 'Recommendation was successfully updated.'
           format.html { redirect_to(rec_thanks_url) }
-          format.xml  { head :ok }
         else
           format.html { render :action => "edit" }
-          format.xml  { render :xml => @recommendation.errors, :status => :unprocessable_entity }
         end
       end
 

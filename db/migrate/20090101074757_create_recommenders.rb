@@ -11,7 +11,6 @@ class CreateRecommenders < ActiveRecord::Migration
       t.column :waive_rights,         :boolean, :default => false
       t.timestamps
     end
-    add_index :recommenders, :user_id, :unique => true
   end
 
   def self.down
