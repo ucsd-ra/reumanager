@@ -384,6 +384,7 @@ DEPENDENCIES
   paper_trail
   paperclip
   poltergeist
+  pry
   rails (~> 3.2.12)
   rails_admin
   rb-fchange

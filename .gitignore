@@ -8,6 +8,7 @@ capybara-*.html
 /.bundle
 /config/application.yml
 /config/database.yml
+/config/settings.yml
 /coverage/
 /db/*.sqlite3
 /log

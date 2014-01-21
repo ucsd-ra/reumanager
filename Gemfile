@@ -52,6 +52,7 @@ group :development do
   gem 'hirb-unicode'
   gem 'meta_request'
   gem 'net-http-spy'
+  gem 'pry'
   gem 'rb-fchange', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-inotify', :require => false
