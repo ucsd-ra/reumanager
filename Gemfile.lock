@@ -6,15 +6,6 @@ GIT
       railties (>= 3.0)
 
 GIT
-  remote: git://github.com/jgrevich/carmen-rails.git
-  revision: 1a8b4194ae1448e8e9deb501f52aa116746b64c3
-  branch: fix_select_option_in_subregion_select
-  specs:
-    carmen-rails (1.0.0)
-      carmen (~> 1.0.0)
-      rails
-
-GIT
   remote: git://github.com/thoughtbot/cocaine.git
   revision: 1fa540ec169919930db3a0e6e4a2f5d9421b9aeb
   specs:
@@ -82,6 +73,9 @@ GEM
       json
     carmen (1.0.0)
       unicode_utils (~> 1.4.0)
+    carmen-rails (1.0.0)
+      carmen (~> 1.0.0.beta2)
+      rails
     chronic (0.9.1)
     client_side_validations (3.2.5)
     climate_control (0.0.3)
@@ -362,7 +356,7 @@ DEPENDENCIES
   capistrano
   capybara
   capybara-webkit
-  carmen-rails!
+  carmen-rails
   client_side_validations
   cocaine!
   coffee-rails (~> 3.2.1)
