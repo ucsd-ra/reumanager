@@ -50,7 +50,7 @@
 	<h2><%= link_to_unless_current "Faculty Recommendation", '' %></h2>
 
 	<% if @user.primary_recommendation -%>
-		<%= render :partial => 'show_recommender', :locals => { :r => @user.primary_recommendation } %>
+		<%= render :partial => 'show_recommender', :locals => { :r => @user.primary_recommender } %>
 	<% else -%>
 		<p class="clear blood_red">You have not entered the faculty recommendation info.</p>
 	<% end -%>
@@ -102,7 +102,7 @@
 	<h2><%= link_to_unless_current "Faculty Recommendation", '' %></h2>
 
 	<% if @user.secondary_recommendation -%>
-		<%= render :partial => 'show_recommender', :locals => { :r => @user.secondary_recommendation } %>
+		<%= render :partial => 'show_recommender', :locals => { :r => @user.secondary_recommender } %>
 	<% else -%>
 		<p class="clear blood_red">You have not entered the faculty recommendation info.</p>
 	<% end -%>
