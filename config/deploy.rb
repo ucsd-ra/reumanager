@@ -22,7 +22,7 @@ role :db,  domain, :primary => true
 
 ## modified for passenger standalone
 set :rails_env,      "production"
-set :thin_port, 4090
+set :thin_port, 4040
 set :thin_cmd,  "bundle exec thin"
 
 namespace :deploy do
