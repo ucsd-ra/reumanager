@@ -10,7 +10,7 @@ set :domain, "indra.ucsd.edu"
 set :deploy_to, "/var/www/#{application}" # I like this location
 set :user, "ubuntu"
 set :keep_releases, 3
-set :rvm_ruby_string, "ree@#{application}"
+set :rvm_ruby_string, "ree@reu_#{application}"
 set :rvm_type, :system
 set :scm, :subversion
 
