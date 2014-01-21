@@ -44,47 +44,99 @@
 <hr class="clear space" />
 
 <div class="span-20"  id="recommender">
-	<% if @user.recommendation -%>
-		<small class="right green"><b>LAST UPDATED</b> <%= @user.recommendation.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
+	<% if @user.primary_recommendation -%>
+		<small class="right green"><b>LAST UPDATED</b> <%= @user.primary_recommendation.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
 	<% end -%>
 	<h2><%= link_to_unless_current "Faculty Recommendation", '' %></h2>
 
-	<% if @user.recommender -%>
-		<%= render :partial => 'show_recommender', :locals => { :r => @user.recommender } %>
+	<% if @user.primary_recommendation -%>
+		<%= render :partial => 'show_recommender', :locals => { :r => @user.primary_recommendation } %>
 	<% else -%>
 		<p class="clear blood_red">You have not entered the faculty recommendation info.</p>
 	<% end -%>
 			
 	<br class="clear" />
 	
-	<% if @user.recommendation -%>
+	<% if @user.primary_recommendation -%>
 		<div>
 			<label>How long have you known the applicant?</label>
-			<%= @spacer + h(@user.recommendation.known_student) %>
+			<%= @spacer + h(@user.primary_recommendation.known_student) %>
 		</div>
 		<br />
 			
 		<div>
 			<label>In what capacity have you known the applicant?</label>
-			<%= @spacer + h(@user.recommendation.know_capacity) %>
+			<%= @spacer + h(@user.primary_recommendation.know_capacity) %>
 		</div>
 		<br />
 		
 		<div>
 			<label>Applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers</label>
-			<%= @spacer + h(@user.recommendation.rating) %>
+			<%= @spacer + h(@user.primary_recommendation.rating) %>
 		</div>
 		<br />
 		
 		<div>
 			<label>Is your institution primarily an undergraduate institution?</label>
-			<%= @spacer + h(@user.recommendation.undergrad_inst) %>
+			<%= @spacer + h(@user.primary_recommendation.undergrad_inst) %>
 		</div>
 		<br />
 		
 		<div>
 			<label>Quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, any circumstances that may be helpful in evaluating the applicant's academic performance.</label><br />
-			<%= h(@user.recommendation.faculty_comment).gsub("\n", "<br />") %>
+			<%= h(@user.primary_recommendation.faculty_comment).gsub("\n", "<br />") %>
+		</div>
+	<% else -%>
+		<p>A recommendation has not been received for this student.</p>
+	<% end -%>
+	
+	<br class="clear" /><br class="clear" />
+	
+</div>
+
+
+<div class="span-20"  id="second_recommender">
+	<% if @user.secondary_recommendation -%>
+		<small class="right green"><b>LAST UPDATED</b> <%= @user.secondary_recommendation.updated_at.to_date.strftime("%Y.%m.%d - %I:%M %p") %></small>
+	<% end -%>
+	<h2><%= link_to_unless_current "Faculty Recommendation", '' %></h2>
+
+	<% if @user.secondary_recommendation -%>
+		<%= render :partial => 'show_recommender', :locals => { :r => @user.secondary_recommendation } %>
+	<% else -%>
+		<p class="clear blood_red">You have not entered the faculty recommendation info.</p>
+	<% end -%>
+			
+	<br class="clear" />
+	
+	<% if @user.secondary_recommendation -%>
+		<div>
+			<label>How long have you known the applicant?</label>
+			<%= @spacer + h(@user.secondary_recommendation.known_student) %>
+		</div>
+		<br />
+			
+		<div>
+			<label>In what capacity have you known the applicant?</label>
+			<%= @spacer + h(@user.secondary_recommendation.know_capacity) %>
+		</div>
+		<br />
+		
+		<div>
+			<label>Applicant's overall promise in comparison with other individuals whom you have known at similar stages in their careers</label>
+			<%= @spacer + h(@user.secondary_recommendation.rating) %>
+		</div>
+		<br />
+		
+		<div>
+			<label>Is your institution primarily an undergraduate institution?</label>
+			<%= @spacer + h(@user.secondary_recommendation.undergrad_inst) %>
+		</div>
+		<br />
+		
+		<div>
+			<label>Quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, any circumstances that may be helpful in evaluating the applicant's academic performance.</label><br />
+			<%= h(@user.secondary_recommendation.faculty_comment).gsub("\n", "<br />") %>
 		</div>
 	<% else -%>
 		<p>A recommendation has not been received for this student.</p>
