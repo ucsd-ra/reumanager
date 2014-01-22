@@ -1,12 +1,4 @@
 <div>
-	<label>Please List your top 3 preferences for potential faculty mentors.</label><%= @spacer %><br />
-
-	1.) <%= e.mentor1 if e.mentor1 %> &nbsp;&nbsp;&nbsp;&nbsp; 2.) <%= e.mentor2 if e.mentor2 %> &nbsp;&nbsp;&nbsp;&nbsp; 3.) <%= e.mentor3 if e.mentor3 %>
-</div>
-<br style="clear:both;"/>
-
-
-<div>
 	<label>Please list up to five academic awards that you have received (e.g. Award - Date Received [mm/yy])</label><%= @spacer %>
 
 	<%= e.awards ? e.awards.gsub("\n", "<br />") : e.awards %>
