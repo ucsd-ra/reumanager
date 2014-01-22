@@ -9,9 +9,9 @@ department:
 application_start:
   default: Wed, 1 Jan 2014 00:00:00 -0700
 application_deadline:
-  default: Fri, 28 Feb 2014 00:00:00 -0700
+  default: Fri, 14 Feb 2014 00:00:00 -0700
 notification_date:
-  default: Mon, 31 Mar 2014 00:00:00 -0700
+  default: Mon, 10 Mar 2014 00:00:00 -0700
 program_start_date:
   default: Mon, 23 Jun 2014
 program_end_date:
