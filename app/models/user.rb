@@ -57,11 +57,15 @@ class User < ActiveRecord::Base
   end
 
   def primary_recommendation
-    self.primary_recommender.recommendations(:where => {:user_id => self.id}).first
+    if self.primary_recommender
+      self.primary_recommender.recommendations(:where => {:user_id => self.id}).first
+    end
   end
 
   def secondary_recommendation
-    self.secondary_recommender.recommendations(:where => {:user_id => self.id}).first
+    if self.secondary_recommender
+      self.secondary_recommender.recommendations(:where => {:user_id => self.id}).first
+    end
   end
 
 

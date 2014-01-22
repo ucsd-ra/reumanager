@@ -1,5 +1,6 @@
 <div class='span-10'>
 	<label>DOB</label>&nbsp;<%= h(f.dob.to_date.strftime("%Y.%m.%d")) + @spacer %>
+	<label>BIRTHPLACE</label>&nbsp;<%= h f.birth_place %>
 	<label>PHONE</label>&nbsp;<%= h(f.phone) + @spacer %>
 	<label>EMAIL</label>&nbsp;<%= h(f.email) + @spacer %><br />
 	<label>ADDRESS</label>&nbsp;

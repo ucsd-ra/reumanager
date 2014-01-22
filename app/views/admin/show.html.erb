@@ -27,7 +27,7 @@
 		
 		<%= render :partial => 'show_academic_record', :locals => { :f => @user.academic_record } %>
 	<% else -%>
-		<%= content_tag 'p', 'Applicant has not added any academic records.', :class => 'blood_red' unless @user.academic_record %>
+		<%= content_tag 'p', 'No academic records.', :class => 'blood_red' unless @user.academic_record %>
 	<% end -%>
 </div>
 <hr class="clear space" />
@@ -38,7 +38,7 @@
 	<% if @user.extra -%>
 		<%= render :partial => 'show_extra', :locals => { :e => @user.extra } %>
 	<% else -%>
-		<p class="blood_red">You have not entered your additional info.</p>
+		<p class="blood_red">No additional info.</p>
 	<% end -%>
 </div>
 <hr class="clear space" />
@@ -49,10 +49,10 @@
 	<% end -%>
 	<h2><%= link_to_unless_current "Faculty Recommendation", '' %></h2>
 
-	<% if @user.primary_recommendation -%>
+	<% if @user.primary_recommender -%>
 		<%= render :partial => 'show_recommender', :locals => { :r => @user.primary_recommender } %>
 	<% else -%>
-		<p class="clear blood_red">You have not entered the faculty recommendation info.</p>
+		<p class="clear blood_red">No recommender.</p>
 	<% end -%>
 			
 	<br class="clear" />
@@ -101,10 +101,10 @@
 	<% end -%>
 	<h2><%= link_to_unless_current "Faculty Recommendation", '' %></h2>
 
-	<% if @user.secondary_recommendation -%>
+	<% if @user.secondary_recommender -%>
 		<%= render :partial => 'show_recommender', :locals => { :r => @user.secondary_recommender } %>
 	<% else -%>
-		<p class="clear blood_red">You have not entered the faculty recommendation info.</p>
+		<p class="clear blood_red">No recommender.</p>
 	<% end -%>
 			
 	<br class="clear" />

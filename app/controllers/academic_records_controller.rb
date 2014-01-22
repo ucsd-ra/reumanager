@@ -67,8 +67,10 @@ class AcademicRecordsController < ApplicationController
       end
     end
 
-  rescue RuntimeError
-    binding.pry
+  rescue RuntimeError => e
+    logger.error 'Error with academic record upload - ' + e.message
+    flash[:notice] = "There was an error with the form. Please save the acaemic info first before upload your transcript."
+    redirect_to :action => 'new'
   end
 
   # PUT /academic_records/1
