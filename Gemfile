@@ -3,10 +3,10 @@ if RUBY_VERSION =~ /1.9/
   Encoding.default_internal = Encoding::UTF_8
 end
 
-source 'http://rubygems.org'
 source 'http://gems.github.com'
+source 'https://rubygems.org'
 
-gem 'rails', '~>3.2.12'
+gem 'rails'
 
 gem 'addressable'
 gem 'carmen-rails'
@@ -17,7 +17,7 @@ gem 'devise'
 gem 'factory_girl_rails'
 gem 'faker'
 gem 'haml'
-gem 'jquery-rails', '~> 2.1.0'
+gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'mysql2'
@@ -31,17 +31,23 @@ gem 'state_machine'
 gem 'whenever', :require => false
 gem 'validates_email_format_of'
 
-group :assets do
-  gem 'bootstrap-sass', '~> 2.1.1.0'
-  gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'font-awesome-sass-rails'
-  gem 'libv8', '~> 3.11.8'
-  gem 'modernizr-rails'
-  gem 'therubyracer'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'uglifier', '>= 1.0.3'
-end
+# Old assets group
+gem 'bootstrap-sass'
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+gem 'coffee-rails'
+gem 'font-awesome-sass-rails'
+gem 'libv8'
+gem 'modernizr-rails'
+gem 'therubyracer'
+gem 'sass-rails'
+gem 'uglifier'
+
+# Gems for smooth transition to Rails 4
+gem 'protected_attributes'
+gem 'rails-observers'
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
+gem 'activerecord-deprecated_finders'
 
 group :development do
   gem 'awesome_print'
@@ -70,7 +76,7 @@ group :test, :development do
   gem 'debugger'
   gem 'launchy'
   gem 'poltergeist'
-  gem "rspec-rails", "~> 2.0"
+  gem "rspec-rails"
 end
 
 group :test do

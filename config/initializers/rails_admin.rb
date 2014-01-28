@@ -1,7 +1,7 @@
 # RailsAdmin config file. Generated on September 22, 2012 18:58
 # See github.com/sferik/rails_admin for more informations
 
-RailsAdmin.config do |config| 
+RailsAdmin.config do |config|
   config.current_user_method { current_user } # auto-generated
 
   config.audit_with :history, Applicant
@@ -29,31 +29,31 @@ RailsAdmin.config do |config|
 
   config.model Applicant do
     list do
-      
+
       field :name do
         searchable :last_name
         sortable :last_name
         filterable false
       end
-      
+
       field :first_name do
         searchable true
         filterable false
         visible false
       end
-      
+
       field :last_name do
         searchable true
         filterable true
         visible false
       end
-      
+
       field :academic_info do
         formatted_value do
           bindings[:object].academic_record(bindings[:object].record)
         end
       end
-      
+
       field :current_status do
         searchable :state
         sortable :state
@@ -65,7 +65,7 @@ RailsAdmin.config do |config|
         date_format :short
       end
     end
-    
+
     show do
       field :personal_info do
         label "Personal Info"
@@ -74,7 +74,7 @@ RailsAdmin.config do |config|
           bindings[:view].raw %{<b>Email</b> #{applicant.email}<br />
             <b>Phone</b> #{applicant.phone if applicant.phone}<br />
             <b>Address</b>  #{applicant.address}
-          
+
           <h4>Statement</h4>
           #{Markdown.render applicant.statement if applicant.statement}}
         end
@@ -85,22 +85,22 @@ RailsAdmin.config do |config|
           applicant = bindings[:object]
           records = applicant.records
           awards = applicant.awards
-          
+
           html = bindings[:view].render(:partial => 'applicant_personal_info', :locals => {:link => bindings[:view].link_to(applicant.records.last.transcript_file_name, applicant.transcript.url), :applicant => applicant, :records => records, :awards => awards})
           bindings[:view].raw html
         end
       end
-      
+
       field :recommendation_info do
         formatted_value do
           applicant = bindings[:object]
           recommendations = applicant.recommendations
-          
+
           bindings[:view].render(:partial => 'applicant_recommendations', :locals => {:applicant => applicant, :recommendations => recommendations, :view_bindings => bindings[:view]})
         end
       end
     end
-    
+
     edit do
       field :state, :enum do
         label "Current Status"
@@ -114,13 +114,13 @@ RailsAdmin.config do |config|
       field :recommendations
     end
   end
-  
-  
+
+
   config.model AcademicRecord do
     def custom_label_method
       "#{self.degree}, #{self.university}"
     end
-    
+
     visible false
   end
   config.model Address do
@@ -145,7 +145,7 @@ RailsAdmin.config do |config|
       field :description, :text do
         ckeditor false
       end
-      
+
       field :value
     end
     list do
@@ -189,25 +189,26 @@ RailsAdmin.config do |config|
       end
     end
   end
+
   config.model User do
     visible false
-    #     configure :id, :integer 
-    #     configure :email, :string 
-    #     configure :password, :password         # Hidden 
-    #     configure :password_confirmation, :password         # Hidden 
-    #     configure :reset_password_token, :string         # Hidden 
-    #     configure :reset_password_sent_at, :datetime 
-    #     configure :remember_created_at, :datetime 
-    #     configure :sign_in_count, :integer 
-    #     configure :current_sign_in_at, :datetime 
-    #     configure :last_sign_in_at, :datetime 
-    #     configure :current_sign_in_ip, :string 
-    #     configure :last_sign_in_ip, :string 
-    #     configure :failed_attempts, :integer 
-    #     configure :unlock_token, :string 
-    #     configure :locked_at, :datetime 
-    #     configure :authentication_token, :string 
-    #     configure :created_at, :datetime 
+    #     configure :id, :integer
+    #     configure :email, :string
+    #     configure :password, :password         # Hidden
+    #     configure :password_confirmation, :password         # Hidden
+    #     configure :reset_password_token, :string         # Hidden
+    #     configure :reset_password_sent_at, :datetime
+    #     configure :remember_created_at, :datetime
+    #     configure :sign_in_count, :integer
+    #     configure :current_sign_in_at, :datetime
+    #     configure :last_sign_in_at, :datetime
+    #     configure :current_sign_in_ip, :string
+    #     configure :last_sign_in_ip, :string
+    #     configure :failed_attempts, :integer
+    #     configure :unlock_token, :string
+    #     configure :locked_at, :datetime
+    #     configure :authentication_token, :string
+    #     configure :created_at, :datetime
     #     configure :updated_at, :datetime   #   # Sections:
     #   list do; end
     #   export do; end
@@ -215,9 +216,5 @@ RailsAdmin.config do |config|
     #   edit do; end
     #   create do; end
     #   update do; end
-  end
-
-  config.model Rich::RichFile do
-    visible false
   end
 end
