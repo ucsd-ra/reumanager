@@ -1,17 +1,17 @@
 require "bundler/capistrano"
 require "rvm/capistrano"
 
-set :whenever_command, "bundle exec whenever"
-require "whenever/capistrano"
-
+#set :application, "reu_surf" #matches names used in smf_template.erb
 set :application, "reu_ust" #matches names used in smf_template.erb
-set :repository,  "https://vishnu.ucsd.edu/svn/nsfreu/branches/ust"
-set :domain, 'vishnu.ucsd.edu'
-set :deploy_to, "/var/rails/#{application}" # I like this location
+set :repository,  "https://iem.ucsd.edu/svn/nsfreu/branches/ust"
+#set :domain, "192.168.10.103"
+set :domain, "indra.ucsd.edu"
+#set :deploy_to, "/var/www/#{application}" # I like this location
+set :deploy_to, "/var/www/#{application}" # I like this location
 set :user, "ubuntu"
-set :keep_releases, 2
-set :rvm_ruby_string, "ree@reu_ust"
-set :rvm_type, :user
+set :keep_releases, 3
+set :rvm_ruby_string, "ree@#{application}"
+set :rvm_type, :system
 set :scm, :subversion
 
 default_run_options[:pty] = true
@@ -22,8 +22,8 @@ role :db,  domain, :primary => true
 
 ## modified for passenger standalone
 set :rails_env,      "production"
-set :passenger_port, 5000
-set :passenger_cmd,  "bundle exec passenger"
+set :thin_port, 4039
+set :thin_cmd,  "bundle exec thin"
 set :whenever_command, "bundle exec whenever"
 
 # variables for cap-db
@@ -31,9 +31,8 @@ set :backup_path, "#{shared_path}/system"
 set :db_credentials_file, "db_credentials_file.yml"
 set :db_root_credentials_file, "root_db_credentials_file.yml"
 set :db_server_app, "mysql"
-set :db_database_name, 'reu_ust_production'
-set :db_username, 'reu_ust'
-
+set :db_database_name, 'surf_production'
+set :db_username, 'surf'
 
 namespace :deploy do
   
@@ -44,33 +43,16 @@ namespace :deploy do
   end
   
   task :start, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
+    run "cd #{current_path} && #{thin_cmd} start -e #{rails_env} -p #{thin_port} -d"
   end
 
   task :stop, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && #{passenger_cmd} stop -p #{passenger_port}"
+    run "cd #{current_path} && #{thin_cmd} stop -p #{thin_port}"
   end
 
   task :restart, :roles => :app, :except => { :no_release => true } do
     chown
-    run <<-CMD
-      if [[ -f #{current_path}/tmp/pids/passenger.#{passenger_port}.pid ]];
-      then
-        cd #{current_path} && #{passenger_cmd} stop -p #{passenger_port};
-      fi
-    CMD
-    run "cd #{current_path} && #{passenger_cmd} start -e #{rails_env} -p #{passenger_port} -d"
-  end
-  
-  desc "Update the crontab file"
-  task :update_crontab, :roles => :db do
-    run "cd #{release_path} && #{whenever_command} --update-crontab #{application}"
-  end
-  
-  desc "reload the database with seed data"
-  task :seed do
-    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
+    stop
+    start
   end
 end
-
-after "deploy:symlink", "deploy:update_crontab"
