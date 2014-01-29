@@ -1,18 +1,18 @@
 <div>
 	<label>Please explain why you consider yourself eligible for this program as an individual from an ethnicity, background or other group that is disadvantaged and underrepresented in biomedical research.</label><br />
-	<%= !e.awards.blank? ? e.personal_statement : "You have not entered data for this section." %>
+	<%= !e.personal_statement.blank? ? e.personal_statement : "You have not entered data for this section." %>
 </div>
 <br style="clear:both;"/>
 
 <div>
 	<label>Discuss your past research experiences. If you have not done any research yet, please list any relevant courses or other experiences you feel are relevant.</label><br />
-	<%= e.lab_skills.size > 4 ? e.lab_skills : "You have not entered data for this section."%>
+	<%= !e.lab_skills.blank? ? e.lab_skills : "You have not entered data for this section."%>
 </div>
 <br style="clear:both;"/>
 
 <div>
 	<label>Please list any laboratory or computer skills you currently possess.  Which existing skills would you like to improve, or new skills would you like to develop?</label><br />
-	<%= e.comp_skills.size > 4 ? e.comp_skills : "You have not entered data for this section." %>
+	<%= !e.comp_skills.blank? ? e.comp_skills : "You have not entered data for this section." %>
 </div>
 <br style="clear:both;"/>
 
