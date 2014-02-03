@@ -9,6 +9,7 @@ capybara-*.html
 /config/application.yml
 /config/database.yml
 /config/settings.yml
+/config/snippets.yml
 /coverage/
 /db/*.sqlite3
 /log
