@@ -9,11 +9,11 @@ source 'https://rubygems.org'
 gem 'rails'
 
 gem 'addressable'
-gem 'carmen-rails'
-gem 'client_side_validations'
+gem 'carmen-rails', github: 'jim/carmen-rails', :branch => 'master'
+gem 'rails4_client_side_validations', github: "kalkov/rails4_client_side_validations", :branch => "master"
 gem 'cocaine', :git => 'git://github.com/thoughtbot/cocaine.git' 
 gem 'capistrano'
-gem 'devise'
+gem 'devise', github: 'wesvetter/devise', :branch => 'v2.2'
 gem 'factory_girl_rails'
 gem 'faker'
 gem 'haml'
@@ -32,7 +32,7 @@ gem 'whenever', :require => false
 gem 'validates_email_format_of'
 
 # Old assets group
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 2.0.4.2'
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'coffee-rails'
 gem 'font-awesome-sass-rails'

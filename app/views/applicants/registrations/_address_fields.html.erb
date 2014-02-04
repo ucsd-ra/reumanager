@@ -21,7 +21,7 @@
         <%= f.text_field :address, :placeholder => :Address %>
       </div>
     </div>
-    
+
     <div class="span4">
       <div class="inner">
         <%= f.text_field :address2, :placeholder => 'Address Line 2' %>
@@ -34,8 +34,8 @@
     </div>
 
     <div class='span4'>
-      <div class="inner">        
-        <%= subregion_select f.object_name, :state, 'US', { selected: f.object.state ,  :prompt => 'State or Territory' } %>
+      <div class="inner">
+        <%= subregion_select f.object_name, :state, 'US', {priority: ['CA']}, { selected: f.object.state ,  :prompt => 'State or Territory' } %>
       </div>
     </div>
     <div class='span4 offset1'>
@@ -44,12 +44,12 @@
       </div>
     </div>
   </div>
-  
+
   <div class="inner">
     <%= f.hidden_field :_destroy %>
-    <%= link_to "remove this location", '#', class: "remove_fields btn btn-mini btn-danger" %>    
+    <%= link_to "remove this location", '#', class: "remove_fields btn btn-mini btn-danger" %>
   </div>
-  
+
   <hr class="inner clear" />
 
 </fieldset>

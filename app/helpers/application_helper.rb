@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   def errors_for(object, message=nil)
     html = ""
     unless object.errors.blank?
@@ -9,10 +9,10 @@ module ApplicationHelper
           html << "\t\t<h2>There was a problem creating the #{object.class.name.humanize.downcase}</h2>\n"
         else
           html << "\t\t<h2>There was a problem updating the #{object.class.name.humanize.downcase}</h2>\n"
-        end    
+        end
       else
         html << "<h2>#{message}</h2>"
-      end  
+      end
       html << "\t\t<ul>\n"
       object.errors.full_messages.each do |error|
         html << "\t\t\t<li>#{error}</li>\n"
@@ -21,8 +21,8 @@ module ApplicationHelper
       html << "\t</div>\n"
     end
     raw html
-  end  
-  
+  end
+
   def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new
     id = new_object.object_id
@@ -31,9 +31,20 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields btn btn-mini btn-success", data: {id: id, fields: fields.gsub("\n", "")})
   end
-  
+
   def microsloth_sucks
     html = '<script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript" charset="utf-8"></script>'
   end
-  
+
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
 end
