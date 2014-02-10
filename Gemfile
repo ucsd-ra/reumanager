@@ -36,5 +36,5 @@ end
 
 group :production do
 	gem 'mysql'
-  gem 'passenger'
+  gem 'thin'
 end
