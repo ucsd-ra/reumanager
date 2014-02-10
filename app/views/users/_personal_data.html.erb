@@ -90,6 +90,17 @@
 
 <hr />
 
+<div id='first_gen'>
+	<label>Are you a First generation college student?</label><br />
+	<%= f.select 'first_gen_college', %w{ I'm\ not\ sure Yes No } %>
+</div>
+
+<div id='free_lunch'>
+	<label>Did you qualify for free/reduced price lunch in High School?</label><br />
+	<%= f.select 'free_lunch', %w{ I'm\ not\ sure Yes No } %>
+</div>
+
+
 <div>
 	<label>Citizenship</label><br />
 	<%= f.select 'citizenship', %w{United\ States U.S.\ Permanent\ Resident Other} %>

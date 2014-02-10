@@ -30,22 +30,22 @@ class AcademicRecordsController < ApplicationController
   def new
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
-    @academic_record = AcademicRecord.new
+    @academic_record = @user.build_academic_record
   end
 
   # GET /academic_records/1/edit
   def edit
-		if current_user
-			current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
-	    @user = User.find(@id)
-			if @user
-				@academic_record = AcademicRecord.find_by_user_id(current_user.id)
-			else
-				redirect_to login_path
-			end
-		else
-			redirect_to login_path
-		end
+    if current_user
+      current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
+      @user = User.find(@id)
+      if @user
+        @academic_record = AcademicRecord.find_by_user_id(current_user.id)
+      else
+        redirect_to login_path
+      end
+    else
+      redirect_to login_path
+    end
   end
 
   # POST /academic_records
@@ -53,7 +53,7 @@ class AcademicRecordsController < ApplicationController
   def create
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
-    @user.academic_record = AcademicRecord.new(params[:academic_record])
+    @user.build_academic_record params[:academic_record]
     @academic_record = @user.academic_record
     
     respond_to do |format|
@@ -66,6 +66,11 @@ class AcademicRecordsController < ApplicationController
         format.xml  { render :xml => @user.academic_record.errors, :status => :unprocessable_entity }
       end
     end
+
+  rescue RuntimeError => e
+    logger.error 'Error with academic record upload - ' + e.message
+    flash[:notice] = "There was an error with the form. Please save the acaemic info first before upload your transcript."
+    redirect_to :action => 'new'
   end
 
   # PUT /academic_records/1
