@@ -4,11 +4,11 @@ class Extra < ActiveRecord::Base
  validates_presence_of :mentor1
  validates_presence_of :mentor2
  validates_presence_of :mentor3
- validates_presence_of       :personal_statement
+ validates_presence_of :personal_statement
   
   def self.mentor_list
     options = [''],
-    ["Lihini Aluwihare"]
+    ["Lihini Aluwihare"],
     ["Andreas Andersson"],
     ["Katherine Barbeau"],
     ["Douglas Bartlett"],

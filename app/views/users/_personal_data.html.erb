@@ -14,7 +14,7 @@
 </div>
 <div class="clear">
 	<label>Date of Birth</label><br />
-	<%= f.date_select "dob", :start_year => 1970, :end_year => 1994 %>
+	<%= f.date_select "dob", :start_year => 1970, :end_year => Time.now.year - 16 %>
 </div>
 
 <hr />
@@ -103,7 +103,12 @@
 
 <div>
 	<label>Race:</label><br />
-	<%= f.select 'race', %w{ Prefer\ not\ to\ respond African American/Black/African Asian Alaskan\ Native American\ Samoa\ Native Caucasian/White Chicano/Mexican\ American Guamanian/Chamorro Latino/Latino-American Native\ American Native\ Hawaiian Native\ Pacific\ Islander Puerto\ Rican U.S.\ Virgin\ Islands\ Native Other} %>
+	<%= f.select 'race', %w{ Prefer\ not\ to\ respond African-America/Black Asian Caucasian East\ Indian Hispanic Pacific\ Islander/Hawaiian Native\ American Other} %>
+
+	<div class="clear" id="race_other" style="<%= "display:none;" unless @user.race == "Other" %>">
+		<label>Race:</label>
+		<%= f.text_field 'race' %>
+	</div>
 </div>
 <div>
 	<label>Disability:</label><br />

@@ -39,9 +39,9 @@
     	<% end -%>
 		
     	<% if params[:controller] == "projects" && params[:action] == "current" -%>
-    		<li class="selected"><%= link_to "Current Projects", current_projects_url %></li>
+    		<li class="selected"><%= link_to "Current Projects", 'https://scripps.ucsd.edu/undergrad/surf/2014-surf-research-projects-descriptions' %></li>
     	<% else -%>
-    		<li><%= link_to "Current Projects", current_projects_url %></li>
+    		<li><%= link_to "Current Projects", 'https://scripps.ucsd.edu/undergrad/surf/2014-surf-research-projects-descriptions' %></li>
     	<% end -%>
 
 		<% if current_user && current_user.role.name == 'student' -%>
