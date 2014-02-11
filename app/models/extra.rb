@@ -9,7 +9,6 @@ class Extra < ActiveRecord::Base
   def self.mentor_list
     options = [''],
     ["Lihini Aluwihare"],
-    ["Andreas Andersson"],
     ["Katherine Barbeau"],
     ["Douglas Bartlett"],
     ["Ron Burton"],
