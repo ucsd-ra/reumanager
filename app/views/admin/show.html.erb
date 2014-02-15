@@ -1,8 +1,5 @@
 <%= render :partial => "admin_header" %>
 <div class='info right'>
-	<div class='clearfix' id="print">
-		<%= link_to_remote "Print Application", :url => {:action => "print", :id => @user} %>
-	</div>
 	<div class='clearfix' id="status">
 		<% form_for @user do |f| -%>
 		  <%= f.select :status, options_for_select(%w{Accept Reject Waitlist In\ Review Withdrawn}, :selected => @user.status)%>

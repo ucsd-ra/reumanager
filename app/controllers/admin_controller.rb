@@ -181,34 +181,34 @@ require 'ftools'
     worksheet.row(0).default_format = page_title_format
     worksheet[0,0] = "#{Time.now.year} NSFREU Applicant Data" 
     worksheet.row(1).default_format = header_format
-    worksheet.row(1).concat %w{ID Name Email Gender Race Ethnicity Disability Current\ University Academic\ Year Major/Minor GPA Recommender\ Name Recommender\ Association Overall\ Promise Undergrad\ Institution? Mentor1 Mentor2 Mentor3}
+    worksheet.row(1).concat %w{ID Name Email Gender Race Ethnicity Disability Current\ University Academic\ Year Major/Minor GPA}
     worksheet.row(1).default_format = header_format
 
     # get applicant data
 		case params[:prev_action]
 		when "incomplete"
 		  logger.info "exporting incomplete applicants"
-			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is ? and role_id = ?", nil, 2 ], :include => [ :academic_record, :recommender, :recommendation ]
+			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is ? and role_id = ?", nil, 2 ], :include => [ :academic_record, :recommenders, :recommendations ]
 		when "submitted"
-			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
+			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is null and role_id = ?", 2 ], :include => [ :academic_record, :recommenders, :recommendations ]
 		when "complete"
-			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ], :include => [ :academic_record, :recommender, :recommendation ]
+			@applicants = User.all :order => 'lastname ASC', :conditions => [ "submitted_at is not null and completed_at is not null and role_id = ?", 2 ], :include => [ :academic_record, :recommenders, :recommendations ]
 		when "total"
-			@applicants = User.all :order => 'lastname ASC', :conditions => ['role_id = ?', 2], :include => [ :academic_record, :recommender, :recommendation ]
+			@applicants = User.all :order => 'lastname ASC', :conditions => ['role_id = ?', 2], :include => [ :academic_record, :recommenders, :recommendations ]
 		else
 			case params[:status]
 			when "Accept"
-				@applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Accept',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
+				@applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Accept',  2 ], :include => [ :academic_record, :recommenders, :recommendations ]
 			when "In Review"
-		    @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'In Review', 2 ], :include => [ :academic_record, :recommender, :recommendation ]
+		    @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'In Review', 2 ], :include => [ :academic_record, :recommenders, :recommendations ]
 			when "Waitlist"
-				@applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Waitlist',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
+				@applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Waitlist',  2 ], :include => [ :academic_record, :recommenders, :recommendations ]
 			when "Reject"
-		    @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Reject',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
+		    @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Reject',  2 ], :include => [ :academic_record, :recommenders, :recommendations ]
 		  when "Withdrawn"
-  		  @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Withdrawn',  2 ], :include => [ :academic_record, :recommender, :recommendation ]
+  		  @applicants = User.all :order => 'lastname ASC', :conditions => [ "status = ? and role_id = ?", 'Withdrawn',  2 ], :include => [ :academic_record, :recommenders, :recommendations ]
 			else
-		    @applicants = User.all :order => 'lastname ASC', :conditions => ['role_id = ?', 2], :include => [ :academic_record, :recommender, :recommendation ]
+		    @applicants = User.all :order => 'lastname ASC', :conditions => ['role_id = ?', 2], :include => [ :academic_record, :recommenders, :recommendation ]
 			end
 		end
     
@@ -227,14 +227,7 @@ require 'ftools'
 				(a.academic_record.college if a.academic_record), 
 				(a.academic_record.college_level if a.academic_record), 
 				(a.academic_record.major if a.academic_record), 
-				(a.academic_record.gpa if a.academic_record), 
-				(a.recommender.name if a.recommender), 
-				(("#{a.recommender.department} / #{a.recommender.college}") if a.recommender), 
-				(a.recommendation.rating if a.recommendation && a.recommendation.rating), 
-				(a.recommendation.undergrad_inst if a.recommendation && a.recommendation.undergrad_inst),
-				(a.extra.mentor1 if a.extra && a.extra.mentor1),
-				(a.extra.mentor2 if a.extra && a.extra.mentor2),
-				(a.extra.mentor3 if a.extra && a.extra.mentor3)]
+				(a.academic_record.gpa if a.academic_record)]
     end
         
     # write file

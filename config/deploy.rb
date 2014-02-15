@@ -26,14 +26,6 @@ set :thin_port, 4039
 set :thin_cmd,  "bundle exec thin"
 set :whenever_command, "bundle exec whenever"
 
-# variables for cap-db
-set :backup_path, "#{shared_path}/system"
-set :db_credentials_file, "db_credentials_file.yml"
-set :db_root_credentials_file, "root_db_credentials_file.yml"
-set :db_server_app, "mysql"
-set :db_database_name, 'surf_production'
-set :db_username, 'surf'
-
 namespace :deploy do
   
   desc "chown & chmod to www-data"
