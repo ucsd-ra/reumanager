@@ -75,6 +75,10 @@ module ApplicationHelper
     return gpa_range
   end
   
+  def race_list
+    %w{ Prefer\ not\ to\ respond African-America/Black Asian Caucasian East\ Indian Hispanic Pacific\ Islander/Hawaiian Native\ American Other}
+  end
+  
   def disability_selection(user)
     if user && user.disability
       case user.disability

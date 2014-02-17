@@ -92,7 +92,7 @@
 
 <div id='first_gen'>
 	<label>Are you a First generation college student?</label><br />
-	<%= f.select 'first_gen_college', %w{ I'm\ not\ sure Yes No } %>
+	<%= f.select 'first_gen_college', options_for_select(%w{ I'm\ not\ sure Yes No }, @user.first_gen_college) %>
 </div>
 
 <div id='free_lunch'>
@@ -114,13 +114,12 @@
 
 <div>
 	<label>Race:</label><br />
-	<%= f.select 'race', %w{ Prefer\ not\ to\ respond African-America/Black Asian Caucasian East\ Indian Hispanic Pacific\ Islander/Hawaiian Native\ American Other} %>
-
-	<div class="clear" id="race_other" style="<%= "display:none;" unless @user.race == "Other" %>">
-		<label>Race:</label>
-		<%= f.text_field 'race' %>
-	</div>
-</div>
+		<%= f.select 'race', options_for_select(race_list, @user.race) %>
+		<div class="clear" id="race_other" style="<%= "display:none;" if race_list.include?(@user.race) %>">
+			<label>Race:</label>
+			<%= text_field_tag :user_race_other, @user.race %>
+		</div>
+</div> 
 <div>
 	<label>Disability:</label><br />
 	<%= select_tag 'disability', options_for_select(%w{ Prefer\ not\ to\ respond No Yes },disability_selection(@user)) %><br />

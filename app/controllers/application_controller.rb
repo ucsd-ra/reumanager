@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   # See ActionController::Base for details 
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
-  filter_parameter_logging :password, :password_confirmation, :lastname, :dob, :street, :city, :state, :zip, :phone, :pstreet, :pcity, :pstate, :pzip, :pphone, :citizenship, :cresidence, :gender, :ethnicity, :race, :disability
+  filter_parameter_logging :password, :password_confirmation, :lastname, :dob, :street, :city, :state, :zip, :phone, :pstreet, :pcity, :pstate, :pzip, :pphone, :citizenship, :cresidence, :gender, :ethnicity, :disability
   before_filter :check_settings_cache
   
   require 'pdf/writer'
@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
 
   def check_settings_cache
     # Checks if settings have changed since the values were read
-    # and clears the cache hash if it's the case
+    # and clears the cache hash if it's the cas`e
     # Called once per request
     Setting.check_cache
 	end

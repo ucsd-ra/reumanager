@@ -55,6 +55,7 @@ class UsersController < ApplicationController
  
   def create
     logout_keeping_session!
+    params[:user][:race] = params[:user_race_other] if params['user_race_other'] && params[:user][:race] == 'Other'
     @user = User.new(params[:user])
     @user.login = @user.email
     success = @user && @user.save
@@ -85,6 +86,7 @@ class UsersController < ApplicationController
   def update
     current_user.role.name == "admin" ? @id = params[:id] : @id = current_user.id
     @user = User.find(@id)
+    params[:user][:race] = params[:user_race_other] if params['user_race_other'] && params[:user][:race] == 'Other'
     if @user.update_attributes(params[:user])
       flash[:notice] = 'Personal Data was successfully updated.'
       redirect_to :controller => "academic_records", :id => @id
@@ -131,7 +133,7 @@ class UsersController < ApplicationController
     else
       render :update do |page|
         page[:observers].replace_html :partial => "layouts/observers"
-        page[:race_other].hide
+        #page[:race_other].hide
       end
     end
   end
