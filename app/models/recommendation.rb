@@ -11,10 +11,10 @@ class Recommendation < ActiveRecord::Base
   validates_presence_of :overall_promise, :on => :update, message: "can't be blank. Please select one of the following: Top 1%, Top 5%, Top 10%, Top 25%, average, below average"
   validates_presence_of :applicant
   validates_presence_of :recommender
-  
+
   before_create :make_token
   after_destroy :remove_orphaned_recommenders
-    
+
   # has the recommendation been received and made complete?
   def received?
     !self.received_at.nil?
@@ -26,16 +26,16 @@ class Recommendation < ActiveRecord::Base
   end
 
   private
-  
+
   def remove_orphaned_recommenders
     recommender = Recommender.find_by_email(self.recommender.email)
     recommender.destroy if recommender.recommendations.empty?
   end
-  
+
   # generate a token to be used by recommenders to access recommedation form
   def make_token
     self.token = "#{Digest::MD5.hexdigest(Time.now.to_s.split(//).sort_by{rand}.join)}-#{Digest::MD5.hexdigest((Time.now - 30.days).to_s.split(//).sort_by{rand}.join)}"
     self.token_created_at = Time.now
   end
-  
+
 end

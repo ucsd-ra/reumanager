@@ -36,7 +36,7 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
-    
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
   end
@@ -48,16 +48,16 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-  
+
   config.include Devise::TestHelpers, :type => :controller
 
-  config.include Rails.application.routes.url_helpers  
+  config.include Rails.application.routes.url_helpers
 
   # include custom mailer macros
   config.include(Devise)
-  
+
   # include custom mailer macros
   config.include(Mailer)
   config.before(:each) { reset_email }
-  
+
 end
