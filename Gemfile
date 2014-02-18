@@ -13,7 +13,7 @@ gem 'carmen-rails', github: 'jim/carmen-rails', :branch => 'master'
 gem 'rails4_client_side_validations', github: "kalkov/rails4_client_side_validations", :branch => "master"
 gem 'cocaine', :git => 'git://github.com/thoughtbot/cocaine.git' 
 gem 'capistrano'
-gem 'devise', github: 'wesvetter/devise', :branch => 'v2.2'
+gem 'devise'
 gem 'factory_girl_rails'
 gem 'faker'
 gem 'haml'
