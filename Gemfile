@@ -54,7 +54,6 @@ group :development do
   gem 'hirb-unicode'
   gem 'meta_request'
   gem 'net-http-spy'
-  gem 'pry'
   gem 'rb-fchange', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-inotify', :require => false
@@ -68,9 +67,9 @@ group :test, :development do
   gem 'capybara'
   gem "capybara-webkit"
   gem 'database_cleaner'
-  gem 'debugger'
   gem 'launchy'
   gem 'poltergeist'
+  gem 'pry'
   gem "rspec-rails"
 end
 

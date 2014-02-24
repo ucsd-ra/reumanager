@@ -36,5 +36,3 @@ Reuman::Application.configure do
 
   config.time_zone = 'Pacific Time (US & Canada)'
 end
-
-Debugger.settings[:autoeval] = true
