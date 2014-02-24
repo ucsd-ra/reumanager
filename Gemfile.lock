@@ -305,7 +305,6 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    ruby-graphviz (1.0.9)
     ruby_gntp (0.3.4)
     rvm-capistrano (1.5.1)
       capistrano (~> 2.15.4)
@@ -423,7 +422,6 @@ DEPENDENCIES
   redcarpet
   rich
   rspec-rails
-  ruby-graphviz
   ruby_gntp
   rvm-capistrano
   sass-rails

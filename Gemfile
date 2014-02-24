@@ -1,8 +1,3 @@
-if RUBY_VERSION =~ /1.9/
-  Encoding.default_external = Encoding::UTF_8
-  Encoding.default_internal = Encoding::UTF_8
-end
-
 source 'http://gems.github.com'
 source 'https://rubygems.org'
 
@@ -64,7 +59,6 @@ group :development do
   gem 'rb-fsevent', :require => false
   gem 'rb-inotify', :require => false
   gem 'ruby_gntp'
-  gem 'ruby-graphviz', :require => 'graphviz' 
   gem 'simplecov'
   gem 'what_methods'
 	gem 'wirble'
