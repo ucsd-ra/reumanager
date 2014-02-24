@@ -27,6 +27,7 @@ gem 'rails_admin'
 gem 'redcarpet'
 gem 'rich'
 gem 'rvm-capistrano'
+gem 'sqlite3'
 gem 'state_machine'
 gem 'whenever', :require => false
 gem 'validates_email_format_of'
@@ -84,5 +85,4 @@ group :test do
   gem 'guard-rspec'
   gem 'mocha', require: "mocha/api"
   gem 'shoulda'
-  gem 'sqlite3'
 end

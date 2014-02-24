@@ -1,4 +1,4 @@
- require "bundler/capistrano"
+require "bundler/capistrano"
 require "rvm/capistrano"
 # require 'capistrano/ext/database'
 
@@ -7,13 +7,13 @@ require "rvm/capistrano"
 
 set :application, "reuman" #matches names used in smf_template.erb
 set :repository,  "https://github.com/reumanager/reumanager.git"
-set :branch, :dev
-set :domain, 'indra.ucsd.edu'
+set :branch, :rails4
+set :domain, '192.168.10.10'
 set :deploy_to, "/var/www/#{application}" # I like this location
 set :deploy_via, :remote_cache
-set :user, "ubuntu"
+set :user, "jjg"
 set :keep_releases, 6
-set :rvm_ruby_string, "1.9.3@#{application}"
+set :rvm_ruby_string, "2.1.1@#{application}"
 set :rvm_type, :system
 set :server_name, domain
 set :scm, :git
@@ -33,7 +33,7 @@ namespace :deploy do
 
   desc "chown & chmod to www-data"
   task :chown do
-    sudo "chown -R ubuntu:www-data #{deploy_to}"
+    sudo "chown -R jjg:www-data #{deploy_to}"
     sudo "chmod -R 775 #{deploy_to}"
   end
 
@@ -56,5 +56,5 @@ namespace :ckeditor do
 end
 #after 'deploy:update_code', 'dragonfly:symlink'
 
-after 'bundle:install', 'deploy:symlink_configs'
+before 'deploy:assets:precompile', 'deploy:symlink_configs'
 after 'deploy:setup', 'deploy:add_shared_config'
