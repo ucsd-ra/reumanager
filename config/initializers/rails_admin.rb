@@ -143,8 +143,8 @@ RailsAdmin.config do |config|
         end
       end
 
-      field :description, :ckeditor => false
-      field :text, :ckeditor => false
+      field :description
+      field :text
 
       field :value
     end
@@ -163,6 +163,11 @@ RailsAdmin.config do |config|
           bindings[:object].name.gsub('_',' ').titleize
         end
       end
+      field :description
+
+      field :value
+
+
     end
   end
   config.model Snippet do
