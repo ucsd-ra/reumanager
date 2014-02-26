@@ -3,7 +3,7 @@ class Recommender < ActiveRecord::Base
 
   has_many :recommendations, :dependent => :destroy
   has_many :applicants, :through => :recommendations
-  
+
   validates :first_name,  :presence => true
   validates :last_name,   :presence => true
   validates :email,   :presence => true
@@ -17,19 +17,19 @@ class Recommender < ActiveRecord::Base
     name = ""
     name += "#{self.first_name} #{self.last_name}"
   end
-  
+
   def to_s
     recommender = "#{self.name} (#{self.email})<br /> #{self.title}, #{self.department}, #{self.organization}"
   end
-  
+
   private
-  
-  # parse params for existing recommenders and add to array. returns 
-  # array of existing recommender object and hash with existing 
+
+  # parse params for existing recommenders and add to array. returns
+  # array of existing recommender object and hash with existing
   # recommender attributes removed.
   def self.remove_exisitng_recommenders_from_params(recommenders_attributes)
     existing_recommenders = find_existing_recommenders(recommenders_attributes)
-    
+
     recommenders_attributes.map do |r|
       # if the existing recommender is included in the attributes hash
       if existing_recommenders.map(&:email).include?(r[1]['email'])
@@ -38,20 +38,20 @@ class Recommender < ActiveRecord::Base
         recommenders_attributes.delete(r[0]) unless r[1]["_destroy"] == '1'
       end
     end
-    
+
     [existing_recommenders, recommenders_attributes]
   end
-  
+
   # parse params and lookup recommenders by email. if they exist, add
   # them to an array.
   def self.find_existing_recommenders(recommenders_attributes)
     existing_recommenders = []
-    
+
     recommenders_attributes.each do |recommenders_attribute|
       recommender = Recommender.find_by_email(recommenders_attribute[1]['email'])
       existing_recommenders << recommender if recommender != nil
     end
-    
+
     existing_recommenders
   end
 

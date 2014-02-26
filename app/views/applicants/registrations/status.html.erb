@@ -4,8 +4,8 @@
     <%= application_status if current_applicant %>
   </div>
 
-  
-  
+
+
   <div class='row'>
     <div class='span6'>
       <div class='inner'>
@@ -18,7 +18,7 @@
         </ul>
       </div>
     </div>
-    
+
     <div class='span6'>
       <div class='inner'>
         <h2>Personal Statement</h2>
@@ -53,7 +53,7 @@
           <%- current_applicant.awards.each do |award| -%>
             <li><b>Award</b> <%= award %></li>
           <%- end -%>
-      
+
           <li><b>Computer Skills</b> <%= Markdown.render current_applicant.cpu_skills if current_applicant.cpu_skills %></li>
           <li><b>Laboratory Skills</b> <%= Markdown.render current_applicant.lab_skills if current_applicant.lab_skills %></li>
         </ul>
@@ -63,15 +63,15 @@
   </div> <!-- end .row -->
 
   <%= content_tag :div, content_tag(:p, link_to("Submit Application", submit_application_path, :class => "btn btn-success")), :class => 'inner' if current_applicant.state == 'completed_recommender_info' %>
-  
+
   <hr class='clear inner' />
 
-  <div class="inner">    
+  <div class="inner">
     <%= content_tag :p, link_to("Edit Application Data", edit_applicant_registration_path(current_applicant), :class => "btn btn-mini btn-info") + raw("&nbsp;&nbsp;&nbsp;") unless current_applicant.submitted_at %>
-    <p>Changed your mind? <%= link_to "Delete your aapplication", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-mini btn-danger" %></p>
+    <p>Changed your mind? <%= link_to "Delete your application", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-mini btn-danger" %></p>
     <% unless current_applicant.state == 'complete' || current_applicant.state == 'submitted' %>
       <small><strong>You can <%= link_to "logout", destroy_applicant_session_path, :method => :delete %> and continue you application at anytime<%= ", however, it will not be accepted until all the above data has been submitted" %>.</strong></small>
     <%- end -%>
   </div>
 </section>
-    
+

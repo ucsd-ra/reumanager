@@ -6,7 +6,7 @@ class Setting < ActiveRecord::Base
   def self.[](name)
     name = name.to_s
     setting = find_by_name(name)
-    
+
     setting ? setting.value : nil
   end
 

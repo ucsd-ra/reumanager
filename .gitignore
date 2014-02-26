@@ -6,8 +6,10 @@ capybara-*.html
 .rspec
 
 /.bundle
-/config/application.yml
 /config/database.yml
+/config/deploy.rb
+/config/settings.yml
+/config/snippets.yml
 /coverage/
 /db/*.sqlite3
 /log
@@ -15,5 +17,3 @@ capybara-*.html
 /spec/tmp/*
 /tmp/*
 /vendor/bundle
-# Ignore application configuration
-/config/application.yml
