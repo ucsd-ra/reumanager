@@ -28,7 +28,7 @@ gem 'whenever', :require => false
 gem 'validates_email_format_of'
 
 # Old assets group
-gem 'bootstrap-sass', '~> 2.0.4.2'
+gem 'bootstrap-sass', '~> 2.1'
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'coffee-rails'
 gem 'font-awesome-sass-rails'
