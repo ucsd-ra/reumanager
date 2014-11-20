@@ -3,13 +3,13 @@
     .inner
       %h3 General Info
       = raw Snippet[:general_description]
-      
+
       .app_button
         - if applicant_signed_in?
           = link_to "Finish Application", edit_applicant_registration_path, :class => "btn btn-large btn-success"
         - else
           = link_to "Apply Now", new_applicant_registration_path, :class => "btn btn-large btn-success"
-        
+
   %aside.span4
     .inner
       =render :partial => "aside_text"

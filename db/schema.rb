@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130505053615) do
+ActiveRecord::Schema.define(version: 20141110110030) do
 
   create_table "academic_records", force: true do |t|
     t.string   "university"
@@ -154,6 +154,8 @@ ActiveRecord::Schema.define(version: 20130505053615) do
     t.integer  "owner_id"
     t.text     "uri_cache"
     t.string   "simplified_type",        default: "file"
+    t.string   "rich_file_file_alt"
+    t.string   "rich_file_file_title"
   end
 
   create_table "settings", force: true do |t|

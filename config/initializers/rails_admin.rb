@@ -2,7 +2,10 @@
 # See github.com/sferik/rails_admin for more informations
 
 RailsAdmin.config do |config|
-  config.current_user_method { current_user } # auto-generated
+  config.authenticate_with do
+    warden.authenticate! scope: :user
+  end
+  config.current_user_method(&:current_user)
 
   config.audit_with :history, Applicant
   config.audit_with :history, User
@@ -172,20 +175,21 @@ RailsAdmin.config do |config|
   end
   config.model Snippet do
     edit do
-      field :name do
+      field :display_name do
         formatted_value do
           bindings[:object].name.gsub('_',' ').titleize
         end
       end
+      field :name
       field :description
-      field :value, :rich_editor
+      field :value, :rich_editor do
+        config({
+          :insert_many => true
+        })
+      end
     end
     list do
-      field :name do
-        formatted_value do
-          bindings[:object].name.gsub('_',' ').titleize
-        end
-      end
+      field :display_name
       field :description
       field :value do
         formatted_value do

@@ -5,8 +5,8 @@ gem 'rails'
 
 gem 'addressable'
 gem 'carmen-rails', github: 'jim/carmen-rails', :branch => 'master'
-gem 'rails4_client_side_validations', github: "kalkov/rails4_client_side_validations", :branch => "master"
-gem 'cocaine', :git => 'git://github.com/thoughtbot/cocaine.git' 
+gem 'client_side_validations', github: "tagliala/client_side_validations", :branch => "rails-4.2"
+gem 'cocaine', :git => 'git://github.com/thoughtbot/cocaine.git'
 gem 'capistrano'
 gem 'devise'
 gem 'factory_girl_rails'
@@ -20,7 +20,7 @@ gem 'paperclip'
 gem 'paper_trail'
 gem 'rails_admin'
 gem 'redcarpet'
-gem 'rich'
+gem 'rich', :git => "https://github.com/joeswann/rich.git"
 gem 'rvm-capistrano'
 gem 'sqlite3'
 gem 'state_machine'
@@ -35,7 +35,7 @@ gem 'font-awesome-sass-rails'
 gem 'libv8'
 gem 'modernizr-rails'
 gem 'therubyracer'
-gem 'sass-rails'
+gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier'
 
 # Gems for smooth transition to Rails 4
