@@ -6,10 +6,6 @@ capybara-*.html
 .rspec
 
 /.bundle
-/config/database.yml
-/config/deploy.rb
-/config/settings.yml
-/config/snippets.yml
 /coverage/
 /db/*.sqlite3
 /log
