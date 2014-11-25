@@ -59,7 +59,7 @@ namespace :ckeditor do
     run "mkdir -p #{shared_path}/system/ckeditor_assets && ln -nfs #{shared_path}/system/ckeditor_assets #{release_path}/system/ckeditor_assets"
   end
 end
-after 'deploy:update_code', 'ckeditor:symlink'
+# after 'deploy:update_code', 'ckeditor:symlink'
 
 before 'deploy:assets:precompile', 'deploy:symlink_configs'
 after 'deploy:setup', 'deploy:add_shared_config'
