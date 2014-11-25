@@ -21,6 +21,8 @@ set :default_env, {
   "RAILS_RELATIVE_URL_ROOT" => "/rqi"
 }
 
+set :asset_env, "#{asset_env} RAILS_RELATIVE_URL_ROOT=/my_sub_uri"
+
 default_run_options[:pty] = true
 
 role :app, domain
@@ -57,7 +59,7 @@ namespace :ckeditor do
     run "mkdir -p #{shared_path}/system/ckeditor_assets && ln -nfs #{shared_path}/system/ckeditor_assets #{release_path}/system/ckeditor_assets"
   end
 end
-#after 'deploy:update_code', 'dragonfly:symlink'
+after 'deploy:update_code', 'ckeditor:symlink'
 
 before 'deploy:assets:precompile', 'deploy:symlink_configs'
 after 'deploy:setup', 'deploy:add_shared_config'
