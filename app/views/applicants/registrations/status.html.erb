@@ -47,15 +47,17 @@
         <h2>Academic Info</h2>
         <ul>
           <%- current_applicant.records.each do |record| -%>
-            <li><%= raw record %></li>
+            <%- if record.to_s.present? -%>
+              <li><%= raw record.to_s %></li>
+            <%- end -%>
           <%- end -%>
 
           <%- current_applicant.awards.each do |award| -%>
             <li><b>Award</b> <%= award %></li>
           <%- end -%>
 
-          <li><b>Computer Skills</b> <%= Markdown.render current_applicant.cpu_skills if current_applicant.cpu_skills %></li>
-          <li><b>Laboratory Skills</b> <%= Markdown.render current_applicant.lab_skills if current_applicant.lab_skills %></li>
+          <li><b>Computer Skills</b> <%=raw(Markdown.render(current_applicant.cpu_skills)) if current_applicant.cpu_skills %></li>
+          <li><b>Laboratory Skills</b> <%=raw(Markdown.render(current_applicant.lab_skills)) if current_applicant.lab_skills %></li>
         </ul>
       </div>
     </div>

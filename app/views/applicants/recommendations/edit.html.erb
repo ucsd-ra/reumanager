@@ -1,6 +1,6 @@
 <%= form_for(@recommendation, :url => applicants_recommendations_update_url, :html => { :method => :put }) do |f| %>
   <%= errors_for @recommendation %>
-  
+
   <div class='row'>
     <div class="span12">
       <div class="inner">
@@ -8,14 +8,14 @@
       </div>
     </div>
 
-    
+
     <div class="span9">
 
       <div class='row'>
-        
+
         <section class='recommender'>
           <div class="span9">
-            
+
             <%= f.fields_for :recommender do |builder| %>
               <fieldset>
                 <div class="inner">
@@ -51,7 +51,7 @@
                   <div class="inner">
                     <%= builder.text_field :url, :placeholder => :URL %>
                   </div>
-                </div>    
+                </div>
 
 
                 <div class="span4">
@@ -71,9 +71,9 @@
                     <%= builder.text_field :title, :placeholder => :Title %>
                   </div>
                 </div>
-              
+
                 <hr class="inner clearfix" />
-            
+
               </fieldset>
             <%- end -%>
           </div>
@@ -81,7 +81,7 @@
         <section class='recommender'>
           <div class="span9">
             <div class='inner'>
-              
+
               <%#= student_waiver %>
 
               <div>
@@ -149,7 +149,7 @@
             </div>
           </div>
         </section>
-      </div> <!-- end .row -->   
+      </div> <!-- end .row -->
     </div> <!-- end .span9 -->
     <div class="span12">
       <div class="inner">
@@ -158,7 +158,7 @@
       	<p><em>Thank you for taking the time to evaluate this applicant. Your opinion will be carefully considered during participant selection.</em></p>
       </div>
     </div>
-    
-  </div> <!-- end .row --> 
+
+  </div> <!-- end .row -->
 
 <% end %>

@@ -30,9 +30,14 @@ Reuman::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = false
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000/test' }
-
-  config.action_mailer.smtp_settings = { :enable_starttls_auto => false, :host => 'localhost:3000' }
-
+  #config.action_mailer.default_url_options = { :host => 'localhost:3000/test' }
+  config.action_mailer.default_url_options = { :protocol => 'https',  :host => 'reumanager.com/rqi' }
+  config.action_mailer.smtp_settings = {
+    :user_name => 'ucsd-95900766be562ebb',
+    :password => '8965336a5247320e',
+    :address => 'mailtrap.io',
+    :port => '2525',
+    :authentication => :plain
+  }
   config.time_zone = 'Pacific Time (US & Canada)'
 end

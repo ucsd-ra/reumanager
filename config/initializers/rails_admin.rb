@@ -140,44 +140,25 @@ RailsAdmin.config do |config|
   end
   config.model Setting do
     edit do
-      field :name do
-        formatted_value do
-          bindings[:object].name.gsub('_',' ').titleize
-        end
-      end
-
+      field :display_name
+      field :name
       field :description
       field :value
     end
     list do
-      field :name do
-        formatted_value do
-          bindings[:object].name.gsub('_',' ').titleize
-        end
-      end
+      field :display_name
       field :description
       field :value
     end
     show do
-      field :name do
-        formatted_value do
-          bindings[:object].name.gsub('_',' ').titleize
-        end
-      end
+      field :name
       field :description
-
       field :value
-
-
     end
   end
   config.model Snippet do
     edit do
-      field :display_name do
-        formatted_value do
-          bindings[:object].name.gsub('_',' ').titleize
-        end
-      end
+      field :display_name
       field :name
       field :description
       field :value, :rich_editor do

@@ -60,13 +60,18 @@ funding_acknowlegement:
   name: funding_acknowlegement
   description: Who is supporting this program?
   value: This program is supported by the NSF REU Program (Physics, Chemistry, and DMR) and the DoD ASSURE Program.
-organization_url:
-  name: organization_url
+univeristy_url:
+  name: university_url
   description: |
-    Main URL for the organization, usually a university (e.g. http://ucsd.edu, http://www.rice.edu)
+    Main URL for the parent organization, usually a university (e.g. http://ucsd.edu, http://www.rice.edu)
   value: "http://www.rice.edu"
+department_url:
+  name: department_url
+  description: |
+    Main URL for the organization, usually a department
+  value: "http://rqi.rice.edu"
 program_url:
   name: program_url
   description: |
     URL for the specific program
-  value: "http://rqi.rice.edu"
+  value: "http://rqi.rice.edu/rqi"
