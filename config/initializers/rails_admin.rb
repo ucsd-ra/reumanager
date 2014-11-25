@@ -147,8 +147,6 @@ RailsAdmin.config do |config|
       end
 
       field :description
-      field :text
-
       field :value
     end
     list do

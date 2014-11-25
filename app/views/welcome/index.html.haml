@@ -3,12 +3,17 @@
     .inner
       %h3 General Info
       = raw Snippet[:general_description]
-
-      .app_button
-        - if applicant_signed_in?
-          = link_to "Finish Application", edit_applicant_registration_path, :class => "btn btn-large btn-success"
-        - else
-          = link_to "Apply Now", new_applicant_registration_path, :class => "btn btn-large btn-success"
+      - if expired?
+        %h3.deadline
+          The deadline for applications has passed. Please sign in to see existing application status.
+      - else
+        %h3.deadline
+          Application Deadline #{Setting[:application_deadline].to_date.strftime("%A, %b %d") if Setting[:application_deadline]}
+        .app_button
+          - if applicant_signed_in?
+            = link_to "Finish Application", edit_applicant_registration_path, :class => "btn btn-large btn-success"
+          - else
+            = link_to "Apply Now", new_applicant_registration_path, :class => "btn btn-large btn-success"
 
   %aside.span4
     .inner

@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def expired?
+    if Setting[:application_deadline].present?
+      date = Setting[:application_deadline].to_date
+      Time.now >= (date.midnight + 1.day)
+    else
+      false
+    end
+  end
 
   def errors_for(object, message=nil)
     html = ""

@@ -17,6 +17,9 @@ set :rvm_ruby_string, "2.1.1@#{application}"
 set :rvm_type, :system
 set :server_name, domain
 set :scm, :git
+set :default_env, {
+  "RAILS_RELATIVE_URL_ROOT" => "/rqi"
+}
 
 default_run_options[:pty] = true
 
