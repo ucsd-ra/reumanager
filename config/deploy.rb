@@ -21,7 +21,7 @@ set :default_env, {
   "RAILS_RELATIVE_URL_ROOT" => "/rqi"
 }
 
-set :asset_env, "#{asset_env} RAILS_RELATIVE_URL_ROOT=/my_sub_uri"
+set :asset_env, "#{asset_env} RAILS_RELATIVE_URL_ROOT=/rqi"
 
 default_run_options[:pty] = true
 
