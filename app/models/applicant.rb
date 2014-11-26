@@ -57,37 +57,37 @@ class Applicant < ActiveRecord::Base
     # redirect_url for each state
     state :applied do
       def redirect_url
-        Rails.application.routes.url_helpers.edit_applicant_registration_url(:only_path => true)
+        Rails.application.routes.url_helpers.edit_applicant_registration_url
       end
     end
 
     state :completed_personal_info do
       def redirect_url
-        Rails.application.routes.url_helpers.applicants_records_url(:only_path => true)
+        Rails.application.routes.url_helpers.applicants_records_url
       end
     end
 
     state :completed_academic_info do
       def redirect_url
-        Rails.application.routes.url_helpers.applicants_recommenders_url(:only_path => true)
+        Rails.application.routes.url_helpers.applicants_recommenders_url
       end
     end
 
     state :completed_recommender_info do
       def redirect_url
-        Rails.application.routes.url_helpers.applicant_status_url(:only_path => true)
+        Rails.application.routes.url_helpers.applicant_status_url
       end
     end
 
     state :submitted do
       def redirect_url
-        Rails.application.routes.url_helpers.applicant_status_url(:only_path => true)
+        Rails.application.routes.url_helpers.applicant_status_url
       end
     end
 
     state :complete do
       def redirect_url
-        Rails.application.routes.url_helpers.applicant_status_url(:only_path => true)
+        Rails.application.routes.url_helpers.applicant_status_url
       end
     end
 

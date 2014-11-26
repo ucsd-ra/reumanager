@@ -76,6 +76,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.5)
+    airbrake (4.1.0)
+      builder
+      multi_json
     arel (5.0.1.20140414130214)
     awesome_print (1.2.0)
     bcrypt-ruby (3.1.2)
@@ -372,6 +375,7 @@ DEPENDENCIES
   actionpack-page_caching
   activerecord-deprecated_finders
   addressable
+  airbrake
   awesome_print
   better_errors
   binding_of_caller
