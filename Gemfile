@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 gem 'rails'
 
+gem 'airbrake'
 gem 'addressable'
 gem 'carmen-rails', github: 'jim/carmen-rails', :branch => 'master'
 gem 'client_side_validations', github: "tagliala/client_side_validations", :branch => "rails-4.2"

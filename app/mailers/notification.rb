@@ -1,6 +1,5 @@
 class Notification < ActionMailer::Base
-  default from:  "rqi@reumanager.com"
-  default url: "https://reumanager.com"
+  default from:  Setting[:mail_from]
   default content_type: "text/plain"
 
   def application_submitted(applicant)
