@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125232423) do
+ActiveRecord::Schema.define(version: 20141126234350) do
 
   create_table "academic_records", force: true do |t|
     t.string   "university"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20141125232423) do
     t.string   "transcript_content_type"
     t.integer  "transcript_file_size"
     t.datetime "transcript_updated_at"
+    t.string   "major"
+    t.string   "minor"
   end
 
   create_table "addresses", force: true do |t|

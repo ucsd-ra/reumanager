@@ -1,8 +1,8 @@
 module ApplicationHelper
   def expired?
     if Setting[:application_deadline].present?
-      date = Setting[:application_deadline].to_date
-      Time.now >= (date.midnight + 1.day)
+      expire_at = Time.parse("#{Setting[:application_deadline]} 11:59:59 PST")
+      Time.now > expire_at
     else
       false
     end

@@ -1,5 +1,7 @@
 # RailsAdmin config file. Generated on September 22, 2012 18:58
 # See github.com/sferik/rails_admin for more informations
+require Rails.root.join('lib', 'admin_accept')
+require Rails.root.join('lib', 'admin_reject')
 
 RailsAdmin.config do |config|
   config.authenticate_with do
@@ -15,23 +17,35 @@ RailsAdmin.config do |config|
 
   config.default_items_per_page = 50
 
-  config.navigation_static_label = "Applicant Status Groups"
-  # and so forth. verify that they work
-  config.navigation_static_links = {
-    'Applied' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=applied&query=',
-    'Completed Personal Info' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=completed_personal_info&query=',
-    'Completed Academic Info' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=completed_academic_info&query=',
-    'Completed Recommender Info' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=completed_recommender_info&query=',
-    'Submitted' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=submitted&query=',
-    'Completed' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=completed&query=',
-    'Missed Deadline' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=missed_deadline&query=',
-    'Withdrawn' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=withdrawn&query=',
-    'Rejected' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=rejected&query=',
-    'Accepted' => '/admin/applicant?utf8=%E2%9C%93&f%5Bcurrent_status%5D%5B80479%5D%5Bo%5D=like&f%5Bcurrent_status%5D%5B80479%5D%5Bv%5D=accepted&query='
-  }
+  config.actions do
+    # root actions
+    dashboard                     # mandatory
+    # collection actions
+    index                         # mandatory
+    new
+    export
+    history_index
+    bulk_delete
+    # member actions
+    show
+    edit
+    delete
+    history_show
+    show_in_app
+    accept do
+      visible do
+        ["Applicant", "Applied", "Submitted", "Complete", "MissedDeadline", "Withdrawn", "Rejected", "Accepted"].include?(bindings[:abstract_model].model.to_s)
+      end
+    end
+    reject do
+      visible do
+        ["Applicant", "Applied", "Submitted", "Complete", "MissedDeadline", "Withdrawn", "Rejected", "Accepted"].include?(bindings[:abstract_model].model.to_s)
+      end
+    end
+  end
 
-  config.model Applicant do
-    list do
+  applicant_config = lambda {
+        list do
 
       field :name do
         searchable :last_name
@@ -114,8 +128,55 @@ RailsAdmin.config do |config|
       field :first_name
       field :last_name
       field :email
-      field :recommendations
     end
+  }
+
+  config.model Applicant do
+    weight 0
+    instance_exec(&applicant_config)
+  end
+
+
+  config.model Applied do
+    label_plural 'Applied'
+    weight 1
+    instance_exec(&applicant_config)
+  end
+
+  config.model Submitted do
+    label_plural 'Submitted'
+    weight 2
+    instance_exec(&applicant_config)
+  end
+
+  config.model Complete do
+    label_plural 'Complete'
+    weight 3
+    instance_exec(&applicant_config)
+  end
+
+  config.model MissedDeadline do
+    label_plural 'Missed Deadline'
+    weight 4
+    instance_exec(&applicant_config)
+  end
+
+  config.model Withdrawn do
+    label_plural 'Withdrawn'
+    weight 5
+    instance_exec(&applicant_config)
+  end
+
+  config.model Rejected do
+    label_plural "Rejected"
+    weight 6
+    instance_exec(&applicant_config)
+  end
+
+  config.model Accepted do
+    label_plural 'Accepted'
+    weight 7
+    instance_exec(&applicant_config)
   end
 
 
@@ -132,11 +193,30 @@ RailsAdmin.config do |config|
   config.model Award do
     visible false
   end
+
   config.model Recommendation do
     visible false
+    edit do
+      field :known_applicant_for
+      field :known_capacity
+      field :overall_promise
+      field :undergraduate_institution
+      field :body
+      field :recommender
+    end
   end
   config.model Recommender do
     visible false
+    edit do
+      field :first_name
+      field :last_name
+      field :email
+      field :phone
+      field :url
+      field :organization
+      field :department
+      field :title
+    end
   end
   config.model Setting do
     edit do

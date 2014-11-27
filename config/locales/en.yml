@@ -6,3 +6,11 @@ en:
       cancel: "Cancel"
       upload: "Upload"
       delete: "Delete"
+  admin:
+    actions:
+      reject:
+        done: Rejected
+        menu: Reject
+      accept:
+        done: Accepted
+        menu: Accept

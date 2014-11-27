@@ -1,5 +1,5 @@
 class Recommendation < ActiveRecord::Base
-  attr_accessible :applicant_id, :body, :known_applicant_for, :known_capacity, :overall_promise, :recommender_id, :recommender_attributes, :undergraduate_institution
+  attr_accessible :applicant_id, :body, :known_applicant_for, :known_capacity, :overall_promise, :recommender_id, :recommender_attributes, :undergraduate_institution, :received_at
 
   belongs_to :applicant, :class_name => "Applicant"
   belongs_to :recommender, :class_name => "Recommender"
@@ -13,12 +13,20 @@ class Recommendation < ActiveRecord::Base
   validates_presence_of :recommender
 
   before_create :make_token
+  after_update :send_thank_you
   after_destroy :remove_orphaned_recommenders
 
   # has the recommendation been received and made complete?
   def received?
     !self.received_at.nil?
   end
+
+  def send_thank_you
+    if received?
+      Notification.recommendation_thanks(self).deliver
+    end
+  end
+
 
   # a recommendation request can be sent if one has not been made within the last 24 hours
   def requestable?

@@ -1,5 +1,6 @@
 <%= form_for(@recommendation, :url => applicants_recommendations_update_url, :html => { :method => :put }) do |f| %>
   <%= errors_for @recommendation %>
+  <%= f.hidden_field :received_at, :value => Time.now %>
 
   <div class='row'>
     <div class="span12">

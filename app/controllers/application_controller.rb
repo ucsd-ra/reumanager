@@ -1,12 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
+  include ApplicationHelper
   before_filter :log_x_forwarded_by
+  helper_method :expired?
 
   protected
 
   def check_deadline
-    if Date.today > Date.new(2013,10,5) && Date.today < Date.new(2013,9,14)
+    if expired?
       redirect_to closed_url
     end
   end

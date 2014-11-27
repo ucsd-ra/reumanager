@@ -10,7 +10,9 @@
         %h3.deadline
           Application Deadline #{Setting[:application_deadline].to_date.strftime("%A, %b %d") if Setting[:application_deadline]}
         .app_button
-          - if applicant_signed_in?
+          - if applicant_signed_in? && current_applicant.state == 'submitted'
+            = link_to "Check Status", applicant_status_url, :class => "btn btn-large btn-success"
+          - elsif applicant_signed_in?
             = link_to "Finish Application", edit_applicant_registration_path, :class => "btn btn-large btn-success"
           - else
             = link_to "Apply Now", new_applicant_registration_path, :class => "btn btn-large btn-success"

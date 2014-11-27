@@ -1,4 +1,4 @@
 %header.container
   .header-inner
     %h1 #{link_to(Setting[:university], Setting[:university_url])}, #{link_to(Setting[:department], Setting[:department_url])}
-    %h2= link_to("#{Setting[:app_title]} (#{Setting[:program_start_date]} - #{Setting[:program_start_date]})", Setting[:program_url])
+    %h2= link_to("#{Setting[:app_title]} (#{Setting[:program_start_date]} - #{Setting[:program_end_date]})", Setting[:program_url])

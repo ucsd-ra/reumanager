@@ -31,7 +31,6 @@ class Applicant < ActiveRecord::Base
 
   scope :complete, -> { with_state(:complete) }
   scope :incomplete, -> { with_state(:incomplete) }
-
   scope :withdrawn, -> { with_state(:withdrawn) }
   scope :accepted, -> { with_state(:accepted) }
   scope :rejected, -> { with_state(:rejected) }
@@ -132,7 +131,7 @@ class Applicant < ActiveRecord::Base
     after_transition :on => :unsubmit_application, :do => lambda { |applicant| applicant.update_attribute :submitted_at, nil }
 
     event :recommendation_recieved do
-      transition :submitted => :complete, :if => lambda { |applicant| applicant.submitted? }
+      transition :submitted => :complete, :if => lambda { |applicant| applicant.submitted? && applicant.recommendations.select {|rec| rec.received?}.size > 2 }
     end
 
     after_transition :on => :recommendation_recieved, :do => :complete_application!
@@ -171,7 +170,6 @@ class Applicant < ActiveRecord::Base
 
   def complete_application!
     self.update_attribute :completed_at, Time.now
-    Notification.recommendation_thanks(self.recommendation).deliver
     Notification.application_complete(self).deliver
   end
 
@@ -272,7 +270,10 @@ class Applicant < ActiveRecord::Base
   end
 
   def validates_recommender_info
-    validates_presence_of :recommenders, :message => "can't be blank.  Please add at least one recommender."
+    validates_presence_of :recommenders, :message => "can't be blank.  Please add at least two recommenders."
+    if self.recommenders.size < 2
+      self.errors.add(:base, 'Please have at least 2 recommenders')
+    end
     return true if self.errors.empty? && !self.recommenders.blank? && self.recommenders.last.valid?
   end
 
