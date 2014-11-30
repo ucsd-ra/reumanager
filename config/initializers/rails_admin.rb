@@ -136,7 +136,6 @@ RailsAdmin.config do |config|
     instance_exec(&applicant_config)
   end
 
-
   config.model Applied do
     label_plural 'Applied'
     weight 1
@@ -144,26 +143,14 @@ RailsAdmin.config do |config|
   end
 
   config.model Submitted do
-    label_plural 'Submitted'
+    label_plural 'Submitted (Awaiting Recommendations)'
     weight 2
     instance_exec(&applicant_config)
   end
 
   config.model Complete do
-    label_plural 'Complete'
+    label_plural 'Complete (with Recommendations) / Awaiting Review'
     weight 3
-    instance_exec(&applicant_config)
-  end
-
-  config.model MissedDeadline do
-    label_plural 'Missed Deadline'
-    weight 4
-    instance_exec(&applicant_config)
-  end
-
-  config.model Withdrawn do
-    label_plural 'Withdrawn'
-    weight 5
     instance_exec(&applicant_config)
   end
 
