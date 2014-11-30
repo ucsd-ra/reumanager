@@ -33,6 +33,14 @@ class Recommendation < ActiveRecord::Base
     return true if self.request_sent_at == nil || Time.now - self.request_sent_at > 24.hours
   end
 
+  def known_applicant_for_enum
+    ['<1 year', '1-2 years', '2-3 years', '3-4 years', '>4 years']
+  end
+
+  def known_applicant_for_text
+    known_applicant_for_enum[known_applicant_for] if known_applicant_for
+  end
+
   private
 
   def remove_orphaned_recommenders

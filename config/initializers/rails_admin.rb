@@ -103,8 +103,14 @@ RailsAdmin.config do |config|
           records = applicant.records
           awards = applicant.awards
 
-          html = bindings[:view].render(:partial => 'applicant_personal_info', :locals => {:link => bindings[:view].link_to(applicant.records.last.transcript_file_name, applicant.transcript.url), :applicant => applicant, :records => records, :awards => awards})
-          bindings[:view].raw html
+          bindings[:view].render(:partial => 'applicant_academic_records',
+                                 :locals => {:link => bindings[:view].link_to(applicant.records.last.transcript_file_name, applicant.transcript.url),
+                                             :applicant => applicant,
+                                             :records => records,
+                                             :awards => awards,
+                                             :view_bindings => bindings[:view]
+                                            }
+                                )
         end
       end
 
