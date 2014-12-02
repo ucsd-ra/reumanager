@@ -10,3 +10,8 @@ Below are instructions for those who wish to install and maintain the applicatio
 
 
 RAILS_ENV=production bundle exec rake assets:precompile RAILS_RELATIVE_URL_ROOT=/rqi
+
+
+1) On the status page, it is noted that both of the recommendations have been received after only submitting one. Yet the application is still correctly filed under “Awaiting Recommendations” in the admin interface.
+
+2) The administrators cannot access the attached transcript. I receive an error when I click the link, "Sorry, there was a problem...The page you requested was not found. Return to the home page”

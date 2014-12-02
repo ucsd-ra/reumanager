@@ -42,4 +42,6 @@ Reuman::Application.configure do
     :authentication => :plain
   }
   config.time_zone = 'Pacific Time (US & Canada)'
+
+  config.action_controller.relative_url_root = '/rqi'
 end
