@@ -1,47 +1,37 @@
 <div>
-	<label>Please explain why you consider yourself eligible for this program as an individual from an ethnicity, background or other group that is disadvantaged and underrepresented in biomedical research.</label><br />
+	<label>Will you receive funding from any other program throughout the summer?  If "yes", please name funding source.</label><%= @spacer %>
+
 	<%= !e.personal_statement.blank? ? e.personal_statement : "You have not entered data for this section." %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>Discuss your past research experiences. If you have not done any research yet, please list any relevant courses or other experiences you feel are relevant.</label><br />
-	<%= !e.lab_skills.blank? ? e.lab_skills : "You have not entered data for this section."%>
+	<label>Please list any laboratory or computer skills you currently possess. Which existing skills would you like to improve, or new skills would you like to develop?</label><%= @spacer %>
+
+	<%= !e.comp_skills.blank? ? e.comp_skills : "You have not entered data for this section."  %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>Please list any laboratory or computer skills you currently possess.  Which existing skills would you like to improve, or new skills would you like to develop?</label><br />
-	<%= !e.comp_skills.blank? ? e.comp_skills : "You have not entered data for this section." %>
+	<label>Please explain why you consider yourself eligible for this program as an individual from an ethnicity, background or other group that is disadvantaged and underrepresented.</label><%= @spacer %>
+	<%= !e.research_interests.blank? ? e.research_interests : "You have not entered data for this section."  %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>What areas of research are you interested in?</label><br style="clear:both;"/>
-	<%= !e.research_interests.blank? ? e.research_interests : "You have not entered data for this section." %>
+	<label>Discuss your past research experiences. If you have not done any research yet, please list any relevant courses or other experiences you feel are relevant.</label><%= @spacer %>
+	<%= !e.career.blank? ? e.career : "You have not entered data for this section."  %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>Do you feel that your academic record accurately reflects your abilities as a student?  Please explain.</label><br style="clear:both;"/>
-	<%= e.gpa_comments.size > 4 ? e.gpa_comments : "You have not entered data for this section." %>
+	<label>Please add any additional information that may help us evaluate your application.</label><%= @spacer %>
+	<%= !e.additional_info.blank? ? e.additional_info : "You have not entered data for this section."  %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>Briefly discuss your educational and career plans and how this program will advance you towards your goals.</label><br style="clear:both;"/>
-	<%= !e.career.blank? ? e.career : "You have not entered data for this section." %>
-</div>
-<br style="clear:both;"/>
-
-<div>
-	<label>Please add any additional information that may help us evaluate your application.</label><br style="clear:both;"/>
-	<%= !e.additional_info.blank? ? e.additional_info : "You have not entered data for this section." %>
-</div>
-<br style="clear:both;"/>
-
-<div>
-	<label>How did you learn about Research Experience for Undergraduates (REU)?</label><br />
-	<%= e.learn ? e.learn : "You have not entered data for this section." %>
+	<label>How did you learn about Research Experience for Undergraduates (REU)?</label><%= @spacer %>
+	<%= !e.learn.blank? ? e.learn : "You have not entered data for this section."  %>
 </div>
 <br style="clear:both;"/>

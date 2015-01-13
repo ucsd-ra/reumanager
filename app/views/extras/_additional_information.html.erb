@@ -1,12 +1,7 @@
 <div>
-	<label>Please explain why you consider yourself eligible for this program as an individual from a group that is disadvantaged and/or underrepresented in the field of biomedical research.</label><br />
+	<label>Will you receive funding from any other program throughout the summer?  If "yes", please name funding source.</label><br />
 </div>
 <%= e.text_area 'personal_statement', :class => "extra" %>
-
-<div>
-	<label>Discuss your past research experiences. If you have not done any research yet, please list any relevant courses or other experiences you feel are relevant.</label>
-</div>
-<%= e.text_area 'lab_skills', :class => "extra" %> 
 
 <div>
 	<label>Please list any laboratory or computer skills you currently possess.  Which existing skills would you like to improve, or new skills would you like to develop?</label>
@@ -14,17 +9,12 @@
 <%= e.text_area 'comp_skills', :class => "extra" %>
 
 <div>
-	<label>What areas of research are you interested in? *Please note, SURF focuses on research areas in cardiovascular, lung and blood disease. Areas such as cancer biology and neuroscience would be outside the scope of our program.  Please see the <%= link_to 'program website', 'http://mstp.ucsd.edu/surf/Pages/default.aspx' %> for information on factulty researchers involved with this program.</label>
+	<label>Please explain why you consider yourself eligible for this program as an individual from an ethnicity, background or other group that is disadvantaged and underrepresented.</label>
 </div>
 <%= e.text_area 'research_interests', :class => "extra" %>
 
 <div>
-	<label>Do you feel that your academic record accurately reflects your abilities as a student?  Please explain.</label><br />
-</div>
-<%= e.text_area 'gpa_comments', :class => "extra" %>
-
-<div>
-	<label>Briefly discuss your educational and career plans and how this program will advance you towards your goals.</label>
+	<label>Discuss your past research experiences. If you have not done any research yet, please list any relevant courses or other experiences you feel are relevant.</label>
 </div>
 <%= e.text_area 'career', :class => "extra" %>
 
