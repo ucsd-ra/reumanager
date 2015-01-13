@@ -6,20 +6,6 @@
 <br style="clear:both;"/>
 
 <div>
-	<label>Please list any laboratory skills</label><%= @spacer %>
-
-	<%= e.lab_skills %>
-</div>
-<br style="clear:both;"/>
-
-<div>
-	<label>Please list any computer skills</label><%= @spacer %>
-
-	<%= e.comp_skills %>
-</div>
-<br style="clear:both;"/>
-
-<div>
 	<label>Do you feel your GPA accurately reflects your academic abilities?  Please comment on why or why not in the space provided</label><%= @spacer %>
 
 	<%= e.gpa_comments %>
@@ -33,7 +19,22 @@
 <br style="clear:both;"/>
 
 <div>
+	<label>Please list any computer skills</label><%= @spacer %>
+
+	<%= e.comp_skills %>
+</div>
+<br style="clear:both;"/>
+
+<div>
+	<label>Please describe all system building experiences you have had. This could be for example working with robotics, embedded software (e.g. Arduino), electronics, machining, etc. (up to 200 words).</label><%= @spacer %>
+
+	<%= e.lab_skills %>
+</div>
+<br style="clear:both;"/>
+
+
+<div>
 	<label>Please Complete a brief essay (up to 250 words) explaining why you are interested in our program and how the experience may help you achieve your future goals</label><%= @spacer %>
-	
+
 	<%= e.personal_statement %>
 </div>

@@ -1,24 +1,12 @@
 <div>
 	<label>Please list up to five academic awards that you have received (e.g. Award - Date Received [mm/yy])</label><br />
-	<%= e.awards.size > 4 ? e.awards : "You have not added any academic awards." %>
-</div>
-<br style="clear:both;"/>
-
-<div>
-	<label>Please list any laboratory skills:</label><br />
-	<%= e.lab_skills.size > 4 ? e.lab_skills : "You have not added any lab skills."%>
-</div>
-<br style="clear:both;"/>
-
-<div>
-	<label>Please list any computer skills:</label><br />
-	<%= e.comp_skills.size > 4 ? e.comp_skills : "You have not added any computer skills." %>
+	<%= e.awards.blank? || e.awards.size <= 4 ? e.awards : "You have not added any academic awards." %>
 </div>
 <br style="clear:both;"/>
 
 <div>
 	<label>Do you feel your GPA accurately reflects your academic abilities?  Please comment on why or why not in the space provided:</label><br style="clear:both;"/>
-	<%= e.gpa_comments.size > 4 ? e.gpa_comments : "You have not answered this question." %>
+	<%= e.gpa_comments.blank? || e.gpa_comments.size <= 4 ? "You have not answered this question." : e.gpa_comments %>
 </div>
 <br style="clear:both;"/>
 
@@ -29,6 +17,18 @@
 <br style="clear:both;"/>
 
 <div>
-	<label>Please Complete a brief essay (up to 250 words) explaining why you are interested in our program and how the experience may help you achieve your future goals</label>
-	<%= e.personal_statement.size > 4 ? e.personal_statement : "You must complete your personal statement." %>
+	<label>Please list any computer skills:</label><br />
+	<%= e.comp_skills.blank? || e.comp_skills.size <= 4 ? "You have not added any computer skills." : e.comp_skills %>
+</div>
+<br style="clear:both;"/>
+
+<div>
+	<label>Please describe all system building experiences you have had. This could be for example working with robotics, embedded software (e.g. Arduino), electronics, machining, etc. (up to 200 words).:</label><br />
+	<%= e.lab_skills.blank? ||  e.lab_skills.size <= 4 ? "You have not added any lab skills." : e.lab_skills %>
+</div>
+<br style="clear:both;"/>
+
+<div>
+	<label>Please Complete a brief essay (up to 250 words) explaining why you are interested in our program and how the experience may help you achieve your future goals:</label>
+	<%= e.personal_statement.blank? || e.personal_statement.size <= 4 ? "You must complete your personal statement." : e.personal_statement %>
 </div>
