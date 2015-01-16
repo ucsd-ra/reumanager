@@ -5,16 +5,6 @@
 <%= e.text_area 'awards', :class => "extra" %>
 
 <div>
-	<label>Please list any laboratory skills:</label>
-</div>
-<%= e.text_area 'lab_skills', :class => "extra" %>
-
-<div>
-	<label>Please list any computer skills:</label>
-</div>
-<%= e.text_area 'comp_skills', :class => "extra" %>
-
-<div>
 	<label>Do you feel your GPA accurately reflects your academic abilities?</label><br />
 	<label>Please comment on why or why not in the space provided:</label>
 </div>
@@ -32,6 +22,16 @@
     <%= e.text_field 'learn_more', :class => "extra" %>
   </div>
 </div>
+
+<div>
+	<label>Please list any computer skills:</label>
+</div>
+<%= e.text_area 'comp_skills', :class => "extra" %>
+
+<div>
+	<label>Please describe all system building experiences you have had. This could be for example working with robotics, embedded software (e.g. Arduino), electronics, machining, etc. (up to 200 words).</label>
+</div>
+<%= e.text_area 'lab_skills', :class => "extra" %>
 
 <br style="clear:both;" />
 <div>
