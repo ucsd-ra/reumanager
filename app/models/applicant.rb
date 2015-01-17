@@ -131,7 +131,7 @@ class Applicant < ActiveRecord::Base
     after_transition :on => :unsubmit_application, :do => lambda { |applicant| applicant.update_attribute :submitted_at, nil }
 
     event :recommendation_recieved do
-      transition :submitted => :complete, :if => lambda { |applicant| applicant.submitted? && applicant.recommendations.select {|rec| rec.received?}.size > 2 }
+      transition :submitted => :complete, :if => lambda { |applicant| applicant.submitted? && applicant.recommendations.select {|rec| rec.received?}.size >= 2 }
     end
 
     after_transition :on => :recommendation_recieved, :do => :complete_application!
