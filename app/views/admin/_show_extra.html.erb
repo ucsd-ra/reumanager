@@ -1,47 +1,46 @@
 <div>
-	<label>Please List your top 3 preferences for potential faculty mentors.</label><%= @spacer %><br />
-
-	1.) <%= e.mentor1 if e.mentor1 %> &nbsp;&nbsp;&nbsp;&nbsp; 2.) <%= e.mentor2 if e.mentor2 %> &nbsp;&nbsp;&nbsp;&nbsp; 3.) <%= e.mentor3 if e.mentor3 %>
-</div>
-<br style="clear:both;"/>
-
-
-<div>
-	<label>Please list up to five academic awards that you have received (e.g. Award - Date Received [mm/yy])</label><%= @spacer %>
+	<label>Why are you applying to the Scripps Undergraduate Research Fellowship (SURF) REU program?</label><%= @spacer %>
 
 	<%= e.awards ? e.awards.gsub("\n", "<br />") : e.awards %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>Please list any laboratory skills</label><%= @spacer %>
+	<label>What, if any, research experience do you have?  What type(s) of research experience would you like to experience and develop? (note: previous research experience is not required for participation in the program)</label><%= @spacer %>
 
 	<%= e.lab_skills %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>Please list any computer skills</label><%= @spacer %>
+	<label>Please list any laboratory or computer skills you currently possess.  Which existing skills would you like to improve, or new skills would you like to develop?</label><%= @spacer %>
 
 	<%= e.comp_skills %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>Do you feel your GPA accurately reflects your academic abilities?  Please comment on why or why not in the space provided</label><%= @spacer %>
+	<label>Do you feel that your academic record accurately reflects your abilities as a student?  Please explain.</label><%= @spacer %>
 
 	<%= e.gpa_comments %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>How did you learn about Research Experience for Undergrads (REU)?</label><%= @spacer %>
+	<label>How did you learn about the Scripps Undergraduate Research Program (SURF)?</label><%= @spacer %>
 	<%= e.learn %>
 </div>
 <br style="clear:both;"/>
 
 <div>
-	<label>Please Complete a brief essay (up to 250 words) explaining why you are interested in our program and how the experience may help you achieve your future goals</label><%= @spacer %>
+        <label>Please List your top 3 preferences for potential faculty mentors.</label><%= @spacer %><br />
+
+        1.) <%= e.mentor1 if e.mentor1 %> &nbsp;&nbsp;&nbsp;&nbsp; 2.) <%= e.mentor2 if e.mentor2 %> &nbsp;&nbsp;&nbsp;&nbsp; 3.) <%= e.mentor3 if e.mentor3 %>
+</div>
+<br style="clear:both;"/>
+
+<div>
+	<label>Please tell us about a recent achievement that you are most proud of, including why you are proud of this.  This achievement can be in any realm of your personal or professional life including academic achievements, extra-curricular accomplishments (i.e. sports, music, hobbies) or any kind of success in your roles in your family and/or your community.</label><%= @spacer %>
 	
 	<%= e.personal_statement %>
 </div>
