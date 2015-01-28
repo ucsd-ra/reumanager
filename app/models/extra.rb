@@ -5,7 +5,7 @@ class Extra < ActiveRecord::Base
  validates_presence_of :mentor2
  validates_presence_of :mentor3
  validates_presence_of :personal_statement
-  
+
   def self.mentor_list
     options = [''],
     ["Lihini Aluwihare"],
@@ -14,7 +14,6 @@ class Extra < ActiveRecord::Base
     ["Ron Burton"],
     ["Paterno Castillo"],
     ["Dimitri Deheyn"],
-    ["Amato Evan"],
     ["William Gerwick"],
     ["Sarah Gille"],
     ["Paul Jensen"],
@@ -22,12 +21,13 @@ class Extra < ActiveRecord::Base
     ["Carolyn Kurle"],
     ["Lisa Levin"],
     ["Richard Norris"],
-    ["Brian Palenic"],
-    ["Lynn Russel"],
+    ["Brian Palenik"],
     ["Stuart Sandin"],
-    ["Lisa Tauxe"],
+    ["B. Semmens"],
+    ["A. Sirovic"],
     ["Jennifer Taylor"],
+    ["M. Vernet"],
     ["Other"]
   end
-  
+
 end

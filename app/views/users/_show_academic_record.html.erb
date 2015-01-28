@@ -4,8 +4,9 @@
 </div>
 
 <div class="span-4">
-	<label>Dates of Attendance</label>
+	<label>Started College On</label>
 	<%= h(f.college_start.to_date.strftime("%Y.%m")) %>&nbsp;-&nbsp;
+	<label>Anticipated Graduation Date</label>
 	<%= h(f.college_end.to_date.strftime("%Y.%m")) %>
 </div>
 

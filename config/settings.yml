@@ -2,16 +2,16 @@ app_title:
   default: Student Undergraduate Research Experience (SURF)
 domain:
   default: reu.ucsd.edu/surf
-university: 
+university:
   default: UC San Diego
 department:
   default: Scripps Institution of Oceanography
 application_start:
   default: Mon, 10 Feb 2014 00:00:00 -0700
 application_deadline:
-  default: Fri, 21 Mar 2014 00:00:00 -0700
+  default: Sun, 21 Mar 2015 00:00:00 -0700
 notification_date:
-  default: Mon, 31 Mar 2014 00:00:00 -0700
+  default: Sun, 21 Mar 2015 00:00:00 -0700
 program_start_date:
   default: Thr, 19 Jun 2014
 program_end_date:

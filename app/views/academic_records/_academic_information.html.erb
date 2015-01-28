@@ -8,11 +8,10 @@
 <hr />
 
 <div class="span-6">
-	<label>Dates of Attendance:</label><br />
-	<label>From:</label>&nbsp;&nbsp;<%= f.date_select 'college_start', :discard_day => true, :end_year => Time.now.year + 1 %><br style="clear:both;" />
+	<label>Started College On:</label><br /><%= f.date_select 'college_start', :discard_day => true, :end_year => Time.now.year + 1 %><br style="clear:both;" />
 </div>
-<div class="span-6 last"><br />
-	<label>To:</label>&nbsp;&nbsp;<%= f.date_select 'college_end', :discard_day => true, :start_year => Time.now.year - 3, :end_year => Time.now.year + 7 %>
+<div class="span-6 last">
+	<label>Anticipated Graduation Date:</label><br /><%= f.date_select 'college_end', :discard_day => true, :start_year => Time.now.year - 3, :end_year => Time.now.year + 7 %>
 </div>
 
 <hr />
@@ -40,14 +39,14 @@
 </div>
 
 <hr />
-	
+
 <% if @academic_record.transcript && @academic_record.transcript.original_filename != nil %>
 	<div id="transcript">
 		<%= f.label :transcript, "We have received the following transcript:" %>
 		<p class='right'><%= link_to_function 'Replace', "$('transcript_fields').show();$('transcript').hide();", :class => 'button' %></p>
 		<p><%= display_transcript_link(@academic_record) %></p>
 	</div>
-	
+
 	<div style='display:none;' id="transcript_fields">
 		<%= f.label :transcript, "Please upload a PDF of your most recent (unofficial is ok) transcript:" %>
 		<%= f.file_field :transcript %>
@@ -56,7 +55,7 @@
 <% else -%>
 	<div>
 		<%= f.label :transcript, "Please upload a PDF of your most recent (unofficial is ok) transcript:" %>
-		<%= f.file_field :transcript %>		
+		<%= f.file_field :transcript %>
 	</div>
 <% end -%>
 
@@ -83,18 +82,18 @@
 		<label>Previous College or University</label><br />
 		<%= f.text_field 'p_college' %>
 	</div>
-	
+
 	<hr />
-	
+
 	<div>
 		<label>Dates of Attendance</label><br style="clear:both;" />
 	</div>
-	
+
 	<div class="span-6">
 		<label>From: </label><%= f.date_select 'p_college_start', :discard_day => true, :end_year => Time.now.year - 1, :start_year => Time.now.year - 15 %><br style="clear:both;" />
 	</div>
 
 	<div class="span-6 last">
 		<label>To: </label><%= f.date_select 'p_college_end', :discard_day => true, :start_year => Time.now.year - 14 %>
-	</div>	
+	</div>
 </div>

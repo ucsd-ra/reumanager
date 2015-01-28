@@ -5,7 +5,7 @@
 			<% if params[:controller] == "users" || params[:controller] == "academic_records" || params[:controller] == "recommenders" || params[:controller] == "extras" -%>
 				<% if current_user && current_user.submitted_at && !check_admin && params[:controller] != "recommendation" %>
 					<li class="selected"><%= link_to "Application Status", { :controller => "users", :action => "status" }%></li>
-				<% end -%>				
+				<% end -%>
 			<% else -%>
 				<% if current_user && current_user.submitted_at && !check_admin && params[:controller] != "recommendation" %>
 					<li><%= link_to "Application Status", { :controller => "users", :action => "status" }%></li>
@@ -15,16 +15,16 @@
 		<% elsif app_in_progress? -%>
 				<li class="last"><%= link_to "Login", { :controller => "sessions", :action => "new" } %></li>
 		<% end -%>
-		
-		<% if current_user && check_admin -%>		
+
+		<% if current_user && check_admin -%>
 			<% if params[:controller] == "settings" -%>
 				<li class="selected"><%= link_to "Settings", { :controller => 'settings' }%></li>
 			<% else -%>
 				<li><%= link_to "Settings", { :controller => 'settings' }%></li>
 			<% end -%>
 		<% end -%>
-			
-		<% if current_user && check_admin -%>		
+
+		<% if current_user && check_admin -%>
 			<% if params[:controller] == "admin" -%>
 				<li class="selected"><%= link_to "Admin", { :controller => "admin" }%></li>
 			<% else -%>
@@ -33,15 +33,15 @@
 		<% end -%>
 
     	<% if params[:controller] == "projects" && params[:action] == "index" -%>
-    		<li class="selected"><%= link_to "Past Projects", projects_url %></li>
+    		<li class="selected"><%= link_to "Past Projects", "https://scripps.ucsd.edu/news/surf-program-2014-student-profiles" %></li>
     	<% else -%>
-    		<li><%= link_to "Past Projects", projects_url %></li>
+    		<li><%= link_to "Past Projects", "https://scripps.ucsd.edu/news/surf-program-2014-student-profiles" %></li>
     	<% end -%>
-		
+
     	<% if params[:controller] == "projects" && params[:action] == "current" -%>
-    		<li class="selected"><%= link_to "Current Projects", 'https://scripps.ucsd.edu/undergrad/surf/2014-surf-research-projects-descriptions' %></li>
+    		<li class="selected"><%= link_to "Current Projects", 'https://scripps.ucsd.edu/undergrad/surf/2015-surf-research-projects-descriptions' %></li>
     	<% else -%>
-    		<li><%= link_to "Current Projects", 'https://scripps.ucsd.edu/undergrad/surf/2014-surf-research-projects-descriptions' %></li>
+    		<li><%= link_to "Current Projects", 'https://scripps.ucsd.edu/undergrad/surf/2015-surf-research-projects-descriptions' %></li>
     	<% end -%>
 
 		<% if current_user && current_user.role.name == 'student' -%>

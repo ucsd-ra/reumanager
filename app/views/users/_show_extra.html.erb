@@ -23,6 +23,11 @@
 <br style="clear:both;"/>
 
 <div>
+	<label>Please tell us about a recent achievement that you are proud of. This achievement can be in any realm of your personal or professional life.  Examples include an academic achievement, employment, an award or honor in an extra-curricular activity (i.e. sports, music, hobbies),  community service, family responsibility etc.</label>
+	<%= e.personal_statement.size > 4 ? e.personal_statement : "You have not entered data for this section." %>
+</div>
+
+<div>
 	<label>How did you learn about the Scripps Undergraduate Research Program (SURF)?</label><br />
 	<%= e.learn ? e.learn : "You have not entered data for this section." %>
 </div>
@@ -35,8 +40,3 @@
 	3. <%= e.mentor3 ? e.mentor3 : "You have not entered your third choice." %><br />
 </div>
 <br style="clear:both;"/>
-
-<div>
-	<label>Please tell us about a recent achievement that you are most proud of, including why you are proud of this.  This achievement can be in any realm of your personal or professional life including academic achievements, extra-curricular accomplishments (i.e. sports, music, hobbies) or any kind of success in your roles in your family and/or your community.</label>
-	<%= e.personal_statement.size > 4 ? e.personal_statement : "You have not entered data for this section." %>
-</div>

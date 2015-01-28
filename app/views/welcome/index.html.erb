@@ -1,6 +1,6 @@
 <div id="welcome">
 	<%= render :partial => "layouts/header_text" %>
-	
+
 	<br class='clear'/>
 
 	<div class="span-14" id="image">
@@ -14,16 +14,13 @@
     <%= link_to "Link to our image gallery", "http://www.flickr.com/photos/scrippsocean/sets/72157646493579353/" %>
   </li>
   <li>
-    <%= link_to "Link to our research profiles from 2014", "http://scripps.ucsd.edu/news/surf-program-2014-student-profiles" %>
-  </li>
-  <li>
     <%= link_to "For full information about the program, please see our website", "http://scripps.ucsd.edu/undergrad/surf" %>
   </li>
-</ul>	
+</ul>
 </div>
 
 	<br class='clear'/>
-	
+
 	<div class="span-8">
     <%= textilize Setting.highlights %>
 	</div>
@@ -33,7 +30,7 @@
 	<div class="span-10 last">
     <%= textilize Setting.application_information %>
 	</div>
-	
+
 	<br class='clear'/>
 	<% if app_in_progress? -%>
 	  <% if current_user %>
@@ -48,5 +45,5 @@
   	<h3 class="">The deadline has now passed.  If you already started an application, you can continue to submit your data or check on the status using the button above.</h3>
   	<h3 class='clear'><b>Please check back in <%= Setting.check_back_date.to_date.strftime("%B") %> for Summer <%= Setting.check_back_date.to_date.year %> Information</b></h3>
 	<% end -%>
-	
+
 </div>

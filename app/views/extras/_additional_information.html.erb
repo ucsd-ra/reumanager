@@ -18,6 +18,11 @@
 </div>
 <%= e.text_area 'gpa_comments', :class => "extra" %>
 
+<div>
+	<label>Please tell us about a recent achievement that you are proud of. This achievement can be in any realm of your personal or professional life.  Examples include an academic achievement, employment, an award or honor in an extra-curricular activity (i.e. sports, music, hobbies),  community service, family responsibility etc.</label>
+</div>
+<%= e.text_area 'personal_statement', :class => "extra" %>
+
 <div id="learn">
 	<label>How did you learn about the Scripps Undergraduate Research Program (SURF)?</label><br />
 	<%= e.radio_button 'learn', 'NSF REU Website', :onclick => "$('learn_more').hide();" %><label>NSF REU Website</label>&nbsp;&nbsp;&nbsp;
@@ -54,9 +59,5 @@
 </div>
 
 <br style="clear:both;" />
-<div>
-	<label>Please tell us about a recent achievement that you are most proud of, including why you are proud of this.  This achievement can be in any realm of your personal or professional life including academic achievements, extra-curricular accomplishments (i.e. sports, music, hobbies) or any kind of success in your roles in your family and/or your community.</label>
-</div>	
-<%= e.text_area 'personal_statement', :class => "extra" %>
 
 <%= render :partial => "mentor_observers" %>
