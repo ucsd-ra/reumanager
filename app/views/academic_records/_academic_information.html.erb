@@ -8,7 +8,7 @@
 <hr />
 
 <div class="span-6">
-	<label>Started College On:</label><br /><%= f.date_select 'college_start', :discard_day => true, :end_year => Time.now.year + 1 %><br style="clear:both;" />
+	<label>Enrolled From:</label><br /><%= f.date_select 'college_start', :discard_day => true, :end_year => Time.now.year + 1 %><br style="clear:both;" />
 </div>
 <div class="span-6 last">
 	<label>Anticipated Graduation Date:</label><br /><%= f.date_select 'college_end', :discard_day => true, :start_year => Time.now.year - 3, :end_year => Time.now.year + 7 %>
