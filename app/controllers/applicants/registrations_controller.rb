@@ -1,6 +1,7 @@
 class Applicants::RegistrationsController < Devise::RegistrationsController
   before_action :update_sanitized_params, if: :devise_controller?
   before_action :auth, :only => [:status, :update, :submit]
+  before_action :check_deadline, :only => [:submit]
 
   # GET /resource/edit
   def edit

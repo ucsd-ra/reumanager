@@ -1,6 +1,4 @@
 class Applicants::SessionsController < Devise::SessionsController
-  before_action :check_deadline
-
   # GET /resource/sign_in
    def new
      super
