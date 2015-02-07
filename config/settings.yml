@@ -1,7 +1,7 @@
 app_title:
   default: Student Undergraduate Research Experience (SURF)
 domain:
-  default: reu.ucsd.edu/surf
+  default: reumanager.com/surf
 university:
   default: UC San Diego
 department:

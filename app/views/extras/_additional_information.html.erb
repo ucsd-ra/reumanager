@@ -39,7 +39,7 @@
 
 <div id="preference">
 	<label>Please select your top 3 preferences for projects/potential faculty mentors.</label><br />
-	Refer to <%= link_to "http://sioundergrad.ucsd.edu/research/", 'http://sioundergrad.ucsd.edu/research/' %> and the <%= link_to "current projects page", current_projects_path %> for more information.<br />
+	Refer to <%= link_to "our project descriptions", "https://scripps.ucsd.edu/undergrad/surf/2015-surf-research-projects-descriptions" %> for more information.<br />
 	    <%= @extra.mentor1 %>
 	    <% if @extra.mentor1.blank? || Extra.mentor_list.include?([@extra.mentor1]) %>
     	    <%= render :partial => "mentor_select", :locals => {:id => 1} %><br />
