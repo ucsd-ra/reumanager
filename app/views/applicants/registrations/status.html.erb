@@ -64,8 +64,10 @@
 
   </div> <!-- end .row -->
 
-  <%= if current_applicant.state == 'completed_recommender_info' && !expired? %>
+  <% if current_applicant.state == 'completed_recommender_info' && !expired? %>
     <%= content_tag :div, content_tag(:p, link_to("Submit Application", submit_application_path, :class => "btn btn-success")), :class => 'inner' %>
+  <% else %>
+    <h3>The application deadline has past</h3>
   <% end %>
 
   <hr class='clear inner' />
