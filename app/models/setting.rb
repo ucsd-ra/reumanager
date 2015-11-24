@@ -4,7 +4,7 @@ class Setting < ActiveRecord::Base
 
     validates_uniqueness_of :name
     validates_inclusion_of :name, :in => @@available_settings.keys
-    validates_numericality_of :value, :only_integer => true, :if => Proc.new { |setting| @@available_settings[setting.name]['format'] == 'int' }  
+    validates_numericality_of :value, :only_integer => true, :if => Proc.new { |setting| @@available_settings[setting.name]['format'] == 'int' }
 
     # Hash used to cache setting values
     @cached_settings = {}
@@ -74,12 +74,20 @@ class Setting < ActiveRecord::Base
       end
     end
 
+    def self.reset_to_defaults
+      Setting.available_settings.each do |setting_name, setting_value|
+        setting = Setting.find_by_name(setting_name)
+        setting.value = setting_value["default"]
+        setting.save!
+      end
+    end
+
   private
     # Returns the Setting instance for the setting named name
     # (record found in database or new record with default value)
     def self.find_or_default(name)
       name = name.to_s
-      raise "There's no setting named #{name}" unless @@available_settings.has_key?(name)    
+      raise "There's no setting named #{name}" unless @@available_settings.has_key?(name)
       setting = find_by_name(name)
       setting ||= new(:name => name, :value => @@available_settings[name]['default']) if @@available_settings.has_key? name
     end

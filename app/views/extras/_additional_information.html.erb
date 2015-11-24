@@ -1,15 +1,5 @@
 <div>
-	<label>Will you receive funding from any other program throughout the summer?  If "yes", please name funding source.</label><br />
-</div>
-<%= e.text_area 'personal_statement', :class => "extra" %>
-
-<div>
-	<label>Please list any laboratory or computer skills you currently possess.  Which existing skills would you like to improve, or new skills would you like to develop?</label>
-</div>
-<%= e.text_area 'comp_skills', :class => "extra" %>
-
-<div>
-	<label>Please explain why you consider yourself eligible for this program as an individual from an ethnicity, background or other group that is disadvantaged and underrepresented.</label>
+	<label>Please explain why you consider yourself eligible for this program as an individual from an ethnicity, background or other group that is disadvantaged and underrepresented. Please provide as much detail as possible.</label>
 </div>
 <%= e.text_area 'research_interests', :class => "extra" %>
 
@@ -19,18 +9,33 @@
 <%= e.text_area 'career', :class => "extra" %>
 
 <div>
+	<label>Please list any laboratory or computer skills you currently possess.  Which existing skills would you like to improve, or new skills would you like to develop?</label>
+</div>
+<%= e.text_area 'comp_skills', :class => "extra" %>
+
+<hr class='bold-divider'>
+
+<div>
 	<label>Please add any additional information that may help us evaluate your application.</label><br />
 </div>
 <%= e.text_area 'additional_info', :class => "extra" %>
 
+<hr class='bold-divider'>
+
+<div>
+	<label>Will you receive funding from any other program throughout the summer?  If "yes", please name funding source.</label><br />
+</div>
+<%= e.text_area 'personal_statement', :class => "extra" %>
+
+
 
 <div id="learn">
-	<label>How did you learn about Research Experience for Undergraduates (REU)?</label><br />
-	<%= e.radio_button 'learn', 'NSF REU Website', :onclick => "$('learn_more').hide();" %><label>NSF REU Website</label>&nbsp;&nbsp;&nbsp;
-	<%= e.radio_button 'learn', 'Professor', :onclick => "$('learn_more').hide();" %><label>Professor</label>&nbsp;&nbsp;&nbsp;
-	<%= e.radio_button 'learn', 'Undergraduate program', :onclick => "$('learn_more').hide();" %><label>Undergraduate program</label>&nbsp;&nbsp;&nbsp;
-	<%= e.radio_button 'learn', 'Email', :onclick => "$('learn_more').hide();" %><label>Email</label>&nbsp;&nbsp;&nbsp;<br />
-	<%= e.radio_button 'learn', 'Other', :onclick => "$('learn_more').show();" %><label>Other</label>&nbsp;&nbsp;&nbsp;
+	<label>How did you learn about MSTP-SURF Program?</label><br />
+	<%= e.radio_button 'learn', 'NSF REU Website', :onclick => "$('learn_more').hide();" %><label>NSF REU Website</label><br>
+	<%= e.radio_button 'learn', 'Professor', :onclick => "$('learn_more').hide();" %><label>Professor</label><br>
+	<%= e.radio_button 'learn', 'Undergraduate program', :onclick => "$('learn_more').hide();" %><label>Undergraduate program</label><br>
+	<%= e.radio_button 'learn', 'Email', :onclick => "$('learn_more').hide();" %><label>Email</label><br />
+	<%= e.radio_button 'learn', 'Other', :onclick => "$('learn_more').show();" %><label>Other</label>
   <div id="learn_more" style="display:none;">
   	<label>Please elaborate:</label><br />
     <%= e.text_field 'learn_more', :class => "extra" %>

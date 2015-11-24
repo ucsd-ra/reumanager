@@ -7,17 +7,17 @@ university:
 department:
   default: MSTP-SURF Program
 application_start:
-  default: Wed, 1 Jan 2014 00:00:00 -0700
+  default: Wed, 1 Jan 2015 00:00:00 -0700
 application_deadline:
-  default: Fri, 14 Feb 2014 00:00:00 -0700
+  default: Fri, 14 Feb 2016 00:00:00 -0700
 notification_date:
-  default: Mon, 10 Mar 2014 00:00:00 -0700
+  default: Mon, 10 Mar 2016 00:00:00 -0700
 program_start_date:
-  default: Mon, 23 Jun 2014
+  default: Mon, 23 Jun 2016
 program_end_date:
-  default: Fri, 15 Aug 2014
+  default: Fri, 15 Aug 2016
 check_back_date:
-  default: Thu, 1 May 2014
+  default: Thu, 1 May 2016
 mail_from:
   default: mstp@ucsd.edu
 password_min_length:
