@@ -49,14 +49,14 @@
 		La Jolla, CA 92093-0661
 	</p>
 </div>
-	
+
 <% if @academic_record.transcript && @academic_record.transcript.original_filename != nil %>
 	<div id="transcript">
 		<%= f.label :transcript, "We have received the following transcript:" %>
 		<p class='right'><%= link_to_function 'Replace', "$('transcript_fields').show();$('transcript').hide();", :class => 'button' %></p>
 		<p><%= display_transcript_link(@academic_record) %></p>
 	</div>
-	
+
 	<div style='display:none;' id="transcript_fields">
 		<%= f.label :transcript, "Please upload a PDF of your most recent (unofficial is ok) transcript:" %>
 		<%= f.file_field :transcript %>
@@ -65,17 +65,11 @@
 <% else -%>
 	<div>
 		<%= f.label :transcript, "Please upload a PDF of your most recent (unofficial is ok) transcript:" %>
-		<%= f.file_field :transcript %>		
+		<%= f.file_field :transcript %>
 	</div>
 <% end -%>
 
 <hr />
-
-
-<div>
-	<label>Will you receive funding from any other program throughout the summer?</label>
-		<%= f.select 'funding', options_for_select(%w{\  No Yes}, @academic_record.funding) %>
-</div>
 
 <div>
 	<label>Did you attend another college or university previously?</label>
@@ -98,18 +92,18 @@
 		<label>Previous College or University</label><br />
 		<%= f.text_field 'p_college' %>
 	</div>
-	
+
 	<hr />
-	
+
 	<div>
 		<label>Dates of Attendance</label><br style="clear:both;" />
 	</div>
-	
+
 	<div class="span-6">
 		<label>From: </label><%= f.date_select 'p_college_start', :discard_day => true, :end_year => Time.now.year - 1, :start_year => Time.now.year - 15 %><br style="clear:both;" />
 	</div>
 
 	<div class="span-6 last">
 		<label>To: </label><%= f.date_select 'p_college_end', :discard_day => true, :start_year => Time.now.year - 14 %>
-	</div>	
+	</div>
 </div>
