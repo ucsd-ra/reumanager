@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'capistrano'
-gem 'rvm-capistrano'
+gem 'capistrano', :require => false
+gem 'rvm-capistrano', :require => false
 
 gem 'rails', '2.3.15'
 gem 'carmen', '0.2.8'
