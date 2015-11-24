@@ -3,31 +3,40 @@
 
 class ApplicationController < ActionController::Base
 #  include ExceptionNotification::Notifiable
-  
+
   helper :all # include all helpers, all the time
 #  before_filter  :set_p3p
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => 'e139ceb5b64892fab091458efd4d4528'
-  
-  # See ActionController::Base for details 
+
+  # See ActionController::Base for details
   # Uncomment this to filter the contents of submitted sensitive data parameters
-  # from your application log (in this case, all fields with names like "password"). 
+  # from your application log (in this case, all fields with names like "password").
   filter_parameter_logging :password, :password_confirmation, :lastname, :dob, :street, :city, :state, :zip, :phone, :pstreet, :pcity, :pstate, :pzip, :pphone, :citizenship, :cresidence, :gender, :ethnicity, :race, :disability
   before_filter :check_settings_cache
-  
+
   require 'pdf/writer'
   require 'spreadsheet'
   include AuthenticatedSystem
-  
+  before_filter :authenticate_for_staging
+
 	rescue_from(ActionController::RoutingError) { render :file => 'public/404.html', :status => 404 }
 	rescue_from(ActionController::InvalidAuthenticityToken) { render :file => 'public/422.html', :status => 422}
+
+  def authenticate_for_staging
+    if Rails.env == 'production'
+      authenticate_or_request_with_http_basic do |username, password|
+        username == "internship" && password == "ftw"
+      end
+    end
+  end
 
 # I want to exclude my IPs from the logs, but the below code didn't work as I had hoped.
 #
 #	before_filter :filter_my_ips
-#	
+#
 #	def filter_my_ips
 #		@my_ips = ["76.88.119.175", "132.239.8.57", "184.72.43.42", "127.0.0.1"]
 #		if @my_ips.include?(request.remote_ip)
@@ -43,7 +52,7 @@ class ApplicationController < ActionController::Base
     # Called once per request
     Setting.check_cache
 	end
-	
+
   def ssl_required?
     return false if RAILS_ENV == 'test' || RAILS_ENV == 'development'
     super
@@ -52,7 +61,7 @@ class ApplicationController < ActionController::Base
   def set_p3p
      response.headers["P3P"]='CP="CAO PSA OUR"'
   end
-  
+
   def check_admin
     unless current_user && current_user.role.name == "admin"
       flash[:notice] = "You are not an administrator."
@@ -66,11 +75,11 @@ class ApplicationController < ActionController::Base
       redirect_to(:controller => "users", :action => "status")
     end
   end
-  
+
   def is_admin
-    current_user.role.name == "admin" || current_user.id == 1 
+    current_user.role.name == "admin" || current_user.id == 1
   end
-    
+
 #	def logger
 #		@hosts = ['76.88.119.175', '184.72.43.42', '132.239.8.57']
 #		if @hosts.include?(request.remote_ip)
