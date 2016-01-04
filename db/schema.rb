@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20141126234350) do
     t.date     "start"
     t.date     "finish"
     t.string   "degree"
-    t.float    "gpa"
-    t.float    "gpa_range",               default: 4.0
+    t.float    "gpa",                     limit: 24
+    t.float    "gpa_range",               limit: 24, default: 4.0
     t.text     "gpa_comment"
     t.integer  "applicant_id"
     t.datetime "created_at"
@@ -86,11 +86,11 @@ ActiveRecord::Schema.define(version: 20141126234350) do
     t.text     "gpa_comment"
   end
 
-  add_index "applicants", ["authentication_token"], name: "index_applicants_on_authentication_token", unique: true
-  add_index "applicants", ["confirmation_token"], name: "index_applicants_on_confirmation_token", unique: true
-  add_index "applicants", ["email"], name: "index_applicants_on_email", unique: true
-  add_index "applicants", ["reset_password_token"], name: "index_applicants_on_reset_password_token", unique: true
-  add_index "applicants", ["unlock_token"], name: "index_applicants_on_unlock_token", unique: true
+  add_index "applicants", ["authentication_token"], name: "index_applicants_on_authentication_token", unique: true, using: :btree
+  add_index "applicants", ["confirmation_token"], name: "index_applicants_on_confirmation_token", unique: true, using: :btree
+  add_index "applicants", ["email"], name: "index_applicants_on_email", unique: true, using: :btree
+  add_index "applicants", ["reset_password_token"], name: "index_applicants_on_reset_password_token", unique: true, using: :btree
+  add_index "applicants", ["unlock_token"], name: "index_applicants_on_unlock_token", unique: true, using: :btree
 
   create_table "awards", force: true do |t|
     t.string   "title"
@@ -107,12 +107,12 @@ ActiveRecord::Schema.define(version: 20141126234350) do
     t.integer  "item"
     t.string   "table"
     t.integer  "month",      limit: 2
-    t.integer  "year",       limit: 5
+    t.integer  "year",       limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories"
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
 
   create_table "recommendations", force: true do |t|
     t.integer  "known_applicant_for"
@@ -130,8 +130,8 @@ ActiveRecord::Schema.define(version: 20141126234350) do
     t.datetime "updated_at"
   end
 
-  add_index "recommendations", ["applicant_id"], name: "index_recommendations_on_applicant_id"
-  add_index "recommendations", ["recommender_id"], name: "index_recommendations_on_recommender_id"
+  add_index "recommendations", ["applicant_id"], name: "index_recommendations_on_applicant_id", using: :btree
+  add_index "recommendations", ["recommender_id"], name: "index_recommendations_on_recommender_id", using: :btree
 
   create_table "recommenders", force: true do |t|
     t.string   "first_name"
@@ -169,7 +169,7 @@ ActiveRecord::Schema.define(version: 20141126234350) do
     t.datetime "updated_at"
   end
 
-  add_index "settings", ["name"], name: "index_settings_on_name"
+  add_index "settings", ["name"], name: "index_settings_on_name", using: :btree
 
   create_table "snippets", force: true do |t|
     t.string   "name",        default: "", null: false
@@ -204,10 +204,10 @@ ActiveRecord::Schema.define(version: 20141126234350) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
 end

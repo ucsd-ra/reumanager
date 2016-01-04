@@ -1,6 +1,14 @@
 REU Manager
 ==========
 
+## Setup
+Use Ruby 2.1.1
+
+Line 7 of ./config/initializers/devise.rb needs to be commented out for initial migrations to run.  Uncomment it after running migrations.
+
+Run '''rake settings:load''' to load snippets.
+
+## Info
 This program facilitates the application process for science oriented [NSF REU programs](http://www.nsf.gov/crssprgm/reu/) and is developed by the IT staff of the [UC San Diego Institute of Engineering in Medicine](https://iem.ucsd.edu/).
 
 [REU Manager](https://reumanager.com) is built with [Ruby on Rails](http://rubyonrails.org/) and is completely free to host/maintain yourself.   You can see a demonstration of the site at: https://reumanager.com/demo .  You may login as the administrative user with the email admin@reumanager.com and the password DemoApp.

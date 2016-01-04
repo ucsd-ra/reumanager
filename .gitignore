@@ -13,3 +13,4 @@ capybara-*.html
 /spec/tmp/*
 /tmp/*
 /vendor/bundle
+/config/database.yml

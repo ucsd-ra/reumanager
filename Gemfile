@@ -22,7 +22,7 @@ gem 'paper_trail'
 gem 'rails_admin'
 gem 'redcarpet'
 gem 'rich', :git => "https://github.com/joeswann/rich.git"
-gem 'rvm-capistrano'
+gem 'rvm-capistrano', require: false
 gem 'sqlite3'
 gem 'state_machine'
 gem 'whenever', :require => false
@@ -33,9 +33,9 @@ gem 'bootstrap-sass', '~> 2.1'
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'coffee-rails'
 gem 'font-awesome-sass-rails'
-gem 'libv8'
+# gem 'libv8'
 gem 'modernizr-rails'
-gem 'therubyracer'
+# gem 'therubyracer'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier'
 
