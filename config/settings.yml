@@ -2,60 +2,60 @@ app_title:
   name: app_title
   description: A snippet of text that describes your program (e.g. REU in Regenerative
     Medicine, Multi-Scale Bioengineering, and Systems Biology)
-  value: RQI REU Summer Program
+  value: Research Experiences in Diabetes for Undergraduates
 university:
   name: university
   description: This is used anywhere your university name is referenced.
-  value: Rice University
+  value: Illinois Institute of Technology
 department:
   name: department
   description: This is used anywhere your department name is referenced.
-  value: Rice Quantum Institute
+  value: Biomedical Engineering
 department_postal_address:
   name: department_postal_address
   description: This is used anywhere the postal address is needed.  TODO
-  value: 1234 Your Address, Your City, Your Zip
+  value:
 application_start:
   name: application_start
   description: This is the 'opening date' for the application system. After this
     date, students can apply. This also controls what buttons are displayed in the
     navbar and on the homepage (e.g. Apply Now and Login).
-  value: December 1, 2014
+  value:
 application_deadline:
   name: application_deadline
   description: This date determines when applications can no longer be created or
     updated. Similar to the above value, buttons to apply are removed after this
     date.
-  value: February 15, 2015
+  value: 2/15/16
 notification_date:
   name: notification_date
   description: This date is used to let the applicants know when to expect a response.
     This is used in the confirmation emails.
-  value: April 15, 2015
+  value: 3/15/16
 program_start_date:
   name: program_start_date
   description: This date is used in the header and confirmation emails to set when
     the NSFREU program begins.
-  value: June 1, 2015
+  value: 6/30/16
 program_end_date:
   name: program_end_date
   description: Similar to the above value, this marks the end date for your NSFREU
     program.
-  value: August 7, 2015
+  value: 8/5/16
 check_back_date:
   name: check_back_date
   description: |
     Once the application process is closed (after the application deadline),
     this value will inform students when to check back for information about next
     year's application.
-  value: November 1, 2015
+  value: 9/1/16
 mail_from:
   name: mail_from
   description: |
     This will be used in the reply-to value for emails sent from the
     application. This is also used in the footer as the email to contact for questions
     or comments about the website. TODO
-  value: clively@rice.edu
+  value: ''
 funding_acknowlegement:
   name: funding_acknowlegement
   description: Who is supporting this program?
@@ -64,14 +64,14 @@ univeristy_url:
   name: university_url
   description: |
     Main URL for the parent organization, usually a university (e.g. http://ucsd.edu, http://www.rice.edu)
-  value: "http://www.rice.edu"
+  value: ''
 department_url:
   name: department_url
   description: |
     Main URL for the organization, usually a department
-  value: "http://rqi.rice.edu"
+  value: ''
 program_url:
   name: program_url
   description: |
     URL for the specific program
-  value: "http://rqi.rice.edu/rqi"
+  value: ''

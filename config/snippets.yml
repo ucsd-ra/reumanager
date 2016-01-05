@@ -3,46 +3,39 @@ general_description:
   description: This is the text used as a general description for your program.
     It is displayed on the front page under the main image.
   value: |
-    The NSF-funded Research Experience for Undergraduates (REU) program managed by the Rice Quantum Institute (RQI) brings students to Rice University for a <b>ten-week interdisciplinary research program.</b>
-    The focus is on providing <b>highly promising undergraduate students</b>, frequently from schools with limited research experiences and resources, with a jump start into many aspects of research that cannot be learned within the typical undergraduate classroom experience.
-    Each student <b>works directly within the research group</b> of a faculty mentor from one of the science and engineering departments within RQI. Each project is designed to be part of the longer term research program of the faculty mentor, but individual to the student and manageable within ten weeks.
-    For most REU participants, this involves an <b>accelerated learning period</b> where they become familiar with a new field and depend on the undergrads, grads, postdocs and faculty advisor to show them the relevant literature, lab expertise, fabrication, instrumentation and computer skills.
-    This leads into the major period of research where <b>they are given the responsibility</b> for bringing the project to a successful completion. The students are collectively exposed to a range of disciplines through interactions with a variety of research groups in other labs, weekly seminars by graduate students and frequent scientific and social interactions (and joint housing) with the other REU students. REU participants are usually highly motivated, and their motivation typically increases when they learn of each other's progress. On the last day, students present their work at the <b>RQI Summer Research Colloquium.</b>
+    In the Engineering Center For Diabetes Research and Education (ECDRE) researchers at the Illinois Institute of Technology (IIT) collaborate with basic scientists and clinicians applying engineering techniques towards the understanding and treatment of diabetes and its complications. The Biomedical Engineering Department at IIT and ECDRE provides the foundation for this 10-week summer program. Students will be paired with faculty to complete a diabetes related research project working with a faculty mentor from IIT. Diabetes is a complex disease that can lead to a number of health complications. The projects offered in this program reflect this diversity, with topics in biomaterials for islet cell encapsulation, models of glucose metabolism, imaging techniques for prognosis/diagnosis of disease, regeneration strategies for the treatment of ulcers and ischemic limbs and vascular changes in diabetic retinopathy.
 
 highlights:
   name: highlights
   description: ''
   value: |
     <ul>
-      <li>$4300 stipend</li>
-      <li>Reimbursement of travel costs up to $650</li>
-      <li>On-campus housing and a meal/dining plan - Hands-on research experience</li>
-      <li>Weekly seminars and workshops</li>
-      <li>Training in scientific communication (poster presentation)</li>
+      <li>Wide variety of research topics</li>
+      <li>Weekly seminars </li>
+      <li>Research ethics</li>
+      <li>Social programs</li>
+      <li>Outreach and mentoring of K-12 educational program</li>
     </ul>
 eligibility_requirements:
   name: eligibility_requirements
   description: ''
   value: |
     <ul>
-      <li>United States citizens or U.S. permanent residents</li>
-      <li>Enrolled in a undergraduate institute for the duration of the program</li>
-      <li>Must commit to the entire program (no late arrivals, no early departures)</li>
-      <li>Not available to graduating seniors</li>
+      <li>Students should have a declared engineering or science (biology, chemistry, mathematics, computer science, or physics) major.</li>
+      <li>Students should have a minimum GPA of 2.80/4.00.</li>
+      <li>Applicants must be US citizens or permanent residents.</li>
+      <li>Students from community colleges are encouraged to apply.</li>
     </ul>
 application_information:
   name: application_information
   description: ''
   value: |
     <ul>
-      <li>A completed application form, which includes a personal statement, any honors and awards received, and any scholarly </li>
-      <li>Unofficial transcripts of all previous college or university work, including work in progress</li>
-      <li>Contact information for 2 references (preferably professors in your major field) who know you well and can attest for your scholastic abilities</li>
-      <li>No application fee</li>
-      <li>Once you begin an application, you can check the status at any time by logging into this website</li>
-      <li>Only applications completed by the deadline will be reviewed</li>
+      <li>Academic Transcript</li>
+      <li>Letters of recommendation</li>
+      <li>Two essays to the application form. The essays should be no longer than one page in length, single spaced, and font no less than 10 pt. A) What are you future academic/career goals? Explain how participation in this REU program will help you achieve those goals. B) Describe an activity (hobby, sport, club, service, etc.) you enjoy outside of classes. Discuss how you got involved and what it requires from you.</li>
     </ul>
 acknowledgment_of_funding_soruces:
   name: acknowledgment_of_funding_soruces
   description: Please provide text to be included on the site as acknowledgment of program funding. In addition (or instead) you may send an image of the funding agency logo.
-  value: Program is supported by the NSF REU Program (Physics, Chemistry, and DMR) and the DoD ASSURE program
+  value: This program is supported by the National Science Foundation (EEC-1461215).
