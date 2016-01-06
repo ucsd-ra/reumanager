@@ -1,0 +1,32 @@
+general_description:
+  name: general_description
+  description: This is the text used as a general description for your program.
+    It is displayed on the front page under the main image.
+  value: ! "<p>The National Science Foundation&#39;s Research Experience for Undergraduates
+    (NSF-REU) program provides undergraduate students access to state-of-the-art
+    facilities, the opportunity to work with accomplished and experienced faculty
+    mentors, and to participate in highly collaborative, cutting-edge research projects</p>\r\n\r\n<p><img
+    alt=\"\" data-rich-file-id=\"1\" src=\"/system/rich/rich_files/rich_files/000/000/001/original/dsc-0106.jpg\"
+    /></p>\r\n"
+highlights:
+  name: highlights
+  description: ''
+  value: ! "<ul>\r\n\t<li>$X,XXX stipend</li>\r\n\t<li>On-campus housing or housing
+    allowance</li>\r\n\t<li>Travel to and from the REU Site</li>\r\n\t<li>Hands-on
+    research experience</li>\r\n\t<li>Weekly professional development workshops</li>\r\n\t<li>Social
+    events</li>\r\n</ul>\r\n"
+eligibility_requirements:
+  name: eligibility_requirements
+  description: ''
+  value: ! "<ul>\r\n\t<li>Full-time undergraduate student</li>\r\n\t<li>U.S. citizen
+    or permanent resident</li>\r\n</ul>\r\n"
+application_information:
+  name: application_information
+  description: ''
+  value: ! "<ul>\r\n\t<li>Major components of the online application include: a
+    personal statement, a copy of your unofficial school transcript (as a pdf),
+    and contact information for one reference</li>\r\n\t<li>The person writing your
+    letter of recommendation will be contacted via e-mail and will submit their
+    letter online</li>\r\n\t<li>Once you begin an application, you can check the
+    status of it any time by logging into this website</li>\r\n\t<li>Only complete
+    applications will be reviewed</li>\r\n</ul>\r\n"

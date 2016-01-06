@@ -1,11 +1,11 @@
 Reuman::Application.routes.draw do
   mount Rich::Engine => '/rich', :as => 'rich'
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-  
+
   namespace :applicants do
-    match "recommendations/:token" => "recommendations#edit", via: :get, as: :recommendations_edit
+    get "recommendations/:token" => "recommendations#edit", as: :recommendations_edit
     post "recommendations/:id" => "recommendations#resend_request", as: :recommendations_request
-    match "recommendations/:token" => "recommendations#update", via: :put, as: :recommendations_update
+    put "recommendations/:token" => "recommendations#update", as: :recommendations_update
 
     get "recommenders" => "recommenders#edit"
     put "recommenders" => "recommenders#update"
@@ -23,13 +23,13 @@ Reuman::Application.routes.draw do
   end
 
   devise_for :users, :controllers => { :sessions => "users/sessions" }
-  
+
   devise_scope :user do
-    match "users/sign_out" => "devise/sessions#destroy"
+    get "users/sign_out" => "devise/sessions#destroy"
   end
 
-  match "closed" => "welcome#closed"
-  match "thanks" => "welcome#thanks"
+  get "closed" => "welcome#closed"
+  get "thanks" => "welcome#thanks"
 
   root :to => "welcome#index"
 end

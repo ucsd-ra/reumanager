@@ -1,0 +1,22 @@
+
+development:
+  adapter: mysql2
+  database: reumanager_dev
+  username: root
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: mysql2
+  database: reumanager_test
+  username: root
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: mysql2
+  database: reumanager_prod
+  username:
+  password:
+  pool: 5
+  timeout: 5000

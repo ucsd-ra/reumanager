@@ -2,11 +2,21 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 # Admins
-u = User.new(email: 'jgrevich@ucsd.edu', first_name: 'Justin', last_name: 'Grevich', password: 'DemoApp'); u.confirmed_at = DateTime.now; u.save
-u = User.new(email: 'mmicou@ucsd.edu', first_name: 'Melissa', last_name: 'Micou', password: 'DemoApp'); u.confirmed_at = DateTime.now; u.save
-u = User.new(email: 'vpoola@ucsd.edu', first_name: 'Melissa', last_name: 'Micou', password: 'DemoApp'); u.confirmed_at = DateTime.now; u.save
+admins = [{ email: 'brey@iit.edu', first_name: 'Eric', last_name: 'Brey', password: 'REUappIIT'},
+          { email: 'damico@iit.edu', first_name: 'Cathie', last_name: "D'amico", password: 'REUappIIT' },
+          { email: 'weaver@iit.edu', first_name: 'Renee', last_name: 'Weaver', password: 'REUappIIT' },
+          { email: 'rob@notch8.com', first_name: 'Rob', last_name: 'Kaufman', password: 'REUappIIT' }]
+
+admins.map { |user| admin = User.new(user); admin.confirmed_at = DateTime.now; admin.save; }
 
 # Demo Applicants
-if ENV['RAILS_ENV'] == 'development' do
-  100.times { FactoryGirl.create(:applicant) }; 100.times { FactoryGirl.create(:applicant_with_address) }; 100.times { FactoryGirl.create(:applicant_with_address_and_record) }; 100.times { FactoryGirl.create(:applicant_with_address_record_and_recommender) }; 100.times { FactoryGirl.create(:applicant_with_recommender_and_recommendation) }; 100.times { FactoryGirl.create(:applicant_with_address_record_recommender_and_recommendation) }
+if ENV['RAILS_ENV'] == 'development'
+  100.times do
+    FactoryGirl.create(:applicant)
+    FactoryGirl.create(:applicant_with_address)
+    FactoryGirl.create(:applicant_with_address_and_record)
+    FactoryGirl.create(:applicant_with_address_record_and_recommender)
+    FactoryGirl.create(:applicant_with_recommender_and_recommendation)
+    FactoryGirl.create(:applicant_with_address_record_recommender_and_recommendation)
+  end
 end

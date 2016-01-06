@@ -1,18 +1,13 @@
 <fieldset>
-  <div class="inner">
-    <legend>Location</legend>
-  </div>
   <div class="row">
     <div class="span4">
       <div class="inner">
-        <%= f.label :label %>
-        <%= f.select :label, options_for_select(%w( Home School Other)), :prompt => "Location Label" %>
+        <%= f.select :label, options_for_select(%w( Home School Other), f.object.label), :prompt => "Location Label" %>
       </div>
     </div>
     <div class="span4 offset1">
       <div class="inner">
-        <%= f.label 'Permanent Address' %>
-        <%= f.select :permanent, options_for_select(["Yes", "No"]), :prompt => 'Permanent Address?' %>
+        <%= f.select :permanent, options_for_select(["Yes", "No"], f.object.permanent), :prompt => 'Permanent Address?' %>
       </div>
     </div>
 
@@ -21,7 +16,7 @@
         <%= f.text_field :address, :placeholder => :Address %>
       </div>
     </div>
-    
+
     <div class="span4">
       <div class="inner">
         <%= f.text_field :address2, :placeholder => 'Address Line 2' %>
@@ -35,7 +30,7 @@
 
     <div class='span4'>
       <div class="inner">
-        <%= subregion_select f, :state, 'us' %>
+        <%= subregion_select f.object_name, :state, 'US', {selected: f.object.state ,  :prompt => 'State or Territory' } %>
       </div>
     </div>
     <div class='span4 offset1'>
@@ -44,12 +39,12 @@
       </div>
     </div>
   </div>
-  
+
   <div class="inner">
     <%= f.hidden_field :_destroy %>
-    <%= link_to "remove this location", '#', class: "remove_fields btn btn-mini btn-danger" %>    
+    <%= link_to "remove this location", '#', class: "remove_fields btn btn-mini btn-danger" %>
   </div>
-  
+
   <hr class="inner clear" />
 
 </fieldset>
