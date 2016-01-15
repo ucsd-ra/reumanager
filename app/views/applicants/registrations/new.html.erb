@@ -1,0 +1,37 @@
+<div class="inner">
+  <h2>Sign up</h2>
+  <p>Please fill out the form below to begin the application process.</p>
+  <hr/>
+
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= custom_error_messages! %>
+
+    <div class="row">
+      <div class='span5'>
+        <%= f.label :first_name, "First Name" %>  <%= f.text_field :first_name %>
+      </div>
+      <div class='span5'>
+        <%= f.label :last_name, "Last Name" %> <%= f.text_field :last_name %>
+      </div>
+      <div class='span5'>
+        <%= f.label :email %> <%= f.email_field :email %>
+      </div>
+      <div class='span5'>
+        <%= f.label :phone, "Phone" %> <%= f.text_field :phone %>
+      </div>
+      <div class='span5'>
+        <%= f.label :password %> <%= f.password_field :password %>
+      </div>
+      <div class='span5'>
+        <%= f.label :password_confirmation %> <%= f.password_field :password_confirmation %>
+      </div>
+
+      <hr class='inner clear'>
+
+      <div class='span11'>
+        <p id='submit'><%= f.submit "Sign up", :class => 'btn' %></p>
+        <%= render :partial => "applicants/shared/links" %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>REU Manager</title>
+
+    <link rel="shortcut icon" href="assets/img/favicon.png" />
+
+    <meta name="description" content="">
+
+    <!-- CSS -->
+    <link href="assets/css/preload.css" rel="stylesheet">
+
+    <!-- Compiled in vendors.js -->
+
+    <!-- <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-switch.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/animate.min.css" rel="stylesheet">
+    <link href="assets/css/slidebars.min.css" rel="stylesheet">
+    <link href="assets/css/lightbox.css" rel="stylesheet">
+    <link href="assets/css/jquery.bxslider.css" rel="stylesheet" />
+    <link href="assets/css/buttons.css" rel="stylesheet"> -->
+
+
+    <link href="assets/css/vendors.css" rel="stylesheet">
+    <link href="assets/css/syntaxhighlighter/shCore.css" rel="stylesheet" >
+
+    <link href="assets/css/style-blue3.css" rel="stylesheet" title="default">
+    <link href="assets/css/width-full.css" rel="stylesheet" title="default">
+
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="assets/js/html5shiv.min.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
+
+<body>
+
+<div id="sb-site">
+<div class="boxed">
+
+
+<nav class="navbar navbar-default yamm navbar-static-top" role="navigation" id="header">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-bars"></i>
+            </button>
+            <a id="ar-brand" class="navbar-brand" href="index.html">REU <span>Manager</span></a>
+        </div> <!-- navbar-header -->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="/tour" class="Navitem" data-toggle="tab">Tour</a>
+
+                </li>
+                <li class="dropdown yamm-fw">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Pricing & Signup</a>
+
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-hover="dropdown">Demo</a>
+
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Support</a>
+
+                </li>
+             </ul>
+        </div><!-- navbar-collapse -->
+    </div><!-- container -->
+</nav>
+
+<section class="margin-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="content-box box-default animated fadeInUp animation-delay-10">
+                    <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-file-text-o"></i></span>
+                    <h4 class="content-box-title">Application Overview</h4>
+                    <p>Get an overview of the status of all your online applicants</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="content-box box-default animated fadeInUp animation-delay-14" id="fuss">
+                    <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-heart-o" id="heart"></i></span>
+                    <h4 class="content-box-title" id="less">Archive Past Projects</h4>
+                    <p>Archive your past projects online, in one central location</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="content-box box-default animated fadeInUp animation-delay-16">
+                    <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-desktop"></i></span>
+                    <h4 class="content-box-title">Customize Your Website</h4>
+                    <p>Customize various text snippets used throughout your website</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="content-box box-default animated fadeInUp animation-delay-12" id="appstat">
+                    <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-flag"></i></span>
+                    <h4 class="content-box-title">Application Status</h4>
+                    <p>View applications based on current status</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="tour-panel">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">The Basics</h3>
+      </div>
+      <div class="panel-body">Students create an account linked to their email address and complete their application online. The application can be saved and therefore completed over a period of time. The online forms are validated by the software to assure that the data is accurate, complete, and entered within the application's time frame. A recommendation request is sent upon completion of the student portion of the form. The recommendation is entered online and completes the application process for the student.
+
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Customize</h3>
+      </div>
+      <div class="panel-body">Basic text snippets and settings are customizable by non-technical staff via a web interface. Those with basic web development experience (HTML/CSS) can further customize the look and feel of the application by modifying its template system.
+
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Applicant Evaluation</h3>
+      </div>
+      <div class="panel-body">Applications can be reviewed online and offline. Admin privileges can be granted to those involved in the review process. The online interface allows for basic filtering and sorting. The filtered data can then be exported to your favorite spreadsheet application or to a PDF file.
+
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Applicant Evaluation</h3>
+      </div>
+      <div class="panel-body">Applications can be reviewed online and offline. Admin privileges can be granted to those involved in the review process. The online interface allows for basic filtering and sorting. The filtered data can then be exported to your favorite spreadsheet application or to a PDF file.
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+    <section class="margin-bottom">
+        <p class="lead lead-lg text-center primary-color margin-bottom">Whether your program is large or small, <strong>REU Manager</strong> strives to be the most efficient solution for your application process</p>
+       <div class="row">
+            <div class="col-md-6">
+                <h2 class="no-margin-top">About us</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, alias, nihil molestias libero corporis perferendis a quasi at.</p>
+                <p>Eos, illum, odit nulla provident sint atque quasi necessitatibus dolores voluptatibus perspiciatis aliquid tempora possimus laudantium. Blanditiis, deleniti!</p>
+                <p>Saepe, laborum, eligendi vitae ad excepturi officiis vel omnis quidem et dolorum rem vero explicabo consequatur mollitia nihil!</p>
+                <p>Fuga, omnis, quo, cumque, ipsa quasi facilis voluptatibus iure veniam nostrum voluptate accusantium dolore reprehenderit. Corrupti, mollitia, maiores!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit ducimus, pariatur ad ipsam et quod numquam eveniet magni aspernatur.</p>
+
+            </div>
+            <div class="col-md-6">
+                <div class="panel-group" id="accordion">
+                  <div class="panel panel-default">
+                    <div class="panel-heading panel-heading-link">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                          <i class="fa fa-lightbulb-o"></i> Everything Organized Online
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                      <div class="panel-body">
+                        <p>Avoid paper cuts and don't let anything "get lost in the mail".  We consolidate everything in one place.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading panel-heading-link">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed">
+                          <i class="fa fa-desktop"></i> Filter Candidates
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>Admin users can search and filter candidates by specific criteria.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading panel-heading-link">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed">
+                          <i class="fa fa-user"></i> Automatic Notifications
+                        </a>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>Applicants are kept in the loop from start to finish.  Email notifications are sent throughout each step of the application process.</p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+
+
+       </div>
+   </section>
+
+   <section class="margin-bottom">
+       <h2 class="section-title">Latest Works</h2>
+       <div class="bxslider-controls">
+            <span id="bx-prev4"></span>
+            <span id="bx-next4"></span>
+        </div>
+        <ul class="bxslider" id="latest-works">
+          <li>
+            <div class="img-caption-ar">
+                <img src="assets/img/be.jpeg" class="img-responsive" alt="Image">
+                <div class="caption-ar">
+                    <div class="caption-content">
+                        <a href="#" class="animated fadeInDown"><i class="fa fa-search"></i>More info</a>
+                        <h4 class="caption-title">UC San Diego, MSTP-SURF Program</h4>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="img-caption-ar">
+                <img src="assets/img/surf.jpg" class="img-responsive" alt="Image">
+                <div class="caption-ar">
+                    <div class="caption-content">
+                        <a href="#" class="animated fadeInDown"><i class="fa fa-search"></i>More info</a>
+                        <h4 class="caption-title">UCSD Scripps Student Undergraduate Research Experience</h4>
+                    </div>
+                </div>
+            </div>
+          </li>
+          <li>
+            <div class="img-caption-ar">
+                <img src="assets/img/uf.jpeg" class="img-responsive" alt="Image">
+                <div class="caption-ar">
+                    <div class="caption-content">
+                        <a href="#" class="animated fadeInDown"><i class="fa fa-search"></i>More info</a>
+                        <h4 class="caption-title">UF Materials Science and Engineering REU in Infrastructure Materials</h4>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <!-- <div class="img-caption-ar">
+                <img src="assets/img/demo/w4.jpg" class="img-responsive" alt="Image">
+                <div class="caption-ar">
+                    <div class="caption-content">
+                        <a href="#" class="animated fadeInDown"><i class="fa fa-search"></i>More info</a>
+                        <h4 class="caption-title">Title Caption</h4>
+                    </div>
+                </div>
+            </div>
+          </li>
+          <li>
+            <div class="img-caption-ar">
+                <img src="assets/img/demo/w5.jpg" class="img-responsive" alt="Image">
+                <div class="caption-ar">
+                    <div class="caption-content">
+                        <a href="#" class="animated fadeInDown"><i class="fa fa-search"></i>More info</a>
+                        <h4 class="caption-title">Title Caption</h4>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="img-caption-ar">
+                <img src="assets/img/demo/w6.jpg" class="img-responsive" alt="Image">
+                <div class="caption-ar">
+                    <div class="caption-content">
+                        <a href="#" class="animated fadeInDown"><i class="fa fa-search"></i>More info</a>
+                        <h4 class="caption-title">Title Caption</h4>
+                    </div>
+                </div>
+            </div>
+          </li>
+          <li>
+            <div class="img-caption-ar">
+                <img src="assets/img/demo/w7.jpg" class="img-responsive" alt="Image">
+                <div class="caption-ar">
+                    <div class="caption-content">
+                        <a href="#" class="animated fadeInDown"><i class="fa fa-search"></i>More info</a>
+                        <h4 class="caption-title">Title Caption</h4>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="img-caption-ar">
+                <img src="assets/img/demo/w8.jpg" class="img-responsive" alt="Image">
+                <div class="caption-ar">
+                    <div class="caption-content">
+                        <a href="#" class="animated fadeInDown"><i class="fa fa-search"></i>More info</a>
+                        <h4 class="caption-title">Title Caption</h4>
+                    </div>
+                </div>
+            </div>
+          </li>
+          <li>
+            <div class="img-caption-ar">
+                <img src="assets/img/demo/w9.jpg" class="img-responsive" alt="Image">
+                <div class="caption-ar">
+                    <div class="caption-content">
+                        <a href="#" class="animated fadeInDown"><i class="fa fa-search"></i>More info</a>
+                        <h4 class="caption-title">Title Caption</h4>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="img-caption-ar">
+                <img src="assets/img/demo/w10.jpg" class="img-responsive" alt="Image">
+                <div class="caption-ar">
+                    <div class="caption-content">
+                        <a href="#" class="animated fadeInDown"><i class="fa fa-search"></i>More info</a>
+                        <h4 class="caption-title">Title Caption</h4>
+                    </div>
+                </div>
+            </div>
+          </li>
+          <li>
+            <div class="img-caption-ar">
+                <img src="assets/img/demo/w11.jpg" class="img-responsive" alt="Image">
+                <div class="caption-ar">
+                    <div class="caption-content">
+                        <a href="#" class="animated fadeInDown"><i class="fa fa-search"></i>More info</a>
+                        <h4 class="caption-title">Title Caption</h4>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="img-caption-ar">
+                <img src="assets/img/demo/w12.jpg" class="img-responsive" alt="Image">
+                <div class="caption-ar">
+                    <div class="caption-content">
+                        <a href="#" class="animated fadeInDown"><i class="fa fa-search"></i>More info</a>
+                        <h4 class="caption-title">Title Caption</h4>
+                    </div>
+                </div>
+            </div>
+          </li>
+        </ul>
+   </section> -->
+
+   <!-- <section>
+       <p class="slogan text-center">Discover our projects and the rigorous process of <span>creation</span>. Our principles are <span>creativity</span>, <span>design</span>, <span>experience</span> and <span>knowledge</span>. We are backed by 20 years of <span>research</span>.</p>
+        <h2 class="section-title">Our Clients</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="bxslider-controls">
+                     <span id="bx-prev5"></span>
+                     <span id="bx-next5"></span>
+                 </div>
+                 <ul class="bxslider" id="home-block">
+                    <li>
+                        <blockquote class="blockquote-color">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante ultricies nisi vel augue quam semper libero.</p>
+                            <footer>Brian Krzanich, Intel CEO</footer>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote class="blockquote-color">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante ultricies nisi vel augue quam semper libero.</p>
+                            <footer>Brian Krzanich, Intel CEO</footer>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote class="blockquote-color">
+                            <p>Dolore totam at ea reiciendis suscipit a tempore cum nisi aspernatur nisi alias posuere erat a ante posuere erat a ante ultricies ultricies nisi vel augue quam semper conse erat quuntur.</p>
+                            <footer>Sheldon Cooper, Physical Quantum</footer>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote class="blockquote-color">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante ultricies nisi vel augue quam semper libero.</p>
+                            <footer>Brian Krzanich, Intel CEO</footer>
+                        </blockquote>
+                    </li>
+                </ul>
+            </div> -->
+            <!-- <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-6"><img src="assets/img/demo/intel.png" alt="" class="img-responsive"></div>
+                    <div class="col-md-3 col-sm-3 col-xs-6"><img src="assets/img/demo/microsoft.png" alt="" class="img-responsive"></div>
+                    <div class="col-md-3 col-sm-3 col-xs-6"><img src="assets/img/demo/nokia.png" alt="" class="img-responsive"></div>
+                    <div class="col-md-3 col-sm-3 col-xs-6"><img src="assets/img/demo/samsung.png" alt="" class="img-responsive"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-6"><img src="assets/img/demo/anz.png" alt="" class="img-responsive"></div>
+                    <div class="col-md-3 col-sm-3 col-xs-6"><img src="assets/img/demo/maxis.png" alt="" class="img-responsive"></div>
+                    <div class="col-md-3 col-sm-3 col-xs-6"><img src="assets/img/demo/sony.png" alt="" class="img-responsive"></div>
+                    <div class="col-md-3 col-sm-3 col-xs-6"><img src="assets/img/demo/hp.png" alt="" class="img-responsive"></div>
+                </div>
+            </div> -->
+        </div>
+   </section>
+
+</div>
+
+<aside id="footer-widgets">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="footer-widget-title">Sitemap</h3>
+                <ul class="list-unstyled three_cols">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Tour</a></li>
+                    <li><a href="portfolio_sidebar.html">Pricing & Signup</a></li>
+                    <li><a href="portfolio_topvar.html">Demo</a></li>
+                    <li><a href="page_timeline_left.html">Support</a></li>
+                </ul>
+                <h3 class="footer-widget-title">Subscribe</h3>
+                <p>Lorem ipsum Amet fugiat elit nisi anim mollit minim labore ut esse Duis ullamco ad dolor veniam velit.</p>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Email Adress">
+                    <span class="input-group-btn">
+                        <button class="btn btn-ar btn-primary" type="button">Subscribe</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div>
+            <!-- <div class="col-md-4">
+                <div class="footer-widget">
+                    <h3 class="footer-widget-title">Recent Post</h3>
+                    <div class="media">
+                        <a class="pull-left" href="#"><img class="media-object" src="assets/img/demo/m2.jpg" width="75" height="75" alt="image"></a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="#">Lorem ipsum Duis quis occaecat minim lorem ipsum tempor officia labor</a></h4>
+                            <small>August 18, 2013</small>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="pull-left" href="#"><img class="media-object" src="assets/img/demo/m11.jpg" width="75" height="75" alt="image"></a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="#">Lorem ipsum dolor excepteur sunt in lorem ipsum cillum tempor</a></h4>
+                            <small>September 14, 2013</small>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <a class="pull-left" href="#"><img class="media-object" src="assets/img/demo/m4.jpg" width="75" height="75" alt="image"></a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="#">Lorem ipsum Dolor cupidatat minim adipisicing et fugiat</a></h4>
+                            <small>October 9, 2013</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="footer-widget">
+                    <h3 class="footer-widget-title">Recent Works</h3>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+                            <a href="#" class="thumbnail"><img src="assets/img/demo/wf1.jpg" class="img-responsive" alt="Image"></a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+                            <a href="#" class="thumbnail"><img src="assets/img/demo/wf2.jpg" class="img-responsive" alt="Image"></a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+                            <a href="#" class="thumbnail"><img src="assets/img/demo/wf3.jpg" class="img-responsive" alt="Image"></a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+                            <a href="#" class="thumbnail"><img src="assets/img/demo/wf4.jpg" class="img-responsive" alt="Image"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</aside> <!-- footer-widgets -->
+<footer id="footer">
+    <p>&copy; 2014 <a href="#">Artificial Reason</a>, inc. All rights reserved.<br>Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation</p>
+</footer>
+
+</div> <!-- boxed -->
+</div> <!-- sb-site -->
+
+<!-- <div class="sb-slidebar sb-right">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search...">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+        </span>
+    </div><!-- /input-group -->
+
+    <!-- <h2 class="slidebar-header no-margin-bottom">Navigation</h2>
+    <ul class="slidebar-menu">
+        <li><a href="index.html">Tour</a></li>
+        <li><a href="portfolio_topbar.html">Pricing & Signup</a></li>
+        <li><a href="page_about3.html">Demo</a></li>
+        <li><a href="blog.html">Support</a></li>
+        <li><a href="page_contact.html">Contact</a></li>
+    </ul>
+
+    <h2 class="slidebar-header">Social Media</h2>
+    <div class="slidebar-social-icons">
+        <a href="#" class="social-icon-ar rss"><i class="fa fa-rss"></i></a>
+        <a href="#" class="social-icon-ar facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" class="social-icon-ar twitter"><i class="fa fa-twitter"></i></a>
+        <a href="#" class="social-icon-ar pinterest"><i class="fa fa-pinterest"></i></a>
+        <a href="#" class="social-icon-ar instagram"><i class="fa fa-instagram"></i></a>
+        <a href="#" class="social-icon-ar wordpress"><i class="fa fa-wordpress"></i></a>
+        <a href="#" class="social-icon-ar linkedin"><i class="fa fa-linkedin"></i></a>
+        <a href="#" class="social-icon-ar flickr"><i class="fa fa-flickr"></i></a>
+        <a href="#" class="social-icon-ar vine"><i class="fa fa-vine"></i></a>
+        <a href="#" class="social-icon-ar dribbble"><i class="fa fa-dribbble"></i></a>
+    </div> -->
+<!-- </div> <!-- sb-slidebar sb-right -->
+  <div id="back-top">
+    <a href="#header"><i class="fa fa-arrow-up"></i></a>
+  </div>
+
+<!-- Scripts -->
+<!-- Compiled in vendors.js -->
+<!--
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.cookie.js"></script>
+<script src="assets/js/imagesloaded.pkgd.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap-switch.min.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/slidebars.min.js"></script>
+<script src="assets/js/jquery.bxslider.min.js"></script>
+<script src="assets/js/holder.js"></script>
+<script src="assets/js/buttons.js"></script>
+<script src="assets/js/jquery.mixitup.min.js"></script>
+<script src="assets/js/circles.min.js"></script>
+<script src="assets/js/masonry.pkgd.min.js"></script>
+<script src="assets/js/jquery.matchHeight-min.js"></script>
+-->
+
+<script src="assets/js/vendors.js"></script>
+
+<script src="assets/js/styleswitcher.js"></script>
+
+<!-- Syntaxhighlighter -->
+<script src="assets/js/syntaxhighlighter/shCore.js"></script>
+<script src="assets/js/syntaxhighlighter/shBrushXml.js"></script>
+<script src="assets/js/syntaxhighlighter/shBrushJScript.js"></script>
+
+<script src="assets/js/DropdownHover.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/holder.js"></script>
+<script src="assets/js/index.js"></script>
+
+</body>
+
+</html>

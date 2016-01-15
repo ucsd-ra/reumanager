@@ -7,7 +7,7 @@ gem 'rails', '3.2.11'
 
 # Deploy with Capistrano
 gem 'capistrano'
-gem 'capistrano-database', :git => "git://github.com/jgrevich/capistrano-database.git"
+# gem 'capistrano-database', :git => "git://github.com/jgrevich/capistrano-database.git"
 gem 'rvm-capistrano'
 
 gem 'carmen'
@@ -25,15 +25,15 @@ group :assets do
   gem 'coffee-rails', " ~> 3.2.0"
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass', '~> 2.1.0.0'
-  gem 'libv8', '~> 3.11.8'
-  gem 'therubyracer'
+  # gem 'libv8', '~> 3.11.8'
+  # gem 'therubyracer'
 end
 
 group :development, :test do
 #  gem 'bond'
   gem 'bundler'
   gem 'map_by_method'
-#  gem 'mocha'  
+#  gem 'mocha'
   gem 'what_methods'
   gem 'wirble'
 end
