@@ -9,6 +9,29 @@ Run '''rake settings:load''' to load snippets.
 
 If you're having trouble with event_machine during bundle - use '''bundle config build.eventmachine --with-cppflags=-I$(brew --prefix openssl)/include'''
 
+
+## Deploy
+==== Remote Server Access and Deployment ====
+
+Add the following to ~/.ssh/config
+
+```
+Host notch8
+  HostName old.notch8.com
+  User rob
+
+Host indra
+  Hostname indra.ucsd.edu
+  User ubuntu
+  ProxyCommand ssh notch8 -W %h:%p
+```
+
+ssh indra for server access
+
+apps are in /var/www
+
+cap deploy:migrations from the proper branch
+
 ## Info
 This program facilitates the application process for science oriented [NSF REU programs](http://www.nsf.gov/crssprgm/reu/) and is developed by the IT staff of the [UC San Diego Institute of Engineering in Medicine](https://iem.ucsd.edu/).
 
