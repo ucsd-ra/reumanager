@@ -6,7 +6,7 @@ gem 'rails'
 gem 'airbrake'
 gem 'addressable'
 gem 'carmen-rails', github: 'jim/carmen-rails', :branch => 'master'
-gem 'client_side_validations', github: "tagliala/client_side_validations", :branch => "rails-4.2"
+gem 'client_side_validations', github: "notch8/client_side_validations", :branch => "removed_repo"
 gem 'cocaine', :git => 'git://github.com/thoughtbot/cocaine.git'
 gem 'capistrano'
 gem 'devise'
