@@ -1,4 +1,4 @@
-class Setting < ActiveRecord::Base
+class Setting < ApplicationRecord
   attr_accessor :display_name
   attr_accessible :name, :description, :value, :display_name
   validates_uniqueness_of :name

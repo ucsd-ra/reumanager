@@ -1,4 +1,4 @@
-class Address < ActiveRecord::Base
+class Address < ApplicationRecord
   attr_accessible :address, :address2, :city, :country, :label, :permanent, :state, :zip
   belongs_to :applicant, :class_name => "Applicant", :foreign_key => "applicant_id"
 

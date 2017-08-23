@@ -10,12 +10,10 @@
 # Then add the following to config/initializers/errbit.rb
 # -------------------------------------------------------
 
-Airbrake.configure do |config|
-  config.api_key = 'd9ae4be2c3d838cc5bfa1115cd045a5f'
-  config.host    = 'err.notch8.com'
-  config.port    = 80
-  config.secure  = config.port == 443
-end
+# Airbrake.configure do |config|
+#   config.project_key = '5a475a8c0022c1740ed51ac6794d5c25'
+#   config.project_id    = 153567
+# end
 
 # Set up Javascript notifications
 # -------------------------------

@@ -1,4 +1,4 @@
-class Snippet < ActiveRecord::Base
+class Snippet < ApplicationRecord
   attr_accessible :description, :name, :value, :display_name
   attr_accessor :display_name
   cattr_accessor :available_snippets
