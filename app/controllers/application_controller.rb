@@ -24,4 +24,6 @@ class ApplicationController < ActionController::Base
     current_applicant.set_state
   end
 
+
+
 end

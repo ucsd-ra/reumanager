@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Program title:</strong>
+  <%= @grant.program_title %>
+</p>
+
+<p>
+  <strong>Institution:</strong>
+  <%= @grant.institution %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @grant.department %>
+</p>
+
+<p>
+  <strong>Program description:</strong>
+  <%= @grant.program_description %>
+</p>
+
+<p>
+  <strong>Subdomain:</strong>
+  <%= @grant.subdomain %>
+</p>
+
+<%= link_to 'Edit', edit_grant_path(@grant) %> |
+<%= link_to 'Back', grants_path %>
