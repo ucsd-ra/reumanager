@@ -1,0 +1,18 @@
+language: ruby
+rvm:
+  - 2.1.1
+
+before_install:
+  - mv config/snippets.yml.example config/snippets.yml
+  - mv config/settings.yml.example config/settings.yml
+  - mv config/database.yml.example config/database.yml
+
+bundler_args: --without development
+script:
+  - bundle exec rake db:create db:migrate db:test:prepare
+  - bundle exec rspec spec
+
+notifications:
+  recipients:
+    - wes.vetter+reu@gmail.com
+    - jgrevich@ucsd.edu

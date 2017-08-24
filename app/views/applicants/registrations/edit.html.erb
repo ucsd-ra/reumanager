@@ -3,14 +3,14 @@
   <%= custom_error_messages! %>
   <%= application_status if @user %>
 
-  <div class='row'>    
+  <div class='row'>
     <div class="span9">
 
       <div class='row'>
-        <div class="span9">    
+        <div class="span9">
           <div class="inner">
             <h2>Contact Info</h2>
-          </div> <!-- end  inner -->          
+          </div> <!-- end  inner -->
         </div>
 
         <div class='span4'>
@@ -37,16 +37,18 @@
 
         <section class='address'>
           <div class="span9">
-            <%= f.fields_for :addresses do |builder| %>
-              <%= render 'address_fields', f: builder %>
-            <% end %>            
             <div class="inner">
               <p>Please enter at least one postal address.</p>
+            </div>
+            <%= f.fields_for :addresses do |builder| %>
+              <%= render 'address_fields', f: builder %>
+            <% end %>
+            <div class="inner">
               <%= link_to_add_fields "Add Location", f, :addresses %>
             </div>
           </div>
         </section>
-        
+
         <div class="span9">
           <div class="inner">
             <h2>Personal Info</h2>
@@ -55,7 +57,7 @@
 
         <div class='span4'>
           <div class="inner control-group">
-            <%= f.label :dob, "Date of Birth" %>
+            <%= f.label :dob, "Date of Birth (YYYY-MM-DD)" %>
             <%= f.text_field :dob, 'data-behaviour' => 'datepicker' %>
           </div>
         </div>
@@ -75,7 +77,7 @@
         <div class='span4 offset1'>
           <div class="inner control-group">
             <%= f.label :race %>
-            <%= f.select :race, options_for_select(%w{ American\ Indian\ or\ Alaskan\ Native Asian Black\ or\ African\ American Native\ Hawaiian\ or\ Pacific\ Islander}, @applicant.race), :include_blank => "Prefer to not respond" %>
+            <%= f.select :race, options_for_select(%w{ American\ Indian\ or\ Alaskan\ Caucasian Native Asian Black\ or\ African\ American Native\ Hawaiian\ or\ Pacific\ Islander}, @applicant.race), :include_blank => "Prefer to not respond" %>
           </div>
         </div>
 
@@ -88,7 +90,7 @@
         <div class='span4 offset1'>
           <div class="inner control-group">
             <%= f.label :disability %>
-            <%- if current_applicant.disability && current_applicant.disability != '' -%>
+            <%- if show_disability_input? -%>
               <div id='disability_container' class='input-append'>
                 <%= f.text_field :disability %>
                 <span class='add-on'>Please specify</span>
@@ -99,7 +101,7 @@
             <%- end -%>
           </div>
         </div>
-        
+
 
         <section class='personal_statement'>
           <div class="span9">
@@ -109,15 +111,15 @@
             </div> <!-- end  inner -->
           </div>
         </section>
-        
-        
+
+
       </div><!-- end  span9 -->
-      
+
 
     </div><!-- end  span9 -->
-    
+
     <%= render "applicants/shared/nav" %>
-    
+
     <div class="span12">
       <div class="inner">
         <hr />
@@ -125,7 +127,7 @@
         <p><small><strong>You can <%= link_to "logout", destroy_applicant_session_path, :method => :delete %> and continue you application at anytime, however, it will not be accepted until all the above data has been submitted.</strong></small></p>
       </div>
     </div>
-    
+
   </div><!-- end  row -->
-  
+
 <% end %>

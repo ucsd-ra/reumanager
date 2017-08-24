@@ -7,7 +7,7 @@ FactoryGirl.define do
     city { Faker::Address.city }
     state { Faker::Address.state_abbr }
     zip { Faker::Address.zip_code }
-    
+
     label { %w{ Home School Other }[rand(3)] }
     permanent { 'Yes' }
   end

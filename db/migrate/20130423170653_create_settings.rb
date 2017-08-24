@@ -4,7 +4,7 @@ class CreateSettings < ActiveRecord::Migration
       t.string :name, :limit => 255, :default => '', :null => false
       t.text :description
       t.string :value
-      
+
       t.timestamps
     end
     add_index :settings, :name

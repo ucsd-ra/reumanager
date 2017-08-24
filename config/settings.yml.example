@@ -1,0 +1,56 @@
+app_title:
+  name: app_title
+  description: A snippet of text that describes your program (e.g. REU in Regenerative
+    Medicine, Multi-Scale Bioengineering, and Systems Biology)
+  value: NSFREU Demo (Your App Title)
+university:
+  name: university
+  description: This is used anywhere your university name is referenced.
+  value: Your University
+department:
+  name: department
+  description: This is used anywhere your department name is referenced.
+  value: Your Department
+department_postal_address:
+  name: department_postal_address
+  description: This is used anywhere the postal address is needed.
+  value: 1234 Your Address, Your City, Your Zip
+application_start:
+  name: application_start
+  description: This is the 'opening date' for the application system. After this
+    date, students can apply. This also controls what buttons are displayed in the
+    navbar and on the homepage (e.g. Apply Now and Login).
+  value: Mon, 15 Aug 2012 00:00:00 -0700
+application_deadline:
+  name: application_deadline
+  description: This date determines when applications can no longer be created or
+    updated. Similar to the above value, buttons to apply are removed after this
+    date.
+  value: Tue, 6 Mar 2013 00:00:00 -0700
+notification_date:
+  name: notification_date
+  description: This date is used to let the applicants know when to expect a response.
+    This is used in the confirmation emails.
+  value: Mon, 2 Apr 2013 00:00:00 -0700
+program_start_date:
+  name: program_start_date
+  description: This date is used in the header and confirmation emails to set when
+    the NSFREU program begins.
+  value: Mon, 11 Jun 2012
+program_end_date:
+  name: program_end_date
+  description: Similar to the above value, this marks the end date for your NSFREU
+    program.
+  value: Mon, 20 Aug 2013
+check_back_date:
+  name: check_back_date
+  description: Once the application process is closed (after the application deadline),
+    this value will inform students when to check back for information about next
+    year's application.
+  value: Fri, 1 Feb 2014
+mail_from:
+  name: mail_from
+  description: This will be used in the reply-to value for emails sent from the
+    application. This is also used in the footer as the email to contact for questions
+    or comments about the website.
+  value: reu@ucsd.edu

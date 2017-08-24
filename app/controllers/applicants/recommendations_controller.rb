@@ -1,7 +1,7 @@
 class Applicants::RecommendationsController < ApplicationController
   before_filter :authenticate_applicant!, only: :resend_request
   before_filter :find_recommendation, :except => [:resend_request]
-  
+
   # GET /recommendations/:token
   def edit; end
 
@@ -16,7 +16,7 @@ class Applicants::RecommendationsController < ApplicationController
       redirect_to(applicant_status_path, :flash => { :error => "You can only make a recommendation request once every 24 hours. It was last sent at #{recommendation.request_sent_at.strftime("%A, %b %d, %l:%M %p")}" })
     end
   end
-  
+
   # PUT /recommendations/:token
   def update
     if @recommendation.update_attributes params[:recommendation]
@@ -26,9 +26,9 @@ class Applicants::RecommendationsController < ApplicationController
       render :edit
     end
   end
-  
+
   private
-  
+
   def find_recommendation
     @recommendation = Recommendation.find_by_token params[:token]
   end

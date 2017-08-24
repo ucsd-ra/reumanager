@@ -14,4 +14,3 @@ class CreateRecommenders < ActiveRecord::Migration
     end
   end
 end
-  
