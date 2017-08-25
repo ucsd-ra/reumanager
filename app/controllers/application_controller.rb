@@ -24,4 +24,11 @@ class ApplicationController < ActionController::Base
     current_applicant.set_state
   end
 
+  private
+
+
+  def tenant_not_found
+      redirect_to 'lvh.me:3000'
+  end
+
 end

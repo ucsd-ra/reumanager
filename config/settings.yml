@@ -26,29 +26,29 @@ application_deadline:
   description: This date determines when applications can no longer be created or
     updated. Similar to the above value, buttons to apply are removed after this
     date.
-  value: 2/15/16
+  value: 2018-02-15
 notification_date:
   name: notification_date
   description: This date is used to let the applicants know when to expect a response.
     This is used in the confirmation emails.
-  value: 3/15/16
+  value: 2018-03-15
 program_start_date:
   name: program_start_date
   description: This date is used in the header and confirmation emails to set when
     the NSFREU program begins.
-  value: 6/30/16
+  value: 2018-06-30
 program_end_date:
   name: program_end_date
   description: Similar to the above value, this marks the end date for your NSFREU
     program.
-  value: 8/5/16
+  value: 2018-08-05
 check_back_date:
   name: check_back_date
   description: |
     Once the application process is closed (after the application deadline),
     this value will inform students when to check back for information about next
     year's application.
-  value: 9/1/16
+  value: 2018-09-01
 mail_from:
   name: mail_from
   description: |

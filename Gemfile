@@ -2,7 +2,6 @@ source 'http://gems.github.com'
 source 'https://rubygems.org'
 
 gem 'rails'
-
 gem 'airbrake'
 gem 'addressable'
 gem 'carmen-rails', github: 'jim/carmen-rails', :branch => 'master'
@@ -16,7 +15,7 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'kaminari'
-gem 'mysql2'
+gem 'pg'
 gem 'paperclip'
 gem 'paper_trail'
 gem 'rails_admin'
@@ -27,6 +26,7 @@ gem 'sqlite3'
 gem 'state_machine'
 gem 'whenever', :require => false
 gem 'validates_email_format_of'
+gem 'apartment'
 
 # Old assets group
 gem 'bootstrap-sass', '~> 2.1'

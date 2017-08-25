@@ -1,0 +1,33 @@
+<h1>Listing grants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Program title</th>
+      <th>Institution</th>
+      <th>Department</th>
+      <th>Program description</th>
+      <th>Subdomain</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grants.each do |grant| %>
+      <tr>
+        <td><%= grant.program_title %></td>
+        <td><%= grant.institution %></td>
+        <td><%= grant.department %></td>
+        <td><%= grant.program_description %></td>
+        <td><%= grant.subdomain %></td>
+        <td><%= link_to 'Show', grant %></td>
+        <td><%= link_to 'Edit', edit_grant_path(grant) %></td>
+        <td><%= link_to 'Destroy', grant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Grant', new_grant_path %>

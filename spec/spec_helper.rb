@@ -8,10 +8,10 @@ require 'shoulda-matchers'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
-require 'capybara/webkit'
+# require 'capybara/webkit'
 
-#Capybara.javascript_driver = :poltergeist
-Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = :poltergeist
+# Capybara.javascript_driver = :webkit
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -42,6 +42,10 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
+    (ActiveRecord::Base.connection.tables - %w{schema_migrations}).each do |table_name|
+      ActiveRecord::Base.connection.execute "TRUNCATE TABLE #{table_name};"
+    end
+
     DatabaseCleaner.start
   end
 
