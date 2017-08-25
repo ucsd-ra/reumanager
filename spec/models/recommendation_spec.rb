@@ -15,7 +15,7 @@ describe Recommendation do
     recommendation = FactoryGirl.create(:recommendation_with_associations)
     expect(recommendation).to be_valid
   end
-  
+
   %w{ body known_applicant_for known_capacity overall_promise}.each do |m|
     it "is INVALID without the required attribute '#{m}'"  do
       recommendation = FactoryGirl.create(:recommendation_with_associations, m.to_sym => nil)
@@ -33,8 +33,8 @@ describe Recommendation do
     recommendation = FactoryGirl.create(:recommendation_with_associations)
     recommender = recommendation.recommender
     recommendation.destroy
-    
+
     expect(Applicant.find_by_email(recommender.email)).to be_nil
   end
-  
+
 end

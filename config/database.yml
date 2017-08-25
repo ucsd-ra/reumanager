@@ -1,0 +1,22 @@
+
+development:
+  adapter: postgresql
+  database: reumanager_dev
+  username: 
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  database: reumanager_test
+  username: 
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  database: reumanager_prod
+  username:
+  password:
+  pool: 5
+  timeout: 5000

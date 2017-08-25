@@ -1,7 +1,8 @@
 Copyright &copy; <%= Time.now.year %>
-<%= link_to "Regents of the University of California", "http://www.universityofcalifornia.edu/regents/" %>. 
+<%= link_to "Regents of the University of California", "http://www.universityofcalifornia.edu/regents/" %>.
 All Rights Reserved<span class='hidden-phone'> | </span>
 <%= link_to 'HTML5', '' %>,&nbsp;<%= link_to 'CSS3', '' %>,&nbsp;<%= link_to 'S508', '' %>&nbsp;valid.<br />
-<%= link_to Setting[:department], Setting[:department_url] %>, 
+<%= link_to Setting[:department], Setting[:department_url] %>,
 <%= Setting[:department_postal_address] %><br />
-Please contact <%= mail_to Setting[:mail_from] %> if you have any questions.
+Please contact <%= mail_to Setting[:mail_from] %> if you have any questions.</br>
+<%= Setting[:funding_acknowlegement] %>
