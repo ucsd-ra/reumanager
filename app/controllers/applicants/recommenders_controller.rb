@@ -14,7 +14,6 @@ class Applicants::RecommendersController < ApplicationController
     # check to see if recommender_attribs correlates to an existing recommender(s)
     recommender_data = Recommender.remove_existing_recommenders_from_params(params[:applicant][:recommenders_attributes])
 
-
     # add existing recommenders to applicant
     unless recommender_data[0].empty?
       recommender_data[0].map do |r|
@@ -40,5 +39,11 @@ class Applicants::RecommendersController < ApplicationController
   def instantiate_applicant
     @applicant = current_applicant
   end
+
+  def recommenders_attributes
+    params.require(:recommender).permit(:department, :email, :first_name, :last_name, :organization, :phone, :title, :url, :id)
+  end
+
+
 
 end

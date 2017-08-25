@@ -6,7 +6,7 @@ gem 'rails', '5.1.3'
 gem 'activemodel-serializers-xml'
 
 gem 'addressable'
-gem 'carmen-rails', github: 'rcronk87/carmen-rails', :branch => 'master'
+gem 'carmen-rails', github: 'notch8/carmen-rails', :branch => 'master'
 # gem 'client_side_validations', github: "notch8/client_side_validations", :branch => "removed_repo"
 gem 'client_side_validations', '~> 9.3', '>= 9.3.4'
 gem 'cocaine', :git => 'git://github.com/thoughtbot/cocaine.git'
@@ -26,8 +26,10 @@ gem 'rails-deprecated_sanitizer'
 gem 'redcarpet'
 gem 'responders', '~> 2.0'
 # gem 'rich', :git => "https://github.com/joeswann/rich.git"
+gem 'rich', :git => "https://github.com/rcronk87/rich.git"
 # gem 'rich'
 gem 'rvm-capistrano', require: false
+
 gem 'sqlite3'
 # gem 'state_machine'
 # gem 'state-machine', :git => "https://github.com/seuros/state_machine.git"
