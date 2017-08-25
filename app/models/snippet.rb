@@ -1,5 +1,6 @@
-class Snippet < ActiveRecord::Base
-  attr_accessible :description, :name, :value
+class Snippet < ApplicationRecord
+  attr_accessible :description, :name, :value, :display_name
+  attr_accessor :display_name
   cattr_accessor :available_snippets
 
   validates_uniqueness_of :name
@@ -10,4 +11,9 @@ class Snippet < ActiveRecord::Base
     setting = find_by_name(name)
     setting ? setting.value : nil
   end
+
+  def display_name
+    name.gsub('_',' ').titleize
+  end
+
 end

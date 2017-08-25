@@ -1,12 +1,12 @@
 class DeviseCreateApplicants < ActiveRecord::Migration
   def change
     create_table(:applicants) do |t|
-      
+
       # contact info
       t.string :first_name
       t.string :last_name
       t.string :phone
-      
+
       # personal  info
       t.date :dob
       t.string :citizenship
@@ -14,16 +14,16 @@ class DeviseCreateApplicants < ActiveRecord::Migration
       t.string :gender
       t.string :ethnicity
       t.string :race
-      
+
       # academic info
       t.string :academic_level
       t.text :lab_skills
       t.text :cpu_skills
       t.text :statement
-      
+
       t.datetime :submitted_at
       t.datetime :completed_at
-      
+
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
@@ -55,10 +55,10 @@ class DeviseCreateApplicants < ActiveRecord::Migration
 
       ## Token authenticatable
       t.string :authentication_token
-      
+
       ## state_machine state
       t.string :state
-      
+
       t.timestamps
     end
 

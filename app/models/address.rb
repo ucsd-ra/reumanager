@@ -1,7 +1,7 @@
-class Address < ActiveRecord::Base
+class Address < ApplicationRecord
   attr_accessible :address, :address2, :city, :country, :label, :permanent, :state, :zip
   belongs_to :applicant, :class_name => "Applicant", :foreign_key => "applicant_id"
-  
+
   validates :address,  :presence => true
   validates :label,  :inclusion => { :in => %w( Home School Other ) }
   validates :city,  :presence => true
