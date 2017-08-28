@@ -26,8 +26,10 @@ gem 'rails-deprecated_sanitizer'
 gem 'redcarpet'
 gem 'responders', '~> 2.0'
 # gem 'rich', :git => "https://github.com/joeswann/rich.git"
+gem 'rich', :git => "https://github.com/rcronk87/rich.git"
 # gem 'rich'
 gem 'rvm-capistrano', require: false
+
 gem 'sqlite3'
 # gem 'state_machine'
 # gem 'state-machine', :git => "https://github.com/seuros/state_machine.git"

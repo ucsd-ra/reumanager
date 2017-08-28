@@ -1,1 +1,1 @@
-
+//=require rich/base

@@ -19,7 +19,7 @@ class Applicants::RegistrationsController < Devise::RegistrationsController
     @applicant = Applicant.find(current_applicant.id)
 
     # remove blank address attributes to prevent validation error
-    # remove_blank_attribs
+    remove_blank_attribs
 
     successfully_updated = if needs_password?(@applicant, params)
       @applicant.update_with_password(params[:applicant])
@@ -81,12 +81,12 @@ class Applicants::RegistrationsController < Devise::RegistrationsController
     applicant.email != params[:applicant][:email] || !params[:applicant][:password].blank?
   end
 
-  # def remove_blank_attribs
-  # #  debugger
-  #   params[:applicant][:addresses_attributes].each do |attribs|
-  #     # remove destroy flag unless it's set to true/1
-  #     attribs[1][:_destroy] = '1' if attribs[1][:address].blank? && attribs[1][:city].blank? && attribs[1][:zip].blank?
-  #   end
-  # end
+  def remove_blank_attribs
+  #  debugger
+    params[:applicant][:addresses_attributes].to_unsafe_h.each do |attribs|
+      # remove destroy flag unless it's set to true/1
+      attribs[1][:_destroy] = '1' if attribs[1][:address].blank? && attribs[1][:city].blank? && attribs[1][:zip].blank?
+    end
+  end
 
 end
