@@ -1,4 +1,4 @@
-class AcademicRecord < ActiveRecord::Base
+class AcademicRecord < ApplicationRecord
   attr_accessible :academic_level, :degree, :finish, :gpa, :gpa_comment, :gpa_range, :start, :university, :major, :minor
   belongs_to :applicant, :class_name => "Applicant", :foreign_key => "applicant_id"
   attr_accessible :transcript

@@ -1,4 +1,4 @@
-class Recommendation < ActiveRecord::Base
+class Recommendation < ApplicationRecord
   attr_accessible :applicant_id, :body, :known_applicant_for, :known_capacity, :overall_promise, :recommender_id, :recommender_attributes, :undergraduate_institution, :received_at
 
   belongs_to :applicant, :class_name => "Applicant"

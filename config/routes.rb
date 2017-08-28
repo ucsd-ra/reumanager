@@ -1,7 +1,7 @@
-Reuman::Application.routes.draw do
+Rails.application.routes.draw do
   resources :grants
 
-  mount Rich::Engine => '/rich', :as => 'rich'
+  # mount Rich::Engine => '/rich', :as => 'rich'
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   namespace :applicants do

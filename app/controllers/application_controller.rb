@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  protect_from_forgery prepend: true
   include ApplicationHelper
-  before_filter :log_x_forwarded_by
+  before_action :log_x_forwarded_by
   helper_method :expired?
 
   protected

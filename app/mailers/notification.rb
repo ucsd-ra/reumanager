@@ -9,7 +9,7 @@ class Notification < ActionMailer::Base
 
   def recommendation_request(recommendation)
     @recommendation = recommendation
-    @url = 'https://' + Rails.configuration.action_mailer[:default_url_options][:host] + applicants_recommendations_edit_path(token: recommendation.token)
+    @url = 'https://' + Rails.configuration.action_mailer[:default_url_options][:host] + applicants_recommendations_edit_url(token: recommendation.token)
     mail(:to => recommendation.recommender.email, :subject => "REU recommendation request for #{recommendation.applicant.name}")
   end
 

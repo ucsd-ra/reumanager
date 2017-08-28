@@ -1,4 +1,4 @@
-class Applicant < ActiveRecord::Base
+class Applicant < ApplicationRecord
   # Include default devise modules. Others available are:
   # :token_authenticatable, and :omniauthable
 

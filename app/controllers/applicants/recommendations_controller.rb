@@ -1,6 +1,6 @@
 class Applicants::RecommendationsController < ApplicationController
-  before_filter :authenticate_applicant!, only: :resend_request
-  before_filter :find_recommendation, :except => [:resend_request]
+  before_action :authenticate_applicant!, only: :resend_request
+  before_action :find_recommendation, :except => [:resend_request]
 
   # GET /recommendations/:token
   def edit; end
