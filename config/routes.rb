@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :admin_accounts
   resources :grant_snippets
   resources :grants
+  resources :charges
 
 
   # mount Rich::Engine => '/rich', :as => 'rich'

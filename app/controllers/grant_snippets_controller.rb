@@ -12,7 +12,7 @@ class GrantSnippetsController < ApplicationController
 
   # GET /grant_snippets/new
   def new
-    @grant_snippet = GrantSnippet.new
+    @grant_snippet = GrantSnippet.new(grant_id: params[:grant_id])
   end
 
   # GET /grant_snippets/1/edit
@@ -25,7 +25,7 @@ class GrantSnippetsController < ApplicationController
 
     if @grant_snippet.save
       # redirect_to @grant_snippet, notice: 'Grant snippet was successfully created.'
-      redirect_to new_admin_account_path, notice: 'Your snippets were successfully created.'
+      redirect_to new_admin_account_path(grant_id: @grant_snippet.grant_id), notice: 'Your snippets were successfully created.'
     else
       render :new
     end

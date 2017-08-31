@@ -4,6 +4,7 @@
     %title= Setting[:app_title]
     = csrf_meta_tag
     = stylesheet_link_tag :application
+    %script(src="https://js.stripe.com/v3/")
     = javascript_include_tag :application
     /[if lt IE 9]
       =raw microsloth_sucks

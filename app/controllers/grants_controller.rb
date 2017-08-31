@@ -30,7 +30,7 @@ class GrantsController < ApplicationController
     if @grant.save
 
       # redirect_to @grant, notice: 'Grant was successfully created.'
-      redirect_to new_grant_setting_path(:id => @grant.id), notice: 'Your program was successfully created.'
+      redirect_to new_grant_setting_path(grant_id: @grant.id), notice: 'Your program was successfully created.'
     else
       render :new
     end

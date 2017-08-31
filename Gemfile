@@ -5,6 +5,8 @@ gem 'rails', '5.1.3'
 
 gem 'activemodel-serializers-xml'
 
+gem 'stripe'
+
 gem 'addressable'
 gem 'carmen-rails', github: 'notch8/carmen-rails', :branch => 'master'
 # gem 'client_side_validations', github: "notch8/client_side_validations", :branch => "removed_repo"
@@ -68,7 +70,6 @@ group :development do
   gem 'crack'
   gem 'hirb-unicode'
   gem 'meta_request'
-  gem 'net-http-spy'
   gem 'rb-fchange', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-inotify', :require => false

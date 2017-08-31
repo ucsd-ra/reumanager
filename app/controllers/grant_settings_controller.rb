@@ -13,8 +13,8 @@ class GrantSettingsController < ApplicationController
   # GET /grant_settings/new
   def new
     # @grant_name = Grant.find(params[:grant_id]).name
-    @grant_setting = GrantSetting.new
-    @grant_setting.grant_id = Grant.find(params[:id])
+    @grant_setting = GrantSetting.new(grant_id: params[:grant_id])
+    # the grant_id in the params[ ] has to match the name of the variable on the LEFT passed in  from the previous controller redirect_to new_grant_setting_path(grant_id: @grant.id)
     
   end
 
@@ -24,13 +24,14 @@ class GrantSettingsController < ApplicationController
 
   # POST /grant_settings
   def create
+ 
+
     @grant_setting = GrantSetting.new(grant_setting_params)
-    @grant_setting.grant_id = params[:grant_id]
-    # params[:grant_id] = params[:id]
-    fail
+
     if @grant_setting.save
-      # redirect_to @grant_setting, notice: 'Grant setting was successfully created.'
-      redirect_to new_grant_snippet_path, notice: 'Your settings were successfully created.'
+
+      # redirect_to @grant, notice: 'Grant was successfully created.'
+      redirect_to new_grant_snippet_path(grant_id: @grant_setting.grant_id), notice: 'Your  settings were successfully created.'
     else
       render :new
     end

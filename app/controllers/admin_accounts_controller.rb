@@ -12,7 +12,7 @@ class AdminAccountsController < ApplicationController
 
   # GET /admin_accounts/new
   def new
-    @admin_account = AdminAccount.new
+    @admin_account = AdminAccount.new(grant_id: params[:grant_id])
   end
 
   # GET /admin_accounts/1/edit
@@ -25,7 +25,7 @@ class AdminAccountsController < ApplicationController
 
     if @admin_account.save
     
-      redirect_to @admin_account, notice: 'Admin account was successfully created.'
+      redirect_to grant_path(id: @admin_account.grant_id), notice: 'You\'ve completed the sign up process.'
     else
       render :new
     end
