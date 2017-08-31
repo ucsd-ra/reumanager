@@ -15,13 +15,6 @@ GIT
       rails
 
 GIT
-  remote: git://github.com/notch8/client_side_validations.git
-  revision: aa2e11060fb90911e23e629ccd847e7e462e4805
-  branch: removed_repo
-  specs:
-    client_side_validations (4.1.0)
-
-GIT
   remote: git://github.com/thoughtbot/cocaine.git
   revision: 7a31ca8dc8e2337874a0e2b556603c1e4aae3586
   specs:
@@ -29,16 +22,34 @@ GIT
       climate_control (>= 0.0.3, < 1.0)
 
 GIT
-  remote: https://github.com/joeswann/rich.git
-  revision: ff185a7c7dd81c05ae9d2a72725f6f3628af4ad9
+  remote: https://github.com/notch8/rich.git
+  revision: 9a1431d47f89c2b57de52f4500264504ad960161
   specs:
-    rich (1.4.8.rc1)
+    rich (1.4.8)
       jquery-rails
       kaminari
       mime-types
       rack-raw-upload
       rails (>= 3.2.0)
       sass-rails
+
+GIT
+  remote: https://github.com/sferik/rails_admin.git
+  revision: c3794fee412e8cc6c9a5038edcaf179199f524c6
+  specs:
+    rails_admin (1.2.0)
+      builder (~> 3.1)
+      coffee-rails (~> 4.0)
+      font-awesome-rails (>= 3.0, < 5)
+      haml (>= 4.0, < 6)
+      jquery-rails (>= 3.0, < 5)
+      jquery-ui-rails (~> 5.0)
+      kaminari (>= 0.14, < 2.0)
+      nested_form (~> 0.3)
+      rack-pjax (>= 0.7)
+      rails (>= 4.0, < 6)
+      remotipart (~> 1.3)
+      sass-rails (>= 4.0, < 6)
 
 GEM
   remote: http://gems.github.com/
@@ -90,10 +101,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.5.1)
-    airbrake (4.1.0)
-      builder
-      multi_json
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     apartment (2.0.0)
       activerecord (>= 3.1.2, < 6.0)
       public_suffix (~> 2.0.5)
@@ -126,8 +135,6 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     carmen (1.0.2)
-    celluloid (0.15.2)
-      activesupport (>= 3.0.0)
     chronic (0.10.2)
     client_side_validations (9.3.4)
       jquery-rails (~> 4.3)
@@ -256,6 +263,7 @@ GEM
       metaclass (~> 0.0.1)
     modernizr-rails (2.7.1)
     multi_json (1.12.1)
+    nenv (0.3.0)
     nested_form (0.3.2)
     net-http-spy (0.2.1)
     net-scp (1.2.1)
@@ -281,7 +289,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
     pg (0.21.0)
-    poltergeist (1.5.0)
+    poltergeist (1.16.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
@@ -323,19 +331,6 @@ GEM
       loofah (~> 2.0)
     rails-observers (0.1.5)
       activemodel (>= 4.0)
-    rails_admin (1.2.0)
-      builder (~> 3.1)
-      coffee-rails (~> 4.0)
-      font-awesome-rails (>= 3.0, < 5)
-      haml (>= 4.0, < 6)
-      jquery-rails (>= 3.0, < 5)
-      jquery-ui-rails (~> 5.0)
-      kaminari (>= 0.14, < 2.0)
-      nested_form (~> 0.3)
-      rack-pjax (>= 0.7)
-      rails (>= 4.0, < 6)
-      remotipart (~> 1.3)
-      sass-rails (>= 4.0, < 6)
     railties (5.1.3)
       actionpack (= 5.1.3)
       activesupport (= 5.1.3)
@@ -485,6 +480,7 @@ DEPENDENCIES
   kaminari
   launchy
   meta_request
+  mimemagic (~> 0.3.2)
   mocha
   modernizr-rails
   net-http-spy
@@ -497,7 +493,7 @@ DEPENDENCIES
   rails (= 5.1.3)
   rails-deprecated_sanitizer
   rails-observers
-  rails_admin
+  rails_admin!
   rb-fchange
   rb-fsevent
   rb-inotify
@@ -520,4 +516,4 @@ DEPENDENCIES
   wirble
 
 BUNDLED WITH
-   1.15.3
+   1.15.4

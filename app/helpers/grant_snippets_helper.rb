@@ -1,0 +1,2 @@
+module GrantSnippetsHelper
+end

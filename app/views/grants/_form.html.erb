@@ -12,25 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :program_title %><br>
+    <%= f.label :grant_name %><br>
     <%= f.text_field :program_title %>
   </div>
-  <div class="field">
-    <%= f.label :institution %><br>
-    <%= f.text_field :institution %>
-  </div>
-  <div class="field">
-    <%= f.label :department %><br>
-    <%= f.text_field :department %>
-  </div>
-  <div class="field">
-    <%= f.label :program_description %><br>
-    <%= f.text_field :program_description %>
-  </div>
-  <div class="field">
+    <div class="field">
     <%= f.label :subdomain %><br>
     <%= f.text_field :subdomain %>
   </div>
+  <div class="field">
+    <%= f.label :contact_email %><br>
+    <%= f.email_field :contact_email %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_password %><br>
+    <%= f.password_field :contact_password %>
+  </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

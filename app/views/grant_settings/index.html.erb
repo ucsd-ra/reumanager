@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Grant Settings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Institute</th>
+      <th>Department</th>
+      <th>Department postal address</th>
+      <th>Application start</th>
+      <th>Application deadline</th>
+      <th>Notification date</th>
+      <th>Program start date</th>
+      <th>Program end date</th>
+      <th>Checkback date</th>
+      <th>Mail from</th>
+      <th>Funded by</th>
+      <th>Main url</th>
+      <th>Department url</th>
+      <th>Program url</th>
+      <th>Grant</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grant_settings.each do |grant_setting| %>
+      <tr>
+        <td><%= grant_setting.institute %></td>
+        <td><%= grant_setting.department %></td>
+        <td><%= grant_setting.department_postal_address %></td>
+        <td><%= grant_setting.application_start %></td>
+        <td><%= grant_setting.application_deadline %></td>
+        <td><%= grant_setting.notification_date %></td>
+        <td><%= grant_setting.program_start_date %></td>
+        <td><%= grant_setting.program_end_date %></td>
+        <td><%= grant_setting.checkback_date %></td>
+        <td><%= grant_setting.mail_from %></td>
+        <td><%= grant_setting.funded_by %></td>
+        <td><%= grant_setting.main_url %></td>
+        <td><%= grant_setting.department_url %></td>
+        <td><%= grant_setting.program_url %></td>
+        <td><%= grant_setting.grant %></td>
+        <td><%= link_to 'Show', grant_setting %></td>
+        <td><%= link_to 'Edit', edit_grant_setting_path(grant_setting) %></td>
+        <td><%= link_to 'Destroy', grant_setting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Grant Setting', new_grant_setting_path %>

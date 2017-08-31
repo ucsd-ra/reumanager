@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Grant Snippets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>General desc</th>
+      <th>Highlights</th>
+      <th>Eligibility</th>
+      <th>Grant</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grant_snippets.each do |grant_snippet| %>
+      <tr>
+        <td><%= grant_snippet.general_desc %></td>
+        <td><%= grant_snippet.highlights %></td>
+        <td><%= grant_snippet.eligibility %></td>
+        <td><%= grant_snippet.grant %></td>
+        <td><%= link_to 'Show', grant_snippet %></td>
+        <td><%= link_to 'Edit', edit_grant_snippet_path(grant_snippet) %></td>
+        <td><%= link_to 'Destroy', grant_snippet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Grant Snippet', new_grant_snippet_path %>

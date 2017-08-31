@@ -21,12 +21,13 @@ gem 'kaminari'
 gem 'pg'
 gem 'paperclip', '~> 5.1'
 gem 'paper_trail'
-gem 'rails_admin'
+gem 'rails_admin', :git => "https://github.com/sferik/rails_admin.git"
 gem 'rails-deprecated_sanitizer'
 gem 'redcarpet'
 gem 'responders', '~> 2.0'
 # gem 'rich', :git => "https://github.com/joeswann/rich.git"
-gem 'rich', :git => "https://github.com/rcronk87/rich.git"
+gem 'rich', :git => "https://github.com/notch8/rich.git"
+gem 'mimemagic', '~> 0.3.2'
 # gem 'rich'
 gem 'rvm-capistrano', require: false
 

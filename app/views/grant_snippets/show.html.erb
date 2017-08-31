@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>General desc:</strong>
+  <%= @grant_snippet.general_desc %>
+</p>
+
+<p>
+  <strong>Highlights:</strong>
+  <%= @grant_snippet.highlights %>
+</p>
+
+<p>
+  <strong>Eligibility:</strong>
+  <%= @grant_snippet.eligibility %>
+</p>
+
+<p>
+  <strong>Grant:</strong>
+  <%= @grant_snippet.grant %>
+</p>
+
+<%= link_to 'Edit', edit_grant_snippet_path(@grant_snippet) %> |
+<%= link_to 'Back', grant_snippets_path %>
