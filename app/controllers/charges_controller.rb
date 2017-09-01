@@ -20,7 +20,7 @@ def create
     :currency    => 'usd'
   )
 
-  redirect_to root_url(subdomain: @subdomain)
+  redirect_to new_grant_setting_url(subdomain: @subdomain)
 
 
 rescue Stripe::CardError => e
