@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'snippets/index'
+
   get 'settings/index'
 
   # resources :grant_settings
   resources :admin_accounts
   # resources :grant_snippets
   resources :settings
+  resources :snippets
   resources :grants
   resources :charges
 
