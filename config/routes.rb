@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :grant_settings
+
+  get 'settings/index'
+
+  # resources :grant_settings
   resources :admin_accounts
-  resources :grant_snippets
+  # resources :grant_snippets
+  resources :settings
   resources :grants
   resources :charges
 
@@ -41,5 +45,5 @@ Rails.application.routes.draw do
   root :to => "grants#index"
 
   # root "grants#index"
-  
+
 end

@@ -2,10 +2,6 @@ class GrantsController < ApplicationController
   before_action :set_grant, only: [:show, :edit, :update, :destroy]
   before_action :amount_to_be_charged
 
-  rescue_from Apartment::TenantNotFound, with: :tenant_not_found
-
-
-
   # GET /grants
   def index
     @grants = Grant.all
@@ -30,7 +26,6 @@ class GrantsController < ApplicationController
     @grant = Grant.new(grant_params)
 
     if @grant.valid?
-
       customer = Stripe::Customer.create(
         :email => 'amy.dyson@mac.com',
         :source  => params[:stripeToken]
@@ -45,9 +40,9 @@ class GrantsController < ApplicationController
       )
 
       @grant.save
-
+      sign_in(@grant.users.first)
       # redirect_to new_grant_setting_path(grant_id: @grant.id), notice: 'Your program was successfully created.'
-      redirect_to new_grant_setting_path(grant_id: @grant.id), notice: 'Your program was successfully created.'
+      redirect_to settings_url(subdomain: @grant.subdomain), notice: 'Your program was successfully created.'
     else
       render :new
     end
@@ -88,6 +83,6 @@ class GrantsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def grant_params
-      params.require(:grant).permit(:program_title, :institution, :subdomain, :contact_email, :contact_password)
+      params.require(:grant).permit(:program_title, :institution, :subdomain, :contact_email, :contact_password, :users_attributes => [:id, :email, :password])
     end
 end

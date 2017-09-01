@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830211704) do
+ActiveRecord::Schema.define(version: 20170901200320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -223,6 +223,7 @@ ActiveRecord::Schema.define(version: 20170830211704) do
     t.string "value", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer "grant_id"
     t.index ["name"], name: "index_settings_on_name"
   end
 
@@ -232,6 +233,7 @@ ActiveRecord::Schema.define(version: 20170830211704) do
     t.text "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer "grant_id"
   end
 
   create_table "universities", id: :serial, force: :cascade do |t|
@@ -264,6 +266,7 @@ ActiveRecord::Schema.define(version: 20170830211704) do
     t.string "authentication_token", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer "grant_id"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
