@@ -2,8 +2,8 @@
 development:
   adapter: postgresql
   database: reumanager_dev
-  user: Mark
-  password: password
+  user:
+  password:
   host: localhost
   pool: 5
   timeout: 5000
@@ -11,8 +11,8 @@ development:
 test:
   adapter: postgresql
   database: reumanager_test
-  user: Mark
-  password: password
+  user:
+  password:
   host: localhost
   pool: 5
   timeout: 5000
@@ -20,8 +20,8 @@ test:
 production:
   adapter: postgresql
   database: reumanager_prod
-  user: Mark
-  password: password
+  user:
+  password: 
   host: localhost
   pool: 5
   timeout: 5000

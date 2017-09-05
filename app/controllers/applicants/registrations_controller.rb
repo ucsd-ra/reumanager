@@ -35,8 +35,7 @@ class Applicants::RegistrationsController < Devise::RegistrationsController
       # Sign in the applicant bypassing validation in case the password changed
       sign_in @applicant, :bypass => true
       @applicant.set_state
-
-      redirect_to @applicant.redirect_url
+      redirect_to '/applicants/records'
     else
       render "edit"
     end

@@ -24,7 +24,7 @@ class Applicants::RecommendersController < ApplicationController
       params[:applicant][:recommenders_attributes] = recommender_data[1]
       if @applicant.update_attributes(params[:applicant])
         current_applicant.can_complete_recommender_info? ? current_applicant.complete_recommender_info : current_applicant.incomplete_recommender_info
-        redirect_to current_applicant.redirect_url
+        redirect_to '/applicants/status'
       else
         render :edit
       end

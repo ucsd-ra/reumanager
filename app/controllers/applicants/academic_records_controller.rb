@@ -13,7 +13,7 @@ class Applicants::AcademicRecordsController < ApplicationController
     if current_applicant.update_attributes params[:applicant]
       current_applicant.can_complete_academic_info? ? current_applicant.complete_academic_info : current_applicant.incomplete_academic_info
 
-      redirect_to current_applicant.redirect_url
+      redirect_to '/applicants/recommenders'
     else
       render :edit
     end
