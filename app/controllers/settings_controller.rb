@@ -6,7 +6,7 @@ class SettingsController < ApplicationController
 
   def create
     if current_grant.update_attributes(grant_params)
-      redirect_to snippets_url, notice: 'You are all champions' # TODO less sarcastic message here
+      redirect_to snippets_url, notice: 'You have successfully updated your settings.' 
     else
       render :index
     end

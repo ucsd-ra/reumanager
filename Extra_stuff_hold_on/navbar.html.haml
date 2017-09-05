@@ -3,10 +3,10 @@
     %ul.nav
       - if params[:controller] == 'welcome'
         %li.active
-          =link_to "Welcome", root_path, :class => 'active' 
+          =link_to "Welcome", root_path, :class => 'active'
       - else
         %li
-          =link_to "Welcome", root_path, :class => 'active' 
+          =link_to "Welcome", root_path, :class => 'active'
       - if params[:controller] == 'applicants/registrations' && params[:action] !=  'status'
         %li.active
           - if applicant_signed_in?
@@ -38,8 +38,8 @@
         %li
           - if applicant_signed_in?
             =link_to "Recommendation", applicants_recommenders_url, :class => 'active' unless current_applicant.submitted_at
-            
-            
+
+
       - if params[:controller] == 'applicants/registrations' && params[:action] ==  'status'
         %li.active
           - if applicant_signed_in?
@@ -52,7 +52,7 @@
       - if params[:controller] == 'applicants/sessions'
         %li.active
           - if applicant_signed_in? || user_signed_in? #|| user_signed_in?
-            = user_signed_in? ? link_to("Logout1", destroy_user_session_path, :method => :delete) : link_to("Logout", destroy_applicant_session_path, :method => :delete)
+            = user_signed_in? ? link_to("Logout", destroy_user_session_path, :method => :delete) : link_to("Logout", destroy_applicant_session_path, :method => :delete)
           - else
             = link_to "Login", new_applicant_session_url, :class => 'active'
       - else

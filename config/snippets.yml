@@ -1,41 +1,44 @@
 general_description:
-  name: general_description
+  name: General Description
   description: This is the text used as a general description for your program.
     It is displayed on the front page under the main image.
-  value: |
+  value:  Example-
+
     In the Engineering Center For Diabetes Research and Education (ECDRE) researchers at the Illinois Institute of Technology (IIT) collaborate with basic scientists and clinicians applying engineering techniques towards the understanding and treatment of diabetes and its complications. The Biomedical Engineering Department at IIT and ECDRE provides the foundation for this 10-week summer program. Students will be paired with faculty to complete a diabetes related research project working with a faculty mentor from IIT. Diabetes is a complex disease that can lead to a number of health complications. The projects offered in this program reflect this diversity, with topics in biomaterials for islet cell encapsulation, models of glucose metabolism, imaging techniques for prognosis/diagnosis of disease, regeneration strategies for the treatment of ulcers and ischemic limbs and vascular changes in diabetic retinopathy.
 
 highlights:
-  name: highlights
+  name: Program Highlights
   description: ''
-  value: |
-    <ul>
-      <li>Wide variety of research topics</li>
-      <li>Weekly seminars </li>
-      <li>Research ethics</li>
-      <li>Social programs</li>
-      <li>Outreach and mentoring of K-12 educational program</li>
-    </ul>
+  value: Example-
+
+     Wide variety of research topics
+     Weekly seminars
+     Research ethics
+     Social programs
+     Outreach and mentoring of K-12 educational program
+
 eligibility_requirements:
-  name: eligibility_requirements
+  name: Eligibility Requirements
   description: ''
-  value: |
-    <ul>
-      <li>Students should have a declared engineering or science (biology, chemistry, mathematics, computer science, or physics) major.</li>
-      <li>Students should have a minimum GPA of 2.80/4.00.</li>
-      <li>Applicants must be US citizens or permanent residents.</li>
-      <li>Students from community colleges are encouraged to apply.</li>
-    </ul>
+  value: Example-
+
+      Students should have a declared engineering or science (biology, chemistry, mathematics, computer science, or physics) major.
+      Students should have a minimum GPA of 2.80/4.00.
+      Applicants must be US citizens or permanent residents.
+      Students from community colleges are encouraged to apply.
+
 application_information:
-  name: application_information
+  name: Application Information
   description: ''
-  value: |
-    <ul>
-      <li>Academic Transcript</li>
-      <li>Letters of recommendation</li>
-      <li>Two essays to the application form. The essays should be no longer than one page in length, single spaced, and font no less than 10 pt. A) What are you future academic/career goals? Explain how participation in this REU program will help you achieve those goals. B) Describe an activity (hobby, sport, club, service, etc.) you enjoy outside of classes. Discuss how you got involved and what it requires from you.</li>
-    </ul>
+  value: Example-
+
+      Academic Transcript
+      Letters of recommendation
+      Two essays to the application form. The essays should be no longer than one page in length, single spaced, and font no less than 10 pt. A) What are you future academic/career goals? Explain how participation in this REU program will help you achieve those goals. B) Describe an activity (hobby, sport, club, service, etc.) you enjoy outside of classes. Discuss how you got involved and what it requires from you.
+
 acknowledgment_of_funding_soruces:
-  name: acknowledgment_of_funding_soruces
+  name: Acknowledgment Of Funding Soruces
   description: Please provide text to be included on the site as acknowledgment of program funding. In addition (or instead) you may send an image of the funding agency logo.
-  value: This program is supported by the National Science Foundation (EEC-1461215).
+  value: Example-
+
+      This program is supported by the National Science Foundation (EEC-1461215).

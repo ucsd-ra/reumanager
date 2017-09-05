@@ -6,7 +6,7 @@ class SnippetsController < ApplicationController
 
   def create
     if current_grant.update_attributes(grant_params)
-      redirect_to root_path, notice: 'You are all champions' # TODO less sarcastic message here
+      redirect_to root_path, notice: 'You have successfully updated your snippets.'
     else
       render :index
     end

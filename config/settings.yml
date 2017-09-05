@@ -1,77 +1,81 @@
 app_title:
-  name: app_title
+  name: App Title
   description: A snippet of text that describes your program (e.g. REU in Regenerative
     Medicine, Multi-Scale Bioengineering, and Systems Biology)
-  value: Research Experiences in Diabetes for Undergraduates
+  value: Example-
+    Research Experiences in Diabetes for Undergraduates
 university:
-  name: university
+  name: University
   description: This is used anywhere your university name is referenced.
-  value: Illinois Institute of Technology
+  value: Example-
+    Illinois Institute of Technology
 department:
-  name: department
+  name: Department
   description: This is used anywhere your department name is referenced.
-  value: Biomedical Engineering
+  value: Example-
+    Biomedical Engineering
 department_postal_address:
-  name: department_postal_address
+  name: Department Postal Address
   description: This is used anywhere the postal address is needed.  TODO
   value:
 application_start:
-  name: application_start
+  name: Application Start
   description: This is the 'opening date' for the application system. After this
     date, students can apply. This also controls what buttons are displayed in the
     navbar and on the homepage (e.g. Apply Now and Login).
   value:
 application_deadline:
-  name: application_deadline
+  name: Application Deadline
   description: This date determines when applications can no longer be created or
     updated. Similar to the above value, buttons to apply are removed after this
     date.
   value: 2018-02-15
 notification_date:
-  name: notification_date
+  name: Notification Date
   description: This date is used to let the applicants know when to expect a response.
     This is used in the confirmation emails.
   value: 2018-03-15
 program_start_date:
-  name: program_start_date
+  name: Program Start Date
   description: This date is used in the header and confirmation emails to set when
     the NSFREU program begins.
   value: 2018-06-30
 program_end_date:
-  name: program_end_date
+  name: Program End Date
   description: Similar to the above value, this marks the end date for your NSFREU
     program.
   value: 2018-08-05
 check_back_date:
-  name: check_back_date
+  name: Check Back Date
   description: |
     Once the application process is closed (after the application deadline),
     this value will inform students when to check back for information about next
     year's application.
   value: 2018-09-01
 mail_from:
-  name: mail_from
+  name: Mail From
   description: |
     This will be used in the reply-to value for emails sent from the
     application. This is also used in the footer as the email to contact for questions
     or comments about the website. TODO
-  value: ''
+  value:
 funding_acknowlegement:
-  name: funding_acknowlegement
+  name: Funding Acknowlegement
   description: Who is supporting this program?
-  value: This program is supported by the NSF REU Program (Physics, Chemistry, and DMR) and the DoD ASSURE Program.
+  value: Example-
+    This program is supported by the NSF REU Program (Physics, Chemistry, and DMR) and the DoD ASSURE Program.
 univeristy_url:
-  name: university_url
+  name: University Url
   description: |
     Main URL for the parent organization, usually a university (e.g. http://ucsd.edu, http://www.rice.edu)
-  value: ''
+  value:
 department_url:
-  name: department_url
+  name: Department Url
   description: |
     Main URL for the organization, usually a department
-  value: ''
+  value:
 program_url:
-  name: program_url
+  name: Program Url
   description: |
     URL for the specific program
-  value: ''
+  value: 

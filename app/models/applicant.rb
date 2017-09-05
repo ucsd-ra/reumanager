@@ -2,7 +2,8 @@ class Applicant < ApplicationRecord
   # Include default devise modules. Others available are:
   # :token_authenticatable, and :omniauthable
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :lockable, :timeoutable, :confirmable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :lockable, :timeoutable
+  # , :confirmable
 
   attr_accessible :academic_level, :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone, :dob, :citizenship, :disability, :gender, :ethnicity, :race, :cpu_skills, :gpa_comment, :lab_skills, :addresses_attributes, :awards_attributes, :records_attributes, :recommendations_attributes, :recommenders_attributes, :statement, :recommenders, :current_status, :state
 
