@@ -93,7 +93,7 @@ RailsAdmin.config do |config|
             <b>Address</b>  #{applicant.address}
 
           <h4>Statement</h4>
-          #{Markdown.render applicant.statement if applicant.statement}}
+          #{Markdown.new applicant.statement if applicant.statement}}
         end
       end
 

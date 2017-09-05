@@ -13,7 +13,7 @@
   <div>
   	<p><b>Please comment on the quality of the applicant's previous work, academic abilities, and potential as a researcher. If applicable, please comment on any circumstances that may be helpful in evaluating the applicant's academic performance.</b></p>
 
-    <%= raw(Markdown.render r.body) if r.body %>
+    <%= raw(Markdown.new r.body) if r.body %>
   </div>
 
   <hr />

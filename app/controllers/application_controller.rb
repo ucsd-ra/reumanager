@@ -5,9 +5,18 @@ class ApplicationController < ActionController::Base
   before_action :check_user_subdomain_combo
   helper_method :expired?
   rescue_from Apartment::TenantNotFound, with: :tenant_not_found
+  before_action :set_cache_buster
+
 
 
   protected
+
+  # used to prevent seeing user info through history after sign-out.
+  def set_cache_buster
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
 
   def check_deadline
     if expired?

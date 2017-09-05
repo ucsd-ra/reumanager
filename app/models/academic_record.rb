@@ -16,7 +16,7 @@ class AcademicRecord < ApplicationRecord
 
   def to_s
     record = "#{self.start.strftime("%Y.%m")} - #{self.finish.strftime("%Y.%m")} studying #{self.degree} at #{self.university}"
-    record << "\n#{Markdown.render "GPA Comment: " + self.gpa_comment}" if self.gpa_comment
+    record << "\n#{Markdown.new "GPA Comment: " + self.gpa_comment}" if self.gpa_comment
     record
   end
 
