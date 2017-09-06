@@ -63,7 +63,7 @@ class ApplicationController < ActionController::Base
       if current_grant.users.include?(current_user)
         return true
       else
-        render_error_page(status: 403, text: 'Forbidden')
+        render plain: '403 Forbidden', status: 403
       end
     else
       return true

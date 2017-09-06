@@ -2,6 +2,7 @@ class Grant < ActiveRecord::Base
 	has_many :users
 	has_many :settings
 	has_many :snippets
+	has_many :admin_accounts
 	# has_one :admin_account
 	# has_one :grant_setting
 	# has_one :grant_snippet
@@ -13,6 +14,7 @@ class Grant < ActiveRecord::Base
 	accepts_nested_attributes_for :settings
 	accepts_nested_attributes_for :users
 	accepts_nested_attributes_for :snippets
+	accepts_nested_attributes_for :admin_accounts
 
 	def create_tenant
 		Apartment::Tenant.create(subdomain)

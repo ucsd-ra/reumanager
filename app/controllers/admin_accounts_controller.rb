@@ -1,8 +1,10 @@
 class AdminAccountsController < ApplicationController
   before_action :set_admin_account, only: [:show, :edit, :update, :destroy]
+  before_action :set_grant, only: [:show, :edit, :update, :destroy]
 
   # GET /admin_accounts
   def index
+    @grant = current_grant
     @admin_accounts = AdminAccount.all
   end
 
@@ -12,6 +14,7 @@ class AdminAccountsController < ApplicationController
 
   # GET /admin_accounts/new
   def new
+    @grant = current_grant
     @admin_account = AdminAccount.new(grant_id: params[:grant_id])
   end
 
@@ -21,15 +24,38 @@ class AdminAccountsController < ApplicationController
 
   # POST /admin_accounts
   def create
-    @admin_account = AdminAccount.new(admin_account_params)
-
-    if @admin_account.save
-    
-      redirect_to grant_path(id: @admin_account.grant_id), notice: 'You\'ve completed the sign up process.'
-    else
-      render :new
+    if !params[:admin_account][:admin1_email].blank? && !params[:admin_account][:admin1_pwd].blank?
+      @grant.users.create!(email: params[:admin_account][:admin1_email], password: params[:admin_account][:admin1_pwd])
     end
+    if !params[:admin_account][:admin2_email].blank? && !params[:admin_account][:admin2_pwd].blank?
+      @grant.users.create!(email: params[:admin_account][:admin2_email], password: params[:admin_account][:admin2_pwd])
+    end
+    if !params[:admin_account][:admin3_email].blank? && !params[:admin_account][:admin3_pwd].blank?
+      @grant.users.create!(email: params[:admin_account][:admin3_email], password: params[:admin_account][:admin3_pwd])
+    end
+    if !params[:admin_account][:admin4_email].blank? && !params[:admin_account][:admin4_pwd].blank?
+      @grant.users.create!(email: params[:admin_account][:admin4_email], password: params[:admin_account][:admin4_pwd])
+    end
+    if !params[:admin_account][:admin5_email].blank? && !params[:admin_account][:admin5_pwd].blank?
+      @grant.users.create!(email: params[:admin_account][:admin5_email], password: params[:admin_account][:admin5_pwd])
+    end
+
+    #
+    # if @admin_account.save
+    redirect_to root_path, notice: 'You have successfully updated your users.'
+    # else
+    #   render :index
+    # end
   end
+    # @admin_account = AdminAccount.new(admin_account_params)
+    #
+    # if @admin_account.save
+    #
+    #   redirect_to grant_path(id: @admin_account.grant_id), notice: 'You\'ve completed the sign up process.'
+    # else
+    #   render :new
+    # end
+  # end
 
   # PATCH/PUT /admin_accounts/1
   def update
@@ -47,6 +73,10 @@ class AdminAccountsController < ApplicationController
   end
 
   private
+
+    def set_grant
+      @grant = Grant.find(params[:id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_account
       @admin_account = AdminAccount.find(params[:id])

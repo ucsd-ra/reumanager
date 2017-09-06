@@ -3,5 +3,6 @@
 <h2>Your Entire Application Process in One Convenient Location</h2>
 
 
-
-<%= link_to 'Sign Up', new_grant_path %>
+<% if request.original_url == "http://lvh.me:3000/"  %>
+  <%= link_to 'Sign Up', new_grant_path %>
+<% end %>
