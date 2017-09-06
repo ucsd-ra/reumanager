@@ -15,7 +15,7 @@ class CreateRecommendations < ActiveRecord::Migration
 
       t.timestamps
     end
-    
+
     add_index :recommendations, :applicant_id
     add_index :recommendations, :recommender_id
   end

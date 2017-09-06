@@ -9,7 +9,7 @@ class CreateAcademicRecords < ActiveRecord::Migration
       t.float :gpa_range, :default => 4.0
       t.text :gpa_comment
       t.integer :applicant_id
-      
+
       t.timestamps
     end
   end

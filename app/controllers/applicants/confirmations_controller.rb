@@ -1,7 +1,7 @@
 class Applicants::ConfirmationsController < Devise::ConfirmationsController
   # GET /resource/confirmation/new
   def new
-    build_resource({})
+    self.resource = resource_class.new
   end
 
   # POST /resource/confirmation

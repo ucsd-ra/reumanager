@@ -1,0 +1,10 @@
+<h1>Set up your account</h1>
+<%= form_for(@grant, url: settings_path, method: :post) do |f| %>
+  <%= f.fields_for :settings do |settings_f| %>
+    <%= settings_f.label :value, settings_f.object.name %>
+    <div class='hint'><%= settings_f.object.description %></div>
+    <%= settings_f.text_area :value, :class => 'span10', :rows => 4 %>
+  <% end %>
+
+  <%= f.submit :update %>
+<% end %>

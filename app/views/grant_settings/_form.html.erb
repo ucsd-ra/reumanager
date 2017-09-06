@@ -1,0 +1,91 @@
+<%= form_with(model: grant_setting, local: true) do |form| %>
+  <% if grant_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(grant_setting.errors.count, "error") %> prohibited this grant_setting from being saved:</h2>
+
+      <ul>
+      <% grant_setting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :institute %>
+    <%= form.text_field :institute, id: :grant_setting_institute %>
+  </div>
+
+  <div class="field">
+    <%= form.label :department %>
+    <%= form.text_field :department, id: :grant_setting_department %>
+  </div>
+
+  <div class="field">
+    <%= form.label :department_postal_address %>
+    <%= form.text_field :department_postal_address, id: :grant_setting_department_postal_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :application_start %>
+    <%= form.date_select :application_start, id: :grant_setting_application_start %>
+  </div>
+
+  <div class="field">
+    <%= form.label :application_deadline %>
+    <%= form.date_select :application_deadline, id: :grant_setting_application_deadline %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notification_date %>
+    <%= form.date_select :notification_date, id: :grant_setting_notification_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :program_start_date %>
+    <%= form.date_select :program_start_date, id: :grant_setting_program_start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :program_end_date %>
+    <%= form.date_select :program_end_date, id: :grant_setting_program_end_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :checkback_date %>
+    <%= form.date_select :checkback_date, id: :grant_setting_checkback_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mail_from %>
+    <%= form.text_field :mail_from, id: :grant_setting_mail_from %>
+  </div>
+
+  <div class="field">
+    <%= form.label :funded_by %>
+    <%= form.text_field :funded_by, id: :grant_setting_funded_by %>
+  </div>
+
+  <div class="field">
+    <%= form.label :main_url %>
+    <%= form.text_field :main_url, id: :grant_setting_main_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :department_url %>
+    <%= form.text_field :department_url, id: :grant_setting_department_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :program_url %>
+    <%= form.text_field :program_url, id: :grant_setting_program_url %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :grant_id, id: :grant_setting_grant_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

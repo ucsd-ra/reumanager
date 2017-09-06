@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admin Accounts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Admin1 email</th>
+      <th>Admin1 pwd</th>
+      <th>Admin2 email</th>
+      <th>Admin2 pwd</th>
+      <th>Admin3 email</th>
+      <th>Admin3 pwd</th>
+      <th>Admin4 email</th>
+      <th>Admin4 pwd</th>
+      <th>Admin5 email</th>
+      <th>Admin5 pwd</th>
+      <th>Grant</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_accounts.each do |admin_account| %>
+      <tr>
+        <td><%= admin_account.admin1_email %></td>
+        <td><%= admin_account.admin1_pwd %></td>
+        <td><%= admin_account.admin2_email %></td>
+        <td><%= admin_account.admin2_pwd %></td>
+        <td><%= admin_account.admin3_email %></td>
+        <td><%= admin_account.admin3_pwd %></td>
+        <td><%= admin_account.admin4_email %></td>
+        <td><%= admin_account.admin4_pwd %></td>
+        <td><%= admin_account.admin5_email %></td>
+        <td><%= admin_account.admin5_pwd %></td>
+        <td><%= admin_account.grant %></td>
+        <td><%= link_to 'Show', admin_account %></td>
+        <td><%= link_to 'Edit', edit_admin_account_path(admin_account) %></td>
+        <td><%= link_to 'Destroy', admin_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admin Account', new_admin_account_path %>

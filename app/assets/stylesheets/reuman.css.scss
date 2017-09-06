@@ -10,15 +10,19 @@ body,h1,h2,h3,h4,h5,h6,p,li {color:#2C4056; font-weight:300;}
 i { width:inherit; }
 .clear {clear:both;}
 .navbar .nav > li > a:hover { }
-nav.navbar-inner { -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0; border-top:0; padding:0; 
+nav.navbar-inner { -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0; border-top:0; padding:0;
   a:hover { }}
 
 .navbar .nav > li > a:focus, .navbar .nav > li > a:hover { background-color:#f6f6f6;}
 
-header { background-color:#507AAA; 
-  .header-inner { padding:0 20px; 
+header { background-color:#507AAA;
+  .header-inner {
+    padding:0 20px;
+    a { color: #eee;}
     h1 { color:#eee; font-size:2em; font-weight: normal;  }
-    h2 { color:#eee; font-size:1.6em; font-weight: normal; }}}
+    h2 { color:#eee; font-size:1.6em; font-weight: normal; }
+  }
+}
 
 div.content { background-color:#fff; border: 1px solid #D4D4D4; margin:10px auto 0; background-image: -moz-linear-gradient(top, white, #F2F2F2);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#F2F2F2));
@@ -40,7 +44,7 @@ div.container.devise { background-color:#fff; border:1px solid #aaa; border-radi
   #status { padding:20px; }
   h2 { background-color:#2C4056; color:#fff; padding:0 20px; }
   h3.alert { border:0; padding:0; margin:0;}
-  h3.success { border:0; padding:0; margin:0; 
+  h3.success { border:0; padding:0; margin:0;
     a {font-style:none;}}
   form {padding:20px;
     label { font-size:1.3em; }
@@ -62,21 +66,21 @@ form {
     .inner { padding:0 20px; }}}
 
 
-.application_nav { 
+.application_nav {
   .dropdown-menu { border:0; display:block; padding:0;
-    li { 
+    li {
       a:hover { background-image:none; background-color:inherit; color:#333; }
       }
-    li.active { 
+    li.active {
       a { background-image:none; background-color:inherit; color:#333; }
       a:hover { background-image:none; background-color:inherit; color:#333; }
           }
-    .alert { border:none; margin:0; 
+    .alert { border:none; margin:0;
       }}}
 
 footer.container { font-size:0.8em;
   .footer-inner { padding:0 20px; }}
-  
+
 .field_with_errors { color:#8A1F11; display:inline;
   input, label.radio, textarea { background-color:#FBC2C4; }}
 
@@ -90,3 +94,13 @@ footer.container { font-size:0.8em;
   ul { margin:1em 3em; }
   ul li	{ font-size:1.2em; list-style:square; }
   p:first-letter { font-size:1.8em; }}
+
+
+.deadline {
+  text-align: center;
+  margin: 40px 0 0 0;
+}
+
+#homeText {
+  color: blue;
+}

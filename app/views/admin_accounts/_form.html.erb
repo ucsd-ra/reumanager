@@ -1,0 +1,71 @@
+<%= form_with(model: admin_account, local: true) do |form| %>
+  <% if admin_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admin_account.errors.count, "error") %> prohibited this admin_account from being saved:</h2>
+
+      <ul>
+      <% admin_account.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :admin1_email %>
+    <%= form.text_field :admin1_email, id: :admin_account_admin1_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin1_pwd %>
+    <%= form.text_field :admin1_pwd, id: :admin_account_admin1_pwd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin2_email %>
+    <%= form.text_field :admin2_email, id: :admin_account_admin2_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin2_pwd %>
+    <%= form.text_field :admin2_pwd, id: :admin_account_admin2_pwd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin3_email %>
+    <%= form.text_field :admin3_email, id: :admin_account_admin3_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin3_pwd %>
+    <%= form.text_field :admin3_pwd, id: :admin_account_admin3_pwd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin4_email %>
+    <%= form.text_field :admin4_email, id: :admin_account_admin4_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin4_pwd %>
+    <%= form.text_field :admin4_pwd, id: :admin_account_admin4_pwd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin5_email %>
+    <%= form.text_field :admin5_email, id: :admin_account_admin5_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin5_pwd %>
+    <%= form.text_field :admin5_pwd, id: :admin_account_admin5_pwd %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :grant_id, id: :admin_account_grant_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

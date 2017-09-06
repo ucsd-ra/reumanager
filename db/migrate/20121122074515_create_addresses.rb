@@ -10,7 +10,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :label
       t.string :permanent
       t.integer :applicant_id
-      
+
       t.timestamps
     end
   end

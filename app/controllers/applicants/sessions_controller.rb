@@ -1,11 +1,7 @@
 class Applicants::SessionsController < Devise::SessionsController
-  before_filter :check_deadline
-  
   # GET /resource/sign_in
    def new
-     resource = build_resource(nil, :unsafe => true)
-     clean_up_passwords(resource)
-     respond_with(resource, serialize_options(resource))
+     super
    end
 
    # POST /resource/sign_in
@@ -31,10 +27,10 @@ class Applicants::SessionsController < Devise::SessionsController
        end
      end
    end
-  
+
   protected
-  
+
   def after_sign_in_path_for(resource)
-    current_applicant.redirect_url
+    root_path
   end
 end

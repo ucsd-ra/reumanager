@@ -1,17 +1,17 @@
 <%= form_for(current_applicant, :url => applicants_records_url, :html => { :method => :put, :multipart => true }) do |f| %>
 
   <%= errors_for current_applicant %>
-  
+
   <div class='row'>
     <div class="span9">
-      
+
       <div class='row'>
         <div class="span9">
           <div class="inner">
             <h2>Academic Info</h2>
           </div> <!-- end  inner -->
         </div>
-        
+
         <section class='records'>
           <div class="span9">
             <div class="inner">
@@ -25,14 +25,23 @@
             <% end %>
             <div class="inner"><%= link_to_add_fields "Add academic record", f, :records %></div>
           </div>
-          
+
         </section>
-        
+
+        <section class='gpa_comment'>
+          <div class="span9">
+            <div class="inner">
+              <h2>GPA Comments</h2>
+              <%= f.text_area :gpa_comment, :class => 'span8', :rows => 2, :placeholder => "Do you feel your GPA accurately reflects your academic abilities? Please comment on why or why not in the space provided."  %>
+            </div> <!-- end  inner -->
+          </div>
+        </section>
+
         <section class='awards'>
           <div class="span9">
             <div class="inner">
               <h2>Awards</h2>
-            </div> <!-- end  inner -->          
+            </div> <!-- end  inner -->
             <%= f.fields_for :awards do |builder| %>
               <%= render 'award_fields', f: builder %>
             <% end %>
@@ -57,23 +66,23 @@
             </div> <!-- end  inner -->
           </div>
 
-        
-      </div> <!-- end .row --> 
-    </div> <!-- end .span9 --> 
-  
+
+      </div> <!-- end .row -->
+    </div> <!-- end .span9 -->
+
     <%= render "applicants/shared/nav" %>
-    
+
     <div class="span12">
       <div class="inner">
         <hr />
         <p class='clear'><%= f.submit "Save Academic Info", :class => "btn btn-success" %></p>
-        <small><strong>You can <%= link_to "logout", destroy_applicant_session_path, :method => :delete %> and continue you application at anytime, however, it will not be accepted until all the above data has been submitted.</strong></small>        
+        <small><strong>You can <%= link_to "logout", destroy_applicant_session_path, :method => :delete %> and continue you application at anytime, however, it will not be accepted until all the above data has been submitted.</strong></small>
       </div>
     </div>
-  
-  
+
+
   </div>
 
-    
+
 
 <% end %>

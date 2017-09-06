@@ -1,0 +1,76 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Institute:</strong>
+  <%= @grant_setting.institute %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @grant_setting.department %>
+</p>
+
+<p>
+  <strong>Department postal address:</strong>
+  <%= @grant_setting.department_postal_address %>
+</p>
+
+<p>
+  <strong>Application start:</strong>
+  <%= @grant_setting.application_start %>
+</p>
+
+<p>
+  <strong>Application deadline:</strong>
+  <%= @grant_setting.application_deadline %>
+</p>
+
+<p>
+  <strong>Notification date:</strong>
+  <%= @grant_setting.notification_date %>
+</p>
+
+<p>
+  <strong>Program start date:</strong>
+  <%= @grant_setting.program_start_date %>
+</p>
+
+<p>
+  <strong>Program end date:</strong>
+  <%= @grant_setting.program_end_date %>
+</p>
+
+<p>
+  <strong>Checkback date:</strong>
+  <%= @grant_setting.checkback_date %>
+</p>
+
+<p>
+  <strong>Mail from:</strong>
+  <%= @grant_setting.mail_from %>
+</p>
+
+<p>
+  <strong>Funded by:</strong>
+  <%= @grant_setting.funded_by %>
+</p>
+
+<p>
+  <strong>Main url:</strong>
+  <%= @grant_setting.main_url %>
+</p>
+
+<p>
+  <strong>Department url:</strong>
+  <%= @grant_setting.department_url %>
+</p>
+
+<p>
+  <strong>Program url:</strong>
+  <%= @grant_setting.program_url %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_grant_setting_path(@grant_setting) %> |
+<%= link_to 'Back', grant_settings_path %>

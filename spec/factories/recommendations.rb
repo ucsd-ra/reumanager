@@ -7,7 +7,7 @@ FactoryGirl.define do
     known_capacity { ['Undergrad in one course', 'Undergrad in multiple courses', 'Research Assistant', 'Teaching Assistant'][rand(4)] }
     overall_promise { ['Top 1%', 'Top 5%', 'Top 10%', 'Top 25%', 'average', 'below average'][rand(6)] }
     undergraduate_institution { ['Yes', 'No', nil][rand(3)] }
-    
+
     factory :recommendation_with_associations do
       applicant_id { FactoryGirl.create(:applicant).id }
       recommender_id { FactoryGirl.create(:recommender).id }

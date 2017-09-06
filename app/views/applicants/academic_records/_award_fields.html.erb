@@ -6,13 +6,13 @@
         <%= f.text_field :title, :placeholder => :Title %>
       </div>
     </div>
-  
+
     <div class="span4 offset1">
       <div class="inner">
-        <%= f.text_field :date, 'data-behaviour' => 'datepicker', :placeholder => "Date" %>
+        <%= f.text_field :date, 'data-behaviour' => 'datepicker', :placeholder => "Date (YYYY-MM-DD)" %>
       </div>
     </div>
-    
+
     <div class="span9">
       <div class="inner">
         <%= f.text_area :description, :class => 'span8', :rows => 2, :placeholder => "Award Description (Optional)" %>
@@ -22,10 +22,10 @@
     <div class="span9">
       <div class="inner">
         <%= f.hidden_field :_destroy %>
-        <%= link_to "remove this record", '#', class: "remove_fields btn btn-mini btn-danger" %>    
+        <%= link_to "remove this record", '#', class: "remove_fields btn btn-mini btn-danger" %>
       </div>
     </div>
-        
+
   </div>
 
   <hr class="inner clear" />

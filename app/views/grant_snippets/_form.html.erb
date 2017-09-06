@@ -1,0 +1,37 @@
+<%= form_with(model: grant_snippet, local: true) do |form| %>
+  <% if grant_snippet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(grant_snippet.errors.count, "error") %> prohibited this grant_snippet from being saved:</h2>
+
+      <ul>
+      <% grant_snippet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :general_desc %>
+    <%= form.text_area :general_desc, id: :grant_snippet_general_desc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :highlights %>
+    <%= form.text_area :highlights, id: :grant_snippet_highlights %>
+  </div>
+
+  <div class="field">
+    <%= form.label :eligibility %>
+    <%= form.text_area :eligibility, id: :grant_snippet_eligibility %>
+  </div>
+
+  <div class="field">
+
+    <%= form.hidden_field :grant_id, id: :grant_snippet_grant_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

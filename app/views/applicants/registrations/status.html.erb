@@ -4,8 +4,8 @@
     <%= application_status if current_applicant %>
   </div>
 
-  
-  
+
+
   <div class='row'>
     <div class='span6'>
       <div class='inner'>
@@ -18,11 +18,11 @@
         </ul>
       </div>
     </div>
-    
+
     <div class='span6'>
       <div class='inner'>
         <h2>Personal Statement</h2>
-        <%= raw Markdown.render(current_applicant.statement) if current_applicant.statement %>
+        <%= raw Markdown.new(current_applicant.statement).to_html if current_applicant.statement %>
       </div>
     </div>
 
@@ -47,31 +47,37 @@
         <h2>Academic Info</h2>
         <ul>
           <%- current_applicant.records.each do |record| -%>
-            <li><%= raw record %></li>
+            <%- if record.to_s.present? -%>
+              <li><%= raw record.to_s %></li>
+            <%- end -%>
           <%- end -%>
 
           <%- current_applicant.awards.each do |award| -%>
             <li><b>Award</b> <%= award %></li>
           <%- end -%>
-      
-          <li><b>Computer Skills</b> <%= Markdown.render current_applicant.cpu_skills if current_applicant.cpu_skills %></li>
-          <li><b>Laboratory Skills</b> <%= Markdown.render current_applicant.lab_skills if current_applicant.lab_skills %></li>
+
+          <li><b>Computer Skills</b> <%=raw Markdown.new(current_applicant.cpu_skills).to_html if current_applicant.cpu_skills %></li>
+          <li><b>Laboratory Skills</b> <%=raw Markdown.new(current_applicant.lab_skills).to_html if current_applicant.lab_skills %></li>
         </ul>
       </div>
     </div>
 
   </div> <!-- end .row -->
 
-  <%= content_tag :div, content_tag(:p, link_to("Submit Application", submit_application_path, :class => "btn btn-success")), :class => 'inner' if current_applicant.state == 'completed_recommender_info' %>
-  
-  <hr class='clear inner' />
+  <% if current_applicant.state == 'completed_recommender_info' && !expired? %>
+    <%= content_tag :div, content_tag(:p, link_to("Submit Application", submit_application_path, :class => "btn btn-success")), :class => 'inner' %>
+  <% else %>
+    <h3>The application deadline has past</h3>
+  <% end %>
 
-  <div class="inner">    
-    <%= content_tag :p, link_to("Edit Application Data", edit_applicant_registration_path(current_applicant), :class => "btn btn-mini btn-info") + raw("&nbsp;&nbsp;&nbsp;") unless current_applicant.submitted_at %>
-    <p>Changed your mind? <%= link_to "Delete your aapplication", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-mini btn-danger" %></p>
-    <% unless current_applicant.state == 'complete' || current_applicant.state == 'submitted' %>
-      <small><strong>You can <%= link_to "logout", destroy_applicant_session_path, :method => :delete %> and continue you application at anytime<%= ", however, it will not be accepted until all the above data has been submitted" %>.</strong></small>
-    <%- end -%>
-  </div>
+  <hr class='clear inner' />
+  <% if !expired? %>
+    <div class="inner">
+      <%= content_tag :p, link_to("Edit Application Data", edit_applicant_registration_path(current_applicant), :class => "btn btn-mini btn-info") + raw("&nbsp;&nbsp;&nbsp;") unless current_applicant.submitted_at %>
+      <p>Changed your mind? <%= link_to "Delete your application", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-mini btn-danger" %></p>
+      <% unless current_applicant.state == 'complete' || current_applicant.state == 'submitted' %>
+        <small><strong>You can <%= link_to "logout", destroy_applicant_session_path, :method => :delete %> and continue you application at anytime<%= ", however, it will not be accepted until all the above data has been submitted" %>.</strong></small>
+      <%- end -%>
+    </div>
+  <% end %>
 </section>
-    

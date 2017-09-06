@@ -3,25 +3,24 @@ require 'spec_helper'
 describe Applicants::RecommendersController do
 
   context "without authenticated applicant" do
-    
+
     describe "#edit (GET /applicants/recommenders)" do
-      
       it "redirects to the applicant login" do
         get :edit
         expect(response).to redirect_to new_applicant_session_url
       end
-    
+
     end
 
     describe "#update (PUT /applicants/recommenders/1)" do
-      
+
       it "redirects to the applicant login" do
         put :update, "applicant"=> { "recommenders_attributes" => { "0" => FactoryGirl.attributes_for(:applicant) } }
         expect(response).to redirect_to new_applicant_session_url
       end
-    
+
     end
-    
+
   end
 
   def confirm_and_login(applicant=nil)
@@ -79,7 +78,7 @@ describe Applicants::RecommendersController do
           it "does not change the recommender's attributes" do
             expect(assigns(:applicant).recommenders.first.email).to eq(@recommender_attributes[:email])
           end
-          
+
           it "the recomender object is invalid" do
             expect(assigns(:applicant).recommenders.first).to be_invalid
           end
@@ -91,7 +90,7 @@ describe Applicants::RecommendersController do
 
     context "with existing recommender" do
       before { @recommender = @applicant.recommenders.create(FactoryGirl.attributes_for(:recommender)) }
-      
+
       describe "#edit (GET /applicants/recommenders)" do
 
         it "does not build a new recommender object for the authenticated applicant and only loads the existing recommender" do
@@ -110,50 +109,50 @@ describe Applicants::RecommendersController do
 
         describe "deleting a recommender" do
           before { @applicant_attributes}
-          
+
           context 'with only one associated applicant/recommendation' do
             it "deletes the recommender association (blank recommendation) when given the proper parameter" do
-              put :update, "applicant"=> { "recommenders_attributes" => { "0" => { 
-                "first_name"=> @recommender.first_name, 
-                "last_name"=> @recommender.last_name, 
-                "email"=> @recommender.email, 
-                "organization"=> @recommender.organization, 
-                "title"=> @recommender.title, 
+              put :update, "applicant"=> { "recommenders_attributes" => { "0" => {
+                "first_name"=> @recommender.first_name,
+                "last_name"=> @recommender.last_name,
+                "email"=> @recommender.email,
+                "organization"=> @recommender.organization,
+                "title"=> @recommender.title,
                 "department"=> @recommender.department,
                 "id"=> @recommender.id,
                 "_destroy"=>"1" } } }
-            
+
               assigns(:applicant).reload
-          
+
               expect(assigns(:applicant).recommenders).to eq([])
               expect(Recommender.find_by_email(@recommender.email)).to be_nil
             end
           end
-          
+
           context 'with more than one associated applicant/recommendation' do
             it "deletes the recommender association (blank recommendation) when given the proper parameter" do
               another_applicant = FactoryGirl.create(:applicant)
               another_applicant.recommenders << @recommender
-              
-              put :update, "applicant"=> { "recommenders_attributes" => { "0" => { 
-                "first_name"=> @recommender.first_name, 
-                "last_name"=> @recommender.last_name, 
-                "email"=> @recommender.email, 
-                "organization"=> @recommender.organization, 
-                "title"=> @recommender.title, 
+
+              put :update, "applicant"=> { "recommenders_attributes" => { "0" => {
+                "first_name"=> @recommender.first_name,
+                "last_name"=> @recommender.last_name,
+                "email"=> @recommender.email,
+                "organization"=> @recommender.organization,
+                "title"=> @recommender.title,
                 "department"=> @recommender.department,
                 "id"=> @recommender.id,
                 "_destroy"=>"1" } } }
-            
+
               assigns(:applicant).reload
-          
+
               expect(assigns(:applicant).recommenders).to eq([])
               expect(Recommender.find_by_email(@recommender.email)).to eq(@recommender)
             end
           end
-          
+
         end
-        
+
 
         context 'with valid recommender attributes' do
           before do
@@ -184,7 +183,7 @@ describe Applicants::RecommendersController do
           it "does not change the recommender's attributes" do
             expect(assigns(:applicant).recommenders.last.email).to eq(@recommender_attributes[:email])
           end
-          
+
         end
 
       end
@@ -192,13 +191,13 @@ describe Applicants::RecommendersController do
     end
 
     context "with existing recommender in application but not belonging to authenticated applicant" do
-      
+
       describe "#update (PUT /applicants/recommenders/1)" do
         before do
           @some_other_applicant = FactoryGirl.create(:applicant)
           @recommender = @some_other_applicant.recommenders.create(FactoryGirl.attributes_for(:recommender))
         end
-        
+
         context 'with valid recommender attributes' do
           before do
             @recommender_attributes = @recommender.attributes
@@ -235,9 +234,9 @@ describe Applicants::RecommendersController do
             expect(assigns(:applicant).recommenders.first).to be_valid
           end
         end # context 'with INVALID recommender attributes'
-        
+
         describe 'with multiple recommenders (one ex)' do
-          context 'with valid recommender attributes' do  
+          context 'with valid recommender attributes' do
             before do
               confirm_and_login(FactoryGirl.create(:applicant_with_recommender))
               @recommender0_attributes = @applicant.recommenders.first.attributes
@@ -253,12 +252,12 @@ describe Applicants::RecommendersController do
 
             it "creates a recommender object for the authenticated applicant using the provided attributes" do
               expect(assigns(:applicant).recommenders.count).to eq(2)
-              
-              expect(assigns(:applicant).recommenders.last.email).to eq(@recommender0_attributes['email'])
-              expect(assigns(:applicant).recommenders.first.email).to eq(@recommender1_attributes['email'])
+
+              expect(assigns(:applicant).recommenders.first.email).to eq(@recommender0_attributes['email'])
+              expect(assigns(:applicant).recommenders.last.email).to eq(@recommender1_attributes['email'])
             end
           end # context 'with valid recommender attributes'
-          
+
           context 'with INVALID recommender attributes' do
             before do
               @applicant1 = confirm_and_login(FactoryGirl.create(:applicant_with_recommender))

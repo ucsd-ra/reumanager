@@ -1,0 +1,11 @@
+<h1>Set up your account</h1>
+<%= form_for(@grant, url: snippets_path, method: :post) do |f| %>
+
+  <%= f.fields_for :snippets do |snippets_f| %>
+    <%= snippets_f.label :value, snippets_f.object.name %>
+    <div class='hint'><%= snippets_f.object.description %></div>
+    <%= snippets_f.text_area :value, :class => 'span10', :rows => 4 %>
+  <% end %>
+
+  <%= f.submit :update %>
+<% end %>
